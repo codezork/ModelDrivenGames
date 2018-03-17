@@ -19,7 +19,7 @@ You can install "IDE for DSL developers" or you must install all Xtext stuff lat
 For using Android you must install ADT - http://dl-ssl.google.com/android/eclipse/. 
 
 === Xtext
-At this time the current version of Xtext 2.13 is used. The grammar is developed in a  "first" IDE and you must start a "second" IDE from the first one, to be able to check the grammar changes on the fly. Grammar changes must be "compiled" by right clicking on the .mwe2 file and selecting Run as... MWE2 Workflow.
+At this time the current version of Xtext 2.13 is used. The grammar is developed in a  "first" IDE and you must start a "second" IDE (runtime-Game) from the first one, to be able to check the grammar changes on the fly. Grammar changes must be "compiled" by right clicking on the .mwe2 file and selecting Run as... MWE2 workflow. More information can be found in the Xtext documentation.
 
 === LibGDX
 I used in the version 1.9.8. Due to the architecture of the Xtext projects, a plugin project was made from the libGDX jars. Together with android version 4.2.2 they form a plugin called "com.badlogic.gdx-all" because all jars are included. Not all are exported yet. Perhaps other people will find a more nifty solution for this.
