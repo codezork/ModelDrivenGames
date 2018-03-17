@@ -1,5 +1,0 @@
-source.. = src/
-output.. = bin/
-bin.includes = META-INF/,\
-               .,\
-               lib/gdx-1.9.8.jar

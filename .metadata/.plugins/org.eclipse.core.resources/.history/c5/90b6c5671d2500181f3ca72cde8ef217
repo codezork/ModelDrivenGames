@@ -1,7 +1,0 @@
-package com.hypermodel.games.engine.generator
-
-import org.eclipse.xtext.xbase.compiler.JvmModelGenerator
-
-class ExtendedJvmModelGenerator extends JvmModelGenerator {
-	
-}
