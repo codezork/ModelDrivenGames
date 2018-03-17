@@ -1,8 +1,9 @@
 = ModelDrivenGames
 Xtext and LibGDX by hypermodel
 
-LibGDX is a cross-platform game development framework. It is a well known framework by game developers. https://libgdx.badlogicgames.com/
-Xtext is a framework for development of programming languages and domain-specific languages. http://www.eclipse.org/Xtext/
+LibGDX is a cross-platform game development framework. It is a well known framework by game developers: https://libgdx.badlogicgames.com/.
+
+Xtext is a framework for development of programming languages and domain-specific languages: http://www.eclipse.org/Xtext/.
 
 == General
 ModelDrivenGames wants to combine the two technologies, enabling a game developer to use DSL language to create large parts of the game by the Xtext code generator. If necessary, the resulting classes can be fine tuned by the developer. The final goal of this project is that nothing has to be changed after the generating process.
@@ -13,25 +14,26 @@ ModelDrivenGames wants to combine the two technologies, enabling a game develope
 I started to use Intellij CE 2017.3 as IDE, but failed for several reasons. JetBrains stopped supporting Xtext with version 2.10. I found Intellij so buggy that I reverted to version CE 2016.3. But starting a second instance to test Xtext artifacts, I failed again. 
 
 So for the moment, I use Eclipse Oxygen 2 in spite of the fact that Google stopped to support Eclipse for Android. But it works somehow. 
-You can install "IDE for DSL developers" or you must install all Xtext stuff later. http://www.eclipse.org/downloads/packages/eclipse-ide-java-and-dsl-developers/oxygen2
+You can install "IDE for DSL developers" or you must install all Xtext stuff later. Download Eclipse here: http://www.eclipse.org/downloads/packages/eclipse-ide-java-and-dsl-developers/oxygen2.
+
 For using Android you must install ADT - http://dl-ssl.google.com/android/eclipse/. 
 
 === Xtext
 At this time the current version of Xtext 2.13 is used. The grammar is developed in a  "first" IDE and you must start a "second" IDE from the first one, to be able to check the grammar changes on the fly. Grammar changes must be "compiled" by right clicking on the .mwe2 file and selecting Run as... MWE2 Workflow.
 
 === LibGDX
-I used in the version 1.9.8. Due to the architecture of the Xtext projects, a plugin project was made out of libGDX and the android version 4.2.2 called com.badlogic.gdx-all because all jars are included, not all are exported yet. Perhaps later one will found another solution for this.
+I used in the version 1.9.8. Due to the architecture of the Xtext projects, a plugin project was made from the libGDX jars. Together with android version 4.2.2 they form a plugin called "com.badlogic.gdx-all" because all jars are included. Not all are exported yet. Perhaps other people will find a more nifty solution for this.
 
-There is a book for free download "Learning libGDX Game Development" which is very good to understand the basics of game development with LibGDX. You can download it here: http://freepdf-books.com/learning-libgdx-game-development-2nd-edition/
+There is a book for free download "Learning libGDX Game Development" which is very good to understand the basics of game development with LibGDX. You can download it here: http://freepdf-books.com/learning-libgdx-game-development-2nd-edition/.
 
 === Android
 Get the latest version of Android Studio from https://developer.android.com/studio/index.html. Although you don't use Android Studio, you'll need it because you must enter the sdk path in Eclipse preferences for Android. Then you have to install the needed Android api level using the "Android SDK Manager" which is reachable from inside Eclipse as well.
 
 As soon as an Android project is created, you can connect a suitable Android device to your USB port, enable debugging on that device, right click the Android project and select Debug as...
-An deployable *.apk is generated and installed on your connected device.
+A deployable *.apk is generated and installed on your connected device.
 
 === DSL
-The current extension for DSL instances is ".game".
+The current extension for DSL model instance is ".game".
 
 == License
 The software is published under the *Apache 2.0 license*.
@@ -40,5 +42,5 @@ The software is published under the *Apache 2.0 license*.
 Although the author takes all possible care to ensure the correctness of published information, no warranty can be accepted regarding the correctness, accuracy, uptodateness, reliability and completeness of the content of this information. The author expressly reserves the right to change, to delete or temporarily not to publish the contents wholly or partly at any time and without giving notice. Liability claims against the author because of tangible or intangible damage arising from accessing, using or not using the published information, through misuse of the connection or as a result of technical breakdowns are excluded.
 
 == Known issues
-- sometimes the android sub-project isn't compiling well. You must the open the project.properties file and change something inside, so that the builder can add the right Android libs.
+- sometimes the android sub-project isn't compiling well. You must then open the project.properties file and change something inside, so that the builder can add the right Android libs.
 - For the moment, only the platform projects, a core project and the root project are created. These are deleted and re-created every time you touch the model instance. You could check against the stuff that gdx-setup does if you use gdx-setup.jar.
