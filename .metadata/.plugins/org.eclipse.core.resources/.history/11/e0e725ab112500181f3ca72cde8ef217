@@ -1,7 +1,0 @@
-Manifest-Version: 1.0
-Bundle-ManifestVersion: 2
-Bundle-Name: Gdx-all
-Bundle-SymbolicName: com.badlogicgames.gdx-all
-Bundle-Version: 1.0.0.qualifier
-Bundle-Vendor: BADLOGICGAMES
-Bundle-RequiredExecutionEnvironment: JavaSE-1.8
