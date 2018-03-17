@@ -1,0 +1,9 @@
+[2018-03-04 20:43:52] Executing startup tasks
+[2018-03-04 20:43:54] Java(TM) SE Runtime Environment 1.8.0_151-b12
+[2018-03-04 20:43:54] Product self.product.version
+[2018-03-04 20:43:54] Workspace C:\MyProjects\runtime-Game
+[2018-03-04 20:43:54] Bundle org.eclipse.oomph.setup 1.9.0.v20171221-1140, build=3349, branch=784f5d357a2e957a152af9e761ca3d2339b91829
+[2018-03-04 20:43:54] Bundle org.eclipse.oomph.setup.core 1.9.0.v20171222-1315, build=3349, branch=784f5d357a2e957a152af9e761ca3d2339b91829
+[2018-03-04 20:43:54] Bundle org.eclipse.oomph.setup.p2 1.9.0.v20171221-1140, build=3349, branch=784f5d357a2e957a152af9e761ca3d2339b91829
+[2018-03-04 20:43:54] Performing Preference /instance/com.android.ide.eclipse.adt/com.android.ide.eclipse.adt.sdk = C:\Users\User\AppData\Local\Android\sdk
+[2018-03-04 20:43:54] 

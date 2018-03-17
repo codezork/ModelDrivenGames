@@ -1,0 +1,29 @@
+grammar com.hypermodel.games.engine.GameDSL with org.eclipse.xtext.xbase.annotations.XbaseWithAnnotations
+
+generate gameDSL "http://www.hypermodel.com/games/engine/GameDSL"
+
+GameModel:
+	'AndroidSDK' sdkPath = QualifiedName
+	packages+=GamePackage*;
+
+GameImport:
+	'import' importedNamespace=GameQualifiedNameWithWildCard; 
+
+GamePackage:
+	'package' name=QualifiedName '{' 
+		(imports+=GameImport)*
+		(games+=Game)*
+	'}';
+
+Game:
+	'game' name=ID;
+	
+ValidID:
+	ID;
+	
+QualifiedName:
+	ValidID (=>'.' ValidID)*;
+  
+GameQualifiedNameWithWildCard:
+	QualifiedName ('.' '*')?;
+	

@@ -1,0 +1,12 @@
+package de.hypermodel.games {
+	configuration { 
+		android { 
+			minAndroidVersion 9
+			targetAndroidVersion 25
+			SDKApiLevel 19
+			orientation landscape
+		}
+		ios {}
+	}
+	game MyGame
+} 

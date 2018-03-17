@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="gameDSL" nsURI="http://www.hypermodel.com/games/engine/GameDSL"
+    nsPrefix="gameDSL">
+  <eClassifiers xsi:type="ecore:EClass" name="GameModel">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="packages" upperBound="-1"
+        eType="#//GamePackage" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="GameImport">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="importedNamespace" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="GamePackage">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="imports" upperBound="-1"
+        eType="#//GameImport" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="config" eType="#//GamePlatformConfig"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="games" upperBound="-1"
+        eType="#//Game" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="GamePlatformConfig">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="android" eType="#//GamePlatformConfigAndroid"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ios" eType="#//GamePlatformConfigIOS"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="GamePlatformConfigAndroid">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="minAndroidVersion" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="targetAndroidVersion" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="apiLevel" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="orientation" eType="#//GameScreenOrientation"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="appIcon" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="appName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="appLabel" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="useAccelerometer" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="GamePlatformConfigIOS">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="useAccelerometer" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="GamePlatformConfiguration">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="platform" eType="#//GamePlatform"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="config" upperBound="-1"
+        eType="#//GamePlatformConfigAndroid" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Game">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="GamePlatform">
+    <eLiterals name="android" literal="android"/>
+    <eLiterals name="desktop" value="1" literal="desktop"/>
+    <eLiterals name="html" value="2" literal="html"/>
+    <eLiterals name="ios" value="3" literal="ios"/>
+    <eLiterals name="iosmoe" value="4" literal="ios-moe"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="GameScreenOrientation">
+    <eLiterals name="landscape" literal="landscape"/>
+    <eLiterals name="portrait" value="1" literal="portait"/>
+  </eClassifiers>
+</ecore:EPackage>

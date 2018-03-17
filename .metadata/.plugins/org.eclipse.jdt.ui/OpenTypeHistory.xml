@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<typeInfoHistroy>
+<typeInfo handle="=com.hypermodel.games.engine/C:\/Users\/User\/.p2\/pool\/plugins\/org.eclipse.xtext.xbase_2.13.0.v20171020-0717.jar&lt;org.eclipse.xtext.xbase.jvmmodel(AbstractModelInferrer.class[AbstractModelInferrer" modifiers="1057" timestamp="1519473336026"/>
+<typeInfo handle="=com.hypermodel.games.engine/C:\/Users\/User\/.p2\/pool\/plugins\/org.eclipse.xtext_2.13.0.v20171020-0708.jar&lt;org.eclipse.xtext.generator(IOutputConfigurationProvider.class[IOutputConfigurationProvider" modifiers="1537" timestamp="1519473321235"/>
+<typeInfo handle="=com.hypermodel.games.engine/C:\/Users\/User\/.p2\/pool\/plugins\/org.eclipse.xtext.xbase_2.13.0.v20171020-0717.jar&lt;org.eclipse.xtext.xbase.jvmmodel(JvmTypeReferenceBuilder.class[JvmTypeReferenceBuilder" modifiers="33" timestamp="1519473336026"/>
+<typeInfo handle="=com.hypermodel.games.engine.ui/C:\/Users\/User\/.p2\/pool\/plugins\/org.eclipse.core.resources_3.12.0.v20170417-1558.jar&lt;org.eclipse.core.resources(ResourcesPlugin.class[ResourcesPlugin" modifiers="49" timestamp="1519466033234"/>
+<typeInfo handle="=com.hypermodel.games.engine/C:\/Users\/User\/.p2\/pool\/plugins\/org.eclipse.json_1.0.100.v201612232120.jar&lt;org.eclipse.json.provisonnal.com.eclipsesource.json(JsonObject.class[JsonObject" modifiers="33" timestamp="1520374245347"/>
+<typeInfo handle="=com.hypermodel.games.engine/C:\/Users\/User\/.p2\/pool\/plugins\/org.eclipse.json_1.0.100.v201612232120.jar&lt;org.eclipse.json.provisonnal.com.eclipsesource.json(JsonWriter.class[JsonWriter" modifiers="32" timestamp="1520374245347"/>
+<typeInfo handle="=com.hypermodel.games.engine/C:\/Users\/User\/.p2\/pool\/plugins\/org.eclipse.json_1.0.100.v201612232120.jar&lt;org.eclipse.json.impl.schema(JSONSchemaDocument.class[JSONSchemaDocument" modifiers="33" timestamp="1520374245347"/>
+<typeInfo handle="=com.hypermodel.games.engine/C:\/Users\/User\/.p2\/pool\/plugins\/org.eclipse.osgi_3.12.50.v20170928-1321.jar&lt;org.osgi.framework(FrameworkUtil.class[FrameworkUtil" modifiers="33" timestamp="1519466056455"/>
+<typeInfo handle="=com.hypermodel.games.engine/C:\/Program Files\/Java\/jre1.8.0_151\/lib\/rt.jar&lt;java.io(FileInputStream.class[FileInputStream" modifiers="33" timestamp="1509349533027"/>
+<typeInfo handle="=com.hypermodel.games.engine/C:\/Users\/User\/.p2\/pool\/plugins\/org.eclipse.core.resources_3.12.0.v20170417-1558.jar&lt;org.eclipse.core.resources(IWorkspaceRoot.class[IWorkspaceRoot" modifiers="1537" timestamp="1519466033234"/>
+<typeInfo handle="=com.hypermodel.games.engine/C:\/Users\/User\/.p2\/pool\/plugins\/org.eclipse.core.resources_3.12.0.v20170417-1558.jar&lt;org.eclipse.core.resources(IWorkspace.class[IWorkspace" modifiers="1537" timestamp="1519466033234"/>
+<typeInfo handle="=com.hypermodel.games.engine/C:\/Users\/User\/.p2\/pool\/plugins\/org.eclipse.xtext.xbase_2.13.0.v20171020-0717.jar&lt;org.eclipse.xtext.xbase.compiler(JvmModelGenerator.class[JvmModelGenerator" modifiers="33" timestamp="1519473336026"/>
+<typeInfo handle="=com.hypermodel.games.engine.ui/C:\/Users\/User\/.p2\/pool\/plugins\/org.eclipse.swt.win32.win32.x86_64_3.106.2.v20171129-0543.jar&lt;org.eclipse.swt.widgets(DirectoryDialog.class[DirectoryDialog" modifiers="33" timestamp="1519466009358"/>
+</typeInfoHistroy>

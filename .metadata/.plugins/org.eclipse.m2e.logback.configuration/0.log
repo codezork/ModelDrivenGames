@@ -1,0 +1,202 @@
+2018-02-24 10:58:03,861 [Worker-2] INFO  c.g.t.t.d.PublishedGradleVersions - Gradle version information cache is not available. Remote download required.
+2018-02-24 12:16:22,855 [Worker-1] INFO  c.g.t.t.d.PublishedGradleVersions - Gradle version information cache is up-to-date. Trying to read.
+2018-02-24 12:56:33,144 [Worker-2] INFO  c.g.t.t.d.PublishedGradleVersions - Gradle version information cache is up-to-date. Trying to read.
+2018-02-24 13:29:00,627 [Worker-2] INFO  c.g.t.t.d.PublishedGradleVersions - Gradle version information cache is up-to-date. Trying to read.
+2018-02-24 21:41:12,606 [Worker-3] INFO  c.g.t.t.d.PublishedGradleVersions - Gradle version information cache is up-to-date. Trying to read.
+2018-02-24 21:45:02,903 [Worker-3] INFO  c.g.t.t.d.PublishedGradleVersions - Gradle version information cache is up-to-date. Trying to read.
+2018-02-24 21:48:00,527 [Worker-0] INFO  c.g.t.t.d.PublishedGradleVersions - Gradle version information cache is up-to-date. Trying to read.
+2018-02-24 23:41:21,153 [Worker-2] INFO  c.g.t.t.d.PublishedGradleVersions - Gradle version information cache is up-to-date. Trying to read.
+2018-02-25 11:03:13,288 [Worker-1] INFO  c.g.t.t.d.PublishedGradleVersions - Gradle version information cache is out-of-date. Trying to update.
+2018-02-25 21:55:57,190 [Worker-1] INFO  c.g.t.t.d.PublishedGradleVersions - Gradle version information cache is up-to-date. Trying to read.
+2018-02-26 21:25:08,063 [Worker-3] INFO  c.g.t.t.d.PublishedGradleVersions - Gradle version information cache is out-of-date. Trying to update.
+2018-02-26 21:40:28,658 [Worker-7] INFO  c.g.t.t.d.PublishedGradleVersions - Gradle version information cache is up-to-date. Trying to read.
+2018-02-26 21:43:06,144 [Worker-5] INFO  c.g.t.t.d.PublishedGradleVersions - Gradle version information cache is up-to-date. Trying to read.
+2018-02-26 21:44:39,069 [Worker-4] INFO  c.g.t.t.d.PublishedGradleVersions - Gradle version information cache is up-to-date. Trying to read.
+2018-02-26 21:45:28,623 [Worker-3] INFO  c.g.t.t.d.PublishedGradleVersions - Gradle version information cache is up-to-date. Trying to read.
+2018-02-26 21:46:41,925 [Worker-3] INFO  c.g.t.t.d.PublishedGradleVersions - Gradle version information cache is up-to-date. Trying to read.
+2018-02-26 21:51:25,506 [Worker-3] INFO  c.g.t.t.d.PublishedGradleVersions - Gradle version information cache is up-to-date. Trying to read.
+2018-02-26 21:54:31,727 [Worker-0] INFO  c.g.t.t.d.PublishedGradleVersions - Gradle version information cache is up-to-date. Trying to read.
+2018-02-26 21:55:31,375 [Worker-4] INFO  c.g.t.t.d.PublishedGradleVersions - Gradle version information cache is up-to-date. Trying to read.
+2018-02-26 21:57:17,493 [Worker-0] INFO  c.g.t.t.d.PublishedGradleVersions - Gradle version information cache is up-to-date. Trying to read.
+2018-02-26 21:57:59,011 [Worker-5] INFO  c.g.t.t.d.PublishedGradleVersions - Gradle version information cache is up-to-date. Trying to read.
+2018-02-26 21:58:55,999 [Worker-6] INFO  c.g.t.t.d.PublishedGradleVersions - Gradle version information cache is up-to-date. Trying to read.
+2018-02-26 22:17:50,807 [Worker-0] INFO  c.g.t.t.d.PublishedGradleVersions - Gradle version information cache is up-to-date. Trying to read.
+2018-02-27 21:16:49,053 [Worker-1] INFO  c.g.t.t.d.PublishedGradleVersions - Gradle version information cache is up-to-date. Trying to read.
+2018-02-27 21:45:04,419 [Worker-4] INFO  c.g.t.t.d.PublishedGradleVersions - Gradle version information cache is out-of-date. Trying to update.
+2018-02-27 22:04:27,962 [Worker-4] INFO  c.g.t.t.d.PublishedGradleVersions - Gradle version information cache is up-to-date. Trying to read.
+2018-03-03 11:41:57,124 [Worker-1] INFO  c.g.t.t.d.PublishedGradleVersions - Gradle version information cache is out-of-date. Trying to update.
+2018-03-04 11:17:07,033 [Worker-3] INFO  c.g.t.t.d.PublishedGradleVersions - Gradle version information cache is up-to-date. Trying to read.
+2018-03-04 20:33:01,848 [Worker-0] INFO  c.g.t.t.d.PublishedGradleVersions - Gradle version information cache is out-of-date. Trying to update.
+2018-03-04 20:41:24,089 [Worker-0] INFO  c.g.t.t.d.PublishedGradleVersions - Gradle version information cache is up-to-date. Trying to read.
+2018-03-05 20:28:14,678 [Worker-1] INFO  c.g.t.t.d.PublishedGradleVersions - Gradle version information cache is up-to-date. Trying to read.
+2018-03-05 21:02:30,292 [Start Help Server] INFO  org.eclipse.jetty.util.log - Logging initialized @2098180ms to org.eclipse.jetty.util.log.Slf4jLog
+2018-03-05 21:02:30,492 [Start Help Server] INFO  org.eclipse.jetty.server.Server - jetty-9.4.7.v20170914
+2018-03-05 21:02:30,530 [Start Help Server] INFO  org.eclipse.jetty.server.session - DefaultSessionIdManager workerName=node0
+2018-03-05 21:02:30,530 [Start Help Server] INFO  org.eclipse.jetty.server.session - No SessionScavenger set, using defaults
+2018-03-05 21:02:30,530 [Start Help Server] INFO  org.eclipse.jetty.server.session - Scavenging every 660000ms
+2018-03-05 21:02:30,577 [Start Help Server] INFO  o.e.j.server.handler.ContextHandler - Started o.e.j.s.ServletContextHandler@3376db54{/help,null,AVAILABLE}
+2018-03-05 21:02:30,628 [Start Help Server] INFO  o.e.jetty.server.AbstractConnector - Started ServerConnector@3d5a08e3{HTTP/1.1,[http/1.1]}{127.0.0.1:59566}
+2018-03-05 21:02:30,628 [Start Help Server] INFO  org.eclipse.jetty.server.Server - Started @2098514ms
+2018-03-05 23:17:59,018 [Stop Help Server] INFO  o.e.jetty.server.AbstractConnector - Stopped ServerConnector@3d5a08e3{HTTP/1.1,[http/1.1]}{127.0.0.1:0}
+2018-03-05 23:17:59,022 [Stop Help Server] INFO  org.eclipse.jetty.server.session - Stopped scavenging
+2018-03-05 23:17:59,331 [Stop Help Server] INFO  o.e.j.server.handler.ContextHandler - Stopped o.e.j.s.ServletContextHandler@3376db54{/help,null,UNAVAILABLE}
+2018-03-06 19:49:16,441 [Worker-6] INFO  c.g.t.t.d.PublishedGradleVersions - Gradle version information cache is up-to-date. Trying to read.
+2018-03-06 19:56:09,355 [Start Help Server] INFO  org.eclipse.jetty.util.log - Logging initialized @459546ms to org.eclipse.jetty.util.log.Slf4jLog
+2018-03-06 19:56:09,539 [Start Help Server] INFO  org.eclipse.jetty.server.Server - jetty-9.4.7.v20170914
+2018-03-06 19:56:09,585 [Start Help Server] INFO  org.eclipse.jetty.server.session - DefaultSessionIdManager workerName=node0
+2018-03-06 19:56:09,585 [Start Help Server] INFO  org.eclipse.jetty.server.session - No SessionScavenger set, using defaults
+2018-03-06 19:56:09,587 [Start Help Server] INFO  org.eclipse.jetty.server.session - Scavenging every 660000ms
+2018-03-06 19:56:09,666 [Start Help Server] INFO  o.e.j.server.handler.ContextHandler - Started o.e.j.s.ServletContextHandler@13df0861{/help,null,AVAILABLE}
+2018-03-06 19:56:09,711 [Start Help Server] INFO  o.e.jetty.server.AbstractConnector - Started ServerConnector@7d53dbf7{HTTP/1.1,[http/1.1]}{127.0.0.1:60618}
+2018-03-06 19:56:09,712 [Start Help Server] INFO  org.eclipse.jetty.server.Server - Started @459898ms
+2018-03-06 21:20:17,868 [Stop Help Server] INFO  o.e.jetty.server.AbstractConnector - Stopped ServerConnector@7d53dbf7{HTTP/1.1,[http/1.1]}{127.0.0.1:0}
+2018-03-06 21:20:17,884 [Stop Help Server] INFO  org.eclipse.jetty.server.session - Stopped scavenging
+2018-03-06 21:20:17,903 [Stop Help Server] INFO  o.e.j.server.handler.ContextHandler - Stopped o.e.j.s.ServletContextHandler@13df0861{/help,null,UNAVAILABLE}
+2018-03-06 21:20:46,530 [Worker-8] INFO  c.g.t.t.d.PublishedGradleVersions - Gradle version information cache is up-to-date. Trying to read.
+2018-03-06 21:29:14,642 [Start Help Server] INFO  org.eclipse.jetty.util.log - Logging initialized @532322ms to org.eclipse.jetty.util.log.Slf4jLog
+2018-03-06 21:29:14,807 [Start Help Server] INFO  org.eclipse.jetty.server.Server - jetty-9.4.7.v20170914
+2018-03-06 21:29:14,856 [Start Help Server] INFO  org.eclipse.jetty.server.session - DefaultSessionIdManager workerName=node0
+2018-03-06 21:29:14,857 [Start Help Server] INFO  org.eclipse.jetty.server.session - No SessionScavenger set, using defaults
+2018-03-06 21:29:14,860 [Start Help Server] INFO  org.eclipse.jetty.server.session - Scavenging every 660000ms
+2018-03-06 21:29:14,911 [Start Help Server] INFO  o.e.j.server.handler.ContextHandler - Started o.e.j.s.ServletContextHandler@68fd6bd3{/help,null,AVAILABLE}
+2018-03-06 21:29:14,932 [Start Help Server] INFO  o.e.jetty.server.AbstractConnector - Started ServerConnector@2ff7961{HTTP/1.1,[http/1.1]}{127.0.0.1:61884}
+2018-03-06 21:29:14,933 [Start Help Server] INFO  org.eclipse.jetty.server.Server - Started @532612ms
+2018-03-06 23:11:17,190 [Stop Help Server] INFO  o.e.jetty.server.AbstractConnector - Stopped ServerConnector@2ff7961{HTTP/1.1,[http/1.1]}{127.0.0.1:0}
+2018-03-06 23:11:17,191 [Stop Help Server] INFO  org.eclipse.jetty.server.session - Stopped scavenging
+2018-03-06 23:11:17,225 [Stop Help Server] INFO  o.e.j.server.handler.ContextHandler - Stopped o.e.j.s.ServletContextHandler@68fd6bd3{/help,null,UNAVAILABLE}
+2018-03-06 23:11:55,961 [Worker-3] INFO  c.g.t.t.d.PublishedGradleVersions - Gradle version information cache is up-to-date. Trying to read.
+2018-03-07 07:59:43,244 [Worker-10] INFO  c.g.t.t.d.PublishedGradleVersions - Gradle version information cache is up-to-date. Trying to read.
+2018-03-07 18:39:55,609 [Worker-0] INFO  c.g.t.t.d.PublishedGradleVersions - Gradle version information cache is up-to-date. Trying to read.
+2018-03-07 21:22:57,306 [Start Help Server] INFO  org.eclipse.jetty.util.log - Logging initialized @9819390ms to org.eclipse.jetty.util.log.Slf4jLog
+2018-03-07 21:22:57,563 [Start Help Server] INFO  org.eclipse.jetty.server.Server - jetty-9.4.7.v20170914
+2018-03-07 21:22:57,609 [Start Help Server] INFO  org.eclipse.jetty.server.session - DefaultSessionIdManager workerName=node0
+2018-03-07 21:22:57,609 [Start Help Server] INFO  org.eclipse.jetty.server.session - No SessionScavenger set, using defaults
+2018-03-07 21:22:57,612 [Start Help Server] INFO  org.eclipse.jetty.server.session - Scavenging every 600000ms
+2018-03-07 21:22:57,667 [Start Help Server] INFO  o.e.j.server.handler.ContextHandler - Started o.e.j.s.ServletContextHandler@2fb87446{/help,null,AVAILABLE}
+2018-03-07 21:22:57,704 [Start Help Server] INFO  o.e.jetty.server.AbstractConnector - Started ServerConnector@46ded6a5{HTTP/1.1,[http/1.1]}{127.0.0.1:52856}
+2018-03-07 21:22:57,705 [Start Help Server] INFO  org.eclipse.jetty.server.Server - Started @9819789ms
+2018-03-07 23:55:10,958 [Stop Help Server] INFO  o.e.jetty.server.AbstractConnector - Stopped ServerConnector@46ded6a5{HTTP/1.1,[http/1.1]}{127.0.0.1:0}
+2018-03-07 23:55:10,958 [Stop Help Server] INFO  org.eclipse.jetty.server.session - Stopped scavenging
+2018-03-07 23:55:10,973 [Stop Help Server] INFO  o.e.j.server.handler.ContextHandler - Stopped o.e.j.s.ServletContextHandler@2fb87446{/help,null,UNAVAILABLE}
+2018-03-08 18:16:04,335 [Worker-10] INFO  c.g.t.t.d.PublishedGradleVersions - Gradle version information cache is up-to-date. Trying to read.
+2018-03-08 20:43:57,652 [Start Help Server] INFO  org.eclipse.jetty.util.log - Logging initialized @8913259ms to org.eclipse.jetty.util.log.Slf4jLog
+2018-03-08 20:43:57,853 [Start Help Server] INFO  org.eclipse.jetty.server.Server - jetty-9.4.7.v20170914
+2018-03-08 20:43:57,896 [Start Help Server] INFO  org.eclipse.jetty.server.session - DefaultSessionIdManager workerName=node0
+2018-03-08 20:43:57,896 [Start Help Server] INFO  org.eclipse.jetty.server.session - No SessionScavenger set, using defaults
+2018-03-08 20:43:57,899 [Start Help Server] INFO  org.eclipse.jetty.server.session - Scavenging every 600000ms
+2018-03-08 20:43:57,949 [Start Help Server] INFO  o.e.j.server.handler.ContextHandler - Started o.e.j.s.ServletContextHandler@70f0522{/help,null,AVAILABLE}
+2018-03-08 20:43:57,985 [Start Help Server] INFO  o.e.jetty.server.AbstractConnector - Started ServerConnector@63e9ad24{HTTP/1.1,[http/1.1]}{127.0.0.1:50877}
+2018-03-08 20:43:57,985 [Start Help Server] INFO  org.eclipse.jetty.server.Server - Started @8913593ms
+2018-03-08 22:40:42,172 [Stop Help Server] INFO  o.e.jetty.server.AbstractConnector - Stopped ServerConnector@63e9ad24{HTTP/1.1,[http/1.1]}{127.0.0.1:0}
+2018-03-08 22:40:42,172 [Stop Help Server] INFO  org.eclipse.jetty.server.session - Stopped scavenging
+2018-03-08 22:40:42,188 [Stop Help Server] INFO  o.e.j.server.handler.ContextHandler - Stopped o.e.j.s.ServletContextHandler@70f0522{/help,null,UNAVAILABLE}
+2018-03-08 22:41:12,244 [Worker-0] INFO  c.g.t.t.d.PublishedGradleVersions - Gradle version information cache is up-to-date. Trying to read.
+2018-03-08 23:43:32,924 [Start Help Server] INFO  org.eclipse.jetty.util.log - Logging initialized @3768305ms to org.eclipse.jetty.util.log.Slf4jLog
+2018-03-08 23:43:33,096 [Start Help Server] INFO  org.eclipse.jetty.server.Server - jetty-9.4.7.v20170914
+2018-03-08 23:43:33,127 [Start Help Server] INFO  org.eclipse.jetty.server.session - DefaultSessionIdManager workerName=node0
+2018-03-08 23:43:33,127 [Start Help Server] INFO  org.eclipse.jetty.server.session - No SessionScavenger set, using defaults
+2018-03-08 23:43:33,127 [Start Help Server] INFO  org.eclipse.jetty.server.session - Scavenging every 600000ms
+2018-03-08 23:43:33,174 [Start Help Server] INFO  o.e.j.server.handler.ContextHandler - Started o.e.j.s.ServletContextHandler@663391fd{/help,null,AVAILABLE}
+2018-03-08 23:43:33,205 [Start Help Server] INFO  o.e.jetty.server.AbstractConnector - Started ServerConnector@c52e000{HTTP/1.1,[http/1.1]}{127.0.0.1:52382}
+2018-03-08 23:43:33,205 [Start Help Server] INFO  org.eclipse.jetty.server.Server - Started @3768589ms
+2018-03-08 23:50:20,626 [Stop Help Server] INFO  o.e.jetty.server.AbstractConnector - Stopped ServerConnector@c52e000{HTTP/1.1,[http/1.1]}{127.0.0.1:0}
+2018-03-08 23:50:20,627 [Stop Help Server] INFO  org.eclipse.jetty.server.session - Stopped scavenging
+2018-03-08 23:50:20,645 [Stop Help Server] INFO  o.e.j.server.handler.ContextHandler - Stopped o.e.j.s.ServletContextHandler@663391fd{/help,null,UNAVAILABLE}
+2018-03-09 17:17:36,798 [Worker-2] INFO  c.g.t.t.d.PublishedGradleVersions - Gradle version information cache is up-to-date. Trying to read.
+2018-03-09 18:01:51,344 [Start Help Server] INFO  org.eclipse.jetty.util.log - Logging initialized @2687298ms to org.eclipse.jetty.util.log.Slf4jLog
+2018-03-09 18:01:51,531 [Start Help Server] INFO  org.eclipse.jetty.server.Server - jetty-9.4.7.v20170914
+2018-03-09 18:01:51,578 [Start Help Server] INFO  org.eclipse.jetty.server.session - DefaultSessionIdManager workerName=node0
+2018-03-09 18:01:51,578 [Start Help Server] INFO  org.eclipse.jetty.server.session - No SessionScavenger set, using defaults
+2018-03-09 18:01:51,578 [Start Help Server] INFO  org.eclipse.jetty.server.session - Scavenging every 660000ms
+2018-03-09 18:01:51,625 [Start Help Server] INFO  o.e.j.server.handler.ContextHandler - Started o.e.j.s.ServletContextHandler@15ed4f0a{/help,null,AVAILABLE}
+2018-03-09 18:01:51,656 [Start Help Server] INFO  o.e.jetty.server.AbstractConnector - Started ServerConnector@2216730e{HTTP/1.1,[http/1.1]}{127.0.0.1:53957}
+2018-03-09 18:01:51,656 [Start Help Server] INFO  org.eclipse.jetty.server.Server - Started @2687603ms
+2018-03-10 00:53:00,557 [Stop Help Server] INFO  o.e.jetty.server.AbstractConnector - Stopped ServerConnector@2216730e{HTTP/1.1,[http/1.1]}{127.0.0.1:0}
+2018-03-10 00:53:00,557 [Stop Help Server] INFO  org.eclipse.jetty.server.session - Stopped scavenging
+2018-03-10 00:53:00,589 [Stop Help Server] INFO  o.e.j.server.handler.ContextHandler - Stopped o.e.j.s.ServletContextHandler@15ed4f0a{/help,null,UNAVAILABLE}
+2018-03-10 11:50:00,928 [Worker-15] INFO  c.g.t.t.d.PublishedGradleVersions - Gradle version information cache is up-to-date. Trying to read.
+2018-03-10 12:14:41,658 [Start Help Server] INFO  org.eclipse.jetty.util.log - Logging initialized @1513359ms to org.eclipse.jetty.util.log.Slf4jLog
+2018-03-10 12:14:41,838 [Start Help Server] INFO  org.eclipse.jetty.server.Server - jetty-9.4.7.v20170914
+2018-03-10 12:14:41,869 [Start Help Server] INFO  org.eclipse.jetty.server.session - DefaultSessionIdManager workerName=node0
+2018-03-10 12:14:41,869 [Start Help Server] INFO  org.eclipse.jetty.server.session - No SessionScavenger set, using defaults
+2018-03-10 12:14:41,869 [Start Help Server] INFO  org.eclipse.jetty.server.session - Scavenging every 600000ms
+2018-03-10 12:14:41,916 [Start Help Server] INFO  o.e.j.server.handler.ContextHandler - Started o.e.j.s.ServletContextHandler@5bbfeac8{/help,null,AVAILABLE}
+2018-03-10 12:14:41,963 [Start Help Server] INFO  o.e.jetty.server.AbstractConnector - Started ServerConnector@43116681{HTTP/1.1,[http/1.1]}{127.0.0.1:56436}
+2018-03-10 12:14:41,963 [Start Help Server] INFO  org.eclipse.jetty.server.Server - Started @1513665ms
+2018-03-10 23:11:32,908 [Stop Help Server] INFO  o.e.jetty.server.AbstractConnector - Stopped ServerConnector@43116681{HTTP/1.1,[http/1.1]}{127.0.0.1:0}
+2018-03-10 23:11:32,913 [Stop Help Server] INFO  org.eclipse.jetty.server.session - Stopped scavenging
+2018-03-10 23:11:32,952 [Stop Help Server] INFO  o.e.j.server.handler.ContextHandler - Stopped o.e.j.s.ServletContextHandler@5bbfeac8{/help,null,UNAVAILABLE}
+2018-03-10 23:12:02,001 [Worker-2] INFO  c.g.t.t.d.PublishedGradleVersions - Gradle version information cache is up-to-date. Trying to read.
+2018-03-10 23:54:26,605 [Start Help Server] INFO  org.eclipse.jetty.util.log - Logging initialized @2571002ms to org.eclipse.jetty.util.log.Slf4jLog
+2018-03-10 23:54:26,808 [Start Help Server] INFO  org.eclipse.jetty.server.Server - jetty-9.4.7.v20170914
+2018-03-10 23:54:26,855 [Start Help Server] INFO  org.eclipse.jetty.server.session - DefaultSessionIdManager workerName=node0
+2018-03-10 23:54:26,855 [Start Help Server] INFO  org.eclipse.jetty.server.session - No SessionScavenger set, using defaults
+2018-03-10 23:54:26,855 [Start Help Server] INFO  org.eclipse.jetty.server.session - Scavenging every 600000ms
+2018-03-10 23:54:26,901 [Start Help Server] INFO  o.e.j.server.handler.ContextHandler - Started o.e.j.s.ServletContextHandler@7d5d3ad2{/help,null,AVAILABLE}
+2018-03-10 23:54:26,933 [Start Help Server] INFO  o.e.jetty.server.AbstractConnector - Started ServerConnector@7f452479{HTTP/1.1,[http/1.1]}{127.0.0.1:62584}
+2018-03-10 23:54:26,933 [Start Help Server] INFO  org.eclipse.jetty.server.Server - Started @2571327ms
+2018-03-11 02:18:59,239 [Stop Help Server] INFO  o.e.jetty.server.AbstractConnector - Stopped ServerConnector@7f452479{HTTP/1.1,[http/1.1]}{127.0.0.1:0}
+2018-03-11 02:18:59,244 [Stop Help Server] INFO  org.eclipse.jetty.server.session - Stopped scavenging
+2018-03-11 02:18:59,271 [Stop Help Server] INFO  o.e.j.server.handler.ContextHandler - Stopped o.e.j.s.ServletContextHandler@7d5d3ad2{/help,null,UNAVAILABLE}
+2018-03-11 09:30:11,857 [Worker-5] INFO  c.g.t.t.d.PublishedGradleVersions - Gradle version information cache is up-to-date. Trying to read.
+2018-03-11 12:27:19,286 [Worker-6] INFO  c.g.t.t.d.PublishedGradleVersions - Gradle version information cache is up-to-date. Trying to read.
+2018-03-11 12:29:59,775 [Start Help Server] INFO  org.eclipse.jetty.util.log - Logging initialized @192709ms to org.eclipse.jetty.util.log.Slf4jLog
+2018-03-11 12:30:00,042 [Start Help Server] INFO  org.eclipse.jetty.server.Server - jetty-9.4.7.v20170914
+2018-03-11 12:30:00,081 [Start Help Server] INFO  org.eclipse.jetty.server.session - DefaultSessionIdManager workerName=node0
+2018-03-11 12:30:00,081 [Start Help Server] INFO  org.eclipse.jetty.server.session - No SessionScavenger set, using defaults
+2018-03-11 12:30:00,085 [Start Help Server] INFO  org.eclipse.jetty.server.session - Scavenging every 600000ms
+2018-03-11 12:30:00,138 [Start Help Server] INFO  o.e.j.server.handler.ContextHandler - Started o.e.j.s.ServletContextHandler@7fdb627b{/help,null,AVAILABLE}
+2018-03-11 12:30:00,166 [Start Help Server] INFO  o.e.jetty.server.AbstractConnector - Started ServerConnector@c3cc093{HTTP/1.1,[http/1.1]}{127.0.0.1:64378}
+2018-03-11 12:30:00,167 [Start Help Server] INFO  org.eclipse.jetty.server.Server - Started @193102ms
+2018-03-11 21:18:49,605 [Stop Help Server] INFO  o.e.jetty.server.AbstractConnector - Stopped ServerConnector@c3cc093{HTTP/1.1,[http/1.1]}{127.0.0.1:0}
+2018-03-11 21:18:49,610 [Stop Help Server] INFO  org.eclipse.jetty.server.session - Stopped scavenging
+2018-03-11 21:18:49,637 [Stop Help Server] INFO  o.e.j.server.handler.ContextHandler - Stopped o.e.j.s.ServletContextHandler@7fdb627b{/help,null,UNAVAILABLE}
+2018-03-11 21:19:20,629 [Worker-7] INFO  c.g.t.t.d.PublishedGradleVersions - Gradle version information cache is up-to-date. Trying to read.
+2018-03-11 22:12:50,364 [Start Help Server] INFO  org.eclipse.jetty.util.log - Logging initialized @3237149ms to org.eclipse.jetty.util.log.Slf4jLog
+2018-03-11 22:12:50,582 [Start Help Server] INFO  org.eclipse.jetty.server.Server - jetty-9.4.7.v20170914
+2018-03-11 22:12:50,622 [Start Help Server] INFO  org.eclipse.jetty.server.session - DefaultSessionIdManager workerName=node0
+2018-03-11 22:12:50,623 [Start Help Server] INFO  org.eclipse.jetty.server.session - No SessionScavenger set, using defaults
+2018-03-11 22:12:50,626 [Start Help Server] INFO  org.eclipse.jetty.server.session - Scavenging every 600000ms
+2018-03-11 22:12:50,679 [Start Help Server] INFO  o.e.j.server.handler.ContextHandler - Started o.e.j.s.ServletContextHandler@3be0e084{/help,null,AVAILABLE}
+2018-03-11 22:12:50,703 [Start Help Server] INFO  o.e.jetty.server.AbstractConnector - Started ServerConnector@13580c9d{HTTP/1.1,[http/1.1]}{127.0.0.1:51672}
+2018-03-11 22:12:50,704 [Start Help Server] INFO  org.eclipse.jetty.server.Server - Started @3237491ms
+2018-03-11 23:25:05,500 [Stop Help Server] INFO  o.e.jetty.server.AbstractConnector - Stopped ServerConnector@13580c9d{HTTP/1.1,[http/1.1]}{127.0.0.1:0}
+2018-03-11 23:25:05,501 [Stop Help Server] INFO  org.eclipse.jetty.server.session - Stopped scavenging
+2018-03-11 23:25:05,539 [Stop Help Server] INFO  o.e.j.server.handler.ContextHandler - Stopped o.e.j.s.ServletContextHandler@3be0e084{/help,null,UNAVAILABLE}
+2018-03-11 23:25:54,488 [Worker-0] INFO  c.g.t.t.d.PublishedGradleVersions - Gradle version information cache is up-to-date. Trying to read.
+2018-03-11 23:44:07,886 [Worker-5] INFO  c.g.t.t.d.PublishedGradleVersions - Gradle version information cache is up-to-date. Trying to read.
+2018-03-12 20:03:00,963 [Worker-1] INFO  c.g.t.t.d.PublishedGradleVersions - Gradle version information cache is up-to-date. Trying to read.
+2018-03-12 21:19:19,579 [Worker-0] INFO  c.g.t.t.d.PublishedGradleVersions - Gradle version information cache is up-to-date. Trying to read.
+2018-03-12 22:31:16,265 [Worker-0] INFO  c.g.t.t.d.PublishedGradleVersions - Gradle version information cache is up-to-date. Trying to read.
+2018-03-12 22:46:23,909 [Start Help Server] INFO  org.eclipse.jetty.util.log - Logging initialized @939549ms to org.eclipse.jetty.util.log.Slf4jLog
+2018-03-12 22:46:24,171 [Start Help Server] INFO  org.eclipse.jetty.server.Server - jetty-9.4.7.v20170914
+2018-03-12 22:46:24,209 [Start Help Server] INFO  org.eclipse.jetty.server.session - DefaultSessionIdManager workerName=node0
+2018-03-12 22:46:24,209 [Start Help Server] INFO  org.eclipse.jetty.server.session - No SessionScavenger set, using defaults
+2018-03-12 22:46:24,212 [Start Help Server] INFO  org.eclipse.jetty.server.session - Scavenging every 600000ms
+2018-03-12 22:46:24,267 [Start Help Server] INFO  o.e.j.server.handler.ContextHandler - Started o.e.j.s.ServletContextHandler@6aed49a6{/help,null,AVAILABLE}
+2018-03-12 22:46:24,312 [Start Help Server] INFO  o.e.jetty.server.AbstractConnector - Started ServerConnector@1837cad3{HTTP/1.1,[http/1.1]}{127.0.0.1:59267}
+2018-03-12 22:46:24,313 [Start Help Server] INFO  org.eclipse.jetty.server.Server - Started @939952ms
+2018-03-13 00:17:11,511 [Stop Help Server] INFO  o.e.jetty.server.AbstractConnector - Stopped ServerConnector@1837cad3{HTTP/1.1,[http/1.1]}{127.0.0.1:0}
+2018-03-13 00:17:11,515 [Stop Help Server] INFO  org.eclipse.jetty.server.session - Stopped scavenging
+2018-03-13 00:17:11,541 [Stop Help Server] INFO  o.e.j.server.handler.ContextHandler - Stopped o.e.j.s.ServletContextHandler@6aed49a6{/help,null,UNAVAILABLE}
+2018-03-13 19:04:50,456 [Worker-7] INFO  c.g.t.t.d.PublishedGradleVersions - Gradle version information cache is up-to-date. Trying to read.
+2018-03-13 19:06:32,663 [Worker-11] INFO  c.g.t.t.d.PublishedGradleVersions - Gradle version information cache is up-to-date. Trying to read.
+2018-03-13 19:59:44,651 [Start Help Server] INFO  org.eclipse.jetty.util.log - Logging initialized @3217765ms to org.eclipse.jetty.util.log.Slf4jLog
+2018-03-13 19:59:44,936 [Start Help Server] INFO  org.eclipse.jetty.server.Server - jetty-9.4.7.v20170914
+2018-03-13 19:59:44,990 [Start Help Server] INFO  org.eclipse.jetty.server.session - DefaultSessionIdManager workerName=node0
+2018-03-13 19:59:44,990 [Start Help Server] INFO  org.eclipse.jetty.server.session - No SessionScavenger set, using defaults
+2018-03-13 19:59:44,994 [Start Help Server] INFO  org.eclipse.jetty.server.session - Scavenging every 660000ms
+2018-03-13 19:59:45,070 [Start Help Server] INFO  o.e.j.server.handler.ContextHandler - Started o.e.j.s.ServletContextHandler@69e186c8{/help,null,AVAILABLE}
+2018-03-13 19:59:45,107 [Start Help Server] INFO  o.e.jetty.server.AbstractConnector - Started ServerConnector@1104f83{HTTP/1.1,[http/1.1]}{127.0.0.1:62858}
+2018-03-13 19:59:45,108 [Start Help Server] INFO  org.eclipse.jetty.server.Server - Started @3218222ms
+2018-03-13 23:32:34,936 [Stop Help Server] INFO  o.e.jetty.server.AbstractConnector - Stopped ServerConnector@1104f83{HTTP/1.1,[http/1.1]}{127.0.0.1:0}
+2018-03-13 23:32:34,938 [Stop Help Server] INFO  org.eclipse.jetty.server.session - Stopped scavenging
+2018-03-13 23:32:34,968 [Stop Help Server] INFO  o.e.j.server.handler.ContextHandler - Stopped o.e.j.s.ServletContextHandler@69e186c8{/help,null,UNAVAILABLE}
+2018-03-13 23:33:19,429 [Worker-5] INFO  c.g.t.t.d.PublishedGradleVersions - Gradle version information cache is up-to-date. Trying to read.
+2018-03-14 00:01:20,282 [Worker-7] INFO  c.g.t.t.d.PublishedGradleVersions - Gradle version information cache is up-to-date. Trying to read.
+2018-03-14 08:07:05,696 [Worker-11] INFO  c.g.t.t.d.PublishedGradleVersions - Gradle version information cache is up-to-date. Trying to read.
+2018-03-14 14:13:28,188 [Worker-9] INFO  c.g.t.t.d.PublishedGradleVersions - Gradle version information cache is up-to-date. Trying to read.
+2018-03-14 14:27:55,262 [Worker-10] INFO  c.g.t.t.d.PublishedGradleVersions - Gradle version information cache is up-to-date. Trying to read.
+2018-03-15 18:09:25,510 [Worker-1] INFO  c.g.t.t.d.PublishedGradleVersions - Gradle version information cache is up-to-date. Trying to read.
+2018-03-17 09:54:42,069 [Worker-3] INFO  c.g.t.t.d.PublishedGradleVersions - Gradle version information cache is out-of-date. Trying to update.
+2018-03-17 13:24:36,849 [Worker-5] INFO  c.g.t.t.d.PublishedGradleVersions - Gradle version information cache is up-to-date. Trying to read.
