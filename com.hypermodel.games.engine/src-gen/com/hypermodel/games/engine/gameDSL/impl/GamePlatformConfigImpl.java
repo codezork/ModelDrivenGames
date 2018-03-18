@@ -7,6 +7,7 @@ import com.hypermodel.games.engine.gameDSL.GameDSLPackage;
 import com.hypermodel.games.engine.gameDSL.GamePlatformConfig;
 import com.hypermodel.games.engine.gameDSL.GamePlatformConfigAndroid;
 import com.hypermodel.games.engine.gameDSL.GamePlatformConfigIOS;
+import com.hypermodel.games.engine.gameDSL.GamePlatformConfigIOSMOE;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -27,6 +28,7 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  * <ul>
  *   <li>{@link com.hypermodel.games.engine.gameDSL.impl.GamePlatformConfigImpl#getAndroid <em>Android</em>}</li>
  *   <li>{@link com.hypermodel.games.engine.gameDSL.impl.GamePlatformConfigImpl#getIos <em>Ios</em>}</li>
+ *   <li>{@link com.hypermodel.games.engine.gameDSL.impl.GamePlatformConfigImpl#getIosmoe <em>Iosmoe</em>}</li>
  * </ul>
  *
  * @generated
@@ -52,6 +54,16 @@ public class GamePlatformConfigImpl extends MinimalEObjectImpl.Container impleme
    * @ordered
    */
   protected GamePlatformConfigIOS ios;
+
+  /**
+   * The cached value of the '{@link #getIosmoe() <em>Iosmoe</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getIosmoe()
+   * @generated
+   * @ordered
+   */
+  protected GamePlatformConfigIOSMOE iosmoe;
 
   /**
    * <!-- begin-user-doc -->
@@ -175,6 +187,54 @@ public class GamePlatformConfigImpl extends MinimalEObjectImpl.Container impleme
    * <!-- end-user-doc -->
    * @generated
    */
+  public GamePlatformConfigIOSMOE getIosmoe()
+  {
+    return iosmoe;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetIosmoe(GamePlatformConfigIOSMOE newIosmoe, NotificationChain msgs)
+  {
+    GamePlatformConfigIOSMOE oldIosmoe = iosmoe;
+    iosmoe = newIosmoe;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, GameDSLPackage.GAME_PLATFORM_CONFIG__IOSMOE, oldIosmoe, newIosmoe);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setIosmoe(GamePlatformConfigIOSMOE newIosmoe)
+  {
+    if (newIosmoe != iosmoe)
+    {
+      NotificationChain msgs = null;
+      if (iosmoe != null)
+        msgs = ((InternalEObject)iosmoe).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - GameDSLPackage.GAME_PLATFORM_CONFIG__IOSMOE, null, msgs);
+      if (newIosmoe != null)
+        msgs = ((InternalEObject)newIosmoe).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - GameDSLPackage.GAME_PLATFORM_CONFIG__IOSMOE, null, msgs);
+      msgs = basicSetIosmoe(newIosmoe, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, GameDSLPackage.GAME_PLATFORM_CONFIG__IOSMOE, newIosmoe, newIosmoe));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   @Override
   public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
   {
@@ -184,6 +244,8 @@ public class GamePlatformConfigImpl extends MinimalEObjectImpl.Container impleme
         return basicSetAndroid(null, msgs);
       case GameDSLPackage.GAME_PLATFORM_CONFIG__IOS:
         return basicSetIos(null, msgs);
+      case GameDSLPackage.GAME_PLATFORM_CONFIG__IOSMOE:
+        return basicSetIosmoe(null, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -202,6 +264,8 @@ public class GamePlatformConfigImpl extends MinimalEObjectImpl.Container impleme
         return getAndroid();
       case GameDSLPackage.GAME_PLATFORM_CONFIG__IOS:
         return getIos();
+      case GameDSLPackage.GAME_PLATFORM_CONFIG__IOSMOE:
+        return getIosmoe();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -221,6 +285,9 @@ public class GamePlatformConfigImpl extends MinimalEObjectImpl.Container impleme
         return;
       case GameDSLPackage.GAME_PLATFORM_CONFIG__IOS:
         setIos((GamePlatformConfigIOS)newValue);
+        return;
+      case GameDSLPackage.GAME_PLATFORM_CONFIG__IOSMOE:
+        setIosmoe((GamePlatformConfigIOSMOE)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -242,6 +309,9 @@ public class GamePlatformConfigImpl extends MinimalEObjectImpl.Container impleme
       case GameDSLPackage.GAME_PLATFORM_CONFIG__IOS:
         setIos((GamePlatformConfigIOS)null);
         return;
+      case GameDSLPackage.GAME_PLATFORM_CONFIG__IOSMOE:
+        setIosmoe((GamePlatformConfigIOSMOE)null);
+        return;
     }
     super.eUnset(featureID);
   }
@@ -260,6 +330,8 @@ public class GamePlatformConfigImpl extends MinimalEObjectImpl.Container impleme
         return android != null;
       case GameDSLPackage.GAME_PLATFORM_CONFIG__IOS:
         return ios != null;
+      case GameDSLPackage.GAME_PLATFORM_CONFIG__IOSMOE:
+        return iosmoe != null;
     }
     return super.eIsSet(featureID);
   }

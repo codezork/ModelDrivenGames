@@ -13,6 +13,7 @@ import com.hypermodel.games.engine.gameDSL.GamePlatform;
 import com.hypermodel.games.engine.gameDSL.GamePlatformConfig;
 import com.hypermodel.games.engine.gameDSL.GamePlatformConfigAndroid;
 import com.hypermodel.games.engine.gameDSL.GamePlatformConfigIOS;
+import com.hypermodel.games.engine.gameDSL.GamePlatformConfigIOSMOE;
 import com.hypermodel.games.engine.gameDSL.GamePlatformConfiguration;
 import com.hypermodel.games.engine.gameDSL.GameScreenOrientation;
 
@@ -73,6 +74,13 @@ public class GameDSLPackageImpl extends EPackageImpl implements GameDSLPackage
    * @generated
    */
   private EClass gamePlatformConfigIOSEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass gamePlatformConfigIOSMOEEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -290,6 +298,16 @@ public class GameDSLPackageImpl extends EPackageImpl implements GameDSLPackage
    * <!-- end-user-doc -->
    * @generated
    */
+  public EReference getGamePlatformConfig_Iosmoe()
+  {
+    return (EReference)gamePlatformConfigEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EClass getGamePlatformConfigAndroid()
   {
     return gamePlatformConfigAndroidEClass;
@@ -393,6 +411,26 @@ public class GameDSLPackageImpl extends EPackageImpl implements GameDSLPackage
   public EAttribute getGamePlatformConfigIOS_UseAccelerometer()
   {
     return (EAttribute)gamePlatformConfigIOSEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getGamePlatformConfigIOSMOE()
+  {
+    return gamePlatformConfigIOSMOEEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getGamePlatformConfigIOSMOE_UseAccelerometer()
+  {
+    return (EAttribute)gamePlatformConfigIOSMOEEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -510,6 +548,7 @@ public class GameDSLPackageImpl extends EPackageImpl implements GameDSLPackage
     gamePlatformConfigEClass = createEClass(GAME_PLATFORM_CONFIG);
     createEReference(gamePlatformConfigEClass, GAME_PLATFORM_CONFIG__ANDROID);
     createEReference(gamePlatformConfigEClass, GAME_PLATFORM_CONFIG__IOS);
+    createEReference(gamePlatformConfigEClass, GAME_PLATFORM_CONFIG__IOSMOE);
 
     gamePlatformConfigAndroidEClass = createEClass(GAME_PLATFORM_CONFIG_ANDROID);
     createEAttribute(gamePlatformConfigAndroidEClass, GAME_PLATFORM_CONFIG_ANDROID__MIN_ANDROID_VERSION);
@@ -523,6 +562,9 @@ public class GameDSLPackageImpl extends EPackageImpl implements GameDSLPackage
 
     gamePlatformConfigIOSEClass = createEClass(GAME_PLATFORM_CONFIG_IOS);
     createEAttribute(gamePlatformConfigIOSEClass, GAME_PLATFORM_CONFIG_IOS__USE_ACCELEROMETER);
+
+    gamePlatformConfigIOSMOEEClass = createEClass(GAME_PLATFORM_CONFIG_IOSMOE);
+    createEAttribute(gamePlatformConfigIOSMOEEClass, GAME_PLATFORM_CONFIG_IOSMOE__USE_ACCELEROMETER);
 
     gamePlatformConfigurationEClass = createEClass(GAME_PLATFORM_CONFIGURATION);
     createEAttribute(gamePlatformConfigurationEClass, GAME_PLATFORM_CONFIGURATION__PLATFORM);
@@ -582,6 +624,7 @@ public class GameDSLPackageImpl extends EPackageImpl implements GameDSLPackage
     initEClass(gamePlatformConfigEClass, GamePlatformConfig.class, "GamePlatformConfig", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getGamePlatformConfig_Android(), this.getGamePlatformConfigAndroid(), null, "android", null, 0, 1, GamePlatformConfig.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getGamePlatformConfig_Ios(), this.getGamePlatformConfigIOS(), null, "ios", null, 0, 1, GamePlatformConfig.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getGamePlatformConfig_Iosmoe(), this.getGamePlatformConfigIOSMOE(), null, "iosmoe", null, 0, 1, GamePlatformConfig.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(gamePlatformConfigAndroidEClass, GamePlatformConfigAndroid.class, "GamePlatformConfigAndroid", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getGamePlatformConfigAndroid_MinAndroidVersion(), ecorePackage.getEInt(), "minAndroidVersion", null, 0, 1, GamePlatformConfigAndroid.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -595,6 +638,9 @@ public class GameDSLPackageImpl extends EPackageImpl implements GameDSLPackage
 
     initEClass(gamePlatformConfigIOSEClass, GamePlatformConfigIOS.class, "GamePlatformConfigIOS", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getGamePlatformConfigIOS_UseAccelerometer(), ecorePackage.getEBoolean(), "useAccelerometer", null, 0, 1, GamePlatformConfigIOS.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(gamePlatformConfigIOSMOEEClass, GamePlatformConfigIOSMOE.class, "GamePlatformConfigIOSMOE", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getGamePlatformConfigIOSMOE_UseAccelerometer(), ecorePackage.getEBoolean(), "useAccelerometer", null, 0, 1, GamePlatformConfigIOSMOE.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(gamePlatformConfigurationEClass, GamePlatformConfiguration.class, "GamePlatformConfiguration", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getGamePlatformConfiguration_Platform(), this.getGamePlatform(), "platform", null, 0, 1, GamePlatformConfiguration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

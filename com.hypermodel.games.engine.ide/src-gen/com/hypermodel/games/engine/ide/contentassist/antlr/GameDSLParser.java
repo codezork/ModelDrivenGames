@@ -84,6 +84,7 @@ public class GameDSLParser extends AbstractContentAssistParser {
 					put(grammarAccess.getGamePlatformConfigAndroidAccess().getGroup_11_1(), "rule__GamePlatformConfigAndroid__Group_11_1__0");
 					put(grammarAccess.getGamePlatformConfigAndroidAccess().getGroup_11_2(), "rule__GamePlatformConfigAndroid__Group_11_2__0");
 					put(grammarAccess.getGamePlatformConfigIOSAccess().getGroup(), "rule__GamePlatformConfigIOS__Group__0");
+					put(grammarAccess.getGamePlatformConfigIOSMOEAccess().getGroup(), "rule__GamePlatformConfigIOSMOE__Group__0");
 					put(grammarAccess.getGamePlatformConfigurationAccess().getGroup(), "rule__GamePlatformConfiguration__Group__0");
 					put(grammarAccess.getGameAccess().getGroup(), "rule__Game__Group__0");
 					put(grammarAccess.getQualifiedNameAccess().getGroup(), "rule__QualifiedName__Group__0");
@@ -295,6 +296,7 @@ public class GameDSLParser extends AbstractContentAssistParser {
 					put(grammarAccess.getGamePackageAccess().getGamesAssignment_5(), "rule__GamePackage__GamesAssignment_5");
 					put(grammarAccess.getGamePlatformConfigAccess().getAndroidAssignment_3(), "rule__GamePlatformConfig__AndroidAssignment_3");
 					put(grammarAccess.getGamePlatformConfigAccess().getIosAssignment_4(), "rule__GamePlatformConfig__IosAssignment_4");
+					put(grammarAccess.getGamePlatformConfigAccess().getIosmoeAssignment_5(), "rule__GamePlatformConfig__IosmoeAssignment_5");
 					put(grammarAccess.getGamePlatformConfigAndroidAccess().getMinAndroidVersionAssignment_4(), "rule__GamePlatformConfigAndroid__MinAndroidVersionAssignment_4");
 					put(grammarAccess.getGamePlatformConfigAndroidAccess().getTargetAndroidVersionAssignment_6(), "rule__GamePlatformConfigAndroid__TargetAndroidVersionAssignment_6");
 					put(grammarAccess.getGamePlatformConfigAndroidAccess().getApiLevelAssignment_8(), "rule__GamePlatformConfigAndroid__ApiLevelAssignment_8");
@@ -302,8 +304,9 @@ public class GameDSLParser extends AbstractContentAssistParser {
 					put(grammarAccess.getGamePlatformConfigAndroidAccess().getAppIconAssignment_11_0_1(), "rule__GamePlatformConfigAndroid__AppIconAssignment_11_0_1");
 					put(grammarAccess.getGamePlatformConfigAndroidAccess().getAppNameAssignment_11_1_1(), "rule__GamePlatformConfigAndroid__AppNameAssignment_11_1_1");
 					put(grammarAccess.getGamePlatformConfigAndroidAccess().getAppLabelAssignment_11_2_1(), "rule__GamePlatformConfigAndroid__AppLabelAssignment_11_2_1");
-					put(grammarAccess.getGamePlatformConfigAndroidAccess().getUseAccelerometerAssignment_11_3(), "rule__GamePlatformConfigAndroid__UseAccelerometerAssignment_11_3");
+					put(grammarAccess.getGamePlatformConfigAndroidAccess().getUseAccelerometerAssignment_12(), "rule__GamePlatformConfigAndroid__UseAccelerometerAssignment_12");
 					put(grammarAccess.getGamePlatformConfigIOSAccess().getUseAccelerometerAssignment_3(), "rule__GamePlatformConfigIOS__UseAccelerometerAssignment_3");
+					put(grammarAccess.getGamePlatformConfigIOSMOEAccess().getUseAccelerometerAssignment_3(), "rule__GamePlatformConfigIOSMOE__UseAccelerometerAssignment_3");
 					put(grammarAccess.getGamePlatformConfigurationAccess().getPlatformAssignment_1(), "rule__GamePlatformConfiguration__PlatformAssignment_1");
 					put(grammarAccess.getGamePlatformConfigurationAccess().getConfigAssignment_3(), "rule__GamePlatformConfiguration__ConfigAssignment_3");
 					put(grammarAccess.getGameAccess().getNameAssignment_1(), "rule__Game__NameAssignment_1");

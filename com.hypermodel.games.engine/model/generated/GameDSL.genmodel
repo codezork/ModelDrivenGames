@@ -32,6 +32,7 @@
     <genClasses ecoreClass="GameDSL.ecore#//GamePlatformConfig">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GameDSL.ecore#//GamePlatformConfig/android"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GameDSL.ecore#//GamePlatformConfig/ios"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GameDSL.ecore#//GamePlatformConfig/iosmoe"/>
     </genClasses>
     <genClasses ecoreClass="GameDSL.ecore#//GamePlatformConfigAndroid">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GameDSL.ecore#//GamePlatformConfigAndroid/minAndroidVersion"/>
@@ -45,6 +46,9 @@
     </genClasses>
     <genClasses ecoreClass="GameDSL.ecore#//GamePlatformConfigIOS">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GameDSL.ecore#//GamePlatformConfigIOS/useAccelerometer"/>
+    </genClasses>
+    <genClasses ecoreClass="GameDSL.ecore#//GamePlatformConfigIOSMOE">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GameDSL.ecore#//GamePlatformConfigIOSMOE/useAccelerometer"/>
     </genClasses>
     <genClasses ecoreClass="GameDSL.ecore#//GamePlatformConfiguration">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GameDSL.ecore#//GamePlatformConfiguration/platform"/>

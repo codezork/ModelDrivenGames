@@ -315,9 +315,28 @@ ruleGamePlatformConfig returns [EObject current=null]
 				}
 			)
 		)
-		otherlv_5='}'
+		(
+			(
+				{
+					newCompositeNode(grammarAccess.getGamePlatformConfigAccess().getIosmoeGamePlatformConfigIOSMOEParserRuleCall_5_0());
+				}
+				lv_iosmoe_5_0=ruleGamePlatformConfigIOSMOE
+				{
+					if ($current==null) {
+						$current = createModelElementForParent(grammarAccess.getGamePlatformConfigRule());
+					}
+					set(
+						$current,
+						"iosmoe",
+						lv_iosmoe_5_0,
+						"com.hypermodel.games.engine.GameDSL.GamePlatformConfigIOSMOE");
+					afterParserOrEnumRuleCall();
+				}
+			)
+		)
+		otherlv_6='}'
 		{
-			newLeafNode(otherlv_5, grammarAccess.getGamePlatformConfigAccess().getRightCurlyBracketKeyword_5());
+			newLeafNode(otherlv_6, grammarAccess.getGamePlatformConfigAccess().getRightCurlyBracketKeyword_6());
 		}
 	)
 ;
@@ -547,41 +566,31 @@ ruleGamePlatformConfigAndroid returns [EObject current=null]
 						getUnorderedGroupHelper().returnFromSelection(grammarAccess.getGamePlatformConfigAndroidAccess().getUnorderedGroup_11());
 					}
 				)
-			)|
-			(
-				{getUnorderedGroupHelper().canSelect(grammarAccess.getGamePlatformConfigAndroidAccess().getUnorderedGroup_11(), 3)}?=>(
-					{
-						getUnorderedGroupHelper().select(grammarAccess.getGamePlatformConfigAndroidAccess().getUnorderedGroup_11(), 3);
-					}
-								({true}?=>((
-									lv_useAccelerometer_18_0='useAccelerometer'
-									{
-										newLeafNode(lv_useAccelerometer_18_0, grammarAccess.getGamePlatformConfigAndroidAccess().getUseAccelerometerUseAccelerometerKeyword_11_3_0());
-									}
-									{
-										if ($current==null) {
-											$current = createModelElement(grammarAccess.getGamePlatformConfigAndroidRule());
-										}
-										setWithLastConsumed($current, "useAccelerometer", true, "useAccelerometer");
-									}
-								)
-								))
-					{ 
-						getUnorderedGroupHelper().returnFromSelection(grammarAccess.getGamePlatformConfigAndroidAccess().getUnorderedGroup_11());
-					}
-				)
 			)
-					)+
-					{getUnorderedGroupHelper().canLeave(grammarAccess.getGamePlatformConfigAndroidAccess().getUnorderedGroup_11())}?
+					)*
 				)
 			)
 				{ 
 				  getUnorderedGroupHelper().leave(grammarAccess.getGamePlatformConfigAndroidAccess().getUnorderedGroup_11());
 				}
+		)
+		(
+			(
+				lv_useAccelerometer_18_0='useAccelerometer'
+				{
+					newLeafNode(lv_useAccelerometer_18_0, grammarAccess.getGamePlatformConfigAndroidAccess().getUseAccelerometerUseAccelerometerKeyword_12_0());
+				}
+				{
+					if ($current==null) {
+						$current = createModelElement(grammarAccess.getGamePlatformConfigAndroidRule());
+					}
+					setWithLastConsumed($current, "useAccelerometer", true, "useAccelerometer");
+				}
+			)
 		)?
 		otherlv_19='}'
 		{
-			newLeafNode(otherlv_19, grammarAccess.getGamePlatformConfigAndroidAccess().getRightCurlyBracketKeyword_12());
+			newLeafNode(otherlv_19, grammarAccess.getGamePlatformConfigAndroidAccess().getRightCurlyBracketKeyword_13());
 		}
 	)
 ;
@@ -634,6 +643,58 @@ ruleGamePlatformConfigIOS returns [EObject current=null]
 		otherlv_4='}'
 		{
 			newLeafNode(otherlv_4, grammarAccess.getGamePlatformConfigIOSAccess().getRightCurlyBracketKeyword_4());
+		}
+	)
+;
+
+// Entry rule entryRuleGamePlatformConfigIOSMOE
+entryRuleGamePlatformConfigIOSMOE returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getGamePlatformConfigIOSMOERule()); }
+	iv_ruleGamePlatformConfigIOSMOE=ruleGamePlatformConfigIOSMOE
+	{ $current=$iv_ruleGamePlatformConfigIOSMOE.current; }
+	EOF;
+
+// Rule GamePlatformConfigIOSMOE
+ruleGamePlatformConfigIOSMOE returns [EObject current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		(
+			{
+				$current = forceCreateModelElement(
+					grammarAccess.getGamePlatformConfigIOSMOEAccess().getGamePlatformConfigIOSMOEAction_0(),
+					$current);
+			}
+		)
+		otherlv_1='iosmoe'
+		{
+			newLeafNode(otherlv_1, grammarAccess.getGamePlatformConfigIOSMOEAccess().getIosmoeKeyword_1());
+		}
+		otherlv_2='{'
+		{
+			newLeafNode(otherlv_2, grammarAccess.getGamePlatformConfigIOSMOEAccess().getLeftCurlyBracketKeyword_2());
+		}
+		(
+			(
+				lv_useAccelerometer_3_0='useAccelerometer'
+				{
+					newLeafNode(lv_useAccelerometer_3_0, grammarAccess.getGamePlatformConfigIOSMOEAccess().getUseAccelerometerUseAccelerometerKeyword_3_0());
+				}
+				{
+					if ($current==null) {
+						$current = createModelElement(grammarAccess.getGamePlatformConfigIOSMOERule());
+					}
+					setWithLastConsumed($current, "useAccelerometer", true, "useAccelerometer");
+				}
+			)
+		)?
+		otherlv_4='}'
+		{
+			newLeafNode(otherlv_4, grammarAccess.getGamePlatformConfigIOSMOEAccess().getRightCurlyBracketKeyword_4());
 		}
 	)
 ;

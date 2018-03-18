@@ -106,6 +106,11 @@ public class GameDSLAdapterFactory extends AdapterFactoryImpl
         return createGamePlatformConfigIOSAdapter();
       }
       @Override
+      public Adapter caseGamePlatformConfigIOSMOE(GamePlatformConfigIOSMOE object)
+      {
+        return createGamePlatformConfigIOSMOEAdapter();
+      }
+      @Override
       public Adapter caseGamePlatformConfiguration(GamePlatformConfiguration object)
       {
         return createGamePlatformConfigurationAdapter();
@@ -223,6 +228,21 @@ public class GameDSLAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createGamePlatformConfigIOSAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link com.hypermodel.games.engine.gameDSL.GamePlatformConfigIOSMOE <em>Game Platform Config IOSMOE</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see com.hypermodel.games.engine.gameDSL.GamePlatformConfigIOSMOE
+   * @generated
+   */
+  public Adapter createGamePlatformConfigIOSMOEAdapter()
   {
     return null;
   }

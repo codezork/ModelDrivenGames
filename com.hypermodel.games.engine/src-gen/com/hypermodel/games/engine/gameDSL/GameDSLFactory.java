@@ -78,6 +78,15 @@ public interface GameDSLFactory extends EFactory
   GamePlatformConfigIOS createGamePlatformConfigIOS();
 
   /**
+   * Returns a new object of class '<em>Game Platform Config IOSMOE</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Game Platform Config IOSMOE</em>'.
+   * @generated
+   */
+  GamePlatformConfigIOSMOE createGamePlatformConfigIOSMOE();
+
+  /**
    * Returns a new object of class '<em>Game Platform Configuration</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->

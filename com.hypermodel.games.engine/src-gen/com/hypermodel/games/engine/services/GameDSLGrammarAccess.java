@@ -136,17 +136,21 @@ public class GameDSLGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cAndroidGamePlatformConfigAndroidParserRuleCall_3_0 = (RuleCall)cAndroidAssignment_3.eContents().get(0);
 		private final Assignment cIosAssignment_4 = (Assignment)cGroup.eContents().get(4);
 		private final RuleCall cIosGamePlatformConfigIOSParserRuleCall_4_0 = (RuleCall)cIosAssignment_4.eContents().get(0);
-		private final Keyword cRightCurlyBracketKeyword_5 = (Keyword)cGroup.eContents().get(5);
+		private final Assignment cIosmoeAssignment_5 = (Assignment)cGroup.eContents().get(5);
+		private final RuleCall cIosmoeGamePlatformConfigIOSMOEParserRuleCall_5_0 = (RuleCall)cIosmoeAssignment_5.eContents().get(0);
+		private final Keyword cRightCurlyBracketKeyword_6 = (Keyword)cGroup.eContents().get(6);
 		
 		//GamePlatformConfig:
 		//	{GamePlatformConfig}
 		//	'configuration' '{'
 		//	android=GamePlatformConfigAndroid
 		//	ios=GamePlatformConfigIOS
+		//	iosmoe=GamePlatformConfigIOSMOE
 		//	'}';
 		@Override public ParserRule getRule() { return rule; }
 		
-		//{GamePlatformConfig} 'configuration' '{' android=GamePlatformConfigAndroid ios=GamePlatformConfigIOS '}'
+		//{GamePlatformConfig} 'configuration' '{' android=GamePlatformConfigAndroid ios=GamePlatformConfigIOS
+		//iosmoe=GamePlatformConfigIOSMOE '}'
 		public Group getGroup() { return cGroup; }
 		
 		//{GamePlatformConfig}
@@ -170,8 +174,14 @@ public class GameDSLGrammarAccess extends AbstractGrammarElementFinder {
 		//GamePlatformConfigIOS
 		public RuleCall getIosGamePlatformConfigIOSParserRuleCall_4_0() { return cIosGamePlatformConfigIOSParserRuleCall_4_0; }
 		
+		//iosmoe=GamePlatformConfigIOSMOE
+		public Assignment getIosmoeAssignment_5() { return cIosmoeAssignment_5; }
+		
+		//GamePlatformConfigIOSMOE
+		public RuleCall getIosmoeGamePlatformConfigIOSMOEParserRuleCall_5_0() { return cIosmoeGamePlatformConfigIOSMOEParserRuleCall_5_0; }
+		
 		//'}'
-		public Keyword getRightCurlyBracketKeyword_5() { return cRightCurlyBracketKeyword_5; }
+		public Keyword getRightCurlyBracketKeyword_6() { return cRightCurlyBracketKeyword_6; }
 	}
 	public class GamePlatformConfigAndroidElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "com.hypermodel.games.engine.GameDSL.GamePlatformConfigAndroid");
@@ -204,9 +214,9 @@ public class GameDSLGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cLabelKeyword_11_2_0 = (Keyword)cGroup_11_2.eContents().get(0);
 		private final Assignment cAppLabelAssignment_11_2_1 = (Assignment)cGroup_11_2.eContents().get(1);
 		private final RuleCall cAppLabelSTRINGTerminalRuleCall_11_2_1_0 = (RuleCall)cAppLabelAssignment_11_2_1.eContents().get(0);
-		private final Assignment cUseAccelerometerAssignment_11_3 = (Assignment)cUnorderedGroup_11.eContents().get(3);
-		private final Keyword cUseAccelerometerUseAccelerometerKeyword_11_3_0 = (Keyword)cUseAccelerometerAssignment_11_3.eContents().get(0);
-		private final Keyword cRightCurlyBracketKeyword_12 = (Keyword)cGroup.eContents().get(12);
+		private final Assignment cUseAccelerometerAssignment_12 = (Assignment)cGroup.eContents().get(12);
+		private final Keyword cUseAccelerometerUseAccelerometerKeyword_12_0 = (Keyword)cUseAccelerometerAssignment_12.eContents().get(0);
+		private final Keyword cRightCurlyBracketKeyword_13 = (Keyword)cGroup.eContents().get(13);
 		
 		//GamePlatformConfigAndroid:
 		//	{GamePlatformConfigAndroid}
@@ -214,13 +224,14 @@ public class GameDSLGrammarAccess extends AbstractGrammarElementFinder {
 		//	'minAndroidVersion' minAndroidVersion=INT
 		//	'targetAndroidVersion' targetAndroidVersion=INT
 		//	'SDKApiLevel' apiLevel=INT
-		//	'orientation' orientation=GameScreenOrientation ('icon' appIcon=STRING & 'name' appName=STRING & 'label'
-		//	appLabel=STRING & useAccelerometer?='useAccelerometer')? '}';
+		//	'orientation' orientation=GameScreenOrientation (('icon' appIcon=STRING)? & ('name' appName=STRING)? & ('label'
+		//	appLabel=STRING)?) useAccelerometer?='useAccelerometer'?
+		//	'}';
 		@Override public ParserRule getRule() { return rule; }
 		
 		//{GamePlatformConfigAndroid} 'android' '{' 'minAndroidVersion' minAndroidVersion=INT 'targetAndroidVersion'
-		//targetAndroidVersion=INT 'SDKApiLevel' apiLevel=INT 'orientation' orientation=GameScreenOrientation ('icon'
-		//appIcon=STRING & 'name' appName=STRING & 'label' appLabel=STRING & useAccelerometer?='useAccelerometer')? '}'
+		//targetAndroidVersion=INT 'SDKApiLevel' apiLevel=INT 'orientation' orientation=GameScreenOrientation (('icon'
+		//appIcon=STRING)? & ('name' appName=STRING)? & ('label' appLabel=STRING)?) useAccelerometer?='useAccelerometer'? '}'
 		public Group getGroup() { return cGroup; }
 		
 		//{GamePlatformConfigAndroid}
@@ -268,10 +279,10 @@ public class GameDSLGrammarAccess extends AbstractGrammarElementFinder {
 		//GameScreenOrientation
 		public RuleCall getOrientationGameScreenOrientationEnumRuleCall_10_0() { return cOrientationGameScreenOrientationEnumRuleCall_10_0; }
 		
-		//('icon' appIcon=STRING & 'name' appName=STRING & 'label' appLabel=STRING & useAccelerometer?='useAccelerometer')?
+		//('icon' appIcon=STRING)? & ('name' appName=STRING)? & ('label' appLabel=STRING)?
 		public UnorderedGroup getUnorderedGroup_11() { return cUnorderedGroup_11; }
 		
-		//'icon' appIcon=STRING
+		//('icon' appIcon=STRING)?
 		public Group getGroup_11_0() { return cGroup_11_0; }
 		
 		//'icon'
@@ -283,7 +294,7 @@ public class GameDSLGrammarAccess extends AbstractGrammarElementFinder {
 		//STRING
 		public RuleCall getAppIconSTRINGTerminalRuleCall_11_0_1_0() { return cAppIconSTRINGTerminalRuleCall_11_0_1_0; }
 		
-		//'name' appName=STRING
+		//('name' appName=STRING)?
 		public Group getGroup_11_1() { return cGroup_11_1; }
 		
 		//'name'
@@ -295,7 +306,7 @@ public class GameDSLGrammarAccess extends AbstractGrammarElementFinder {
 		//STRING
 		public RuleCall getAppNameSTRINGTerminalRuleCall_11_1_1_0() { return cAppNameSTRINGTerminalRuleCall_11_1_1_0; }
 		
-		//'label' appLabel=STRING
+		//('label' appLabel=STRING)?
 		public Group getGroup_11_2() { return cGroup_11_2; }
 		
 		//'label'
@@ -307,14 +318,14 @@ public class GameDSLGrammarAccess extends AbstractGrammarElementFinder {
 		//STRING
 		public RuleCall getAppLabelSTRINGTerminalRuleCall_11_2_1_0() { return cAppLabelSTRINGTerminalRuleCall_11_2_1_0; }
 		
-		//useAccelerometer?='useAccelerometer'
-		public Assignment getUseAccelerometerAssignment_11_3() { return cUseAccelerometerAssignment_11_3; }
+		//useAccelerometer?='useAccelerometer'?
+		public Assignment getUseAccelerometerAssignment_12() { return cUseAccelerometerAssignment_12; }
 		
 		//'useAccelerometer'
-		public Keyword getUseAccelerometerUseAccelerometerKeyword_11_3_0() { return cUseAccelerometerUseAccelerometerKeyword_11_3_0; }
+		public Keyword getUseAccelerometerUseAccelerometerKeyword_12_0() { return cUseAccelerometerUseAccelerometerKeyword_12_0; }
 		
 		//'}'
-		public Keyword getRightCurlyBracketKeyword_12() { return cRightCurlyBracketKeyword_12; }
+		public Keyword getRightCurlyBracketKeyword_13() { return cRightCurlyBracketKeyword_13; }
 	}
 	public class GamePlatformConfigIOSElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "com.hypermodel.games.engine.GameDSL.GamePlatformConfigIOS");
@@ -340,6 +351,43 @@ public class GameDSLGrammarAccess extends AbstractGrammarElementFinder {
 		
 		//'ios'
 		public Keyword getIosKeyword_1() { return cIosKeyword_1; }
+		
+		//'{'
+		public Keyword getLeftCurlyBracketKeyword_2() { return cLeftCurlyBracketKeyword_2; }
+		
+		//useAccelerometer?='useAccelerometer'?
+		public Assignment getUseAccelerometerAssignment_3() { return cUseAccelerometerAssignment_3; }
+		
+		//'useAccelerometer'
+		public Keyword getUseAccelerometerUseAccelerometerKeyword_3_0() { return cUseAccelerometerUseAccelerometerKeyword_3_0; }
+		
+		//'}'
+		public Keyword getRightCurlyBracketKeyword_4() { return cRightCurlyBracketKeyword_4; }
+	}
+	public class GamePlatformConfigIOSMOEElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "com.hypermodel.games.engine.GameDSL.GamePlatformConfigIOSMOE");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Action cGamePlatformConfigIOSMOEAction_0 = (Action)cGroup.eContents().get(0);
+		private final Keyword cIosmoeKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Keyword cLeftCurlyBracketKeyword_2 = (Keyword)cGroup.eContents().get(2);
+		private final Assignment cUseAccelerometerAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final Keyword cUseAccelerometerUseAccelerometerKeyword_3_0 = (Keyword)cUseAccelerometerAssignment_3.eContents().get(0);
+		private final Keyword cRightCurlyBracketKeyword_4 = (Keyword)cGroup.eContents().get(4);
+		
+		//GamePlatformConfigIOSMOE:
+		//	{GamePlatformConfigIOSMOE}
+		//	'iosmoe' '{'
+		//	useAccelerometer?='useAccelerometer'? '}';
+		@Override public ParserRule getRule() { return rule; }
+		
+		//{GamePlatformConfigIOSMOE} 'iosmoe' '{' useAccelerometer?='useAccelerometer'? '}'
+		public Group getGroup() { return cGroup; }
+		
+		//{GamePlatformConfigIOSMOE}
+		public Action getGamePlatformConfigIOSMOEAction_0() { return cGamePlatformConfigIOSMOEAction_0; }
+		
+		//'iosmoe'
+		public Keyword getIosmoeKeyword_1() { return cIosmoeKeyword_1; }
 		
 		//'{'
 		public Keyword getLeftCurlyBracketKeyword_2() { return cLeftCurlyBracketKeyword_2; }
@@ -571,6 +619,7 @@ public class GameDSLGrammarAccess extends AbstractGrammarElementFinder {
 	private final GamePlatformConfigElements pGamePlatformConfig;
 	private final GamePlatformConfigAndroidElements pGamePlatformConfigAndroid;
 	private final GamePlatformConfigIOSElements pGamePlatformConfigIOS;
+	private final GamePlatformConfigIOSMOEElements pGamePlatformConfigIOSMOE;
 	private final GamePlatformConfigurationElements pGamePlatformConfiguration;
 	private final GameElements pGame;
 	private final ValidIDElements pValidID;
@@ -602,6 +651,7 @@ public class GameDSLGrammarAccess extends AbstractGrammarElementFinder {
 		this.pGamePlatformConfig = new GamePlatformConfigElements();
 		this.pGamePlatformConfigAndroid = new GamePlatformConfigAndroidElements();
 		this.pGamePlatformConfigIOS = new GamePlatformConfigIOSElements();
+		this.pGamePlatformConfigIOSMOE = new GamePlatformConfigIOSMOEElements();
 		this.pGamePlatformConfiguration = new GamePlatformConfigurationElements();
 		this.pGame = new GameElements();
 		this.pValidID = new ValidIDElements();
@@ -685,6 +735,7 @@ public class GameDSLGrammarAccess extends AbstractGrammarElementFinder {
 	//	'configuration' '{'
 	//	android=GamePlatformConfigAndroid
 	//	ios=GamePlatformConfigIOS
+	//	iosmoe=GamePlatformConfigIOSMOE
 	//	'}';
 	public GamePlatformConfigElements getGamePlatformConfigAccess() {
 		return pGamePlatformConfig;
@@ -700,8 +751,9 @@ public class GameDSLGrammarAccess extends AbstractGrammarElementFinder {
 	//	'minAndroidVersion' minAndroidVersion=INT
 	//	'targetAndroidVersion' targetAndroidVersion=INT
 	//	'SDKApiLevel' apiLevel=INT
-	//	'orientation' orientation=GameScreenOrientation ('icon' appIcon=STRING & 'name' appName=STRING & 'label'
-	//	appLabel=STRING & useAccelerometer?='useAccelerometer')? '}';
+	//	'orientation' orientation=GameScreenOrientation (('icon' appIcon=STRING)? & ('name' appName=STRING)? & ('label'
+	//	appLabel=STRING)?) useAccelerometer?='useAccelerometer'?
+	//	'}';
 	public GamePlatformConfigAndroidElements getGamePlatformConfigAndroidAccess() {
 		return pGamePlatformConfigAndroid;
 	}
@@ -720,6 +772,18 @@ public class GameDSLGrammarAccess extends AbstractGrammarElementFinder {
 	
 	public ParserRule getGamePlatformConfigIOSRule() {
 		return getGamePlatformConfigIOSAccess().getRule();
+	}
+	
+	//GamePlatformConfigIOSMOE:
+	//	{GamePlatformConfigIOSMOE}
+	//	'iosmoe' '{'
+	//	useAccelerometer?='useAccelerometer'? '}';
+	public GamePlatformConfigIOSMOEElements getGamePlatformConfigIOSMOEAccess() {
+		return pGamePlatformConfigIOSMOE;
+	}
+	
+	public ParserRule getGamePlatformConfigIOSMOERule() {
+		return getGamePlatformConfigIOSMOEAccess().getRule();
 	}
 	
 	//GamePlatformConfiguration:

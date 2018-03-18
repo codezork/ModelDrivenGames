@@ -72,6 +72,7 @@ public class GameDSLFactoryImpl extends EFactoryImpl implements GameDSLFactory
       case GameDSLPackage.GAME_PLATFORM_CONFIG: return createGamePlatformConfig();
       case GameDSLPackage.GAME_PLATFORM_CONFIG_ANDROID: return createGamePlatformConfigAndroid();
       case GameDSLPackage.GAME_PLATFORM_CONFIG_IOS: return createGamePlatformConfigIOS();
+      case GameDSLPackage.GAME_PLATFORM_CONFIG_IOSMOE: return createGamePlatformConfigIOSMOE();
       case GameDSLPackage.GAME_PLATFORM_CONFIGURATION: return createGamePlatformConfiguration();
       case GameDSLPackage.GAME: return createGame();
       default:
@@ -181,6 +182,17 @@ public class GameDSLFactoryImpl extends EFactoryImpl implements GameDSLFactory
   {
     GamePlatformConfigIOSImpl gamePlatformConfigIOS = new GamePlatformConfigIOSImpl();
     return gamePlatformConfigIOS;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public GamePlatformConfigIOSMOE createGamePlatformConfigIOSMOE()
+  {
+    GamePlatformConfigIOSMOEImpl gamePlatformConfigIOSMOE = new GamePlatformConfigIOSMOEImpl();
+    return gamePlatformConfigIOSMOE;
   }
 
   /**

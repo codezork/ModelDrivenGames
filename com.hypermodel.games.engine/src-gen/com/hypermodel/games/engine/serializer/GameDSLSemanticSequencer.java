@@ -12,6 +12,7 @@ import com.hypermodel.games.engine.gameDSL.GamePackage;
 import com.hypermodel.games.engine.gameDSL.GamePlatformConfig;
 import com.hypermodel.games.engine.gameDSL.GamePlatformConfigAndroid;
 import com.hypermodel.games.engine.gameDSL.GamePlatformConfigIOS;
+import com.hypermodel.games.engine.gameDSL.GamePlatformConfigIOSMOE;
 import com.hypermodel.games.engine.gameDSL.GamePlatformConfiguration;
 import com.hypermodel.games.engine.services.GameDSLGrammarAccess;
 import java.util.Set;
@@ -107,6 +108,9 @@ public class GameDSLSemanticSequencer extends XbaseWithAnnotationsSemanticSequen
 				return; 
 			case GameDSLPackage.GAME_PLATFORM_CONFIG_IOS:
 				sequence_GamePlatformConfigIOS(context, (GamePlatformConfigIOS) semanticObject); 
+				return; 
+			case GameDSLPackage.GAME_PLATFORM_CONFIG_IOSMOE:
+				sequence_GamePlatformConfigIOSMOE(context, (GamePlatformConfigIOSMOE) semanticObject); 
 				return; 
 			case GameDSLPackage.GAME_PLATFORM_CONFIGURATION:
 				sequence_GamePlatformConfiguration(context, (GamePlatformConfiguration) semanticObject); 
@@ -468,10 +472,23 @@ public class GameDSLSemanticSequencer extends XbaseWithAnnotationsSemanticSequen
 	 *         targetAndroidVersion=INT 
 	 *         apiLevel=INT 
 	 *         orientation=GameScreenOrientation 
-	 *         (appIcon=STRING | appName=STRING | appLabel=STRING | useAccelerometer?='useAccelerometer')*
+	 *         (appIcon=STRING | appName=STRING | appLabel=STRING)* 
+	 *         useAccelerometer?='useAccelerometer'?
 	 *     )
 	 */
 	protected void sequence_GamePlatformConfigAndroid(ISerializationContext context, GamePlatformConfigAndroid semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     GamePlatformConfigIOSMOE returns GamePlatformConfigIOSMOE
+	 *
+	 * Constraint:
+	 *     useAccelerometer?='useAccelerometer'?
+	 */
+	protected void sequence_GamePlatformConfigIOSMOE(ISerializationContext context, GamePlatformConfigIOSMOE semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	
@@ -493,7 +510,7 @@ public class GameDSLSemanticSequencer extends XbaseWithAnnotationsSemanticSequen
 	 *     GamePlatformConfig returns GamePlatformConfig
 	 *
 	 * Constraint:
-	 *     (android=GamePlatformConfigAndroid ios=GamePlatformConfigIOS)
+	 *     (android=GamePlatformConfigAndroid ios=GamePlatformConfigIOS iosmoe=GamePlatformConfigIOSMOE)
 	 */
 	protected void sequence_GamePlatformConfig(ISerializationContext context, GamePlatformConfig semanticObject) {
 		if (errorAcceptor != null) {
@@ -501,10 +518,13 @@ public class GameDSLSemanticSequencer extends XbaseWithAnnotationsSemanticSequen
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, GameDSLPackage.Literals.GAME_PLATFORM_CONFIG__ANDROID));
 			if (transientValues.isValueTransient(semanticObject, GameDSLPackage.Literals.GAME_PLATFORM_CONFIG__IOS) == ValueTransient.YES)
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, GameDSLPackage.Literals.GAME_PLATFORM_CONFIG__IOS));
+			if (transientValues.isValueTransient(semanticObject, GameDSLPackage.Literals.GAME_PLATFORM_CONFIG__IOSMOE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, GameDSLPackage.Literals.GAME_PLATFORM_CONFIG__IOSMOE));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
 		feeder.accept(grammarAccess.getGamePlatformConfigAccess().getAndroidGamePlatformConfigAndroidParserRuleCall_3_0(), semanticObject.getAndroid());
 		feeder.accept(grammarAccess.getGamePlatformConfigAccess().getIosGamePlatformConfigIOSParserRuleCall_4_0(), semanticObject.getIos());
+		feeder.accept(grammarAccess.getGamePlatformConfigAccess().getIosmoeGamePlatformConfigIOSMOEParserRuleCall_5_0(), semanticObject.getIosmoe());
 		feeder.finish();
 	}
 	

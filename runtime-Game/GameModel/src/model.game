@@ -6,7 +6,11 @@ package de.hypermodel.games {
 			SDKApiLevel 19
 			orientation landscape
 		}
-		ios {}
+		ios {
+		}
+		iosmoe {
+			useAccelerometer
+		}
 	}
-	game MyGame
+	game MyGame 
 } 

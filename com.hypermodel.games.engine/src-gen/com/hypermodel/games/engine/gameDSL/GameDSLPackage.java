@@ -198,13 +198,22 @@ public interface GameDSLPackage extends EPackage
   int GAME_PLATFORM_CONFIG__IOS = 1;
 
   /**
+   * The feature id for the '<em><b>Iosmoe</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int GAME_PLATFORM_CONFIG__IOSMOE = 2;
+
+  /**
    * The number of structural features of the '<em>Game Platform Config</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int GAME_PLATFORM_CONFIG_FEATURE_COUNT = 2;
+  int GAME_PLATFORM_CONFIG_FEATURE_COUNT = 3;
 
   /**
    * The meta object id for the '{@link com.hypermodel.games.engine.gameDSL.impl.GamePlatformConfigAndroidImpl <em>Game Platform Config Android</em>}' class.
@@ -326,6 +335,34 @@ public interface GameDSLPackage extends EPackage
   int GAME_PLATFORM_CONFIG_IOS_FEATURE_COUNT = 1;
 
   /**
+   * The meta object id for the '{@link com.hypermodel.games.engine.gameDSL.impl.GamePlatformConfigIOSMOEImpl <em>Game Platform Config IOSMOE</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see com.hypermodel.games.engine.gameDSL.impl.GamePlatformConfigIOSMOEImpl
+   * @see com.hypermodel.games.engine.gameDSL.impl.GameDSLPackageImpl#getGamePlatformConfigIOSMOE()
+   * @generated
+   */
+  int GAME_PLATFORM_CONFIG_IOSMOE = 6;
+
+  /**
+   * The feature id for the '<em><b>Use Accelerometer</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int GAME_PLATFORM_CONFIG_IOSMOE__USE_ACCELEROMETER = 0;
+
+  /**
+   * The number of structural features of the '<em>Game Platform Config IOSMOE</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int GAME_PLATFORM_CONFIG_IOSMOE_FEATURE_COUNT = 1;
+
+  /**
    * The meta object id for the '{@link com.hypermodel.games.engine.gameDSL.impl.GamePlatformConfigurationImpl <em>Game Platform Configuration</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -333,7 +370,7 @@ public interface GameDSLPackage extends EPackage
    * @see com.hypermodel.games.engine.gameDSL.impl.GameDSLPackageImpl#getGamePlatformConfiguration()
    * @generated
    */
-  int GAME_PLATFORM_CONFIGURATION = 6;
+  int GAME_PLATFORM_CONFIGURATION = 7;
 
   /**
    * The feature id for the '<em><b>Platform</b></em>' attribute.
@@ -370,7 +407,7 @@ public interface GameDSLPackage extends EPackage
    * @see com.hypermodel.games.engine.gameDSL.impl.GameDSLPackageImpl#getGame()
    * @generated
    */
-  int GAME = 7;
+  int GAME = 8;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -398,7 +435,7 @@ public interface GameDSLPackage extends EPackage
    * @see com.hypermodel.games.engine.gameDSL.impl.GameDSLPackageImpl#getGamePlatform()
    * @generated
    */
-  int GAME_PLATFORM = 8;
+  int GAME_PLATFORM = 9;
 
   /**
    * The meta object id for the '{@link com.hypermodel.games.engine.gameDSL.GameScreenOrientation <em>Game Screen Orientation</em>}' enum.
@@ -408,7 +445,7 @@ public interface GameDSLPackage extends EPackage
    * @see com.hypermodel.games.engine.gameDSL.impl.GameDSLPackageImpl#getGameScreenOrientation()
    * @generated
    */
-  int GAME_SCREEN_ORIENTATION = 9;
+  int GAME_SCREEN_ORIENTATION = 10;
 
 
   /**
@@ -540,6 +577,17 @@ public interface GameDSLPackage extends EPackage
   EReference getGamePlatformConfig_Ios();
 
   /**
+   * Returns the meta object for the containment reference '{@link com.hypermodel.games.engine.gameDSL.GamePlatformConfig#getIosmoe <em>Iosmoe</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Iosmoe</em>'.
+   * @see com.hypermodel.games.engine.gameDSL.GamePlatformConfig#getIosmoe()
+   * @see #getGamePlatformConfig()
+   * @generated
+   */
+  EReference getGamePlatformConfig_Iosmoe();
+
+  /**
    * Returns the meta object for class '{@link com.hypermodel.games.engine.gameDSL.GamePlatformConfigAndroid <em>Game Platform Config Android</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -657,6 +705,27 @@ public interface GameDSLPackage extends EPackage
    * @generated
    */
   EAttribute getGamePlatformConfigIOS_UseAccelerometer();
+
+  /**
+   * Returns the meta object for class '{@link com.hypermodel.games.engine.gameDSL.GamePlatformConfigIOSMOE <em>Game Platform Config IOSMOE</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Game Platform Config IOSMOE</em>'.
+   * @see com.hypermodel.games.engine.gameDSL.GamePlatformConfigIOSMOE
+   * @generated
+   */
+  EClass getGamePlatformConfigIOSMOE();
+
+  /**
+   * Returns the meta object for the attribute '{@link com.hypermodel.games.engine.gameDSL.GamePlatformConfigIOSMOE#isUseAccelerometer <em>Use Accelerometer</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Use Accelerometer</em>'.
+   * @see com.hypermodel.games.engine.gameDSL.GamePlatformConfigIOSMOE#isUseAccelerometer()
+   * @see #getGamePlatformConfigIOSMOE()
+   * @generated
+   */
+  EAttribute getGamePlatformConfigIOSMOE_UseAccelerometer();
 
   /**
    * Returns the meta object for class '{@link com.hypermodel.games.engine.gameDSL.GamePlatformConfiguration <em>Game Platform Configuration</em>}'.
@@ -859,6 +928,14 @@ public interface GameDSLPackage extends EPackage
     EReference GAME_PLATFORM_CONFIG__IOS = eINSTANCE.getGamePlatformConfig_Ios();
 
     /**
+     * The meta object literal for the '<em><b>Iosmoe</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference GAME_PLATFORM_CONFIG__IOSMOE = eINSTANCE.getGamePlatformConfig_Iosmoe();
+
+    /**
      * The meta object literal for the '{@link com.hypermodel.games.engine.gameDSL.impl.GamePlatformConfigAndroidImpl <em>Game Platform Config Android</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -949,6 +1026,24 @@ public interface GameDSLPackage extends EPackage
      * @generated
      */
     EAttribute GAME_PLATFORM_CONFIG_IOS__USE_ACCELEROMETER = eINSTANCE.getGamePlatformConfigIOS_UseAccelerometer();
+
+    /**
+     * The meta object literal for the '{@link com.hypermodel.games.engine.gameDSL.impl.GamePlatformConfigIOSMOEImpl <em>Game Platform Config IOSMOE</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see com.hypermodel.games.engine.gameDSL.impl.GamePlatformConfigIOSMOEImpl
+     * @see com.hypermodel.games.engine.gameDSL.impl.GameDSLPackageImpl#getGamePlatformConfigIOSMOE()
+     * @generated
+     */
+    EClass GAME_PLATFORM_CONFIG_IOSMOE = eINSTANCE.getGamePlatformConfigIOSMOE();
+
+    /**
+     * The meta object literal for the '<em><b>Use Accelerometer</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute GAME_PLATFORM_CONFIG_IOSMOE__USE_ACCELEROMETER = eINSTANCE.getGamePlatformConfigIOSMOE_UseAccelerometer();
 
     /**
      * The meta object literal for the '{@link com.hypermodel.games.engine.gameDSL.impl.GamePlatformConfigurationImpl <em>Game Platform Configuration</em>}' class.

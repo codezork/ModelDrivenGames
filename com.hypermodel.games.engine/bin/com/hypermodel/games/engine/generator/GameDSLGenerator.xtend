@@ -3,13 +3,17 @@
  */
 package com.hypermodel.games.engine.generator
 
+import apple.uikit.c.UIKit
 import com.badlogic.gdx.Gdx
 import com.badlogic.gdx.backends.android.AndroidApplicationConfiguration
+import com.badlogic.gdx.backends.gwt.GwtApplicationConfiguration
+import com.badlogic.gdx.backends.iosrobovm.IOSApplicationConfiguration
 import com.badlogic.gdx.backends.lwjgl.LwjglApplication
 import com.badlogic.gdx.backends.lwjgl.LwjglApplicationConfiguration
 import com.badlogic.gdx.graphics.GL20
 import com.badlogic.gdx.graphics.Texture
 import com.badlogic.gdx.graphics.g2d.SpriteBatch
+import com.google.gwt.user.client.Window
 import com.hypermodel.games.engine.gameDSL.GameModel
 import com.hypermodel.games.engine.gameDSL.GamePackage
 import com.hypermodel.games.engine.generator.GameProperties.ProjectType
@@ -45,13 +49,9 @@ import org.eclipse.xtext.xbase.compiler.GeneratorConfig
 import org.eclipse.xtext.xbase.compiler.IGeneratorConfigProvider
 import org.eclipse.xtext.xbase.compiler.ImportManager
 import org.osgi.framework.FrameworkUtil
-import org.slf4j.LoggerFactory
-import com.google.gwt.user.client.Window
-import com.badlogic.gdx.backends.gwt.GwtApplicationConfiguration
-import com.badlogic.gdx.backends.iosrobovm.IOSApplicationConfiguration
 import org.robovm.apple.foundation.NSAutoreleasePool
 import org.robovm.apple.uikit.UIApplication
-import apple.uikit.c.UIKit
+import org.slf4j.LoggerFactory
 
 /**
  * Generates code from your model files on save.
@@ -68,7 +68,7 @@ class GameDSLGenerator extends ExtendedJvmModelGenerator {
 	
 	override createAppendable(EObject context, ImportManager importManager, GeneratorConfig config) {
 		super.builder = context.eResource
-		if(context.containerType.superTypes === null) {	// desktop
+		if(context.containerType.superTypes.empty || context.containerType.superTypes.get(0).identifier.endsWith("Object")) {	// desktop
 			addClasses(importManager, _typeReferenceBuilder
 				, LwjglApplication
 				, LwjglApplicationConfiguration
@@ -90,16 +90,25 @@ class GameDSLGenerator extends ExtendedJvmModelGenerator {
 					addClasses(importManager, _typeReferenceBuilder
 						, Window
 						, GwtApplicationConfiguration
+						, Gdx
 					)
-				} else if(superType.identifier.endsWith("IOSApplication.Delegate")) {
-					addClasses(importManager, _typeReferenceBuilder
-						, IOSApplicationConfiguration
-						, NSAutoreleasePool
-						, UIApplication
-						, UIKit
-					)
+				} else if(superType.identifier.endsWith("IOSApplication$Delegate")) {
+					if(context.containerType.simpleName.startsWith("IOSMOE")) {
+						addClasses(importManager, _typeReferenceBuilder
+							, com.badlogic.gdx.backends.iosmoe.IOSApplication
+							, com.badlogic.gdx.backends.iosmoe.IOSApplicationConfiguration
+							, apple.uikit.c.UIKit
+						)
+					} else {
+						addClasses(importManager, _typeReferenceBuilder
+							, com.badlogic.gdx.backends.iosrobovm.IOSApplication
+							, com.badlogic.gdx.backends.iosrobovm.IOSApplicationConfiguration
+							, org.robovm.apple.uikit.UIApplication
+							, org.robovm.apple.foundation.NSAutoreleasePool
+						)
+					}
+					// must call full qualified as classnames are the same, packages not
 				}
-				
 			}
 		}
 		super.createAppendable(context, importManager, config)
@@ -160,19 +169,17 @@ class GameDSLGenerator extends ExtendedJvmModelGenerator {
 		array.add(JavaCore.NATURE_ID)
 		array.add("org.eclipse.buildship.core.gradleprojectnature")
 	    createBasicProject(project, rootProject, pType, array, false)
-		createJDTProject(project, pType)
-
-		copyPlatformResources(project, pType)
-
-		var buildgradle = project.getFile("build.gradle")
-		buildgradle.create(buildGradle(pType, packageName.toString, pkg), true, monitor)
-		
 		if(pType == ProjectType.android) {
 			var androidManifest = project.getFile("AndroidManifest.xml")
 			androidManifest.create(buildAndroidManifest(packageName.toString, pkg), true, monitor)
 			var androidProperties = project.getFile("project.properties")
 			androidProperties.create(buildAndroidProperties(pkg.config.android.apiLevel), true, monitor)
 		} 
+		createJDTProject(project, pType)
+		copyPlatformResources(project, pType)
+		var buildgradle = project.getFile("build.gradle")
+		buildgradle.create(buildGradle(pType, packageName.toString, pkg), true, monitor)
+		
 		return project
 	}
 	
@@ -255,29 +262,29 @@ class GameDSLGenerator extends ExtendedJvmModelGenerator {
 			}
 			case android: {
 				var type = input.contents.get(ProjectType.android.ordinal+1) as JvmDeclaredType
-				fileName = '''«pType.name.toFirstUpper»«GameProperties.launcherPostfix»'''
+				fileName = '''«pType.name.toFirstUpper»«GameProperties.launcherPostfix».java'''
 				body = type.generateType(generatorConfigProvider.get(type)).toString
 			}
 			case desktop: {
 				extraSegment = pType.name
 				var type = input.contents.get(ProjectType.desktop.ordinal+1) as JvmDeclaredType
-				fileName = '''«pType.name.toFirstUpper»«GameProperties.launcherPostfix»'''
+				fileName = '''«pType.name.toFirstUpper»«GameProperties.launcherPostfix».java'''
 				body = type.generateType(generatorConfigProvider.get(type)).toString
 			}
 			case html: {
 				extraSegment = "client"
 				var type = input.contents.get(ProjectType.html.ordinal+1) as JvmDeclaredType
-				fileName = '''«pType.name.toFirstUpper»«GameProperties.launcherPostfix»'''
+				fileName = '''«pType.name.toFirstUpper»«GameProperties.launcherPostfix».java'''
 				body = type.generateType(generatorConfigProvider.get(type)).toString
 			}
 			case ios: {
 				var type = input.contents.get(ProjectType.ios.ordinal+1) as JvmDeclaredType
-				fileName = '''«pType.name.toUpperCase»«GameProperties.launcherPostfix»'''
+				fileName = '''«pType.name.toUpperCase»«GameProperties.launcherPostfix».java'''
 				body = type.generateType(generatorConfigProvider.get(type)).toString
 			}
 			case iosmoe: {
 				var type = input.contents.get(ProjectType.iosmoe.ordinal+1) as JvmDeclaredType
-				fileName = '''«pType.name.toUpperCase»«GameProperties.launcherPostfix»'''
+				fileName = '''«pType.name.toUpperCase»«GameProperties.launcherPostfix».java'''
 				body = type.generateType(generatorConfigProvider.get(type)).toString
 			}
 		}

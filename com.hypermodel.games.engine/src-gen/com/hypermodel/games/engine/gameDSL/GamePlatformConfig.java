@@ -16,6 +16,7 @@ import org.eclipse.emf.ecore.EObject;
  * <ul>
  *   <li>{@link com.hypermodel.games.engine.gameDSL.GamePlatformConfig#getAndroid <em>Android</em>}</li>
  *   <li>{@link com.hypermodel.games.engine.gameDSL.GamePlatformConfig#getIos <em>Ios</em>}</li>
+ *   <li>{@link com.hypermodel.games.engine.gameDSL.GamePlatformConfig#getIosmoe <em>Iosmoe</em>}</li>
  * </ul>
  *
  * @see com.hypermodel.games.engine.gameDSL.GameDSLPackage#getGamePlatformConfig()
@@ -75,5 +76,31 @@ public interface GamePlatformConfig extends EObject
    * @generated
    */
   void setIos(GamePlatformConfigIOS value);
+
+  /**
+   * Returns the value of the '<em><b>Iosmoe</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Iosmoe</em>' containment reference isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Iosmoe</em>' containment reference.
+   * @see #setIosmoe(GamePlatformConfigIOSMOE)
+   * @see com.hypermodel.games.engine.gameDSL.GameDSLPackage#getGamePlatformConfig_Iosmoe()
+   * @model containment="true"
+   * @generated
+   */
+  GamePlatformConfigIOSMOE getIosmoe();
+
+  /**
+   * Sets the value of the '{@link com.hypermodel.games.engine.gameDSL.GamePlatformConfig#getIosmoe <em>Iosmoe</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Iosmoe</em>' containment reference.
+   * @see #getIosmoe()
+   * @generated
+   */
+  void setIosmoe(GamePlatformConfigIOSMOE value);
 
 } // GamePlatformConfig

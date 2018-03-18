@@ -200,6 +200,31 @@ finally {
 	restoreStackSize(stackSize);
 }
 
+// Entry rule entryRuleGamePlatformConfigIOSMOE
+entryRuleGamePlatformConfigIOSMOE
+:
+{ before(grammarAccess.getGamePlatformConfigIOSMOERule()); }
+	 ruleGamePlatformConfigIOSMOE
+{ after(grammarAccess.getGamePlatformConfigIOSMOERule()); } 
+	 EOF 
+;
+
+// Rule GamePlatformConfigIOSMOE
+ruleGamePlatformConfigIOSMOE 
+	@init {
+		int stackSize = keepStackSize();
+	}
+	:
+	(
+		{ before(grammarAccess.getGamePlatformConfigIOSMOEAccess().getGroup()); }
+		(rule__GamePlatformConfigIOSMOE__Group__0)
+		{ after(grammarAccess.getGamePlatformConfigIOSMOEAccess().getGroup()); }
+	)
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
 // Entry rule entryRuleGame
 entryRuleGame
 :
@@ -3902,6 +3927,7 @@ rule__GamePlatformConfig__Group__5
 	}
 :
 	rule__GamePlatformConfig__Group__5__Impl
+	rule__GamePlatformConfig__Group__6
 ;
 finally {
 	restoreStackSize(stackSize);
@@ -3913,9 +3939,35 @@ rule__GamePlatformConfig__Group__5__Impl
 	}
 :
 (
-	{ before(grammarAccess.getGamePlatformConfigAccess().getRightCurlyBracketKeyword_5()); }
+	{ before(grammarAccess.getGamePlatformConfigAccess().getIosmoeAssignment_5()); }
+	(rule__GamePlatformConfig__IosmoeAssignment_5)
+	{ after(grammarAccess.getGamePlatformConfigAccess().getIosmoeAssignment_5()); }
+)
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__GamePlatformConfig__Group__6
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+	rule__GamePlatformConfig__Group__6__Impl
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__GamePlatformConfig__Group__6__Impl
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+(
+	{ before(grammarAccess.getGamePlatformConfigAccess().getRightCurlyBracketKeyword_6()); }
 	'}'
-	{ after(grammarAccess.getGamePlatformConfigAccess().getRightCurlyBracketKeyword_5()); }
+	{ after(grammarAccess.getGamePlatformConfigAccess().getRightCurlyBracketKeyword_6()); }
 )
 ;
 finally {
@@ -4239,7 +4291,7 @@ rule__GamePlatformConfigAndroid__Group__11__Impl
 :
 (
 	{ before(grammarAccess.getGamePlatformConfigAndroidAccess().getUnorderedGroup_11()); }
-	(rule__GamePlatformConfigAndroid__UnorderedGroup_11)?
+	(rule__GamePlatformConfigAndroid__UnorderedGroup_11)
 	{ after(grammarAccess.getGamePlatformConfigAndroidAccess().getUnorderedGroup_11()); }
 )
 ;
@@ -4253,6 +4305,7 @@ rule__GamePlatformConfigAndroid__Group__12
 	}
 :
 	rule__GamePlatformConfigAndroid__Group__12__Impl
+	rule__GamePlatformConfigAndroid__Group__13
 ;
 finally {
 	restoreStackSize(stackSize);
@@ -4264,9 +4317,35 @@ rule__GamePlatformConfigAndroid__Group__12__Impl
 	}
 :
 (
-	{ before(grammarAccess.getGamePlatformConfigAndroidAccess().getRightCurlyBracketKeyword_12()); }
+	{ before(grammarAccess.getGamePlatformConfigAndroidAccess().getUseAccelerometerAssignment_12()); }
+	(rule__GamePlatformConfigAndroid__UseAccelerometerAssignment_12)?
+	{ after(grammarAccess.getGamePlatformConfigAndroidAccess().getUseAccelerometerAssignment_12()); }
+)
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__GamePlatformConfigAndroid__Group__13
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+	rule__GamePlatformConfigAndroid__Group__13__Impl
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__GamePlatformConfigAndroid__Group__13__Impl
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+(
+	{ before(grammarAccess.getGamePlatformConfigAndroidAccess().getRightCurlyBracketKeyword_13()); }
 	'}'
-	{ after(grammarAccess.getGamePlatformConfigAndroidAccess().getRightCurlyBracketKeyword_12()); }
+	{ after(grammarAccess.getGamePlatformConfigAndroidAccess().getRightCurlyBracketKeyword_13()); }
 )
 ;
 finally {
@@ -4564,6 +4643,141 @@ rule__GamePlatformConfigIOS__Group__4__Impl
 	{ before(grammarAccess.getGamePlatformConfigIOSAccess().getRightCurlyBracketKeyword_4()); }
 	'}'
 	{ after(grammarAccess.getGamePlatformConfigIOSAccess().getRightCurlyBracketKeyword_4()); }
+)
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+
+rule__GamePlatformConfigIOSMOE__Group__0
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+	rule__GamePlatformConfigIOSMOE__Group__0__Impl
+	rule__GamePlatformConfigIOSMOE__Group__1
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__GamePlatformConfigIOSMOE__Group__0__Impl
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+(
+	{ before(grammarAccess.getGamePlatformConfigIOSMOEAccess().getGamePlatformConfigIOSMOEAction_0()); }
+	()
+	{ after(grammarAccess.getGamePlatformConfigIOSMOEAccess().getGamePlatformConfigIOSMOEAction_0()); }
+)
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__GamePlatformConfigIOSMOE__Group__1
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+	rule__GamePlatformConfigIOSMOE__Group__1__Impl
+	rule__GamePlatformConfigIOSMOE__Group__2
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__GamePlatformConfigIOSMOE__Group__1__Impl
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+(
+	{ before(grammarAccess.getGamePlatformConfigIOSMOEAccess().getIosmoeKeyword_1()); }
+	'iosmoe'
+	{ after(grammarAccess.getGamePlatformConfigIOSMOEAccess().getIosmoeKeyword_1()); }
+)
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__GamePlatformConfigIOSMOE__Group__2
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+	rule__GamePlatformConfigIOSMOE__Group__2__Impl
+	rule__GamePlatformConfigIOSMOE__Group__3
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__GamePlatformConfigIOSMOE__Group__2__Impl
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+(
+	{ before(grammarAccess.getGamePlatformConfigIOSMOEAccess().getLeftCurlyBracketKeyword_2()); }
+	'{'
+	{ after(grammarAccess.getGamePlatformConfigIOSMOEAccess().getLeftCurlyBracketKeyword_2()); }
+)
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__GamePlatformConfigIOSMOE__Group__3
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+	rule__GamePlatformConfigIOSMOE__Group__3__Impl
+	rule__GamePlatformConfigIOSMOE__Group__4
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__GamePlatformConfigIOSMOE__Group__3__Impl
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+(
+	{ before(grammarAccess.getGamePlatformConfigIOSMOEAccess().getUseAccelerometerAssignment_3()); }
+	(rule__GamePlatformConfigIOSMOE__UseAccelerometerAssignment_3)?
+	{ after(grammarAccess.getGamePlatformConfigIOSMOEAccess().getUseAccelerometerAssignment_3()); }
+)
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__GamePlatformConfigIOSMOE__Group__4
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+	rule__GamePlatformConfigIOSMOE__Group__4__Impl
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__GamePlatformConfigIOSMOE__Group__4__Impl
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+(
+	{ before(grammarAccess.getGamePlatformConfigIOSMOEAccess().getRightCurlyBracketKeyword_4()); }
+	'}'
+	{ after(grammarAccess.getGamePlatformConfigIOSMOEAccess().getRightCurlyBracketKeyword_4()); }
 )
 ;
 finally {
@@ -17579,7 +17793,7 @@ rule__GamePlatformConfigAndroid__UnorderedGroup_11
 	}
 :
 	rule__GamePlatformConfigAndroid__UnorderedGroup_11__0
-	{getUnorderedGroupHelper().canLeave(grammarAccess.getGamePlatformConfigAndroidAccess().getUnorderedGroup_11())}?
+	?
 ;
 finally {
 	getUnorderedGroupHelper().leave(grammarAccess.getGamePlatformConfigAndroidAccess().getUnorderedGroup_11());
@@ -17637,21 +17851,6 @@ rule__GamePlatformConfigAndroid__UnorderedGroup_11__Impl
 					{ after(grammarAccess.getGamePlatformConfigAndroidAccess().getGroup_11_2()); }
 				)
 			)
-		)|
-		( 
-			{getUnorderedGroupHelper().canSelect(grammarAccess.getGamePlatformConfigAndroidAccess().getUnorderedGroup_11(), 3)}?=>(
-				{
-					getUnorderedGroupHelper().select(grammarAccess.getGamePlatformConfigAndroidAccess().getUnorderedGroup_11(), 3);
-				}
-				{
-					selected = true;
-				}
-				(
-					{ before(grammarAccess.getGamePlatformConfigAndroidAccess().getUseAccelerometerAssignment_11_3()); }
-					(rule__GamePlatformConfigAndroid__UseAccelerometerAssignment_11_3)
-					{ after(grammarAccess.getGamePlatformConfigAndroidAccess().getUseAccelerometerAssignment_11_3()); }
-				)
-			)
 		)
 		)
 ;
@@ -17686,18 +17885,6 @@ finally {
 }
 
 rule__GamePlatformConfigAndroid__UnorderedGroup_11__2
-	@init {
-		int stackSize = keepStackSize();
-	}
-:
-	rule__GamePlatformConfigAndroid__UnorderedGroup_11__Impl
-	rule__GamePlatformConfigAndroid__UnorderedGroup_11__3?
-;
-finally {
-	restoreStackSize(stackSize);
-}
-
-rule__GamePlatformConfigAndroid__UnorderedGroup_11__3
 	@init {
 		int stackSize = keepStackSize();
 	}
@@ -17829,6 +18016,21 @@ finally {
 	restoreStackSize(stackSize);
 }
 
+rule__GamePlatformConfig__IosmoeAssignment_5
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+	(
+		{ before(grammarAccess.getGamePlatformConfigAccess().getIosmoeGamePlatformConfigIOSMOEParserRuleCall_5_0()); }
+		ruleGamePlatformConfigIOSMOE
+		{ after(grammarAccess.getGamePlatformConfigAccess().getIosmoeGamePlatformConfigIOSMOEParserRuleCall_5_0()); }
+	)
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
 rule__GamePlatformConfigAndroid__MinAndroidVersionAssignment_4
 	@init {
 		int stackSize = keepStackSize();
@@ -17934,19 +18136,19 @@ finally {
 	restoreStackSize(stackSize);
 }
 
-rule__GamePlatformConfigAndroid__UseAccelerometerAssignment_11_3
+rule__GamePlatformConfigAndroid__UseAccelerometerAssignment_12
 	@init {
 		int stackSize = keepStackSize();
 	}
 :
 	(
-		{ before(grammarAccess.getGamePlatformConfigAndroidAccess().getUseAccelerometerUseAccelerometerKeyword_11_3_0()); }
+		{ before(grammarAccess.getGamePlatformConfigAndroidAccess().getUseAccelerometerUseAccelerometerKeyword_12_0()); }
 		(
-			{ before(grammarAccess.getGamePlatformConfigAndroidAccess().getUseAccelerometerUseAccelerometerKeyword_11_3_0()); }
+			{ before(grammarAccess.getGamePlatformConfigAndroidAccess().getUseAccelerometerUseAccelerometerKeyword_12_0()); }
 			'useAccelerometer'
-			{ after(grammarAccess.getGamePlatformConfigAndroidAccess().getUseAccelerometerUseAccelerometerKeyword_11_3_0()); }
+			{ after(grammarAccess.getGamePlatformConfigAndroidAccess().getUseAccelerometerUseAccelerometerKeyword_12_0()); }
 		)
-		{ after(grammarAccess.getGamePlatformConfigAndroidAccess().getUseAccelerometerUseAccelerometerKeyword_11_3_0()); }
+		{ after(grammarAccess.getGamePlatformConfigAndroidAccess().getUseAccelerometerUseAccelerometerKeyword_12_0()); }
 	)
 ;
 finally {
@@ -17966,6 +18168,25 @@ rule__GamePlatformConfigIOS__UseAccelerometerAssignment_3
 			{ after(grammarAccess.getGamePlatformConfigIOSAccess().getUseAccelerometerUseAccelerometerKeyword_3_0()); }
 		)
 		{ after(grammarAccess.getGamePlatformConfigIOSAccess().getUseAccelerometerUseAccelerometerKeyword_3_0()); }
+	)
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__GamePlatformConfigIOSMOE__UseAccelerometerAssignment_3
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+	(
+		{ before(grammarAccess.getGamePlatformConfigIOSMOEAccess().getUseAccelerometerUseAccelerometerKeyword_3_0()); }
+		(
+			{ before(grammarAccess.getGamePlatformConfigIOSMOEAccess().getUseAccelerometerUseAccelerometerKeyword_3_0()); }
+			'useAccelerometer'
+			{ after(grammarAccess.getGamePlatformConfigIOSMOEAccess().getUseAccelerometerUseAccelerometerKeyword_3_0()); }
+		)
+		{ after(grammarAccess.getGamePlatformConfigIOSMOEAccess().getUseAccelerometerUseAccelerometerKeyword_3_0()); }
 	)
 ;
 finally {

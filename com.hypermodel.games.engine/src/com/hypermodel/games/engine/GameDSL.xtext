@@ -19,6 +19,7 @@ GamePlatformConfig: {GamePlatformConfig}
 	'configuration' '{' 
 	android = GamePlatformConfigAndroid
 	ios = GamePlatformConfigIOS
+	iosmoe = GamePlatformConfigIOSMOE
 	'}';
 	
 GamePlatformConfigAndroid: {GamePlatformConfigAndroid}
@@ -27,14 +28,20 @@ GamePlatformConfigAndroid: {GamePlatformConfigAndroid}
 	'targetAndroidVersion' targetAndroidVersion=INT
 	'SDKApiLevel' apiLevel=INT
 	'orientation' orientation=GameScreenOrientation
-	(('icon' appIcon=STRING) &
-	('name' appName=STRING) &
-	('label' appLabel=STRING) &
-	useAccelerometer?='useAccelerometer')? '}' 
+	(('icon' appIcon=STRING)? &
+	('name' appName=STRING)? &
+	('label' appLabel=STRING)? )
+	(useAccelerometer?='useAccelerometer')? 
+	'}' 
 ;
 	
 GamePlatformConfigIOS: {GamePlatformConfigIOS}
 	'ios' '{'
+	(useAccelerometer?='useAccelerometer')? '}'
+;
+
+GamePlatformConfigIOSMOE: {GamePlatformConfigIOSMOE}
+	'iosmoe' '{'
 	(useAccelerometer?='useAccelerometer')? '}'
 ;
 

@@ -7,7 +7,8 @@ import apple.uikit.c.UIKit;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.backends.android.AndroidApplicationConfiguration;
 import com.badlogic.gdx.backends.gwt.GwtApplicationConfiguration;
-import com.badlogic.gdx.backends.iosrobovm.IOSApplicationConfiguration;
+import com.badlogic.gdx.backends.iosmoe.IOSApplication;
+import com.badlogic.gdx.backends.iosmoe.IOSApplicationConfiguration;
 import com.badlogic.gdx.backends.lwjgl.LwjglApplication;
 import com.badlogic.gdx.backends.lwjgl.LwjglApplicationConfiguration;
 import com.badlogic.gdx.graphics.GL20;
@@ -106,13 +107,11 @@ public class GameDSLGenerator extends ExtendedJvmModelGenerator {
     TreeAppendable _xblockexpression = null;
     {
       super.setBuilder(context.eResource());
-      EList<JvmTypeReference> _superTypes = this.containerType(context).getSuperTypes();
-      boolean _tripleEquals = (_superTypes == null);
-      if (_tripleEquals) {
+      if ((this.containerType(context).getSuperTypes().isEmpty() || this.containerType(context).getSuperTypes().get(0).getIdentifier().endsWith("Object"))) {
         this._importHelper.addClasses(this, importManager, this._typeReferenceBuilder, LwjglApplication.class, LwjglApplicationConfiguration.class);
       } else {
-        EList<JvmTypeReference> _superTypes_1 = this.containerType(context).getSuperTypes();
-        for (final JvmTypeReference superType : _superTypes_1) {
+        EList<JvmTypeReference> _superTypes = this.containerType(context).getSuperTypes();
+        for (final JvmTypeReference superType : _superTypes) {
           boolean _endsWith = superType.getIdentifier().endsWith("ApplicationAdapter");
           if (_endsWith) {
             this._importHelper.addClasses(this, importManager, this._typeReferenceBuilder, SpriteBatch.class, Texture.class, Gdx.class, GL20.class);
@@ -123,11 +122,16 @@ public class GameDSLGenerator extends ExtendedJvmModelGenerator {
             } else {
               boolean _endsWith_2 = superType.getIdentifier().endsWith("GwtApplication");
               if (_endsWith_2) {
-                this._importHelper.addClasses(this, importManager, this._typeReferenceBuilder, Window.class, GwtApplicationConfiguration.class);
+                this._importHelper.addClasses(this, importManager, this._typeReferenceBuilder, Window.class, GwtApplicationConfiguration.class, Gdx.class);
               } else {
-                boolean _endsWith_3 = superType.getIdentifier().endsWith("IOSApplication.Delegate");
+                boolean _endsWith_3 = superType.getIdentifier().endsWith("IOSApplication$Delegate");
                 if (_endsWith_3) {
-                  this._importHelper.addClasses(this, importManager, this._typeReferenceBuilder, IOSApplicationConfiguration.class, NSAutoreleasePool.class, UIApplication.class, UIKit.class);
+                  boolean _startsWith = this.containerType(context).getSimpleName().startsWith("IOSMOE");
+                  if (_startsWith) {
+                    this._importHelper.addClasses(this, importManager, this._typeReferenceBuilder, IOSApplication.class, IOSApplicationConfiguration.class, UIKit.class);
+                  } else {
+                    this._importHelper.addClasses(this, importManager, this._typeReferenceBuilder, com.badlogic.gdx.backends.iosrobovm.IOSApplication.class, com.badlogic.gdx.backends.iosrobovm.IOSApplicationConfiguration.class, UIApplication.class, NSAutoreleasePool.class);
+                  }
                 }
               }
             }
@@ -247,10 +251,6 @@ public class GameDSLGenerator extends ExtendedJvmModelGenerator {
       array.add(JavaCore.NATURE_ID);
       array.add("org.eclipse.buildship.core.gradleprojectnature");
       this.createBasicProject(project, rootProject, pType, array, false);
-      this.createJDTProject(project, pType);
-      this.copyPlatformResources(project, pType);
-      IFile buildgradle = project.getFile("build.gradle");
-      buildgradle.create(this.buildGradle(pType, packageName.toString(), pkg), true, this.monitor);
       boolean _equals = Objects.equal(pType, GameProperties.ProjectType.android);
       if (_equals) {
         IFile androidManifest = project.getFile("AndroidManifest.xml");
@@ -258,6 +258,10 @@ public class GameDSLGenerator extends ExtendedJvmModelGenerator {
         IFile androidProperties = project.getFile("project.properties");
         androidProperties.create(this.buildAndroidProperties(pkg.getConfig().getAndroid().getApiLevel()), true, this.monitor);
       }
+      this.createJDTProject(project, pType);
+      this.copyPlatformResources(project, pType);
+      IFile buildgradle = project.getFile("build.gradle");
+      buildgradle.create(this.buildGradle(pType, packageName.toString(), pkg), true, this.monitor);
       return project;
     } catch (Throwable _e) {
       throw Exceptions.sneakyThrow(_e);
@@ -365,6 +369,7 @@ public class GameDSLGenerator extends ExtendedJvmModelGenerator {
             String _firstUpper = StringExtensions.toFirstUpper(pType.name());
             _builder.append(_firstUpper);
             _builder.append(GameProperties.launcherPostfix);
+            _builder.append(".java");
             fileName = _builder.toString();
             body = this.generateType(type_1, this.generatorConfigProvider.get(type_1)).toString();
             break;
@@ -379,6 +384,7 @@ public class GameDSLGenerator extends ExtendedJvmModelGenerator {
             String _firstUpper_1 = StringExtensions.toFirstUpper(pType.name());
             _builder_1.append(_firstUpper_1);
             _builder_1.append(GameProperties.launcherPostfix);
+            _builder_1.append(".java");
             fileName = _builder_1.toString();
             body = this.generateType(type_2, this.generatorConfigProvider.get(type_2)).toString();
             break;
@@ -393,6 +399,7 @@ public class GameDSLGenerator extends ExtendedJvmModelGenerator {
             String _firstUpper_2 = StringExtensions.toFirstUpper(pType.name());
             _builder_2.append(_firstUpper_2);
             _builder_2.append(GameProperties.launcherPostfix);
+            _builder_2.append(".java");
             fileName = _builder_2.toString();
             body = this.generateType(type_3, this.generatorConfigProvider.get(type_3)).toString();
             break;
@@ -406,6 +413,7 @@ public class GameDSLGenerator extends ExtendedJvmModelGenerator {
             String _upperCase = pType.name().toUpperCase();
             _builder_3.append(_upperCase);
             _builder_3.append(GameProperties.launcherPostfix);
+            _builder_3.append(".java");
             fileName = _builder_3.toString();
             body = this.generateType(type_4, this.generatorConfigProvider.get(type_4)).toString();
             break;
@@ -419,6 +427,7 @@ public class GameDSLGenerator extends ExtendedJvmModelGenerator {
             String _upperCase_1 = pType.name().toUpperCase();
             _builder_4.append(_upperCase_1);
             _builder_4.append(GameProperties.launcherPostfix);
+            _builder_4.append(".java");
             fileName = _builder_4.toString();
             body = this.generateType(type_5, this.generatorConfigProvider.get(type_5)).toString();
             break;
