@@ -3,16 +3,23 @@
  */
 package com.hypermodel.games.engine.generator;
 
+import apple.uikit.c.UIKit;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.backends.android.AndroidApplicationConfiguration;
+import com.badlogic.gdx.backends.gwt.GwtApplicationConfiguration;
+import com.badlogic.gdx.backends.iosrobovm.IOSApplicationConfiguration;
+import com.badlogic.gdx.backends.lwjgl.LwjglApplication;
+import com.badlogic.gdx.backends.lwjgl.LwjglApplicationConfiguration;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.google.common.base.Objects;
+import com.google.gwt.user.client.Window;
 import com.hypermodel.games.engine.gameDSL.Game;
 import com.hypermodel.games.engine.gameDSL.GameModel;
 import com.hypermodel.games.engine.gameDSL.GamePackage;
 import com.hypermodel.games.engine.generator.ExtendedJvmModelGenerator;
+import com.hypermodel.games.engine.generator.GameProperties;
 import com.hypermodel.games.engine.utils.ImportHelper;
 import java.io.ByteArrayInputStream;
 import java.io.File;
@@ -67,6 +74,8 @@ import org.eclipse.xtext.xbase.lib.Extension;
 import org.eclipse.xtext.xbase.lib.StringExtensions;
 import org.osgi.framework.Bundle;
 import org.osgi.framework.FrameworkUtil;
+import org.robovm.apple.foundation.NSAutoreleasePool;
+import org.robovm.apple.uikit.UIApplication;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -77,20 +86,6 @@ import org.slf4j.LoggerFactory;
  */
 @SuppressWarnings("all")
 public class GameDSLGenerator extends ExtendedJvmModelGenerator {
-  private enum ProjectType {
-    core,
-    
-    android,
-    
-    desktop,
-    
-    html,
-    
-    ios,
-    
-    iosmoe;
-  }
-  
   @Inject
   private IGeneratorConfigProvider generatorConfigProvider;
   
@@ -112,14 +107,30 @@ public class GameDSLGenerator extends ExtendedJvmModelGenerator {
     {
       super.setBuilder(context.eResource());
       EList<JvmTypeReference> _superTypes = this.containerType(context).getSuperTypes();
-      for (final JvmTypeReference superType : _superTypes) {
-        boolean _endsWith = superType.getIdentifier().endsWith("ApplicationAdapter");
-        if (_endsWith) {
-          this._importHelper.addClasses(this, importManager, this._typeReferenceBuilder, SpriteBatch.class, Texture.class, Gdx.class, GL20.class);
-        } else {
-          boolean _endsWith_1 = superType.getIdentifier().endsWith("AndroidApplication");
-          if (_endsWith_1) {
-            this._importHelper.addClasses(this, importManager, this._typeReferenceBuilder, AndroidApplicationConfiguration.class);
+      boolean _tripleEquals = (_superTypes == null);
+      if (_tripleEquals) {
+        this._importHelper.addClasses(this, importManager, this._typeReferenceBuilder, LwjglApplication.class, LwjglApplicationConfiguration.class);
+      } else {
+        EList<JvmTypeReference> _superTypes_1 = this.containerType(context).getSuperTypes();
+        for (final JvmTypeReference superType : _superTypes_1) {
+          boolean _endsWith = superType.getIdentifier().endsWith("ApplicationAdapter");
+          if (_endsWith) {
+            this._importHelper.addClasses(this, importManager, this._typeReferenceBuilder, SpriteBatch.class, Texture.class, Gdx.class, GL20.class);
+          } else {
+            boolean _endsWith_1 = superType.getIdentifier().endsWith("AndroidApplication");
+            if (_endsWith_1) {
+              this._importHelper.addClasses(this, importManager, this._typeReferenceBuilder, AndroidApplicationConfiguration.class);
+            } else {
+              boolean _endsWith_2 = superType.getIdentifier().endsWith("GwtApplication");
+              if (_endsWith_2) {
+                this._importHelper.addClasses(this, importManager, this._typeReferenceBuilder, Window.class, GwtApplicationConfiguration.class);
+              } else {
+                boolean _endsWith_3 = superType.getIdentifier().endsWith("IOSApplication.Delegate");
+                if (_endsWith_3) {
+                  this._importHelper.addClasses(this, importManager, this._typeReferenceBuilder, IOSApplicationConfiguration.class, NSAutoreleasePool.class, UIApplication.class, UIKit.class);
+                }
+              }
+            }
           }
         }
       }
@@ -137,7 +148,7 @@ public class GameDSLGenerator extends ExtendedJvmModelGenerator {
       for (final GamePackage pckg : _packages) {
         {
           EList<EObject> _contents = input.getContents();
-          int _ordinal = GameDSLGenerator.ProjectType.core.ordinal();
+          int _ordinal = GameProperties.ProjectType.core.ordinal();
           int _plus = (_ordinal + 1);
           EObject _get_1 = _contents.get(_plus);
           JvmDeclaredType type = ((JvmDeclaredType) _get_1);
@@ -145,8 +156,8 @@ public class GameDSLGenerator extends ExtendedJvmModelGenerator {
           EList<Game> _games = pckg.getGames();
           for (final Game game : _games) {
             {
-              GameDSLGenerator.ProjectType[] _values = GameDSLGenerator.ProjectType.values();
-              for (final GameDSLGenerator.ProjectType pType : _values) {
+              GameProperties.ProjectType[] _values = GameProperties.ProjectType.values();
+              for (final GameProperties.ProjectType pType : _values) {
                 {
                   IWorkspaceRoot _root = ResourcesPlugin.getWorkspace().getRoot();
                   String _name = game.getName();
@@ -166,8 +177,8 @@ public class GameDSLGenerator extends ExtendedJvmModelGenerator {
                 project.delete(true, this.monitor);
               }
               this.createProject(project);
-              GameDSLGenerator.ProjectType[] _values_1 = GameDSLGenerator.ProjectType.values();
-              for (final GameDSLGenerator.ProjectType pType_1 : _values_1) {
+              GameProperties.ProjectType[] _values_1 = GameProperties.ProjectType.values();
+              for (final GameProperties.ProjectType pType_1 : _values_1) {
                 {
                   IWorkspaceRoot _root = ResourcesPlugin.getWorkspace().getRoot();
                   String _name = game.getName();
@@ -188,7 +199,7 @@ public class GameDSLGenerator extends ExtendedJvmModelGenerator {
     }
   }
   
-  public void copyPlatformResources(final IProject project, final GameDSLGenerator.ProjectType pType) {
+  public void copyPlatformResources(final IProject project, final GameProperties.ProjectType pType) {
     try {
       Bundle bundle = FrameworkUtil.getBundle(this.getClass());
       StringConcatenation _builder = new StringConcatenation();
@@ -230,7 +241,7 @@ public class GameDSLGenerator extends ExtendedJvmModelGenerator {
     }
   }
   
-  public IProject createSubProject(final IProject project, final IProject rootProject, final QualifiedName packageName, final GameDSLGenerator.ProjectType pType, final GamePackage pkg) {
+  public IProject createSubProject(final IProject project, final IProject rootProject, final QualifiedName packageName, final GameProperties.ProjectType pType, final GamePackage pkg) {
     try {
       ArrayList<String> array = CollectionLiterals.<String>newArrayList();
       array.add(JavaCore.NATURE_ID);
@@ -240,7 +251,7 @@ public class GameDSLGenerator extends ExtendedJvmModelGenerator {
       this.copyPlatformResources(project, pType);
       IFile buildgradle = project.getFile("build.gradle");
       buildgradle.create(this.buildGradle(pType, packageName.toString(), pkg), true, this.monitor);
-      boolean _equals = Objects.equal(pType, GameDSLGenerator.ProjectType.android);
+      boolean _equals = Objects.equal(pType, GameProperties.ProjectType.android);
       if (_equals) {
         IFile androidManifest = project.getFile("AndroidManifest.xml");
         androidManifest.create(this.buildAndroidManifest(packageName.toString(), pkg), true, this.monitor);
@@ -328,7 +339,7 @@ public class GameDSLGenerator extends ExtendedJvmModelGenerator {
     }
   }
   
-  public void generatePlatformSource(final IProject project, final QualifiedName packageName, final String coreSourceName, final GameDSLGenerator.ProjectType pType, final Resource input) {
+  public void generatePlatformSource(final IProject project, final QualifiedName packageName, final String gameName, final GameProperties.ProjectType pType, final Resource input) {
     try {
       String fileName = "";
       String body = "";
@@ -337,346 +348,79 @@ public class GameDSLGenerator extends ExtendedJvmModelGenerator {
         switch (pType) {
           case core:
             EList<EObject> _contents = input.getContents();
-            int _ordinal = GameDSLGenerator.ProjectType.core.ordinal();
+            int _ordinal = GameProperties.ProjectType.core.ordinal();
             int _plus = (_ordinal + 1);
             EObject _get = _contents.get(_plus);
             JvmDeclaredType type = ((JvmDeclaredType) _get);
-            fileName = (coreSourceName + ".java");
+            fileName = (gameName + ".java");
             body = this.generateType(type, this.generatorConfigProvider.get(type)).toString();
             break;
           case android:
             EList<EObject> _contents_1 = input.getContents();
-            int _ordinal_1 = GameDSLGenerator.ProjectType.android.ordinal();
+            int _ordinal_1 = GameProperties.ProjectType.android.ordinal();
             int _plus_1 = (_ordinal_1 + 1);
             EObject _get_1 = _contents_1.get(_plus_1);
             JvmDeclaredType type_1 = ((JvmDeclaredType) _get_1);
-            fileName = "AndroidLauncher.java";
+            StringConcatenation _builder = new StringConcatenation();
+            String _firstUpper = StringExtensions.toFirstUpper(pType.name());
+            _builder.append(_firstUpper);
+            _builder.append(GameProperties.launcherPostfix);
+            fileName = _builder.toString();
             body = this.generateType(type_1, this.generatorConfigProvider.get(type_1)).toString();
             break;
           case desktop:
-            fileName = "DesktopLauncher.java";
-            extraSegment = GameDSLGenerator.ProjectType.desktop.name();
-            StringConcatenation _builder = new StringConcatenation();
-            _builder.append("package ");
-            _builder.append(packageName);
-            _builder.append(".");
-            String _name = GameDSLGenerator.ProjectType.desktop.name();
-            _builder.append(_name);
-            _builder.append(";");
-            _builder.newLineIfNotEmpty();
-            _builder.newLine();
-            _builder.append("import com.badlogic.gdx.backends.lwjgl.LwjglApplication;");
-            _builder.newLine();
-            _builder.append("import com.badlogic.gdx.backends.lwjgl.LwjglApplicationConfiguration;");
-            _builder.newLine();
-            _builder.append("import ");
-            _builder.append(packageName);
-            _builder.append(".");
-            _builder.append(coreSourceName);
-            _builder.append(";");
-            _builder.newLineIfNotEmpty();
-            _builder.newLine();
-            _builder.append("public class DesktopLauncher {");
-            _builder.newLine();
-            _builder.append("\t");
-            _builder.append("public static void main (String[] arg) {");
-            _builder.newLine();
-            _builder.append("\t\t");
-            _builder.append("LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();");
-            _builder.newLine();
-            _builder.append("\t\t");
-            _builder.append("new LwjglApplication(new ");
-            _builder.append(coreSourceName, "\t\t");
-            _builder.append("(), config);");
-            _builder.newLineIfNotEmpty();
-            _builder.append("\t");
-            _builder.append("}");
-            _builder.newLine();
-            _builder.append("}");
-            body = _builder.toString();
+            extraSegment = pType.name();
+            EList<EObject> _contents_2 = input.getContents();
+            int _ordinal_2 = GameProperties.ProjectType.desktop.ordinal();
+            int _plus_2 = (_ordinal_2 + 1);
+            EObject _get_2 = _contents_2.get(_plus_2);
+            JvmDeclaredType type_2 = ((JvmDeclaredType) _get_2);
+            StringConcatenation _builder_1 = new StringConcatenation();
+            String _firstUpper_1 = StringExtensions.toFirstUpper(pType.name());
+            _builder_1.append(_firstUpper_1);
+            _builder_1.append(GameProperties.launcherPostfix);
+            fileName = _builder_1.toString();
+            body = this.generateType(type_2, this.generatorConfigProvider.get(type_2)).toString();
             break;
           case html:
-            fileName = "HtmlLauncher.java";
             extraSegment = "client";
-            StringConcatenation _builder_1 = new StringConcatenation();
-            _builder_1.append("package ");
-            _builder_1.append(packageName);
-            _builder_1.append(".client;");
-            _builder_1.newLineIfNotEmpty();
-            _builder_1.newLine();
-            _builder_1.append("import com.badlogic.gdx.ApplicationListener;");
-            _builder_1.newLine();
-            _builder_1.append("import com.badlogic.gdx.backends.gwt.GwtApplication;");
-            _builder_1.newLine();
-            _builder_1.append("import com.badlogic.gdx.backends.gwt.GwtApplicationConfiguration;");
-            _builder_1.newLine();
-            _builder_1.append("import ");
-            _builder_1.append(packageName);
-            _builder_1.append(".");
-            _builder_1.append(coreSourceName);
-            _builder_1.append(";");
-            _builder_1.newLineIfNotEmpty();
-            _builder_1.newLine();
-            _builder_1.append("public class HtmlLauncher extends GwtApplication {");
-            _builder_1.newLine();
-            _builder_1.newLine();
-            _builder_1.append("        ");
-            _builder_1.append("// USE THIS CODE FOR A FIXED SIZE APPLICATION");
-            _builder_1.newLine();
-            _builder_1.append("        ");
-            _builder_1.append("@Override");
-            _builder_1.newLine();
-            _builder_1.append("        ");
-            _builder_1.append("public GwtApplicationConfiguration getConfig () {");
-            _builder_1.newLine();
-            _builder_1.append("                ");
-            _builder_1.append("return new GwtApplicationConfiguration(480, 320);");
-            _builder_1.newLine();
-            _builder_1.append("        ");
-            _builder_1.append("}");
-            _builder_1.newLine();
-            _builder_1.append("        ");
-            _builder_1.append("// END CODE FOR FIXED SIZE APPLICATION");
-            _builder_1.newLine();
-            _builder_1.newLine();
-            _builder_1.append("        ");
-            _builder_1.append("// UNCOMMENT THIS CODE FOR A RESIZABLE APPLICATION");
-            _builder_1.newLine();
-            _builder_1.append("        ");
-            _builder_1.append("// PADDING is to avoid scrolling in iframes, set to 20 if you have problems");
-            _builder_1.newLine();
-            _builder_1.append("        ");
-            _builder_1.append("// private static final int PADDING = 0;");
-            _builder_1.newLine();
-            _builder_1.append("        ");
-            _builder_1.append("// private GwtApplicationConfiguration cfg;");
-            _builder_1.newLine();
-            _builder_1.append("        ");
-            _builder_1.append("//");
-            _builder_1.newLine();
-            _builder_1.append("        ");
-            _builder_1.append("// @Override");
-            _builder_1.newLine();
-            _builder_1.append("        ");
-            _builder_1.append("// public GwtApplicationConfiguration getConfig() {");
-            _builder_1.newLine();
-            _builder_1.append("        ");
-            _builder_1.append("//     int w = Window.getClientWidth() - PADDING;");
-            _builder_1.newLine();
-            _builder_1.append("        ");
-            _builder_1.append("//     int h = Window.getClientHeight() - PADDING;");
-            _builder_1.newLine();
-            _builder_1.append("        ");
-            _builder_1.append("//     cfg = new GwtApplicationConfiguration(w, h);");
-            _builder_1.newLine();
-            _builder_1.append("        ");
-            _builder_1.append("//     Window.enableScrolling(false);");
-            _builder_1.newLine();
-            _builder_1.append("        ");
-            _builder_1.append("//     Window.setMargin(\"0\");");
-            _builder_1.newLine();
-            _builder_1.append("        ");
-            _builder_1.append("//     Window.addResizeHandler(new ResizeListener());");
-            _builder_1.newLine();
-            _builder_1.append("        ");
-            _builder_1.append("//     cfg.preferFlash = false;");
-            _builder_1.newLine();
-            _builder_1.append("        ");
-            _builder_1.append("//     return cfg;");
-            _builder_1.newLine();
-            _builder_1.append("        ");
-            _builder_1.append("// }");
-            _builder_1.newLine();
-            _builder_1.append("        ");
-            _builder_1.append("//");
-            _builder_1.newLine();
-            _builder_1.append("        ");
-            _builder_1.append("// class ResizeListener implements ResizeHandler {");
-            _builder_1.newLine();
-            _builder_1.append("        ");
-            _builder_1.append("//     @Override");
-            _builder_1.newLine();
-            _builder_1.append("        ");
-            _builder_1.append("//     public void onResize(ResizeEvent event) {");
-            _builder_1.newLine();
-            _builder_1.append("        ");
-            _builder_1.append("//         int width = event.getWidth() - PADDING;");
-            _builder_1.newLine();
-            _builder_1.append("        ");
-            _builder_1.append("//         int height = event.getHeight() - PADDING;");
-            _builder_1.newLine();
-            _builder_1.append("        ");
-            _builder_1.append("//         getRootPanel().setWidth(\"\" + width + \"px\");");
-            _builder_1.newLine();
-            _builder_1.append("        ");
-            _builder_1.append("//         getRootPanel().setHeight(\"\" + height + \"px\");");
-            _builder_1.newLine();
-            _builder_1.append("        ");
-            _builder_1.append("//         getApplicationListener().resize(width, height);");
-            _builder_1.newLine();
-            _builder_1.append("        ");
-            _builder_1.append("//         Gdx.graphics.setWindowedMode(width, height);");
-            _builder_1.newLine();
-            _builder_1.append("        ");
-            _builder_1.append("//     }");
-            _builder_1.newLine();
-            _builder_1.append("        ");
-            _builder_1.append("// }");
-            _builder_1.newLine();
-            _builder_1.append("        ");
-            _builder_1.append("// END OF CODE FOR RESIZABLE APPLICATION");
-            _builder_1.newLine();
-            _builder_1.newLine();
-            _builder_1.append("        ");
-            _builder_1.append("@Override");
-            _builder_1.newLine();
-            _builder_1.append("        ");
-            _builder_1.append("public ApplicationListener createApplicationListener () {");
-            _builder_1.newLine();
-            _builder_1.append("                ");
-            _builder_1.append("return new ");
-            _builder_1.append(coreSourceName, "                ");
-            _builder_1.append("();");
-            _builder_1.newLineIfNotEmpty();
-            _builder_1.append("        ");
-            _builder_1.append("}");
-            _builder_1.newLine();
-            _builder_1.append("    ");
-            _builder_1.append("}");
-            body = _builder_1.toString();
+            EList<EObject> _contents_3 = input.getContents();
+            int _ordinal_3 = GameProperties.ProjectType.html.ordinal();
+            int _plus_3 = (_ordinal_3 + 1);
+            EObject _get_3 = _contents_3.get(_plus_3);
+            JvmDeclaredType type_3 = ((JvmDeclaredType) _get_3);
+            StringConcatenation _builder_2 = new StringConcatenation();
+            String _firstUpper_2 = StringExtensions.toFirstUpper(pType.name());
+            _builder_2.append(_firstUpper_2);
+            _builder_2.append(GameProperties.launcherPostfix);
+            fileName = _builder_2.toString();
+            body = this.generateType(type_3, this.generatorConfigProvider.get(type_3)).toString();
             break;
           case ios:
-            fileName = "IOSLauncher.java";
-            extraSegment = "client";
-            StringConcatenation _builder_2 = new StringConcatenation();
-            _builder_2.append("package ");
-            _builder_2.append(packageName);
-            _builder_2.append(".client;");
-            _builder_2.newLineIfNotEmpty();
-            _builder_2.newLine();
-            _builder_2.append("import org.robovm.apple.foundation.NSAutoreleasePool;");
-            _builder_2.newLine();
-            _builder_2.append("import org.robovm.apple.uikit.UIApplication;");
-            _builder_2.newLine();
-            _builder_2.newLine();
-            _builder_2.append("import com.badlogic.gdx.backends.iosrobovm.IOSApplication;");
-            _builder_2.newLine();
-            _builder_2.append("import com.badlogic.gdx.backends.iosrobovm.IOSApplicationConfiguration;");
-            _builder_2.newLine();
-            _builder_2.append("import ");
-            _builder_2.append(packageName);
-            _builder_2.append(".");
-            _builder_2.append(coreSourceName);
-            _builder_2.append(";");
-            _builder_2.newLineIfNotEmpty();
-            _builder_2.newLine();
-            _builder_2.append("public class IOSLauncher extends IOSApplication.Delegate {");
-            _builder_2.newLine();
-            _builder_2.append("    ");
-            _builder_2.append("@Override");
-            _builder_2.newLine();
-            _builder_2.append("    ");
-            _builder_2.append("protected IOSApplication createApplication() {");
-            _builder_2.newLine();
-            _builder_2.append("        ");
-            _builder_2.append("IOSApplicationConfiguration config = new IOSApplicationConfiguration();");
-            _builder_2.newLine();
-            _builder_2.append("        ");
-            _builder_2.append("return new IOSApplication(new ");
-            _builder_2.append(coreSourceName, "        ");
-            _builder_2.append("(), config);");
-            _builder_2.newLineIfNotEmpty();
-            _builder_2.append("    ");
-            _builder_2.append("}");
-            _builder_2.newLine();
-            _builder_2.newLine();
-            _builder_2.append("    ");
-            _builder_2.append("public static void main(String[] argv) {");
-            _builder_2.newLine();
-            _builder_2.append("        ");
-            _builder_2.append("NSAutoreleasePool pool = new NSAutoreleasePool();");
-            _builder_2.newLine();
-            _builder_2.append("        ");
-            _builder_2.append("UIApplication.main(argv, null, IOSLauncher.class);");
-            _builder_2.newLine();
-            _builder_2.append("        ");
-            _builder_2.append("pool.close();");
-            _builder_2.newLine();
-            _builder_2.append("    ");
-            _builder_2.append("}");
-            _builder_2.newLine();
-            _builder_2.append("}");
-            body = _builder_2.toString();
+            EList<EObject> _contents_4 = input.getContents();
+            int _ordinal_4 = GameProperties.ProjectType.ios.ordinal();
+            int _plus_4 = (_ordinal_4 + 1);
+            EObject _get_4 = _contents_4.get(_plus_4);
+            JvmDeclaredType type_4 = ((JvmDeclaredType) _get_4);
+            StringConcatenation _builder_3 = new StringConcatenation();
+            String _upperCase = pType.name().toUpperCase();
+            _builder_3.append(_upperCase);
+            _builder_3.append(GameProperties.launcherPostfix);
+            fileName = _builder_3.toString();
+            body = this.generateType(type_4, this.generatorConfigProvider.get(type_4)).toString();
             break;
           case iosmoe:
-            fileName = "IOSMoeLauncher.java";
-            StringConcatenation _builder_3 = new StringConcatenation();
-            _builder_3.append("package ");
-            _builder_3.append(packageName);
-            _builder_3.append(";");
-            _builder_3.newLineIfNotEmpty();
-            _builder_3.newLine();
-            _builder_3.append("import com.badlogic.gdx.backends.iosmoe.IOSApplication;");
-            _builder_3.newLine();
-            _builder_3.append("import com.badlogic.gdx.backends.iosmoe.IOSApplicationConfiguration;");
-            _builder_3.newLine();
-            _builder_3.append("import org.moe.natj.general.Pointer;");
-            _builder_3.newLine();
-            _builder_3.append("import ");
-            _builder_3.append(packageName);
-            _builder_3.append(".");
-            _builder_3.append(coreSourceName);
-            _builder_3.append(";");
-            _builder_3.newLineIfNotEmpty();
-            _builder_3.newLine();
-            _builder_3.append("import apple.uikit.c.UIKit;");
-            _builder_3.newLine();
-            _builder_3.newLine();
-            _builder_3.append("public class IOSMoeLauncher extends IOSApplication.Delegate {");
-            _builder_3.newLine();
-            _builder_3.newLine();
-            _builder_3.append("    ");
-            _builder_3.append("protected IOSMoeLauncher(Pointer peer) {");
-            _builder_3.newLine();
-            _builder_3.append("        ");
-            _builder_3.append("super(peer);");
-            _builder_3.newLine();
-            _builder_3.append("    ");
-            _builder_3.append("}");
-            _builder_3.newLine();
-            _builder_3.newLine();
-            _builder_3.append("    ");
-            _builder_3.append("@Override");
-            _builder_3.newLine();
-            _builder_3.append("    ");
-            _builder_3.append("protected IOSApplication createApplication() {");
-            _builder_3.newLine();
-            _builder_3.append("        ");
-            _builder_3.append("IOSApplicationConfiguration config = new IOSApplicationConfiguration();");
-            _builder_3.newLine();
-            _builder_3.append("        ");
-            _builder_3.append("config.useAccelerometer = false;");
-            _builder_3.newLine();
-            _builder_3.append("        ");
-            _builder_3.append("return new IOSApplication(new ");
-            _builder_3.append(coreSourceName, "        ");
-            _builder_3.append("(), config);");
-            _builder_3.newLineIfNotEmpty();
-            _builder_3.append("    ");
-            _builder_3.append("}");
-            _builder_3.newLine();
-            _builder_3.newLine();
-            _builder_3.append("    ");
-            _builder_3.append("public static void main(String[] argv) {");
-            _builder_3.newLine();
-            _builder_3.append("        ");
-            _builder_3.append("UIKit.UIApplicationMain(0, null, null, IOSMoeLauncher.class.getName());");
-            _builder_3.newLine();
-            _builder_3.append("    ");
-            _builder_3.append("}");
-            _builder_3.newLine();
-            _builder_3.append("}");
-            body = _builder_3.toString();
+            EList<EObject> _contents_5 = input.getContents();
+            int _ordinal_5 = GameProperties.ProjectType.iosmoe.ordinal();
+            int _plus_5 = (_ordinal_5 + 1);
+            EObject _get_5 = _contents_5.get(_plus_5);
+            JvmDeclaredType type_5 = ((JvmDeclaredType) _get_5);
+            StringConcatenation _builder_4 = new StringConcatenation();
+            String _upperCase_1 = pType.name().toUpperCase();
+            _builder_4.append(_upperCase_1);
+            _builder_4.append(GameProperties.launcherPostfix);
+            fileName = _builder_4.toString();
+            body = this.generateType(type_5, this.generatorConfigProvider.get(type_5)).toString();
             break;
           default:
             break;
@@ -694,6 +438,7 @@ public class GameDSLGenerator extends ExtendedJvmModelGenerator {
           }
         }
       }
+      IFolder basePackageFolder = folder;
       boolean _isEmpty = extraSegment.isEmpty();
       boolean _not = (!_isEmpty);
       if (_not) {
@@ -712,12 +457,19 @@ public class GameDSLGenerator extends ExtendedJvmModelGenerator {
       byte[] _bytes = body.getBytes("UTF-8");
       ByteArrayInputStream _byteArrayInputStream = new ByteArrayInputStream(_bytes);
       source.create(_byteArrayInputStream, true, this.monitor);
+      boolean _equals = Objects.equal(pType, GameProperties.ProjectType.html);
+      if (_equals) {
+        IFile gwtDef = basePackageFolder.getFile("GdxDefinition.gwt.xml");
+        gwtDef.create(this.buildGwt(gameName, packageName.toString(), fileName), true, this.monitor);
+        IFile gwtDefSuperdev = basePackageFolder.getFile("GdxDefinitionSuperdev.gwt.xml");
+        gwtDefSuperdev.create(this.buildGwtSuperdev(packageName.toString()), true, this.monitor);
+      }
     } catch (Throwable _e) {
       throw Exceptions.sneakyThrow(_e);
     }
   }
   
-  protected void createBasicProject(final IProject project, final IProject rootProject, final GameDSLGenerator.ProjectType pType, final ArrayList<String> natures, final boolean isRoot) {
+  protected void createBasicProject(final IProject project, final IProject rootProject, final GameProperties.ProjectType pType, final ArrayList<String> natures, final boolean isRoot) {
     try {
       if ((!isRoot)) {
         ProjectDescription description = new ProjectDescription();
@@ -754,7 +506,7 @@ public class GameDSLGenerator extends ExtendedJvmModelGenerator {
     }
   }
   
-  protected void createJDTProject(final IProject project, final GameDSLGenerator.ProjectType pType) {
+  protected void createJDTProject(final IProject project, final GameProperties.ProjectType pType) {
     try {
       ArrayList<IClasspathEntry> entries = CollectionLiterals.<IClasspathEntry>newArrayList();
       IJavaProject javaProject = JavaCore.create(project);
@@ -763,7 +515,7 @@ public class GameDSLGenerator extends ExtendedJvmModelGenerator {
       IPackageFragmentRoot packageRoot = javaProject.getPackageFragmentRoot(src);
       IClasspathEntry srcEntry = JavaCore.newSourceEntry(packageRoot.getPath(), null, null, null);
       entries.add(srcEntry);
-      boolean _equals = Objects.equal(pType, GameDSLGenerator.ProjectType.android);
+      boolean _equals = Objects.equal(pType, GameProperties.ProjectType.android);
       if (_equals) {
         IFolder gen = project.getFolder("gen");
         gen.create(true, true, this.monitor);
@@ -782,7 +534,7 @@ public class GameDSLGenerator extends ExtendedJvmModelGenerator {
       Path _path = new Path("org.eclipse.buildship.core.gradleclasspathcontainer");
       IClasspathEntry gradleEntry = JavaCore.newContainerEntry(_path, true);
       entries.add(gradleEntry);
-      boolean _equals_2 = Objects.equal(pType, GameDSLGenerator.ProjectType.android);
+      boolean _equals_2 = Objects.equal(pType, GameProperties.ProjectType.android);
       if (_equals_2) {
         Path _path_1 = new Path("com.android.ide.eclipse.adt.ANDROID_FRAMEWORK");
         IClasspathEntry android1 = JavaCore.newContainerEntry(_path_1, true);
@@ -798,7 +550,7 @@ public class GameDSLGenerator extends ExtendedJvmModelGenerator {
       javaProject.setRawClasspath(((IClasspathEntry[])Conversions.unwrapArray(_converted_entries, IClasspathEntry.class)), null);
       IFolder binFolder = project.getFolder("bin");
       binFolder.create(true, true, this.monitor);
-      boolean _equals_3 = Objects.equal(pType, GameDSLGenerator.ProjectType.android);
+      boolean _equals_3 = Objects.equal(pType, GameProperties.ProjectType.android);
       if (_equals_3) {
         IFolder classesFolder = binFolder.getFolder("classes");
         classesFolder.create(true, true, this.monitor);
@@ -833,12 +585,12 @@ public class GameDSLGenerator extends ExtendedJvmModelGenerator {
   
   public ByteArrayInputStream buildSettingsGradle() {
     try {
-      final Function<GameDSLGenerator.ProjectType, String> _function = (GameDSLGenerator.ProjectType v) -> {
+      final Function<GameProperties.ProjectType, String> _function = (GameProperties.ProjectType v) -> {
         String _name = v.name();
         String _plus = ("\':" + _name);
         return (_plus + "\'");
       };
-      String projects = ((List<GameDSLGenerator.ProjectType>)Conversions.doWrapArray(GameDSLGenerator.ProjectType.values())).stream().<String>map(_function).collect(Collectors.joining(", "));
+      String projects = ((List<GameProperties.ProjectType>)Conversions.doWrapArray(GameProperties.ProjectType.values())).stream().<String>map(_function).collect(Collectors.joining(", "));
       byte[] _bytes = ("include " + projects).getBytes("UTF-8");
       return new ByteArrayInputStream(_bytes);
     } catch (Throwable _e) {
@@ -979,7 +731,7 @@ public class GameDSLGenerator extends ExtendedJvmModelGenerator {
       _builder.newLine();
       _builder.newLine();
       _builder.append("project(\":");
-      String _name = GameDSLGenerator.ProjectType.desktop.name();
+      String _name = GameProperties.ProjectType.desktop.name();
       _builder.append(_name);
       _builder.append("\") {");
       _builder.newLineIfNotEmpty();
@@ -993,7 +745,7 @@ public class GameDSLGenerator extends ExtendedJvmModelGenerator {
       _builder.newLine();
       _builder.append("        ");
       _builder.append("compile project(\":");
-      String _name_1 = GameDSLGenerator.ProjectType.core.name();
+      String _name_1 = GameProperties.ProjectType.core.name();
       _builder.append(_name_1, "        ");
       _builder.append("\")");
       _builder.newLineIfNotEmpty();
@@ -1015,7 +767,7 @@ public class GameDSLGenerator extends ExtendedJvmModelGenerator {
       _builder.newLine();
       _builder.newLine();
       _builder.append("project(\":");
-      String _name_2 = GameDSLGenerator.ProjectType.android.name();
+      String _name_2 = GameProperties.ProjectType.android.name();
       _builder.append(_name_2);
       _builder.append("\") {");
       _builder.newLineIfNotEmpty();
@@ -1032,7 +784,7 @@ public class GameDSLGenerator extends ExtendedJvmModelGenerator {
       _builder.newLine();
       _builder.append("        ");
       _builder.append("compile project(\":");
-      String _name_3 = GameDSLGenerator.ProjectType.core.name();
+      String _name_3 = GameProperties.ProjectType.core.name();
       _builder.append(_name_3, "        ");
       _builder.append("\")");
       _builder.newLineIfNotEmpty();
@@ -1079,7 +831,7 @@ public class GameDSLGenerator extends ExtendedJvmModelGenerator {
       _builder.newLine();
       _builder.newLine();
       _builder.append("project(\":");
-      String _name_4 = GameDSLGenerator.ProjectType.ios.name();
+      String _name_4 = GameProperties.ProjectType.ios.name();
       _builder.append(_name_4);
       _builder.append("\") {");
       _builder.newLineIfNotEmpty();
@@ -1096,7 +848,7 @@ public class GameDSLGenerator extends ExtendedJvmModelGenerator {
       _builder.newLine();
       _builder.append("        ");
       _builder.append("compile project(\":");
-      String _name_5 = GameDSLGenerator.ProjectType.core.name();
+      String _name_5 = GameProperties.ProjectType.core.name();
       _builder.append(_name_5, "        ");
       _builder.append("\")");
       _builder.newLineIfNotEmpty();
@@ -1122,7 +874,7 @@ public class GameDSLGenerator extends ExtendedJvmModelGenerator {
       _builder.newLine();
       _builder.newLine();
       _builder.append("project(\":");
-      String _name_6 = GameDSLGenerator.ProjectType.html.name();
+      String _name_6 = GameProperties.ProjectType.html.name();
       _builder.append(_name_6);
       _builder.append("\") {");
       _builder.newLineIfNotEmpty();
@@ -1139,7 +891,7 @@ public class GameDSLGenerator extends ExtendedJvmModelGenerator {
       _builder.newLine();
       _builder.append("        ");
       _builder.append("compile project(\":");
-      String _name_7 = GameDSLGenerator.ProjectType.core.name();
+      String _name_7 = GameProperties.ProjectType.core.name();
       _builder.append(_name_7, "        ");
       _builder.append("\")");
       _builder.newLineIfNotEmpty();
@@ -1165,7 +917,7 @@ public class GameDSLGenerator extends ExtendedJvmModelGenerator {
       _builder.newLine();
       _builder.newLine();
       _builder.append("project(\":");
-      String _name_8 = GameDSLGenerator.ProjectType.core.name();
+      String _name_8 = GameProperties.ProjectType.core.name();
       _builder.append(_name_8);
       _builder.append("\") {");
       _builder.newLineIfNotEmpty();
@@ -1253,7 +1005,7 @@ public class GameDSLGenerator extends ExtendedJvmModelGenerator {
       _builder.append("## Robovm");
       _builder.newLine();
       _builder.append("/");
-      String _name = GameDSLGenerator.ProjectType.ios.name();
+      String _name = GameProperties.ProjectType.ios.name();
       _builder.append(_name);
       _builder.append("/robovm-build/");
       _builder.newLineIfNotEmpty();
@@ -1261,12 +1013,12 @@ public class GameDSLGenerator extends ExtendedJvmModelGenerator {
       _builder.append("## GWT");
       _builder.newLine();
       _builder.append("/");
-      String _name_1 = GameDSLGenerator.ProjectType.html.name();
+      String _name_1 = GameProperties.ProjectType.html.name();
       _builder.append(_name_1);
       _builder.append("/war/");
       _builder.newLineIfNotEmpty();
       _builder.append("/");
-      String _name_2 = GameDSLGenerator.ProjectType.html.name();
+      String _name_2 = GameProperties.ProjectType.html.name();
       _builder.append(_name_2);
       _builder.append("/gwt-unitCache/");
       _builder.newLineIfNotEmpty();
@@ -1304,7 +1056,7 @@ public class GameDSLGenerator extends ExtendedJvmModelGenerator {
       _builder.append("*.iml");
       _builder.newLine();
       _builder.append("/");
-      String _name_3 = GameDSLGenerator.ProjectType.android.name();
+      String _name_3 = GameProperties.ProjectType.android.name();
       _builder.append(_name_3);
       _builder.append("/out/");
       _builder.newLineIfNotEmpty();
@@ -1321,32 +1073,32 @@ public class GameDSLGenerator extends ExtendedJvmModelGenerator {
       _builder.append(".metadata/");
       _builder.newLine();
       _builder.append("/");
-      String _name_4 = GameDSLGenerator.ProjectType.android.name();
+      String _name_4 = GameProperties.ProjectType.android.name();
       _builder.append(_name_4);
       _builder.append("/bin/");
       _builder.newLineIfNotEmpty();
       _builder.append("/");
-      String _name_5 = GameDSLGenerator.ProjectType.core.name();
+      String _name_5 = GameProperties.ProjectType.core.name();
       _builder.append(_name_5);
       _builder.append("/bin/");
       _builder.newLineIfNotEmpty();
       _builder.append("/");
-      String _name_6 = GameDSLGenerator.ProjectType.desktop.name();
+      String _name_6 = GameProperties.ProjectType.desktop.name();
       _builder.append(_name_6);
       _builder.append("/bin/");
       _builder.newLineIfNotEmpty();
       _builder.append("/");
-      String _name_7 = GameDSLGenerator.ProjectType.html.name();
+      String _name_7 = GameProperties.ProjectType.html.name();
       _builder.append(_name_7);
       _builder.append("/bin/");
       _builder.newLineIfNotEmpty();
       _builder.append("/");
-      String _name_8 = GameDSLGenerator.ProjectType.ios.name();
+      String _name_8 = GameProperties.ProjectType.ios.name();
       _builder.append(_name_8);
       _builder.append("/bin/");
       _builder.newLineIfNotEmpty();
       _builder.append("/");
-      String _name_9 = GameDSLGenerator.ProjectType.iosmoe.name();
+      String _name_9 = GameProperties.ProjectType.iosmoe.name();
       _builder.append(_name_9);
       _builder.append("/bin/");
       _builder.newLineIfNotEmpty();
@@ -1373,32 +1125,32 @@ public class GameDSLGenerator extends ExtendedJvmModelGenerator {
       _builder.append("/nbproject/private/");
       _builder.newLine();
       _builder.append("/");
-      String _name_10 = GameDSLGenerator.ProjectType.android.name();
+      String _name_10 = GameProperties.ProjectType.android.name();
       _builder.append(_name_10);
       _builder.append("/nbproject/private/");
       _builder.newLineIfNotEmpty();
       _builder.append("/");
-      String _name_11 = GameDSLGenerator.ProjectType.core.name();
+      String _name_11 = GameProperties.ProjectType.core.name();
       _builder.append(_name_11);
       _builder.append("/nbproject/private/");
       _builder.newLineIfNotEmpty();
       _builder.append("/");
-      String _name_12 = GameDSLGenerator.ProjectType.desktop.name();
+      String _name_12 = GameProperties.ProjectType.desktop.name();
       _builder.append(_name_12);
       _builder.append("/nbproject/private/");
       _builder.newLineIfNotEmpty();
       _builder.append("/");
-      String _name_13 = GameDSLGenerator.ProjectType.html.name();
+      String _name_13 = GameProperties.ProjectType.html.name();
       _builder.append(_name_13);
       _builder.append("/nbproject/private/");
       _builder.newLineIfNotEmpty();
       _builder.append("/");
-      String _name_14 = GameDSLGenerator.ProjectType.ios.name();
+      String _name_14 = GameProperties.ProjectType.ios.name();
       _builder.append(_name_14);
       _builder.append("/nbproject/private/");
       _builder.newLineIfNotEmpty();
       _builder.append("/");
-      String _name_15 = GameDSLGenerator.ProjectType.iosmoe.name();
+      String _name_15 = GameProperties.ProjectType.iosmoe.name();
       _builder.append(_name_15);
       _builder.append("/nbproject/private/");
       _builder.newLineIfNotEmpty();
@@ -1406,32 +1158,32 @@ public class GameDSLGenerator extends ExtendedJvmModelGenerator {
       _builder.append("/build/");
       _builder.newLine();
       _builder.append("/");
-      String _name_16 = GameDSLGenerator.ProjectType.android.name();
+      String _name_16 = GameProperties.ProjectType.android.name();
       _builder.append(_name_16);
       _builder.append("/build/");
       _builder.newLineIfNotEmpty();
       _builder.append("/");
-      String _name_17 = GameDSLGenerator.ProjectType.core.name();
+      String _name_17 = GameProperties.ProjectType.core.name();
       _builder.append(_name_17);
       _builder.append("/build/");
       _builder.newLineIfNotEmpty();
       _builder.append("/");
-      String _name_18 = GameDSLGenerator.ProjectType.desktop.name();
+      String _name_18 = GameProperties.ProjectType.desktop.name();
       _builder.append(_name_18);
       _builder.append("/build/");
       _builder.newLineIfNotEmpty();
       _builder.append("/");
-      String _name_19 = GameDSLGenerator.ProjectType.html.name();
+      String _name_19 = GameProperties.ProjectType.html.name();
       _builder.append(_name_19);
       _builder.append("/build/");
       _builder.newLineIfNotEmpty();
       _builder.append("/");
-      String _name_20 = GameDSLGenerator.ProjectType.ios.name();
+      String _name_20 = GameProperties.ProjectType.ios.name();
       _builder.append(_name_20);
       _builder.append("/build/");
       _builder.newLineIfNotEmpty();
       _builder.append("/");
-      String _name_21 = GameDSLGenerator.ProjectType.iosmoe.name();
+      String _name_21 = GameProperties.ProjectType.iosmoe.name();
       _builder.append(_name_21);
       _builder.append("/build/");
       _builder.newLineIfNotEmpty();
@@ -1439,32 +1191,32 @@ public class GameDSLGenerator extends ExtendedJvmModelGenerator {
       _builder.append("/nbbuild/");
       _builder.newLine();
       _builder.append("/");
-      String _name_22 = GameDSLGenerator.ProjectType.android.name();
+      String _name_22 = GameProperties.ProjectType.android.name();
       _builder.append(_name_22);
       _builder.append("/nbbuild/");
       _builder.newLineIfNotEmpty();
       _builder.append("/");
-      String _name_23 = GameDSLGenerator.ProjectType.core.name();
+      String _name_23 = GameProperties.ProjectType.core.name();
       _builder.append(_name_23);
       _builder.append("/nbbuild/");
       _builder.newLineIfNotEmpty();
       _builder.append("/");
-      String _name_24 = GameDSLGenerator.ProjectType.desktop.name();
+      String _name_24 = GameProperties.ProjectType.desktop.name();
       _builder.append(_name_24);
       _builder.append("/nbbuild/");
       _builder.newLineIfNotEmpty();
       _builder.append("/");
-      String _name_25 = GameDSLGenerator.ProjectType.html.name();
+      String _name_25 = GameProperties.ProjectType.html.name();
       _builder.append(_name_25);
       _builder.append("/nbbuild/");
       _builder.newLineIfNotEmpty();
       _builder.append("/");
-      String _name_26 = GameDSLGenerator.ProjectType.ios.name();
+      String _name_26 = GameProperties.ProjectType.ios.name();
       _builder.append(_name_26);
       _builder.append("/nbbuild/");
       _builder.newLineIfNotEmpty();
       _builder.append("/");
-      String _name_27 = GameDSLGenerator.ProjectType.iosmoe.name();
+      String _name_27 = GameProperties.ProjectType.iosmoe.name();
       _builder.append(_name_27);
       _builder.append("/nbbuild/");
       _builder.newLineIfNotEmpty();
@@ -1472,32 +1224,32 @@ public class GameDSLGenerator extends ExtendedJvmModelGenerator {
       _builder.append("/dist/");
       _builder.newLine();
       _builder.append("/");
-      String _name_28 = GameDSLGenerator.ProjectType.android.name();
+      String _name_28 = GameProperties.ProjectType.android.name();
       _builder.append(_name_28);
       _builder.append("/dist/");
       _builder.newLineIfNotEmpty();
       _builder.append("/");
-      String _name_29 = GameDSLGenerator.ProjectType.core.name();
+      String _name_29 = GameProperties.ProjectType.core.name();
       _builder.append(_name_29);
       _builder.append("/dist/");
       _builder.newLineIfNotEmpty();
       _builder.append("/");
-      String _name_30 = GameDSLGenerator.ProjectType.desktop.name();
+      String _name_30 = GameProperties.ProjectType.desktop.name();
       _builder.append(_name_30);
       _builder.append("/dist/");
       _builder.newLineIfNotEmpty();
       _builder.append("/");
-      String _name_31 = GameDSLGenerator.ProjectType.html.name();
+      String _name_31 = GameProperties.ProjectType.html.name();
       _builder.append(_name_31);
       _builder.append("/dist/");
       _builder.newLineIfNotEmpty();
       _builder.append("/");
-      String _name_32 = GameDSLGenerator.ProjectType.ios.name();
+      String _name_32 = GameProperties.ProjectType.ios.name();
       _builder.append(_name_32);
       _builder.append("/dist/");
       _builder.newLineIfNotEmpty();
       _builder.append("/");
-      String _name_33 = GameDSLGenerator.ProjectType.iosmoe.name();
+      String _name_33 = GameProperties.ProjectType.iosmoe.name();
       _builder.append(_name_33);
       _builder.append("/dist/");
       _builder.newLineIfNotEmpty();
@@ -1505,32 +1257,32 @@ public class GameDSLGenerator extends ExtendedJvmModelGenerator {
       _builder.append("/nbdist/");
       _builder.newLine();
       _builder.append("/");
-      String _name_34 = GameDSLGenerator.ProjectType.android.name();
+      String _name_34 = GameProperties.ProjectType.android.name();
       _builder.append(_name_34);
       _builder.append("/nbdist/");
       _builder.newLineIfNotEmpty();
       _builder.append("/");
-      String _name_35 = GameDSLGenerator.ProjectType.core.name();
+      String _name_35 = GameProperties.ProjectType.core.name();
       _builder.append(_name_35);
       _builder.append("/nbdist/");
       _builder.newLineIfNotEmpty();
       _builder.append("/");
-      String _name_36 = GameDSLGenerator.ProjectType.desktop.name();
+      String _name_36 = GameProperties.ProjectType.desktop.name();
       _builder.append(_name_36);
       _builder.append("/nbdist/");
       _builder.newLineIfNotEmpty();
       _builder.append("/");
-      String _name_37 = GameDSLGenerator.ProjectType.html.name();
+      String _name_37 = GameProperties.ProjectType.html.name();
       _builder.append(_name_37);
       _builder.append("/nbdist/");
       _builder.newLineIfNotEmpty();
       _builder.append("/");
-      String _name_38 = GameDSLGenerator.ProjectType.ios.name();
+      String _name_38 = GameProperties.ProjectType.ios.name();
       _builder.append(_name_38);
       _builder.append("/nbdist/");
       _builder.newLineIfNotEmpty();
       _builder.append("/");
-      String _name_39 = GameDSLGenerator.ProjectType.iosmoe.name();
+      String _name_39 = GameProperties.ProjectType.iosmoe.name();
       _builder.append(_name_39);
       _builder.append("/nbdist/");
       _builder.newLineIfNotEmpty();
@@ -1552,32 +1304,32 @@ public class GameDSLGenerator extends ExtendedJvmModelGenerator {
       _builder.append("/build/");
       _builder.newLine();
       _builder.append("/");
-      String _name_40 = GameDSLGenerator.ProjectType.android.name();
+      String _name_40 = GameProperties.ProjectType.android.name();
       _builder.append(_name_40);
       _builder.append("/build/");
       _builder.newLineIfNotEmpty();
       _builder.append("/");
-      String _name_41 = GameDSLGenerator.ProjectType.core.name();
+      String _name_41 = GameProperties.ProjectType.core.name();
       _builder.append(_name_41);
       _builder.append("/build/");
       _builder.newLineIfNotEmpty();
       _builder.append("/");
-      String _name_42 = GameDSLGenerator.ProjectType.desktop.name();
+      String _name_42 = GameProperties.ProjectType.desktop.name();
       _builder.append(_name_42);
       _builder.append("/build/");
       _builder.newLineIfNotEmpty();
       _builder.append("/");
-      String _name_43 = GameDSLGenerator.ProjectType.html.name();
+      String _name_43 = GameProperties.ProjectType.html.name();
       _builder.append(_name_43);
       _builder.append("/build/");
       _builder.newLineIfNotEmpty();
       _builder.append("/");
-      String _name_44 = GameDSLGenerator.ProjectType.ios.name();
+      String _name_44 = GameProperties.ProjectType.ios.name();
       _builder.append(_name_44);
       _builder.append("/build/");
       _builder.newLineIfNotEmpty();
       _builder.append("/");
-      String _name_45 = GameDSLGenerator.ProjectType.iosmoe.name();
+      String _name_45 = GameProperties.ProjectType.iosmoe.name();
       _builder.append(_name_45);
       _builder.append("/build/");
       _builder.newLineIfNotEmpty();
@@ -1592,43 +1344,43 @@ public class GameDSLGenerator extends ExtendedJvmModelGenerator {
       _builder.append("## iOS");
       _builder.newLine();
       _builder.append("/");
-      String _name_46 = GameDSLGenerator.ProjectType.ios.name();
+      String _name_46 = GameProperties.ProjectType.ios.name();
       _builder.append(_name_46);
       _builder.append("/xcode/*.xcodeproj/*");
       _builder.newLineIfNotEmpty();
       _builder.append("!/");
-      String _name_47 = GameDSLGenerator.ProjectType.ios.name();
+      String _name_47 = GameProperties.ProjectType.ios.name();
       _builder.append(_name_47);
       _builder.append("/xcode/*.xcodeproj/xcshareddata");
       _builder.newLineIfNotEmpty();
       _builder.append("!/");
-      String _name_48 = GameDSLGenerator.ProjectType.ios.name();
+      String _name_48 = GameProperties.ProjectType.ios.name();
       _builder.append(_name_48);
       _builder.append("/xcode/*.xcodeproj/project.pbxproj");
       _builder.newLineIfNotEmpty();
       _builder.append("/");
-      String _name_49 = GameDSLGenerator.ProjectType.ios.name();
+      String _name_49 = GameProperties.ProjectType.ios.name();
       _builder.append(_name_49);
       _builder.append("/xcode/native/");
       _builder.newLineIfNotEmpty();
       _builder.newLine();
       _builder.append("/");
-      String _name_50 = GameDSLGenerator.ProjectType.iosmoe.name();
+      String _name_50 = GameProperties.ProjectType.iosmoe.name();
       _builder.append(_name_50);
       _builder.append("/xcode/*.xcodeproj/*");
       _builder.newLineIfNotEmpty();
       _builder.append("!/");
-      String _name_51 = GameDSLGenerator.ProjectType.iosmoe.name();
+      String _name_51 = GameProperties.ProjectType.iosmoe.name();
       _builder.append(_name_51);
       _builder.append("/xcode/*.xcodeproj/xcshareddata");
       _builder.newLineIfNotEmpty();
       _builder.append("!/");
-      String _name_52 = GameDSLGenerator.ProjectType.iosmoe.name();
+      String _name_52 = GameProperties.ProjectType.iosmoe.name();
       _builder.append(_name_52);
       _builder.append("/xcode/*.xcodeproj/project.pbxproj");
       _builder.newLineIfNotEmpty();
       _builder.append("/");
-      String _name_53 = GameDSLGenerator.ProjectType.iosmoe.name();
+      String _name_53 = GameProperties.ProjectType.iosmoe.name();
       _builder.append(_name_53);
       _builder.append("/xcode/native/");
       _builder.newLineIfNotEmpty();
@@ -1703,7 +1455,7 @@ public class GameDSLGenerator extends ExtendedJvmModelGenerator {
     }
   }
   
-  protected ByteArrayInputStream buildGradle(final GameDSLGenerator.ProjectType pType, final String packageName, final GamePackage pkg) {
+  protected ByteArrayInputStream buildGradle(final GameProperties.ProjectType pType, final String packageName, final GamePackage pkg) {
     try {
       String script = "";
       if (pType != null) {
@@ -1735,7 +1487,7 @@ public class GameDSLGenerator extends ExtendedJvmModelGenerator {
             break;
           case android:
             StringConcatenation _builder_1 = new StringConcatenation();
-            String _name_1 = GameDSLGenerator.ProjectType.android.name();
+            String _name_1 = GameProperties.ProjectType.android.name();
             _builder_1.append(_name_1);
             _builder_1.append(" {");
             _builder_1.newLineIfNotEmpty();
@@ -2033,7 +1785,7 @@ public class GameDSLGenerator extends ExtendedJvmModelGenerator {
             _builder_1.newLine();
             _builder_1.append("        ");
             _builder_1.append("name = appName + \"-");
-            String _name_2 = GameDSLGenerator.ProjectType.android.name();
+            String _name_2 = GameProperties.ProjectType.android.name();
             _builder_1.append(_name_2, "        ");
             _builder_1.append("\"");
             _builder_1.newLineIfNotEmpty();
@@ -2147,7 +1899,7 @@ public class GameDSLGenerator extends ExtendedJvmModelGenerator {
             _builder_2.append(".DesktopLauncher\"");
             _builder_2.newLineIfNotEmpty();
             _builder_2.append("project.ext.assetsDir = new File(\"../");
-            String _name_5 = GameDSLGenerator.ProjectType.android.name();
+            String _name_5 = GameProperties.ProjectType.android.name();
             _builder_2.append(_name_5);
             _builder_2.append("/assets\");");
             _builder_2.newLineIfNotEmpty();
@@ -2233,13 +1985,13 @@ public class GameDSLGenerator extends ExtendedJvmModelGenerator {
             _builder_2.newLine();
             _builder_2.append("        ");
             _builder_2.append("name = appName + \"-");
-            String _name_6 = GameDSLGenerator.ProjectType.desktop.name();
+            String _name_6 = GameProperties.ProjectType.desktop.name();
             _builder_2.append(_name_6, "        ");
             _builder_2.append("\"");
             _builder_2.newLineIfNotEmpty();
             _builder_2.append("        ");
             _builder_2.append("linkedResource name: \'assets\', type: \'2\', location: \'PARENT-1-PROJECT_LOC/");
-            String _name_7 = GameDSLGenerator.ProjectType.android.name();
+            String _name_7 = GameProperties.ProjectType.android.name();
             _builder_2.append(_name_7, "        ");
             _builder_2.append("/assets\'");
             _builder_2.newLineIfNotEmpty();
@@ -2428,7 +2180,7 @@ public class GameDSLGenerator extends ExtendedJvmModelGenerator {
             _builder_3.newLine();
             _builder_3.append("        ");
             _builder_3.append("sourceSets.main.compileClasspath += files(project(\':");
-            String _name_8 = GameDSLGenerator.ProjectType.core.name();
+            String _name_8 = GameProperties.ProjectType.core.name();
             _builder_3.append(_name_8, "        ");
             _builder_3.append("\').sourceSets.main.allJava.srcDirs)");
             _builder_3.newLineIfNotEmpty();
@@ -2579,7 +2331,7 @@ public class GameDSLGenerator extends ExtendedJvmModelGenerator {
             _builder_5.newLine();
             _builder_5.append("        ");
             _builder_5.append("def outFlags = file(\"xcode/");
-            String _name_11 = GameDSLGenerator.ProjectType.iosmoe.name();
+            String _name_11 = GameProperties.ProjectType.iosmoe.name();
             _builder_5.append(_name_11, "        ");
             _builder_5.append("/custom.xcconfig\");");
             _builder_5.newLineIfNotEmpty();
@@ -2623,19 +2375,19 @@ public class GameDSLGenerator extends ExtendedJvmModelGenerator {
             _builder_5.newLine();
             _builder_5.append("        ");
             _builder_5.append("project \'xcode/");
-            String _name_12 = GameDSLGenerator.ProjectType.iosmoe.name();
+            String _name_12 = GameProperties.ProjectType.iosmoe.name();
             _builder_5.append(_name_12, "        ");
             _builder_5.append(".xcodeproj\'");
             _builder_5.newLineIfNotEmpty();
             _builder_5.append("        ");
             _builder_5.append("mainTarget \'");
-            String _name_13 = GameDSLGenerator.ProjectType.iosmoe.name();
+            String _name_13 = GameProperties.ProjectType.iosmoe.name();
             _builder_5.append(_name_13, "        ");
             _builder_5.append("\'");
             _builder_5.newLineIfNotEmpty();
             _builder_5.append("        ");
             _builder_5.append("testTarget \'");
-            String _name_14 = GameDSLGenerator.ProjectType.iosmoe.name();
+            String _name_14 = GameProperties.ProjectType.iosmoe.name();
             _builder_5.append(_name_14, "        ");
             _builder_5.append("-Test\'");
             _builder_5.newLineIfNotEmpty();
@@ -2676,7 +2428,7 @@ public class GameDSLGenerator extends ExtendedJvmModelGenerator {
             _builder_5.newLine();
             _builder_5.append("        ");
             _builder_5.append("name = appName + \"-");
-            String _name_15 = GameDSLGenerator.ProjectType.iosmoe.name();
+            String _name_15 = GameProperties.ProjectType.iosmoe.name();
             _builder_5.append(_name_15, "        ");
             _builder_5.append("\"");
             _builder_5.newLineIfNotEmpty();
@@ -2779,6 +2531,97 @@ public class GameDSLGenerator extends ExtendedJvmModelGenerator {
       _builder.newLine();
       _builder.newLine();
       _builder.append("</manifest>");
+      _builder.newLine();
+      String script = _builder.toString();
+      byte[] _bytes = script.getBytes("UTF-8");
+      return new ByteArrayInputStream(_bytes);
+    } catch (Throwable _e) {
+      throw Exceptions.sneakyThrow(_e);
+    }
+  }
+  
+  protected ByteArrayInputStream buildGwtSuperdev(final String packageName) {
+    try {
+      StringConcatenation _builder = new StringConcatenation();
+      _builder.append("<?xml version=\"1.0\" encoding=\"UTF-8\"?>");
+      _builder.newLine();
+      _builder.append("<!DOCTYPE module PUBLIC \"-//Google Inc.//DTD Google Web Toolkit trunk//EN\" \"http://google-web-toolkit.googlecode.com/svn/trunk/distro-source/core/src/gwt-module.dtd\">");
+      _builder.newLine();
+      _builder.append("<module rename-to=\"html\">");
+      _builder.newLine();
+      _builder.append("\t");
+      _builder.append("<inherits name=\'com.badlogic.gdx.backends.gdx_backends_gwt\' />");
+      _builder.newLine();
+      _builder.append("\t");
+      _builder.append("<inherits name=\'com.badlogic.gdx.physics.box2d.box2d-gwt\' />");
+      _builder.newLine();
+      _builder.newLine();
+      _builder.append("    ");
+      _builder.append("<inherits name=\'");
+      _builder.append(packageName, "    ");
+      _builder.append(".GdxDefinition\' />");
+      _builder.newLineIfNotEmpty();
+      _builder.append("    ");
+      _builder.newLine();
+      _builder.append("    ");
+      _builder.append("<collapse-all-properties />");
+      _builder.newLine();
+      _builder.append("    ");
+      _builder.newLine();
+      _builder.append("\t");
+      _builder.append("<add-linker name=\"xsiframe\"/>\t");
+      _builder.newLine();
+      _builder.append("\t");
+      _builder.append("<set-configuration-property name=\"devModeRedirectEnabled\" value=\"true\"/>");
+      _builder.newLine();
+      _builder.append("\t");
+      _builder.append("<set-configuration-property name=\'xsiframe.failIfScriptTag\' value=\'FALSE\'/>\t");
+      _builder.newLine();
+      _builder.append("</module>");
+      _builder.newLine();
+      String script = _builder.toString();
+      byte[] _bytes = script.getBytes("UTF-8");
+      return new ByteArrayInputStream(_bytes);
+    } catch (Throwable _e) {
+      throw Exceptions.sneakyThrow(_e);
+    }
+  }
+  
+  protected ByteArrayInputStream buildGwt(final String projectName, final String packageName, final String launcherName) {
+    try {
+      StringConcatenation _builder = new StringConcatenation();
+      _builder.append("<?xml version=\"1.0\" encoding=\"UTF-8\"?>");
+      _builder.newLine();
+      _builder.append("<!DOCTYPE module PUBLIC \"-//Google Inc.//DTD Google Web Toolkit trunk//EN\" \"http://google-web-toolkit.googlecode.com/svn/trunk/distro-source/core/src/gwt-module.dtd\">");
+      _builder.newLine();
+      _builder.append("<module rename-to=\"html\">");
+      _builder.newLine();
+      _builder.append("\t");
+      _builder.append("<inherits name=\'com.badlogic.gdx.backends.gdx_backends_gwt\' />");
+      _builder.newLine();
+      _builder.append("\t");
+      _builder.append("<inherits name=\'com.badlogic.gdx.physics.box2d.box2d-gwt\' />");
+      _builder.newLine();
+      _builder.newLine();
+      _builder.append("\t");
+      _builder.append("<inherits name=\'");
+      _builder.append(projectName, "\t");
+      _builder.append("\' />");
+      _builder.newLineIfNotEmpty();
+      _builder.append("\t");
+      _builder.append("<entry-point class=\'");
+      _builder.append(packageName, "\t");
+      _builder.append(".");
+      _builder.append(launcherName, "\t");
+      _builder.append("\' />");
+      _builder.newLineIfNotEmpty();
+      _builder.append("\t");
+      _builder.append("<set-configuration-property name=\'xsiframe.failIfScriptTag\' value=\'FALSE\'/>");
+      _builder.newLine();
+      _builder.append("\t");
+      _builder.append("<set-configuration-property name=\"gdx.assetpath\" value=\"../android/assets\" />");
+      _builder.newLine();
+      _builder.append("</module>");
       _builder.newLine();
       String script = _builder.toString();
       byte[] _bytes = script.getBytes("UTF-8");

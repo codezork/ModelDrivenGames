@@ -29,6 +29,8 @@ There is a book for free download "Learning libGDX Game Development" which is ve
 === Android
 Get the latest version of Android Studio from https://developer.android.com/studio/index.html. Although you don't use Android Studio, you'll need it because you must enter the sdk path in Eclipse preferences for Android. Then you have to install the needed Android api level using the "Android SDK Manager" which is reachable from inside Eclipse as well.
 
+There is a problem when working with 2 IDEs and the DDMS (Dalvik Debug Monitor Server). It is already started by the 1.IDE using a batch file (ddms.bat) for Windows (wonder how it works under IOS) which is located in a directory "tools" under the SDK directory of Android. For the start of the first IDE you should rename this file so it cannot be started. Before launching the 2.IDE you must name it back. You will need the debugger in the 2. IDE. If it is already started by the 1. IDE you won't be able to use it in the 2. IDE.
+
 As soon as an Android project is created, you can connect a suitable Android device to your USB port, enable debugging on that device, right click the Android project and select Debug as...
 A deployable *.apk is generated and installed on your connected device.
 

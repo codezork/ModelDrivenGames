@@ -1,5 +1,51 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
+	<classpathentry exported="true" kind="lib" path="lib/gwt-dev-2.8.0.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/gwt-user-2.8.0.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/robovm-cocoatouch-2.3.3.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/robovm-objc-2.3.3.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/robovm-rt-2.3.3.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/gwt-codeserver-2.8.0.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/gwt-servlet-2.8.0.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/ashley-1.7.0.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/box2dlights-1.4.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/gdx-ai-1.8.0.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/gdx-box2d-platform-1.9.8-natives-arm64-v8a.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/gdx-box2d-platform-1.9.8-natives-armeabi-v7a.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/gdx-box2d-platform-1.9.8-natives-armeabi.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/gdx-box2d-platform-1.9.8-natives-desktop.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/gdx-box2d-platform-1.9.8-natives-ios.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/gdx-box2d-platform-1.9.8-natives-x86_64.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/gdx-box2d-platform-1.9.8-natives-x86.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/gdx-bullet-1.9.8.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/gdx-bullet-platform-1.9.8-natives-arm64-v8a.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/gdx-bullet-platform-1.9.8-natives-armeabi-v7a.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/gdx-bullet-platform-1.9.8-natives-armeabi.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/gdx-bullet-platform-1.9.8-natives-x86_64.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/gdx-bullet-platform-1.9.8-natives-x86.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/gdx-controllers-1.9.8.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/gdx-controllers-android-1.9.8.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/gdx-controllers-desktop-1.9.8.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/gdx-controllers-gwt-1.9.8.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/gdx-freetype-1.9.8-sources.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/gdx-freetype-1.9.8.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/gdx-freetype-platform-1.9.8-natives-arm64-v8a.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/gdx-freetype-platform-1.9.8-natives-armeabi-v7a.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/gdx-freetype-platform-1.9.8-natives-armeabi.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/gdx-freetype-platform-1.9.8-natives-desktop.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/gdx-freetype-platform-1.9.8-natives-x86_64.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/gdx-freetype-platform-1.9.8-natives-x86.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/gdx-platform-1.9.8-natives-arm64-v8a.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/gdx-platform-1.9.8-natives-armeabi-v7a.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/gdx-platform-1.9.8-natives-armeabi.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/gdx-platform-1.9.8-natives-desktop.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/gdx-platform-1.9.8-natives-ios.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/gdx-platform-1.9.8-natives-x86_64.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/gdx-platform-1.9.8-natives-x86.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/gdx-tools-1.9.8.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/jlayer-1.0.1-gdx.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/moe-core.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/moe-ios.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/android.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/gdx-backend-android-1.9.8.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/gdx-backend-gwt-1.9.8.jar"/>

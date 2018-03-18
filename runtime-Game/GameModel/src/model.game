@@ -1,5 +1,5 @@
 package de.hypermodel.games {
-	configuration { 
+	configuration {
 		android { 
 			minAndroidVersion 9
 			targetAndroidVersion 25

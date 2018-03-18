@@ -4,11 +4,15 @@
 package com.hypermodel.games.engine.generator
 
 import com.badlogic.gdx.Gdx
+import com.badlogic.gdx.backends.android.AndroidApplicationConfiguration
+import com.badlogic.gdx.backends.lwjgl.LwjglApplication
+import com.badlogic.gdx.backends.lwjgl.LwjglApplicationConfiguration
 import com.badlogic.gdx.graphics.GL20
 import com.badlogic.gdx.graphics.Texture
 import com.badlogic.gdx.graphics.g2d.SpriteBatch
 import com.hypermodel.games.engine.gameDSL.GameModel
 import com.hypermodel.games.engine.gameDSL.GamePackage
+import com.hypermodel.games.engine.generator.GameProperties.ProjectType
 import com.hypermodel.games.engine.utils.ImportHelper
 import java.io.ByteArrayInputStream
 import java.io.File
@@ -42,7 +46,12 @@ import org.eclipse.xtext.xbase.compiler.IGeneratorConfigProvider
 import org.eclipse.xtext.xbase.compiler.ImportManager
 import org.osgi.framework.FrameworkUtil
 import org.slf4j.LoggerFactory
-import com.badlogic.gdx.backends.android.AndroidApplicationConfiguration
+import com.google.gwt.user.client.Window
+import com.badlogic.gdx.backends.gwt.GwtApplicationConfiguration
+import com.badlogic.gdx.backends.iosrobovm.IOSApplicationConfiguration
+import org.robovm.apple.foundation.NSAutoreleasePool
+import org.robovm.apple.uikit.UIApplication
+import apple.uikit.c.UIKit
 
 /**
  * Generates code from your model files on save.
@@ -54,32 +63,43 @@ class GameDSLGenerator extends ExtendedJvmModelGenerator {
 	@Inject extension IQualifiedNameProvider
 	@Inject extension ImportHelper
 	
-	private enum ProjectType {
-		core,
-		android,
-		desktop,
-		html,
-		ios,
-		iosmoe;
-	} 
-	
 	val log = LoggerFactory.getLogger(GameDSLGenerator)
 	var monitor = new NullProgressMonitor()
 	
 	override createAppendable(EObject context, ImportManager importManager, GeneratorConfig config) {
 		super.builder = context.eResource
-		for(superType:context.containerType.superTypes) {
-			if(superType.identifier.endsWith("ApplicationAdapter")) {
-				addClasses(importManager, _typeReferenceBuilder
-					, SpriteBatch
-					, Texture
-					, Gdx
-					, GL20
-				)
-			}else if(superType.identifier.endsWith("AndroidApplication")) {
-				addClasses(importManager, _typeReferenceBuilder
-					, AndroidApplicationConfiguration
-				)
+		if(context.containerType.superTypes === null) {	// desktop
+			addClasses(importManager, _typeReferenceBuilder
+				, LwjglApplication
+				, LwjglApplicationConfiguration
+			)
+		} else {
+			for(superType:context.containerType.superTypes) {
+				if(superType.identifier.endsWith("ApplicationAdapter")) {
+					addClasses(importManager, _typeReferenceBuilder
+						, SpriteBatch
+						, Texture
+						, Gdx
+						, GL20
+					)
+				} else if(superType.identifier.endsWith("AndroidApplication")) {
+					addClasses(importManager, _typeReferenceBuilder
+						, AndroidApplicationConfiguration
+					)
+				} else if(superType.identifier.endsWith("GwtApplication")) {
+					addClasses(importManager, _typeReferenceBuilder
+						, Window
+						, GwtApplicationConfiguration
+					)
+				} else if(superType.identifier.endsWith("IOSApplication.Delegate")) {
+					addClasses(importManager, _typeReferenceBuilder
+						, IOSApplicationConfiguration
+						, NSAutoreleasePool
+						, UIApplication
+						, UIKit
+					)
+				}
+				
 			}
 		}
 		super.createAppendable(context, importManager, config)
@@ -93,7 +113,7 @@ class GameDSLGenerator extends ExtendedJvmModelGenerator {
 			var packageName = type.fullyQualifiedName.skipLast(1)
 			for(game:pckg.games) {
 				// delete projects first
-				for(ProjectType pType: ProjectType.values()) {
+				for(ProjectType pType: ProjectType.values) {
 					var sub = ResourcesPlugin.workspace.root.getProject(game.name+"-"+pType.name)
 					if(sub.exists) {
 						sub.delete(true, monitor)
@@ -104,7 +124,7 @@ class GameDSLGenerator extends ExtendedJvmModelGenerator {
 					project.delete(true, monitor)
 				}
 				createProject(project)
-				for(ProjectType pType: ProjectType.values()) {
+				for(ProjectType pType: ProjectType.values) {
 					var sub = ResourcesPlugin.workspace.root.getProject(game.name+"-"+pType.name)
 					createSubProject(sub, project, packageName, pType, pckg)
 					generatePlatformSource(sub, packageName, game.name, pType, input)
@@ -223,173 +243,42 @@ class GameDSLGenerator extends ExtendedJvmModelGenerator {
 		return project
 	}
 
-	def generatePlatformSource(IProject project, QualifiedName packageName, String coreSourceName, ProjectType pType, Resource input) {
+	def generatePlatformSource(IProject project, QualifiedName packageName, String gameName, ProjectType pType, Resource input) {
 		var fileName = ""
 		var body = ""
 		var extraSegment = ""
 		switch(pType) {
 			case core: {
 				var type = input.contents.get(ProjectType.core.ordinal+1) as JvmDeclaredType
-				fileName = coreSourceName + '.java'
+				fileName = gameName + '.java'
 				body = type.generateType(generatorConfigProvider.get(type)).toString
 			}
 			case android: {
 				var type = input.contents.get(ProjectType.android.ordinal+1) as JvmDeclaredType
-				fileName = "AndroidLauncher.java"
+				fileName = '''«pType.name.toFirstUpper»«GameProperties.launcherPostfix»'''
 				body = type.generateType(generatorConfigProvider.get(type)).toString
-//				fileName = "AndroidLauncher.java"
-//				body =
-//				'''
-//				package «packageName»;
-//				
-//				import android.os.Bundle;
-//				
-//				import com.badlogic.gdx.backends.android.AndroidApplication;
-//				import com.badlogic.gdx.backends.android.AndroidApplicationConfiguration;
-//				import «packageName».«coreSourceName»;
-//				
-//				public class AndroidLauncher extends AndroidApplication {
-//					@Override
-//					protected void onCreate (Bundle savedInstanceState) {
-//						super.onCreate(savedInstanceState);
-//						AndroidApplicationConfiguration config = new AndroidApplicationConfiguration();
-//						initialize(new «coreSourceName»(), config);
-//					}
-//				}'''
 			}
 			case desktop: {
-				fileName = "DesktopLauncher.java"
-				extraSegment = ProjectType.desktop.name;
-				body = 
-				'''
-				package «packageName».«ProjectType.desktop.name»;
-				
-				import com.badlogic.gdx.backends.lwjgl.LwjglApplication;
-				import com.badlogic.gdx.backends.lwjgl.LwjglApplicationConfiguration;
-				import «packageName».«coreSourceName»;
-				
-				public class DesktopLauncher {
-					public static void main (String[] arg) {
-						LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
-						new LwjglApplication(new «coreSourceName»(), config);
-					}
-				}'''
+				extraSegment = pType.name
+				var type = input.contents.get(ProjectType.desktop.ordinal+1) as JvmDeclaredType
+				fileName = '''«pType.name.toFirstUpper»«GameProperties.launcherPostfix»'''
+				body = type.generateType(generatorConfigProvider.get(type)).toString
 			}
 			case html: {
-				fileName = "HtmlLauncher.java"
-				extraSegment = "client";
-				body = 
-				'''
-				package «packageName».client;
-				
-				import com.badlogic.gdx.ApplicationListener;
-				import com.badlogic.gdx.backends.gwt.GwtApplication;
-				import com.badlogic.gdx.backends.gwt.GwtApplicationConfiguration;
-				import «packageName».«coreSourceName»;
-				
-				public class HtmlLauncher extends GwtApplication {
-				
-				        // USE THIS CODE FOR A FIXED SIZE APPLICATION
-				        @Override
-				        public GwtApplicationConfiguration getConfig () {
-				                return new GwtApplicationConfiguration(480, 320);
-				        }
-				        // END CODE FOR FIXED SIZE APPLICATION
-				
-				        // UNCOMMENT THIS CODE FOR A RESIZABLE APPLICATION
-				        // PADDING is to avoid scrolling in iframes, set to 20 if you have problems
-				        // private static final int PADDING = 0;
-				        // private GwtApplicationConfiguration cfg;
-				        //
-				        // @Override
-				        // public GwtApplicationConfiguration getConfig() {
-				        //     int w = Window.getClientWidth() - PADDING;
-				        //     int h = Window.getClientHeight() - PADDING;
-				        //     cfg = new GwtApplicationConfiguration(w, h);
-				        //     Window.enableScrolling(false);
-				        //     Window.setMargin("0");
-				        //     Window.addResizeHandler(new ResizeListener());
-				        //     cfg.preferFlash = false;
-				        //     return cfg;
-				        // }
-				        //
-				        // class ResizeListener implements ResizeHandler {
-				        //     @Override
-				        //     public void onResize(ResizeEvent event) {
-				        //         int width = event.getWidth() - PADDING;
-				        //         int height = event.getHeight() - PADDING;
-				        //         getRootPanel().setWidth("" + width + "px");
-				        //         getRootPanel().setHeight("" + height + "px");
-				        //         getApplicationListener().resize(width, height);
-				        //         Gdx.graphics.setWindowedMode(width, height);
-				        //     }
-				        // }
-				        // END OF CODE FOR RESIZABLE APPLICATION
-				
-				        @Override
-				        public ApplicationListener createApplicationListener () {
-				                return new «coreSourceName»();
-				        }
-				    }'''
+				extraSegment = "client"
+				var type = input.contents.get(ProjectType.html.ordinal+1) as JvmDeclaredType
+				fileName = '''«pType.name.toFirstUpper»«GameProperties.launcherPostfix»'''
+				body = type.generateType(generatorConfigProvider.get(type)).toString
 			}
 			case ios: {
-				fileName = "IOSLauncher.java"
-				extraSegment = "client";
-				body = 
-				'''
-				package «packageName».client;
-				
-				import org.robovm.apple.foundation.NSAutoreleasePool;
-				import org.robovm.apple.uikit.UIApplication;
-				
-				import com.badlogic.gdx.backends.iosrobovm.IOSApplication;
-				import com.badlogic.gdx.backends.iosrobovm.IOSApplicationConfiguration;
-				import «packageName».«coreSourceName»;
-				
-				public class IOSLauncher extends IOSApplication.Delegate {
-				    @Override
-				    protected IOSApplication createApplication() {
-				        IOSApplicationConfiguration config = new IOSApplicationConfiguration();
-				        return new IOSApplication(new «coreSourceName»(), config);
-				    }
-				
-				    public static void main(String[] argv) {
-				        NSAutoreleasePool pool = new NSAutoreleasePool();
-				        UIApplication.main(argv, null, IOSLauncher.class);
-				        pool.close();
-				    }
-				}'''
+				var type = input.contents.get(ProjectType.ios.ordinal+1) as JvmDeclaredType
+				fileName = '''«pType.name.toUpperCase»«GameProperties.launcherPostfix»'''
+				body = type.generateType(generatorConfigProvider.get(type)).toString
 			}
 			case iosmoe: {
-				fileName = "IOSMoeLauncher.java"
-				body = 
-				'''
-				package «packageName»;
-				
-				import com.badlogic.gdx.backends.iosmoe.IOSApplication;
-				import com.badlogic.gdx.backends.iosmoe.IOSApplicationConfiguration;
-				import org.moe.natj.general.Pointer;
-				import «packageName».«coreSourceName»;
-				
-				import apple.uikit.c.UIKit;
-				
-				public class IOSMoeLauncher extends IOSApplication.Delegate {
-				
-				    protected IOSMoeLauncher(Pointer peer) {
-				        super(peer);
-				    }
-				
-				    @Override
-				    protected IOSApplication createApplication() {
-				        IOSApplicationConfiguration config = new IOSApplicationConfiguration();
-				        config.useAccelerometer = false;
-				        return new IOSApplication(new «coreSourceName»(), config);
-				    }
-				
-				    public static void main(String[] argv) {
-				        UIKit.UIApplicationMain(0, null, null, IOSMoeLauncher.class.getName());
-				    }
-				}'''
+				var type = input.contents.get(ProjectType.iosmoe.ordinal+1) as JvmDeclaredType
+				fileName = '''«pType.name.toUpperCase»«GameProperties.launcherPostfix»'''
+				body = type.generateType(generatorConfigProvider.get(type)).toString
 			}
 		}
 		
@@ -400,6 +289,7 @@ class GameDSLGenerator extends ExtendedJvmModelGenerator {
 				folder.create(true, true, monitor);
 			}
 		}
+		var basePackageFolder = folder
 		if(!extraSegment.empty) {
 			folder = folder.getFolder(extraSegment)
 			if(!folder.exists) {
@@ -411,8 +301,15 @@ class GameDSLGenerator extends ExtendedJvmModelGenerator {
 			source.delete(true, monitor)
 		}
 		source.create(new ByteArrayInputStream(body.getBytes("UTF-8")), true, monitor)
+		// write gwt files
+		if(pType == ProjectType.html) {
+			var gwtDef = basePackageFolder.getFile("GdxDefinition.gwt.xml")
+			gwtDef.create(buildGwt(gameName, packageName.toString, fileName), true, monitor)
+			var gwtDefSuperdev = basePackageFolder.getFile("GdxDefinitionSuperdev.gwt.xml")
+			gwtDefSuperdev.create(buildGwtSuperdev(packageName.toString), true, monitor)
+		}
 	}
-
+	
 	protected def void createBasicProject(IProject project, IProject rootProject, ProjectType pType, ArrayList<String> natures, boolean isRoot) {
 		if(!isRoot) {
 			var description = new ProjectDescription()
@@ -1261,4 +1158,44 @@ class GameDSLGenerator extends ExtendedJvmModelGenerator {
 		'''
 		return new ByteArrayInputStream(script.getBytes("UTF-8"))
 	}
+
+	protected def buildGwtSuperdev(String packageName) {
+		var script = 
+		'''
+		<?xml version="1.0" encoding="UTF-8"?>
+		<!DOCTYPE module PUBLIC "-//Google Inc.//DTD Google Web Toolkit trunk//EN" "http://google-web-toolkit.googlecode.com/svn/trunk/distro-source/core/src/gwt-module.dtd">
+		<module rename-to="html">
+			<inherits name='com.badlogic.gdx.backends.gdx_backends_gwt' />
+			<inherits name='com.badlogic.gdx.physics.box2d.box2d-gwt' />
+		
+		    <inherits name='«packageName».GdxDefinition' />
+		    
+		    <collapse-all-properties />
+		    
+			<add-linker name="xsiframe"/>	
+			<set-configuration-property name="devModeRedirectEnabled" value="true"/>
+			<set-configuration-property name='xsiframe.failIfScriptTag' value='FALSE'/>	
+		</module>
+		'''
+		return new ByteArrayInputStream(script.getBytes("UTF-8"))
+	}
+	
+	protected def buildGwt(String projectName, String packageName, String launcherName) {
+		var script = 
+		'''
+		<?xml version="1.0" encoding="UTF-8"?>
+		<!DOCTYPE module PUBLIC "-//Google Inc.//DTD Google Web Toolkit trunk//EN" "http://google-web-toolkit.googlecode.com/svn/trunk/distro-source/core/src/gwt-module.dtd">
+		<module rename-to="html">
+			<inherits name='com.badlogic.gdx.backends.gdx_backends_gwt' />
+			<inherits name='com.badlogic.gdx.physics.box2d.box2d-gwt' />
+		
+			<inherits name='«projectName»' />
+			<entry-point class='«packageName».«launcherName»' />
+			<set-configuration-property name='xsiframe.failIfScriptTag' value='FALSE'/>
+			<set-configuration-property name="gdx.assetpath" value="../android/assets" />
+		</module>
+		'''
+		return new ByteArrayInputStream(script.getBytes("UTF-8"))
+	}
+
 }
