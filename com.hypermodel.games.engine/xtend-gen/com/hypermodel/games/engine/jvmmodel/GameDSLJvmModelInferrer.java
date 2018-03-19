@@ -238,7 +238,7 @@ public class GameDSLJvmModelInferrer extends AbstractModelInferrer {
             resizeClass.getSuperTypes().add(this._typeReferenceBuilder.typeRef(ResizeHandler.class));
             final Procedure1<JvmOperation> _function_6 = (JvmOperation it_1) -> {
               EList<JvmFormalParameter> _parameters = it_1.getParameters();
-              JvmFormalParameter _parameter = this._jvmTypesBuilder.toParameter(resizeClass, "event", this._typeReferenceBuilder.typeRef(ResizeEvent.class));
+              JvmFormalParameter _parameter = this._jvmTypesBuilder.toParameter(game, "event", this._typeReferenceBuilder.typeRef(ResizeEvent.class));
               this._jvmTypesBuilder.<JvmFormalParameter>operator_add(_parameters, _parameter);
               EList<JvmAnnotationReference> _annotations = it_1.getAnnotations();
               JvmAnnotationReference _annotationRef = this._annotationTypesBuilder.annotationRef(Override.class);
@@ -260,7 +260,7 @@ public class GameDSLJvmModelInferrer extends AbstractModelInferrer {
               };
               this._jvmTypesBuilder.setBody(it_1, _function_7);
             };
-            JvmOperation innermethod = this._jvmTypesBuilder.toMethod(resizeClass, "onResize", this._typeReferenceBuilder.typeRef(Void.TYPE), _function_6);
+            JvmOperation innermethod = this._jvmTypesBuilder.toMethod(game, "onResize", this._typeReferenceBuilder.typeRef(Void.TYPE), _function_6);
             EList<JvmMember> _members_4 = resizeClass.getMembers();
             this._jvmTypesBuilder.<JvmOperation>operator_add(_members_4, innermethod);
             EList<JvmMember> _members_5 = it.getMembers();

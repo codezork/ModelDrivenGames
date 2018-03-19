@@ -139,8 +139,8 @@ class GameDSLJvmModelInferrer extends AbstractModelInferrer {
 						it.members += method
 						val resizeClass = gamePkg.toClass("ResizeListener");
 						resizeClass.superTypes.add(_typeReferenceBuilder.typeRef(ResizeHandler))
-						var innermethod = resizeClass.toMethod("onResize", _typeReferenceBuilder.typeRef(Void::TYPE), [
-							parameters += resizeClass.toParameter("event", _typeReferenceBuilder.typeRef(ResizeEvent))
+						var innermethod = game.toMethod("onResize", _typeReferenceBuilder.typeRef(Void::TYPE), [
+							parameters += game.toParameter("event", _typeReferenceBuilder.typeRef(ResizeEvent))
 							annotations += _annotationTypesBuilder.annotationRef(Override)
 							body = [
 								append(
