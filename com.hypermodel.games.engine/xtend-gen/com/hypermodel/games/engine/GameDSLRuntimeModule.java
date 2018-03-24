@@ -5,6 +5,7 @@ package com.hypermodel.games.engine;
 
 import com.google.inject.Binder;
 import com.hypermodel.games.engine.AbstractGameDSLRuntimeModule;
+import com.hypermodel.games.engine.converter.QualifiedNameProvider;
 import com.hypermodel.games.engine.generator.GameDSLGenerator;
 import com.hypermodel.games.engine.generator.GameOutputConfigurationProvider;
 import com.hypermodel.games.engine.jvmmodel.GameDSLJvmModelInferrer;
@@ -13,6 +14,7 @@ import com.hypermodel.games.engine.validation.GameDSLValidator;
 import javax.inject.Singleton;
 import org.eclipse.xtext.generator.IGenerator;
 import org.eclipse.xtext.generator.IOutputConfigurationProvider;
+import org.eclipse.xtext.naming.IQualifiedNameProvider;
 import org.eclipse.xtext.scoping.IScopeProvider;
 import org.eclipse.xtext.xbase.jvmmodel.IJvmModelInferrer;
 
@@ -45,5 +47,10 @@ public class GameDSLRuntimeModule extends AbstractGameDSLRuntimeModule {
   @Override
   public Class<? extends IJvmModelInferrer> bindIJvmModelInferrer() {
     return GameDSLJvmModelInferrer.class;
+  }
+  
+  @Override
+  public Class<? extends IQualifiedNameProvider> bindIQualifiedNameProvider() {
+    return QualifiedNameProvider.class;
   }
 }

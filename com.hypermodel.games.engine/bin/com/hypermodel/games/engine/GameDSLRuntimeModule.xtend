@@ -4,13 +4,15 @@
 package com.hypermodel.games.engine
 
 import com.google.inject.Binder
+import com.hypermodel.games.engine.converter.QualifiedNameProvider
 import com.hypermodel.games.engine.generator.GameDSLGenerator
 import com.hypermodel.games.engine.generator.GameOutputConfigurationProvider
+import com.hypermodel.games.engine.jvmmodel.GameDSLJvmModelInferrer
 import com.hypermodel.games.engine.scoping.GameDSLScopeProvider
 import com.hypermodel.games.engine.validation.GameDSLValidator
 import javax.inject.Singleton
 import org.eclipse.xtext.generator.IOutputConfigurationProvider
-import com.hypermodel.games.engine.jvmmodel.GameDSLJvmModelInferrer
+import org.eclipse.xtext.naming.IQualifiedNameProvider
 
 /**
  * Use this class to register components to be used at runtime / without the Equinox extension registry.
@@ -36,4 +38,10 @@ class GameDSLRuntimeModule extends AbstractGameDSLRuntimeModule {
 	override bindIJvmModelInferrer() {
 		return GameDSLJvmModelInferrer
 	}
+	
+	// contributed by org.eclipse.xtext.xtext.generator.grammarAccess.GrammarAccessFragment2
+	override Class<? extends IQualifiedNameProvider> bindIQualifiedNameProvider() {
+		return QualifiedNameProvider;
+	}
+	
 }

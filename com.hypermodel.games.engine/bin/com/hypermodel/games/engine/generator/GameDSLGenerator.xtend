@@ -68,7 +68,7 @@ class GameDSLGenerator extends ExtendedJvmModelGenerator {
 	
 	override createAppendable(EObject context, ImportManager importManager, GeneratorConfig config) {
 		super.builder = context.eResource
-		if(context.containerType.superTypes.empty || context.containerType.superTypes.get(0).identifier.endsWith("Object")) {	// desktop
+		if(context.containerType.identifier.endsWith(ProjectType.desktop.name.toFirstUpper+GameProperties.launcherPostfix)) {	// desktop
 			addClasses(importManager, _typeReferenceBuilder
 				, LwjglApplication
 				, LwjglApplicationConfiguration
@@ -78,9 +78,6 @@ class GameDSLGenerator extends ExtendedJvmModelGenerator {
 				if(superType.identifier.endsWith("Game")) {
 					addClasses(importManager, _typeReferenceBuilder
 						, SpriteBatch
-						, Texture
-						, Gdx
-						, GL20
 					)
 				} else if(superType.identifier.endsWith("AndroidApplication")) {
 					addClasses(importManager, _typeReferenceBuilder
@@ -107,7 +104,6 @@ class GameDSLGenerator extends ExtendedJvmModelGenerator {
 							, org.robovm.apple.foundation.NSAutoreleasePool
 						)
 					}
-					// must call full qualified as classnames are the same, packages not
 				}
 			}
 		}

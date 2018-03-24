@@ -6,13 +6,13 @@ package de.hypermodel.games {
 			SDKApiLevel 19
 			orientation landscape
 		}
-		ios {
-		}
-		iosmoe {
-			useAccelerometer
-		}
+		ios {     
+		} 
+		iosmoe {   
+			useAccelerometer 
+		}   
 	}
-	game MarioBros width 480 height 208 title "MarioBros" pixelPerMeter 100 { 
+	game MarioBros width 400 height 208 title "MarioBros" pixelPerMeter 100 {  
 		screen PlayScreen atlas "Mario_and_Enemies"
 	}
 } 

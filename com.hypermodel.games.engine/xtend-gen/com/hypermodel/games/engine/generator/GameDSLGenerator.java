@@ -11,8 +11,6 @@ import com.badlogic.gdx.backends.iosmoe.IOSApplication;
 import com.badlogic.gdx.backends.iosmoe.IOSApplicationConfiguration;
 import com.badlogic.gdx.backends.lwjgl.LwjglApplication;
 import com.badlogic.gdx.backends.lwjgl.LwjglApplicationConfiguration;
-import com.badlogic.gdx.graphics.GL20;
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.google.common.base.Objects;
 import com.google.gwt.user.client.Window;
@@ -107,25 +105,29 @@ public class GameDSLGenerator extends ExtendedJvmModelGenerator {
     TreeAppendable _xblockexpression = null;
     {
       super.setBuilder(context.eResource());
-      if ((this.containerType(context).getSuperTypes().isEmpty() || this.containerType(context).getSuperTypes().get(0).getIdentifier().endsWith("Object"))) {
+      String _identifier = this.containerType(context).getIdentifier();
+      String _firstUpper = StringExtensions.toFirstUpper(GameProperties.ProjectType.desktop.name());
+      String _plus = (_firstUpper + GameProperties.launcherPostfix);
+      boolean _endsWith = _identifier.endsWith(_plus);
+      if (_endsWith) {
         this._importHelper.addClasses(this, importManager, this._typeReferenceBuilder, LwjglApplication.class, LwjglApplicationConfiguration.class);
       } else {
         EList<JvmTypeReference> _superTypes = this.containerType(context).getSuperTypes();
         for (final JvmTypeReference superType : _superTypes) {
-          boolean _endsWith = superType.getIdentifier().endsWith("Game");
-          if (_endsWith) {
-            this._importHelper.addClasses(this, importManager, this._typeReferenceBuilder, SpriteBatch.class, Texture.class, Gdx.class, GL20.class);
+          boolean _endsWith_1 = superType.getIdentifier().endsWith("Game");
+          if (_endsWith_1) {
+            this._importHelper.addClasses(this, importManager, this._typeReferenceBuilder, SpriteBatch.class);
           } else {
-            boolean _endsWith_1 = superType.getIdentifier().endsWith("AndroidApplication");
-            if (_endsWith_1) {
+            boolean _endsWith_2 = superType.getIdentifier().endsWith("AndroidApplication");
+            if (_endsWith_2) {
               this._importHelper.addClasses(this, importManager, this._typeReferenceBuilder, AndroidApplicationConfiguration.class);
             } else {
-              boolean _endsWith_2 = superType.getIdentifier().endsWith("GwtApplication");
-              if (_endsWith_2) {
+              boolean _endsWith_3 = superType.getIdentifier().endsWith("GwtApplication");
+              if (_endsWith_3) {
                 this._importHelper.addClasses(this, importManager, this._typeReferenceBuilder, Window.class, GwtApplicationConfiguration.class, Gdx.class);
               } else {
-                boolean _endsWith_3 = superType.getIdentifier().endsWith("IOSApplication$Delegate");
-                if (_endsWith_3) {
+                boolean _endsWith_4 = superType.getIdentifier().endsWith("IOSApplication$Delegate");
+                if (_endsWith_4) {
                   boolean _startsWith = this.containerType(context).getSimpleName().startsWith("IOSMOE");
                   if (_startsWith) {
                     this._importHelper.addClasses(this, importManager, this._typeReferenceBuilder, IOSApplication.class, IOSApplicationConfiguration.class, UIKit.class);

@@ -3,7 +3,7 @@
  */
 package com.hypermodel.games.engine.scoping;
 
-import com.hypermodel.games.engine.scoping.AbstractGameDSLScopeProvider;
+import org.eclipse.xtext.xbase.annotations.typesystem.XbaseWithAnnotationsBatchScopeProvider;
 
 /**
  * This class contains custom scoping description.
@@ -12,5 +12,5 @@ import com.hypermodel.games.engine.scoping.AbstractGameDSLScopeProvider;
  * on how and when to use it.
  */
 @SuppressWarnings("all")
-public class GameDSLScopeProvider extends AbstractGameDSLScopeProvider {
+public class GameDSLScopeProvider extends XbaseWithAnnotationsBatchScopeProvider {
 }
