@@ -75,7 +75,7 @@ class GameDSLGenerator extends ExtendedJvmModelGenerator {
 			)
 		} else {
 			for(superType:context.containerType.superTypes) {
-				if(superType.identifier.endsWith("ApplicationAdapter")) {
+				if(superType.identifier.endsWith("Game")) {
 					addClasses(importManager, _typeReferenceBuilder
 						, SpriteBatch
 						, Texture
@@ -136,8 +136,14 @@ class GameDSLGenerator extends ExtendedJvmModelGenerator {
 				for(ProjectType pType: ProjectType.values) {
 					var sub = ResourcesPlugin.workspace.root.getProject(game.name+"-"+pType.name)
 					createSubProject(sub, project, packageName, pType, pckg)
-					generatePlatformSource(sub, packageName, game.name, pType, input)
+					generatePlatformSource(sub, packageName, game.name, pType, input, 1)
 			    }
+				var coreProject = ResourcesPlugin.workspace.root.getProject(game.name+"-"+ProjectType.core.name)
+				var index = ProjectType.iosmoe.ordinal+2
+				while(index < input.contents.length) {
+					generatePlatformSource(coreProject, packageName, game.name, null, input, index)
+					index ++;
+				}
 			}
 		}
 	}
@@ -250,43 +256,51 @@ class GameDSLGenerator extends ExtendedJvmModelGenerator {
 		return project
 	}
 
-	def generatePlatformSource(IProject project, QualifiedName packageName, String gameName, ProjectType pType, Resource input) {
+	def generatePlatformSource(IProject project, QualifiedName basePackageName, String gameName, ProjectType pType, Resource input, int offset) {
 		var fileName = ""
 		var body = ""
 		var extraSegment = ""
-		switch(pType) {
-			case core: {
-				var type = input.contents.get(ProjectType.core.ordinal+1) as JvmDeclaredType
-				fileName = gameName + '.java'
-				body = type.generateType(generatorConfigProvider.get(type)).toString
+		var packageName = basePackageName
+		if(pType != null) {
+			switch(pType) {
+				case core: {
+					var type = input.contents.get(ProjectType.core.ordinal+offset) as JvmDeclaredType
+					fileName = gameName + '.java'
+					body = type.generateType(generatorConfigProvider.get(type)).toString
+				}
+				case android: {
+					var type = input.contents.get(ProjectType.android.ordinal+offset) as JvmDeclaredType
+					fileName = '''«pType.name.toFirstUpper»«GameProperties.launcherPostfix».java'''
+					body = type.generateType(generatorConfigProvider.get(type)).toString
+				}
+				case desktop: {
+					extraSegment = pType.name
+					var type = input.contents.get(ProjectType.desktop.ordinal+offset) as JvmDeclaredType
+					fileName = '''«pType.name.toFirstUpper»«GameProperties.launcherPostfix».java'''
+					body = type.generateType(generatorConfigProvider.get(type)).toString
+				}
+				case html: {
+					extraSegment = "client"
+					var type = input.contents.get(ProjectType.html.ordinal+offset) as JvmDeclaredType
+					fileName = '''«pType.name.toFirstUpper»«GameProperties.launcherPostfix».java'''
+					body = type.generateType(generatorConfigProvider.get(type)).toString
+				}
+				case ios: {
+					var type = input.contents.get(ProjectType.ios.ordinal+offset) as JvmDeclaredType
+					fileName = '''«pType.name.toUpperCase»«GameProperties.launcherPostfix».java'''
+					body = type.generateType(generatorConfigProvider.get(type)).toString
+				}
+				case iosmoe: {
+					var type = input.contents.get(ProjectType.iosmoe.ordinal+offset) as JvmDeclaredType
+					fileName = '''«pType.name.toUpperCase»«GameProperties.launcherPostfix».java'''
+					body = type.generateType(generatorConfigProvider.get(type)).toString
+				}
 			}
-			case android: {
-				var type = input.contents.get(ProjectType.android.ordinal+1) as JvmDeclaredType
-				fileName = '''«pType.name.toFirstUpper»«GameProperties.launcherPostfix».java'''
-				body = type.generateType(generatorConfigProvider.get(type)).toString
-			}
-			case desktop: {
-				extraSegment = pType.name
-				var type = input.contents.get(ProjectType.desktop.ordinal+1) as JvmDeclaredType
-				fileName = '''«pType.name.toFirstUpper»«GameProperties.launcherPostfix».java'''
-				body = type.generateType(generatorConfigProvider.get(type)).toString
-			}
-			case html: {
-				extraSegment = "client"
-				var type = input.contents.get(ProjectType.html.ordinal+1) as JvmDeclaredType
-				fileName = '''«pType.name.toFirstUpper»«GameProperties.launcherPostfix».java'''
-				body = type.generateType(generatorConfigProvider.get(type)).toString
-			}
-			case ios: {
-				var type = input.contents.get(ProjectType.ios.ordinal+1) as JvmDeclaredType
-				fileName = '''«pType.name.toUpperCase»«GameProperties.launcherPostfix».java'''
-				body = type.generateType(generatorConfigProvider.get(type)).toString
-			}
-			case iosmoe: {
-				var type = input.contents.get(ProjectType.iosmoe.ordinal+1) as JvmDeclaredType
-				fileName = '''«pType.name.toUpperCase»«GameProperties.launcherPostfix».java'''
-				body = type.generateType(generatorConfigProvider.get(type)).toString
-			}
+		} else {
+			var type = input.contents.get(offset) as JvmDeclaredType
+			fileName = type.fullyQualifiedName.lastSegment + '.java'
+			packageName = type.fullyQualifiedName.skipLast(1)
+			body = type.generateType(generatorConfigProvider.get(type)).toString
 		}
 		
 		var folder = project.getFolder("src")
@@ -309,7 +323,7 @@ class GameDSLGenerator extends ExtendedJvmModelGenerator {
 		}
 		source.create(new ByteArrayInputStream(body.getBytes("UTF-8")), true, monitor)
 		// write gwt files
-		if(pType == ProjectType.html) {
+		if(pType !== null && pType == ProjectType.html) {
 			var gwtDef = basePackageFolder.getFile("GdxDefinition.gwt.xml")
 			gwtDef.create(buildGwt(gameName, packageName.toString, fileName), true, monitor)
 			var gwtDefSuperdev = basePackageFolder.getFile("GdxDefinitionSuperdev.gwt.xml")

@@ -129,10 +129,17 @@ public class GameDSLSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case GameDSLPackage.GAME:
+      case GameDSLPackage.GAME_ROOT:
       {
-        Game game = (Game)theEObject;
-        T result = caseGame(game);
+        GameRoot gameRoot = (GameRoot)theEObject;
+        T result = caseGameRoot(gameRoot);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case GameDSLPackage.GAME_SCREEN:
+      {
+        GameScreen gameScreen = (GameScreen)theEObject;
+        T result = caseGameScreen(gameScreen);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -269,17 +276,33 @@ public class GameDSLSwitch<T> extends Switch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Game</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>Game Root</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Game</em>'.
+   * @return the result of interpreting the object as an instance of '<em>Game Root</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseGame(Game object)
+  public T caseGameRoot(GameRoot object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Game Screen</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Game Screen</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseGameScreen(GameScreen object)
   {
     return null;
   }

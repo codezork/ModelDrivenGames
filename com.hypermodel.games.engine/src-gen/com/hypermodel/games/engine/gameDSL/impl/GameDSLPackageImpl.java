@@ -3,7 +3,6 @@
  */
 package com.hypermodel.games.engine.gameDSL.impl;
 
-import com.hypermodel.games.engine.gameDSL.Game;
 import com.hypermodel.games.engine.gameDSL.GameDSLFactory;
 import com.hypermodel.games.engine.gameDSL.GameDSLPackage;
 import com.hypermodel.games.engine.gameDSL.GameImport;
@@ -15,6 +14,8 @@ import com.hypermodel.games.engine.gameDSL.GamePlatformConfigAndroid;
 import com.hypermodel.games.engine.gameDSL.GamePlatformConfigIOS;
 import com.hypermodel.games.engine.gameDSL.GamePlatformConfigIOSMOE;
 import com.hypermodel.games.engine.gameDSL.GamePlatformConfiguration;
+import com.hypermodel.games.engine.gameDSL.GameRoot;
+import com.hypermodel.games.engine.gameDSL.GameScreen;
 import com.hypermodel.games.engine.gameDSL.GameScreenOrientation;
 
 import org.eclipse.emf.ecore.EAttribute;
@@ -94,7 +95,14 @@ public class GameDSLPackageImpl extends EPackageImpl implements GameDSLPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass gameEClass = null;
+  private EClass gameRootEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass gameScreenEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -468,9 +476,9 @@ public class GameDSLPackageImpl extends EPackageImpl implements GameDSLPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getGame()
+  public EClass getGameRoot()
   {
-    return gameEClass;
+    return gameRootEClass;
   }
 
   /**
@@ -478,9 +486,89 @@ public class GameDSLPackageImpl extends EPackageImpl implements GameDSLPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getGame_Name()
+  public EAttribute getGameRoot_Name()
   {
-    return (EAttribute)gameEClass.getEStructuralFeatures().get(0);
+    return (EAttribute)gameRootEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getGameRoot_Width()
+  {
+    return (EAttribute)gameRootEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getGameRoot_Height()
+  {
+    return (EAttribute)gameRootEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getGameRoot_Title()
+  {
+    return (EAttribute)gameRootEClass.getEStructuralFeatures().get(3);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getGameRoot_Ppm()
+  {
+    return (EAttribute)gameRootEClass.getEStructuralFeatures().get(4);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getGameRoot_Screens()
+  {
+    return (EReference)gameRootEClass.getEStructuralFeatures().get(5);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getGameScreen()
+  {
+    return gameScreenEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getGameScreen_Name()
+  {
+    return (EAttribute)gameScreenEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getGameScreen_AtlasName()
+  {
+    return (EAttribute)gameScreenEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -570,8 +658,17 @@ public class GameDSLPackageImpl extends EPackageImpl implements GameDSLPackage
     createEAttribute(gamePlatformConfigurationEClass, GAME_PLATFORM_CONFIGURATION__PLATFORM);
     createEReference(gamePlatformConfigurationEClass, GAME_PLATFORM_CONFIGURATION__CONFIG);
 
-    gameEClass = createEClass(GAME);
-    createEAttribute(gameEClass, GAME__NAME);
+    gameRootEClass = createEClass(GAME_ROOT);
+    createEAttribute(gameRootEClass, GAME_ROOT__NAME);
+    createEAttribute(gameRootEClass, GAME_ROOT__WIDTH);
+    createEAttribute(gameRootEClass, GAME_ROOT__HEIGHT);
+    createEAttribute(gameRootEClass, GAME_ROOT__TITLE);
+    createEAttribute(gameRootEClass, GAME_ROOT__PPM);
+    createEReference(gameRootEClass, GAME_ROOT__SCREENS);
+
+    gameScreenEClass = createEClass(GAME_SCREEN);
+    createEAttribute(gameScreenEClass, GAME_SCREEN__NAME);
+    createEAttribute(gameScreenEClass, GAME_SCREEN__ATLAS_NAME);
 
     // Create enums
     gamePlatformEEnum = createEEnum(GAME_PLATFORM);
@@ -619,7 +716,7 @@ public class GameDSLPackageImpl extends EPackageImpl implements GameDSLPackage
     initEAttribute(getGamePackage_Name(), ecorePackage.getEString(), "name", null, 0, 1, GamePackage.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getGamePackage_Imports(), this.getGameImport(), null, "imports", null, 0, -1, GamePackage.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getGamePackage_Config(), this.getGamePlatformConfig(), null, "config", null, 0, 1, GamePackage.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getGamePackage_Games(), this.getGame(), null, "games", null, 0, -1, GamePackage.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getGamePackage_Games(), this.getGameRoot(), null, "games", null, 0, -1, GamePackage.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(gamePlatformConfigEClass, GamePlatformConfig.class, "GamePlatformConfig", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getGamePlatformConfig_Android(), this.getGamePlatformConfigAndroid(), null, "android", null, 0, 1, GamePlatformConfig.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -646,8 +743,17 @@ public class GameDSLPackageImpl extends EPackageImpl implements GameDSLPackage
     initEAttribute(getGamePlatformConfiguration_Platform(), this.getGamePlatform(), "platform", null, 0, 1, GamePlatformConfiguration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getGamePlatformConfiguration_Config(), this.getGamePlatformConfigAndroid(), null, "config", null, 0, -1, GamePlatformConfiguration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-    initEClass(gameEClass, Game.class, "Game", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getGame_Name(), ecorePackage.getEString(), "name", null, 0, 1, Game.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEClass(gameRootEClass, GameRoot.class, "GameRoot", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getGameRoot_Name(), ecorePackage.getEString(), "name", null, 0, 1, GameRoot.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getGameRoot_Width(), ecorePackage.getEInt(), "width", null, 0, 1, GameRoot.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getGameRoot_Height(), ecorePackage.getEInt(), "height", null, 0, 1, GameRoot.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getGameRoot_Title(), ecorePackage.getEString(), "title", null, 0, 1, GameRoot.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getGameRoot_Ppm(), ecorePackage.getEInt(), "ppm", null, 0, 1, GameRoot.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getGameRoot_Screens(), this.getGameScreen(), null, "screens", null, 0, -1, GameRoot.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(gameScreenEClass, GameScreen.class, "GameScreen", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getGameScreen_Name(), ecorePackage.getEString(), "name", null, 0, 1, GameScreen.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getGameScreen_AtlasName(), ecorePackage.getEString(), "atlasName", null, 0, 1, GameScreen.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     // Initialize enums and add enum literals
     initEEnum(gamePlatformEEnum, GamePlatform.class, "GamePlatform");

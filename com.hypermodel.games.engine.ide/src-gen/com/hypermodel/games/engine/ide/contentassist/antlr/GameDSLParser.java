@@ -86,7 +86,8 @@ public class GameDSLParser extends AbstractContentAssistParser {
 					put(grammarAccess.getGamePlatformConfigIOSAccess().getGroup(), "rule__GamePlatformConfigIOS__Group__0");
 					put(grammarAccess.getGamePlatformConfigIOSMOEAccess().getGroup(), "rule__GamePlatformConfigIOSMOE__Group__0");
 					put(grammarAccess.getGamePlatformConfigurationAccess().getGroup(), "rule__GamePlatformConfiguration__Group__0");
-					put(grammarAccess.getGameAccess().getGroup(), "rule__Game__Group__0");
+					put(grammarAccess.getGameRootAccess().getGroup(), "rule__GameRoot__Group__0");
+					put(grammarAccess.getGameScreenAccess().getGroup(), "rule__GameScreen__Group__0");
 					put(grammarAccess.getQualifiedNameAccess().getGroup(), "rule__QualifiedName__Group__0");
 					put(grammarAccess.getQualifiedNameAccess().getGroup_1(), "rule__QualifiedName__Group_1__0");
 					put(grammarAccess.getGameQualifiedNameWithWildCardAccess().getGroup(), "rule__GameQualifiedNameWithWildCard__Group__0");
@@ -309,7 +310,14 @@ public class GameDSLParser extends AbstractContentAssistParser {
 					put(grammarAccess.getGamePlatformConfigIOSMOEAccess().getUseAccelerometerAssignment_3(), "rule__GamePlatformConfigIOSMOE__UseAccelerometerAssignment_3");
 					put(grammarAccess.getGamePlatformConfigurationAccess().getPlatformAssignment_1(), "rule__GamePlatformConfiguration__PlatformAssignment_1");
 					put(grammarAccess.getGamePlatformConfigurationAccess().getConfigAssignment_3(), "rule__GamePlatformConfiguration__ConfigAssignment_3");
-					put(grammarAccess.getGameAccess().getNameAssignment_1(), "rule__Game__NameAssignment_1");
+					put(grammarAccess.getGameRootAccess().getNameAssignment_2(), "rule__GameRoot__NameAssignment_2");
+					put(grammarAccess.getGameRootAccess().getWidthAssignment_4(), "rule__GameRoot__WidthAssignment_4");
+					put(grammarAccess.getGameRootAccess().getHeightAssignment_6(), "rule__GameRoot__HeightAssignment_6");
+					put(grammarAccess.getGameRootAccess().getTitleAssignment_8(), "rule__GameRoot__TitleAssignment_8");
+					put(grammarAccess.getGameRootAccess().getPpmAssignment_10(), "rule__GameRoot__PpmAssignment_10");
+					put(grammarAccess.getGameRootAccess().getScreensAssignment_12(), "rule__GameRoot__ScreensAssignment_12");
+					put(grammarAccess.getGameScreenAccess().getNameAssignment_2(), "rule__GameScreen__NameAssignment_2");
+					put(grammarAccess.getGameScreenAccess().getAtlasNameAssignment_4(), "rule__GameScreen__AtlasNameAssignment_4");
 					put(grammarAccess.getXAnnotationAccess().getAnnotationTypeAssignment_2(), "rule__XAnnotation__AnnotationTypeAssignment_2");
 					put(grammarAccess.getXAnnotationAccess().getElementValuePairsAssignment_3_1_0_0(), "rule__XAnnotation__ElementValuePairsAssignment_3_1_0_0");
 					put(grammarAccess.getXAnnotationAccess().getElementValuePairsAssignment_3_1_0_1_1(), "rule__XAnnotation__ElementValuePairsAssignment_3_1_0_1_1");

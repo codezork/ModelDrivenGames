@@ -12,7 +12,7 @@ GamePackage:
 	'package' name=QualifiedName '{' 
 		(imports+=GameImport)*
 		config=GamePlatformConfig
-		(games+=Game)*
+		(games+=GameRoot)*
 	'}';
 	
 GamePlatformConfig: {GamePlatformConfig}
@@ -48,9 +48,15 @@ GamePlatformConfigIOSMOE: {GamePlatformConfigIOSMOE}
 GamePlatformConfiguration:
 	'configure' platform=GamePlatform '{' config+=GamePlatformConfigAndroid* '}';
 
-Game:
-	'game' name=ID;
+GameRoot:
+	{GameRoot} 'game' name=ID
+	'width' width = INT 'height' height = INT 'title' title=STRING 'pixelPerMeter' ppm = INT
+	'{' (screens+=GameScreen)* '}';
 	
+GameScreen:
+	{GameScreen} 'screen' name=ID 'atlas' atlasName = STRING
+;
+
 ValidID:
 	ID;
 	

@@ -116,9 +116,14 @@ public class GameDSLAdapterFactory extends AdapterFactoryImpl
         return createGamePlatformConfigurationAdapter();
       }
       @Override
-      public Adapter caseGame(Game object)
+      public Adapter caseGameRoot(GameRoot object)
       {
-        return createGameAdapter();
+        return createGameRootAdapter();
+      }
+      @Override
+      public Adapter caseGameScreen(GameScreen object)
+      {
+        return createGameScreenAdapter();
       }
       @Override
       public Adapter defaultCase(EObject object)
@@ -263,16 +268,31 @@ public class GameDSLAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link com.hypermodel.games.engine.gameDSL.Game <em>Game</em>}'.
+   * Creates a new adapter for an object of class '{@link com.hypermodel.games.engine.gameDSL.GameRoot <em>Game Root</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see com.hypermodel.games.engine.gameDSL.Game
+   * @see com.hypermodel.games.engine.gameDSL.GameRoot
    * @generated
    */
-  public Adapter createGameAdapter()
+  public Adapter createGameRootAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link com.hypermodel.games.engine.gameDSL.GameScreen <em>Game Screen</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see com.hypermodel.games.engine.gameDSL.GameScreen
+   * @generated
+   */
+  public Adapter createGameScreenAdapter()
   {
     return null;
   }

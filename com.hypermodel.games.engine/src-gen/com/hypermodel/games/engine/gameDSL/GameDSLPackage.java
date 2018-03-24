@@ -400,14 +400,14 @@ public interface GameDSLPackage extends EPackage
   int GAME_PLATFORM_CONFIGURATION_FEATURE_COUNT = 2;
 
   /**
-   * The meta object id for the '{@link com.hypermodel.games.engine.gameDSL.impl.GameImpl <em>Game</em>}' class.
+   * The meta object id for the '{@link com.hypermodel.games.engine.gameDSL.impl.GameRootImpl <em>Game Root</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see com.hypermodel.games.engine.gameDSL.impl.GameImpl
-   * @see com.hypermodel.games.engine.gameDSL.impl.GameDSLPackageImpl#getGame()
+   * @see com.hypermodel.games.engine.gameDSL.impl.GameRootImpl
+   * @see com.hypermodel.games.engine.gameDSL.impl.GameDSLPackageImpl#getGameRoot()
    * @generated
    */
-  int GAME = 8;
+  int GAME_ROOT = 8;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -416,16 +416,98 @@ public interface GameDSLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int GAME__NAME = 0;
+  int GAME_ROOT__NAME = 0;
 
   /**
-   * The number of structural features of the '<em>Game</em>' class.
+   * The feature id for the '<em><b>Width</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int GAME_FEATURE_COUNT = 1;
+  int GAME_ROOT__WIDTH = 1;
+
+  /**
+   * The feature id for the '<em><b>Height</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int GAME_ROOT__HEIGHT = 2;
+
+  /**
+   * The feature id for the '<em><b>Title</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int GAME_ROOT__TITLE = 3;
+
+  /**
+   * The feature id for the '<em><b>Ppm</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int GAME_ROOT__PPM = 4;
+
+  /**
+   * The feature id for the '<em><b>Screens</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int GAME_ROOT__SCREENS = 5;
+
+  /**
+   * The number of structural features of the '<em>Game Root</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int GAME_ROOT_FEATURE_COUNT = 6;
+
+  /**
+   * The meta object id for the '{@link com.hypermodel.games.engine.gameDSL.impl.GameScreenImpl <em>Game Screen</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see com.hypermodel.games.engine.gameDSL.impl.GameScreenImpl
+   * @see com.hypermodel.games.engine.gameDSL.impl.GameDSLPackageImpl#getGameScreen()
+   * @generated
+   */
+  int GAME_SCREEN = 9;
+
+  /**
+   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int GAME_SCREEN__NAME = 0;
+
+  /**
+   * The feature id for the '<em><b>Atlas Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int GAME_SCREEN__ATLAS_NAME = 1;
+
+  /**
+   * The number of structural features of the '<em>Game Screen</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int GAME_SCREEN_FEATURE_COUNT = 2;
 
   /**
    * The meta object id for the '{@link com.hypermodel.games.engine.gameDSL.GamePlatform <em>Game Platform</em>}' enum.
@@ -435,7 +517,7 @@ public interface GameDSLPackage extends EPackage
    * @see com.hypermodel.games.engine.gameDSL.impl.GameDSLPackageImpl#getGamePlatform()
    * @generated
    */
-  int GAME_PLATFORM = 9;
+  int GAME_PLATFORM = 10;
 
   /**
    * The meta object id for the '{@link com.hypermodel.games.engine.gameDSL.GameScreenOrientation <em>Game Screen Orientation</em>}' enum.
@@ -445,7 +527,7 @@ public interface GameDSLPackage extends EPackage
    * @see com.hypermodel.games.engine.gameDSL.impl.GameDSLPackageImpl#getGameScreenOrientation()
    * @generated
    */
-  int GAME_SCREEN_ORIENTATION = 10;
+  int GAME_SCREEN_ORIENTATION = 11;
 
 
   /**
@@ -760,25 +842,112 @@ public interface GameDSLPackage extends EPackage
   EReference getGamePlatformConfiguration_Config();
 
   /**
-   * Returns the meta object for class '{@link com.hypermodel.games.engine.gameDSL.Game <em>Game</em>}'.
+   * Returns the meta object for class '{@link com.hypermodel.games.engine.gameDSL.GameRoot <em>Game Root</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Game</em>'.
-   * @see com.hypermodel.games.engine.gameDSL.Game
+   * @return the meta object for class '<em>Game Root</em>'.
+   * @see com.hypermodel.games.engine.gameDSL.GameRoot
    * @generated
    */
-  EClass getGame();
+  EClass getGameRoot();
 
   /**
-   * Returns the meta object for the attribute '{@link com.hypermodel.games.engine.gameDSL.Game#getName <em>Name</em>}'.
+   * Returns the meta object for the attribute '{@link com.hypermodel.games.engine.gameDSL.GameRoot#getName <em>Name</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the attribute '<em>Name</em>'.
-   * @see com.hypermodel.games.engine.gameDSL.Game#getName()
-   * @see #getGame()
+   * @see com.hypermodel.games.engine.gameDSL.GameRoot#getName()
+   * @see #getGameRoot()
    * @generated
    */
-  EAttribute getGame_Name();
+  EAttribute getGameRoot_Name();
+
+  /**
+   * Returns the meta object for the attribute '{@link com.hypermodel.games.engine.gameDSL.GameRoot#getWidth <em>Width</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Width</em>'.
+   * @see com.hypermodel.games.engine.gameDSL.GameRoot#getWidth()
+   * @see #getGameRoot()
+   * @generated
+   */
+  EAttribute getGameRoot_Width();
+
+  /**
+   * Returns the meta object for the attribute '{@link com.hypermodel.games.engine.gameDSL.GameRoot#getHeight <em>Height</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Height</em>'.
+   * @see com.hypermodel.games.engine.gameDSL.GameRoot#getHeight()
+   * @see #getGameRoot()
+   * @generated
+   */
+  EAttribute getGameRoot_Height();
+
+  /**
+   * Returns the meta object for the attribute '{@link com.hypermodel.games.engine.gameDSL.GameRoot#getTitle <em>Title</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Title</em>'.
+   * @see com.hypermodel.games.engine.gameDSL.GameRoot#getTitle()
+   * @see #getGameRoot()
+   * @generated
+   */
+  EAttribute getGameRoot_Title();
+
+  /**
+   * Returns the meta object for the attribute '{@link com.hypermodel.games.engine.gameDSL.GameRoot#getPpm <em>Ppm</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Ppm</em>'.
+   * @see com.hypermodel.games.engine.gameDSL.GameRoot#getPpm()
+   * @see #getGameRoot()
+   * @generated
+   */
+  EAttribute getGameRoot_Ppm();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link com.hypermodel.games.engine.gameDSL.GameRoot#getScreens <em>Screens</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Screens</em>'.
+   * @see com.hypermodel.games.engine.gameDSL.GameRoot#getScreens()
+   * @see #getGameRoot()
+   * @generated
+   */
+  EReference getGameRoot_Screens();
+
+  /**
+   * Returns the meta object for class '{@link com.hypermodel.games.engine.gameDSL.GameScreen <em>Game Screen</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Game Screen</em>'.
+   * @see com.hypermodel.games.engine.gameDSL.GameScreen
+   * @generated
+   */
+  EClass getGameScreen();
+
+  /**
+   * Returns the meta object for the attribute '{@link com.hypermodel.games.engine.gameDSL.GameScreen#getName <em>Name</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Name</em>'.
+   * @see com.hypermodel.games.engine.gameDSL.GameScreen#getName()
+   * @see #getGameScreen()
+   * @generated
+   */
+  EAttribute getGameScreen_Name();
+
+  /**
+   * Returns the meta object for the attribute '{@link com.hypermodel.games.engine.gameDSL.GameScreen#getAtlasName <em>Atlas Name</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Atlas Name</em>'.
+   * @see com.hypermodel.games.engine.gameDSL.GameScreen#getAtlasName()
+   * @see #getGameScreen()
+   * @generated
+   */
+  EAttribute getGameScreen_AtlasName();
 
   /**
    * Returns the meta object for enum '{@link com.hypermodel.games.engine.gameDSL.GamePlatform <em>Game Platform</em>}'.
@@ -1072,14 +1241,14 @@ public interface GameDSLPackage extends EPackage
     EReference GAME_PLATFORM_CONFIGURATION__CONFIG = eINSTANCE.getGamePlatformConfiguration_Config();
 
     /**
-     * The meta object literal for the '{@link com.hypermodel.games.engine.gameDSL.impl.GameImpl <em>Game</em>}' class.
+     * The meta object literal for the '{@link com.hypermodel.games.engine.gameDSL.impl.GameRootImpl <em>Game Root</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see com.hypermodel.games.engine.gameDSL.impl.GameImpl
-     * @see com.hypermodel.games.engine.gameDSL.impl.GameDSLPackageImpl#getGame()
+     * @see com.hypermodel.games.engine.gameDSL.impl.GameRootImpl
+     * @see com.hypermodel.games.engine.gameDSL.impl.GameDSLPackageImpl#getGameRoot()
      * @generated
      */
-    EClass GAME = eINSTANCE.getGame();
+    EClass GAME_ROOT = eINSTANCE.getGameRoot();
 
     /**
      * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
@@ -1087,7 +1256,73 @@ public interface GameDSLPackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute GAME__NAME = eINSTANCE.getGame_Name();
+    EAttribute GAME_ROOT__NAME = eINSTANCE.getGameRoot_Name();
+
+    /**
+     * The meta object literal for the '<em><b>Width</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute GAME_ROOT__WIDTH = eINSTANCE.getGameRoot_Width();
+
+    /**
+     * The meta object literal for the '<em><b>Height</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute GAME_ROOT__HEIGHT = eINSTANCE.getGameRoot_Height();
+
+    /**
+     * The meta object literal for the '<em><b>Title</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute GAME_ROOT__TITLE = eINSTANCE.getGameRoot_Title();
+
+    /**
+     * The meta object literal for the '<em><b>Ppm</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute GAME_ROOT__PPM = eINSTANCE.getGameRoot_Ppm();
+
+    /**
+     * The meta object literal for the '<em><b>Screens</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference GAME_ROOT__SCREENS = eINSTANCE.getGameRoot_Screens();
+
+    /**
+     * The meta object literal for the '{@link com.hypermodel.games.engine.gameDSL.impl.GameScreenImpl <em>Game Screen</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see com.hypermodel.games.engine.gameDSL.impl.GameScreenImpl
+     * @see com.hypermodel.games.engine.gameDSL.impl.GameDSLPackageImpl#getGameScreen()
+     * @generated
+     */
+    EClass GAME_SCREEN = eINSTANCE.getGameScreen();
+
+    /**
+     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute GAME_SCREEN__NAME = eINSTANCE.getGameScreen_Name();
+
+    /**
+     * The meta object literal for the '<em><b>Atlas Name</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute GAME_SCREEN__ATLAS_NAME = eINSTANCE.getGameScreen_AtlasName();
 
     /**
      * The meta object literal for the '{@link com.hypermodel.games.engine.gameDSL.GamePlatform <em>Game Platform</em>}' enum.

@@ -16,7 +16,7 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="config" eType="#//GamePlatformConfig"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="games" upperBound="-1"
-        eType="#//Game" containment="true"/>
+        eType="#//GameRoot" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="GamePlatformConfig">
     <eStructuralFeatures xsi:type="ecore:EReference" name="android" eType="#//GamePlatformConfigAndroid"
@@ -47,8 +47,18 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="config" upperBound="-1"
         eType="#//GamePlatformConfigAndroid" containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Game">
+  <eClassifiers xsi:type="ecore:EClass" name="GameRoot">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="width" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="height" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="title" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="ppm" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="screens" upperBound="-1"
+        eType="#//GameScreen" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="GameScreen">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="atlasName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="GamePlatform">
     <eLiterals name="android" literal="android"/>

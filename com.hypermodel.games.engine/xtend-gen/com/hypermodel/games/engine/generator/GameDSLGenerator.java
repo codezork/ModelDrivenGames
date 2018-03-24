@@ -16,9 +16,9 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.google.common.base.Objects;
 import com.google.gwt.user.client.Window;
-import com.hypermodel.games.engine.gameDSL.Game;
 import com.hypermodel.games.engine.gameDSL.GameModel;
 import com.hypermodel.games.engine.gameDSL.GamePackage;
+import com.hypermodel.games.engine.gameDSL.GameRoot;
 import com.hypermodel.games.engine.generator.ExtendedJvmModelGenerator;
 import com.hypermodel.games.engine.generator.GameProperties;
 import com.hypermodel.games.engine.utils.ImportHelper;
@@ -112,7 +112,7 @@ public class GameDSLGenerator extends ExtendedJvmModelGenerator {
       } else {
         EList<JvmTypeReference> _superTypes = this.containerType(context).getSuperTypes();
         for (final JvmTypeReference superType : _superTypes) {
-          boolean _endsWith = superType.getIdentifier().endsWith("ApplicationAdapter");
+          boolean _endsWith = superType.getIdentifier().endsWith("Game");
           if (_endsWith) {
             this._importHelper.addClasses(this, importManager, this._typeReferenceBuilder, SpriteBatch.class, Texture.class, Gdx.class, GL20.class);
           } else {
@@ -157,8 +157,8 @@ public class GameDSLGenerator extends ExtendedJvmModelGenerator {
           EObject _get_1 = _contents.get(_plus);
           JvmDeclaredType type = ((JvmDeclaredType) _get_1);
           QualifiedName packageName = this._iQualifiedNameProvider.getFullyQualifiedName(type).skipLast(1);
-          EList<Game> _games = pckg.getGames();
-          for (final Game game : _games) {
+          EList<GameRoot> _games = pckg.getGames();
+          for (final GameRoot game : _games) {
             {
               GameProperties.ProjectType[] _values = GameProperties.ProjectType.values();
               for (final GameProperties.ProjectType pType : _values) {
@@ -191,7 +191,21 @@ public class GameDSLGenerator extends ExtendedJvmModelGenerator {
                   String _plus_2 = (_plus_1 + _name_1);
                   IProject sub = _root.getProject(_plus_2);
                   this.createSubProject(sub, project, packageName, pType_1, pckg);
-                  this.generatePlatformSource(sub, packageName, game.getName(), pType_1, input);
+                  this.generatePlatformSource(sub, packageName, game.getName(), pType_1, input, 1);
+                }
+              }
+              IWorkspaceRoot _root = ResourcesPlugin.getWorkspace().getRoot();
+              String _name = game.getName();
+              String _plus_1 = (_name + "-");
+              String _name_1 = GameProperties.ProjectType.core.name();
+              String _plus_2 = (_plus_1 + _name_1);
+              IProject coreProject = _root.getProject(_plus_2);
+              int _ordinal_1 = GameProperties.ProjectType.iosmoe.ordinal();
+              int index = (_ordinal_1 + 2);
+              while ((index < ((Object[])Conversions.unwrapArray(input.getContents(), Object.class)).length)) {
+                {
+                  this.generatePlatformSource(coreProject, packageName, game.getName(), null, input, index);
+                  index++;
                 }
               }
             }
@@ -343,97 +357,109 @@ public class GameDSLGenerator extends ExtendedJvmModelGenerator {
     }
   }
   
-  public void generatePlatformSource(final IProject project, final QualifiedName packageName, final String gameName, final GameProperties.ProjectType pType, final Resource input) {
+  public void generatePlatformSource(final IProject project, final QualifiedName basePackageName, final String gameName, final GameProperties.ProjectType pType, final Resource input, final int offset) {
     try {
       String fileName = "";
       String body = "";
       String extraSegment = "";
-      if (pType != null) {
-        switch (pType) {
-          case core:
-            EList<EObject> _contents = input.getContents();
-            int _ordinal = GameProperties.ProjectType.core.ordinal();
-            int _plus = (_ordinal + 1);
-            EObject _get = _contents.get(_plus);
-            JvmDeclaredType type = ((JvmDeclaredType) _get);
-            fileName = (gameName + ".java");
-            body = this.generateType(type, this.generatorConfigProvider.get(type)).toString();
-            break;
-          case android:
-            EList<EObject> _contents_1 = input.getContents();
-            int _ordinal_1 = GameProperties.ProjectType.android.ordinal();
-            int _plus_1 = (_ordinal_1 + 1);
-            EObject _get_1 = _contents_1.get(_plus_1);
-            JvmDeclaredType type_1 = ((JvmDeclaredType) _get_1);
-            StringConcatenation _builder = new StringConcatenation();
-            String _firstUpper = StringExtensions.toFirstUpper(pType.name());
-            _builder.append(_firstUpper);
-            _builder.append(GameProperties.launcherPostfix);
-            _builder.append(".java");
-            fileName = _builder.toString();
-            body = this.generateType(type_1, this.generatorConfigProvider.get(type_1)).toString();
-            break;
-          case desktop:
-            extraSegment = pType.name();
-            EList<EObject> _contents_2 = input.getContents();
-            int _ordinal_2 = GameProperties.ProjectType.desktop.ordinal();
-            int _plus_2 = (_ordinal_2 + 1);
-            EObject _get_2 = _contents_2.get(_plus_2);
-            JvmDeclaredType type_2 = ((JvmDeclaredType) _get_2);
-            StringConcatenation _builder_1 = new StringConcatenation();
-            String _firstUpper_1 = StringExtensions.toFirstUpper(pType.name());
-            _builder_1.append(_firstUpper_1);
-            _builder_1.append(GameProperties.launcherPostfix);
-            _builder_1.append(".java");
-            fileName = _builder_1.toString();
-            body = this.generateType(type_2, this.generatorConfigProvider.get(type_2)).toString();
-            break;
-          case html:
-            extraSegment = "client";
-            EList<EObject> _contents_3 = input.getContents();
-            int _ordinal_3 = GameProperties.ProjectType.html.ordinal();
-            int _plus_3 = (_ordinal_3 + 1);
-            EObject _get_3 = _contents_3.get(_plus_3);
-            JvmDeclaredType type_3 = ((JvmDeclaredType) _get_3);
-            StringConcatenation _builder_2 = new StringConcatenation();
-            String _firstUpper_2 = StringExtensions.toFirstUpper(pType.name());
-            _builder_2.append(_firstUpper_2);
-            _builder_2.append(GameProperties.launcherPostfix);
-            _builder_2.append(".java");
-            fileName = _builder_2.toString();
-            body = this.generateType(type_3, this.generatorConfigProvider.get(type_3)).toString();
-            break;
-          case ios:
-            EList<EObject> _contents_4 = input.getContents();
-            int _ordinal_4 = GameProperties.ProjectType.ios.ordinal();
-            int _plus_4 = (_ordinal_4 + 1);
-            EObject _get_4 = _contents_4.get(_plus_4);
-            JvmDeclaredType type_4 = ((JvmDeclaredType) _get_4);
-            StringConcatenation _builder_3 = new StringConcatenation();
-            String _upperCase = pType.name().toUpperCase();
-            _builder_3.append(_upperCase);
-            _builder_3.append(GameProperties.launcherPostfix);
-            _builder_3.append(".java");
-            fileName = _builder_3.toString();
-            body = this.generateType(type_4, this.generatorConfigProvider.get(type_4)).toString();
-            break;
-          case iosmoe:
-            EList<EObject> _contents_5 = input.getContents();
-            int _ordinal_5 = GameProperties.ProjectType.iosmoe.ordinal();
-            int _plus_5 = (_ordinal_5 + 1);
-            EObject _get_5 = _contents_5.get(_plus_5);
-            JvmDeclaredType type_5 = ((JvmDeclaredType) _get_5);
-            StringConcatenation _builder_4 = new StringConcatenation();
-            String _upperCase_1 = pType.name().toUpperCase();
-            _builder_4.append(_upperCase_1);
-            _builder_4.append(GameProperties.launcherPostfix);
-            _builder_4.append(".java");
-            fileName = _builder_4.toString();
-            body = this.generateType(type_5, this.generatorConfigProvider.get(type_5)).toString();
-            break;
-          default:
-            break;
+      QualifiedName packageName = basePackageName;
+      boolean _notEquals = (!Objects.equal(pType, null));
+      if (_notEquals) {
+        if (pType != null) {
+          switch (pType) {
+            case core:
+              EList<EObject> _contents = input.getContents();
+              int _ordinal = GameProperties.ProjectType.core.ordinal();
+              int _plus = (_ordinal + offset);
+              EObject _get = _contents.get(_plus);
+              JvmDeclaredType type = ((JvmDeclaredType) _get);
+              fileName = (gameName + ".java");
+              body = this.generateType(type, this.generatorConfigProvider.get(type)).toString();
+              break;
+            case android:
+              EList<EObject> _contents_1 = input.getContents();
+              int _ordinal_1 = GameProperties.ProjectType.android.ordinal();
+              int _plus_1 = (_ordinal_1 + offset);
+              EObject _get_1 = _contents_1.get(_plus_1);
+              JvmDeclaredType type_1 = ((JvmDeclaredType) _get_1);
+              StringConcatenation _builder = new StringConcatenation();
+              String _firstUpper = StringExtensions.toFirstUpper(pType.name());
+              _builder.append(_firstUpper);
+              _builder.append(GameProperties.launcherPostfix);
+              _builder.append(".java");
+              fileName = _builder.toString();
+              body = this.generateType(type_1, this.generatorConfigProvider.get(type_1)).toString();
+              break;
+            case desktop:
+              extraSegment = pType.name();
+              EList<EObject> _contents_2 = input.getContents();
+              int _ordinal_2 = GameProperties.ProjectType.desktop.ordinal();
+              int _plus_2 = (_ordinal_2 + offset);
+              EObject _get_2 = _contents_2.get(_plus_2);
+              JvmDeclaredType type_2 = ((JvmDeclaredType) _get_2);
+              StringConcatenation _builder_1 = new StringConcatenation();
+              String _firstUpper_1 = StringExtensions.toFirstUpper(pType.name());
+              _builder_1.append(_firstUpper_1);
+              _builder_1.append(GameProperties.launcherPostfix);
+              _builder_1.append(".java");
+              fileName = _builder_1.toString();
+              body = this.generateType(type_2, this.generatorConfigProvider.get(type_2)).toString();
+              break;
+            case html:
+              extraSegment = "client";
+              EList<EObject> _contents_3 = input.getContents();
+              int _ordinal_3 = GameProperties.ProjectType.html.ordinal();
+              int _plus_3 = (_ordinal_3 + offset);
+              EObject _get_3 = _contents_3.get(_plus_3);
+              JvmDeclaredType type_3 = ((JvmDeclaredType) _get_3);
+              StringConcatenation _builder_2 = new StringConcatenation();
+              String _firstUpper_2 = StringExtensions.toFirstUpper(pType.name());
+              _builder_2.append(_firstUpper_2);
+              _builder_2.append(GameProperties.launcherPostfix);
+              _builder_2.append(".java");
+              fileName = _builder_2.toString();
+              body = this.generateType(type_3, this.generatorConfigProvider.get(type_3)).toString();
+              break;
+            case ios:
+              EList<EObject> _contents_4 = input.getContents();
+              int _ordinal_4 = GameProperties.ProjectType.ios.ordinal();
+              int _plus_4 = (_ordinal_4 + offset);
+              EObject _get_4 = _contents_4.get(_plus_4);
+              JvmDeclaredType type_4 = ((JvmDeclaredType) _get_4);
+              StringConcatenation _builder_3 = new StringConcatenation();
+              String _upperCase = pType.name().toUpperCase();
+              _builder_3.append(_upperCase);
+              _builder_3.append(GameProperties.launcherPostfix);
+              _builder_3.append(".java");
+              fileName = _builder_3.toString();
+              body = this.generateType(type_4, this.generatorConfigProvider.get(type_4)).toString();
+              break;
+            case iosmoe:
+              EList<EObject> _contents_5 = input.getContents();
+              int _ordinal_5 = GameProperties.ProjectType.iosmoe.ordinal();
+              int _plus_5 = (_ordinal_5 + offset);
+              EObject _get_5 = _contents_5.get(_plus_5);
+              JvmDeclaredType type_5 = ((JvmDeclaredType) _get_5);
+              StringConcatenation _builder_4 = new StringConcatenation();
+              String _upperCase_1 = pType.name().toUpperCase();
+              _builder_4.append(_upperCase_1);
+              _builder_4.append(GameProperties.launcherPostfix);
+              _builder_4.append(".java");
+              fileName = _builder_4.toString();
+              body = this.generateType(type_5, this.generatorConfigProvider.get(type_5)).toString();
+              break;
+            default:
+              break;
+          }
         }
+      } else {
+        EObject _get_6 = input.getContents().get(offset);
+        JvmDeclaredType type_6 = ((JvmDeclaredType) _get_6);
+        String _lastSegment = this._iQualifiedNameProvider.getFullyQualifiedName(type_6).getLastSegment();
+        String _plus_6 = (_lastSegment + ".java");
+        fileName = _plus_6;
+        packageName = this._iQualifiedNameProvider.getFullyQualifiedName(type_6).skipLast(1);
+        body = this.generateType(type_6, this.generatorConfigProvider.get(type_6)).toString();
       }
       IFolder folder = project.getFolder("src");
       List<String> _segments = packageName.getSegments();
@@ -466,8 +492,7 @@ public class GameDSLGenerator extends ExtendedJvmModelGenerator {
       byte[] _bytes = body.getBytes("UTF-8");
       ByteArrayInputStream _byteArrayInputStream = new ByteArrayInputStream(_bytes);
       source.create(_byteArrayInputStream, true, this.monitor);
-      boolean _equals = Objects.equal(pType, GameProperties.ProjectType.html);
-      if (_equals) {
+      if (((pType != null) && Objects.equal(pType, GameProperties.ProjectType.html))) {
         IFile gwtDef = basePackageFolder.getFile("GdxDefinition.gwt.xml");
         gwtDef.create(this.buildGwt(gameName, packageName.toString(), fileName), true, this.monitor);
         IFile gwtDefSuperdev = basePackageFolder.getFile("GdxDefinitionSuperdev.gwt.xml");

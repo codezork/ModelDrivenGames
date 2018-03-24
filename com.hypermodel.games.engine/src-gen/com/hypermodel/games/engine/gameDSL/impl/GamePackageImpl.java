@@ -3,11 +3,11 @@
  */
 package com.hypermodel.games.engine.gameDSL.impl;
 
-import com.hypermodel.games.engine.gameDSL.Game;
 import com.hypermodel.games.engine.gameDSL.GameDSLPackage;
 import com.hypermodel.games.engine.gameDSL.GameImport;
 import com.hypermodel.games.engine.gameDSL.GamePackage;
 import com.hypermodel.games.engine.gameDSL.GamePlatformConfig;
+import com.hypermodel.games.engine.gameDSL.GameRoot;
 
 import java.util.Collection;
 
@@ -91,7 +91,7 @@ public class GamePackageImpl extends MinimalEObjectImpl.Container implements Gam
    * @generated
    * @ordered
    */
-  protected EList<Game> games;
+  protected EList<GameRoot> games;
 
   /**
    * <!-- begin-user-doc -->
@@ -204,11 +204,11 @@ public class GamePackageImpl extends MinimalEObjectImpl.Container implements Gam
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<Game> getGames()
+  public EList<GameRoot> getGames()
   {
     if (games == null)
     {
-      games = new EObjectContainmentEList<Game>(Game.class, this, GameDSLPackage.GAME_PACKAGE__GAMES);
+      games = new EObjectContainmentEList<GameRoot>(GameRoot.class, this, GameDSLPackage.GAME_PACKAGE__GAMES);
     }
     return games;
   }
@@ -278,7 +278,7 @@ public class GamePackageImpl extends MinimalEObjectImpl.Container implements Gam
         return;
       case GameDSLPackage.GAME_PACKAGE__GAMES:
         getGames().clear();
-        getGames().addAll((Collection<? extends Game>)newValue);
+        getGames().addAll((Collection<? extends GameRoot>)newValue);
         return;
     }
     super.eSet(featureID, newValue);

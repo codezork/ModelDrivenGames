@@ -79,18 +79,18 @@ public class GameDSLGrammarAccess extends AbstractGrammarElementFinder {
 		private final Assignment cConfigAssignment_4 = (Assignment)cGroup.eContents().get(4);
 		private final RuleCall cConfigGamePlatformConfigParserRuleCall_4_0 = (RuleCall)cConfigAssignment_4.eContents().get(0);
 		private final Assignment cGamesAssignment_5 = (Assignment)cGroup.eContents().get(5);
-		private final RuleCall cGamesGameParserRuleCall_5_0 = (RuleCall)cGamesAssignment_5.eContents().get(0);
+		private final RuleCall cGamesGameRootParserRuleCall_5_0 = (RuleCall)cGamesAssignment_5.eContents().get(0);
 		private final Keyword cRightCurlyBracketKeyword_6 = (Keyword)cGroup.eContents().get(6);
 		
 		//GamePackage:
 		//	'package' name=QualifiedName '{'
 		//	imports+=GameImport*
 		//	config=GamePlatformConfig
-		//	games+=Game*
+		//	games+=GameRoot*
 		//	'}';
 		@Override public ParserRule getRule() { return rule; }
 		
-		//'package' name=QualifiedName '{' imports+=GameImport* config=GamePlatformConfig games+=Game* '}'
+		//'package' name=QualifiedName '{' imports+=GameImport* config=GamePlatformConfig games+=GameRoot* '}'
 		public Group getGroup() { return cGroup; }
 		
 		//'package'
@@ -117,11 +117,11 @@ public class GameDSLGrammarAccess extends AbstractGrammarElementFinder {
 		//GamePlatformConfig
 		public RuleCall getConfigGamePlatformConfigParserRuleCall_4_0() { return cConfigGamePlatformConfigParserRuleCall_4_0; }
 		
-		//games+=Game*
+		//games+=GameRoot*
 		public Assignment getGamesAssignment_5() { return cGamesAssignment_5; }
 		
-		//Game
-		public RuleCall getGamesGameParserRuleCall_5_0() { return cGamesGameParserRuleCall_5_0; }
+		//GameRoot
+		public RuleCall getGamesGameRootParserRuleCall_5_0() { return cGamesGameRootParserRuleCall_5_0; }
 		
 		//'}'
 		public Keyword getRightCurlyBracketKeyword_6() { return cRightCurlyBracketKeyword_6; }
@@ -440,28 +440,138 @@ public class GameDSLGrammarAccess extends AbstractGrammarElementFinder {
 		//'}'
 		public Keyword getRightCurlyBracketKeyword_4() { return cRightCurlyBracketKeyword_4; }
 	}
-	public class GameElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "com.hypermodel.games.engine.GameDSL.Game");
+	public class GameRootElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "com.hypermodel.games.engine.GameDSL.GameRoot");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Keyword cGameKeyword_0 = (Keyword)cGroup.eContents().get(0);
-		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final RuleCall cNameIDTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
+		private final Action cGameRootAction_0 = (Action)cGroup.eContents().get(0);
+		private final Keyword cGameKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Assignment cNameAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cNameIDTerminalRuleCall_2_0 = (RuleCall)cNameAssignment_2.eContents().get(0);
+		private final Keyword cWidthKeyword_3 = (Keyword)cGroup.eContents().get(3);
+		private final Assignment cWidthAssignment_4 = (Assignment)cGroup.eContents().get(4);
+		private final RuleCall cWidthINTTerminalRuleCall_4_0 = (RuleCall)cWidthAssignment_4.eContents().get(0);
+		private final Keyword cHeightKeyword_5 = (Keyword)cGroup.eContents().get(5);
+		private final Assignment cHeightAssignment_6 = (Assignment)cGroup.eContents().get(6);
+		private final RuleCall cHeightINTTerminalRuleCall_6_0 = (RuleCall)cHeightAssignment_6.eContents().get(0);
+		private final Keyword cTitleKeyword_7 = (Keyword)cGroup.eContents().get(7);
+		private final Assignment cTitleAssignment_8 = (Assignment)cGroup.eContents().get(8);
+		private final RuleCall cTitleSTRINGTerminalRuleCall_8_0 = (RuleCall)cTitleAssignment_8.eContents().get(0);
+		private final Keyword cPixelPerMeterKeyword_9 = (Keyword)cGroup.eContents().get(9);
+		private final Assignment cPpmAssignment_10 = (Assignment)cGroup.eContents().get(10);
+		private final RuleCall cPpmINTTerminalRuleCall_10_0 = (RuleCall)cPpmAssignment_10.eContents().get(0);
+		private final Keyword cLeftCurlyBracketKeyword_11 = (Keyword)cGroup.eContents().get(11);
+		private final Assignment cScreensAssignment_12 = (Assignment)cGroup.eContents().get(12);
+		private final RuleCall cScreensGameScreenParserRuleCall_12_0 = (RuleCall)cScreensAssignment_12.eContents().get(0);
+		private final Keyword cRightCurlyBracketKeyword_13 = (Keyword)cGroup.eContents().get(13);
 		
-		//Game:
-		//	'game' name=ID;
+		//GameRoot:
+		//	{GameRoot} 'game' name=ID
+		//	'width' width=INT 'height' height=INT 'title' title=STRING 'pixelPerMeter' ppm=INT
+		//	'{' screens+=GameScreen* '}';
 		@Override public ParserRule getRule() { return rule; }
 		
-		//'game' name=ID
+		//{GameRoot} 'game' name=ID 'width' width=INT 'height' height=INT 'title' title=STRING 'pixelPerMeter' ppm=INT '{'
+		//screens+=GameScreen* '}'
 		public Group getGroup() { return cGroup; }
 		
+		//{GameRoot}
+		public Action getGameRootAction_0() { return cGameRootAction_0; }
+		
 		//'game'
-		public Keyword getGameKeyword_0() { return cGameKeyword_0; }
+		public Keyword getGameKeyword_1() { return cGameKeyword_1; }
 		
 		//name=ID
-		public Assignment getNameAssignment_1() { return cNameAssignment_1; }
+		public Assignment getNameAssignment_2() { return cNameAssignment_2; }
 		
 		//ID
-		public RuleCall getNameIDTerminalRuleCall_1_0() { return cNameIDTerminalRuleCall_1_0; }
+		public RuleCall getNameIDTerminalRuleCall_2_0() { return cNameIDTerminalRuleCall_2_0; }
+		
+		//'width'
+		public Keyword getWidthKeyword_3() { return cWidthKeyword_3; }
+		
+		//width=INT
+		public Assignment getWidthAssignment_4() { return cWidthAssignment_4; }
+		
+		//INT
+		public RuleCall getWidthINTTerminalRuleCall_4_0() { return cWidthINTTerminalRuleCall_4_0; }
+		
+		//'height'
+		public Keyword getHeightKeyword_5() { return cHeightKeyword_5; }
+		
+		//height=INT
+		public Assignment getHeightAssignment_6() { return cHeightAssignment_6; }
+		
+		//INT
+		public RuleCall getHeightINTTerminalRuleCall_6_0() { return cHeightINTTerminalRuleCall_6_0; }
+		
+		//'title'
+		public Keyword getTitleKeyword_7() { return cTitleKeyword_7; }
+		
+		//title=STRING
+		public Assignment getTitleAssignment_8() { return cTitleAssignment_8; }
+		
+		//STRING
+		public RuleCall getTitleSTRINGTerminalRuleCall_8_0() { return cTitleSTRINGTerminalRuleCall_8_0; }
+		
+		//'pixelPerMeter'
+		public Keyword getPixelPerMeterKeyword_9() { return cPixelPerMeterKeyword_9; }
+		
+		//ppm=INT
+		public Assignment getPpmAssignment_10() { return cPpmAssignment_10; }
+		
+		//INT
+		public RuleCall getPpmINTTerminalRuleCall_10_0() { return cPpmINTTerminalRuleCall_10_0; }
+		
+		//'{'
+		public Keyword getLeftCurlyBracketKeyword_11() { return cLeftCurlyBracketKeyword_11; }
+		
+		//screens+=GameScreen*
+		public Assignment getScreensAssignment_12() { return cScreensAssignment_12; }
+		
+		//GameScreen
+		public RuleCall getScreensGameScreenParserRuleCall_12_0() { return cScreensGameScreenParserRuleCall_12_0; }
+		
+		//'}'
+		public Keyword getRightCurlyBracketKeyword_13() { return cRightCurlyBracketKeyword_13; }
+	}
+	public class GameScreenElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "com.hypermodel.games.engine.GameDSL.GameScreen");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Action cGameScreenAction_0 = (Action)cGroup.eContents().get(0);
+		private final Keyword cScreenKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Assignment cNameAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cNameIDTerminalRuleCall_2_0 = (RuleCall)cNameAssignment_2.eContents().get(0);
+		private final Keyword cAtlasKeyword_3 = (Keyword)cGroup.eContents().get(3);
+		private final Assignment cAtlasNameAssignment_4 = (Assignment)cGroup.eContents().get(4);
+		private final RuleCall cAtlasNameSTRINGTerminalRuleCall_4_0 = (RuleCall)cAtlasNameAssignment_4.eContents().get(0);
+		
+		//GameScreen:
+		//	{GameScreen} 'screen' name=ID 'atlas' atlasName=STRING;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//{GameScreen} 'screen' name=ID 'atlas' atlasName=STRING
+		public Group getGroup() { return cGroup; }
+		
+		//{GameScreen}
+		public Action getGameScreenAction_0() { return cGameScreenAction_0; }
+		
+		//'screen'
+		public Keyword getScreenKeyword_1() { return cScreenKeyword_1; }
+		
+		//name=ID
+		public Assignment getNameAssignment_2() { return cNameAssignment_2; }
+		
+		//ID
+		public RuleCall getNameIDTerminalRuleCall_2_0() { return cNameIDTerminalRuleCall_2_0; }
+		
+		//'atlas'
+		public Keyword getAtlasKeyword_3() { return cAtlasKeyword_3; }
+		
+		//atlasName=STRING
+		public Assignment getAtlasNameAssignment_4() { return cAtlasNameAssignment_4; }
+		
+		//STRING
+		public RuleCall getAtlasNameSTRINGTerminalRuleCall_4_0() { return cAtlasNameSTRINGTerminalRuleCall_4_0; }
 	}
 	public class ValidIDElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "com.hypermodel.games.engine.GameDSL.ValidID");
@@ -621,7 +731,8 @@ public class GameDSLGrammarAccess extends AbstractGrammarElementFinder {
 	private final GamePlatformConfigIOSElements pGamePlatformConfigIOS;
 	private final GamePlatformConfigIOSMOEElements pGamePlatformConfigIOSMOE;
 	private final GamePlatformConfigurationElements pGamePlatformConfiguration;
-	private final GameElements pGame;
+	private final GameRootElements pGameRoot;
+	private final GameScreenElements pGameScreen;
 	private final ValidIDElements pValidID;
 	private final QualifiedNameElements pQualifiedName;
 	private final GameQualifiedNameWithWildCardElements pGameQualifiedNameWithWildCard;
@@ -653,7 +764,8 @@ public class GameDSLGrammarAccess extends AbstractGrammarElementFinder {
 		this.pGamePlatformConfigIOS = new GamePlatformConfigIOSElements();
 		this.pGamePlatformConfigIOSMOE = new GamePlatformConfigIOSMOEElements();
 		this.pGamePlatformConfiguration = new GamePlatformConfigurationElements();
-		this.pGame = new GameElements();
+		this.pGameRoot = new GameRootElements();
+		this.pGameScreen = new GameScreenElements();
 		this.pValidID = new ValidIDElements();
 		this.pQualifiedName = new QualifiedNameElements();
 		this.pGameQualifiedNameWithWildCard = new GameQualifiedNameWithWildCardElements();
@@ -720,7 +832,7 @@ public class GameDSLGrammarAccess extends AbstractGrammarElementFinder {
 	//	'package' name=QualifiedName '{'
 	//	imports+=GameImport*
 	//	config=GamePlatformConfig
-	//	games+=Game*
+	//	games+=GameRoot*
 	//	'}';
 	public GamePackageElements getGamePackageAccess() {
 		return pGamePackage;
@@ -796,14 +908,26 @@ public class GameDSLGrammarAccess extends AbstractGrammarElementFinder {
 		return getGamePlatformConfigurationAccess().getRule();
 	}
 	
-	//Game:
-	//	'game' name=ID;
-	public GameElements getGameAccess() {
-		return pGame;
+	//GameRoot:
+	//	{GameRoot} 'game' name=ID
+	//	'width' width=INT 'height' height=INT 'title' title=STRING 'pixelPerMeter' ppm=INT
+	//	'{' screens+=GameScreen* '}';
+	public GameRootElements getGameRootAccess() {
+		return pGameRoot;
 	}
 	
-	public ParserRule getGameRule() {
-		return getGameAccess().getRule();
+	public ParserRule getGameRootRule() {
+		return getGameRootAccess().getRule();
+	}
+	
+	//GameScreen:
+	//	{GameScreen} 'screen' name=ID 'atlas' atlasName=STRING;
+	public GameScreenElements getGameScreenAccess() {
+		return pGameScreen;
+	}
+	
+	public ParserRule getGameScreenRule() {
+		return getGameScreenAccess().getRule();
 	}
 	
 	//ValidID:

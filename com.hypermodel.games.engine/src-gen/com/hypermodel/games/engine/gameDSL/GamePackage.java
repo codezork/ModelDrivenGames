@@ -98,7 +98,7 @@ public interface GamePackage extends EObject
 
   /**
    * Returns the value of the '<em><b>Games</b></em>' containment reference list.
-   * The list contents are of type {@link com.hypermodel.games.engine.gameDSL.Game}.
+   * The list contents are of type {@link com.hypermodel.games.engine.gameDSL.GameRoot}.
    * <!-- begin-user-doc -->
    * <p>
    * If the meaning of the '<em>Games</em>' containment reference list isn't clear,
@@ -110,6 +110,6 @@ public interface GamePackage extends EObject
    * @model containment="true"
    * @generated
    */
-  EList<Game> getGames();
+  EList<GameRoot> getGames();
 
 } // GamePackage

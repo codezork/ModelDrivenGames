@@ -74,7 +74,8 @@ public class GameDSLFactoryImpl extends EFactoryImpl implements GameDSLFactory
       case GameDSLPackage.GAME_PLATFORM_CONFIG_IOS: return createGamePlatformConfigIOS();
       case GameDSLPackage.GAME_PLATFORM_CONFIG_IOSMOE: return createGamePlatformConfigIOSMOE();
       case GameDSLPackage.GAME_PLATFORM_CONFIGURATION: return createGamePlatformConfiguration();
-      case GameDSLPackage.GAME: return createGame();
+      case GameDSLPackage.GAME_ROOT: return createGameRoot();
+      case GameDSLPackage.GAME_SCREEN: return createGameScreen();
       default:
         throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
     }
@@ -211,10 +212,21 @@ public class GameDSLFactoryImpl extends EFactoryImpl implements GameDSLFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public Game createGame()
+  public GameRoot createGameRoot()
   {
-    GameImpl game = new GameImpl();
-    return game;
+    GameRootImpl gameRoot = new GameRootImpl();
+    return gameRoot;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public GameScreen createGameScreen()
+  {
+    GameScreenImpl gameScreen = new GameScreenImpl();
+    return gameScreen;
   }
 
   /**

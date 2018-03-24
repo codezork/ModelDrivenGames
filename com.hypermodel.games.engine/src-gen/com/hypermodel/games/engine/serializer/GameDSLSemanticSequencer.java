@@ -4,7 +4,6 @@
 package com.hypermodel.games.engine.serializer;
 
 import com.google.inject.Inject;
-import com.hypermodel.games.engine.gameDSL.Game;
 import com.hypermodel.games.engine.gameDSL.GameDSLPackage;
 import com.hypermodel.games.engine.gameDSL.GameImport;
 import com.hypermodel.games.engine.gameDSL.GameModel;
@@ -14,6 +13,8 @@ import com.hypermodel.games.engine.gameDSL.GamePlatformConfigAndroid;
 import com.hypermodel.games.engine.gameDSL.GamePlatformConfigIOS;
 import com.hypermodel.games.engine.gameDSL.GamePlatformConfigIOSMOE;
 import com.hypermodel.games.engine.gameDSL.GamePlatformConfiguration;
+import com.hypermodel.games.engine.gameDSL.GameRoot;
+import com.hypermodel.games.engine.gameDSL.GameScreen;
 import com.hypermodel.games.engine.services.GameDSLGrammarAccess;
 import java.util.Set;
 import org.eclipse.emf.ecore.EObject;
@@ -88,9 +89,6 @@ public class GameDSLSemanticSequencer extends XbaseWithAnnotationsSemanticSequen
 		Set<Parameter> parameters = context.getEnabledBooleanParameters();
 		if (epackage == GameDSLPackage.eINSTANCE)
 			switch (semanticObject.eClass().getClassifierID()) {
-			case GameDSLPackage.GAME:
-				sequence_Game(context, (Game) semanticObject); 
-				return; 
 			case GameDSLPackage.GAME_IMPORT:
 				sequence_GameImport(context, (GameImport) semanticObject); 
 				return; 
@@ -114,6 +112,12 @@ public class GameDSLSemanticSequencer extends XbaseWithAnnotationsSemanticSequen
 				return; 
 			case GameDSLPackage.GAME_PLATFORM_CONFIGURATION:
 				sequence_GamePlatformConfiguration(context, (GamePlatformConfiguration) semanticObject); 
+				return; 
+			case GameDSLPackage.GAME_ROOT:
+				sequence_GameRoot(context, (GameRoot) semanticObject); 
+				return; 
+			case GameDSLPackage.GAME_SCREEN:
+				sequence_GameScreen(context, (GameScreen) semanticObject); 
 				return; 
 			}
 		else if (epackage == TypesPackage.eINSTANCE)
@@ -455,7 +459,7 @@ public class GameDSLSemanticSequencer extends XbaseWithAnnotationsSemanticSequen
 	 *     GamePackage returns GamePackage
 	 *
 	 * Constraint:
-	 *     (name=QualifiedName imports+=GameImport* config=GamePlatformConfig games+=Game*)
+	 *     (name=QualifiedName imports+=GameImport* config=GamePlatformConfig games+=GameRoot*)
 	 */
 	protected void sequence_GamePackage(ISerializationContext context, GamePackage semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -543,18 +547,40 @@ public class GameDSLSemanticSequencer extends XbaseWithAnnotationsSemanticSequen
 	
 	/**
 	 * Contexts:
-	 *     Game returns Game
+	 *     GameRoot returns GameRoot
 	 *
 	 * Constraint:
-	 *     name=ID
+	 *     (
+	 *         name=ID 
+	 *         width=INT 
+	 *         height=INT 
+	 *         title=STRING 
+	 *         ppm=INT 
+	 *         screens+=GameScreen*
+	 *     )
 	 */
-	protected void sequence_Game(ISerializationContext context, Game semanticObject) {
+	protected void sequence_GameRoot(ISerializationContext context, GameRoot semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     GameScreen returns GameScreen
+	 *
+	 * Constraint:
+	 *     (name=ID atlasName=STRING)
+	 */
+	protected void sequence_GameScreen(ISerializationContext context, GameScreen semanticObject) {
 		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, GameDSLPackage.Literals.GAME__NAME) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, GameDSLPackage.Literals.GAME__NAME));
+			if (transientValues.isValueTransient(semanticObject, GameDSLPackage.Literals.GAME_SCREEN__NAME) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, GameDSLPackage.Literals.GAME_SCREEN__NAME));
+			if (transientValues.isValueTransient(semanticObject, GameDSLPackage.Literals.GAME_SCREEN__ATLAS_NAME) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, GameDSLPackage.Literals.GAME_SCREEN__ATLAS_NAME));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getGameAccess().getNameIDTerminalRuleCall_1_0(), semanticObject.getName());
+		feeder.accept(grammarAccess.getGameScreenAccess().getNameIDTerminalRuleCall_2_0(), semanticObject.getName());
+		feeder.accept(grammarAccess.getGameScreenAccess().getAtlasNameSTRINGTerminalRuleCall_4_0(), semanticObject.getAtlasName());
 		feeder.finish();
 	}
 	

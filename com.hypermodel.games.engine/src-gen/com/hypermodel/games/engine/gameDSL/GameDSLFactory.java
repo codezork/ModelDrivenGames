@@ -96,13 +96,22 @@ public interface GameDSLFactory extends EFactory
   GamePlatformConfiguration createGamePlatformConfiguration();
 
   /**
-   * Returns a new object of class '<em>Game</em>'.
+   * Returns a new object of class '<em>Game Root</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Game</em>'.
+   * @return a new object of class '<em>Game Root</em>'.
    * @generated
    */
-  Game createGame();
+  GameRoot createGameRoot();
+
+  /**
+   * Returns a new object of class '<em>Game Screen</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Game Screen</em>'.
+   * @generated
+   */
+  GameScreen createGameScreen();
 
   /**
    * Returns the package supported by this factory.

@@ -12,5 +12,7 @@ package de.hypermodel.games {
 			useAccelerometer
 		}
 	}
-	game MyGame 
+	game MarioBros width 480 height 208 title "MarioBros" pixelPerMeter 100 { 
+		screen PlayScreen atlas "Mario_and_Enemies"
+	}
 } 

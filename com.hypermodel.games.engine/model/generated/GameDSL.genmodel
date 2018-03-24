@@ -54,8 +54,17 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GameDSL.ecore#//GamePlatformConfiguration/platform"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GameDSL.ecore#//GamePlatformConfiguration/config"/>
     </genClasses>
-    <genClasses ecoreClass="GameDSL.ecore#//Game">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GameDSL.ecore#//Game/name"/>
+    <genClasses ecoreClass="GameDSL.ecore#//GameRoot">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GameDSL.ecore#//GameRoot/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GameDSL.ecore#//GameRoot/width"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GameDSL.ecore#//GameRoot/height"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GameDSL.ecore#//GameRoot/title"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GameDSL.ecore#//GameRoot/ppm"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GameDSL.ecore#//GameRoot/screens"/>
+    </genClasses>
+    <genClasses ecoreClass="GameDSL.ecore#//GameScreen">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GameDSL.ecore#//GameScreen/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GameDSL.ecore#//GameScreen/atlasName"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>
