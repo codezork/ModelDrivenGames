@@ -114,6 +114,33 @@ public interface GameDSLFactory extends EFactory
   GameScreen createGameScreen();
 
   /**
+   * Returns a new object of class '<em>Game Scene</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Game Scene</em>'.
+   * @generated
+   */
+  GameScene createGameScene();
+
+  /**
+   * Returns a new object of class '<em>Game Score</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Game Score</em>'.
+   * @generated
+   */
+  GameScore createGameScore();
+
+  /**
+   * Returns a new object of class '<em>Game Display</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Game Display</em>'.
+   * @generated
+   */
+  GameDisplay createGameDisplay();
+
+  /**
    * Returns the package supported by this factory.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->

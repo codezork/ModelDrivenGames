@@ -1,4 +1,4 @@
-package de.hypermodel.games {
+package de.hypermodel.games { 
 	configuration { 
 		android { 
 			minAndroidVersion 9
@@ -12,7 +12,15 @@ package de.hypermodel.games {
 			useAccelerometer 
 		}   
 	}
-	game MarioBros width 400 height 208 title "MarioBros" pixelPerMeter 100 {  
-		screen PlayScreen atlas "Mario_and_Enemies"
+	game MarioBros width 400 height 208 title "MarioBros" pixelPerMeter 100 
+	scenes {
+		scene Hud hasScore topPadding 10 {
+			display mario valueType number format "%06d" initialValue 0 addValue
+			display world valueType text format "%s" initialValue "1-1" setValue 
+			display time valueType number format "%03d" initialValue 300 deltaValue -1.0 eachTimePeriod 1.0  
+		}
+	}
+	screens {
+		screen PlayScreen atlas "Mario_and_Enemies" 
 	}
 } 

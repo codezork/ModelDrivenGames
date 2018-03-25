@@ -5,6 +5,7 @@ package com.hypermodel.games.engine.serializer;
 
 import com.google.inject.Inject;
 import com.hypermodel.games.engine.gameDSL.GameDSLPackage;
+import com.hypermodel.games.engine.gameDSL.GameDisplay;
 import com.hypermodel.games.engine.gameDSL.GameImport;
 import com.hypermodel.games.engine.gameDSL.GameModel;
 import com.hypermodel.games.engine.gameDSL.GamePackage;
@@ -14,6 +15,8 @@ import com.hypermodel.games.engine.gameDSL.GamePlatformConfigIOS;
 import com.hypermodel.games.engine.gameDSL.GamePlatformConfigIOSMOE;
 import com.hypermodel.games.engine.gameDSL.GamePlatformConfiguration;
 import com.hypermodel.games.engine.gameDSL.GameRoot;
+import com.hypermodel.games.engine.gameDSL.GameScene;
+import com.hypermodel.games.engine.gameDSL.GameScore;
 import com.hypermodel.games.engine.gameDSL.GameScreen;
 import com.hypermodel.games.engine.services.GameDSLGrammarAccess;
 import java.util.Set;
@@ -89,6 +92,9 @@ public class GameDSLSemanticSequencer extends XbaseWithAnnotationsSemanticSequen
 		Set<Parameter> parameters = context.getEnabledBooleanParameters();
 		if (epackage == GameDSLPackage.eINSTANCE)
 			switch (semanticObject.eClass().getClassifierID()) {
+			case GameDSLPackage.GAME_DISPLAY:
+				sequence_GameDisplay(context, (GameDisplay) semanticObject); 
+				return; 
 			case GameDSLPackage.GAME_IMPORT:
 				sequence_GameImport(context, (GameImport) semanticObject); 
 				return; 
@@ -115,6 +121,12 @@ public class GameDSLSemanticSequencer extends XbaseWithAnnotationsSemanticSequen
 				return; 
 			case GameDSLPackage.GAME_ROOT:
 				sequence_GameRoot(context, (GameRoot) semanticObject); 
+				return; 
+			case GameDSLPackage.GAME_SCENE:
+				sequence_GameScene(context, (GameScene) semanticObject); 
+				return; 
+			case GameDSLPackage.GAME_SCORE:
+				sequence_GameScore(context, (GameScore) semanticObject); 
 				return; 
 			case GameDSLPackage.GAME_SCREEN:
 				sequence_GameScreen(context, (GameScreen) semanticObject); 
@@ -426,6 +438,26 @@ public class GameDSLSemanticSequencer extends XbaseWithAnnotationsSemanticSequen
 	
 	/**
 	 * Contexts:
+	 *     GameDisplay returns GameDisplay
+	 *
+	 * Constraint:
+	 *     (
+	 *         name=ID 
+	 *         type=GameDisplayValueType 
+	 *         format=STRING 
+	 *         (hasInitial?='initialValue' (initialNumberValue=SignedNumber | initialIntValue=INT | initialStringValue=STRING))? 
+	 *         (hasDelta?='deltaValue' deltaValue=SignedNumber timePeriod=UnsignedNumber)? 
+	 *         hasAdder?='addValue'? 
+	 *         hasSetter?='setValue'?
+	 *     )
+	 */
+	protected void sequence_GameDisplay(ISerializationContext context, GameDisplay semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
 	 *     GameImport returns GameImport
 	 *
 	 * Constraint:
@@ -556,10 +588,35 @@ public class GameDSLSemanticSequencer extends XbaseWithAnnotationsSemanticSequen
 	 *         height=INT 
 	 *         title=STRING 
 	 *         ppm=INT 
+	 *         scenes+=GameScene* 
 	 *         screens+=GameScreen*
 	 *     )
 	 */
 	protected void sequence_GameRoot(ISerializationContext context, GameRoot semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     GameScene returns GameScene
+	 *
+	 * Constraint:
+	 *     (name=ID (hasScore?='hasScore' score=GameScore)?)
+	 */
+	protected void sequence_GameScene(ISerializationContext context, GameScene semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     GameScore returns GameScore
+	 *
+	 * Constraint:
+	 *     (topPadding=INT displays+=GameDisplay*)
+	 */
+	protected void sequence_GameScore(ISerializationContext context, GameScore semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	

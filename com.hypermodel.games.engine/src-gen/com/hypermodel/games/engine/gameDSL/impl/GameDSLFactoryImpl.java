@@ -76,6 +76,9 @@ public class GameDSLFactoryImpl extends EFactoryImpl implements GameDSLFactory
       case GameDSLPackage.GAME_PLATFORM_CONFIGURATION: return createGamePlatformConfiguration();
       case GameDSLPackage.GAME_ROOT: return createGameRoot();
       case GameDSLPackage.GAME_SCREEN: return createGameScreen();
+      case GameDSLPackage.GAME_SCENE: return createGameScene();
+      case GameDSLPackage.GAME_SCORE: return createGameScore();
+      case GameDSLPackage.GAME_DISPLAY: return createGameDisplay();
       default:
         throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
     }
@@ -91,6 +94,8 @@ public class GameDSLFactoryImpl extends EFactoryImpl implements GameDSLFactory
   {
     switch (eDataType.getClassifierID())
     {
+      case GameDSLPackage.GAME_DISPLAY_VALUE_TYPE:
+        return createGameDisplayValueTypeFromString(eDataType, initialValue);
       case GameDSLPackage.GAME_PLATFORM:
         return createGamePlatformFromString(eDataType, initialValue);
       case GameDSLPackage.GAME_SCREEN_ORIENTATION:
@@ -110,6 +115,8 @@ public class GameDSLFactoryImpl extends EFactoryImpl implements GameDSLFactory
   {
     switch (eDataType.getClassifierID())
     {
+      case GameDSLPackage.GAME_DISPLAY_VALUE_TYPE:
+        return convertGameDisplayValueTypeToString(eDataType, instanceValue);
       case GameDSLPackage.GAME_PLATFORM:
         return convertGamePlatformToString(eDataType, instanceValue);
       case GameDSLPackage.GAME_SCREEN_ORIENTATION:
@@ -227,6 +234,61 @@ public class GameDSLFactoryImpl extends EFactoryImpl implements GameDSLFactory
   {
     GameScreenImpl gameScreen = new GameScreenImpl();
     return gameScreen;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public GameScene createGameScene()
+  {
+    GameSceneImpl gameScene = new GameSceneImpl();
+    return gameScene;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public GameScore createGameScore()
+  {
+    GameScoreImpl gameScore = new GameScoreImpl();
+    return gameScore;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public GameDisplay createGameDisplay()
+  {
+    GameDisplayImpl gameDisplay = new GameDisplayImpl();
+    return gameDisplay;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public GameDisplayValueType createGameDisplayValueTypeFromString(EDataType eDataType, String initialValue)
+  {
+    GameDisplayValueType result = GameDisplayValueType.get(initialValue);
+    if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+    return result;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public String convertGameDisplayValueTypeToString(EDataType eDataType, Object instanceValue)
+  {
+    return instanceValue == null ? null : instanceValue.toString();
   }
 
   /**

@@ -6,6 +6,11 @@
     complianceLevel="6.0" copyrightFields="false" runtimeVersion="2.13">
   <genPackages prefix="GameDSL" basePackage="com.hypermodel.games.engine" disposableProviderFactory="true"
       fileExtensions="game" ecorePackage="GameDSL.ecore#/">
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="GameDSL.ecore#//GameDisplayValueType">
+      <genEnumLiterals ecoreEnumLiteral="GameDSL.ecore#//GameDisplayValueType/int"/>
+      <genEnumLiterals ecoreEnumLiteral="GameDSL.ecore#//GameDisplayValueType/float"/>
+      <genEnumLiterals ecoreEnumLiteral="GameDSL.ecore#//GameDisplayValueType/String"/>
+    </genEnums>
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="GameDSL.ecore#//GamePlatform">
       <genEnumLiterals ecoreEnumLiteral="GameDSL.ecore#//GamePlatform/android"/>
       <genEnumLiterals ecoreEnumLiteral="GameDSL.ecore#//GamePlatform/desktop"/>
@@ -60,11 +65,35 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GameDSL.ecore#//GameRoot/height"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GameDSL.ecore#//GameRoot/title"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GameDSL.ecore#//GameRoot/ppm"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GameDSL.ecore#//GameRoot/scenes"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GameDSL.ecore#//GameRoot/screens"/>
     </genClasses>
     <genClasses ecoreClass="GameDSL.ecore#//GameScreen">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GameDSL.ecore#//GameScreen/name"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GameDSL.ecore#//GameScreen/atlasName"/>
+    </genClasses>
+    <genClasses ecoreClass="GameDSL.ecore#//GameScene">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GameDSL.ecore#//GameScene/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GameDSL.ecore#//GameScene/hasScore"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GameDSL.ecore#//GameScene/score"/>
+    </genClasses>
+    <genClasses ecoreClass="GameDSL.ecore#//GameScore">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GameDSL.ecore#//GameScore/topPadding"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GameDSL.ecore#//GameScore/displays"/>
+    </genClasses>
+    <genClasses ecoreClass="GameDSL.ecore#//GameDisplay">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GameDSL.ecore#//GameDisplay/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GameDSL.ecore#//GameDisplay/type"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GameDSL.ecore#//GameDisplay/format"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GameDSL.ecore#//GameDisplay/hasInitial"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GameDSL.ecore#//GameDisplay/initialNumberValue"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GameDSL.ecore#//GameDisplay/initialIntValue"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GameDSL.ecore#//GameDisplay/initialStringValue"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GameDSL.ecore#//GameDisplay/hasDelta"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GameDSL.ecore#//GameDisplay/deltaValue"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GameDSL.ecore#//GameDisplay/timePeriod"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GameDSL.ecore#//GameDisplay/hasAdder"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GameDSL.ecore#//GameDisplay/hasSetter"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>
