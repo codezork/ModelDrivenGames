@@ -4,14 +4,25 @@
 package com.hypermodel.games.engine.gameDSL.impl;
 
 import com.hypermodel.games.engine.gameDSL.GameDSLPackage;
+import com.hypermodel.games.engine.gameDSL.GameScene;
 import com.hypermodel.games.engine.gameDSL.GameScreen;
+import com.hypermodel.games.engine.gameDSL.GameSprite;
+
+import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.NotificationChain;
+
+import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
+
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -23,6 +34,8 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  * <ul>
  *   <li>{@link com.hypermodel.games.engine.gameDSL.impl.GameScreenImpl#getName <em>Name</em>}</li>
  *   <li>{@link com.hypermodel.games.engine.gameDSL.impl.GameScreenImpl#getAtlasName <em>Atlas Name</em>}</li>
+ *   <li>{@link com.hypermodel.games.engine.gameDSL.impl.GameScreenImpl#getScene <em>Scene</em>}</li>
+ *   <li>{@link com.hypermodel.games.engine.gameDSL.impl.GameScreenImpl#getSprites <em>Sprites</em>}</li>
  * </ul>
  *
  * @generated
@@ -68,6 +81,26 @@ public class GameScreenImpl extends MinimalEObjectImpl.Container implements Game
    * @ordered
    */
   protected String atlasName = ATLAS_NAME_EDEFAULT;
+
+  /**
+   * The cached value of the '{@link #getScene() <em>Scene</em>}' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getScene()
+   * @generated
+   * @ordered
+   */
+  protected GameScene scene;
+
+  /**
+   * The cached value of the '{@link #getSprites() <em>Sprites</em>}' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getSprites()
+   * @generated
+   * @ordered
+   */
+  protected EList<GameSprite> sprites;
 
   /**
    * <!-- begin-user-doc -->
@@ -141,6 +174,79 @@ public class GameScreenImpl extends MinimalEObjectImpl.Container implements Game
    * <!-- end-user-doc -->
    * @generated
    */
+  public GameScene getScene()
+  {
+    if (scene != null && scene.eIsProxy())
+    {
+      InternalEObject oldScene = (InternalEObject)scene;
+      scene = (GameScene)eResolveProxy(oldScene);
+      if (scene != oldScene)
+      {
+        if (eNotificationRequired())
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, GameDSLPackage.GAME_SCREEN__SCENE, oldScene, scene));
+      }
+    }
+    return scene;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public GameScene basicGetScene()
+  {
+    return scene;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setScene(GameScene newScene)
+  {
+    GameScene oldScene = scene;
+    scene = newScene;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, GameDSLPackage.GAME_SCREEN__SCENE, oldScene, scene));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EList<GameSprite> getSprites()
+  {
+    if (sprites == null)
+    {
+      sprites = new EObjectContainmentEList<GameSprite>(GameSprite.class, this, GameDSLPackage.GAME_SCREEN__SPRITES);
+    }
+    return sprites;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
+  {
+    switch (featureID)
+    {
+      case GameDSLPackage.GAME_SCREEN__SPRITES:
+        return ((InternalEList<?>)getSprites()).basicRemove(otherEnd, msgs);
+    }
+    return super.eInverseRemove(otherEnd, featureID, msgs);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   @Override
   public Object eGet(int featureID, boolean resolve, boolean coreType)
   {
@@ -150,6 +256,11 @@ public class GameScreenImpl extends MinimalEObjectImpl.Container implements Game
         return getName();
       case GameDSLPackage.GAME_SCREEN__ATLAS_NAME:
         return getAtlasName();
+      case GameDSLPackage.GAME_SCREEN__SCENE:
+        if (resolve) return getScene();
+        return basicGetScene();
+      case GameDSLPackage.GAME_SCREEN__SPRITES:
+        return getSprites();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -159,6 +270,7 @@ public class GameScreenImpl extends MinimalEObjectImpl.Container implements Game
    * <!-- end-user-doc -->
    * @generated
    */
+  @SuppressWarnings("unchecked")
   @Override
   public void eSet(int featureID, Object newValue)
   {
@@ -169,6 +281,13 @@ public class GameScreenImpl extends MinimalEObjectImpl.Container implements Game
         return;
       case GameDSLPackage.GAME_SCREEN__ATLAS_NAME:
         setAtlasName((String)newValue);
+        return;
+      case GameDSLPackage.GAME_SCREEN__SCENE:
+        setScene((GameScene)newValue);
+        return;
+      case GameDSLPackage.GAME_SCREEN__SPRITES:
+        getSprites().clear();
+        getSprites().addAll((Collection<? extends GameSprite>)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -190,6 +309,12 @@ public class GameScreenImpl extends MinimalEObjectImpl.Container implements Game
       case GameDSLPackage.GAME_SCREEN__ATLAS_NAME:
         setAtlasName(ATLAS_NAME_EDEFAULT);
         return;
+      case GameDSLPackage.GAME_SCREEN__SCENE:
+        setScene((GameScene)null);
+        return;
+      case GameDSLPackage.GAME_SCREEN__SPRITES:
+        getSprites().clear();
+        return;
     }
     super.eUnset(featureID);
   }
@@ -208,6 +333,10 @@ public class GameScreenImpl extends MinimalEObjectImpl.Container implements Game
         return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
       case GameDSLPackage.GAME_SCREEN__ATLAS_NAME:
         return ATLAS_NAME_EDEFAULT == null ? atlasName != null : !ATLAS_NAME_EDEFAULT.equals(atlasName);
+      case GameDSLPackage.GAME_SCREEN__SCENE:
+        return scene != null;
+      case GameDSLPackage.GAME_SCREEN__SPRITES:
+        return sprites != null && !sprites.isEmpty();
     }
     return super.eIsSet(featureID);
   }

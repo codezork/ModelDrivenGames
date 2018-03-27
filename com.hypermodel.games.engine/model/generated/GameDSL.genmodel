@@ -67,10 +67,13 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GameDSL.ecore#//GameRoot/ppm"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GameDSL.ecore#//GameRoot/scenes"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GameDSL.ecore#//GameRoot/screens"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GameDSL.ecore#//GameRoot/regions"/>
     </genClasses>
     <genClasses ecoreClass="GameDSL.ecore#//GameScreen">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GameDSL.ecore#//GameScreen/name"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GameDSL.ecore#//GameScreen/atlasName"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference GameDSL.ecore#//GameScreen/scene"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GameDSL.ecore#//GameScreen/sprites"/>
     </genClasses>
     <genClasses ecoreClass="GameDSL.ecore#//GameScene">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GameDSL.ecore#//GameScene/name"/>
@@ -94,6 +97,33 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GameDSL.ecore#//GameDisplay/timePeriod"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GameDSL.ecore#//GameDisplay/hasAdder"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GameDSL.ecore#//GameDisplay/hasSetter"/>
+    </genClasses>
+    <genClasses ecoreClass="GameDSL.ecore#//GameSprite">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GameDSL.ecore#//GameSprite/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GameDSL.ecore#//GameSprite/radius"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GameDSL.ecore#//GameSprite/animations"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GameDSL.ecore#//GameSprite/stands"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference GameDSL.ecore#//GameSprite/start"/>
+    </genClasses>
+    <genClasses ecoreClass="GameDSL.ecore#//GameSpriteAnimation">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GameDSL.ecore#//GameSpriteAnimation/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GameDSL.ecore#//GameSpriteAnimation/duration"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GameDSL.ecore#//GameSpriteAnimation/hasFrames"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GameDSL.ecore#//GameSpriteAnimation/frames"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GameDSL.ecore#//GameSpriteAnimation/offset"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference GameDSL.ecore#//GameSpriteAnimation/region"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GameDSL.ecore#//GameSpriteAnimation/hasStands"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GameDSL.ecore#//GameSpriteAnimation/stands"/>
+    </genClasses>
+    <genClasses ecoreClass="GameDSL.ecore#//GameSpriteStand">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GameDSL.ecore#//GameSpriteStand/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GameDSL.ecore#//GameSpriteStand/offset"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference GameDSL.ecore#//GameSpriteStand/region"/>
+    </genClasses>
+    <genClasses ecoreClass="GameDSL.ecore#//GameTextureRegion">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GameDSL.ecore#//GameTextureRegion/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GameDSL.ecore#//GameTextureRegion/width"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GameDSL.ecore#//GameTextureRegion/height"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

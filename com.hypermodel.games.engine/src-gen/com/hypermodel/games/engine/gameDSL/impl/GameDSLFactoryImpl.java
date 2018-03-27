@@ -79,6 +79,10 @@ public class GameDSLFactoryImpl extends EFactoryImpl implements GameDSLFactory
       case GameDSLPackage.GAME_SCENE: return createGameScene();
       case GameDSLPackage.GAME_SCORE: return createGameScore();
       case GameDSLPackage.GAME_DISPLAY: return createGameDisplay();
+      case GameDSLPackage.GAME_SPRITE: return createGameSprite();
+      case GameDSLPackage.GAME_SPRITE_ANIMATION: return createGameSpriteAnimation();
+      case GameDSLPackage.GAME_SPRITE_STAND: return createGameSpriteStand();
+      case GameDSLPackage.GAME_TEXTURE_REGION: return createGameTextureRegion();
       default:
         throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
     }
@@ -267,6 +271,50 @@ public class GameDSLFactoryImpl extends EFactoryImpl implements GameDSLFactory
   {
     GameDisplayImpl gameDisplay = new GameDisplayImpl();
     return gameDisplay;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public GameSprite createGameSprite()
+  {
+    GameSpriteImpl gameSprite = new GameSpriteImpl();
+    return gameSprite;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public GameSpriteAnimation createGameSpriteAnimation()
+  {
+    GameSpriteAnimationImpl gameSpriteAnimation = new GameSpriteAnimationImpl();
+    return gameSpriteAnimation;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public GameSpriteStand createGameSpriteStand()
+  {
+    GameSpriteStandImpl gameSpriteStand = new GameSpriteStandImpl();
+    return gameSpriteStand;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public GameTextureRegion createGameTextureRegion()
+  {
+    GameTextureRegionImpl gameTextureRegion = new GameTextureRegionImpl();
+    return gameTextureRegion;
   }
 
   /**

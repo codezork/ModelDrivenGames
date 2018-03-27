@@ -7,6 +7,7 @@ import com.hypermodel.games.engine.gameDSL.GameDSLPackage;
 import com.hypermodel.games.engine.gameDSL.GameRoot;
 import com.hypermodel.games.engine.gameDSL.GameScene;
 import com.hypermodel.games.engine.gameDSL.GameScreen;
+import com.hypermodel.games.engine.gameDSL.GameTextureRegion;
 
 import java.util.Collection;
 
@@ -39,6 +40,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link com.hypermodel.games.engine.gameDSL.impl.GameRootImpl#getPpm <em>Ppm</em>}</li>
  *   <li>{@link com.hypermodel.games.engine.gameDSL.impl.GameRootImpl#getScenes <em>Scenes</em>}</li>
  *   <li>{@link com.hypermodel.games.engine.gameDSL.impl.GameRootImpl#getScreens <em>Screens</em>}</li>
+ *   <li>{@link com.hypermodel.games.engine.gameDSL.impl.GameRootImpl#getRegions <em>Regions</em>}</li>
  * </ul>
  *
  * @generated
@@ -164,6 +166,16 @@ public class GameRootImpl extends MinimalEObjectImpl.Container implements GameRo
    * @ordered
    */
   protected EList<GameScreen> screens;
+
+  /**
+   * The cached value of the '{@link #getRegions() <em>Regions</em>}' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getRegions()
+   * @generated
+   * @ordered
+   */
+  protected EList<GameTextureRegion> regions;
 
   /**
    * <!-- begin-user-doc -->
@@ -334,6 +346,20 @@ public class GameRootImpl extends MinimalEObjectImpl.Container implements GameRo
    * <!-- end-user-doc -->
    * @generated
    */
+  public EList<GameTextureRegion> getRegions()
+  {
+    if (regions == null)
+    {
+      regions = new EObjectContainmentEList<GameTextureRegion>(GameTextureRegion.class, this, GameDSLPackage.GAME_ROOT__REGIONS);
+    }
+    return regions;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   @Override
   public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
   {
@@ -343,6 +369,8 @@ public class GameRootImpl extends MinimalEObjectImpl.Container implements GameRo
         return ((InternalEList<?>)getScenes()).basicRemove(otherEnd, msgs);
       case GameDSLPackage.GAME_ROOT__SCREENS:
         return ((InternalEList<?>)getScreens()).basicRemove(otherEnd, msgs);
+      case GameDSLPackage.GAME_ROOT__REGIONS:
+        return ((InternalEList<?>)getRegions()).basicRemove(otherEnd, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -371,6 +399,8 @@ public class GameRootImpl extends MinimalEObjectImpl.Container implements GameRo
         return getScenes();
       case GameDSLPackage.GAME_ROOT__SCREENS:
         return getScreens();
+      case GameDSLPackage.GAME_ROOT__REGIONS:
+        return getRegions();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -409,6 +439,10 @@ public class GameRootImpl extends MinimalEObjectImpl.Container implements GameRo
         getScreens().clear();
         getScreens().addAll((Collection<? extends GameScreen>)newValue);
         return;
+      case GameDSLPackage.GAME_ROOT__REGIONS:
+        getRegions().clear();
+        getRegions().addAll((Collection<? extends GameTextureRegion>)newValue);
+        return;
     }
     super.eSet(featureID, newValue);
   }
@@ -444,6 +478,9 @@ public class GameRootImpl extends MinimalEObjectImpl.Container implements GameRo
       case GameDSLPackage.GAME_ROOT__SCREENS:
         getScreens().clear();
         return;
+      case GameDSLPackage.GAME_ROOT__REGIONS:
+        getRegions().clear();
+        return;
     }
     super.eUnset(featureID);
   }
@@ -472,6 +509,8 @@ public class GameRootImpl extends MinimalEObjectImpl.Container implements GameRo
         return scenes != null && !scenes.isEmpty();
       case GameDSLPackage.GAME_ROOT__SCREENS:
         return screens != null && !screens.isEmpty();
+      case GameDSLPackage.GAME_ROOT__REGIONS:
+        return regions != null && !regions.isEmpty();
     }
     return super.eIsSet(featureID);
   }

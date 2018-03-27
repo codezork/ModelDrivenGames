@@ -141,6 +141,26 @@ public class GameDSLAdapterFactory extends AdapterFactoryImpl
         return createGameDisplayAdapter();
       }
       @Override
+      public Adapter caseGameSprite(GameSprite object)
+      {
+        return createGameSpriteAdapter();
+      }
+      @Override
+      public Adapter caseGameSpriteAnimation(GameSpriteAnimation object)
+      {
+        return createGameSpriteAnimationAdapter();
+      }
+      @Override
+      public Adapter caseGameSpriteStand(GameSpriteStand object)
+      {
+        return createGameSpriteStandAdapter();
+      }
+      @Override
+      public Adapter caseGameTextureRegion(GameTextureRegion object)
+      {
+        return createGameTextureRegionAdapter();
+      }
+      @Override
       public Adapter defaultCase(EObject object)
       {
         return createEObjectAdapter();
@@ -353,6 +373,66 @@ public class GameDSLAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createGameDisplayAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link com.hypermodel.games.engine.gameDSL.GameSprite <em>Game Sprite</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see com.hypermodel.games.engine.gameDSL.GameSprite
+   * @generated
+   */
+  public Adapter createGameSpriteAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link com.hypermodel.games.engine.gameDSL.GameSpriteAnimation <em>Game Sprite Animation</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see com.hypermodel.games.engine.gameDSL.GameSpriteAnimation
+   * @generated
+   */
+  public Adapter createGameSpriteAnimationAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link com.hypermodel.games.engine.gameDSL.GameSpriteStand <em>Game Sprite Stand</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see com.hypermodel.games.engine.gameDSL.GameSpriteStand
+   * @generated
+   */
+  public Adapter createGameSpriteStandAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link com.hypermodel.games.engine.gameDSL.GameTextureRegion <em>Game Texture Region</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see com.hypermodel.games.engine.gameDSL.GameTextureRegion
+   * @generated
+   */
+  public Adapter createGameTextureRegionAdapter()
   {
     return null;
   }

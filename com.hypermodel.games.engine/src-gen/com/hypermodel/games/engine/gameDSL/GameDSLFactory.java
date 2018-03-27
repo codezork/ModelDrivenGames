@@ -141,6 +141,42 @@ public interface GameDSLFactory extends EFactory
   GameDisplay createGameDisplay();
 
   /**
+   * Returns a new object of class '<em>Game Sprite</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Game Sprite</em>'.
+   * @generated
+   */
+  GameSprite createGameSprite();
+
+  /**
+   * Returns a new object of class '<em>Game Sprite Animation</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Game Sprite Animation</em>'.
+   * @generated
+   */
+  GameSpriteAnimation createGameSpriteAnimation();
+
+  /**
+   * Returns a new object of class '<em>Game Sprite Stand</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Game Sprite Stand</em>'.
+   * @generated
+   */
+  GameSpriteStand createGameSpriteStand();
+
+  /**
+   * Returns a new object of class '<em>Game Texture Region</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Game Texture Region</em>'.
+   * @generated
+   */
+  GameTextureRegion createGameTextureRegion();
+
+  /**
    * Returns the package supported by this factory.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->

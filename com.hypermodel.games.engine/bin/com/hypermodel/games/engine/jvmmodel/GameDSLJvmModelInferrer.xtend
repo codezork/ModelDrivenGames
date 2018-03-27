@@ -43,6 +43,16 @@ import com.badlogic.gdx.utils.viewport.FitViewport
 import com.badlogic.gdx.scenes.scene2d.ui.Table
 import com.badlogic.gdx.graphics.g2d.BitmapFont
 import com.badlogic.gdx.graphics.Color
+import com.badlogic.gdx.math.Vector2
+import com.hypermodel.games.engine.gameDSL.GameSprite
+import com.badlogic.gdx.graphics.g2d.Sprite
+import com.badlogic.gdx.physics.box2d.Body
+import com.badlogic.gdx.graphics.g2d.Animation
+import com.badlogic.gdx.graphics.g2d.TextureRegion
+import com.badlogic.gdx.utils.Array
+import com.badlogic.gdx.physics.box2d.BodyDef
+import com.badlogic.gdx.physics.box2d.FixtureDef
+import com.badlogic.gdx.physics.box2d.CircleShape
 
 class GameDSLJvmModelInferrer extends AbstractModelInferrer {
 	@Inject extension JvmTypesBuilder
@@ -264,6 +274,7 @@ class GameDSLJvmModelInferrer extends AbstractModelInferrer {
 	def void toFields(JvmGenericType type, GameRoot game) {
 		var JvmField field = null
 		field = game.toField("batch", SpriteBatch.typeRef)
+		field.visibility = JvmVisibility.PUBLIC
 		type.members += field
 		field = game.toField("V_WIDTH", int.typeRef)[initializer = [append('''«game.width»''')]]
 		field.static = true
@@ -280,10 +291,12 @@ class GameDSLJvmModelInferrer extends AbstractModelInferrer {
 		]
 		field.static = true
 		field.final = true
+		field.visibility = JvmVisibility.PUBLIC
 		type.members += field
 		field = game.toField("PPM", float.typeRef)[initializer = [append('''«game.ppm»f''')]]
 		field.static = true
 		field.final = true
+		field.visibility = JvmVisibility.PUBLIC
 		type.members += field
 	}
 
@@ -324,13 +337,14 @@ class GameDSLJvmModelInferrer extends AbstractModelInferrer {
 
 	// screens
 	def void createScreen(IJvmDeclaredTypeAcceptor acceptor, GamePackage gamePkg, JvmGenericType gameClass, GameScreen screen) {
+		val screenClass = gamePkg.toClass(screen.fullyQualifiedName) 
 		acceptor.accept(
-			gamePkg.toClass(screen.fullyQualifiedName),
+			screenClass,
 			[
 				superTypes += Screen.typeRef
 				packageName = screen.fullyQualifiedName.skipLast(1).toString
 				documentation = genInfo
-				it.toFields(screen, gameClass)
+				it.toFields(gamePkg, screen, gameClass)
 				members += screen.toConstructor [
 					parameters += gamePkg.toParameter("game", gameClass.typeRef)
 					body = [
@@ -338,15 +352,35 @@ class GameDSLJvmModelInferrer extends AbstractModelInferrer {
 						'''
 						this.game = game;
 						atlas = new TextureAtlas("«screen.atlasName».pack");
+						gamecam = new OrthographicCamera();
+						gamePort = new ''')
+						append(FitViewport)
+						append(
+						'''
+						(MarioBros.V_WIDTH / MarioBros.PPM, MarioBros.V_HEIGHT / MarioBros.PPM, gamecam);
+						mapLoader = new TmxMapLoader();
+						map = mapLoader.load("level1.tmx");
+						renderer = new OrthogonalTiledMapRenderer(map, 1 / MarioBros.PPM);
+						gamecam.position.set(gamePort.getWorldWidth() / 2, gamePort.getWorldHeight() / 2, 0);
+						world = new World(new ''')
+						append(Vector2)
+						append(
+						'''
+						(0, -10), true);
+						b2dr = new Box2DDebugRenderer();
+						«IF screen.scene !== null»«screen.scene.name.toFirstLower» = new «screen.scene.name.toFirstUpper»(game.batch);«ENDIF»
 						''')
+						
 					]
 				]
 				it.toOperations(screen)
 			]
 		)
+		// sprites
+		screen.sprites.forEach[acceptor.createSprite(gamePkg, gameClass, screenClass, it)]
 	}
 
-	def void toFields(JvmGenericType type, GameScreen screen, JvmGenericType gameClass) {
+	def void toFields(JvmGenericType type, GamePackage gamePkg, GameScreen screen, JvmGenericType gameClass) {
 		var JvmField field = null
 		type.members += screen.toField("game", gameClass.typeRef)
 		type.members += screen.toField("atlas", TextureAtlas.typeRef)
@@ -362,13 +396,17 @@ class GameDSLJvmModelInferrer extends AbstractModelInferrer {
 //		type.members += screen.toField("player", Mario.typeRef);
 //		type.members += screen.toField("items", Array, Item.typeRef)) ;
 //		type.members += screen.toField("itemsToSpawn", LinkedBlockingQueue, ItemDef.typeRef)) ;
-//		field = screen.toField("hud", Hud.typeRef)
-//		field.visibility = JvmVisibility.PUBLIC 
-//		type.members += field
+		if(screen.scene !== null) {
+			field = screen.toField(screen.scene.name.toFirstLower, gamePkg.toClass(screen.scene.fullyQualifiedName).typeRef)
+			field.visibility = JvmVisibility.PUBLIC 
+			type.members += field
+		}
 	}
 
 	def void toOperations(JvmGenericType type, GameScreen screen) {
 		type.members += screen.toGetter("atlas", TextureAtlas.typeRef)
+		type.members += screen.toGetter("map", TiledMap.typeRef)
+		type.members += screen.toGetter("world", World.typeRef)
 		type.members += screen.toMethod("resize", Void.TYPE.typeRef, [
 			annotations += Override.annotationRef
 			parameters += screen.toParameter("width", int.typeRef)
@@ -376,7 +414,7 @@ class GameDSLJvmModelInferrer extends AbstractModelInferrer {
 			body = [
 				append(
 				'''
-				''')
+				gamePort.update(width, height);''')
 			]
 		])
 		type.members += screen.toMethod("pause", Void.TYPE.typeRef, [
@@ -400,6 +438,11 @@ class GameDSLJvmModelInferrer extends AbstractModelInferrer {
 			body = [
 				append(
 				'''
+				map.dispose();
+				renderer.dispose();
+				world.dispose();
+				b2dr.dispose();
+				«IF screen.scene !== null»«screen.scene.name.toFirstLower».dispose();«ENDIF»
 				''')
 			]
 		])
@@ -571,5 +614,128 @@ class GameDSLJvmModelInferrer extends AbstractModelInferrer {
 				type.members += operation 
 			]
 		}
+	}
+
+	// sprites
+	def void createSprite(IJvmDeclaredTypeAcceptor acceptor, GamePackage gamePkg, JvmGenericType gameClass, JvmGenericType screenClass, GameSprite sprite) {
+		acceptor.accept(
+			gamePkg.toClass(sprite.fullyQualifiedName),
+			[
+				superTypes += Sprite.typeRef
+				packageName = sprite.fullyQualifiedName.skipLast(1).toString
+				documentation = genInfo
+				it.toFields(sprite)
+				members += sprite.toConstructor [
+					parameters += gamePkg.toParameter("screen", screenClass.typeRef)
+					body = [
+						append(
+						'''
+						world = screen.getWorld();
+						stateTimer = 0;
+						runningRight = true;
+						''')
+						append(Array)
+						append("<")
+						append(TextureRegion)
+						append("> frames = new Array<TextureRegion>();\n")
+						val current = it
+						sprite.animations.forEach[
+							if(it.hasFrames) {
+								current.append(
+								'''
+								for (int i = «it.offset»; i < «it.frames+it.offset»; i++) {
+									frames.add(new TextureRegion(screen.getAtlas().findRegion("«it.region.name»"), i * «it.region.width», 0, «it.region.width», «it.region.height»));
+								}
+								''')
+							}
+							if(it.hasStands) {
+								it.stands.forEach[
+									current.append(
+									'''
+									frames.add(new TextureRegion(screen.getAtlas().findRegion("«it.region.name»"), «it.offset*it.region.width», 0, «it.region.width», «it.region.height»));
+									''')
+								]
+								
+							}
+							current.append(
+							'''
+							«it.name» = new ''')
+							current.append(Animation)
+							current.append('''
+							(«it.duration»f, frames);
+							frames.clear();
+							''')
+						]
+						sprite.stands.forEach[
+							current.append(
+								'''
+								«it.name» = new TextureRegion(screen.getAtlas().findRegion("«it.region.name»"), «it.offset*it.region.width», 0, «it.region.width», «it.region.height»);
+								'''
+							)
+						]
+						append(
+						'''
+				        define«sprite.name.toFirstUpper»();
+				        setBounds(0, 0, «sprite.start.region.width» / ''')
+				        append(gameClass)
+				        append('''.PPM,  «sprite.start.region.height» / «gameClass.simpleName».PPM);
+				        ''')
+						append('''
+						setRegion(«sprite.start.name»);
+						'''
+						)
+					]
+				]
+				it.toOperations(sprite, gameClass)
+			]
+		)
+	}
+
+	def void toFields(JvmGenericType type, GameSprite sprite) {
+		var field = sprite.toField("world", World.typeRef)
+		field.visibility = JvmVisibility.PUBLIC
+		type.members += field
+		field = sprite.toField("b2body", Body.typeRef)
+		field.visibility = JvmVisibility.PUBLIC
+		type.members += field
+		type.members += sprite.toField("stateTimer", float.typeRef)
+		type.members += sprite.toField("runningRight", boolean.typeRef)
+		
+		sprite.animations.forEach[type.members += sprite.toField('''«it.name»''', Animation.typeRef)]
+		sprite.stands.forEach[type.members += sprite.toField('''«it.name»''', TextureRegion.typeRef)]
+	}
+
+	def void toOperations(JvmGenericType type, GameSprite sprite, JvmGenericType gameClass) {
+		type.members += sprite.toMethod("update", Void.TYPE.typeRef, [
+			parameters += sprite.toParameter("dt", float.typeRef)
+			body = [
+				val current = it
+			]
+		])
+		type.members += sprite.toMethod('''define«sprite.name.toFirstUpper»''', Void.TYPE.typeRef, [
+			body = [
+				append(Vector2)
+				append(
+				'''
+				 currentPosition = b2body.getPosition();
+				world.destroyBody(b2body);
+				''')
+				append(BodyDef)
+				append('''
+				 bdef = new BodyDef();
+				bdef.position.set(currentPosition.add(0, 10 / «gameClass.simpleName».PPM));
+				bdef.type = BodyDef.BodyType.DynamicBody;
+				b2body = world.createBody(bdef);
+				''')
+				append(FixtureDef)
+				append(''' fdef = new FixtureDef();
+				''')
+				append(CircleShape)
+				append('''
+				 shape = new CircleShape();
+				shape.setRadius(«sprite.radius» / «gameClass.simpleName».PPM);
+				''')
+			]
+		])
 	}
 }

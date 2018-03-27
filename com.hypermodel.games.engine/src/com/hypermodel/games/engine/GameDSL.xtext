@@ -53,15 +53,19 @@ GamePlatformConfiguration:
 GameRoot:
 	{GameRoot} 'game' name=ID
 	'width' width = INT 'height' height = INT 'title' title=STRING 'pixelPerMeter' ppm = INT
-	'scenes' '{' scenes+=GameScene* '}'
-	'screens' '{' screens+=GameScreen* '}';
+	('scenes' '{' scenes+=GameScene* '}'&
+	'screens' '{' screens+=GameScreen* '}'&
+	'regions' '{' regions+=GameTextureRegion* '}');
 	
 GameScreen:
-	{GameScreen} 'screen' name=ID 'atlas' atlasName = STRING;
+	{GameScreen} 'screen' name=ID 
+	'atlas' atlasName = STRING
+	'scene' scene = [GameScene]
+	'sprites' '{' sprites+=GameSprite* '}';
 	
 GameScene:
 	{GameScene} 'scene' name=ID 
-	(hasScore?='hasScore' score = GameScore)?;
+	(hasScore?='isScore' score = GameScore)?;
 		
 GameScore:
 	{GameScore} 'topPadding' topPadding=INT 
@@ -74,8 +78,24 @@ GameDisplay:
 	(hasInitial?='initialValue' (initialNumberValue=SignedNumber|initialIntValue=INT|initialStringValue=STRING))?
 	(hasDelta?='deltaValue' deltaValue=SignedNumber 'eachTimePeriod' timePeriod=UnsignedNumber)?
 	(hasAdder?='addValue')?
-	(hasSetter?='setValue')?
-	;
+	(hasSetter?='setValue')?;
+	
+GameSprite:
+	{GameSprite} 'sprite' name=ID 'radius' radius=INT
+	('animations' '{' animations+=GameSpriteAnimation* '}')?
+	'stands' '{' stands+=GameSpriteStand* '}'
+	'start' start=[GameSpriteStand];
+
+GameSpriteAnimation:
+	{GameSpriteAnimation} 'animation' name=ID 'duration' duration=UnsignedNumber 
+	(hasFrames?='frames' frames=INT 'startFrame' offset=INT 'from' region=[GameTextureRegion])?
+	(hasStands?='stands' '{' stands+=GameSpriteStand '}')?;
+	
+GameSpriteStand:
+	{GameSpriteStand} 'stand' name=ID 'whichFrame' offset=INT 'from' region=[GameTextureRegion];
+
+GameTextureRegion:
+	{GameTextureRegion} 'region' name=ID 'width' width=INT 'height' height=INT;
 
 enum GameDisplayValueType:
 	int = 'number'|

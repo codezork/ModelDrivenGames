@@ -164,6 +164,34 @@ public class GameDSLSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
+      case GameDSLPackage.GAME_SPRITE:
+      {
+        GameSprite gameSprite = (GameSprite)theEObject;
+        T result = caseGameSprite(gameSprite);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case GameDSLPackage.GAME_SPRITE_ANIMATION:
+      {
+        GameSpriteAnimation gameSpriteAnimation = (GameSpriteAnimation)theEObject;
+        T result = caseGameSpriteAnimation(gameSpriteAnimation);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case GameDSLPackage.GAME_SPRITE_STAND:
+      {
+        GameSpriteStand gameSpriteStand = (GameSpriteStand)theEObject;
+        T result = caseGameSpriteStand(gameSpriteStand);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case GameDSLPackage.GAME_TEXTURE_REGION:
+      {
+        GameTextureRegion gameTextureRegion = (GameTextureRegion)theEObject;
+        T result = caseGameTextureRegion(gameTextureRegion);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
       default: return defaultCase(theEObject);
     }
   }
@@ -372,6 +400,70 @@ public class GameDSLSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseGameDisplay(GameDisplay object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Game Sprite</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Game Sprite</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseGameSprite(GameSprite object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Game Sprite Animation</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Game Sprite Animation</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseGameSpriteAnimation(GameSpriteAnimation object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Game Sprite Stand</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Game Sprite Stand</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseGameSpriteStand(GameSpriteStand object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Game Texture Region</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Game Texture Region</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseGameTextureRegion(GameTextureRegion object)
   {
     return null;
   }

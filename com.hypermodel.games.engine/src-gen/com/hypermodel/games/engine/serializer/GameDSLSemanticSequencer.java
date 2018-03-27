@@ -18,6 +18,10 @@ import com.hypermodel.games.engine.gameDSL.GameRoot;
 import com.hypermodel.games.engine.gameDSL.GameScene;
 import com.hypermodel.games.engine.gameDSL.GameScore;
 import com.hypermodel.games.engine.gameDSL.GameScreen;
+import com.hypermodel.games.engine.gameDSL.GameSprite;
+import com.hypermodel.games.engine.gameDSL.GameSpriteAnimation;
+import com.hypermodel.games.engine.gameDSL.GameSpriteStand;
+import com.hypermodel.games.engine.gameDSL.GameTextureRegion;
 import com.hypermodel.games.engine.services.GameDSLGrammarAccess;
 import java.util.Set;
 import org.eclipse.emf.ecore.EObject;
@@ -130,6 +134,18 @@ public class GameDSLSemanticSequencer extends XbaseWithAnnotationsSemanticSequen
 				return; 
 			case GameDSLPackage.GAME_SCREEN:
 				sequence_GameScreen(context, (GameScreen) semanticObject); 
+				return; 
+			case GameDSLPackage.GAME_SPRITE:
+				sequence_GameSprite(context, (GameSprite) semanticObject); 
+				return; 
+			case GameDSLPackage.GAME_SPRITE_ANIMATION:
+				sequence_GameSpriteAnimation(context, (GameSpriteAnimation) semanticObject); 
+				return; 
+			case GameDSLPackage.GAME_SPRITE_STAND:
+				sequence_GameSpriteStand(context, (GameSpriteStand) semanticObject); 
+				return; 
+			case GameDSLPackage.GAME_TEXTURE_REGION:
+				sequence_GameTextureRegion(context, (GameTextureRegion) semanticObject); 
 				return; 
 			}
 		else if (epackage == TypesPackage.eINSTANCE)
@@ -588,8 +604,7 @@ public class GameDSLSemanticSequencer extends XbaseWithAnnotationsSemanticSequen
 	 *         height=INT 
 	 *         title=STRING 
 	 *         ppm=INT 
-	 *         scenes+=GameScene* 
-	 *         screens+=GameScreen*
+	 *         (scenes+=GameScene | screens+=GameScreen | regions+=GameTextureRegion)*
 	 *     )
 	 */
 	protected void sequence_GameRoot(ISerializationContext context, GameRoot semanticObject) {
@@ -602,7 +617,7 @@ public class GameDSLSemanticSequencer extends XbaseWithAnnotationsSemanticSequen
 	 *     GameScene returns GameScene
 	 *
 	 * Constraint:
-	 *     (name=ID (hasScore?='hasScore' score=GameScore)?)
+	 *     (name=ID (hasScore?='isScore' score=GameScore)?)
 	 */
 	protected void sequence_GameScene(ISerializationContext context, GameScene semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -626,18 +641,86 @@ public class GameDSLSemanticSequencer extends XbaseWithAnnotationsSemanticSequen
 	 *     GameScreen returns GameScreen
 	 *
 	 * Constraint:
-	 *     (name=ID atlasName=STRING)
+	 *     (name=ID atlasName=STRING scene=[GameScene|ID] sprites+=GameSprite*)
 	 */
 	protected void sequence_GameScreen(ISerializationContext context, GameScreen semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     GameSpriteAnimation returns GameSpriteAnimation
+	 *
+	 * Constraint:
+	 *     (
+	 *         name=ID 
+	 *         duration=UnsignedNumber 
+	 *         (hasFrames?='frames' frames=INT offset=INT region=[GameTextureRegion|ID])? 
+	 *         (hasStands?='stands' stands+=GameSpriteStand)?
+	 *     )
+	 */
+	protected void sequence_GameSpriteAnimation(ISerializationContext context, GameSpriteAnimation semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     GameSpriteStand returns GameSpriteStand
+	 *
+	 * Constraint:
+	 *     (name=ID offset=INT region=[GameTextureRegion|ID])
+	 */
+	protected void sequence_GameSpriteStand(ISerializationContext context, GameSpriteStand semanticObject) {
 		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, GameDSLPackage.Literals.GAME_SCREEN__NAME) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, GameDSLPackage.Literals.GAME_SCREEN__NAME));
-			if (transientValues.isValueTransient(semanticObject, GameDSLPackage.Literals.GAME_SCREEN__ATLAS_NAME) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, GameDSLPackage.Literals.GAME_SCREEN__ATLAS_NAME));
+			if (transientValues.isValueTransient(semanticObject, GameDSLPackage.Literals.GAME_SPRITE_STAND__NAME) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, GameDSLPackage.Literals.GAME_SPRITE_STAND__NAME));
+			if (transientValues.isValueTransient(semanticObject, GameDSLPackage.Literals.GAME_SPRITE_STAND__OFFSET) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, GameDSLPackage.Literals.GAME_SPRITE_STAND__OFFSET));
+			if (transientValues.isValueTransient(semanticObject, GameDSLPackage.Literals.GAME_SPRITE_STAND__REGION) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, GameDSLPackage.Literals.GAME_SPRITE_STAND__REGION));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getGameScreenAccess().getNameIDTerminalRuleCall_2_0(), semanticObject.getName());
-		feeder.accept(grammarAccess.getGameScreenAccess().getAtlasNameSTRINGTerminalRuleCall_4_0(), semanticObject.getAtlasName());
+		feeder.accept(grammarAccess.getGameSpriteStandAccess().getNameIDTerminalRuleCall_2_0(), semanticObject.getName());
+		feeder.accept(grammarAccess.getGameSpriteStandAccess().getOffsetINTTerminalRuleCall_4_0(), semanticObject.getOffset());
+		feeder.accept(grammarAccess.getGameSpriteStandAccess().getRegionGameTextureRegionIDTerminalRuleCall_6_0_1(), semanticObject.eGet(GameDSLPackage.Literals.GAME_SPRITE_STAND__REGION, false));
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     GameSprite returns GameSprite
+	 *
+	 * Constraint:
+	 *     (name=ID radius=INT animations+=GameSpriteAnimation* stands+=GameSpriteStand* start=[GameSpriteStand|ID])
+	 */
+	protected void sequence_GameSprite(ISerializationContext context, GameSprite semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     GameTextureRegion returns GameTextureRegion
+	 *
+	 * Constraint:
+	 *     (name=ID width=INT height=INT)
+	 */
+	protected void sequence_GameTextureRegion(ISerializationContext context, GameTextureRegion semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, GameDSLPackage.Literals.GAME_TEXTURE_REGION__NAME) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, GameDSLPackage.Literals.GAME_TEXTURE_REGION__NAME));
+			if (transientValues.isValueTransient(semanticObject, GameDSLPackage.Literals.GAME_TEXTURE_REGION__WIDTH) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, GameDSLPackage.Literals.GAME_TEXTURE_REGION__WIDTH));
+			if (transientValues.isValueTransient(semanticObject, GameDSLPackage.Literals.GAME_TEXTURE_REGION__HEIGHT) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, GameDSLPackage.Literals.GAME_TEXTURE_REGION__HEIGHT));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getGameTextureRegionAccess().getNameIDTerminalRuleCall_2_0(), semanticObject.getName());
+		feeder.accept(grammarAccess.getGameTextureRegionAccess().getWidthINTTerminalRuleCall_4_0(), semanticObject.getWidth());
+		feeder.accept(grammarAccess.getGameTextureRegionAccess().getHeightINTTerminalRuleCall_6_0(), semanticObject.getHeight());
 		feeder.finish();
 	}
 	

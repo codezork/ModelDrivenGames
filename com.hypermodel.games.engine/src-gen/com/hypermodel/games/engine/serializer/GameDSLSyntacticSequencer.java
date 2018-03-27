@@ -11,6 +11,7 @@ import org.eclipse.xtext.IGrammarAccess;
 import org.eclipse.xtext.RuleCall;
 import org.eclipse.xtext.nodemodel.INode;
 import org.eclipse.xtext.serializer.analysis.GrammarAlias.AbstractElementAlias;
+import org.eclipse.xtext.serializer.analysis.GrammarAlias.AlternativeAlias;
 import org.eclipse.xtext.serializer.analysis.GrammarAlias.GroupAlias;
 import org.eclipse.xtext.serializer.analysis.GrammarAlias.TokenAlias;
 import org.eclipse.xtext.serializer.analysis.ISyntacticSequencerPDAProvider.ISynNavigable;
@@ -21,6 +22,29 @@ import org.eclipse.xtext.serializer.sequencer.AbstractSyntacticSequencer;
 public class GameDSLSyntacticSequencer extends AbstractSyntacticSequencer {
 
 	protected GameDSLGrammarAccess grammarAccess;
+	protected AbstractElementAlias match_GameRoot___RegionsKeyword_11_2_0_LeftCurlyBracketKeyword_11_2_1_RightCurlyBracketKeyword_11_2_3_____ScenesKeyword_11_0_0_LeftCurlyBracketKeyword_11_0_1_RightCurlyBracketKeyword_11_0_3___or___ScreensKeyword_11_1_0_LeftCurlyBracketKeyword_11_1_1_RightCurlyBracketKeyword_11_1_3____a__a;
+	protected AbstractElementAlias match_GameRoot___RightCurlyBracketKeyword_11_0_3_____RegionsKeyword_11_2_0_LeftCurlyBracketKeyword_11_2_1_RightCurlyBracketKeyword_11_2_3___or___ScreensKeyword_11_1_0_LeftCurlyBracketKeyword_11_1_1_RightCurlyBracketKeyword_11_1_3____a_ScenesKeyword_11_0_0_LeftCurlyBracketKeyword_11_0_1__a;
+	protected AbstractElementAlias match_GameRoot___RightCurlyBracketKeyword_11_0_3_____RegionsKeyword_11_2_0_LeftCurlyBracketKeyword_11_2_1_RightCurlyBracketKeyword_11_2_3__q___ScreensKeyword_11_1_0_LeftCurlyBracketKeyword_11_1_1_RightCurlyBracketKeyword_11_1_3__q__p_ScenesKeyword_11_0_0_LeftCurlyBracketKeyword_11_0_1__a;
+	protected AbstractElementAlias match_GameRoot___RightCurlyBracketKeyword_11_0_3_____ScreensKeyword_11_1_0_LeftCurlyBracketKeyword_11_1_1_RightCurlyBracketKeyword_11_1_3__q___RegionsKeyword_11_2_0_LeftCurlyBracketKeyword_11_2_1_RightCurlyBracketKeyword_11_2_3__q__p_ScenesKeyword_11_0_0_LeftCurlyBracketKeyword_11_0_1__a;
+	protected AbstractElementAlias match_GameRoot___RightCurlyBracketKeyword_11_1_3_____RegionsKeyword_11_2_0_LeftCurlyBracketKeyword_11_2_1_RightCurlyBracketKeyword_11_2_3___or___ScenesKeyword_11_0_0_LeftCurlyBracketKeyword_11_0_1_RightCurlyBracketKeyword_11_0_3____a_ScreensKeyword_11_1_0_LeftCurlyBracketKeyword_11_1_1__a;
+	protected AbstractElementAlias match_GameRoot___RightCurlyBracketKeyword_11_1_3_____RegionsKeyword_11_2_0_LeftCurlyBracketKeyword_11_2_1_RightCurlyBracketKeyword_11_2_3__q___ScenesKeyword_11_0_0_LeftCurlyBracketKeyword_11_0_1_RightCurlyBracketKeyword_11_0_3__q__p_ScreensKeyword_11_1_0_LeftCurlyBracketKeyword_11_1_1__a;
+	protected AbstractElementAlias match_GameRoot___RightCurlyBracketKeyword_11_1_3_____ScenesKeyword_11_0_0_LeftCurlyBracketKeyword_11_0_1_RightCurlyBracketKeyword_11_0_3__q___RegionsKeyword_11_2_0_LeftCurlyBracketKeyword_11_2_1_RightCurlyBracketKeyword_11_2_3__q__p_ScreensKeyword_11_1_0_LeftCurlyBracketKeyword_11_1_1__a;
+	protected AbstractElementAlias match_GameRoot___RightCurlyBracketKeyword_11_2_3_____ScenesKeyword_11_0_0_LeftCurlyBracketKeyword_11_0_1_RightCurlyBracketKeyword_11_0_3___or___ScreensKeyword_11_1_0_LeftCurlyBracketKeyword_11_1_1_RightCurlyBracketKeyword_11_1_3____a_RegionsKeyword_11_2_0_LeftCurlyBracketKeyword_11_2_1__a;
+	protected AbstractElementAlias match_GameRoot___RightCurlyBracketKeyword_11_2_3_____ScenesKeyword_11_0_0_LeftCurlyBracketKeyword_11_0_1_RightCurlyBracketKeyword_11_0_3__q___ScreensKeyword_11_1_0_LeftCurlyBracketKeyword_11_1_1_RightCurlyBracketKeyword_11_1_3__q__p_RegionsKeyword_11_2_0_LeftCurlyBracketKeyword_11_2_1__a;
+	protected AbstractElementAlias match_GameRoot___RightCurlyBracketKeyword_11_2_3_____ScreensKeyword_11_1_0_LeftCurlyBracketKeyword_11_1_1_RightCurlyBracketKeyword_11_1_3__q___ScenesKeyword_11_0_0_LeftCurlyBracketKeyword_11_0_1_RightCurlyBracketKeyword_11_0_3__q__p_RegionsKeyword_11_2_0_LeftCurlyBracketKeyword_11_2_1__a;
+	protected AbstractElementAlias match_GameRoot___ScenesKeyword_11_0_0_LeftCurlyBracketKeyword_11_0_1_RightCurlyBracketKeyword_11_0_3_____RegionsKeyword_11_2_0_LeftCurlyBracketKeyword_11_2_1_RightCurlyBracketKeyword_11_2_3___or___ScreensKeyword_11_1_0_LeftCurlyBracketKeyword_11_1_1_RightCurlyBracketKeyword_11_1_3____a__a;
+	protected AbstractElementAlias match_GameRoot___ScreensKeyword_11_1_0_LeftCurlyBracketKeyword_11_1_1_RightCurlyBracketKeyword_11_1_3_____RegionsKeyword_11_2_0_LeftCurlyBracketKeyword_11_2_1_RightCurlyBracketKeyword_11_2_3___or___ScenesKeyword_11_0_0_LeftCurlyBracketKeyword_11_0_1_RightCurlyBracketKeyword_11_0_3____a__a;
+	protected AbstractElementAlias match_GameRoot_____RegionsKeyword_11_2_0_LeftCurlyBracketKeyword_11_2_1_RightCurlyBracketKeyword_11_2_3___or___ScenesKeyword_11_0_0_LeftCurlyBracketKeyword_11_0_1_RightCurlyBracketKeyword_11_0_3____a;
+	protected AbstractElementAlias match_GameRoot_____RegionsKeyword_11_2_0_LeftCurlyBracketKeyword_11_2_1_RightCurlyBracketKeyword_11_2_3___or___ScenesKeyword_11_0_0_LeftCurlyBracketKeyword_11_0_1_RightCurlyBracketKeyword_11_0_3___or___ScreensKeyword_11_1_0_LeftCurlyBracketKeyword_11_1_1_RightCurlyBracketKeyword_11_1_3____p;
+	protected AbstractElementAlias match_GameRoot_____RegionsKeyword_11_2_0_LeftCurlyBracketKeyword_11_2_1_RightCurlyBracketKeyword_11_2_3___or___ScreensKeyword_11_1_0_LeftCurlyBracketKeyword_11_1_1_RightCurlyBracketKeyword_11_1_3____a;
+	protected AbstractElementAlias match_GameRoot_____RegionsKeyword_11_2_0_LeftCurlyBracketKeyword_11_2_1_RightCurlyBracketKeyword_11_2_3__q___ScenesKeyword_11_0_0_LeftCurlyBracketKeyword_11_0_1_RightCurlyBracketKeyword_11_0_3__q__p;
+	protected AbstractElementAlias match_GameRoot_____RegionsKeyword_11_2_0_LeftCurlyBracketKeyword_11_2_1_RightCurlyBracketKeyword_11_2_3__q___ScreensKeyword_11_1_0_LeftCurlyBracketKeyword_11_1_1_RightCurlyBracketKeyword_11_1_3__q__p;
+	protected AbstractElementAlias match_GameRoot_____ScenesKeyword_11_0_0_LeftCurlyBracketKeyword_11_0_1_RightCurlyBracketKeyword_11_0_3___or___ScreensKeyword_11_1_0_LeftCurlyBracketKeyword_11_1_1_RightCurlyBracketKeyword_11_1_3____a;
+	protected AbstractElementAlias match_GameRoot_____ScenesKeyword_11_0_0_LeftCurlyBracketKeyword_11_0_1_RightCurlyBracketKeyword_11_0_3__q___RegionsKeyword_11_2_0_LeftCurlyBracketKeyword_11_2_1_RightCurlyBracketKeyword_11_2_3__q__p;
+	protected AbstractElementAlias match_GameRoot_____ScenesKeyword_11_0_0_LeftCurlyBracketKeyword_11_0_1_RightCurlyBracketKeyword_11_0_3__q___ScreensKeyword_11_1_0_LeftCurlyBracketKeyword_11_1_1_RightCurlyBracketKeyword_11_1_3__q__p;
+	protected AbstractElementAlias match_GameRoot_____ScreensKeyword_11_1_0_LeftCurlyBracketKeyword_11_1_1_RightCurlyBracketKeyword_11_1_3__q___RegionsKeyword_11_2_0_LeftCurlyBracketKeyword_11_2_1_RightCurlyBracketKeyword_11_2_3__q__p;
+	protected AbstractElementAlias match_GameRoot_____ScreensKeyword_11_1_0_LeftCurlyBracketKeyword_11_1_1_RightCurlyBracketKeyword_11_1_3__q___ScenesKeyword_11_0_0_LeftCurlyBracketKeyword_11_0_1_RightCurlyBracketKeyword_11_0_3__q__p;
+	protected AbstractElementAlias match_GameSprite___AnimationsKeyword_5_0_LeftCurlyBracketKeyword_5_1_RightCurlyBracketKeyword_5_3__q;
 	protected AbstractElementAlias match_XAnnotation___LeftParenthesisKeyword_3_0_RightParenthesisKeyword_3_2__q;
 	protected AbstractElementAlias match_XBlockExpression_SemicolonKeyword_2_1_q;
 	protected AbstractElementAlias match_XExpressionInClosure_SemicolonKeyword_1_1_q;
@@ -32,6 +56,29 @@ public class GameDSLSyntacticSequencer extends AbstractSyntacticSequencer {
 	@Inject
 	protected void init(IGrammarAccess access) {
 		grammarAccess = (GameDSLGrammarAccess) access;
+		match_GameRoot___RegionsKeyword_11_2_0_LeftCurlyBracketKeyword_11_2_1_RightCurlyBracketKeyword_11_2_3_____ScenesKeyword_11_0_0_LeftCurlyBracketKeyword_11_0_1_RightCurlyBracketKeyword_11_0_3___or___ScreensKeyword_11_1_0_LeftCurlyBracketKeyword_11_1_1_RightCurlyBracketKeyword_11_1_3____a__a = new GroupAlias(true, true, new TokenAlias(false, false, grammarAccess.getGameRootAccess().getRegionsKeyword_11_2_0()), new TokenAlias(false, false, grammarAccess.getGameRootAccess().getLeftCurlyBracketKeyword_11_2_1()), new TokenAlias(false, false, grammarAccess.getGameRootAccess().getRightCurlyBracketKeyword_11_2_3()), new AlternativeAlias(true, true, new GroupAlias(false, false, new TokenAlias(false, false, grammarAccess.getGameRootAccess().getScenesKeyword_11_0_0()), new TokenAlias(false, false, grammarAccess.getGameRootAccess().getLeftCurlyBracketKeyword_11_0_1()), new TokenAlias(false, false, grammarAccess.getGameRootAccess().getRightCurlyBracketKeyword_11_0_3())), new GroupAlias(false, false, new TokenAlias(false, false, grammarAccess.getGameRootAccess().getScreensKeyword_11_1_0()), new TokenAlias(false, false, grammarAccess.getGameRootAccess().getLeftCurlyBracketKeyword_11_1_1()), new TokenAlias(false, false, grammarAccess.getGameRootAccess().getRightCurlyBracketKeyword_11_1_3()))));
+		match_GameRoot___RightCurlyBracketKeyword_11_0_3_____RegionsKeyword_11_2_0_LeftCurlyBracketKeyword_11_2_1_RightCurlyBracketKeyword_11_2_3___or___ScreensKeyword_11_1_0_LeftCurlyBracketKeyword_11_1_1_RightCurlyBracketKeyword_11_1_3____a_ScenesKeyword_11_0_0_LeftCurlyBracketKeyword_11_0_1__a = new GroupAlias(true, true, new TokenAlias(false, false, grammarAccess.getGameRootAccess().getRightCurlyBracketKeyword_11_0_3()), new AlternativeAlias(true, true, new GroupAlias(false, false, new TokenAlias(false, false, grammarAccess.getGameRootAccess().getRegionsKeyword_11_2_0()), new TokenAlias(false, false, grammarAccess.getGameRootAccess().getLeftCurlyBracketKeyword_11_2_1()), new TokenAlias(false, false, grammarAccess.getGameRootAccess().getRightCurlyBracketKeyword_11_2_3())), new GroupAlias(false, false, new TokenAlias(false, false, grammarAccess.getGameRootAccess().getScreensKeyword_11_1_0()), new TokenAlias(false, false, grammarAccess.getGameRootAccess().getLeftCurlyBracketKeyword_11_1_1()), new TokenAlias(false, false, grammarAccess.getGameRootAccess().getRightCurlyBracketKeyword_11_1_3()))), new TokenAlias(false, false, grammarAccess.getGameRootAccess().getScenesKeyword_11_0_0()), new TokenAlias(false, false, grammarAccess.getGameRootAccess().getLeftCurlyBracketKeyword_11_0_1()));
+		match_GameRoot___RightCurlyBracketKeyword_11_0_3_____RegionsKeyword_11_2_0_LeftCurlyBracketKeyword_11_2_1_RightCurlyBracketKeyword_11_2_3__q___ScreensKeyword_11_1_0_LeftCurlyBracketKeyword_11_1_1_RightCurlyBracketKeyword_11_1_3__q__p_ScenesKeyword_11_0_0_LeftCurlyBracketKeyword_11_0_1__a = new GroupAlias(true, true, new TokenAlias(false, false, grammarAccess.getGameRootAccess().getRightCurlyBracketKeyword_11_0_3()), new GroupAlias(true, false, new GroupAlias(false, true, new TokenAlias(false, false, grammarAccess.getGameRootAccess().getRegionsKeyword_11_2_0()), new TokenAlias(false, false, grammarAccess.getGameRootAccess().getLeftCurlyBracketKeyword_11_2_1()), new TokenAlias(false, false, grammarAccess.getGameRootAccess().getRightCurlyBracketKeyword_11_2_3())), new GroupAlias(false, true, new TokenAlias(false, false, grammarAccess.getGameRootAccess().getScreensKeyword_11_1_0()), new TokenAlias(false, false, grammarAccess.getGameRootAccess().getLeftCurlyBracketKeyword_11_1_1()), new TokenAlias(false, false, grammarAccess.getGameRootAccess().getRightCurlyBracketKeyword_11_1_3()))), new TokenAlias(false, false, grammarAccess.getGameRootAccess().getScenesKeyword_11_0_0()), new TokenAlias(false, false, grammarAccess.getGameRootAccess().getLeftCurlyBracketKeyword_11_0_1()));
+		match_GameRoot___RightCurlyBracketKeyword_11_0_3_____ScreensKeyword_11_1_0_LeftCurlyBracketKeyword_11_1_1_RightCurlyBracketKeyword_11_1_3__q___RegionsKeyword_11_2_0_LeftCurlyBracketKeyword_11_2_1_RightCurlyBracketKeyword_11_2_3__q__p_ScenesKeyword_11_0_0_LeftCurlyBracketKeyword_11_0_1__a = new GroupAlias(true, true, new TokenAlias(false, false, grammarAccess.getGameRootAccess().getRightCurlyBracketKeyword_11_0_3()), new GroupAlias(true, false, new GroupAlias(false, true, new TokenAlias(false, false, grammarAccess.getGameRootAccess().getScreensKeyword_11_1_0()), new TokenAlias(false, false, grammarAccess.getGameRootAccess().getLeftCurlyBracketKeyword_11_1_1()), new TokenAlias(false, false, grammarAccess.getGameRootAccess().getRightCurlyBracketKeyword_11_1_3())), new GroupAlias(false, true, new TokenAlias(false, false, grammarAccess.getGameRootAccess().getRegionsKeyword_11_2_0()), new TokenAlias(false, false, grammarAccess.getGameRootAccess().getLeftCurlyBracketKeyword_11_2_1()), new TokenAlias(false, false, grammarAccess.getGameRootAccess().getRightCurlyBracketKeyword_11_2_3()))), new TokenAlias(false, false, grammarAccess.getGameRootAccess().getScenesKeyword_11_0_0()), new TokenAlias(false, false, grammarAccess.getGameRootAccess().getLeftCurlyBracketKeyword_11_0_1()));
+		match_GameRoot___RightCurlyBracketKeyword_11_1_3_____RegionsKeyword_11_2_0_LeftCurlyBracketKeyword_11_2_1_RightCurlyBracketKeyword_11_2_3___or___ScenesKeyword_11_0_0_LeftCurlyBracketKeyword_11_0_1_RightCurlyBracketKeyword_11_0_3____a_ScreensKeyword_11_1_0_LeftCurlyBracketKeyword_11_1_1__a = new GroupAlias(true, true, new TokenAlias(false, false, grammarAccess.getGameRootAccess().getRightCurlyBracketKeyword_11_1_3()), new AlternativeAlias(true, true, new GroupAlias(false, false, new TokenAlias(false, false, grammarAccess.getGameRootAccess().getRegionsKeyword_11_2_0()), new TokenAlias(false, false, grammarAccess.getGameRootAccess().getLeftCurlyBracketKeyword_11_2_1()), new TokenAlias(false, false, grammarAccess.getGameRootAccess().getRightCurlyBracketKeyword_11_2_3())), new GroupAlias(false, false, new TokenAlias(false, false, grammarAccess.getGameRootAccess().getScenesKeyword_11_0_0()), new TokenAlias(false, false, grammarAccess.getGameRootAccess().getLeftCurlyBracketKeyword_11_0_1()), new TokenAlias(false, false, grammarAccess.getGameRootAccess().getRightCurlyBracketKeyword_11_0_3()))), new TokenAlias(false, false, grammarAccess.getGameRootAccess().getScreensKeyword_11_1_0()), new TokenAlias(false, false, grammarAccess.getGameRootAccess().getLeftCurlyBracketKeyword_11_1_1()));
+		match_GameRoot___RightCurlyBracketKeyword_11_1_3_____RegionsKeyword_11_2_0_LeftCurlyBracketKeyword_11_2_1_RightCurlyBracketKeyword_11_2_3__q___ScenesKeyword_11_0_0_LeftCurlyBracketKeyword_11_0_1_RightCurlyBracketKeyword_11_0_3__q__p_ScreensKeyword_11_1_0_LeftCurlyBracketKeyword_11_1_1__a = new GroupAlias(true, true, new TokenAlias(false, false, grammarAccess.getGameRootAccess().getRightCurlyBracketKeyword_11_1_3()), new GroupAlias(true, false, new GroupAlias(false, true, new TokenAlias(false, false, grammarAccess.getGameRootAccess().getRegionsKeyword_11_2_0()), new TokenAlias(false, false, grammarAccess.getGameRootAccess().getLeftCurlyBracketKeyword_11_2_1()), new TokenAlias(false, false, grammarAccess.getGameRootAccess().getRightCurlyBracketKeyword_11_2_3())), new GroupAlias(false, true, new TokenAlias(false, false, grammarAccess.getGameRootAccess().getScenesKeyword_11_0_0()), new TokenAlias(false, false, grammarAccess.getGameRootAccess().getLeftCurlyBracketKeyword_11_0_1()), new TokenAlias(false, false, grammarAccess.getGameRootAccess().getRightCurlyBracketKeyword_11_0_3()))), new TokenAlias(false, false, grammarAccess.getGameRootAccess().getScreensKeyword_11_1_0()), new TokenAlias(false, false, grammarAccess.getGameRootAccess().getLeftCurlyBracketKeyword_11_1_1()));
+		match_GameRoot___RightCurlyBracketKeyword_11_1_3_____ScenesKeyword_11_0_0_LeftCurlyBracketKeyword_11_0_1_RightCurlyBracketKeyword_11_0_3__q___RegionsKeyword_11_2_0_LeftCurlyBracketKeyword_11_2_1_RightCurlyBracketKeyword_11_2_3__q__p_ScreensKeyword_11_1_0_LeftCurlyBracketKeyword_11_1_1__a = new GroupAlias(true, true, new TokenAlias(false, false, grammarAccess.getGameRootAccess().getRightCurlyBracketKeyword_11_1_3()), new GroupAlias(true, false, new GroupAlias(false, true, new TokenAlias(false, false, grammarAccess.getGameRootAccess().getScenesKeyword_11_0_0()), new TokenAlias(false, false, grammarAccess.getGameRootAccess().getLeftCurlyBracketKeyword_11_0_1()), new TokenAlias(false, false, grammarAccess.getGameRootAccess().getRightCurlyBracketKeyword_11_0_3())), new GroupAlias(false, true, new TokenAlias(false, false, grammarAccess.getGameRootAccess().getRegionsKeyword_11_2_0()), new TokenAlias(false, false, grammarAccess.getGameRootAccess().getLeftCurlyBracketKeyword_11_2_1()), new TokenAlias(false, false, grammarAccess.getGameRootAccess().getRightCurlyBracketKeyword_11_2_3()))), new TokenAlias(false, false, grammarAccess.getGameRootAccess().getScreensKeyword_11_1_0()), new TokenAlias(false, false, grammarAccess.getGameRootAccess().getLeftCurlyBracketKeyword_11_1_1()));
+		match_GameRoot___RightCurlyBracketKeyword_11_2_3_____ScenesKeyword_11_0_0_LeftCurlyBracketKeyword_11_0_1_RightCurlyBracketKeyword_11_0_3___or___ScreensKeyword_11_1_0_LeftCurlyBracketKeyword_11_1_1_RightCurlyBracketKeyword_11_1_3____a_RegionsKeyword_11_2_0_LeftCurlyBracketKeyword_11_2_1__a = new GroupAlias(true, true, new TokenAlias(false, false, grammarAccess.getGameRootAccess().getRightCurlyBracketKeyword_11_2_3()), new AlternativeAlias(true, true, new GroupAlias(false, false, new TokenAlias(false, false, grammarAccess.getGameRootAccess().getScenesKeyword_11_0_0()), new TokenAlias(false, false, grammarAccess.getGameRootAccess().getLeftCurlyBracketKeyword_11_0_1()), new TokenAlias(false, false, grammarAccess.getGameRootAccess().getRightCurlyBracketKeyword_11_0_3())), new GroupAlias(false, false, new TokenAlias(false, false, grammarAccess.getGameRootAccess().getScreensKeyword_11_1_0()), new TokenAlias(false, false, grammarAccess.getGameRootAccess().getLeftCurlyBracketKeyword_11_1_1()), new TokenAlias(false, false, grammarAccess.getGameRootAccess().getRightCurlyBracketKeyword_11_1_3()))), new TokenAlias(false, false, grammarAccess.getGameRootAccess().getRegionsKeyword_11_2_0()), new TokenAlias(false, false, grammarAccess.getGameRootAccess().getLeftCurlyBracketKeyword_11_2_1()));
+		match_GameRoot___RightCurlyBracketKeyword_11_2_3_____ScenesKeyword_11_0_0_LeftCurlyBracketKeyword_11_0_1_RightCurlyBracketKeyword_11_0_3__q___ScreensKeyword_11_1_0_LeftCurlyBracketKeyword_11_1_1_RightCurlyBracketKeyword_11_1_3__q__p_RegionsKeyword_11_2_0_LeftCurlyBracketKeyword_11_2_1__a = new GroupAlias(true, true, new TokenAlias(false, false, grammarAccess.getGameRootAccess().getRightCurlyBracketKeyword_11_2_3()), new GroupAlias(true, false, new GroupAlias(false, true, new TokenAlias(false, false, grammarAccess.getGameRootAccess().getScenesKeyword_11_0_0()), new TokenAlias(false, false, grammarAccess.getGameRootAccess().getLeftCurlyBracketKeyword_11_0_1()), new TokenAlias(false, false, grammarAccess.getGameRootAccess().getRightCurlyBracketKeyword_11_0_3())), new GroupAlias(false, true, new TokenAlias(false, false, grammarAccess.getGameRootAccess().getScreensKeyword_11_1_0()), new TokenAlias(false, false, grammarAccess.getGameRootAccess().getLeftCurlyBracketKeyword_11_1_1()), new TokenAlias(false, false, grammarAccess.getGameRootAccess().getRightCurlyBracketKeyword_11_1_3()))), new TokenAlias(false, false, grammarAccess.getGameRootAccess().getRegionsKeyword_11_2_0()), new TokenAlias(false, false, grammarAccess.getGameRootAccess().getLeftCurlyBracketKeyword_11_2_1()));
+		match_GameRoot___RightCurlyBracketKeyword_11_2_3_____ScreensKeyword_11_1_0_LeftCurlyBracketKeyword_11_1_1_RightCurlyBracketKeyword_11_1_3__q___ScenesKeyword_11_0_0_LeftCurlyBracketKeyword_11_0_1_RightCurlyBracketKeyword_11_0_3__q__p_RegionsKeyword_11_2_0_LeftCurlyBracketKeyword_11_2_1__a = new GroupAlias(true, true, new TokenAlias(false, false, grammarAccess.getGameRootAccess().getRightCurlyBracketKeyword_11_2_3()), new GroupAlias(true, false, new GroupAlias(false, true, new TokenAlias(false, false, grammarAccess.getGameRootAccess().getScreensKeyword_11_1_0()), new TokenAlias(false, false, grammarAccess.getGameRootAccess().getLeftCurlyBracketKeyword_11_1_1()), new TokenAlias(false, false, grammarAccess.getGameRootAccess().getRightCurlyBracketKeyword_11_1_3())), new GroupAlias(false, true, new TokenAlias(false, false, grammarAccess.getGameRootAccess().getScenesKeyword_11_0_0()), new TokenAlias(false, false, grammarAccess.getGameRootAccess().getLeftCurlyBracketKeyword_11_0_1()), new TokenAlias(false, false, grammarAccess.getGameRootAccess().getRightCurlyBracketKeyword_11_0_3()))), new TokenAlias(false, false, grammarAccess.getGameRootAccess().getRegionsKeyword_11_2_0()), new TokenAlias(false, false, grammarAccess.getGameRootAccess().getLeftCurlyBracketKeyword_11_2_1()));
+		match_GameRoot___ScenesKeyword_11_0_0_LeftCurlyBracketKeyword_11_0_1_RightCurlyBracketKeyword_11_0_3_____RegionsKeyword_11_2_0_LeftCurlyBracketKeyword_11_2_1_RightCurlyBracketKeyword_11_2_3___or___ScreensKeyword_11_1_0_LeftCurlyBracketKeyword_11_1_1_RightCurlyBracketKeyword_11_1_3____a__a = new GroupAlias(true, true, new TokenAlias(false, false, grammarAccess.getGameRootAccess().getScenesKeyword_11_0_0()), new TokenAlias(false, false, grammarAccess.getGameRootAccess().getLeftCurlyBracketKeyword_11_0_1()), new TokenAlias(false, false, grammarAccess.getGameRootAccess().getRightCurlyBracketKeyword_11_0_3()), new AlternativeAlias(true, true, new GroupAlias(false, false, new TokenAlias(false, false, grammarAccess.getGameRootAccess().getRegionsKeyword_11_2_0()), new TokenAlias(false, false, grammarAccess.getGameRootAccess().getLeftCurlyBracketKeyword_11_2_1()), new TokenAlias(false, false, grammarAccess.getGameRootAccess().getRightCurlyBracketKeyword_11_2_3())), new GroupAlias(false, false, new TokenAlias(false, false, grammarAccess.getGameRootAccess().getScreensKeyword_11_1_0()), new TokenAlias(false, false, grammarAccess.getGameRootAccess().getLeftCurlyBracketKeyword_11_1_1()), new TokenAlias(false, false, grammarAccess.getGameRootAccess().getRightCurlyBracketKeyword_11_1_3()))));
+		match_GameRoot___ScreensKeyword_11_1_0_LeftCurlyBracketKeyword_11_1_1_RightCurlyBracketKeyword_11_1_3_____RegionsKeyword_11_2_0_LeftCurlyBracketKeyword_11_2_1_RightCurlyBracketKeyword_11_2_3___or___ScenesKeyword_11_0_0_LeftCurlyBracketKeyword_11_0_1_RightCurlyBracketKeyword_11_0_3____a__a = new GroupAlias(true, true, new TokenAlias(false, false, grammarAccess.getGameRootAccess().getScreensKeyword_11_1_0()), new TokenAlias(false, false, grammarAccess.getGameRootAccess().getLeftCurlyBracketKeyword_11_1_1()), new TokenAlias(false, false, grammarAccess.getGameRootAccess().getRightCurlyBracketKeyword_11_1_3()), new AlternativeAlias(true, true, new GroupAlias(false, false, new TokenAlias(false, false, grammarAccess.getGameRootAccess().getRegionsKeyword_11_2_0()), new TokenAlias(false, false, grammarAccess.getGameRootAccess().getLeftCurlyBracketKeyword_11_2_1()), new TokenAlias(false, false, grammarAccess.getGameRootAccess().getRightCurlyBracketKeyword_11_2_3())), new GroupAlias(false, false, new TokenAlias(false, false, grammarAccess.getGameRootAccess().getScenesKeyword_11_0_0()), new TokenAlias(false, false, grammarAccess.getGameRootAccess().getLeftCurlyBracketKeyword_11_0_1()), new TokenAlias(false, false, grammarAccess.getGameRootAccess().getRightCurlyBracketKeyword_11_0_3()))));
+		match_GameRoot_____RegionsKeyword_11_2_0_LeftCurlyBracketKeyword_11_2_1_RightCurlyBracketKeyword_11_2_3___or___ScenesKeyword_11_0_0_LeftCurlyBracketKeyword_11_0_1_RightCurlyBracketKeyword_11_0_3____a = new AlternativeAlias(true, true, new GroupAlias(false, false, new TokenAlias(false, false, grammarAccess.getGameRootAccess().getRegionsKeyword_11_2_0()), new TokenAlias(false, false, grammarAccess.getGameRootAccess().getLeftCurlyBracketKeyword_11_2_1()), new TokenAlias(false, false, grammarAccess.getGameRootAccess().getRightCurlyBracketKeyword_11_2_3())), new GroupAlias(false, false, new TokenAlias(false, false, grammarAccess.getGameRootAccess().getScenesKeyword_11_0_0()), new TokenAlias(false, false, grammarAccess.getGameRootAccess().getLeftCurlyBracketKeyword_11_0_1()), new TokenAlias(false, false, grammarAccess.getGameRootAccess().getRightCurlyBracketKeyword_11_0_3())));
+		match_GameRoot_____RegionsKeyword_11_2_0_LeftCurlyBracketKeyword_11_2_1_RightCurlyBracketKeyword_11_2_3___or___ScenesKeyword_11_0_0_LeftCurlyBracketKeyword_11_0_1_RightCurlyBracketKeyword_11_0_3___or___ScreensKeyword_11_1_0_LeftCurlyBracketKeyword_11_1_1_RightCurlyBracketKeyword_11_1_3____p = new AlternativeAlias(true, false, new GroupAlias(false, false, new TokenAlias(false, false, grammarAccess.getGameRootAccess().getRegionsKeyword_11_2_0()), new TokenAlias(false, false, grammarAccess.getGameRootAccess().getLeftCurlyBracketKeyword_11_2_1()), new TokenAlias(false, false, grammarAccess.getGameRootAccess().getRightCurlyBracketKeyword_11_2_3())), new GroupAlias(false, false, new TokenAlias(false, false, grammarAccess.getGameRootAccess().getScenesKeyword_11_0_0()), new TokenAlias(false, false, grammarAccess.getGameRootAccess().getLeftCurlyBracketKeyword_11_0_1()), new TokenAlias(false, false, grammarAccess.getGameRootAccess().getRightCurlyBracketKeyword_11_0_3())), new GroupAlias(false, false, new TokenAlias(false, false, grammarAccess.getGameRootAccess().getScreensKeyword_11_1_0()), new TokenAlias(false, false, grammarAccess.getGameRootAccess().getLeftCurlyBracketKeyword_11_1_1()), new TokenAlias(false, false, grammarAccess.getGameRootAccess().getRightCurlyBracketKeyword_11_1_3())));
+		match_GameRoot_____RegionsKeyword_11_2_0_LeftCurlyBracketKeyword_11_2_1_RightCurlyBracketKeyword_11_2_3___or___ScreensKeyword_11_1_0_LeftCurlyBracketKeyword_11_1_1_RightCurlyBracketKeyword_11_1_3____a = new AlternativeAlias(true, true, new GroupAlias(false, false, new TokenAlias(false, false, grammarAccess.getGameRootAccess().getRegionsKeyword_11_2_0()), new TokenAlias(false, false, grammarAccess.getGameRootAccess().getLeftCurlyBracketKeyword_11_2_1()), new TokenAlias(false, false, grammarAccess.getGameRootAccess().getRightCurlyBracketKeyword_11_2_3())), new GroupAlias(false, false, new TokenAlias(false, false, grammarAccess.getGameRootAccess().getScreensKeyword_11_1_0()), new TokenAlias(false, false, grammarAccess.getGameRootAccess().getLeftCurlyBracketKeyword_11_1_1()), new TokenAlias(false, false, grammarAccess.getGameRootAccess().getRightCurlyBracketKeyword_11_1_3())));
+		match_GameRoot_____RegionsKeyword_11_2_0_LeftCurlyBracketKeyword_11_2_1_RightCurlyBracketKeyword_11_2_3__q___ScenesKeyword_11_0_0_LeftCurlyBracketKeyword_11_0_1_RightCurlyBracketKeyword_11_0_3__q__p = new GroupAlias(true, false, new GroupAlias(false, true, new TokenAlias(false, false, grammarAccess.getGameRootAccess().getRegionsKeyword_11_2_0()), new TokenAlias(false, false, grammarAccess.getGameRootAccess().getLeftCurlyBracketKeyword_11_2_1()), new TokenAlias(false, false, grammarAccess.getGameRootAccess().getRightCurlyBracketKeyword_11_2_3())), new GroupAlias(false, true, new TokenAlias(false, false, grammarAccess.getGameRootAccess().getScenesKeyword_11_0_0()), new TokenAlias(false, false, grammarAccess.getGameRootAccess().getLeftCurlyBracketKeyword_11_0_1()), new TokenAlias(false, false, grammarAccess.getGameRootAccess().getRightCurlyBracketKeyword_11_0_3())));
+		match_GameRoot_____RegionsKeyword_11_2_0_LeftCurlyBracketKeyword_11_2_1_RightCurlyBracketKeyword_11_2_3__q___ScreensKeyword_11_1_0_LeftCurlyBracketKeyword_11_1_1_RightCurlyBracketKeyword_11_1_3__q__p = new GroupAlias(true, false, new GroupAlias(false, true, new TokenAlias(false, false, grammarAccess.getGameRootAccess().getRegionsKeyword_11_2_0()), new TokenAlias(false, false, grammarAccess.getGameRootAccess().getLeftCurlyBracketKeyword_11_2_1()), new TokenAlias(false, false, grammarAccess.getGameRootAccess().getRightCurlyBracketKeyword_11_2_3())), new GroupAlias(false, true, new TokenAlias(false, false, grammarAccess.getGameRootAccess().getScreensKeyword_11_1_0()), new TokenAlias(false, false, grammarAccess.getGameRootAccess().getLeftCurlyBracketKeyword_11_1_1()), new TokenAlias(false, false, grammarAccess.getGameRootAccess().getRightCurlyBracketKeyword_11_1_3())));
+		match_GameRoot_____ScenesKeyword_11_0_0_LeftCurlyBracketKeyword_11_0_1_RightCurlyBracketKeyword_11_0_3___or___ScreensKeyword_11_1_0_LeftCurlyBracketKeyword_11_1_1_RightCurlyBracketKeyword_11_1_3____a = new AlternativeAlias(true, true, new GroupAlias(false, false, new TokenAlias(false, false, grammarAccess.getGameRootAccess().getScenesKeyword_11_0_0()), new TokenAlias(false, false, grammarAccess.getGameRootAccess().getLeftCurlyBracketKeyword_11_0_1()), new TokenAlias(false, false, grammarAccess.getGameRootAccess().getRightCurlyBracketKeyword_11_0_3())), new GroupAlias(false, false, new TokenAlias(false, false, grammarAccess.getGameRootAccess().getScreensKeyword_11_1_0()), new TokenAlias(false, false, grammarAccess.getGameRootAccess().getLeftCurlyBracketKeyword_11_1_1()), new TokenAlias(false, false, grammarAccess.getGameRootAccess().getRightCurlyBracketKeyword_11_1_3())));
+		match_GameRoot_____ScenesKeyword_11_0_0_LeftCurlyBracketKeyword_11_0_1_RightCurlyBracketKeyword_11_0_3__q___RegionsKeyword_11_2_0_LeftCurlyBracketKeyword_11_2_1_RightCurlyBracketKeyword_11_2_3__q__p = new GroupAlias(true, false, new GroupAlias(false, true, new TokenAlias(false, false, grammarAccess.getGameRootAccess().getScenesKeyword_11_0_0()), new TokenAlias(false, false, grammarAccess.getGameRootAccess().getLeftCurlyBracketKeyword_11_0_1()), new TokenAlias(false, false, grammarAccess.getGameRootAccess().getRightCurlyBracketKeyword_11_0_3())), new GroupAlias(false, true, new TokenAlias(false, false, grammarAccess.getGameRootAccess().getRegionsKeyword_11_2_0()), new TokenAlias(false, false, grammarAccess.getGameRootAccess().getLeftCurlyBracketKeyword_11_2_1()), new TokenAlias(false, false, grammarAccess.getGameRootAccess().getRightCurlyBracketKeyword_11_2_3())));
+		match_GameRoot_____ScenesKeyword_11_0_0_LeftCurlyBracketKeyword_11_0_1_RightCurlyBracketKeyword_11_0_3__q___ScreensKeyword_11_1_0_LeftCurlyBracketKeyword_11_1_1_RightCurlyBracketKeyword_11_1_3__q__p = new GroupAlias(true, false, new GroupAlias(false, true, new TokenAlias(false, false, grammarAccess.getGameRootAccess().getScenesKeyword_11_0_0()), new TokenAlias(false, false, grammarAccess.getGameRootAccess().getLeftCurlyBracketKeyword_11_0_1()), new TokenAlias(false, false, grammarAccess.getGameRootAccess().getRightCurlyBracketKeyword_11_0_3())), new GroupAlias(false, true, new TokenAlias(false, false, grammarAccess.getGameRootAccess().getScreensKeyword_11_1_0()), new TokenAlias(false, false, grammarAccess.getGameRootAccess().getLeftCurlyBracketKeyword_11_1_1()), new TokenAlias(false, false, grammarAccess.getGameRootAccess().getRightCurlyBracketKeyword_11_1_3())));
+		match_GameRoot_____ScreensKeyword_11_1_0_LeftCurlyBracketKeyword_11_1_1_RightCurlyBracketKeyword_11_1_3__q___RegionsKeyword_11_2_0_LeftCurlyBracketKeyword_11_2_1_RightCurlyBracketKeyword_11_2_3__q__p = new GroupAlias(true, false, new GroupAlias(false, true, new TokenAlias(false, false, grammarAccess.getGameRootAccess().getScreensKeyword_11_1_0()), new TokenAlias(false, false, grammarAccess.getGameRootAccess().getLeftCurlyBracketKeyword_11_1_1()), new TokenAlias(false, false, grammarAccess.getGameRootAccess().getRightCurlyBracketKeyword_11_1_3())), new GroupAlias(false, true, new TokenAlias(false, false, grammarAccess.getGameRootAccess().getRegionsKeyword_11_2_0()), new TokenAlias(false, false, grammarAccess.getGameRootAccess().getLeftCurlyBracketKeyword_11_2_1()), new TokenAlias(false, false, grammarAccess.getGameRootAccess().getRightCurlyBracketKeyword_11_2_3())));
+		match_GameRoot_____ScreensKeyword_11_1_0_LeftCurlyBracketKeyword_11_1_1_RightCurlyBracketKeyword_11_1_3__q___ScenesKeyword_11_0_0_LeftCurlyBracketKeyword_11_0_1_RightCurlyBracketKeyword_11_0_3__q__p = new GroupAlias(true, false, new GroupAlias(false, true, new TokenAlias(false, false, grammarAccess.getGameRootAccess().getScreensKeyword_11_1_0()), new TokenAlias(false, false, grammarAccess.getGameRootAccess().getLeftCurlyBracketKeyword_11_1_1()), new TokenAlias(false, false, grammarAccess.getGameRootAccess().getRightCurlyBracketKeyword_11_1_3())), new GroupAlias(false, true, new TokenAlias(false, false, grammarAccess.getGameRootAccess().getScenesKeyword_11_0_0()), new TokenAlias(false, false, grammarAccess.getGameRootAccess().getLeftCurlyBracketKeyword_11_0_1()), new TokenAlias(false, false, grammarAccess.getGameRootAccess().getRightCurlyBracketKeyword_11_0_3())));
+		match_GameSprite___AnimationsKeyword_5_0_LeftCurlyBracketKeyword_5_1_RightCurlyBracketKeyword_5_3__q = new GroupAlias(false, true, new TokenAlias(false, false, grammarAccess.getGameSpriteAccess().getAnimationsKeyword_5_0()), new TokenAlias(false, false, grammarAccess.getGameSpriteAccess().getLeftCurlyBracketKeyword_5_1()), new TokenAlias(false, false, grammarAccess.getGameSpriteAccess().getRightCurlyBracketKeyword_5_3()));
 		match_XAnnotation___LeftParenthesisKeyword_3_0_RightParenthesisKeyword_3_2__q = new GroupAlias(false, true, new TokenAlias(false, false, grammarAccess.getXAnnotationAccess().getLeftParenthesisKeyword_3_0()), new TokenAlias(false, false, grammarAccess.getXAnnotationAccess().getRightParenthesisKeyword_3_2()));
 		match_XBlockExpression_SemicolonKeyword_2_1_q = new TokenAlias(false, true, grammarAccess.getXBlockExpressionAccess().getSemicolonKeyword_2_1());
 		match_XExpressionInClosure_SemicolonKeyword_1_1_q = new TokenAlias(false, true, grammarAccess.getXExpressionInClosureAccess().getSemicolonKeyword_1_1());
@@ -78,7 +125,53 @@ public class GameDSLSyntacticSequencer extends AbstractSyntacticSequencer {
 		List<INode> transitionNodes = collectNodes(fromNode, toNode);
 		for (AbstractElementAlias syntax : transition.getAmbiguousSyntaxes()) {
 			List<INode> syntaxNodes = getNodesFor(transitionNodes, syntax);
-			if (match_XAnnotation___LeftParenthesisKeyword_3_0_RightParenthesisKeyword_3_2__q.equals(syntax))
+			if (match_GameRoot___RegionsKeyword_11_2_0_LeftCurlyBracketKeyword_11_2_1_RightCurlyBracketKeyword_11_2_3_____ScenesKeyword_11_0_0_LeftCurlyBracketKeyword_11_0_1_RightCurlyBracketKeyword_11_0_3___or___ScreensKeyword_11_1_0_LeftCurlyBracketKeyword_11_1_1_RightCurlyBracketKeyword_11_1_3____a__a.equals(syntax))
+				emit_GameRoot___RegionsKeyword_11_2_0_LeftCurlyBracketKeyword_11_2_1_RightCurlyBracketKeyword_11_2_3_____ScenesKeyword_11_0_0_LeftCurlyBracketKeyword_11_0_1_RightCurlyBracketKeyword_11_0_3___or___ScreensKeyword_11_1_0_LeftCurlyBracketKeyword_11_1_1_RightCurlyBracketKeyword_11_1_3____a__a(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if (match_GameRoot___RightCurlyBracketKeyword_11_0_3_____RegionsKeyword_11_2_0_LeftCurlyBracketKeyword_11_2_1_RightCurlyBracketKeyword_11_2_3___or___ScreensKeyword_11_1_0_LeftCurlyBracketKeyword_11_1_1_RightCurlyBracketKeyword_11_1_3____a_ScenesKeyword_11_0_0_LeftCurlyBracketKeyword_11_0_1__a.equals(syntax))
+				emit_GameRoot___RightCurlyBracketKeyword_11_0_3_____RegionsKeyword_11_2_0_LeftCurlyBracketKeyword_11_2_1_RightCurlyBracketKeyword_11_2_3___or___ScreensKeyword_11_1_0_LeftCurlyBracketKeyword_11_1_1_RightCurlyBracketKeyword_11_1_3____a_ScenesKeyword_11_0_0_LeftCurlyBracketKeyword_11_0_1__a(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if (match_GameRoot___RightCurlyBracketKeyword_11_0_3_____RegionsKeyword_11_2_0_LeftCurlyBracketKeyword_11_2_1_RightCurlyBracketKeyword_11_2_3__q___ScreensKeyword_11_1_0_LeftCurlyBracketKeyword_11_1_1_RightCurlyBracketKeyword_11_1_3__q__p_ScenesKeyword_11_0_0_LeftCurlyBracketKeyword_11_0_1__a.equals(syntax))
+				emit_GameRoot___RightCurlyBracketKeyword_11_0_3_____RegionsKeyword_11_2_0_LeftCurlyBracketKeyword_11_2_1_RightCurlyBracketKeyword_11_2_3__q___ScreensKeyword_11_1_0_LeftCurlyBracketKeyword_11_1_1_RightCurlyBracketKeyword_11_1_3__q__p_ScenesKeyword_11_0_0_LeftCurlyBracketKeyword_11_0_1__a(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if (match_GameRoot___RightCurlyBracketKeyword_11_0_3_____ScreensKeyword_11_1_0_LeftCurlyBracketKeyword_11_1_1_RightCurlyBracketKeyword_11_1_3__q___RegionsKeyword_11_2_0_LeftCurlyBracketKeyword_11_2_1_RightCurlyBracketKeyword_11_2_3__q__p_ScenesKeyword_11_0_0_LeftCurlyBracketKeyword_11_0_1__a.equals(syntax))
+				emit_GameRoot___RightCurlyBracketKeyword_11_0_3_____ScreensKeyword_11_1_0_LeftCurlyBracketKeyword_11_1_1_RightCurlyBracketKeyword_11_1_3__q___RegionsKeyword_11_2_0_LeftCurlyBracketKeyword_11_2_1_RightCurlyBracketKeyword_11_2_3__q__p_ScenesKeyword_11_0_0_LeftCurlyBracketKeyword_11_0_1__a(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if (match_GameRoot___RightCurlyBracketKeyword_11_1_3_____RegionsKeyword_11_2_0_LeftCurlyBracketKeyword_11_2_1_RightCurlyBracketKeyword_11_2_3___or___ScenesKeyword_11_0_0_LeftCurlyBracketKeyword_11_0_1_RightCurlyBracketKeyword_11_0_3____a_ScreensKeyword_11_1_0_LeftCurlyBracketKeyword_11_1_1__a.equals(syntax))
+				emit_GameRoot___RightCurlyBracketKeyword_11_1_3_____RegionsKeyword_11_2_0_LeftCurlyBracketKeyword_11_2_1_RightCurlyBracketKeyword_11_2_3___or___ScenesKeyword_11_0_0_LeftCurlyBracketKeyword_11_0_1_RightCurlyBracketKeyword_11_0_3____a_ScreensKeyword_11_1_0_LeftCurlyBracketKeyword_11_1_1__a(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if (match_GameRoot___RightCurlyBracketKeyword_11_1_3_____RegionsKeyword_11_2_0_LeftCurlyBracketKeyword_11_2_1_RightCurlyBracketKeyword_11_2_3__q___ScenesKeyword_11_0_0_LeftCurlyBracketKeyword_11_0_1_RightCurlyBracketKeyword_11_0_3__q__p_ScreensKeyword_11_1_0_LeftCurlyBracketKeyword_11_1_1__a.equals(syntax))
+				emit_GameRoot___RightCurlyBracketKeyword_11_1_3_____RegionsKeyword_11_2_0_LeftCurlyBracketKeyword_11_2_1_RightCurlyBracketKeyword_11_2_3__q___ScenesKeyword_11_0_0_LeftCurlyBracketKeyword_11_0_1_RightCurlyBracketKeyword_11_0_3__q__p_ScreensKeyword_11_1_0_LeftCurlyBracketKeyword_11_1_1__a(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if (match_GameRoot___RightCurlyBracketKeyword_11_1_3_____ScenesKeyword_11_0_0_LeftCurlyBracketKeyword_11_0_1_RightCurlyBracketKeyword_11_0_3__q___RegionsKeyword_11_2_0_LeftCurlyBracketKeyword_11_2_1_RightCurlyBracketKeyword_11_2_3__q__p_ScreensKeyword_11_1_0_LeftCurlyBracketKeyword_11_1_1__a.equals(syntax))
+				emit_GameRoot___RightCurlyBracketKeyword_11_1_3_____ScenesKeyword_11_0_0_LeftCurlyBracketKeyword_11_0_1_RightCurlyBracketKeyword_11_0_3__q___RegionsKeyword_11_2_0_LeftCurlyBracketKeyword_11_2_1_RightCurlyBracketKeyword_11_2_3__q__p_ScreensKeyword_11_1_0_LeftCurlyBracketKeyword_11_1_1__a(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if (match_GameRoot___RightCurlyBracketKeyword_11_2_3_____ScenesKeyword_11_0_0_LeftCurlyBracketKeyword_11_0_1_RightCurlyBracketKeyword_11_0_3___or___ScreensKeyword_11_1_0_LeftCurlyBracketKeyword_11_1_1_RightCurlyBracketKeyword_11_1_3____a_RegionsKeyword_11_2_0_LeftCurlyBracketKeyword_11_2_1__a.equals(syntax))
+				emit_GameRoot___RightCurlyBracketKeyword_11_2_3_____ScenesKeyword_11_0_0_LeftCurlyBracketKeyword_11_0_1_RightCurlyBracketKeyword_11_0_3___or___ScreensKeyword_11_1_0_LeftCurlyBracketKeyword_11_1_1_RightCurlyBracketKeyword_11_1_3____a_RegionsKeyword_11_2_0_LeftCurlyBracketKeyword_11_2_1__a(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if (match_GameRoot___RightCurlyBracketKeyword_11_2_3_____ScenesKeyword_11_0_0_LeftCurlyBracketKeyword_11_0_1_RightCurlyBracketKeyword_11_0_3__q___ScreensKeyword_11_1_0_LeftCurlyBracketKeyword_11_1_1_RightCurlyBracketKeyword_11_1_3__q__p_RegionsKeyword_11_2_0_LeftCurlyBracketKeyword_11_2_1__a.equals(syntax))
+				emit_GameRoot___RightCurlyBracketKeyword_11_2_3_____ScenesKeyword_11_0_0_LeftCurlyBracketKeyword_11_0_1_RightCurlyBracketKeyword_11_0_3__q___ScreensKeyword_11_1_0_LeftCurlyBracketKeyword_11_1_1_RightCurlyBracketKeyword_11_1_3__q__p_RegionsKeyword_11_2_0_LeftCurlyBracketKeyword_11_2_1__a(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if (match_GameRoot___RightCurlyBracketKeyword_11_2_3_____ScreensKeyword_11_1_0_LeftCurlyBracketKeyword_11_1_1_RightCurlyBracketKeyword_11_1_3__q___ScenesKeyword_11_0_0_LeftCurlyBracketKeyword_11_0_1_RightCurlyBracketKeyword_11_0_3__q__p_RegionsKeyword_11_2_0_LeftCurlyBracketKeyword_11_2_1__a.equals(syntax))
+				emit_GameRoot___RightCurlyBracketKeyword_11_2_3_____ScreensKeyword_11_1_0_LeftCurlyBracketKeyword_11_1_1_RightCurlyBracketKeyword_11_1_3__q___ScenesKeyword_11_0_0_LeftCurlyBracketKeyword_11_0_1_RightCurlyBracketKeyword_11_0_3__q__p_RegionsKeyword_11_2_0_LeftCurlyBracketKeyword_11_2_1__a(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if (match_GameRoot___ScenesKeyword_11_0_0_LeftCurlyBracketKeyword_11_0_1_RightCurlyBracketKeyword_11_0_3_____RegionsKeyword_11_2_0_LeftCurlyBracketKeyword_11_2_1_RightCurlyBracketKeyword_11_2_3___or___ScreensKeyword_11_1_0_LeftCurlyBracketKeyword_11_1_1_RightCurlyBracketKeyword_11_1_3____a__a.equals(syntax))
+				emit_GameRoot___ScenesKeyword_11_0_0_LeftCurlyBracketKeyword_11_0_1_RightCurlyBracketKeyword_11_0_3_____RegionsKeyword_11_2_0_LeftCurlyBracketKeyword_11_2_1_RightCurlyBracketKeyword_11_2_3___or___ScreensKeyword_11_1_0_LeftCurlyBracketKeyword_11_1_1_RightCurlyBracketKeyword_11_1_3____a__a(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if (match_GameRoot___ScreensKeyword_11_1_0_LeftCurlyBracketKeyword_11_1_1_RightCurlyBracketKeyword_11_1_3_____RegionsKeyword_11_2_0_LeftCurlyBracketKeyword_11_2_1_RightCurlyBracketKeyword_11_2_3___or___ScenesKeyword_11_0_0_LeftCurlyBracketKeyword_11_0_1_RightCurlyBracketKeyword_11_0_3____a__a.equals(syntax))
+				emit_GameRoot___ScreensKeyword_11_1_0_LeftCurlyBracketKeyword_11_1_1_RightCurlyBracketKeyword_11_1_3_____RegionsKeyword_11_2_0_LeftCurlyBracketKeyword_11_2_1_RightCurlyBracketKeyword_11_2_3___or___ScenesKeyword_11_0_0_LeftCurlyBracketKeyword_11_0_1_RightCurlyBracketKeyword_11_0_3____a__a(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if (match_GameRoot_____RegionsKeyword_11_2_0_LeftCurlyBracketKeyword_11_2_1_RightCurlyBracketKeyword_11_2_3___or___ScenesKeyword_11_0_0_LeftCurlyBracketKeyword_11_0_1_RightCurlyBracketKeyword_11_0_3____a.equals(syntax))
+				emit_GameRoot_____RegionsKeyword_11_2_0_LeftCurlyBracketKeyword_11_2_1_RightCurlyBracketKeyword_11_2_3___or___ScenesKeyword_11_0_0_LeftCurlyBracketKeyword_11_0_1_RightCurlyBracketKeyword_11_0_3____a(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if (match_GameRoot_____RegionsKeyword_11_2_0_LeftCurlyBracketKeyword_11_2_1_RightCurlyBracketKeyword_11_2_3___or___ScenesKeyword_11_0_0_LeftCurlyBracketKeyword_11_0_1_RightCurlyBracketKeyword_11_0_3___or___ScreensKeyword_11_1_0_LeftCurlyBracketKeyword_11_1_1_RightCurlyBracketKeyword_11_1_3____p.equals(syntax))
+				emit_GameRoot_____RegionsKeyword_11_2_0_LeftCurlyBracketKeyword_11_2_1_RightCurlyBracketKeyword_11_2_3___or___ScenesKeyword_11_0_0_LeftCurlyBracketKeyword_11_0_1_RightCurlyBracketKeyword_11_0_3___or___ScreensKeyword_11_1_0_LeftCurlyBracketKeyword_11_1_1_RightCurlyBracketKeyword_11_1_3____p(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if (match_GameRoot_____RegionsKeyword_11_2_0_LeftCurlyBracketKeyword_11_2_1_RightCurlyBracketKeyword_11_2_3___or___ScreensKeyword_11_1_0_LeftCurlyBracketKeyword_11_1_1_RightCurlyBracketKeyword_11_1_3____a.equals(syntax))
+				emit_GameRoot_____RegionsKeyword_11_2_0_LeftCurlyBracketKeyword_11_2_1_RightCurlyBracketKeyword_11_2_3___or___ScreensKeyword_11_1_0_LeftCurlyBracketKeyword_11_1_1_RightCurlyBracketKeyword_11_1_3____a(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if (match_GameRoot_____RegionsKeyword_11_2_0_LeftCurlyBracketKeyword_11_2_1_RightCurlyBracketKeyword_11_2_3__q___ScenesKeyword_11_0_0_LeftCurlyBracketKeyword_11_0_1_RightCurlyBracketKeyword_11_0_3__q__p.equals(syntax))
+				emit_GameRoot_____RegionsKeyword_11_2_0_LeftCurlyBracketKeyword_11_2_1_RightCurlyBracketKeyword_11_2_3__q___ScenesKeyword_11_0_0_LeftCurlyBracketKeyword_11_0_1_RightCurlyBracketKeyword_11_0_3__q__p(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if (match_GameRoot_____RegionsKeyword_11_2_0_LeftCurlyBracketKeyword_11_2_1_RightCurlyBracketKeyword_11_2_3__q___ScreensKeyword_11_1_0_LeftCurlyBracketKeyword_11_1_1_RightCurlyBracketKeyword_11_1_3__q__p.equals(syntax))
+				emit_GameRoot_____RegionsKeyword_11_2_0_LeftCurlyBracketKeyword_11_2_1_RightCurlyBracketKeyword_11_2_3__q___ScreensKeyword_11_1_0_LeftCurlyBracketKeyword_11_1_1_RightCurlyBracketKeyword_11_1_3__q__p(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if (match_GameRoot_____ScenesKeyword_11_0_0_LeftCurlyBracketKeyword_11_0_1_RightCurlyBracketKeyword_11_0_3___or___ScreensKeyword_11_1_0_LeftCurlyBracketKeyword_11_1_1_RightCurlyBracketKeyword_11_1_3____a.equals(syntax))
+				emit_GameRoot_____ScenesKeyword_11_0_0_LeftCurlyBracketKeyword_11_0_1_RightCurlyBracketKeyword_11_0_3___or___ScreensKeyword_11_1_0_LeftCurlyBracketKeyword_11_1_1_RightCurlyBracketKeyword_11_1_3____a(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if (match_GameRoot_____ScenesKeyword_11_0_0_LeftCurlyBracketKeyword_11_0_1_RightCurlyBracketKeyword_11_0_3__q___RegionsKeyword_11_2_0_LeftCurlyBracketKeyword_11_2_1_RightCurlyBracketKeyword_11_2_3__q__p.equals(syntax))
+				emit_GameRoot_____ScenesKeyword_11_0_0_LeftCurlyBracketKeyword_11_0_1_RightCurlyBracketKeyword_11_0_3__q___RegionsKeyword_11_2_0_LeftCurlyBracketKeyword_11_2_1_RightCurlyBracketKeyword_11_2_3__q__p(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if (match_GameRoot_____ScenesKeyword_11_0_0_LeftCurlyBracketKeyword_11_0_1_RightCurlyBracketKeyword_11_0_3__q___ScreensKeyword_11_1_0_LeftCurlyBracketKeyword_11_1_1_RightCurlyBracketKeyword_11_1_3__q__p.equals(syntax))
+				emit_GameRoot_____ScenesKeyword_11_0_0_LeftCurlyBracketKeyword_11_0_1_RightCurlyBracketKeyword_11_0_3__q___ScreensKeyword_11_1_0_LeftCurlyBracketKeyword_11_1_1_RightCurlyBracketKeyword_11_1_3__q__p(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if (match_GameRoot_____ScreensKeyword_11_1_0_LeftCurlyBracketKeyword_11_1_1_RightCurlyBracketKeyword_11_1_3__q___RegionsKeyword_11_2_0_LeftCurlyBracketKeyword_11_2_1_RightCurlyBracketKeyword_11_2_3__q__p.equals(syntax))
+				emit_GameRoot_____ScreensKeyword_11_1_0_LeftCurlyBracketKeyword_11_1_1_RightCurlyBracketKeyword_11_1_3__q___RegionsKeyword_11_2_0_LeftCurlyBracketKeyword_11_2_1_RightCurlyBracketKeyword_11_2_3__q__p(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if (match_GameRoot_____ScreensKeyword_11_1_0_LeftCurlyBracketKeyword_11_1_1_RightCurlyBracketKeyword_11_1_3__q___ScenesKeyword_11_0_0_LeftCurlyBracketKeyword_11_0_1_RightCurlyBracketKeyword_11_0_3__q__p.equals(syntax))
+				emit_GameRoot_____ScreensKeyword_11_1_0_LeftCurlyBracketKeyword_11_1_1_RightCurlyBracketKeyword_11_1_3__q___ScenesKeyword_11_0_0_LeftCurlyBracketKeyword_11_0_1_RightCurlyBracketKeyword_11_0_3__q__p(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if (match_GameSprite___AnimationsKeyword_5_0_LeftCurlyBracketKeyword_5_1_RightCurlyBracketKeyword_5_3__q.equals(syntax))
+				emit_GameSprite___AnimationsKeyword_5_0_LeftCurlyBracketKeyword_5_1_RightCurlyBracketKeyword_5_3__q(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if (match_XAnnotation___LeftParenthesisKeyword_3_0_RightParenthesisKeyword_3_2__q.equals(syntax))
 				emit_XAnnotation___LeftParenthesisKeyword_3_0_RightParenthesisKeyword_3_2__q(semanticObject, getLastNavigableState(), syntaxNodes);
 			else if (match_XBlockExpression_SemicolonKeyword_2_1_q.equals(syntax))
 				emit_XBlockExpression_SemicolonKeyword_2_1_q(semanticObject, getLastNavigableState(), syntaxNodes);
@@ -96,6 +189,266 @@ public class GameDSLSyntacticSequencer extends AbstractSyntacticSequencer {
 		}
 	}
 
+	/**
+	 * Ambiguous syntax:
+	 *     ('regions' '{' '}' (('scenes' '{' '}') | ('screens' '{' '}'))*)*
+	 *
+	 * This ambiguous syntax occurs at:
+	 *     regions+=GameTextureRegion '}' (('scenes' '{' '}') | ('screens' '{' '}'))* (ambiguity) (rule end)
+	 */
+	protected void emit_GameRoot___RegionsKeyword_11_2_0_LeftCurlyBracketKeyword_11_2_1_RightCurlyBracketKeyword_11_2_3_____ScenesKeyword_11_0_0_LeftCurlyBracketKeyword_11_0_1_RightCurlyBracketKeyword_11_0_3___or___ScreensKeyword_11_1_0_LeftCurlyBracketKeyword_11_1_1_RightCurlyBracketKeyword_11_1_3____a__a(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+		acceptNodes(transition, nodes);
+	}
+	
+	/**
+	 * Ambiguous syntax:
+	 *     ('}' (('screens' '{' '}') | ('regions' '{' '}'))* 'scenes' '{')*
+	 *
+	 * This ambiguous syntax occurs at:
+	 *     ppm=INT (('screens' '{' '}') | ('regions' '{' '}'))* 'scenes' '{' (ambiguity) scenes+=GameScene
+	 *     scenes+=GameScene (ambiguity) scenes+=GameScene
+	 */
+	protected void emit_GameRoot___RightCurlyBracketKeyword_11_0_3_____RegionsKeyword_11_2_0_LeftCurlyBracketKeyword_11_2_1_RightCurlyBracketKeyword_11_2_3___or___ScreensKeyword_11_1_0_LeftCurlyBracketKeyword_11_1_1_RightCurlyBracketKeyword_11_1_3____a_ScenesKeyword_11_0_0_LeftCurlyBracketKeyword_11_0_1__a(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+		acceptNodes(transition, nodes);
+	}
+	
+	/**
+	 * Ambiguous syntax:
+	 *     ('}' (('regions' '{' '}')? ('screens' '{' '}')?)+ 'scenes' '{')*
+	 *
+	 * This ambiguous syntax occurs at:
+	 *     screens+=GameScreen '}' (('regions' '{' '}')? ('screens' '{' '}')?)+ 'scenes' '{' (ambiguity) scenes+=GameScene
+	 */
+	protected void emit_GameRoot___RightCurlyBracketKeyword_11_0_3_____RegionsKeyword_11_2_0_LeftCurlyBracketKeyword_11_2_1_RightCurlyBracketKeyword_11_2_3__q___ScreensKeyword_11_1_0_LeftCurlyBracketKeyword_11_1_1_RightCurlyBracketKeyword_11_1_3__q__p_ScenesKeyword_11_0_0_LeftCurlyBracketKeyword_11_0_1__a(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+		acceptNodes(transition, nodes);
+	}
+	
+	/**
+	 * Ambiguous syntax:
+	 *     ('}' (('screens' '{' '}')? ('regions' '{' '}')?)+ 'scenes' '{')*
+	 *
+	 * This ambiguous syntax occurs at:
+	 *     regions+=GameTextureRegion '}' (('screens' '{' '}')? ('regions' '{' '}')?)+ 'scenes' '{' (ambiguity) scenes+=GameScene
+	 */
+	protected void emit_GameRoot___RightCurlyBracketKeyword_11_0_3_____ScreensKeyword_11_1_0_LeftCurlyBracketKeyword_11_1_1_RightCurlyBracketKeyword_11_1_3__q___RegionsKeyword_11_2_0_LeftCurlyBracketKeyword_11_2_1_RightCurlyBracketKeyword_11_2_3__q__p_ScenesKeyword_11_0_0_LeftCurlyBracketKeyword_11_0_1__a(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+		acceptNodes(transition, nodes);
+	}
+	
+	/**
+	 * Ambiguous syntax:
+	 *     ('}' (('scenes' '{' '}') | ('regions' '{' '}'))* 'screens' '{')*
+	 *
+	 * This ambiguous syntax occurs at:
+	 *     ppm=INT (('scenes' '{' '}') | ('regions' '{' '}'))* 'screens' '{' (ambiguity) screens+=GameScreen
+	 *     screens+=GameScreen (ambiguity) screens+=GameScreen
+	 */
+	protected void emit_GameRoot___RightCurlyBracketKeyword_11_1_3_____RegionsKeyword_11_2_0_LeftCurlyBracketKeyword_11_2_1_RightCurlyBracketKeyword_11_2_3___or___ScenesKeyword_11_0_0_LeftCurlyBracketKeyword_11_0_1_RightCurlyBracketKeyword_11_0_3____a_ScreensKeyword_11_1_0_LeftCurlyBracketKeyword_11_1_1__a(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+		acceptNodes(transition, nodes);
+	}
+	
+	/**
+	 * Ambiguous syntax:
+	 *     ('}' (('regions' '{' '}')? ('scenes' '{' '}')?)+ 'screens' '{')*
+	 *
+	 * This ambiguous syntax occurs at:
+	 *     scenes+=GameScene '}' (('regions' '{' '}')? ('scenes' '{' '}')?)+ 'screens' '{' (ambiguity) screens+=GameScreen
+	 */
+	protected void emit_GameRoot___RightCurlyBracketKeyword_11_1_3_____RegionsKeyword_11_2_0_LeftCurlyBracketKeyword_11_2_1_RightCurlyBracketKeyword_11_2_3__q___ScenesKeyword_11_0_0_LeftCurlyBracketKeyword_11_0_1_RightCurlyBracketKeyword_11_0_3__q__p_ScreensKeyword_11_1_0_LeftCurlyBracketKeyword_11_1_1__a(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+		acceptNodes(transition, nodes);
+	}
+	
+	/**
+	 * Ambiguous syntax:
+	 *     ('}' (('scenes' '{' '}')? ('regions' '{' '}')?)+ 'screens' '{')*
+	 *
+	 * This ambiguous syntax occurs at:
+	 *     regions+=GameTextureRegion '}' (('scenes' '{' '}')? ('regions' '{' '}')?)+ 'screens' '{' (ambiguity) screens+=GameScreen
+	 */
+	protected void emit_GameRoot___RightCurlyBracketKeyword_11_1_3_____ScenesKeyword_11_0_0_LeftCurlyBracketKeyword_11_0_1_RightCurlyBracketKeyword_11_0_3__q___RegionsKeyword_11_2_0_LeftCurlyBracketKeyword_11_2_1_RightCurlyBracketKeyword_11_2_3__q__p_ScreensKeyword_11_1_0_LeftCurlyBracketKeyword_11_1_1__a(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+		acceptNodes(transition, nodes);
+	}
+	
+	/**
+	 * Ambiguous syntax:
+	 *     ('}' (('scenes' '{' '}') | ('screens' '{' '}'))* 'regions' '{')*
+	 *
+	 * This ambiguous syntax occurs at:
+	 *     ppm=INT (('scenes' '{' '}') | ('screens' '{' '}'))* 'regions' '{' (ambiguity) regions+=GameTextureRegion
+	 *     regions+=GameTextureRegion (ambiguity) regions+=GameTextureRegion
+	 */
+	protected void emit_GameRoot___RightCurlyBracketKeyword_11_2_3_____ScenesKeyword_11_0_0_LeftCurlyBracketKeyword_11_0_1_RightCurlyBracketKeyword_11_0_3___or___ScreensKeyword_11_1_0_LeftCurlyBracketKeyword_11_1_1_RightCurlyBracketKeyword_11_1_3____a_RegionsKeyword_11_2_0_LeftCurlyBracketKeyword_11_2_1__a(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+		acceptNodes(transition, nodes);
+	}
+	
+	/**
+	 * Ambiguous syntax:
+	 *     ('}' (('scenes' '{' '}')? ('screens' '{' '}')?)+ 'regions' '{')*
+	 *
+	 * This ambiguous syntax occurs at:
+	 *     screens+=GameScreen '}' (('scenes' '{' '}')? ('screens' '{' '}')?)+ 'regions' '{' (ambiguity) regions+=GameTextureRegion
+	 */
+	protected void emit_GameRoot___RightCurlyBracketKeyword_11_2_3_____ScenesKeyword_11_0_0_LeftCurlyBracketKeyword_11_0_1_RightCurlyBracketKeyword_11_0_3__q___ScreensKeyword_11_1_0_LeftCurlyBracketKeyword_11_1_1_RightCurlyBracketKeyword_11_1_3__q__p_RegionsKeyword_11_2_0_LeftCurlyBracketKeyword_11_2_1__a(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+		acceptNodes(transition, nodes);
+	}
+	
+	/**
+	 * Ambiguous syntax:
+	 *     ('}' (('screens' '{' '}')? ('scenes' '{' '}')?)+ 'regions' '{')*
+	 *
+	 * This ambiguous syntax occurs at:
+	 *     scenes+=GameScene '}' (('screens' '{' '}')? ('scenes' '{' '}')?)+ 'regions' '{' (ambiguity) regions+=GameTextureRegion
+	 */
+	protected void emit_GameRoot___RightCurlyBracketKeyword_11_2_3_____ScreensKeyword_11_1_0_LeftCurlyBracketKeyword_11_1_1_RightCurlyBracketKeyword_11_1_3__q___ScenesKeyword_11_0_0_LeftCurlyBracketKeyword_11_0_1_RightCurlyBracketKeyword_11_0_3__q__p_RegionsKeyword_11_2_0_LeftCurlyBracketKeyword_11_2_1__a(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+		acceptNodes(transition, nodes);
+	}
+	
+	/**
+	 * Ambiguous syntax:
+	 *     ('scenes' '{' '}' (('screens' '{' '}') | ('regions' '{' '}'))*)*
+	 *
+	 * This ambiguous syntax occurs at:
+	 *     scenes+=GameScene '}' (('screens' '{' '}') | ('regions' '{' '}'))* (ambiguity) (rule end)
+	 */
+	protected void emit_GameRoot___ScenesKeyword_11_0_0_LeftCurlyBracketKeyword_11_0_1_RightCurlyBracketKeyword_11_0_3_____RegionsKeyword_11_2_0_LeftCurlyBracketKeyword_11_2_1_RightCurlyBracketKeyword_11_2_3___or___ScreensKeyword_11_1_0_LeftCurlyBracketKeyword_11_1_1_RightCurlyBracketKeyword_11_1_3____a__a(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+		acceptNodes(transition, nodes);
+	}
+	
+	/**
+	 * Ambiguous syntax:
+	 *     ('screens' '{' '}' (('scenes' '{' '}') | ('regions' '{' '}'))*)*
+	 *
+	 * This ambiguous syntax occurs at:
+	 *     screens+=GameScreen '}' (('scenes' '{' '}') | ('regions' '{' '}'))* (ambiguity) (rule end)
+	 */
+	protected void emit_GameRoot___ScreensKeyword_11_1_0_LeftCurlyBracketKeyword_11_1_1_RightCurlyBracketKeyword_11_1_3_____RegionsKeyword_11_2_0_LeftCurlyBracketKeyword_11_2_1_RightCurlyBracketKeyword_11_2_3___or___ScenesKeyword_11_0_0_LeftCurlyBracketKeyword_11_0_1_RightCurlyBracketKeyword_11_0_3____a__a(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+		acceptNodes(transition, nodes);
+	}
+	
+	/**
+	 * Ambiguous syntax:
+	 *     (('scenes' '{' '}') | ('regions' '{' '}'))*
+	 *
+	 * This ambiguous syntax occurs at:
+	 *     ppm=INT (ambiguity) 'screens' '{' ('}' (ambiguity) 'screens' '{')* screens+=GameScreen
+	 *     screens+=GameScreen '}' (ambiguity) ('screens' '{' '}' (ambiguity))* (rule end)
+	 */
+	protected void emit_GameRoot_____RegionsKeyword_11_2_0_LeftCurlyBracketKeyword_11_2_1_RightCurlyBracketKeyword_11_2_3___or___ScenesKeyword_11_0_0_LeftCurlyBracketKeyword_11_0_1_RightCurlyBracketKeyword_11_0_3____a(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+		acceptNodes(transition, nodes);
+	}
+	
+	/**
+	 * Ambiguous syntax:
+	 *     (('scenes' '{' '}') | ('screens' '{' '}') | ('regions' '{' '}'))+
+	 *
+	 * This ambiguous syntax occurs at:
+	 *     ppm=INT (ambiguity) (rule end)
+	 */
+	protected void emit_GameRoot_____RegionsKeyword_11_2_0_LeftCurlyBracketKeyword_11_2_1_RightCurlyBracketKeyword_11_2_3___or___ScenesKeyword_11_0_0_LeftCurlyBracketKeyword_11_0_1_RightCurlyBracketKeyword_11_0_3___or___ScreensKeyword_11_1_0_LeftCurlyBracketKeyword_11_1_1_RightCurlyBracketKeyword_11_1_3____p(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+		acceptNodes(transition, nodes);
+	}
+	
+	/**
+	 * Ambiguous syntax:
+	 *     (('screens' '{' '}') | ('regions' '{' '}'))*
+	 *
+	 * This ambiguous syntax occurs at:
+	 *     ppm=INT (ambiguity) 'scenes' '{' ('}' (ambiguity) 'scenes' '{')* scenes+=GameScene
+	 *     scenes+=GameScene '}' (ambiguity) ('scenes' '{' '}' (ambiguity))* (rule end)
+	 */
+	protected void emit_GameRoot_____RegionsKeyword_11_2_0_LeftCurlyBracketKeyword_11_2_1_RightCurlyBracketKeyword_11_2_3___or___ScreensKeyword_11_1_0_LeftCurlyBracketKeyword_11_1_1_RightCurlyBracketKeyword_11_1_3____a(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+		acceptNodes(transition, nodes);
+	}
+	
+	/**
+	 * Ambiguous syntax:
+	 *     (('regions' '{' '}')? ('scenes' '{' '}')?)+
+	 *
+	 * This ambiguous syntax occurs at:
+	 *     scenes+=GameScene '}' (ambiguity) 'screens' '{' ('}' (ambiguity) 'screens' '{')* screens+=GameScreen
+	 */
+	protected void emit_GameRoot_____RegionsKeyword_11_2_0_LeftCurlyBracketKeyword_11_2_1_RightCurlyBracketKeyword_11_2_3__q___ScenesKeyword_11_0_0_LeftCurlyBracketKeyword_11_0_1_RightCurlyBracketKeyword_11_0_3__q__p(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+		acceptNodes(transition, nodes);
+	}
+	
+	/**
+	 * Ambiguous syntax:
+	 *     (('regions' '{' '}')? ('screens' '{' '}')?)+
+	 *
+	 * This ambiguous syntax occurs at:
+	 *     screens+=GameScreen '}' (ambiguity) 'scenes' '{' ('}' (ambiguity) 'scenes' '{')* scenes+=GameScene
+	 */
+	protected void emit_GameRoot_____RegionsKeyword_11_2_0_LeftCurlyBracketKeyword_11_2_1_RightCurlyBracketKeyword_11_2_3__q___ScreensKeyword_11_1_0_LeftCurlyBracketKeyword_11_1_1_RightCurlyBracketKeyword_11_1_3__q__p(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+		acceptNodes(transition, nodes);
+	}
+	
+	/**
+	 * Ambiguous syntax:
+	 *     (('scenes' '{' '}') | ('screens' '{' '}'))*
+	 *
+	 * This ambiguous syntax occurs at:
+	 *     ppm=INT (ambiguity) 'regions' '{' ('}' (ambiguity) 'regions' '{')* regions+=GameTextureRegion
+	 *     regions+=GameTextureRegion '}' (ambiguity) ('regions' '{' '}' (ambiguity))* (rule end)
+	 */
+	protected void emit_GameRoot_____ScenesKeyword_11_0_0_LeftCurlyBracketKeyword_11_0_1_RightCurlyBracketKeyword_11_0_3___or___ScreensKeyword_11_1_0_LeftCurlyBracketKeyword_11_1_1_RightCurlyBracketKeyword_11_1_3____a(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+		acceptNodes(transition, nodes);
+	}
+	
+	/**
+	 * Ambiguous syntax:
+	 *     (('scenes' '{' '}')? ('regions' '{' '}')?)+
+	 *
+	 * This ambiguous syntax occurs at:
+	 *     regions+=GameTextureRegion '}' (ambiguity) 'screens' '{' ('}' (ambiguity) 'screens' '{')* screens+=GameScreen
+	 */
+	protected void emit_GameRoot_____ScenesKeyword_11_0_0_LeftCurlyBracketKeyword_11_0_1_RightCurlyBracketKeyword_11_0_3__q___RegionsKeyword_11_2_0_LeftCurlyBracketKeyword_11_2_1_RightCurlyBracketKeyword_11_2_3__q__p(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+		acceptNodes(transition, nodes);
+	}
+	
+	/**
+	 * Ambiguous syntax:
+	 *     (('scenes' '{' '}')? ('screens' '{' '}')?)+
+	 *
+	 * This ambiguous syntax occurs at:
+	 *     screens+=GameScreen '}' (ambiguity) 'regions' '{' ('}' (ambiguity) 'regions' '{')* regions+=GameTextureRegion
+	 */
+	protected void emit_GameRoot_____ScenesKeyword_11_0_0_LeftCurlyBracketKeyword_11_0_1_RightCurlyBracketKeyword_11_0_3__q___ScreensKeyword_11_1_0_LeftCurlyBracketKeyword_11_1_1_RightCurlyBracketKeyword_11_1_3__q__p(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+		acceptNodes(transition, nodes);
+	}
+	
+	/**
+	 * Ambiguous syntax:
+	 *     (('screens' '{' '}')? ('regions' '{' '}')?)+
+	 *
+	 * This ambiguous syntax occurs at:
+	 *     regions+=GameTextureRegion '}' (ambiguity) 'scenes' '{' ('}' (ambiguity) 'scenes' '{')* scenes+=GameScene
+	 */
+	protected void emit_GameRoot_____ScreensKeyword_11_1_0_LeftCurlyBracketKeyword_11_1_1_RightCurlyBracketKeyword_11_1_3__q___RegionsKeyword_11_2_0_LeftCurlyBracketKeyword_11_2_1_RightCurlyBracketKeyword_11_2_3__q__p(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+		acceptNodes(transition, nodes);
+	}
+	
+	/**
+	 * Ambiguous syntax:
+	 *     (('screens' '{' '}')? ('scenes' '{' '}')?)+
+	 *
+	 * This ambiguous syntax occurs at:
+	 *     scenes+=GameScene '}' (ambiguity) 'regions' '{' ('}' (ambiguity) 'regions' '{')* regions+=GameTextureRegion
+	 */
+	protected void emit_GameRoot_____ScreensKeyword_11_1_0_LeftCurlyBracketKeyword_11_1_1_RightCurlyBracketKeyword_11_1_3__q___ScenesKeyword_11_0_0_LeftCurlyBracketKeyword_11_0_1_RightCurlyBracketKeyword_11_0_3__q__p(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+		acceptNodes(transition, nodes);
+	}
+	
+	/**
+	 * Ambiguous syntax:
+	 *     ('animations' '{' '}')?
+	 *
+	 * This ambiguous syntax occurs at:
+	 *     radius=INT (ambiguity) 'stands' '{' '}' 'start' start=[GameSpriteStand|ID]
+	 *     radius=INT (ambiguity) 'stands' '{' stands+=GameSpriteStand
+	 */
+	protected void emit_GameSprite___AnimationsKeyword_5_0_LeftCurlyBracketKeyword_5_1_RightCurlyBracketKeyword_5_3__q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+		acceptNodes(transition, nodes);
+	}
+	
 	/**
 	 * Ambiguous syntax:
 	 *     ('(' ')')?

@@ -23,6 +23,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link com.hypermodel.games.engine.gameDSL.GameRoot#getPpm <em>Ppm</em>}</li>
  *   <li>{@link com.hypermodel.games.engine.gameDSL.GameRoot#getScenes <em>Scenes</em>}</li>
  *   <li>{@link com.hypermodel.games.engine.gameDSL.GameRoot#getScreens <em>Screens</em>}</li>
+ *   <li>{@link com.hypermodel.games.engine.gameDSL.GameRoot#getRegions <em>Regions</em>}</li>
  * </ul>
  *
  * @see com.hypermodel.games.engine.gameDSL.GameDSLPackage#getGameRoot()
@@ -192,5 +193,21 @@ public interface GameRoot extends EObject
    * @generated
    */
   EList<GameScreen> getScreens();
+
+  /**
+   * Returns the value of the '<em><b>Regions</b></em>' containment reference list.
+   * The list contents are of type {@link com.hypermodel.games.engine.gameDSL.GameTextureRegion}.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Regions</em>' containment reference list isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Regions</em>' containment reference list.
+   * @see com.hypermodel.games.engine.gameDSL.GameDSLPackage#getGameRoot_Regions()
+   * @model containment="true"
+   * @generated
+   */
+  EList<GameTextureRegion> getRegions();
 
 } // GameRoot

@@ -14,13 +14,30 @@ package de.hypermodel.games {
 	}
 	game MarioBros width 400 height 208 title "MarioBros" pixelPerMeter 100 
 	scenes {
-		scene Hud hasScore topPadding 10 {
+		scene Hud isScore topPadding 10 {
 			display mario valueType number format "%06d" initialValue 0 addValue
 			display world valueType text format "%s" initialValue "1-1" setValue 
 			display time valueType number format "%03d" initialValue 300 deltaValue -1.0 eachTimePeriod 1.0  
 		}
 	}
+	regions {
+		region marioSmall width 16 height 16
+		region goomba width 16 height 16
+	}
 	screens {
-		screen PlayScreen atlas "Mario_and_Enemies" 
+		screen PlayScreen 
+		atlas "Mario_and_Enemies"
+		scene Hud
+		sprites {
+			sprite Mario radius 6 
+			animations {
+				animation marioRun duration 0.4 frames 4 startFrame 1 from marioSmall 
+			}
+			stands {
+				stand marioDestroyed whichFrame 3 from marioSmall
+				stand marioStand whichFrame 5 from marioSmall
+			}
+			start marioStand
+		}
 	}
 } 

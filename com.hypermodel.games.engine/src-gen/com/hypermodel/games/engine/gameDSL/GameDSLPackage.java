@@ -473,13 +473,22 @@ public interface GameDSLPackage extends EPackage
   int GAME_ROOT__SCREENS = 6;
 
   /**
+   * The feature id for the '<em><b>Regions</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int GAME_ROOT__REGIONS = 7;
+
+  /**
    * The number of structural features of the '<em>Game Root</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int GAME_ROOT_FEATURE_COUNT = 7;
+  int GAME_ROOT_FEATURE_COUNT = 8;
 
   /**
    * The meta object id for the '{@link com.hypermodel.games.engine.gameDSL.impl.GameScreenImpl <em>Game Screen</em>}' class.
@@ -510,13 +519,31 @@ public interface GameDSLPackage extends EPackage
   int GAME_SCREEN__ATLAS_NAME = 1;
 
   /**
+   * The feature id for the '<em><b>Scene</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int GAME_SCREEN__SCENE = 2;
+
+  /**
+   * The feature id for the '<em><b>Sprites</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int GAME_SCREEN__SPRITES = 3;
+
+  /**
    * The number of structural features of the '<em>Game Screen</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int GAME_SCREEN_FEATURE_COUNT = 2;
+  int GAME_SCREEN_FEATURE_COUNT = 4;
 
   /**
    * The meta object id for the '{@link com.hypermodel.games.engine.gameDSL.impl.GameSceneImpl <em>Game Scene</em>}' class.
@@ -729,6 +756,253 @@ public interface GameDSLPackage extends EPackage
   int GAME_DISPLAY_FEATURE_COUNT = 12;
 
   /**
+   * The meta object id for the '{@link com.hypermodel.games.engine.gameDSL.impl.GameSpriteImpl <em>Game Sprite</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see com.hypermodel.games.engine.gameDSL.impl.GameSpriteImpl
+   * @see com.hypermodel.games.engine.gameDSL.impl.GameDSLPackageImpl#getGameSprite()
+   * @generated
+   */
+  int GAME_SPRITE = 13;
+
+  /**
+   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int GAME_SPRITE__NAME = 0;
+
+  /**
+   * The feature id for the '<em><b>Radius</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int GAME_SPRITE__RADIUS = 1;
+
+  /**
+   * The feature id for the '<em><b>Animations</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int GAME_SPRITE__ANIMATIONS = 2;
+
+  /**
+   * The feature id for the '<em><b>Stands</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int GAME_SPRITE__STANDS = 3;
+
+  /**
+   * The feature id for the '<em><b>Start</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int GAME_SPRITE__START = 4;
+
+  /**
+   * The number of structural features of the '<em>Game Sprite</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int GAME_SPRITE_FEATURE_COUNT = 5;
+
+  /**
+   * The meta object id for the '{@link com.hypermodel.games.engine.gameDSL.impl.GameSpriteAnimationImpl <em>Game Sprite Animation</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see com.hypermodel.games.engine.gameDSL.impl.GameSpriteAnimationImpl
+   * @see com.hypermodel.games.engine.gameDSL.impl.GameDSLPackageImpl#getGameSpriteAnimation()
+   * @generated
+   */
+  int GAME_SPRITE_ANIMATION = 14;
+
+  /**
+   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int GAME_SPRITE_ANIMATION__NAME = 0;
+
+  /**
+   * The feature id for the '<em><b>Duration</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int GAME_SPRITE_ANIMATION__DURATION = 1;
+
+  /**
+   * The feature id for the '<em><b>Has Frames</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int GAME_SPRITE_ANIMATION__HAS_FRAMES = 2;
+
+  /**
+   * The feature id for the '<em><b>Frames</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int GAME_SPRITE_ANIMATION__FRAMES = 3;
+
+  /**
+   * The feature id for the '<em><b>Offset</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int GAME_SPRITE_ANIMATION__OFFSET = 4;
+
+  /**
+   * The feature id for the '<em><b>Region</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int GAME_SPRITE_ANIMATION__REGION = 5;
+
+  /**
+   * The feature id for the '<em><b>Has Stands</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int GAME_SPRITE_ANIMATION__HAS_STANDS = 6;
+
+  /**
+   * The feature id for the '<em><b>Stands</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int GAME_SPRITE_ANIMATION__STANDS = 7;
+
+  /**
+   * The number of structural features of the '<em>Game Sprite Animation</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int GAME_SPRITE_ANIMATION_FEATURE_COUNT = 8;
+
+  /**
+   * The meta object id for the '{@link com.hypermodel.games.engine.gameDSL.impl.GameSpriteStandImpl <em>Game Sprite Stand</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see com.hypermodel.games.engine.gameDSL.impl.GameSpriteStandImpl
+   * @see com.hypermodel.games.engine.gameDSL.impl.GameDSLPackageImpl#getGameSpriteStand()
+   * @generated
+   */
+  int GAME_SPRITE_STAND = 15;
+
+  /**
+   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int GAME_SPRITE_STAND__NAME = 0;
+
+  /**
+   * The feature id for the '<em><b>Offset</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int GAME_SPRITE_STAND__OFFSET = 1;
+
+  /**
+   * The feature id for the '<em><b>Region</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int GAME_SPRITE_STAND__REGION = 2;
+
+  /**
+   * The number of structural features of the '<em>Game Sprite Stand</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int GAME_SPRITE_STAND_FEATURE_COUNT = 3;
+
+  /**
+   * The meta object id for the '{@link com.hypermodel.games.engine.gameDSL.impl.GameTextureRegionImpl <em>Game Texture Region</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see com.hypermodel.games.engine.gameDSL.impl.GameTextureRegionImpl
+   * @see com.hypermodel.games.engine.gameDSL.impl.GameDSLPackageImpl#getGameTextureRegion()
+   * @generated
+   */
+  int GAME_TEXTURE_REGION = 16;
+
+  /**
+   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int GAME_TEXTURE_REGION__NAME = 0;
+
+  /**
+   * The feature id for the '<em><b>Width</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int GAME_TEXTURE_REGION__WIDTH = 1;
+
+  /**
+   * The feature id for the '<em><b>Height</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int GAME_TEXTURE_REGION__HEIGHT = 2;
+
+  /**
+   * The number of structural features of the '<em>Game Texture Region</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int GAME_TEXTURE_REGION_FEATURE_COUNT = 3;
+
+  /**
    * The meta object id for the '{@link com.hypermodel.games.engine.gameDSL.GameDisplayValueType <em>Game Display Value Type</em>}' enum.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -736,7 +1010,7 @@ public interface GameDSLPackage extends EPackage
    * @see com.hypermodel.games.engine.gameDSL.impl.GameDSLPackageImpl#getGameDisplayValueType()
    * @generated
    */
-  int GAME_DISPLAY_VALUE_TYPE = 13;
+  int GAME_DISPLAY_VALUE_TYPE = 17;
 
   /**
    * The meta object id for the '{@link com.hypermodel.games.engine.gameDSL.GamePlatform <em>Game Platform</em>}' enum.
@@ -746,7 +1020,7 @@ public interface GameDSLPackage extends EPackage
    * @see com.hypermodel.games.engine.gameDSL.impl.GameDSLPackageImpl#getGamePlatform()
    * @generated
    */
-  int GAME_PLATFORM = 14;
+  int GAME_PLATFORM = 18;
 
   /**
    * The meta object id for the '{@link com.hypermodel.games.engine.gameDSL.GameScreenOrientation <em>Game Screen Orientation</em>}' enum.
@@ -756,7 +1030,7 @@ public interface GameDSLPackage extends EPackage
    * @see com.hypermodel.games.engine.gameDSL.impl.GameDSLPackageImpl#getGameScreenOrientation()
    * @generated
    */
-  int GAME_SCREEN_ORIENTATION = 15;
+  int GAME_SCREEN_ORIENTATION = 19;
 
 
   /**
@@ -1158,6 +1432,17 @@ public interface GameDSLPackage extends EPackage
   EReference getGameRoot_Screens();
 
   /**
+   * Returns the meta object for the containment reference list '{@link com.hypermodel.games.engine.gameDSL.GameRoot#getRegions <em>Regions</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Regions</em>'.
+   * @see com.hypermodel.games.engine.gameDSL.GameRoot#getRegions()
+   * @see #getGameRoot()
+   * @generated
+   */
+  EReference getGameRoot_Regions();
+
+  /**
    * Returns the meta object for class '{@link com.hypermodel.games.engine.gameDSL.GameScreen <em>Game Screen</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1188,6 +1473,28 @@ public interface GameDSLPackage extends EPackage
    * @generated
    */
   EAttribute getGameScreen_AtlasName();
+
+  /**
+   * Returns the meta object for the reference '{@link com.hypermodel.games.engine.gameDSL.GameScreen#getScene <em>Scene</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the reference '<em>Scene</em>'.
+   * @see com.hypermodel.games.engine.gameDSL.GameScreen#getScene()
+   * @see #getGameScreen()
+   * @generated
+   */
+  EReference getGameScreen_Scene();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link com.hypermodel.games.engine.gameDSL.GameScreen#getSprites <em>Sprites</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Sprites</em>'.
+   * @see com.hypermodel.games.engine.gameDSL.GameScreen#getSprites()
+   * @see #getGameScreen()
+   * @generated
+   */
+  EReference getGameScreen_Sprites();
 
   /**
    * Returns the meta object for class '{@link com.hypermodel.games.engine.gameDSL.GameScene <em>Game Scene</em>}'.
@@ -1405,6 +1712,255 @@ public interface GameDSLPackage extends EPackage
    * @generated
    */
   EAttribute getGameDisplay_HasSetter();
+
+  /**
+   * Returns the meta object for class '{@link com.hypermodel.games.engine.gameDSL.GameSprite <em>Game Sprite</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Game Sprite</em>'.
+   * @see com.hypermodel.games.engine.gameDSL.GameSprite
+   * @generated
+   */
+  EClass getGameSprite();
+
+  /**
+   * Returns the meta object for the attribute '{@link com.hypermodel.games.engine.gameDSL.GameSprite#getName <em>Name</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Name</em>'.
+   * @see com.hypermodel.games.engine.gameDSL.GameSprite#getName()
+   * @see #getGameSprite()
+   * @generated
+   */
+  EAttribute getGameSprite_Name();
+
+  /**
+   * Returns the meta object for the attribute '{@link com.hypermodel.games.engine.gameDSL.GameSprite#getRadius <em>Radius</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Radius</em>'.
+   * @see com.hypermodel.games.engine.gameDSL.GameSprite#getRadius()
+   * @see #getGameSprite()
+   * @generated
+   */
+  EAttribute getGameSprite_Radius();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link com.hypermodel.games.engine.gameDSL.GameSprite#getAnimations <em>Animations</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Animations</em>'.
+   * @see com.hypermodel.games.engine.gameDSL.GameSprite#getAnimations()
+   * @see #getGameSprite()
+   * @generated
+   */
+  EReference getGameSprite_Animations();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link com.hypermodel.games.engine.gameDSL.GameSprite#getStands <em>Stands</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Stands</em>'.
+   * @see com.hypermodel.games.engine.gameDSL.GameSprite#getStands()
+   * @see #getGameSprite()
+   * @generated
+   */
+  EReference getGameSprite_Stands();
+
+  /**
+   * Returns the meta object for the reference '{@link com.hypermodel.games.engine.gameDSL.GameSprite#getStart <em>Start</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the reference '<em>Start</em>'.
+   * @see com.hypermodel.games.engine.gameDSL.GameSprite#getStart()
+   * @see #getGameSprite()
+   * @generated
+   */
+  EReference getGameSprite_Start();
+
+  /**
+   * Returns the meta object for class '{@link com.hypermodel.games.engine.gameDSL.GameSpriteAnimation <em>Game Sprite Animation</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Game Sprite Animation</em>'.
+   * @see com.hypermodel.games.engine.gameDSL.GameSpriteAnimation
+   * @generated
+   */
+  EClass getGameSpriteAnimation();
+
+  /**
+   * Returns the meta object for the attribute '{@link com.hypermodel.games.engine.gameDSL.GameSpriteAnimation#getName <em>Name</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Name</em>'.
+   * @see com.hypermodel.games.engine.gameDSL.GameSpriteAnimation#getName()
+   * @see #getGameSpriteAnimation()
+   * @generated
+   */
+  EAttribute getGameSpriteAnimation_Name();
+
+  /**
+   * Returns the meta object for the attribute '{@link com.hypermodel.games.engine.gameDSL.GameSpriteAnimation#getDuration <em>Duration</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Duration</em>'.
+   * @see com.hypermodel.games.engine.gameDSL.GameSpriteAnimation#getDuration()
+   * @see #getGameSpriteAnimation()
+   * @generated
+   */
+  EAttribute getGameSpriteAnimation_Duration();
+
+  /**
+   * Returns the meta object for the attribute '{@link com.hypermodel.games.engine.gameDSL.GameSpriteAnimation#isHasFrames <em>Has Frames</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Has Frames</em>'.
+   * @see com.hypermodel.games.engine.gameDSL.GameSpriteAnimation#isHasFrames()
+   * @see #getGameSpriteAnimation()
+   * @generated
+   */
+  EAttribute getGameSpriteAnimation_HasFrames();
+
+  /**
+   * Returns the meta object for the attribute '{@link com.hypermodel.games.engine.gameDSL.GameSpriteAnimation#getFrames <em>Frames</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Frames</em>'.
+   * @see com.hypermodel.games.engine.gameDSL.GameSpriteAnimation#getFrames()
+   * @see #getGameSpriteAnimation()
+   * @generated
+   */
+  EAttribute getGameSpriteAnimation_Frames();
+
+  /**
+   * Returns the meta object for the attribute '{@link com.hypermodel.games.engine.gameDSL.GameSpriteAnimation#getOffset <em>Offset</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Offset</em>'.
+   * @see com.hypermodel.games.engine.gameDSL.GameSpriteAnimation#getOffset()
+   * @see #getGameSpriteAnimation()
+   * @generated
+   */
+  EAttribute getGameSpriteAnimation_Offset();
+
+  /**
+   * Returns the meta object for the reference '{@link com.hypermodel.games.engine.gameDSL.GameSpriteAnimation#getRegion <em>Region</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the reference '<em>Region</em>'.
+   * @see com.hypermodel.games.engine.gameDSL.GameSpriteAnimation#getRegion()
+   * @see #getGameSpriteAnimation()
+   * @generated
+   */
+  EReference getGameSpriteAnimation_Region();
+
+  /**
+   * Returns the meta object for the attribute '{@link com.hypermodel.games.engine.gameDSL.GameSpriteAnimation#isHasStands <em>Has Stands</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Has Stands</em>'.
+   * @see com.hypermodel.games.engine.gameDSL.GameSpriteAnimation#isHasStands()
+   * @see #getGameSpriteAnimation()
+   * @generated
+   */
+  EAttribute getGameSpriteAnimation_HasStands();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link com.hypermodel.games.engine.gameDSL.GameSpriteAnimation#getStands <em>Stands</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Stands</em>'.
+   * @see com.hypermodel.games.engine.gameDSL.GameSpriteAnimation#getStands()
+   * @see #getGameSpriteAnimation()
+   * @generated
+   */
+  EReference getGameSpriteAnimation_Stands();
+
+  /**
+   * Returns the meta object for class '{@link com.hypermodel.games.engine.gameDSL.GameSpriteStand <em>Game Sprite Stand</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Game Sprite Stand</em>'.
+   * @see com.hypermodel.games.engine.gameDSL.GameSpriteStand
+   * @generated
+   */
+  EClass getGameSpriteStand();
+
+  /**
+   * Returns the meta object for the attribute '{@link com.hypermodel.games.engine.gameDSL.GameSpriteStand#getName <em>Name</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Name</em>'.
+   * @see com.hypermodel.games.engine.gameDSL.GameSpriteStand#getName()
+   * @see #getGameSpriteStand()
+   * @generated
+   */
+  EAttribute getGameSpriteStand_Name();
+
+  /**
+   * Returns the meta object for the attribute '{@link com.hypermodel.games.engine.gameDSL.GameSpriteStand#getOffset <em>Offset</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Offset</em>'.
+   * @see com.hypermodel.games.engine.gameDSL.GameSpriteStand#getOffset()
+   * @see #getGameSpriteStand()
+   * @generated
+   */
+  EAttribute getGameSpriteStand_Offset();
+
+  /**
+   * Returns the meta object for the reference '{@link com.hypermodel.games.engine.gameDSL.GameSpriteStand#getRegion <em>Region</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the reference '<em>Region</em>'.
+   * @see com.hypermodel.games.engine.gameDSL.GameSpriteStand#getRegion()
+   * @see #getGameSpriteStand()
+   * @generated
+   */
+  EReference getGameSpriteStand_Region();
+
+  /**
+   * Returns the meta object for class '{@link com.hypermodel.games.engine.gameDSL.GameTextureRegion <em>Game Texture Region</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Game Texture Region</em>'.
+   * @see com.hypermodel.games.engine.gameDSL.GameTextureRegion
+   * @generated
+   */
+  EClass getGameTextureRegion();
+
+  /**
+   * Returns the meta object for the attribute '{@link com.hypermodel.games.engine.gameDSL.GameTextureRegion#getName <em>Name</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Name</em>'.
+   * @see com.hypermodel.games.engine.gameDSL.GameTextureRegion#getName()
+   * @see #getGameTextureRegion()
+   * @generated
+   */
+  EAttribute getGameTextureRegion_Name();
+
+  /**
+   * Returns the meta object for the attribute '{@link com.hypermodel.games.engine.gameDSL.GameTextureRegion#getWidth <em>Width</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Width</em>'.
+   * @see com.hypermodel.games.engine.gameDSL.GameTextureRegion#getWidth()
+   * @see #getGameTextureRegion()
+   * @generated
+   */
+  EAttribute getGameTextureRegion_Width();
+
+  /**
+   * Returns the meta object for the attribute '{@link com.hypermodel.games.engine.gameDSL.GameTextureRegion#getHeight <em>Height</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Height</em>'.
+   * @see com.hypermodel.games.engine.gameDSL.GameTextureRegion#getHeight()
+   * @see #getGameTextureRegion()
+   * @generated
+   */
+  EAttribute getGameTextureRegion_Height();
 
   /**
    * Returns the meta object for enum '{@link com.hypermodel.games.engine.gameDSL.GameDisplayValueType <em>Game Display Value Type</em>}'.
@@ -1774,6 +2330,14 @@ public interface GameDSLPackage extends EPackage
     EReference GAME_ROOT__SCREENS = eINSTANCE.getGameRoot_Screens();
 
     /**
+     * The meta object literal for the '<em><b>Regions</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference GAME_ROOT__REGIONS = eINSTANCE.getGameRoot_Regions();
+
+    /**
      * The meta object literal for the '{@link com.hypermodel.games.engine.gameDSL.impl.GameScreenImpl <em>Game Screen</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -1798,6 +2362,22 @@ public interface GameDSLPackage extends EPackage
      * @generated
      */
     EAttribute GAME_SCREEN__ATLAS_NAME = eINSTANCE.getGameScreen_AtlasName();
+
+    /**
+     * The meta object literal for the '<em><b>Scene</b></em>' reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference GAME_SCREEN__SCENE = eINSTANCE.getGameScreen_Scene();
+
+    /**
+     * The meta object literal for the '<em><b>Sprites</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference GAME_SCREEN__SPRITES = eINSTANCE.getGameScreen_Sprites();
 
     /**
      * The meta object literal for the '{@link com.hypermodel.games.engine.gameDSL.impl.GameSceneImpl <em>Game Scene</em>}' class.
@@ -1964,6 +2544,198 @@ public interface GameDSLPackage extends EPackage
      * @generated
      */
     EAttribute GAME_DISPLAY__HAS_SETTER = eINSTANCE.getGameDisplay_HasSetter();
+
+    /**
+     * The meta object literal for the '{@link com.hypermodel.games.engine.gameDSL.impl.GameSpriteImpl <em>Game Sprite</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see com.hypermodel.games.engine.gameDSL.impl.GameSpriteImpl
+     * @see com.hypermodel.games.engine.gameDSL.impl.GameDSLPackageImpl#getGameSprite()
+     * @generated
+     */
+    EClass GAME_SPRITE = eINSTANCE.getGameSprite();
+
+    /**
+     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute GAME_SPRITE__NAME = eINSTANCE.getGameSprite_Name();
+
+    /**
+     * The meta object literal for the '<em><b>Radius</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute GAME_SPRITE__RADIUS = eINSTANCE.getGameSprite_Radius();
+
+    /**
+     * The meta object literal for the '<em><b>Animations</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference GAME_SPRITE__ANIMATIONS = eINSTANCE.getGameSprite_Animations();
+
+    /**
+     * The meta object literal for the '<em><b>Stands</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference GAME_SPRITE__STANDS = eINSTANCE.getGameSprite_Stands();
+
+    /**
+     * The meta object literal for the '<em><b>Start</b></em>' reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference GAME_SPRITE__START = eINSTANCE.getGameSprite_Start();
+
+    /**
+     * The meta object literal for the '{@link com.hypermodel.games.engine.gameDSL.impl.GameSpriteAnimationImpl <em>Game Sprite Animation</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see com.hypermodel.games.engine.gameDSL.impl.GameSpriteAnimationImpl
+     * @see com.hypermodel.games.engine.gameDSL.impl.GameDSLPackageImpl#getGameSpriteAnimation()
+     * @generated
+     */
+    EClass GAME_SPRITE_ANIMATION = eINSTANCE.getGameSpriteAnimation();
+
+    /**
+     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute GAME_SPRITE_ANIMATION__NAME = eINSTANCE.getGameSpriteAnimation_Name();
+
+    /**
+     * The meta object literal for the '<em><b>Duration</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute GAME_SPRITE_ANIMATION__DURATION = eINSTANCE.getGameSpriteAnimation_Duration();
+
+    /**
+     * The meta object literal for the '<em><b>Has Frames</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute GAME_SPRITE_ANIMATION__HAS_FRAMES = eINSTANCE.getGameSpriteAnimation_HasFrames();
+
+    /**
+     * The meta object literal for the '<em><b>Frames</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute GAME_SPRITE_ANIMATION__FRAMES = eINSTANCE.getGameSpriteAnimation_Frames();
+
+    /**
+     * The meta object literal for the '<em><b>Offset</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute GAME_SPRITE_ANIMATION__OFFSET = eINSTANCE.getGameSpriteAnimation_Offset();
+
+    /**
+     * The meta object literal for the '<em><b>Region</b></em>' reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference GAME_SPRITE_ANIMATION__REGION = eINSTANCE.getGameSpriteAnimation_Region();
+
+    /**
+     * The meta object literal for the '<em><b>Has Stands</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute GAME_SPRITE_ANIMATION__HAS_STANDS = eINSTANCE.getGameSpriteAnimation_HasStands();
+
+    /**
+     * The meta object literal for the '<em><b>Stands</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference GAME_SPRITE_ANIMATION__STANDS = eINSTANCE.getGameSpriteAnimation_Stands();
+
+    /**
+     * The meta object literal for the '{@link com.hypermodel.games.engine.gameDSL.impl.GameSpriteStandImpl <em>Game Sprite Stand</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see com.hypermodel.games.engine.gameDSL.impl.GameSpriteStandImpl
+     * @see com.hypermodel.games.engine.gameDSL.impl.GameDSLPackageImpl#getGameSpriteStand()
+     * @generated
+     */
+    EClass GAME_SPRITE_STAND = eINSTANCE.getGameSpriteStand();
+
+    /**
+     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute GAME_SPRITE_STAND__NAME = eINSTANCE.getGameSpriteStand_Name();
+
+    /**
+     * The meta object literal for the '<em><b>Offset</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute GAME_SPRITE_STAND__OFFSET = eINSTANCE.getGameSpriteStand_Offset();
+
+    /**
+     * The meta object literal for the '<em><b>Region</b></em>' reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference GAME_SPRITE_STAND__REGION = eINSTANCE.getGameSpriteStand_Region();
+
+    /**
+     * The meta object literal for the '{@link com.hypermodel.games.engine.gameDSL.impl.GameTextureRegionImpl <em>Game Texture Region</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see com.hypermodel.games.engine.gameDSL.impl.GameTextureRegionImpl
+     * @see com.hypermodel.games.engine.gameDSL.impl.GameDSLPackageImpl#getGameTextureRegion()
+     * @generated
+     */
+    EClass GAME_TEXTURE_REGION = eINSTANCE.getGameTextureRegion();
+
+    /**
+     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute GAME_TEXTURE_REGION__NAME = eINSTANCE.getGameTextureRegion_Name();
+
+    /**
+     * The meta object literal for the '<em><b>Width</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute GAME_TEXTURE_REGION__WIDTH = eINSTANCE.getGameTextureRegion_Width();
+
+    /**
+     * The meta object literal for the '<em><b>Height</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute GAME_TEXTURE_REGION__HEIGHT = eINSTANCE.getGameTextureRegion_Height();
 
     /**
      * The meta object literal for the '{@link com.hypermodel.games.engine.gameDSL.GameDisplayValueType <em>Game Display Value Type</em>}' enum.

@@ -3,6 +3,8 @@
  */
 package com.hypermodel.games.engine.gameDSL;
 
+import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.ecore.EObject;
 
 /**
@@ -16,6 +18,8 @@ import org.eclipse.emf.ecore.EObject;
  * <ul>
  *   <li>{@link com.hypermodel.games.engine.gameDSL.GameScreen#getName <em>Name</em>}</li>
  *   <li>{@link com.hypermodel.games.engine.gameDSL.GameScreen#getAtlasName <em>Atlas Name</em>}</li>
+ *   <li>{@link com.hypermodel.games.engine.gameDSL.GameScreen#getScene <em>Scene</em>}</li>
+ *   <li>{@link com.hypermodel.games.engine.gameDSL.GameScreen#getSprites <em>Sprites</em>}</li>
  * </ul>
  *
  * @see com.hypermodel.games.engine.gameDSL.GameDSLPackage#getGameScreen()
@@ -75,5 +79,47 @@ public interface GameScreen extends EObject
    * @generated
    */
   void setAtlasName(String value);
+
+  /**
+   * Returns the value of the '<em><b>Scene</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Scene</em>' reference isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Scene</em>' reference.
+   * @see #setScene(GameScene)
+   * @see com.hypermodel.games.engine.gameDSL.GameDSLPackage#getGameScreen_Scene()
+   * @model
+   * @generated
+   */
+  GameScene getScene();
+
+  /**
+   * Sets the value of the '{@link com.hypermodel.games.engine.gameDSL.GameScreen#getScene <em>Scene</em>}' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Scene</em>' reference.
+   * @see #getScene()
+   * @generated
+   */
+  void setScene(GameScene value);
+
+  /**
+   * Returns the value of the '<em><b>Sprites</b></em>' containment reference list.
+   * The list contents are of type {@link com.hypermodel.games.engine.gameDSL.GameSprite}.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Sprites</em>' containment reference list isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Sprites</em>' containment reference list.
+   * @see com.hypermodel.games.engine.gameDSL.GameDSLPackage#getGameScreen_Sprites()
+   * @model containment="true"
+   * @generated
+   */
+  EList<GameSprite> getSprites();
 
 } // GameScreen
