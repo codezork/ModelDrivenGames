@@ -921,33 +921,63 @@ public class GameDSLGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cSpriteKeyword_1 = (Keyword)cGroup.eContents().get(1);
 		private final Assignment cNameAssignment_2 = (Assignment)cGroup.eContents().get(2);
 		private final RuleCall cNameIDTerminalRuleCall_2_0 = (RuleCall)cNameAssignment_2.eContents().get(0);
-		private final Keyword cRadiusKeyword_3 = (Keyword)cGroup.eContents().get(3);
-		private final Assignment cRadiusAssignment_4 = (Assignment)cGroup.eContents().get(4);
-		private final RuleCall cRadiusINTTerminalRuleCall_4_0 = (RuleCall)cRadiusAssignment_4.eContents().get(0);
-		private final Group cGroup_5 = (Group)cGroup.eContents().get(5);
-		private final Keyword cAnimationsKeyword_5_0 = (Keyword)cGroup_5.eContents().get(0);
-		private final Keyword cLeftCurlyBracketKeyword_5_1 = (Keyword)cGroup_5.eContents().get(1);
-		private final Assignment cAnimationsAssignment_5_2 = (Assignment)cGroup_5.eContents().get(2);
-		private final RuleCall cAnimationsGameSpriteAnimationParserRuleCall_5_2_0 = (RuleCall)cAnimationsAssignment_5_2.eContents().get(0);
-		private final Keyword cRightCurlyBracketKeyword_5_3 = (Keyword)cGroup_5.eContents().get(3);
-		private final Keyword cStandsKeyword_6 = (Keyword)cGroup.eContents().get(6);
-		private final Keyword cLeftCurlyBracketKeyword_7 = (Keyword)cGroup.eContents().get(7);
-		private final Assignment cStandsAssignment_8 = (Assignment)cGroup.eContents().get(8);
-		private final RuleCall cStandsGameSpriteStandParserRuleCall_8_0 = (RuleCall)cStandsAssignment_8.eContents().get(0);
-		private final Keyword cRightCurlyBracketKeyword_9 = (Keyword)cGroup.eContents().get(9);
-		private final Keyword cStartKeyword_10 = (Keyword)cGroup.eContents().get(10);
-		private final Assignment cStartAssignment_11 = (Assignment)cGroup.eContents().get(11);
-		private final CrossReference cStartGameSpriteStandCrossReference_11_0 = (CrossReference)cStartAssignment_11.eContents().get(0);
-		private final RuleCall cStartGameSpriteStandIDTerminalRuleCall_11_0_1 = (RuleCall)cStartGameSpriteStandCrossReference_11_0.eContents().get(1);
+		private final Keyword cIdKeyword_3 = (Keyword)cGroup.eContents().get(3);
+		private final Assignment cIdAssignment_4 = (Assignment)cGroup.eContents().get(4);
+		private final RuleCall cIdINTTerminalRuleCall_4_0 = (RuleCall)cIdAssignment_4.eContents().get(0);
+		private final Keyword cRadiusKeyword_5 = (Keyword)cGroup.eContents().get(5);
+		private final Assignment cRadiusAssignment_6 = (Assignment)cGroup.eContents().get(6);
+		private final RuleCall cRadiusINTTerminalRuleCall_6_0 = (RuleCall)cRadiusAssignment_6.eContents().get(0);
+		private final Group cGroup_7 = (Group)cGroup.eContents().get(7);
+		private final Keyword cAnimationsKeyword_7_0 = (Keyword)cGroup_7.eContents().get(0);
+		private final Keyword cLeftCurlyBracketKeyword_7_1 = (Keyword)cGroup_7.eContents().get(1);
+		private final Assignment cAnimationsAssignment_7_2 = (Assignment)cGroup_7.eContents().get(2);
+		private final RuleCall cAnimationsGameSpriteAnimationParserRuleCall_7_2_0 = (RuleCall)cAnimationsAssignment_7_2.eContents().get(0);
+		private final Keyword cRightCurlyBracketKeyword_7_3 = (Keyword)cGroup_7.eContents().get(3);
+		private final Keyword cStandsKeyword_8 = (Keyword)cGroup.eContents().get(8);
+		private final Keyword cLeftCurlyBracketKeyword_9 = (Keyword)cGroup.eContents().get(9);
+		private final Assignment cStandsAssignment_10 = (Assignment)cGroup.eContents().get(10);
+		private final RuleCall cStandsGameSpriteStandParserRuleCall_10_0 = (RuleCall)cStandsAssignment_10.eContents().get(0);
+		private final Keyword cRightCurlyBracketKeyword_11 = (Keyword)cGroup.eContents().get(11);
+		private final Keyword cStartStandKeyword_12 = (Keyword)cGroup.eContents().get(12);
+		private final Assignment cStartAssignment_13 = (Assignment)cGroup.eContents().get(13);
+		private final CrossReference cStartGameSpriteStandCrossReference_13_0 = (CrossReference)cStartAssignment_13.eContents().get(0);
+		private final RuleCall cStartGameSpriteStandIDTerminalRuleCall_13_0_1 = (RuleCall)cStartGameSpriteStandCrossReference_13_0.eContents().get(1);
+		private final Keyword cStartPositionKeyword_14 = (Keyword)cGroup.eContents().get(14);
+		private final Keyword cXKeyword_15 = (Keyword)cGroup.eContents().get(15);
+		private final Assignment cXAssignment_16 = (Assignment)cGroup.eContents().get(16);
+		private final RuleCall cXINTTerminalRuleCall_16_0 = (RuleCall)cXAssignment_16.eContents().get(0);
+		private final Keyword cYKeyword_17 = (Keyword)cGroup.eContents().get(17);
+		private final Assignment cYAssignment_18 = (Assignment)cGroup.eContents().get(18);
+		private final RuleCall cYINTTerminalRuleCall_18_0 = (RuleCall)cYAssignment_18.eContents().get(0);
+		private final Group cGroup_19 = (Group)cGroup.eContents().get(19);
+		private final Assignment cHasSensorAssignment_19_0 = (Assignment)cGroup_19.eContents().get(0);
+		private final Keyword cHasSensorSensorLengthKeyword_19_0_0 = (Keyword)cHasSensorAssignment_19_0.eContents().get(0);
+		private final Assignment cSensorLengthAssignment_19_1 = (Assignment)cGroup_19.eContents().get(1);
+		private final RuleCall cSensorLengthINTTerminalRuleCall_19_1_0 = (RuleCall)cSensorLengthAssignment_19_1.eContents().get(0);
+		private final Keyword cSensorIDKeyword_19_2 = (Keyword)cGroup_19.eContents().get(2);
+		private final Assignment cSensorIDAssignment_19_3 = (Assignment)cGroup_19.eContents().get(3);
+		private final RuleCall cSensorIDINTTerminalRuleCall_19_3_0 = (RuleCall)cSensorIDAssignment_19_3.eContents().get(0);
+		private final Group cGroup_20 = (Group)cGroup.eContents().get(20);
+		private final Keyword cInteractsWithKeyword_20_0 = (Keyword)cGroup_20.eContents().get(0);
+		private final Keyword cLeftCurlyBracketKeyword_20_1 = (Keyword)cGroup_20.eContents().get(1);
+		private final Assignment cInteractionSpritesAssignment_20_2 = (Assignment)cGroup_20.eContents().get(2);
+		private final CrossReference cInteractionSpritesGameSpriteCrossReference_20_2_0 = (CrossReference)cInteractionSpritesAssignment_20_2.eContents().get(0);
+		private final RuleCall cInteractionSpritesGameSpriteIDTerminalRuleCall_20_2_0_1 = (RuleCall)cInteractionSpritesGameSpriteCrossReference_20_2_0.eContents().get(1);
+		private final Keyword cRightCurlyBracketKeyword_20_3 = (Keyword)cGroup_20.eContents().get(3);
 		
 		//GameSprite:
-		//	{GameSprite} 'sprite' name=ID 'radius' radius=INT ('animations' '{' animations+=GameSpriteAnimation* '}')?
+		//	{GameSprite} 'sprite' name=ID 'id' id=INT
+		//	'radius' radius=INT ('animations' '{' animations+=GameSpriteAnimation* '}')?
 		//	'stands' '{' stands+=GameSpriteStand* '}'
-		//	'start' start=[GameSpriteStand];
+		//	'startStand' start=[GameSpriteStand]
+		//	'startPosition' 'x' x=INT 'y' y=INT (hasSensor?='sensorLength' sensorLength=INT 'sensorID' sensorID=INT)?
+		//	('interactsWith' '{' interactionSprites+=[GameSprite]* '}')?;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//{GameSprite} 'sprite' name=ID 'radius' radius=INT ('animations' '{' animations+=GameSpriteAnimation* '}')? 'stands' '{'
-		//stands+=GameSpriteStand* '}' 'start' start=[GameSpriteStand]
+		//{GameSprite} 'sprite' name=ID 'id' id=INT 'radius' radius=INT ('animations' '{' animations+=GameSpriteAnimation* '}')?
+		//'stands' '{' stands+=GameSpriteStand* '}' 'startStand' start=[GameSpriteStand] 'startPosition' 'x' x=INT 'y' y=INT
+		//(hasSensor?='sensorLength' sensorLength=INT 'sensorID' sensorID=INT)? ('interactsWith' '{'
+		//interactionSprites+=[GameSprite]* '}')?
 		public Group getGroup() { return cGroup; }
 		
 		//{GameSprite}
@@ -962,59 +992,134 @@ public class GameDSLGrammarAccess extends AbstractGrammarElementFinder {
 		//ID
 		public RuleCall getNameIDTerminalRuleCall_2_0() { return cNameIDTerminalRuleCall_2_0; }
 		
-		//'radius'
-		public Keyword getRadiusKeyword_3() { return cRadiusKeyword_3; }
+		//'id'
+		public Keyword getIdKeyword_3() { return cIdKeyword_3; }
 		
-		//radius=INT
-		public Assignment getRadiusAssignment_4() { return cRadiusAssignment_4; }
+		//id=INT
+		public Assignment getIdAssignment_4() { return cIdAssignment_4; }
 		
 		//INT
-		public RuleCall getRadiusINTTerminalRuleCall_4_0() { return cRadiusINTTerminalRuleCall_4_0; }
+		public RuleCall getIdINTTerminalRuleCall_4_0() { return cIdINTTerminalRuleCall_4_0; }
+		
+		//'radius'
+		public Keyword getRadiusKeyword_5() { return cRadiusKeyword_5; }
+		
+		//radius=INT
+		public Assignment getRadiusAssignment_6() { return cRadiusAssignment_6; }
+		
+		//INT
+		public RuleCall getRadiusINTTerminalRuleCall_6_0() { return cRadiusINTTerminalRuleCall_6_0; }
 		
 		//('animations' '{' animations+=GameSpriteAnimation* '}')?
-		public Group getGroup_5() { return cGroup_5; }
+		public Group getGroup_7() { return cGroup_7; }
 		
 		//'animations'
-		public Keyword getAnimationsKeyword_5_0() { return cAnimationsKeyword_5_0; }
+		public Keyword getAnimationsKeyword_7_0() { return cAnimationsKeyword_7_0; }
 		
 		//'{'
-		public Keyword getLeftCurlyBracketKeyword_5_1() { return cLeftCurlyBracketKeyword_5_1; }
+		public Keyword getLeftCurlyBracketKeyword_7_1() { return cLeftCurlyBracketKeyword_7_1; }
 		
 		//animations+=GameSpriteAnimation*
-		public Assignment getAnimationsAssignment_5_2() { return cAnimationsAssignment_5_2; }
+		public Assignment getAnimationsAssignment_7_2() { return cAnimationsAssignment_7_2; }
 		
 		//GameSpriteAnimation
-		public RuleCall getAnimationsGameSpriteAnimationParserRuleCall_5_2_0() { return cAnimationsGameSpriteAnimationParserRuleCall_5_2_0; }
+		public RuleCall getAnimationsGameSpriteAnimationParserRuleCall_7_2_0() { return cAnimationsGameSpriteAnimationParserRuleCall_7_2_0; }
 		
 		//'}'
-		public Keyword getRightCurlyBracketKeyword_5_3() { return cRightCurlyBracketKeyword_5_3; }
+		public Keyword getRightCurlyBracketKeyword_7_3() { return cRightCurlyBracketKeyword_7_3; }
 		
 		//'stands'
-		public Keyword getStandsKeyword_6() { return cStandsKeyword_6; }
+		public Keyword getStandsKeyword_8() { return cStandsKeyword_8; }
 		
 		//'{'
-		public Keyword getLeftCurlyBracketKeyword_7() { return cLeftCurlyBracketKeyword_7; }
+		public Keyword getLeftCurlyBracketKeyword_9() { return cLeftCurlyBracketKeyword_9; }
 		
 		//stands+=GameSpriteStand*
-		public Assignment getStandsAssignment_8() { return cStandsAssignment_8; }
+		public Assignment getStandsAssignment_10() { return cStandsAssignment_10; }
 		
 		//GameSpriteStand
-		public RuleCall getStandsGameSpriteStandParserRuleCall_8_0() { return cStandsGameSpriteStandParserRuleCall_8_0; }
+		public RuleCall getStandsGameSpriteStandParserRuleCall_10_0() { return cStandsGameSpriteStandParserRuleCall_10_0; }
 		
 		//'}'
-		public Keyword getRightCurlyBracketKeyword_9() { return cRightCurlyBracketKeyword_9; }
+		public Keyword getRightCurlyBracketKeyword_11() { return cRightCurlyBracketKeyword_11; }
 		
-		//'start'
-		public Keyword getStartKeyword_10() { return cStartKeyword_10; }
+		//'startStand'
+		public Keyword getStartStandKeyword_12() { return cStartStandKeyword_12; }
 		
 		//start=[GameSpriteStand]
-		public Assignment getStartAssignment_11() { return cStartAssignment_11; }
+		public Assignment getStartAssignment_13() { return cStartAssignment_13; }
 		
 		//[GameSpriteStand]
-		public CrossReference getStartGameSpriteStandCrossReference_11_0() { return cStartGameSpriteStandCrossReference_11_0; }
+		public CrossReference getStartGameSpriteStandCrossReference_13_0() { return cStartGameSpriteStandCrossReference_13_0; }
 		
 		//ID
-		public RuleCall getStartGameSpriteStandIDTerminalRuleCall_11_0_1() { return cStartGameSpriteStandIDTerminalRuleCall_11_0_1; }
+		public RuleCall getStartGameSpriteStandIDTerminalRuleCall_13_0_1() { return cStartGameSpriteStandIDTerminalRuleCall_13_0_1; }
+		
+		//'startPosition'
+		public Keyword getStartPositionKeyword_14() { return cStartPositionKeyword_14; }
+		
+		//'x'
+		public Keyword getXKeyword_15() { return cXKeyword_15; }
+		
+		//x=INT
+		public Assignment getXAssignment_16() { return cXAssignment_16; }
+		
+		//INT
+		public RuleCall getXINTTerminalRuleCall_16_0() { return cXINTTerminalRuleCall_16_0; }
+		
+		//'y'
+		public Keyword getYKeyword_17() { return cYKeyword_17; }
+		
+		//y=INT
+		public Assignment getYAssignment_18() { return cYAssignment_18; }
+		
+		//INT
+		public RuleCall getYINTTerminalRuleCall_18_0() { return cYINTTerminalRuleCall_18_0; }
+		
+		//(hasSensor?='sensorLength' sensorLength=INT 'sensorID' sensorID=INT)?
+		public Group getGroup_19() { return cGroup_19; }
+		
+		//hasSensor?='sensorLength'
+		public Assignment getHasSensorAssignment_19_0() { return cHasSensorAssignment_19_0; }
+		
+		//'sensorLength'
+		public Keyword getHasSensorSensorLengthKeyword_19_0_0() { return cHasSensorSensorLengthKeyword_19_0_0; }
+		
+		//sensorLength=INT
+		public Assignment getSensorLengthAssignment_19_1() { return cSensorLengthAssignment_19_1; }
+		
+		//INT
+		public RuleCall getSensorLengthINTTerminalRuleCall_19_1_0() { return cSensorLengthINTTerminalRuleCall_19_1_0; }
+		
+		//'sensorID'
+		public Keyword getSensorIDKeyword_19_2() { return cSensorIDKeyword_19_2; }
+		
+		//sensorID=INT
+		public Assignment getSensorIDAssignment_19_3() { return cSensorIDAssignment_19_3; }
+		
+		//INT
+		public RuleCall getSensorIDINTTerminalRuleCall_19_3_0() { return cSensorIDINTTerminalRuleCall_19_3_0; }
+		
+		//('interactsWith' '{' interactionSprites+=[GameSprite]* '}')?
+		public Group getGroup_20() { return cGroup_20; }
+		
+		//'interactsWith'
+		public Keyword getInteractsWithKeyword_20_0() { return cInteractsWithKeyword_20_0; }
+		
+		//'{'
+		public Keyword getLeftCurlyBracketKeyword_20_1() { return cLeftCurlyBracketKeyword_20_1; }
+		
+		//interactionSprites+=[GameSprite]*
+		public Assignment getInteractionSpritesAssignment_20_2() { return cInteractionSpritesAssignment_20_2; }
+		
+		//[GameSprite]
+		public CrossReference getInteractionSpritesGameSpriteCrossReference_20_2_0() { return cInteractionSpritesGameSpriteCrossReference_20_2_0; }
+		
+		//ID
+		public RuleCall getInteractionSpritesGameSpriteIDTerminalRuleCall_20_2_0_1() { return cInteractionSpritesGameSpriteIDTerminalRuleCall_20_2_0_1; }
+		
+		//'}'
+		public Keyword getRightCurlyBracketKeyword_20_3() { return cRightCurlyBracketKeyword_20_3; }
 	}
 	public class GameSpriteAnimationElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "com.hypermodel.games.engine.GameDSL.GameSpriteAnimation");
@@ -1742,9 +1847,12 @@ public class GameDSLGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//GameSprite:
-	//	{GameSprite} 'sprite' name=ID 'radius' radius=INT ('animations' '{' animations+=GameSpriteAnimation* '}')?
+	//	{GameSprite} 'sprite' name=ID 'id' id=INT
+	//	'radius' radius=INT ('animations' '{' animations+=GameSpriteAnimation* '}')?
 	//	'stands' '{' stands+=GameSpriteStand* '}'
-	//	'start' start=[GameSpriteStand];
+	//	'startStand' start=[GameSpriteStand]
+	//	'startPosition' 'x' x=INT 'y' y=INT (hasSensor?='sensorLength' sensorLength=INT 'sensorID' sensorID=INT)?
+	//	('interactsWith' '{' interactionSprites+=[GameSprite]* '}')?;
 	public GameSpriteElements getGameSpriteAccess() {
 		return pGameSprite;
 	}

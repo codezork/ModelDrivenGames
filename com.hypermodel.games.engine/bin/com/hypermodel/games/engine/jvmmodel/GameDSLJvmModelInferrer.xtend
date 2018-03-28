@@ -53,6 +53,7 @@ import com.badlogic.gdx.utils.Array
 import com.badlogic.gdx.physics.box2d.BodyDef
 import com.badlogic.gdx.physics.box2d.FixtureDef
 import com.badlogic.gdx.physics.box2d.CircleShape
+import com.badlogic.gdx.physics.box2d.EdgeShape
 
 class GameDSLJvmModelInferrer extends AbstractModelInferrer {
 	@Inject extension JvmTypesBuilder
@@ -675,7 +676,7 @@ class GameDSLJvmModelInferrer extends AbstractModelInferrer {
 						]
 						append(
 						'''
-				        define«sprite.name.toFirstUpper»();
+				        define«sprite.name.toFirstUpper»(new Vector2(«sprite.x» / «gameClass.simpleName».PPM, «sprite.y» / «gameClass.simpleName».PPM), null);
 				        setBounds(0, 0, «sprite.start.region.width» / ''')
 				        append(gameClass)
 				        append('''.PPM,  «sprite.start.region.height» / «gameClass.simpleName».PPM);
@@ -713,17 +714,13 @@ class GameDSLJvmModelInferrer extends AbstractModelInferrer {
 			]
 		])
 		type.members += sprite.toMethod('''define«sprite.name.toFirstUpper»''', Void.TYPE.typeRef, [
+			parameters += sprite.toParameter("position", Vector2.typeRef)
+			parameters += sprite.toParameter("shapePosition", Vector2.typeRef)
 			body = [
-				append(Vector2)
-				append(
-				'''
-				 currentPosition = b2body.getPosition();
-				world.destroyBody(b2body);
-				''')
 				append(BodyDef)
 				append('''
 				 bdef = new BodyDef();
-				bdef.position.set(currentPosition.add(0, 10 / «gameClass.simpleName».PPM));
+				bdef.position.set(position);
 				bdef.type = BodyDef.BodyType.DynamicBody;
 				b2body = world.createBody(bdef);
 				''')
@@ -734,7 +731,33 @@ class GameDSLJvmModelInferrer extends AbstractModelInferrer {
 				append('''
 				 shape = new CircleShape();
 				shape.setRadius(«sprite.radius» / «gameClass.simpleName».PPM);
+				fdef.filter.categoryBits = «(2**sprite.id) as int»;
 				''')
+				var mask = 0.0
+				for(s:sprite.interactionSprites) {
+					mask = mask + (2**s.id)
+				}
+				append('''
+				fdef.filter.maskBits = «mask as int»;
+				fdef.shape = shape;
+				b2body.createFixture(fdef).setUserData(this);
+				if(shapePosition != null) {
+					shape.setPosition(shapePosition);
+					b2body.createFixture(fdef).setUserData(this);
+				}
+				''')
+				if(sprite.hasSensor) {
+					append(EdgeShape)
+					append(
+					'''
+					 head = new EdgeShape();
+					head.set(new Vector2(-«sprite.sensorLength» / 2 / «gameClass.simpleName».PPM, «sprite.radius» / «gameClass.simpleName».PPM), new Vector2(«sprite.sensorLength» / 2 / «gameClass.simpleName».PPM, «sprite.radius» / «gameClass.simpleName».PPM));
+					fdef.filter.categoryBits = «(2**sprite.sensorID) as int»;
+					fdef.shape = head;
+					fdef.isSensor = true;
+					b2body.createFixture(fdef).setUserData(this);
+					''')
+				}
 			]
 		])
 	}

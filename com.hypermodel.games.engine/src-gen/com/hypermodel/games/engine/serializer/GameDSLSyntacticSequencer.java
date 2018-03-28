@@ -44,7 +44,8 @@ public class GameDSLSyntacticSequencer extends AbstractSyntacticSequencer {
 	protected AbstractElementAlias match_GameRoot_____ScenesKeyword_11_0_0_LeftCurlyBracketKeyword_11_0_1_RightCurlyBracketKeyword_11_0_3__q___ScreensKeyword_11_1_0_LeftCurlyBracketKeyword_11_1_1_RightCurlyBracketKeyword_11_1_3__q__p;
 	protected AbstractElementAlias match_GameRoot_____ScreensKeyword_11_1_0_LeftCurlyBracketKeyword_11_1_1_RightCurlyBracketKeyword_11_1_3__q___RegionsKeyword_11_2_0_LeftCurlyBracketKeyword_11_2_1_RightCurlyBracketKeyword_11_2_3__q__p;
 	protected AbstractElementAlias match_GameRoot_____ScreensKeyword_11_1_0_LeftCurlyBracketKeyword_11_1_1_RightCurlyBracketKeyword_11_1_3__q___ScenesKeyword_11_0_0_LeftCurlyBracketKeyword_11_0_1_RightCurlyBracketKeyword_11_0_3__q__p;
-	protected AbstractElementAlias match_GameSprite___AnimationsKeyword_5_0_LeftCurlyBracketKeyword_5_1_RightCurlyBracketKeyword_5_3__q;
+	protected AbstractElementAlias match_GameSprite___AnimationsKeyword_7_0_LeftCurlyBracketKeyword_7_1_RightCurlyBracketKeyword_7_3__q;
+	protected AbstractElementAlias match_GameSprite___InteractsWithKeyword_20_0_LeftCurlyBracketKeyword_20_1_RightCurlyBracketKeyword_20_3__q;
 	protected AbstractElementAlias match_XAnnotation___LeftParenthesisKeyword_3_0_RightParenthesisKeyword_3_2__q;
 	protected AbstractElementAlias match_XBlockExpression_SemicolonKeyword_2_1_q;
 	protected AbstractElementAlias match_XExpressionInClosure_SemicolonKeyword_1_1_q;
@@ -78,7 +79,8 @@ public class GameDSLSyntacticSequencer extends AbstractSyntacticSequencer {
 		match_GameRoot_____ScenesKeyword_11_0_0_LeftCurlyBracketKeyword_11_0_1_RightCurlyBracketKeyword_11_0_3__q___ScreensKeyword_11_1_0_LeftCurlyBracketKeyword_11_1_1_RightCurlyBracketKeyword_11_1_3__q__p = new GroupAlias(true, false, new GroupAlias(false, true, new TokenAlias(false, false, grammarAccess.getGameRootAccess().getScenesKeyword_11_0_0()), new TokenAlias(false, false, grammarAccess.getGameRootAccess().getLeftCurlyBracketKeyword_11_0_1()), new TokenAlias(false, false, grammarAccess.getGameRootAccess().getRightCurlyBracketKeyword_11_0_3())), new GroupAlias(false, true, new TokenAlias(false, false, grammarAccess.getGameRootAccess().getScreensKeyword_11_1_0()), new TokenAlias(false, false, grammarAccess.getGameRootAccess().getLeftCurlyBracketKeyword_11_1_1()), new TokenAlias(false, false, grammarAccess.getGameRootAccess().getRightCurlyBracketKeyword_11_1_3())));
 		match_GameRoot_____ScreensKeyword_11_1_0_LeftCurlyBracketKeyword_11_1_1_RightCurlyBracketKeyword_11_1_3__q___RegionsKeyword_11_2_0_LeftCurlyBracketKeyword_11_2_1_RightCurlyBracketKeyword_11_2_3__q__p = new GroupAlias(true, false, new GroupAlias(false, true, new TokenAlias(false, false, grammarAccess.getGameRootAccess().getScreensKeyword_11_1_0()), new TokenAlias(false, false, grammarAccess.getGameRootAccess().getLeftCurlyBracketKeyword_11_1_1()), new TokenAlias(false, false, grammarAccess.getGameRootAccess().getRightCurlyBracketKeyword_11_1_3())), new GroupAlias(false, true, new TokenAlias(false, false, grammarAccess.getGameRootAccess().getRegionsKeyword_11_2_0()), new TokenAlias(false, false, grammarAccess.getGameRootAccess().getLeftCurlyBracketKeyword_11_2_1()), new TokenAlias(false, false, grammarAccess.getGameRootAccess().getRightCurlyBracketKeyword_11_2_3())));
 		match_GameRoot_____ScreensKeyword_11_1_0_LeftCurlyBracketKeyword_11_1_1_RightCurlyBracketKeyword_11_1_3__q___ScenesKeyword_11_0_0_LeftCurlyBracketKeyword_11_0_1_RightCurlyBracketKeyword_11_0_3__q__p = new GroupAlias(true, false, new GroupAlias(false, true, new TokenAlias(false, false, grammarAccess.getGameRootAccess().getScreensKeyword_11_1_0()), new TokenAlias(false, false, grammarAccess.getGameRootAccess().getLeftCurlyBracketKeyword_11_1_1()), new TokenAlias(false, false, grammarAccess.getGameRootAccess().getRightCurlyBracketKeyword_11_1_3())), new GroupAlias(false, true, new TokenAlias(false, false, grammarAccess.getGameRootAccess().getScenesKeyword_11_0_0()), new TokenAlias(false, false, grammarAccess.getGameRootAccess().getLeftCurlyBracketKeyword_11_0_1()), new TokenAlias(false, false, grammarAccess.getGameRootAccess().getRightCurlyBracketKeyword_11_0_3())));
-		match_GameSprite___AnimationsKeyword_5_0_LeftCurlyBracketKeyword_5_1_RightCurlyBracketKeyword_5_3__q = new GroupAlias(false, true, new TokenAlias(false, false, grammarAccess.getGameSpriteAccess().getAnimationsKeyword_5_0()), new TokenAlias(false, false, grammarAccess.getGameSpriteAccess().getLeftCurlyBracketKeyword_5_1()), new TokenAlias(false, false, grammarAccess.getGameSpriteAccess().getRightCurlyBracketKeyword_5_3()));
+		match_GameSprite___AnimationsKeyword_7_0_LeftCurlyBracketKeyword_7_1_RightCurlyBracketKeyword_7_3__q = new GroupAlias(false, true, new TokenAlias(false, false, grammarAccess.getGameSpriteAccess().getAnimationsKeyword_7_0()), new TokenAlias(false, false, grammarAccess.getGameSpriteAccess().getLeftCurlyBracketKeyword_7_1()), new TokenAlias(false, false, grammarAccess.getGameSpriteAccess().getRightCurlyBracketKeyword_7_3()));
+		match_GameSprite___InteractsWithKeyword_20_0_LeftCurlyBracketKeyword_20_1_RightCurlyBracketKeyword_20_3__q = new GroupAlias(false, true, new TokenAlias(false, false, grammarAccess.getGameSpriteAccess().getInteractsWithKeyword_20_0()), new TokenAlias(false, false, grammarAccess.getGameSpriteAccess().getLeftCurlyBracketKeyword_20_1()), new TokenAlias(false, false, grammarAccess.getGameSpriteAccess().getRightCurlyBracketKeyword_20_3()));
 		match_XAnnotation___LeftParenthesisKeyword_3_0_RightParenthesisKeyword_3_2__q = new GroupAlias(false, true, new TokenAlias(false, false, grammarAccess.getXAnnotationAccess().getLeftParenthesisKeyword_3_0()), new TokenAlias(false, false, grammarAccess.getXAnnotationAccess().getRightParenthesisKeyword_3_2()));
 		match_XBlockExpression_SemicolonKeyword_2_1_q = new TokenAlias(false, true, grammarAccess.getXBlockExpressionAccess().getSemicolonKeyword_2_1());
 		match_XExpressionInClosure_SemicolonKeyword_1_1_q = new TokenAlias(false, true, grammarAccess.getXExpressionInClosureAccess().getSemicolonKeyword_1_1());
@@ -169,8 +171,10 @@ public class GameDSLSyntacticSequencer extends AbstractSyntacticSequencer {
 				emit_GameRoot_____ScreensKeyword_11_1_0_LeftCurlyBracketKeyword_11_1_1_RightCurlyBracketKeyword_11_1_3__q___RegionsKeyword_11_2_0_LeftCurlyBracketKeyword_11_2_1_RightCurlyBracketKeyword_11_2_3__q__p(semanticObject, getLastNavigableState(), syntaxNodes);
 			else if (match_GameRoot_____ScreensKeyword_11_1_0_LeftCurlyBracketKeyword_11_1_1_RightCurlyBracketKeyword_11_1_3__q___ScenesKeyword_11_0_0_LeftCurlyBracketKeyword_11_0_1_RightCurlyBracketKeyword_11_0_3__q__p.equals(syntax))
 				emit_GameRoot_____ScreensKeyword_11_1_0_LeftCurlyBracketKeyword_11_1_1_RightCurlyBracketKeyword_11_1_3__q___ScenesKeyword_11_0_0_LeftCurlyBracketKeyword_11_0_1_RightCurlyBracketKeyword_11_0_3__q__p(semanticObject, getLastNavigableState(), syntaxNodes);
-			else if (match_GameSprite___AnimationsKeyword_5_0_LeftCurlyBracketKeyword_5_1_RightCurlyBracketKeyword_5_3__q.equals(syntax))
-				emit_GameSprite___AnimationsKeyword_5_0_LeftCurlyBracketKeyword_5_1_RightCurlyBracketKeyword_5_3__q(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if (match_GameSprite___AnimationsKeyword_7_0_LeftCurlyBracketKeyword_7_1_RightCurlyBracketKeyword_7_3__q.equals(syntax))
+				emit_GameSprite___AnimationsKeyword_7_0_LeftCurlyBracketKeyword_7_1_RightCurlyBracketKeyword_7_3__q(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if (match_GameSprite___InteractsWithKeyword_20_0_LeftCurlyBracketKeyword_20_1_RightCurlyBracketKeyword_20_3__q.equals(syntax))
+				emit_GameSprite___InteractsWithKeyword_20_0_LeftCurlyBracketKeyword_20_1_RightCurlyBracketKeyword_20_3__q(semanticObject, getLastNavigableState(), syntaxNodes);
 			else if (match_XAnnotation___LeftParenthesisKeyword_3_0_RightParenthesisKeyword_3_2__q.equals(syntax))
 				emit_XAnnotation___LeftParenthesisKeyword_3_0_RightParenthesisKeyword_3_2__q(semanticObject, getLastNavigableState(), syntaxNodes);
 			else if (match_XBlockExpression_SemicolonKeyword_2_1_q.equals(syntax))
@@ -442,10 +446,22 @@ public class GameDSLSyntacticSequencer extends AbstractSyntacticSequencer {
 	 *     ('animations' '{' '}')?
 	 *
 	 * This ambiguous syntax occurs at:
-	 *     radius=INT (ambiguity) 'stands' '{' '}' 'start' start=[GameSpriteStand|ID]
+	 *     radius=INT (ambiguity) 'stands' '{' '}' 'startStand' start=[GameSpriteStand|ID]
 	 *     radius=INT (ambiguity) 'stands' '{' stands+=GameSpriteStand
 	 */
-	protected void emit_GameSprite___AnimationsKeyword_5_0_LeftCurlyBracketKeyword_5_1_RightCurlyBracketKeyword_5_3__q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+	protected void emit_GameSprite___AnimationsKeyword_7_0_LeftCurlyBracketKeyword_7_1_RightCurlyBracketKeyword_7_3__q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+		acceptNodes(transition, nodes);
+	}
+	
+	/**
+	 * Ambiguous syntax:
+	 *     ('interactsWith' '{' '}')?
+	 *
+	 * This ambiguous syntax occurs at:
+	 *     sensorID=INT (ambiguity) (rule end)
+	 *     y=INT (ambiguity) (rule end)
+	 */
+	protected void emit_GameSprite___InteractsWithKeyword_20_0_LeftCurlyBracketKeyword_20_1_RightCurlyBracketKeyword_20_3__q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);
 	}
 	

@@ -694,7 +694,18 @@ public class GameDSLSemanticSequencer extends XbaseWithAnnotationsSemanticSequen
 	 *     GameSprite returns GameSprite
 	 *
 	 * Constraint:
-	 *     (name=ID radius=INT animations+=GameSpriteAnimation* stands+=GameSpriteStand* start=[GameSpriteStand|ID])
+	 *     (
+	 *         name=ID 
+	 *         id=INT 
+	 *         radius=INT 
+	 *         animations+=GameSpriteAnimation* 
+	 *         stands+=GameSpriteStand* 
+	 *         start=[GameSpriteStand|ID] 
+	 *         x=INT 
+	 *         y=INT 
+	 *         (hasSensor?='sensorLength' sensorLength=INT sensorID=INT)? 
+	 *         interactionSprites+=[GameSprite|ID]*
+	 *     )
 	 */
 	protected void sequence_GameSprite(ISerializationContext context, GameSprite semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);

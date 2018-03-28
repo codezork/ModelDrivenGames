@@ -81,10 +81,14 @@ GameDisplay:
 	(hasSetter?='setValue')?;
 	
 GameSprite:
-	{GameSprite} 'sprite' name=ID 'radius' radius=INT
+	{GameSprite} 'sprite' name=ID 'id' id=INT 
+	'radius' radius=INT
 	('animations' '{' animations+=GameSpriteAnimation* '}')?
 	'stands' '{' stands+=GameSpriteStand* '}'
-	'start' start=[GameSpriteStand];
+	'startStand' start=[GameSpriteStand]
+	'startPosition' 'x' x=INT 'y' y=INT
+	(hasSensor?='sensorLength' sensorLength=INT 'sensorID' sensorID=INT)?
+	('interactsWith' '{' interactionSprites+=[GameSprite]* '}')?;
 
 GameSpriteAnimation:
 	{GameSpriteAnimation} 'animation' name=ID 'duration' duration=UnsignedNumber 

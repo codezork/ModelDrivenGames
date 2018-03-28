@@ -900,7 +900,7 @@ public class GameDSLPackageImpl extends EPackageImpl implements GameDSLPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getGameSprite_Radius()
+  public EAttribute getGameSprite_Id()
   {
     return (EAttribute)gameSpriteEClass.getEStructuralFeatures().get(1);
   }
@@ -910,9 +910,9 @@ public class GameDSLPackageImpl extends EPackageImpl implements GameDSLPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getGameSprite_Animations()
+  public EAttribute getGameSprite_Radius()
   {
-    return (EReference)gameSpriteEClass.getEStructuralFeatures().get(2);
+    return (EAttribute)gameSpriteEClass.getEStructuralFeatures().get(2);
   }
 
   /**
@@ -920,7 +920,7 @@ public class GameDSLPackageImpl extends EPackageImpl implements GameDSLPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getGameSprite_Stands()
+  public EReference getGameSprite_Animations()
   {
     return (EReference)gameSpriteEClass.getEStructuralFeatures().get(3);
   }
@@ -930,9 +930,79 @@ public class GameDSLPackageImpl extends EPackageImpl implements GameDSLPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getGameSprite_Start()
+  public EReference getGameSprite_Stands()
   {
     return (EReference)gameSpriteEClass.getEStructuralFeatures().get(4);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getGameSprite_Start()
+  {
+    return (EReference)gameSpriteEClass.getEStructuralFeatures().get(5);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getGameSprite_X()
+  {
+    return (EAttribute)gameSpriteEClass.getEStructuralFeatures().get(6);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getGameSprite_Y()
+  {
+    return (EAttribute)gameSpriteEClass.getEStructuralFeatures().get(7);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getGameSprite_HasSensor()
+  {
+    return (EAttribute)gameSpriteEClass.getEStructuralFeatures().get(8);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getGameSprite_SensorLength()
+  {
+    return (EAttribute)gameSpriteEClass.getEStructuralFeatures().get(9);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getGameSprite_SensorID()
+  {
+    return (EAttribute)gameSpriteEClass.getEStructuralFeatures().get(10);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getGameSprite_InteractionSprites()
+  {
+    return (EReference)gameSpriteEClass.getEStructuralFeatures().get(11);
   }
 
   /**
@@ -1243,10 +1313,17 @@ public class GameDSLPackageImpl extends EPackageImpl implements GameDSLPackage
 
     gameSpriteEClass = createEClass(GAME_SPRITE);
     createEAttribute(gameSpriteEClass, GAME_SPRITE__NAME);
+    createEAttribute(gameSpriteEClass, GAME_SPRITE__ID);
     createEAttribute(gameSpriteEClass, GAME_SPRITE__RADIUS);
     createEReference(gameSpriteEClass, GAME_SPRITE__ANIMATIONS);
     createEReference(gameSpriteEClass, GAME_SPRITE__STANDS);
     createEReference(gameSpriteEClass, GAME_SPRITE__START);
+    createEAttribute(gameSpriteEClass, GAME_SPRITE__X);
+    createEAttribute(gameSpriteEClass, GAME_SPRITE__Y);
+    createEAttribute(gameSpriteEClass, GAME_SPRITE__HAS_SENSOR);
+    createEAttribute(gameSpriteEClass, GAME_SPRITE__SENSOR_LENGTH);
+    createEAttribute(gameSpriteEClass, GAME_SPRITE__SENSOR_ID);
+    createEReference(gameSpriteEClass, GAME_SPRITE__INTERACTION_SPRITES);
 
     gameSpriteAnimationEClass = createEClass(GAME_SPRITE_ANIMATION);
     createEAttribute(gameSpriteAnimationEClass, GAME_SPRITE_ANIMATION__NAME);
@@ -1383,10 +1460,17 @@ public class GameDSLPackageImpl extends EPackageImpl implements GameDSLPackage
 
     initEClass(gameSpriteEClass, GameSprite.class, "GameSprite", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getGameSprite_Name(), ecorePackage.getEString(), "name", null, 0, 1, GameSprite.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getGameSprite_Id(), ecorePackage.getEInt(), "id", null, 0, 1, GameSprite.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getGameSprite_Radius(), ecorePackage.getEInt(), "radius", null, 0, 1, GameSprite.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getGameSprite_Animations(), this.getGameSpriteAnimation(), null, "animations", null, 0, -1, GameSprite.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getGameSprite_Stands(), this.getGameSpriteStand(), null, "stands", null, 0, -1, GameSprite.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getGameSprite_Start(), this.getGameSpriteStand(), null, "start", null, 0, 1, GameSprite.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getGameSprite_X(), ecorePackage.getEInt(), "x", null, 0, 1, GameSprite.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getGameSprite_Y(), ecorePackage.getEInt(), "y", null, 0, 1, GameSprite.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getGameSprite_HasSensor(), ecorePackage.getEBoolean(), "hasSensor", null, 0, 1, GameSprite.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getGameSprite_SensorLength(), ecorePackage.getEInt(), "sensorLength", null, 0, 1, GameSprite.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getGameSprite_SensorID(), ecorePackage.getEInt(), "sensorID", null, 0, 1, GameSprite.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getGameSprite_InteractionSprites(), this.getGameSprite(), null, "interactionSprites", null, 0, -1, GameSprite.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(gameSpriteAnimationEClass, GameSpriteAnimation.class, "GameSpriteAnimation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getGameSpriteAnimation_Name(), ecorePackage.getEString(), "name", null, 0, 1, GameSpriteAnimation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

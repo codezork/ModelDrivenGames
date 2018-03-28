@@ -17,10 +17,17 @@ import org.eclipse.emf.ecore.EObject;
  * </p>
  * <ul>
  *   <li>{@link com.hypermodel.games.engine.gameDSL.GameSprite#getName <em>Name</em>}</li>
+ *   <li>{@link com.hypermodel.games.engine.gameDSL.GameSprite#getId <em>Id</em>}</li>
  *   <li>{@link com.hypermodel.games.engine.gameDSL.GameSprite#getRadius <em>Radius</em>}</li>
  *   <li>{@link com.hypermodel.games.engine.gameDSL.GameSprite#getAnimations <em>Animations</em>}</li>
  *   <li>{@link com.hypermodel.games.engine.gameDSL.GameSprite#getStands <em>Stands</em>}</li>
  *   <li>{@link com.hypermodel.games.engine.gameDSL.GameSprite#getStart <em>Start</em>}</li>
+ *   <li>{@link com.hypermodel.games.engine.gameDSL.GameSprite#getX <em>X</em>}</li>
+ *   <li>{@link com.hypermodel.games.engine.gameDSL.GameSprite#getY <em>Y</em>}</li>
+ *   <li>{@link com.hypermodel.games.engine.gameDSL.GameSprite#isHasSensor <em>Has Sensor</em>}</li>
+ *   <li>{@link com.hypermodel.games.engine.gameDSL.GameSprite#getSensorLength <em>Sensor Length</em>}</li>
+ *   <li>{@link com.hypermodel.games.engine.gameDSL.GameSprite#getSensorID <em>Sensor ID</em>}</li>
+ *   <li>{@link com.hypermodel.games.engine.gameDSL.GameSprite#getInteractionSprites <em>Interaction Sprites</em>}</li>
  * </ul>
  *
  * @see com.hypermodel.games.engine.gameDSL.GameDSLPackage#getGameSprite()
@@ -54,6 +61,32 @@ public interface GameSprite extends EObject
    * @generated
    */
   void setName(String value);
+
+  /**
+   * Returns the value of the '<em><b>Id</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Id</em>' attribute isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Id</em>' attribute.
+   * @see #setId(int)
+   * @see com.hypermodel.games.engine.gameDSL.GameDSLPackage#getGameSprite_Id()
+   * @model
+   * @generated
+   */
+  int getId();
+
+  /**
+   * Sets the value of the '{@link com.hypermodel.games.engine.gameDSL.GameSprite#getId <em>Id</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Id</em>' attribute.
+   * @see #getId()
+   * @generated
+   */
+  void setId(int value);
 
   /**
    * Returns the value of the '<em><b>Radius</b></em>' attribute.
@@ -138,5 +171,151 @@ public interface GameSprite extends EObject
    * @generated
    */
   void setStart(GameSpriteStand value);
+
+  /**
+   * Returns the value of the '<em><b>X</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>X</em>' attribute isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>X</em>' attribute.
+   * @see #setX(int)
+   * @see com.hypermodel.games.engine.gameDSL.GameDSLPackage#getGameSprite_X()
+   * @model
+   * @generated
+   */
+  int getX();
+
+  /**
+   * Sets the value of the '{@link com.hypermodel.games.engine.gameDSL.GameSprite#getX <em>X</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>X</em>' attribute.
+   * @see #getX()
+   * @generated
+   */
+  void setX(int value);
+
+  /**
+   * Returns the value of the '<em><b>Y</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Y</em>' attribute isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Y</em>' attribute.
+   * @see #setY(int)
+   * @see com.hypermodel.games.engine.gameDSL.GameDSLPackage#getGameSprite_Y()
+   * @model
+   * @generated
+   */
+  int getY();
+
+  /**
+   * Sets the value of the '{@link com.hypermodel.games.engine.gameDSL.GameSprite#getY <em>Y</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Y</em>' attribute.
+   * @see #getY()
+   * @generated
+   */
+  void setY(int value);
+
+  /**
+   * Returns the value of the '<em><b>Has Sensor</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Has Sensor</em>' attribute isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Has Sensor</em>' attribute.
+   * @see #setHasSensor(boolean)
+   * @see com.hypermodel.games.engine.gameDSL.GameDSLPackage#getGameSprite_HasSensor()
+   * @model
+   * @generated
+   */
+  boolean isHasSensor();
+
+  /**
+   * Sets the value of the '{@link com.hypermodel.games.engine.gameDSL.GameSprite#isHasSensor <em>Has Sensor</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Has Sensor</em>' attribute.
+   * @see #isHasSensor()
+   * @generated
+   */
+  void setHasSensor(boolean value);
+
+  /**
+   * Returns the value of the '<em><b>Sensor Length</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Sensor Length</em>' attribute isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Sensor Length</em>' attribute.
+   * @see #setSensorLength(int)
+   * @see com.hypermodel.games.engine.gameDSL.GameDSLPackage#getGameSprite_SensorLength()
+   * @model
+   * @generated
+   */
+  int getSensorLength();
+
+  /**
+   * Sets the value of the '{@link com.hypermodel.games.engine.gameDSL.GameSprite#getSensorLength <em>Sensor Length</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Sensor Length</em>' attribute.
+   * @see #getSensorLength()
+   * @generated
+   */
+  void setSensorLength(int value);
+
+  /**
+   * Returns the value of the '<em><b>Sensor ID</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Sensor ID</em>' attribute isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Sensor ID</em>' attribute.
+   * @see #setSensorID(int)
+   * @see com.hypermodel.games.engine.gameDSL.GameDSLPackage#getGameSprite_SensorID()
+   * @model
+   * @generated
+   */
+  int getSensorID();
+
+  /**
+   * Sets the value of the '{@link com.hypermodel.games.engine.gameDSL.GameSprite#getSensorID <em>Sensor ID</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Sensor ID</em>' attribute.
+   * @see #getSensorID()
+   * @generated
+   */
+  void setSensorID(int value);
+
+  /**
+   * Returns the value of the '<em><b>Interaction Sprites</b></em>' reference list.
+   * The list contents are of type {@link com.hypermodel.games.engine.gameDSL.GameSprite}.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Interaction Sprites</em>' reference list isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Interaction Sprites</em>' reference list.
+   * @see com.hypermodel.games.engine.gameDSL.GameDSLPackage#getGameSprite_InteractionSprites()
+   * @model
+   * @generated
+   */
+  EList<GameSprite> getInteractionSprites();
 
 } // GameSprite

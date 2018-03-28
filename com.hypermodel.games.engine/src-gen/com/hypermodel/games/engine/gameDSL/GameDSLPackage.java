@@ -775,13 +775,22 @@ public interface GameDSLPackage extends EPackage
   int GAME_SPRITE__NAME = 0;
 
   /**
+   * The feature id for the '<em><b>Id</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int GAME_SPRITE__ID = 1;
+
+  /**
    * The feature id for the '<em><b>Radius</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int GAME_SPRITE__RADIUS = 1;
+  int GAME_SPRITE__RADIUS = 2;
 
   /**
    * The feature id for the '<em><b>Animations</b></em>' containment reference list.
@@ -790,7 +799,7 @@ public interface GameDSLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int GAME_SPRITE__ANIMATIONS = 2;
+  int GAME_SPRITE__ANIMATIONS = 3;
 
   /**
    * The feature id for the '<em><b>Stands</b></em>' containment reference list.
@@ -799,7 +808,7 @@ public interface GameDSLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int GAME_SPRITE__STANDS = 3;
+  int GAME_SPRITE__STANDS = 4;
 
   /**
    * The feature id for the '<em><b>Start</b></em>' reference.
@@ -808,7 +817,61 @@ public interface GameDSLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int GAME_SPRITE__START = 4;
+  int GAME_SPRITE__START = 5;
+
+  /**
+   * The feature id for the '<em><b>X</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int GAME_SPRITE__X = 6;
+
+  /**
+   * The feature id for the '<em><b>Y</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int GAME_SPRITE__Y = 7;
+
+  /**
+   * The feature id for the '<em><b>Has Sensor</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int GAME_SPRITE__HAS_SENSOR = 8;
+
+  /**
+   * The feature id for the '<em><b>Sensor Length</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int GAME_SPRITE__SENSOR_LENGTH = 9;
+
+  /**
+   * The feature id for the '<em><b>Sensor ID</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int GAME_SPRITE__SENSOR_ID = 10;
+
+  /**
+   * The feature id for the '<em><b>Interaction Sprites</b></em>' reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int GAME_SPRITE__INTERACTION_SPRITES = 11;
 
   /**
    * The number of structural features of the '<em>Game Sprite</em>' class.
@@ -817,7 +880,7 @@ public interface GameDSLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int GAME_SPRITE_FEATURE_COUNT = 5;
+  int GAME_SPRITE_FEATURE_COUNT = 12;
 
   /**
    * The meta object id for the '{@link com.hypermodel.games.engine.gameDSL.impl.GameSpriteAnimationImpl <em>Game Sprite Animation</em>}' class.
@@ -1735,6 +1798,17 @@ public interface GameDSLPackage extends EPackage
   EAttribute getGameSprite_Name();
 
   /**
+   * Returns the meta object for the attribute '{@link com.hypermodel.games.engine.gameDSL.GameSprite#getId <em>Id</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Id</em>'.
+   * @see com.hypermodel.games.engine.gameDSL.GameSprite#getId()
+   * @see #getGameSprite()
+   * @generated
+   */
+  EAttribute getGameSprite_Id();
+
+  /**
    * Returns the meta object for the attribute '{@link com.hypermodel.games.engine.gameDSL.GameSprite#getRadius <em>Radius</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1777,6 +1851,72 @@ public interface GameDSLPackage extends EPackage
    * @generated
    */
   EReference getGameSprite_Start();
+
+  /**
+   * Returns the meta object for the attribute '{@link com.hypermodel.games.engine.gameDSL.GameSprite#getX <em>X</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>X</em>'.
+   * @see com.hypermodel.games.engine.gameDSL.GameSprite#getX()
+   * @see #getGameSprite()
+   * @generated
+   */
+  EAttribute getGameSprite_X();
+
+  /**
+   * Returns the meta object for the attribute '{@link com.hypermodel.games.engine.gameDSL.GameSprite#getY <em>Y</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Y</em>'.
+   * @see com.hypermodel.games.engine.gameDSL.GameSprite#getY()
+   * @see #getGameSprite()
+   * @generated
+   */
+  EAttribute getGameSprite_Y();
+
+  /**
+   * Returns the meta object for the attribute '{@link com.hypermodel.games.engine.gameDSL.GameSprite#isHasSensor <em>Has Sensor</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Has Sensor</em>'.
+   * @see com.hypermodel.games.engine.gameDSL.GameSprite#isHasSensor()
+   * @see #getGameSprite()
+   * @generated
+   */
+  EAttribute getGameSprite_HasSensor();
+
+  /**
+   * Returns the meta object for the attribute '{@link com.hypermodel.games.engine.gameDSL.GameSprite#getSensorLength <em>Sensor Length</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Sensor Length</em>'.
+   * @see com.hypermodel.games.engine.gameDSL.GameSprite#getSensorLength()
+   * @see #getGameSprite()
+   * @generated
+   */
+  EAttribute getGameSprite_SensorLength();
+
+  /**
+   * Returns the meta object for the attribute '{@link com.hypermodel.games.engine.gameDSL.GameSprite#getSensorID <em>Sensor ID</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Sensor ID</em>'.
+   * @see com.hypermodel.games.engine.gameDSL.GameSprite#getSensorID()
+   * @see #getGameSprite()
+   * @generated
+   */
+  EAttribute getGameSprite_SensorID();
+
+  /**
+   * Returns the meta object for the reference list '{@link com.hypermodel.games.engine.gameDSL.GameSprite#getInteractionSprites <em>Interaction Sprites</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the reference list '<em>Interaction Sprites</em>'.
+   * @see com.hypermodel.games.engine.gameDSL.GameSprite#getInteractionSprites()
+   * @see #getGameSprite()
+   * @generated
+   */
+  EReference getGameSprite_InteractionSprites();
 
   /**
    * Returns the meta object for class '{@link com.hypermodel.games.engine.gameDSL.GameSpriteAnimation <em>Game Sprite Animation</em>}'.
@@ -2564,6 +2704,14 @@ public interface GameDSLPackage extends EPackage
     EAttribute GAME_SPRITE__NAME = eINSTANCE.getGameSprite_Name();
 
     /**
+     * The meta object literal for the '<em><b>Id</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute GAME_SPRITE__ID = eINSTANCE.getGameSprite_Id();
+
+    /**
      * The meta object literal for the '<em><b>Radius</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -2594,6 +2742,54 @@ public interface GameDSLPackage extends EPackage
      * @generated
      */
     EReference GAME_SPRITE__START = eINSTANCE.getGameSprite_Start();
+
+    /**
+     * The meta object literal for the '<em><b>X</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute GAME_SPRITE__X = eINSTANCE.getGameSprite_X();
+
+    /**
+     * The meta object literal for the '<em><b>Y</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute GAME_SPRITE__Y = eINSTANCE.getGameSprite_Y();
+
+    /**
+     * The meta object literal for the '<em><b>Has Sensor</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute GAME_SPRITE__HAS_SENSOR = eINSTANCE.getGameSprite_HasSensor();
+
+    /**
+     * The meta object literal for the '<em><b>Sensor Length</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute GAME_SPRITE__SENSOR_LENGTH = eINSTANCE.getGameSprite_SensorLength();
+
+    /**
+     * The meta object literal for the '<em><b>Sensor ID</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute GAME_SPRITE__SENSOR_ID = eINSTANCE.getGameSprite_SensorID();
+
+    /**
+     * The meta object literal for the '<em><b>Interaction Sprites</b></em>' reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference GAME_SPRITE__INTERACTION_SPRITES = eINSTANCE.getGameSprite_InteractionSprites();
 
     /**
      * The meta object literal for the '{@link com.hypermodel.games.engine.gameDSL.impl.GameSpriteAnimationImpl <em>Game Sprite Animation</em>}' class.

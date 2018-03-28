@@ -1551,15 +1551,37 @@ ruleGameSprite returns [EObject current=null]
 				}
 			)
 		)
-		otherlv_3='radius'
+		otherlv_3='id'
 		{
-			newLeafNode(otherlv_3, grammarAccess.getGameSpriteAccess().getRadiusKeyword_3());
+			newLeafNode(otherlv_3, grammarAccess.getGameSpriteAccess().getIdKeyword_3());
 		}
 		(
 			(
-				lv_radius_4_0=RULE_INT
+				lv_id_4_0=RULE_INT
 				{
-					newLeafNode(lv_radius_4_0, grammarAccess.getGameSpriteAccess().getRadiusINTTerminalRuleCall_4_0());
+					newLeafNode(lv_id_4_0, grammarAccess.getGameSpriteAccess().getIdINTTerminalRuleCall_4_0());
+				}
+				{
+					if ($current==null) {
+						$current = createModelElement(grammarAccess.getGameSpriteRule());
+					}
+					setWithLastConsumed(
+						$current,
+						"id",
+						lv_id_4_0,
+						"org.eclipse.xtext.xbase.Xbase.INT");
+				}
+			)
+		)
+		otherlv_5='radius'
+		{
+			newLeafNode(otherlv_5, grammarAccess.getGameSpriteAccess().getRadiusKeyword_5());
+		}
+		(
+			(
+				lv_radius_6_0=RULE_INT
+				{
+					newLeafNode(lv_radius_6_0, grammarAccess.getGameSpriteAccess().getRadiusINTTerminalRuleCall_6_0());
 				}
 				{
 					if ($current==null) {
@@ -1568,26 +1590,26 @@ ruleGameSprite returns [EObject current=null]
 					setWithLastConsumed(
 						$current,
 						"radius",
-						lv_radius_4_0,
+						lv_radius_6_0,
 						"org.eclipse.xtext.xbase.Xbase.INT");
 				}
 			)
 		)
 		(
-			otherlv_5='animations'
+			otherlv_7='animations'
 			{
-				newLeafNode(otherlv_5, grammarAccess.getGameSpriteAccess().getAnimationsKeyword_5_0());
+				newLeafNode(otherlv_7, grammarAccess.getGameSpriteAccess().getAnimationsKeyword_7_0());
 			}
-			otherlv_6='{'
+			otherlv_8='{'
 			{
-				newLeafNode(otherlv_6, grammarAccess.getGameSpriteAccess().getLeftCurlyBracketKeyword_5_1());
+				newLeafNode(otherlv_8, grammarAccess.getGameSpriteAccess().getLeftCurlyBracketKeyword_7_1());
 			}
 			(
 				(
 					{
-						newCompositeNode(grammarAccess.getGameSpriteAccess().getAnimationsGameSpriteAnimationParserRuleCall_5_2_0());
+						newCompositeNode(grammarAccess.getGameSpriteAccess().getAnimationsGameSpriteAnimationParserRuleCall_7_2_0());
 					}
-					lv_animations_7_0=ruleGameSpriteAnimation
+					lv_animations_9_0=ruleGameSpriteAnimation
 					{
 						if ($current==null) {
 							$current = createModelElementForParent(grammarAccess.getGameSpriteRule());
@@ -1595,31 +1617,31 @@ ruleGameSprite returns [EObject current=null]
 						add(
 							$current,
 							"animations",
-							lv_animations_7_0,
+							lv_animations_9_0,
 							"com.hypermodel.games.engine.GameDSL.GameSpriteAnimation");
 						afterParserOrEnumRuleCall();
 					}
 				)
 			)*
-			otherlv_8='}'
+			otherlv_10='}'
 			{
-				newLeafNode(otherlv_8, grammarAccess.getGameSpriteAccess().getRightCurlyBracketKeyword_5_3());
+				newLeafNode(otherlv_10, grammarAccess.getGameSpriteAccess().getRightCurlyBracketKeyword_7_3());
 			}
 		)?
-		otherlv_9='stands'
+		otherlv_11='stands'
 		{
-			newLeafNode(otherlv_9, grammarAccess.getGameSpriteAccess().getStandsKeyword_6());
+			newLeafNode(otherlv_11, grammarAccess.getGameSpriteAccess().getStandsKeyword_8());
 		}
-		otherlv_10='{'
+		otherlv_12='{'
 		{
-			newLeafNode(otherlv_10, grammarAccess.getGameSpriteAccess().getLeftCurlyBracketKeyword_7());
+			newLeafNode(otherlv_12, grammarAccess.getGameSpriteAccess().getLeftCurlyBracketKeyword_9());
 		}
 		(
 			(
 				{
-					newCompositeNode(grammarAccess.getGameSpriteAccess().getStandsGameSpriteStandParserRuleCall_8_0());
+					newCompositeNode(grammarAccess.getGameSpriteAccess().getStandsGameSpriteStandParserRuleCall_10_0());
 				}
-				lv_stands_11_0=ruleGameSpriteStand
+				lv_stands_13_0=ruleGameSpriteStand
 				{
 					if ($current==null) {
 						$current = createModelElementForParent(grammarAccess.getGameSpriteRule());
@@ -1627,19 +1649,19 @@ ruleGameSprite returns [EObject current=null]
 					add(
 						$current,
 						"stands",
-						lv_stands_11_0,
+						lv_stands_13_0,
 						"com.hypermodel.games.engine.GameDSL.GameSpriteStand");
 					afterParserOrEnumRuleCall();
 				}
 			)
 		)*
-		otherlv_12='}'
+		otherlv_14='}'
 		{
-			newLeafNode(otherlv_12, grammarAccess.getGameSpriteAccess().getRightCurlyBracketKeyword_9());
+			newLeafNode(otherlv_14, grammarAccess.getGameSpriteAccess().getRightCurlyBracketKeyword_11());
 		}
-		otherlv_13='start'
+		otherlv_15='startStand'
 		{
-			newLeafNode(otherlv_13, grammarAccess.getGameSpriteAccess().getStartKeyword_10());
+			newLeafNode(otherlv_15, grammarAccess.getGameSpriteAccess().getStartStandKeyword_12());
 		}
 		(
 			(
@@ -1648,12 +1670,143 @@ ruleGameSprite returns [EObject current=null]
 						$current = createModelElement(grammarAccess.getGameSpriteRule());
 					}
 				}
-				otherlv_14=RULE_ID
+				otherlv_16=RULE_ID
 				{
-					newLeafNode(otherlv_14, grammarAccess.getGameSpriteAccess().getStartGameSpriteStandCrossReference_11_0());
+					newLeafNode(otherlv_16, grammarAccess.getGameSpriteAccess().getStartGameSpriteStandCrossReference_13_0());
 				}
 			)
 		)
+		otherlv_17='startPosition'
+		{
+			newLeafNode(otherlv_17, grammarAccess.getGameSpriteAccess().getStartPositionKeyword_14());
+		}
+		otherlv_18='x'
+		{
+			newLeafNode(otherlv_18, grammarAccess.getGameSpriteAccess().getXKeyword_15());
+		}
+		(
+			(
+				lv_x_19_0=RULE_INT
+				{
+					newLeafNode(lv_x_19_0, grammarAccess.getGameSpriteAccess().getXINTTerminalRuleCall_16_0());
+				}
+				{
+					if ($current==null) {
+						$current = createModelElement(grammarAccess.getGameSpriteRule());
+					}
+					setWithLastConsumed(
+						$current,
+						"x",
+						lv_x_19_0,
+						"org.eclipse.xtext.xbase.Xbase.INT");
+				}
+			)
+		)
+		otherlv_20='y'
+		{
+			newLeafNode(otherlv_20, grammarAccess.getGameSpriteAccess().getYKeyword_17());
+		}
+		(
+			(
+				lv_y_21_0=RULE_INT
+				{
+					newLeafNode(lv_y_21_0, grammarAccess.getGameSpriteAccess().getYINTTerminalRuleCall_18_0());
+				}
+				{
+					if ($current==null) {
+						$current = createModelElement(grammarAccess.getGameSpriteRule());
+					}
+					setWithLastConsumed(
+						$current,
+						"y",
+						lv_y_21_0,
+						"org.eclipse.xtext.xbase.Xbase.INT");
+				}
+			)
+		)
+		(
+			(
+				(
+					lv_hasSensor_22_0='sensorLength'
+					{
+						newLeafNode(lv_hasSensor_22_0, grammarAccess.getGameSpriteAccess().getHasSensorSensorLengthKeyword_19_0_0());
+					}
+					{
+						if ($current==null) {
+							$current = createModelElement(grammarAccess.getGameSpriteRule());
+						}
+						setWithLastConsumed($current, "hasSensor", true, "sensorLength");
+					}
+				)
+			)
+			(
+				(
+					lv_sensorLength_23_0=RULE_INT
+					{
+						newLeafNode(lv_sensorLength_23_0, grammarAccess.getGameSpriteAccess().getSensorLengthINTTerminalRuleCall_19_1_0());
+					}
+					{
+						if ($current==null) {
+							$current = createModelElement(grammarAccess.getGameSpriteRule());
+						}
+						setWithLastConsumed(
+							$current,
+							"sensorLength",
+							lv_sensorLength_23_0,
+							"org.eclipse.xtext.xbase.Xbase.INT");
+					}
+				)
+			)
+			otherlv_24='sensorID'
+			{
+				newLeafNode(otherlv_24, grammarAccess.getGameSpriteAccess().getSensorIDKeyword_19_2());
+			}
+			(
+				(
+					lv_sensorID_25_0=RULE_INT
+					{
+						newLeafNode(lv_sensorID_25_0, grammarAccess.getGameSpriteAccess().getSensorIDINTTerminalRuleCall_19_3_0());
+					}
+					{
+						if ($current==null) {
+							$current = createModelElement(grammarAccess.getGameSpriteRule());
+						}
+						setWithLastConsumed(
+							$current,
+							"sensorID",
+							lv_sensorID_25_0,
+							"org.eclipse.xtext.xbase.Xbase.INT");
+					}
+				)
+			)
+		)?
+		(
+			otherlv_26='interactsWith'
+			{
+				newLeafNode(otherlv_26, grammarAccess.getGameSpriteAccess().getInteractsWithKeyword_20_0());
+			}
+			otherlv_27='{'
+			{
+				newLeafNode(otherlv_27, grammarAccess.getGameSpriteAccess().getLeftCurlyBracketKeyword_20_1());
+			}
+			(
+				(
+					{
+						if ($current==null) {
+							$current = createModelElement(grammarAccess.getGameSpriteRule());
+						}
+					}
+					otherlv_28=RULE_ID
+					{
+						newLeafNode(otherlv_28, grammarAccess.getGameSpriteAccess().getInteractionSpritesGameSpriteCrossReference_20_2_0());
+					}
+				)
+			)*
+			otherlv_29='}'
+			{
+				newLeafNode(otherlv_29, grammarAccess.getGameSpriteAccess().getRightCurlyBracketKeyword_20_3());
+			}
+		)?
 	)
 ;
 

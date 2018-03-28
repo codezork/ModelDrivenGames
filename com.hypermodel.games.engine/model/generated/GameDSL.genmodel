@@ -100,10 +100,17 @@
     </genClasses>
     <genClasses ecoreClass="GameDSL.ecore#//GameSprite">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GameDSL.ecore#//GameSprite/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GameDSL.ecore#//GameSprite/id"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GameDSL.ecore#//GameSprite/radius"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GameDSL.ecore#//GameSprite/animations"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GameDSL.ecore#//GameSprite/stands"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference GameDSL.ecore#//GameSprite/start"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GameDSL.ecore#//GameSprite/x"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GameDSL.ecore#//GameSprite/y"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GameDSL.ecore#//GameSprite/hasSensor"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GameDSL.ecore#//GameSprite/sensorLength"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GameDSL.ecore#//GameSprite/sensorID"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference GameDSL.ecore#//GameSprite/interactionSprites"/>
     </genClasses>
     <genClasses ecoreClass="GameDSL.ecore#//GameSpriteAnimation">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GameDSL.ecore#//GameSpriteAnimation/name"/>

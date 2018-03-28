@@ -29,7 +29,7 @@ package de.hypermodel.games {
 		atlas "Mario_and_Enemies"
 		scene Hud
 		sprites {
-			sprite Mario radius 6 
+			sprite Mario id 0 radius 6
 			animations {
 				animation marioRun duration 0.4 frames 4 startFrame 1 from marioSmall 
 			}
@@ -37,7 +37,12 @@ package de.hypermodel.games {
 				stand marioDestroyed whichFrame 3 from marioSmall
 				stand marioStand whichFrame 5 from marioSmall
 			}
-			start marioStand
+			startStand marioStand
+			startPosition x 32 y 32
+			sensorLength 4 sensorID 6 
+			interactsWith {
+				Mario
+			}
 		}
 	}
 } 
