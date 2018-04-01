@@ -6,8 +6,11 @@ package com.hypermodel.games.engine.validation;
 import java.util.ArrayList;
 import java.util.List;
 import org.eclipse.emf.ecore.EPackage;
+import org.eclipse.xtext.validation.ComposedChecks;
+import org.eclipse.xtext.validation.NamesAreUniqueValidator;
 import org.eclipse.xtext.xbase.annotations.validation.XbaseWithAnnotationsValidator;
 
+@ComposedChecks(validators = {NamesAreUniqueValidator.class})
 public abstract class AbstractGameDSLValidator extends XbaseWithAnnotationsValidator {
 	
 	@Override

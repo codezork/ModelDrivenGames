@@ -67,19 +67,20 @@ public class GameDSLFactoryImpl extends EFactoryImpl implements GameDSLFactory
     switch (eClass.getClassifierID())
     {
       case GameDSLPackage.GAME_MODEL: return createGameModel();
-      case GameDSLPackage.GAME_IMPORT: return createGameImport();
       case GameDSLPackage.GAME_PACKAGE: return createGamePackage();
       case GameDSLPackage.GAME_PLATFORM_CONFIG: return createGamePlatformConfig();
       case GameDSLPackage.GAME_PLATFORM_CONFIG_ANDROID: return createGamePlatformConfigAndroid();
       case GameDSLPackage.GAME_PLATFORM_CONFIG_IOS: return createGamePlatformConfigIOS();
       case GameDSLPackage.GAME_PLATFORM_CONFIG_IOSMOE: return createGamePlatformConfigIOSMOE();
-      case GameDSLPackage.GAME_PLATFORM_CONFIGURATION: return createGamePlatformConfiguration();
       case GameDSLPackage.GAME_ROOT: return createGameRoot();
       case GameDSLPackage.GAME_SCREEN: return createGameScreen();
       case GameDSLPackage.GAME_SCENE: return createGameScene();
       case GameDSLPackage.GAME_SCORE: return createGameScore();
       case GameDSLPackage.GAME_DISPLAY: return createGameDisplay();
       case GameDSLPackage.GAME_SPRITE: return createGameSprite();
+      case GameDSLPackage.GAME_SPRITE_STATE: return createGameSpriteState();
+      case GameDSLPackage.GAME_BODY_PROPERTY: return createGameBodyProperty();
+      case GameDSLPackage.GAME_RULE: return createGameRule();
       case GameDSLPackage.GAME_SPRITE_ANIMATION: return createGameSpriteAnimation();
       case GameDSLPackage.GAME_SPRITE_STAND: return createGameSpriteStand();
       case GameDSLPackage.GAME_TEXTURE_REGION: return createGameTextureRegion();
@@ -100,8 +101,6 @@ public class GameDSLFactoryImpl extends EFactoryImpl implements GameDSLFactory
     {
       case GameDSLPackage.GAME_DISPLAY_VALUE_TYPE:
         return createGameDisplayValueTypeFromString(eDataType, initialValue);
-      case GameDSLPackage.GAME_PLATFORM:
-        return createGamePlatformFromString(eDataType, initialValue);
       case GameDSLPackage.GAME_SCREEN_ORIENTATION:
         return createGameScreenOrientationFromString(eDataType, initialValue);
       default:
@@ -121,8 +120,6 @@ public class GameDSLFactoryImpl extends EFactoryImpl implements GameDSLFactory
     {
       case GameDSLPackage.GAME_DISPLAY_VALUE_TYPE:
         return convertGameDisplayValueTypeToString(eDataType, instanceValue);
-      case GameDSLPackage.GAME_PLATFORM:
-        return convertGamePlatformToString(eDataType, instanceValue);
       case GameDSLPackage.GAME_SCREEN_ORIENTATION:
         return convertGameScreenOrientationToString(eDataType, instanceValue);
       default:
@@ -139,17 +136,6 @@ public class GameDSLFactoryImpl extends EFactoryImpl implements GameDSLFactory
   {
     GameModelImpl gameModel = new GameModelImpl();
     return gameModel;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public GameImport createGameImport()
-  {
-    GameImportImpl gameImport = new GameImportImpl();
-    return gameImport;
   }
 
   /**
@@ -205,17 +191,6 @@ public class GameDSLFactoryImpl extends EFactoryImpl implements GameDSLFactory
   {
     GamePlatformConfigIOSMOEImpl gamePlatformConfigIOSMOE = new GamePlatformConfigIOSMOEImpl();
     return gamePlatformConfigIOSMOE;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public GamePlatformConfiguration createGamePlatformConfiguration()
-  {
-    GamePlatformConfigurationImpl gamePlatformConfiguration = new GamePlatformConfigurationImpl();
-    return gamePlatformConfiguration;
   }
 
   /**
@@ -289,6 +264,39 @@ public class GameDSLFactoryImpl extends EFactoryImpl implements GameDSLFactory
    * <!-- end-user-doc -->
    * @generated
    */
+  public GameSpriteState createGameSpriteState()
+  {
+    GameSpriteStateImpl gameSpriteState = new GameSpriteStateImpl();
+    return gameSpriteState;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public GameBodyProperty createGameBodyProperty()
+  {
+    GameBodyPropertyImpl gameBodyProperty = new GameBodyPropertyImpl();
+    return gameBodyProperty;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public GameRule createGameRule()
+  {
+    GameRuleImpl gameRule = new GameRuleImpl();
+    return gameRule;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public GameSpriteAnimation createGameSpriteAnimation()
   {
     GameSpriteAnimationImpl gameSpriteAnimation = new GameSpriteAnimationImpl();
@@ -335,28 +343,6 @@ public class GameDSLFactoryImpl extends EFactoryImpl implements GameDSLFactory
    * @generated
    */
   public String convertGameDisplayValueTypeToString(EDataType eDataType, Object instanceValue)
-  {
-    return instanceValue == null ? null : instanceValue.toString();
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public GamePlatform createGamePlatformFromString(EDataType eDataType, String initialValue)
-  {
-    GamePlatform result = GamePlatform.get(initialValue);
-    if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
-    return result;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public String convertGamePlatformToString(EDataType eDataType, Object instanceValue)
   {
     return instanceValue == null ? null : instanceValue.toString();
   }

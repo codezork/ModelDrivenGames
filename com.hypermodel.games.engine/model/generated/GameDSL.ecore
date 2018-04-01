@@ -3,16 +3,13 @@
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="gameDSL" nsURI="http://www.hypermodel.com/games/engine/GameDSL"
     nsPrefix="gameDSL">
   <eClassifiers xsi:type="ecore:EClass" name="GameModel">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="importSection" eType="ecore:EClass platform:/resource/org.eclipse.xtext.xbase/model/Xtype.ecore#//XImportSection"
+        containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="packages" upperBound="-1"
         eType="#//GamePackage" containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="GameImport">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="importedNamespace" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="GamePackage">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="imports" upperBound="-1"
-        eType="#//GameImport" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="config" eType="#//GamePlatformConfig"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="games" upperBound="-1"
@@ -41,11 +38,6 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="GamePlatformConfigIOSMOE">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="useAccelerometer" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="GamePlatformConfiguration">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="platform" eType="#//GamePlatform"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="config" upperBound="-1"
-        eType="#//GamePlatformConfigAndroid" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="GameRoot">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -96,11 +88,6 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="radius" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="animations" upperBound="-1"
-        eType="#//GameSpriteAnimation" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="stands" upperBound="-1"
-        eType="#//GameSpriteStand" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="start" eType="#//GameSpriteStand"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="x" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="y" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="hasSensor" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
@@ -108,6 +95,33 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="sensorID" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="interactionSprites" unique="false"
         upperBound="-1" eType="#//GameSprite"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="properties" upperBound="-1"
+        eType="#//GameBodyProperty" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="states" upperBound="-1"
+        eType="#//GameSpriteState" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="initialState" eType="#//GameSpriteState"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="GameSpriteState">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="rule" eType="#//GameRule"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="animation" eType="#//GameSpriteAnimation"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="ifFinished" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="setFalse" eType="#//GameBodyProperty"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="stand" eType="#//GameSpriteStand"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="GameBodyProperty">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="GameRule">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="params" upperBound="-1"
+        eType="ecore:EClass platform:/resource/org.eclipse.xtext.common.types/model/JavaVMTypes.ecore#//JvmFormalParameter"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="body" eType="ecore:EClass platform:/resource/org.eclipse.xtext.xbase/model/Xbase.ecore#//XExpression"
+        containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="GameSpriteAnimation">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -135,15 +149,8 @@
     <eLiterals name="float" value="1" literal="decimal"/>
     <eLiterals name="String" value="2" literal="text"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EEnum" name="GamePlatform">
-    <eLiterals name="android" literal="android"/>
-    <eLiterals name="desktop" value="1" literal="desktop"/>
-    <eLiterals name="html" value="2" literal="html"/>
-    <eLiterals name="ios" value="3" literal="ios"/>
-    <eLiterals name="iosmoe" value="4" literal="ios-moe"/>
-  </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="GameScreenOrientation">
     <eLiterals name="landscape" literal="landscape"/>
-    <eLiterals name="portrait" value="1" literal="portait"/>
+    <eLiterals name="portrait" value="1" literal="portrait"/>
   </eClassifiers>
 </ecore:EPackage>

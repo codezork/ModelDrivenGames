@@ -4,7 +4,6 @@
 package com.hypermodel.games.engine.gameDSL.impl;
 
 import com.hypermodel.games.engine.gameDSL.GameDSLPackage;
-import com.hypermodel.games.engine.gameDSL.GameImport;
 import com.hypermodel.games.engine.gameDSL.GamePackage;
 import com.hypermodel.games.engine.gameDSL.GamePlatformConfig;
 import com.hypermodel.games.engine.gameDSL.GameRoot;
@@ -34,7 +33,6 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * </p>
  * <ul>
  *   <li>{@link com.hypermodel.games.engine.gameDSL.impl.GamePackageImpl#getName <em>Name</em>}</li>
- *   <li>{@link com.hypermodel.games.engine.gameDSL.impl.GamePackageImpl#getImports <em>Imports</em>}</li>
  *   <li>{@link com.hypermodel.games.engine.gameDSL.impl.GamePackageImpl#getConfig <em>Config</em>}</li>
  *   <li>{@link com.hypermodel.games.engine.gameDSL.impl.GamePackageImpl#getGames <em>Games</em>}</li>
  * </ul>
@@ -62,16 +60,6 @@ public class GamePackageImpl extends MinimalEObjectImpl.Container implements Gam
    * @ordered
    */
   protected String name = NAME_EDEFAULT;
-
-  /**
-   * The cached value of the '{@link #getImports() <em>Imports</em>}' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getImports()
-   * @generated
-   * @ordered
-   */
-  protected EList<GameImport> imports;
 
   /**
    * The cached value of the '{@link #getConfig() <em>Config</em>}' containment reference.
@@ -135,20 +123,6 @@ public class GamePackageImpl extends MinimalEObjectImpl.Container implements Gam
     name = newName;
     if (eNotificationRequired())
       eNotify(new ENotificationImpl(this, Notification.SET, GameDSLPackage.GAME_PACKAGE__NAME, oldName, name));
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EList<GameImport> getImports()
-  {
-    if (imports == null)
-    {
-      imports = new EObjectContainmentEList<GameImport>(GameImport.class, this, GameDSLPackage.GAME_PACKAGE__IMPORTS);
-    }
-    return imports;
   }
 
   /**
@@ -223,8 +197,6 @@ public class GamePackageImpl extends MinimalEObjectImpl.Container implements Gam
   {
     switch (featureID)
     {
-      case GameDSLPackage.GAME_PACKAGE__IMPORTS:
-        return ((InternalEList<?>)getImports()).basicRemove(otherEnd, msgs);
       case GameDSLPackage.GAME_PACKAGE__CONFIG:
         return basicSetConfig(null, msgs);
       case GameDSLPackage.GAME_PACKAGE__GAMES:
@@ -245,8 +217,6 @@ public class GamePackageImpl extends MinimalEObjectImpl.Container implements Gam
     {
       case GameDSLPackage.GAME_PACKAGE__NAME:
         return getName();
-      case GameDSLPackage.GAME_PACKAGE__IMPORTS:
-        return getImports();
       case GameDSLPackage.GAME_PACKAGE__CONFIG:
         return getConfig();
       case GameDSLPackage.GAME_PACKAGE__GAMES:
@@ -268,10 +238,6 @@ public class GamePackageImpl extends MinimalEObjectImpl.Container implements Gam
     {
       case GameDSLPackage.GAME_PACKAGE__NAME:
         setName((String)newValue);
-        return;
-      case GameDSLPackage.GAME_PACKAGE__IMPORTS:
-        getImports().clear();
-        getImports().addAll((Collection<? extends GameImport>)newValue);
         return;
       case GameDSLPackage.GAME_PACKAGE__CONFIG:
         setConfig((GamePlatformConfig)newValue);
@@ -297,9 +263,6 @@ public class GamePackageImpl extends MinimalEObjectImpl.Container implements Gam
       case GameDSLPackage.GAME_PACKAGE__NAME:
         setName(NAME_EDEFAULT);
         return;
-      case GameDSLPackage.GAME_PACKAGE__IMPORTS:
-        getImports().clear();
-        return;
       case GameDSLPackage.GAME_PACKAGE__CONFIG:
         setConfig((GamePlatformConfig)null);
         return;
@@ -322,8 +285,6 @@ public class GamePackageImpl extends MinimalEObjectImpl.Container implements Gam
     {
       case GameDSLPackage.GAME_PACKAGE__NAME:
         return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
-      case GameDSLPackage.GAME_PACKAGE__IMPORTS:
-        return imports != null && !imports.isEmpty();
       case GameDSLPackage.GAME_PACKAGE__CONFIG:
         return config != null;
       case GameDSLPackage.GAME_PACKAGE__GAMES:

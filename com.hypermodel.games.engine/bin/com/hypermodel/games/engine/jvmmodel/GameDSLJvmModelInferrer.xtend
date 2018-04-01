@@ -54,6 +54,7 @@ import com.badlogic.gdx.physics.box2d.BodyDef
 import com.badlogic.gdx.physics.box2d.FixtureDef
 import com.badlogic.gdx.physics.box2d.CircleShape
 import com.badlogic.gdx.physics.box2d.EdgeShape
+import java.util.HashMap
 
 class GameDSLJvmModelInferrer extends AbstractModelInferrer {
 	@Inject extension JvmTypesBuilder
@@ -633,58 +634,75 @@ class GameDSLJvmModelInferrer extends AbstractModelInferrer {
 						'''
 						world = screen.getWorld();
 						stateTimer = 0;
-						runningRight = true;
 						''')
 						append(Array)
 						append("<")
 						append(TextureRegion)
 						append("> frames = new Array<TextureRegion>();\n")
 						val current = it
-						sprite.animations.forEach[
-							if(it.hasFrames) {
-								current.append(
-								'''
-								for (int i = «it.offset»; i < «it.frames+it.offset»; i++) {
-									frames.add(new TextureRegion(screen.getAtlas().findRegion("«it.region.name»"), i * «it.region.width», 0, «it.region.width», «it.region.height»));
-								}
-								''')
-							}
-							if(it.hasStands) {
-								it.stands.forEach[
+						sprite.states.forEach[
+							if(it.animation !== null) {
+								if(it.animation.hasFrames) {
 									current.append(
 									'''
-									frames.add(new TextureRegion(screen.getAtlas().findRegion("«it.region.name»"), «it.offset*it.region.width», 0, «it.region.width», «it.region.height»));
+									for (int i = «it.animation.offset»; i < «it.animation.frames+it.animation.offset»; i++) {
+										frames.add(new TextureRegion(screen.getAtlas().findRegion("«it.animation.region.name»"), i * «it.animation.region.width», 0, «it.animation.region.width», «it.animation.region.height»));
+									}
 									''')
-								]
-								
+								}
+								if(it.animation.hasStands) {
+									it.animation.stands.forEach[
+										current.append(
+										'''
+										frames.add(new TextureRegion(screen.getAtlas().findRegion("«it.region.name»"), «it.offset*it.region.width», 0, «it.region.width», «it.region.height»));
+										''')
+									]
+									
+								}
+								current.append(
+								'''
+								«it.animation.name» = new ''')
+								current.append(Animation)
+								current.append('''
+								<TextureRegion>(«it.animation.duration»f, frames);
+								frames.clear();
+								''')
 							}
-							current.append(
-							'''
-							«it.name» = new ''')
-							current.append(Animation)
-							current.append('''
-							(«it.duration»f, frames);
-							frames.clear();
-							''')
-						]
-						sprite.stands.forEach[
-							current.append(
-								'''
-								«it.name» = new TextureRegion(screen.getAtlas().findRegion("«it.region.name»"), «it.offset*it.region.width», 0, «it.region.width», «it.region.height»);
-								'''
-							)
+							if(it.stand !== null) {
+								current.append(
+									'''
+									«it.stand.name» = new TextureRegion(screen.getAtlas().findRegion("«it.stand.region.name»"), «it.stand.offset*it.stand.region.width», 0, «it.stand.region.width», «it.stand.region.height»);
+									'''
+								)
+							}
 						]
 						append(
 						'''
-				        define«sprite.name.toFirstUpper»(new Vector2(«sprite.x» / «gameClass.simpleName».PPM, «sprite.y» / «gameClass.simpleName».PPM), null);
-				        setBounds(0, 0, «sprite.start.region.width» / ''')
+				        define«sprite.name.toFirstUpper»(new Vector2(«sprite.x» / ''')
 				        append(gameClass)
-				        append('''.PPM,  «sprite.start.region.height» / «gameClass.simpleName».PPM);
+				        append('''.PPM, «sprite.y» / «gameClass.simpleName».PPM), null);
 				        ''')
-						append('''
-						setRegion(«sprite.start.name»);
-						'''
-						)
+				        if(sprite.initialState.animation !== null) {
+				        	if(sprite.initialState.animation.hasFrames) {
+					        	append(
+					        	'''
+					        	setBounds(0, 0, «sprite.initialState.animation.region.width» / «gameClass.simpleName».PPM, «sprite.initialState.animation.region.height» / «gameClass.simpleName».PPM);
+					        	''')
+					        }
+				        	if(sprite.initialState.animation.hasStands) {
+					        	append(
+					        	'''
+					        	setBounds(0, 0, «sprite.initialState.animation.stands.get(0).region.width» / «gameClass.simpleName».PPM, «sprite.initialState.animation.stands.get(0).region.height» / «gameClass.simpleName».PPM);
+					        	''')
+					        }
+				        }
+				        if(sprite.initialState.stand !== null) {
+				        	append(
+				        	'''
+				        	setBounds(0, 0, «sprite.initialState.stand.region.width» / «gameClass.simpleName».PPM, «sprite.initialState.stand.region.height» / «gameClass.simpleName».PPM);
+				        	''')
+				        }
+						append("setRegion(getFrame(0.0f));\n");
 					]
 				]
 				it.toOperations(sprite, gameClass)
@@ -696,21 +714,109 @@ class GameDSLJvmModelInferrer extends AbstractModelInferrer {
 		var field = sprite.toField("world", World.typeRef)
 		field.visibility = JvmVisibility.PUBLIC
 		type.members += field
-		field = sprite.toField("b2body", Body.typeRef)
+		field = sprite.toField("body", Body.typeRef)
 		field.visibility = JvmVisibility.PUBLIC
 		type.members += field
 		type.members += sprite.toField("stateTimer", float.typeRef)
-		type.members += sprite.toField("runningRight", boolean.typeRef)
-		
-		sprite.animations.forEach[type.members += sprite.toField('''«it.name»''', Animation.typeRef)]
-		sprite.stands.forEach[type.members += sprite.toField('''«it.name»''', TextureRegion.typeRef)]
+		type.members += sprite.toEnumerationType("State") [
+			sprite.states.forEach [ state |
+				members += state.toEnumerationLiteral(state.name.toUpperCase)
+				if(state.animation !== null) {
+					type.members += sprite.toField(state.animation.name, Animation.typeRef(TextureRegion.typeRef))
+				}
+				if(state.stand !== null) {
+					type.members += sprite.toField(state.stand.name, TextureRegion.typeRef)
+				}
+			]
+		]
+		type.members += sprite.toField("currentState", "State".typeRef) [initializer=[append('''State.«sprite.initialState.name.toUpperCase»''')]]
+		type.members += sprite.toField("previousState", "State".typeRef) [initializer=[append('''State.«sprite.initialState.name.toUpperCase»''')]]
 	}
 
 	def void toOperations(JvmGenericType type, GameSprite sprite, JvmGenericType gameClass) {
+		for(state: sprite.states) {
+			type.members += sprite.toMethod('''is«state.rule.name.toFirstUpper»''', boolean.typeRef) [
+				documentation = state.rule.documentation
+				for (p : state.rule.params) {
+					parameters += p.toParameter(p.name, p.parameterType)
+				}
+				body = state.rule.body
+			]
+		}
+		val fsprite = sprite
+		sprite.properties.forEach[
+			val prop = it
+			type.members += fsprite.toMethod('''is«it.name.toFirstUpper»''', Boolean.typeRef, [
+				body = [
+					append(
+					'''
+					return ((HashMap<String,Boolean>)body.getUserData()).get("«prop.name»");
+					''')
+				]
+			])
+		]
+		sprite.properties.forEach[
+			val prop = it
+			type.members += fsprite.toMethod('''set«it.name.toFirstUpper»''', Void.TYPE.typeRef, [
+				parameters += sprite.toParameter("value", Boolean.typeRef)
+				body = [
+					append(
+					'''
+					((HashMap<String,Boolean>)body.getUserData()).put("«prop.name»", value);
+					''')
+				]
+			])
+		]
+		
 		type.members += sprite.toMethod("update", Void.TYPE.typeRef, [
 			parameters += sprite.toParameter("dt", float.typeRef)
 			body = [
-				val current = it
+			]
+		])
+		type.members += sprite.toMethod("getFrame", TextureRegion.typeRef, [
+			parameters += sprite.toParameter("dt", float.typeRef)
+			body = [
+				append(
+				'''
+		        currentState = getState();
+		        TextureRegion region = null;
+		        switch (currentState) {
+		        ''')
+		        val current = it
+				sprite.states.forEach[
+					current.append(
+					'''
+					case «it.name.toUpperCase»:
+						region = «IF it.animation!==null»«it.animation.name».getKeyFrame(stateTimer)«ELSEIF it.stand!==null»«it.stand.name»«ENDIF»;
+						«IF it.animation!==null && it.ifFinished»if(«it.animation.name».isAnimationFinished(stateTimer)) {
+							set«setFalse.name.toFirstUpper»(false);
+						}«ENDIF»
+						break;
+					''')
+				]		        	
+				append(
+				'''
+		        }
+		        stateTimer = currentState == previousState ? stateTimer + dt : 0;
+		        previousState = currentState;
+		        return region;
+				''')
+			]
+		])
+		type.members += sprite.toMethod("getState", "State".typeRef, [
+			body = [
+				for(state: sprite.states) {
+					append(
+					'''
+					if(is«state.rule.name.toFirstUpper»()) {
+						return State.«state.name.toUpperCase»;
+					}
+					''')
+				}
+				append(
+				'''
+				return State.«sprite.initialState.name.toUpperCase»;
+				''')
 			]
 		])
 		type.members += sprite.toMethod('''define«sprite.name.toFirstUpper»''', Void.TYPE.typeRef, [
@@ -722,8 +828,21 @@ class GameDSLJvmModelInferrer extends AbstractModelInferrer {
 				 bdef = new BodyDef();
 				bdef.position.set(position);
 				bdef.type = BodyDef.BodyType.DynamicBody;
-				b2body = world.createBody(bdef);
+				body = world.createBody(bdef);
 				''')
+				append(HashMap)
+				append(
+				'''
+				<String,Boolean> userData = new HashMap<String,Boolean>();
+				''')
+				val current = it
+				sprite.properties.forEach[
+					current.append(
+					'''
+					userData.put("«it.name»",false);
+					''')
+				]
+				append("body.setUserData(userData);\n")
 				append(FixtureDef)
 				append(''' fdef = new FixtureDef();
 				''')
@@ -740,10 +859,10 @@ class GameDSLJvmModelInferrer extends AbstractModelInferrer {
 				append('''
 				fdef.filter.maskBits = «mask as int»;
 				fdef.shape = shape;
-				b2body.createFixture(fdef).setUserData(this);
+				body.createFixture(fdef).setUserData(this);
 				if(shapePosition != null) {
 					shape.setPosition(shapePosition);
-					b2body.createFixture(fdef).setUserData(this);
+					body.createFixture(fdef).setUserData(this);
 				}
 				''')
 				if(sprite.hasSensor) {
@@ -755,7 +874,7 @@ class GameDSLJvmModelInferrer extends AbstractModelInferrer {
 					fdef.filter.categoryBits = «(2**sprite.sensorID) as int»;
 					fdef.shape = head;
 					fdef.isSensor = true;
-					b2body.createFixture(fdef).setUserData(this);
+					body.createFixture(fdef).setUserData(this);
 					''')
 				}
 			]

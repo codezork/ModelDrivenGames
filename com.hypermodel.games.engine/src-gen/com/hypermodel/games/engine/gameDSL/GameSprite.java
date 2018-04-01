@@ -19,15 +19,15 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link com.hypermodel.games.engine.gameDSL.GameSprite#getName <em>Name</em>}</li>
  *   <li>{@link com.hypermodel.games.engine.gameDSL.GameSprite#getId <em>Id</em>}</li>
  *   <li>{@link com.hypermodel.games.engine.gameDSL.GameSprite#getRadius <em>Radius</em>}</li>
- *   <li>{@link com.hypermodel.games.engine.gameDSL.GameSprite#getAnimations <em>Animations</em>}</li>
- *   <li>{@link com.hypermodel.games.engine.gameDSL.GameSprite#getStands <em>Stands</em>}</li>
- *   <li>{@link com.hypermodel.games.engine.gameDSL.GameSprite#getStart <em>Start</em>}</li>
  *   <li>{@link com.hypermodel.games.engine.gameDSL.GameSprite#getX <em>X</em>}</li>
  *   <li>{@link com.hypermodel.games.engine.gameDSL.GameSprite#getY <em>Y</em>}</li>
  *   <li>{@link com.hypermodel.games.engine.gameDSL.GameSprite#isHasSensor <em>Has Sensor</em>}</li>
  *   <li>{@link com.hypermodel.games.engine.gameDSL.GameSprite#getSensorLength <em>Sensor Length</em>}</li>
  *   <li>{@link com.hypermodel.games.engine.gameDSL.GameSprite#getSensorID <em>Sensor ID</em>}</li>
  *   <li>{@link com.hypermodel.games.engine.gameDSL.GameSprite#getInteractionSprites <em>Interaction Sprites</em>}</li>
+ *   <li>{@link com.hypermodel.games.engine.gameDSL.GameSprite#getProperties <em>Properties</em>}</li>
+ *   <li>{@link com.hypermodel.games.engine.gameDSL.GameSprite#getStates <em>States</em>}</li>
+ *   <li>{@link com.hypermodel.games.engine.gameDSL.GameSprite#getInitialState <em>Initial State</em>}</li>
  * </ul>
  *
  * @see com.hypermodel.games.engine.gameDSL.GameDSLPackage#getGameSprite()
@@ -113,64 +113,6 @@ public interface GameSprite extends EObject
    * @generated
    */
   void setRadius(int value);
-
-  /**
-   * Returns the value of the '<em><b>Animations</b></em>' containment reference list.
-   * The list contents are of type {@link com.hypermodel.games.engine.gameDSL.GameSpriteAnimation}.
-   * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Animations</em>' containment reference list isn't clear,
-   * there really should be more of a description here...
-   * </p>
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Animations</em>' containment reference list.
-   * @see com.hypermodel.games.engine.gameDSL.GameDSLPackage#getGameSprite_Animations()
-   * @model containment="true"
-   * @generated
-   */
-  EList<GameSpriteAnimation> getAnimations();
-
-  /**
-   * Returns the value of the '<em><b>Stands</b></em>' containment reference list.
-   * The list contents are of type {@link com.hypermodel.games.engine.gameDSL.GameSpriteStand}.
-   * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Stands</em>' containment reference list isn't clear,
-   * there really should be more of a description here...
-   * </p>
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Stands</em>' containment reference list.
-   * @see com.hypermodel.games.engine.gameDSL.GameDSLPackage#getGameSprite_Stands()
-   * @model containment="true"
-   * @generated
-   */
-  EList<GameSpriteStand> getStands();
-
-  /**
-   * Returns the value of the '<em><b>Start</b></em>' reference.
-   * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Start</em>' reference isn't clear,
-   * there really should be more of a description here...
-   * </p>
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Start</em>' reference.
-   * @see #setStart(GameSpriteStand)
-   * @see com.hypermodel.games.engine.gameDSL.GameDSLPackage#getGameSprite_Start()
-   * @model
-   * @generated
-   */
-  GameSpriteStand getStart();
-
-  /**
-   * Sets the value of the '{@link com.hypermodel.games.engine.gameDSL.GameSprite#getStart <em>Start</em>}' reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Start</em>' reference.
-   * @see #getStart()
-   * @generated
-   */
-  void setStart(GameSpriteStand value);
 
   /**
    * Returns the value of the '<em><b>X</b></em>' attribute.
@@ -317,5 +259,63 @@ public interface GameSprite extends EObject
    * @generated
    */
   EList<GameSprite> getInteractionSprites();
+
+  /**
+   * Returns the value of the '<em><b>Properties</b></em>' containment reference list.
+   * The list contents are of type {@link com.hypermodel.games.engine.gameDSL.GameBodyProperty}.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Properties</em>' containment reference list isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Properties</em>' containment reference list.
+   * @see com.hypermodel.games.engine.gameDSL.GameDSLPackage#getGameSprite_Properties()
+   * @model containment="true"
+   * @generated
+   */
+  EList<GameBodyProperty> getProperties();
+
+  /**
+   * Returns the value of the '<em><b>States</b></em>' containment reference list.
+   * The list contents are of type {@link com.hypermodel.games.engine.gameDSL.GameSpriteState}.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>States</em>' containment reference list isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>States</em>' containment reference list.
+   * @see com.hypermodel.games.engine.gameDSL.GameDSLPackage#getGameSprite_States()
+   * @model containment="true"
+   * @generated
+   */
+  EList<GameSpriteState> getStates();
+
+  /**
+   * Returns the value of the '<em><b>Initial State</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Initial State</em>' reference isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Initial State</em>' reference.
+   * @see #setInitialState(GameSpriteState)
+   * @see com.hypermodel.games.engine.gameDSL.GameDSLPackage#getGameSprite_InitialState()
+   * @model
+   * @generated
+   */
+  GameSpriteState getInitialState();
+
+  /**
+   * Sets the value of the '{@link com.hypermodel.games.engine.gameDSL.GameSprite#getInitialState <em>Initial State</em>}' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Initial State</em>' reference.
+   * @see #getInitialState()
+   * @generated
+   */
+  void setInitialState(GameSpriteState value);
 
 } // GameSprite

@@ -5,14 +5,11 @@ generate gameDSL "http://www.hypermodel.com/games/engine/GameDSL"
 import "http://www.eclipse.org/emf/2002/Ecore" as ecore
 
 GameModel:
+	importSection=XImportSection?
 	packages+=GamePackage*;
 
-GameImport:
-	'import' importedNamespace=GameQualifiedNameWithWildCard;
-	 
 GamePackage:
 	'package' name=QualifiedName '{' 
-		(imports+=GameImport)*
 		config=GamePlatformConfig
 		(games+=GameRoot)*
 	'}';
@@ -47,24 +44,21 @@ GamePlatformConfigIOSMOE: {GamePlatformConfigIOSMOE}
 	(useAccelerometer?='useAccelerometer')? '}'
 ;
 
-GamePlatformConfiguration:
-	'configure' platform=GamePlatform '{' config+=GamePlatformConfigAndroid* '}';
-
 GameRoot:
-	{GameRoot} 'game' name=ID
+	{GameRoot} 'game' name=ValidID
 	'width' width = INT 'height' height = INT 'title' title=STRING 'pixelPerMeter' ppm = INT
 	('scenes' '{' scenes+=GameScene* '}'&
 	'screens' '{' screens+=GameScreen* '}'&
 	'regions' '{' regions+=GameTextureRegion* '}');
 	
 GameScreen:
-	{GameScreen} 'screen' name=ID 
+	{GameScreen} 'screen' name=ValidID 
 	'atlas' atlasName = STRING
 	'scene' scene = [GameScene]
 	'sprites' '{' sprites+=GameSprite* '}';
 	
 GameScene:
-	{GameScene} 'scene' name=ID 
+	{GameScene} 'scene' name=ValidID 
 	(hasScore?='isScore' score = GameScore)?;
 		
 GameScore:
@@ -72,7 +66,7 @@ GameScore:
 	'{' displays+=GameDisplay* '}';
 	
 GameDisplay:
-	{GameDisplay} 'display' name=ID 
+	{GameDisplay} 'display' name=ValidID 
 	'valueType' type=GameDisplayValueType 
 	'format' format=STRING 
 	(hasInitial?='initialValue' (initialNumberValue=SignedNumber|initialIntValue=INT|initialStringValue=STRING))?
@@ -81,53 +75,49 @@ GameDisplay:
 	(hasSetter?='setValue')?;
 	
 GameSprite:
-	{GameSprite} 'sprite' name=ID 'id' id=INT 
+	{GameSprite} 'sprite' name=ValidID 'id' id=INT 
 	'radius' radius=INT
-	('animations' '{' animations+=GameSpriteAnimation* '}')?
-	'stands' '{' stands+=GameSpriteStand* '}'
-	'startStand' start=[GameSpriteStand]
-	'startPosition' 'x' x=INT 'y' y=INT
+	'startPositionX' x=INT 'startPositionY' y=INT
 	(hasSensor?='sensorLength' sensorLength=INT 'sensorID' sensorID=INT)?
-	('interactsWith' '{' interactionSprites+=[GameSprite]* '}')?;
+	('interactsWith' '{' interactionSprites+=[GameSprite]* '}')?
+	('bodyProperties' '{' properties+=GameBodyProperty* '}')?
+	('states' '{' states+=GameSpriteState* '}' 'initialState' initialState=[GameSpriteState])?;
+
+GameSpriteState:
+	{GameSpriteState} 'state' name=ValidID 'if' rule=GameRule
+	(animation=GameSpriteAnimation (ifFinished?='ifFinished' 
+	'setFalse' setFalse=[GameBodyProperty])? | 
+	stand=GameSpriteStand)?;
+	
+GameBodyProperty:
+	{GameBodyProperty} 'property' name=ValidID;
+	
+GameRule:
+	{GameRule} 'isTrue' name=ValidID '(' (params+=FullJvmFormalParameter (',' params+=FullJvmFormalParameter)?)? ')'
+	body=XBlockExpression;
 
 GameSpriteAnimation:
-	{GameSpriteAnimation} 'animation' name=ID 'duration' duration=UnsignedNumber 
+	{GameSpriteAnimation} 'animation' name=ValidID 'duration' duration=UnsignedNumber 
 	(hasFrames?='frames' frames=INT 'startFrame' offset=INT 'from' region=[GameTextureRegion])?
-	(hasStands?='stands' '{' stands+=GameSpriteStand '}')?;
+	(hasStands?='stands' '{' stands+=GameSpriteStand* '}')?;
 	
 GameSpriteStand:
-	{GameSpriteStand} 'stand' name=ID 'whichFrame' offset=INT 'from' region=[GameTextureRegion];
+	{GameSpriteStand} 'stand' name=ValidID 'whichFrame' offset=INT 'from' region=[GameTextureRegion];
 
 GameTextureRegion:
-	{GameTextureRegion} 'region' name=ID 'width' width=INT 'height' height=INT;
+	{GameTextureRegion} 'region' name=ValidID 'width' width=INT 'height' height=INT;
 
 enum GameDisplayValueType:
 	int = 'number'|
 	float = 'decimal'|
 	String = 'text';
+
+enum GameScreenOrientation:
+	landscape = 'landscape'|
+	portrait = 'portrait';
 	
-ValidID:
-	ID;
-	
-QualifiedName:
-	ValidID (=>'.' ValidID)*;
-  
 SignedNumber returns ecore::EFloat:
 	('-')? UnsignedNumber;
 
 UnsignedNumber returns ecore::EFloat:
 	INT ('.' (INT));
-	
-GameQualifiedNameWithWildCard:
-	QualifiedName ('.' '*')?;
-	
-enum GamePlatform:
-	android 	= 'android'|
-	desktop 	= 'desktop'|
-	html 		= 'html'|
-	ios 		= 'ios'|
-	iosmoe 		= 'ios-moe';
-	
-enum GameScreenOrientation:
-	landscape = 'landscape'|
-	portrait = 'portait';

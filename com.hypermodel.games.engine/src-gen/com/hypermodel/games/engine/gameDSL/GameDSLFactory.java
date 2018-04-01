@@ -33,15 +33,6 @@ public interface GameDSLFactory extends EFactory
   GameModel createGameModel();
 
   /**
-   * Returns a new object of class '<em>Game Import</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Game Import</em>'.
-   * @generated
-   */
-  GameImport createGameImport();
-
-  /**
    * Returns a new object of class '<em>Game Package</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -85,15 +76,6 @@ public interface GameDSLFactory extends EFactory
    * @generated
    */
   GamePlatformConfigIOSMOE createGamePlatformConfigIOSMOE();
-
-  /**
-   * Returns a new object of class '<em>Game Platform Configuration</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Game Platform Configuration</em>'.
-   * @generated
-   */
-  GamePlatformConfiguration createGamePlatformConfiguration();
 
   /**
    * Returns a new object of class '<em>Game Root</em>'.
@@ -148,6 +130,33 @@ public interface GameDSLFactory extends EFactory
    * @generated
    */
   GameSprite createGameSprite();
+
+  /**
+   * Returns a new object of class '<em>Game Sprite State</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Game Sprite State</em>'.
+   * @generated
+   */
+  GameSpriteState createGameSpriteState();
+
+  /**
+   * Returns a new object of class '<em>Game Body Property</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Game Body Property</em>'.
+   * @generated
+   */
+  GameBodyProperty createGameBodyProperty();
+
+  /**
+   * Returns a new object of class '<em>Game Rule</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Game Rule</em>'.
+   * @generated
+   */
+  GameRule createGameRule();
 
   /**
    * Returns a new object of class '<em>Game Sprite Animation</em>'.

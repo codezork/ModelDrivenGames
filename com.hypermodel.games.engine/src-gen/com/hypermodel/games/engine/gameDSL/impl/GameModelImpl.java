@@ -9,6 +9,7 @@ import com.hypermodel.games.engine.gameDSL.GamePackage;
 
 import java.util.Collection;
 
+import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.common.util.EList;
@@ -16,10 +17,13 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
+import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
+
+import org.eclipse.xtext.xtype.XImportSection;
 
 /**
  * <!-- begin-user-doc -->
@@ -29,6 +33,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * The following features are implemented:
  * </p>
  * <ul>
+ *   <li>{@link com.hypermodel.games.engine.gameDSL.impl.GameModelImpl#getImportSection <em>Import Section</em>}</li>
  *   <li>{@link com.hypermodel.games.engine.gameDSL.impl.GameModelImpl#getPackages <em>Packages</em>}</li>
  * </ul>
  *
@@ -36,6 +41,16 @@ import org.eclipse.emf.ecore.util.InternalEList;
  */
 public class GameModelImpl extends MinimalEObjectImpl.Container implements GameModel
 {
+  /**
+   * The cached value of the '{@link #getImportSection() <em>Import Section</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getImportSection()
+   * @generated
+   * @ordered
+   */
+  protected XImportSection importSection;
+
   /**
    * The cached value of the '{@link #getPackages() <em>Packages</em>}' containment reference list.
    * <!-- begin-user-doc -->
@@ -72,6 +87,54 @@ public class GameModelImpl extends MinimalEObjectImpl.Container implements GameM
    * <!-- end-user-doc -->
    * @generated
    */
+  public XImportSection getImportSection()
+  {
+    return importSection;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetImportSection(XImportSection newImportSection, NotificationChain msgs)
+  {
+    XImportSection oldImportSection = importSection;
+    importSection = newImportSection;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, GameDSLPackage.GAME_MODEL__IMPORT_SECTION, oldImportSection, newImportSection);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setImportSection(XImportSection newImportSection)
+  {
+    if (newImportSection != importSection)
+    {
+      NotificationChain msgs = null;
+      if (importSection != null)
+        msgs = ((InternalEObject)importSection).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - GameDSLPackage.GAME_MODEL__IMPORT_SECTION, null, msgs);
+      if (newImportSection != null)
+        msgs = ((InternalEObject)newImportSection).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - GameDSLPackage.GAME_MODEL__IMPORT_SECTION, null, msgs);
+      msgs = basicSetImportSection(newImportSection, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, GameDSLPackage.GAME_MODEL__IMPORT_SECTION, newImportSection, newImportSection));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EList<GamePackage> getPackages()
   {
     if (packages == null)
@@ -91,6 +154,8 @@ public class GameModelImpl extends MinimalEObjectImpl.Container implements GameM
   {
     switch (featureID)
     {
+      case GameDSLPackage.GAME_MODEL__IMPORT_SECTION:
+        return basicSetImportSection(null, msgs);
       case GameDSLPackage.GAME_MODEL__PACKAGES:
         return ((InternalEList<?>)getPackages()).basicRemove(otherEnd, msgs);
     }
@@ -107,6 +172,8 @@ public class GameModelImpl extends MinimalEObjectImpl.Container implements GameM
   {
     switch (featureID)
     {
+      case GameDSLPackage.GAME_MODEL__IMPORT_SECTION:
+        return getImportSection();
       case GameDSLPackage.GAME_MODEL__PACKAGES:
         return getPackages();
     }
@@ -124,6 +191,9 @@ public class GameModelImpl extends MinimalEObjectImpl.Container implements GameM
   {
     switch (featureID)
     {
+      case GameDSLPackage.GAME_MODEL__IMPORT_SECTION:
+        setImportSection((XImportSection)newValue);
+        return;
       case GameDSLPackage.GAME_MODEL__PACKAGES:
         getPackages().clear();
         getPackages().addAll((Collection<? extends GamePackage>)newValue);
@@ -142,6 +212,9 @@ public class GameModelImpl extends MinimalEObjectImpl.Container implements GameM
   {
     switch (featureID)
     {
+      case GameDSLPackage.GAME_MODEL__IMPORT_SECTION:
+        setImportSection((XImportSection)null);
+        return;
       case GameDSLPackage.GAME_MODEL__PACKAGES:
         getPackages().clear();
         return;
@@ -159,6 +232,8 @@ public class GameModelImpl extends MinimalEObjectImpl.Container implements GameM
   {
     switch (featureID)
     {
+      case GameDSLPackage.GAME_MODEL__IMPORT_SECTION:
+        return importSection != null;
       case GameDSLPackage.GAME_MODEL__PACKAGES:
         return packages != null && !packages.isEmpty();
     }

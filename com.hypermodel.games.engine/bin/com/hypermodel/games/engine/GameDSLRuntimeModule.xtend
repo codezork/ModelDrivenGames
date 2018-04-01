@@ -3,26 +3,20 @@
  */
 package com.hypermodel.games.engine
 
-import com.google.inject.Binder
-import com.hypermodel.games.engine.converter.QualifiedNameProvider
+import com.hypermodel.games.engine.converter.GameQualifiedNameProvider
+import com.hypermodel.games.engine.converter.GameValueConverter
 import com.hypermodel.games.engine.generator.GameDSLGenerator
-import com.hypermodel.games.engine.generator.GameOutputConfigurationProvider
 import com.hypermodel.games.engine.jvmmodel.GameDSLJvmModelInferrer
 import com.hypermodel.games.engine.scoping.GameDSLScopeProvider
 import com.hypermodel.games.engine.validation.GameDSLValidator
-import javax.inject.Singleton
-import org.eclipse.xtext.generator.IOutputConfigurationProvider
 import org.eclipse.xtext.naming.IQualifiedNameProvider
+import org.eclipse.xtext.resource.persistence.IResourceStorageFacade
+import org.eclipse.xtext.xbase.resource.BatchLinkableResourceStorageFacade
 
 /**
  * Use this class to register components to be used at runtime / without the Equinox extension registry.
  */
 class GameDSLRuntimeModule extends AbstractGameDSLRuntimeModule {
-	override configure(Binder binder) {
-	    super.configure(binder)
-	    binder.bind(IOutputConfigurationProvider).to(GameOutputConfigurationProvider).in(Singleton)
-	}
-
 	override bindIScopeProvider() {
 		return GameDSLScopeProvider
 	}
@@ -41,7 +35,14 @@ class GameDSLRuntimeModule extends AbstractGameDSLRuntimeModule {
 	
 	// contributed by org.eclipse.xtext.xtext.generator.grammarAccess.GrammarAccessFragment2
 	override Class<? extends IQualifiedNameProvider> bindIQualifiedNameProvider() {
-		return QualifiedNameProvider;
+		return GameQualifiedNameProvider;
 	}
-	
+
+	override bindIValueConverterService() {
+		return GameValueConverter
+	}
+
+	def Class<? extends IResourceStorageFacade> bindResourceStorageFacade() {
+		return BatchLinkableResourceStorageFacade
+	}
 }

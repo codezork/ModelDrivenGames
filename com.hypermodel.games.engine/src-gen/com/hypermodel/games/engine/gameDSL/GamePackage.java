@@ -17,7 +17,6 @@ import org.eclipse.emf.ecore.EObject;
  * </p>
  * <ul>
  *   <li>{@link com.hypermodel.games.engine.gameDSL.GamePackage#getName <em>Name</em>}</li>
- *   <li>{@link com.hypermodel.games.engine.gameDSL.GamePackage#getImports <em>Imports</em>}</li>
  *   <li>{@link com.hypermodel.games.engine.gameDSL.GamePackage#getConfig <em>Config</em>}</li>
  *   <li>{@link com.hypermodel.games.engine.gameDSL.GamePackage#getGames <em>Games</em>}</li>
  * </ul>
@@ -53,22 +52,6 @@ public interface GamePackage extends EObject
    * @generated
    */
   void setName(String value);
-
-  /**
-   * Returns the value of the '<em><b>Imports</b></em>' containment reference list.
-   * The list contents are of type {@link com.hypermodel.games.engine.gameDSL.GameImport}.
-   * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Imports</em>' containment reference list isn't clear,
-   * there really should be more of a description here...
-   * </p>
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Imports</em>' containment reference list.
-   * @see com.hypermodel.games.engine.gameDSL.GameDSLPackage#getGamePackage_Imports()
-   * @model containment="true"
-   * @generated
-   */
-  EList<GameImport> getImports();
 
   /**
    * Returns the value of the '<em><b>Config</b></em>' containment reference.

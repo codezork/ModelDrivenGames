@@ -3,32 +3,26 @@
  */
 package com.hypermodel.games.engine;
 
-import com.google.inject.Binder;
 import com.hypermodel.games.engine.AbstractGameDSLRuntimeModule;
-import com.hypermodel.games.engine.converter.QualifiedNameProvider;
+import com.hypermodel.games.engine.converter.GameQualifiedNameProvider;
+import com.hypermodel.games.engine.converter.GameValueConverter;
 import com.hypermodel.games.engine.generator.GameDSLGenerator;
-import com.hypermodel.games.engine.generator.GameOutputConfigurationProvider;
 import com.hypermodel.games.engine.jvmmodel.GameDSLJvmModelInferrer;
 import com.hypermodel.games.engine.scoping.GameDSLScopeProvider;
 import com.hypermodel.games.engine.validation.GameDSLValidator;
-import javax.inject.Singleton;
+import org.eclipse.xtext.conversion.IValueConverterService;
 import org.eclipse.xtext.generator.IGenerator;
-import org.eclipse.xtext.generator.IOutputConfigurationProvider;
 import org.eclipse.xtext.naming.IQualifiedNameProvider;
+import org.eclipse.xtext.resource.persistence.IResourceStorageFacade;
 import org.eclipse.xtext.scoping.IScopeProvider;
 import org.eclipse.xtext.xbase.jvmmodel.IJvmModelInferrer;
+import org.eclipse.xtext.xbase.resource.BatchLinkableResourceStorageFacade;
 
 /**
  * Use this class to register components to be used at runtime / without the Equinox extension registry.
  */
 @SuppressWarnings("all")
 public class GameDSLRuntimeModule extends AbstractGameDSLRuntimeModule {
-  @Override
-  public void configure(final Binder binder) {
-    super.configure(binder);
-    binder.<IOutputConfigurationProvider>bind(IOutputConfigurationProvider.class).to(GameOutputConfigurationProvider.class).in(Singleton.class);
-  }
-  
   @Override
   public Class<? extends IScopeProvider> bindIScopeProvider() {
     return GameDSLScopeProvider.class;
@@ -51,6 +45,15 @@ public class GameDSLRuntimeModule extends AbstractGameDSLRuntimeModule {
   
   @Override
   public Class<? extends IQualifiedNameProvider> bindIQualifiedNameProvider() {
-    return QualifiedNameProvider.class;
+    return GameQualifiedNameProvider.class;
+  }
+  
+  @Override
+  public Class<? extends IValueConverterService> bindIValueConverterService() {
+    return GameValueConverter.class;
+  }
+  
+  public Class<? extends IResourceStorageFacade> bindResourceStorageFacade() {
+    return BatchLinkableResourceStorageFacade.class;
   }
 }

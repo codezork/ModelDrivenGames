@@ -38,7 +38,7 @@ public enum GameScreenOrientation implements Enumerator
    * @generated
    * @ordered
    */
-  PORTRAIT(1, "portrait", "portait");
+  PORTRAIT(1, "portrait", "portrait");
 
   /**
    * The '<em><b>Landscape</b></em>' literal value.
@@ -64,7 +64,7 @@ public enum GameScreenOrientation implements Enumerator
    * </p>
    * <!-- end-user-doc -->
    * @see #PORTRAIT
-   * @model name="portrait" literal="portait"
+   * @model name="portrait"
    * @generated
    * @ordered
    */

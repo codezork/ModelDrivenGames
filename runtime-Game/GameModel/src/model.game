@@ -1,4 +1,7 @@
-package de.hypermodel.games { 
+import com.badlogic.gdx.physics.box2d.Body
+
+package com.hypermodel.games {
+	 
 	configuration { 
 		android { 
 			minAndroidVersion 9
@@ -14,15 +17,16 @@ package de.hypermodel.games {
 	}
 	game MarioBros width 400 height 208 title "MarioBros" pixelPerMeter 100 
 	scenes {
-		scene Hud isScore topPadding 10 {
+		scene Hud isScore topPadding 10 { 
 			display mario valueType number format "%06d" initialValue 0 addValue
 			display world valueType text format "%s" initialValue "1-1" setValue 
 			display time valueType number format "%03d" initialValue 300 deltaValue -1.0 eachTimePeriod 1.0  
 		}
 	}
 	regions {
-		region marioSmall width 16 height 16
+		region marioSmall width 16 height 16  
 		region goomba width 16 height 16
+		region marioGrowing width 16 height 16
 	}
 	screens {
 		screen PlayScreen 
@@ -30,19 +34,31 @@ package de.hypermodel.games {
 		scene Hud
 		sprites {
 			sprite Mario id 0 radius 6
-			animations {
-				animation marioRun duration 0.4 frames 4 startFrame 1 from marioSmall 
-			}
-			stands {
-				stand marioDestroyed whichFrame 3 from marioSmall
-				stand marioStand whichFrame 5 from marioSmall
-			}
-			startStand marioStand
-			startPosition x 32 y 32
+			startPositionX 32 startPositionY 32
 			sensorLength 4 sensorID 6 
 			interactsWith {
 				Mario
 			}
+			bodyProperties {
+				property growing
+				property big  
+			}
+			states {
+				state standSmall if isTrue notMoving() { 
+					return body.linearVelocity.y == 0 && body.linearVelocity.x == 0
+				} stand marioStand whichFrame 5 from marioSmall
+				state runningSmallLeft if isTrue runningLeft() {
+					return body.linearVelocity.y == 0 && body.linearVelocity.x < 0 && !isBig
+				} animation marioRunleft duration 0.4 frames 4 startFrame 1 from marioSmall
+				state growing if isTrue grows() {
+					return isGrowing
+				} animation marioGrowing duration 0.4 stands {
+					stand grow1 whichFrame 4 from marioGrowing
+					stand grow2 whichFrame 6 from marioGrowing 
+				} ifFinished setFalse growing 
+				 
+			}
+			initialState standSmall
 		}
 	}
 } 

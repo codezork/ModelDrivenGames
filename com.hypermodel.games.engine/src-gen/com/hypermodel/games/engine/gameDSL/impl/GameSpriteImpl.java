@@ -3,10 +3,10 @@
  */
 package com.hypermodel.games.engine.gameDSL.impl;
 
+import com.hypermodel.games.engine.gameDSL.GameBodyProperty;
 import com.hypermodel.games.engine.gameDSL.GameDSLPackage;
 import com.hypermodel.games.engine.gameDSL.GameSprite;
-import com.hypermodel.games.engine.gameDSL.GameSpriteAnimation;
-import com.hypermodel.games.engine.gameDSL.GameSpriteStand;
+import com.hypermodel.games.engine.gameDSL.GameSpriteState;
 
 import java.util.Collection;
 
@@ -36,15 +36,15 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link com.hypermodel.games.engine.gameDSL.impl.GameSpriteImpl#getName <em>Name</em>}</li>
  *   <li>{@link com.hypermodel.games.engine.gameDSL.impl.GameSpriteImpl#getId <em>Id</em>}</li>
  *   <li>{@link com.hypermodel.games.engine.gameDSL.impl.GameSpriteImpl#getRadius <em>Radius</em>}</li>
- *   <li>{@link com.hypermodel.games.engine.gameDSL.impl.GameSpriteImpl#getAnimations <em>Animations</em>}</li>
- *   <li>{@link com.hypermodel.games.engine.gameDSL.impl.GameSpriteImpl#getStands <em>Stands</em>}</li>
- *   <li>{@link com.hypermodel.games.engine.gameDSL.impl.GameSpriteImpl#getStart <em>Start</em>}</li>
  *   <li>{@link com.hypermodel.games.engine.gameDSL.impl.GameSpriteImpl#getX <em>X</em>}</li>
  *   <li>{@link com.hypermodel.games.engine.gameDSL.impl.GameSpriteImpl#getY <em>Y</em>}</li>
  *   <li>{@link com.hypermodel.games.engine.gameDSL.impl.GameSpriteImpl#isHasSensor <em>Has Sensor</em>}</li>
  *   <li>{@link com.hypermodel.games.engine.gameDSL.impl.GameSpriteImpl#getSensorLength <em>Sensor Length</em>}</li>
  *   <li>{@link com.hypermodel.games.engine.gameDSL.impl.GameSpriteImpl#getSensorID <em>Sensor ID</em>}</li>
  *   <li>{@link com.hypermodel.games.engine.gameDSL.impl.GameSpriteImpl#getInteractionSprites <em>Interaction Sprites</em>}</li>
+ *   <li>{@link com.hypermodel.games.engine.gameDSL.impl.GameSpriteImpl#getProperties <em>Properties</em>}</li>
+ *   <li>{@link com.hypermodel.games.engine.gameDSL.impl.GameSpriteImpl#getStates <em>States</em>}</li>
+ *   <li>{@link com.hypermodel.games.engine.gameDSL.impl.GameSpriteImpl#getInitialState <em>Initial State</em>}</li>
  * </ul>
  *
  * @generated
@@ -110,36 +110,6 @@ public class GameSpriteImpl extends MinimalEObjectImpl.Container implements Game
    * @ordered
    */
   protected int radius = RADIUS_EDEFAULT;
-
-  /**
-   * The cached value of the '{@link #getAnimations() <em>Animations</em>}' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getAnimations()
-   * @generated
-   * @ordered
-   */
-  protected EList<GameSpriteAnimation> animations;
-
-  /**
-   * The cached value of the '{@link #getStands() <em>Stands</em>}' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getStands()
-   * @generated
-   * @ordered
-   */
-  protected EList<GameSpriteStand> stands;
-
-  /**
-   * The cached value of the '{@link #getStart() <em>Start</em>}' reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getStart()
-   * @generated
-   * @ordered
-   */
-  protected GameSpriteStand start;
 
   /**
    * The default value of the '{@link #getX() <em>X</em>}' attribute.
@@ -252,6 +222,36 @@ public class GameSpriteImpl extends MinimalEObjectImpl.Container implements Game
   protected EList<GameSprite> interactionSprites;
 
   /**
+   * The cached value of the '{@link #getProperties() <em>Properties</em>}' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getProperties()
+   * @generated
+   * @ordered
+   */
+  protected EList<GameBodyProperty> properties;
+
+  /**
+   * The cached value of the '{@link #getStates() <em>States</em>}' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getStates()
+   * @generated
+   * @ordered
+   */
+  protected EList<GameSpriteState> states;
+
+  /**
+   * The cached value of the '{@link #getInitialState() <em>Initial State</em>}' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getInitialState()
+   * @generated
+   * @ordered
+   */
+  protected GameSpriteState initialState;
+
+  /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -339,77 +339,6 @@ public class GameSpriteImpl extends MinimalEObjectImpl.Container implements Game
     radius = newRadius;
     if (eNotificationRequired())
       eNotify(new ENotificationImpl(this, Notification.SET, GameDSLPackage.GAME_SPRITE__RADIUS, oldRadius, radius));
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EList<GameSpriteAnimation> getAnimations()
-  {
-    if (animations == null)
-    {
-      animations = new EObjectContainmentEList<GameSpriteAnimation>(GameSpriteAnimation.class, this, GameDSLPackage.GAME_SPRITE__ANIMATIONS);
-    }
-    return animations;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EList<GameSpriteStand> getStands()
-  {
-    if (stands == null)
-    {
-      stands = new EObjectContainmentEList<GameSpriteStand>(GameSpriteStand.class, this, GameDSLPackage.GAME_SPRITE__STANDS);
-    }
-    return stands;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public GameSpriteStand getStart()
-  {
-    if (start != null && start.eIsProxy())
-    {
-      InternalEObject oldStart = (InternalEObject)start;
-      start = (GameSpriteStand)eResolveProxy(oldStart);
-      if (start != oldStart)
-      {
-        if (eNotificationRequired())
-          eNotify(new ENotificationImpl(this, Notification.RESOLVE, GameDSLPackage.GAME_SPRITE__START, oldStart, start));
-      }
-    }
-    return start;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public GameSpriteStand basicGetStart()
-  {
-    return start;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void setStart(GameSpriteStand newStart)
-  {
-    GameSpriteStand oldStart = start;
-    start = newStart;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, GameDSLPackage.GAME_SPRITE__START, oldStart, start));
   }
 
   /**
@@ -546,15 +475,86 @@ public class GameSpriteImpl extends MinimalEObjectImpl.Container implements Game
    * <!-- end-user-doc -->
    * @generated
    */
+  public EList<GameBodyProperty> getProperties()
+  {
+    if (properties == null)
+    {
+      properties = new EObjectContainmentEList<GameBodyProperty>(GameBodyProperty.class, this, GameDSLPackage.GAME_SPRITE__PROPERTIES);
+    }
+    return properties;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EList<GameSpriteState> getStates()
+  {
+    if (states == null)
+    {
+      states = new EObjectContainmentEList<GameSpriteState>(GameSpriteState.class, this, GameDSLPackage.GAME_SPRITE__STATES);
+    }
+    return states;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public GameSpriteState getInitialState()
+  {
+    if (initialState != null && initialState.eIsProxy())
+    {
+      InternalEObject oldInitialState = (InternalEObject)initialState;
+      initialState = (GameSpriteState)eResolveProxy(oldInitialState);
+      if (initialState != oldInitialState)
+      {
+        if (eNotificationRequired())
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, GameDSLPackage.GAME_SPRITE__INITIAL_STATE, oldInitialState, initialState));
+      }
+    }
+    return initialState;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public GameSpriteState basicGetInitialState()
+  {
+    return initialState;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setInitialState(GameSpriteState newInitialState)
+  {
+    GameSpriteState oldInitialState = initialState;
+    initialState = newInitialState;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, GameDSLPackage.GAME_SPRITE__INITIAL_STATE, oldInitialState, initialState));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   @Override
   public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
   {
     switch (featureID)
     {
-      case GameDSLPackage.GAME_SPRITE__ANIMATIONS:
-        return ((InternalEList<?>)getAnimations()).basicRemove(otherEnd, msgs);
-      case GameDSLPackage.GAME_SPRITE__STANDS:
-        return ((InternalEList<?>)getStands()).basicRemove(otherEnd, msgs);
+      case GameDSLPackage.GAME_SPRITE__PROPERTIES:
+        return ((InternalEList<?>)getProperties()).basicRemove(otherEnd, msgs);
+      case GameDSLPackage.GAME_SPRITE__STATES:
+        return ((InternalEList<?>)getStates()).basicRemove(otherEnd, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -575,13 +575,6 @@ public class GameSpriteImpl extends MinimalEObjectImpl.Container implements Game
         return getId();
       case GameDSLPackage.GAME_SPRITE__RADIUS:
         return getRadius();
-      case GameDSLPackage.GAME_SPRITE__ANIMATIONS:
-        return getAnimations();
-      case GameDSLPackage.GAME_SPRITE__STANDS:
-        return getStands();
-      case GameDSLPackage.GAME_SPRITE__START:
-        if (resolve) return getStart();
-        return basicGetStart();
       case GameDSLPackage.GAME_SPRITE__X:
         return getX();
       case GameDSLPackage.GAME_SPRITE__Y:
@@ -594,6 +587,13 @@ public class GameSpriteImpl extends MinimalEObjectImpl.Container implements Game
         return getSensorID();
       case GameDSLPackage.GAME_SPRITE__INTERACTION_SPRITES:
         return getInteractionSprites();
+      case GameDSLPackage.GAME_SPRITE__PROPERTIES:
+        return getProperties();
+      case GameDSLPackage.GAME_SPRITE__STATES:
+        return getStates();
+      case GameDSLPackage.GAME_SPRITE__INITIAL_STATE:
+        if (resolve) return getInitialState();
+        return basicGetInitialState();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -618,17 +618,6 @@ public class GameSpriteImpl extends MinimalEObjectImpl.Container implements Game
       case GameDSLPackage.GAME_SPRITE__RADIUS:
         setRadius((Integer)newValue);
         return;
-      case GameDSLPackage.GAME_SPRITE__ANIMATIONS:
-        getAnimations().clear();
-        getAnimations().addAll((Collection<? extends GameSpriteAnimation>)newValue);
-        return;
-      case GameDSLPackage.GAME_SPRITE__STANDS:
-        getStands().clear();
-        getStands().addAll((Collection<? extends GameSpriteStand>)newValue);
-        return;
-      case GameDSLPackage.GAME_SPRITE__START:
-        setStart((GameSpriteStand)newValue);
-        return;
       case GameDSLPackage.GAME_SPRITE__X:
         setX((Integer)newValue);
         return;
@@ -647,6 +636,17 @@ public class GameSpriteImpl extends MinimalEObjectImpl.Container implements Game
       case GameDSLPackage.GAME_SPRITE__INTERACTION_SPRITES:
         getInteractionSprites().clear();
         getInteractionSprites().addAll((Collection<? extends GameSprite>)newValue);
+        return;
+      case GameDSLPackage.GAME_SPRITE__PROPERTIES:
+        getProperties().clear();
+        getProperties().addAll((Collection<? extends GameBodyProperty>)newValue);
+        return;
+      case GameDSLPackage.GAME_SPRITE__STATES:
+        getStates().clear();
+        getStates().addAll((Collection<? extends GameSpriteState>)newValue);
+        return;
+      case GameDSLPackage.GAME_SPRITE__INITIAL_STATE:
+        setInitialState((GameSpriteState)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -671,15 +671,6 @@ public class GameSpriteImpl extends MinimalEObjectImpl.Container implements Game
       case GameDSLPackage.GAME_SPRITE__RADIUS:
         setRadius(RADIUS_EDEFAULT);
         return;
-      case GameDSLPackage.GAME_SPRITE__ANIMATIONS:
-        getAnimations().clear();
-        return;
-      case GameDSLPackage.GAME_SPRITE__STANDS:
-        getStands().clear();
-        return;
-      case GameDSLPackage.GAME_SPRITE__START:
-        setStart((GameSpriteStand)null);
-        return;
       case GameDSLPackage.GAME_SPRITE__X:
         setX(X_EDEFAULT);
         return;
@@ -697,6 +688,15 @@ public class GameSpriteImpl extends MinimalEObjectImpl.Container implements Game
         return;
       case GameDSLPackage.GAME_SPRITE__INTERACTION_SPRITES:
         getInteractionSprites().clear();
+        return;
+      case GameDSLPackage.GAME_SPRITE__PROPERTIES:
+        getProperties().clear();
+        return;
+      case GameDSLPackage.GAME_SPRITE__STATES:
+        getStates().clear();
+        return;
+      case GameDSLPackage.GAME_SPRITE__INITIAL_STATE:
+        setInitialState((GameSpriteState)null);
         return;
     }
     super.eUnset(featureID);
@@ -718,12 +718,6 @@ public class GameSpriteImpl extends MinimalEObjectImpl.Container implements Game
         return id != ID_EDEFAULT;
       case GameDSLPackage.GAME_SPRITE__RADIUS:
         return radius != RADIUS_EDEFAULT;
-      case GameDSLPackage.GAME_SPRITE__ANIMATIONS:
-        return animations != null && !animations.isEmpty();
-      case GameDSLPackage.GAME_SPRITE__STANDS:
-        return stands != null && !stands.isEmpty();
-      case GameDSLPackage.GAME_SPRITE__START:
-        return start != null;
       case GameDSLPackage.GAME_SPRITE__X:
         return x != X_EDEFAULT;
       case GameDSLPackage.GAME_SPRITE__Y:
@@ -736,6 +730,12 @@ public class GameSpriteImpl extends MinimalEObjectImpl.Container implements Game
         return sensorID != SENSOR_ID_EDEFAULT;
       case GameDSLPackage.GAME_SPRITE__INTERACTION_SPRITES:
         return interactionSprites != null && !interactionSprites.isEmpty();
+      case GameDSLPackage.GAME_SPRITE__PROPERTIES:
+        return properties != null && !properties.isEmpty();
+      case GameDSLPackage.GAME_SPRITE__STATES:
+        return states != null && !states.isEmpty();
+      case GameDSLPackage.GAME_SPRITE__INITIAL_STATE:
+        return initialState != null;
     }
     return super.eIsSet(featureID);
   }

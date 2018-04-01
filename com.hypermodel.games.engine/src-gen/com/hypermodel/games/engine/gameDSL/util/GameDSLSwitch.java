@@ -80,13 +80,6 @@ public class GameDSLSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case GameDSLPackage.GAME_IMPORT:
-      {
-        GameImport gameImport = (GameImport)theEObject;
-        T result = caseGameImport(gameImport);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
       case GameDSLPackage.GAME_PACKAGE:
       {
         GamePackage gamePackage = (GamePackage)theEObject;
@@ -119,13 +112,6 @@ public class GameDSLSwitch<T> extends Switch<T>
       {
         GamePlatformConfigIOSMOE gamePlatformConfigIOSMOE = (GamePlatformConfigIOSMOE)theEObject;
         T result = caseGamePlatformConfigIOSMOE(gamePlatformConfigIOSMOE);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case GameDSLPackage.GAME_PLATFORM_CONFIGURATION:
-      {
-        GamePlatformConfiguration gamePlatformConfiguration = (GamePlatformConfiguration)theEObject;
-        T result = caseGamePlatformConfiguration(gamePlatformConfiguration);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -171,6 +157,27 @@ public class GameDSLSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
+      case GameDSLPackage.GAME_SPRITE_STATE:
+      {
+        GameSpriteState gameSpriteState = (GameSpriteState)theEObject;
+        T result = caseGameSpriteState(gameSpriteState);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case GameDSLPackage.GAME_BODY_PROPERTY:
+      {
+        GameBodyProperty gameBodyProperty = (GameBodyProperty)theEObject;
+        T result = caseGameBodyProperty(gameBodyProperty);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case GameDSLPackage.GAME_RULE:
+      {
+        GameRule gameRule = (GameRule)theEObject;
+        T result = caseGameRule(gameRule);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
       case GameDSLPackage.GAME_SPRITE_ANIMATION:
       {
         GameSpriteAnimation gameSpriteAnimation = (GameSpriteAnimation)theEObject;
@@ -208,22 +215,6 @@ public class GameDSLSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseGameModel(GameModel object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Game Import</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Game Import</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseGameImport(GameImport object)
   {
     return null;
   }
@@ -304,22 +295,6 @@ public class GameDSLSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseGamePlatformConfigIOSMOE(GamePlatformConfigIOSMOE object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Game Platform Configuration</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Game Platform Configuration</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseGamePlatformConfiguration(GamePlatformConfiguration object)
   {
     return null;
   }
@@ -416,6 +391,54 @@ public class GameDSLSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseGameSprite(GameSprite object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Game Sprite State</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Game Sprite State</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseGameSpriteState(GameSpriteState object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Game Body Property</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Game Body Property</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseGameBodyProperty(GameBodyProperty object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Game Rule</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Game Rule</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseGameRule(GameRule object)
   {
     return null;
   }
