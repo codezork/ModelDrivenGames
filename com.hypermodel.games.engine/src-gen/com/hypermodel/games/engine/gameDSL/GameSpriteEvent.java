@@ -3,29 +3,33 @@
  */
 package com.hypermodel.games.engine.gameDSL;
 
+import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.ecore.EObject;
+
+import org.eclipse.xtext.common.types.JvmFormalParameter;
 
 import org.eclipse.xtext.xbase.XExpression;
 
 /**
  * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Game Body Property</b></em>'.
+ * A representation of the model object '<em><b>Game Sprite Event</b></em>'.
  * <!-- end-user-doc -->
  *
  * <p>
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link com.hypermodel.games.engine.gameDSL.GameBodyProperty#getName <em>Name</em>}</li>
- *   <li>{@link com.hypermodel.games.engine.gameDSL.GameBodyProperty#isOnUpdate <em>On Update</em>}</li>
- *   <li>{@link com.hypermodel.games.engine.gameDSL.GameBodyProperty#getBody <em>Body</em>}</li>
+ *   <li>{@link com.hypermodel.games.engine.gameDSL.GameSpriteEvent#getName <em>Name</em>}</li>
+ *   <li>{@link com.hypermodel.games.engine.gameDSL.GameSpriteEvent#getParams <em>Params</em>}</li>
+ *   <li>{@link com.hypermodel.games.engine.gameDSL.GameSpriteEvent#getBody <em>Body</em>}</li>
  * </ul>
  *
- * @see com.hypermodel.games.engine.gameDSL.GameDSLPackage#getGameBodyProperty()
+ * @see com.hypermodel.games.engine.gameDSL.GameDSLPackage#getGameSpriteEvent()
  * @model
  * @generated
  */
-public interface GameBodyProperty extends EObject
+public interface GameSpriteEvent extends EObject
 {
   /**
    * Returns the value of the '<em><b>Name</b></em>' attribute.
@@ -37,14 +41,14 @@ public interface GameBodyProperty extends EObject
    * <!-- end-user-doc -->
    * @return the value of the '<em>Name</em>' attribute.
    * @see #setName(String)
-   * @see com.hypermodel.games.engine.gameDSL.GameDSLPackage#getGameBodyProperty_Name()
+   * @see com.hypermodel.games.engine.gameDSL.GameDSLPackage#getGameSpriteEvent_Name()
    * @model
    * @generated
    */
   String getName();
 
   /**
-   * Sets the value of the '{@link com.hypermodel.games.engine.gameDSL.GameBodyProperty#getName <em>Name</em>}' attribute.
+   * Sets the value of the '{@link com.hypermodel.games.engine.gameDSL.GameSpriteEvent#getName <em>Name</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @param value the new value of the '<em>Name</em>' attribute.
@@ -54,30 +58,20 @@ public interface GameBodyProperty extends EObject
   void setName(String value);
 
   /**
-   * Returns the value of the '<em><b>On Update</b></em>' attribute.
+   * Returns the value of the '<em><b>Params</b></em>' containment reference list.
+   * The list contents are of type {@link org.eclipse.xtext.common.types.JvmFormalParameter}.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>On Update</em>' attribute isn't clear,
+   * If the meaning of the '<em>Params</em>' containment reference list isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>On Update</em>' attribute.
-   * @see #setOnUpdate(boolean)
-   * @see com.hypermodel.games.engine.gameDSL.GameDSLPackage#getGameBodyProperty_OnUpdate()
-   * @model
+   * @return the value of the '<em>Params</em>' containment reference list.
+   * @see com.hypermodel.games.engine.gameDSL.GameDSLPackage#getGameSpriteEvent_Params()
+   * @model containment="true"
    * @generated
    */
-  boolean isOnUpdate();
-
-  /**
-   * Sets the value of the '{@link com.hypermodel.games.engine.gameDSL.GameBodyProperty#isOnUpdate <em>On Update</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>On Update</em>' attribute.
-   * @see #isOnUpdate()
-   * @generated
-   */
-  void setOnUpdate(boolean value);
+  EList<JvmFormalParameter> getParams();
 
   /**
    * Returns the value of the '<em><b>Body</b></em>' containment reference.
@@ -89,14 +83,14 @@ public interface GameBodyProperty extends EObject
    * <!-- end-user-doc -->
    * @return the value of the '<em>Body</em>' containment reference.
    * @see #setBody(XExpression)
-   * @see com.hypermodel.games.engine.gameDSL.GameDSLPackage#getGameBodyProperty_Body()
+   * @see com.hypermodel.games.engine.gameDSL.GameDSLPackage#getGameSpriteEvent_Body()
    * @model containment="true"
    * @generated
    */
   XExpression getBody();
 
   /**
-   * Sets the value of the '{@link com.hypermodel.games.engine.gameDSL.GameBodyProperty#getBody <em>Body</em>}' containment reference.
+   * Sets the value of the '{@link com.hypermodel.games.engine.gameDSL.GameSpriteEvent#getBody <em>Body</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @param value the new value of the '<em>Body</em>' containment reference.
@@ -105,4 +99,4 @@ public interface GameBodyProperty extends EObject
    */
   void setBody(XExpression value);
 
-} // GameBodyProperty
+} // GameSpriteEvent

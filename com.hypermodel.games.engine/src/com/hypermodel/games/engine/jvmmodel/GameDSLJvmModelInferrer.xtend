@@ -646,7 +646,9 @@ class GameDSLJvmModelInferrer extends AbstractModelInferrer {
 									current.append(
 									'''
 									for (int i = «it.animation.offset»; i < «it.animation.frames+it.animation.offset»; i++) {
-										frames.add(new TextureRegion(screen.getAtlas().findRegion("«it.animation.region.name»"), i * «it.animation.region.width», 0, «it.animation.region.width», «it.animation.region.height»));
+										TextureRegion «it.animation.name»TextureRegion = new TextureRegion(screen.getAtlas().findRegion("«it.animation.region.name»"), i * «it.animation.region.width», 0, «it.animation.region.width», «it.animation.region.height»);
+										«it.animation.name»TextureRegion.flip(«it.animation.region.flipX.booleanValue», «it.animation.region.flipY.booleanValue»); 
+										frames.add(«it.animation.name»TextureRegion);
 									}
 									''')
 								}
@@ -654,7 +656,9 @@ class GameDSLJvmModelInferrer extends AbstractModelInferrer {
 									it.animation.stands.forEach[
 										current.append(
 										'''
-										frames.add(new TextureRegion(screen.getAtlas().findRegion("«it.region.name»"), «it.offset*it.region.width», 0, «it.region.width», «it.region.height»));
+										TextureRegion «it.name»TextureRegion = new TextureRegion(screen.getAtlas().findRegion("«it.region.name»"), «it.offset*it.region.width», 0, «it.region.width», «it.region.height»);
+										«it.name»TextureRegion.flip(«it.region.flipX.booleanValue», «it.region.flipY.booleanValue»); 
+										frames.add(«it.name»TextureRegion);
 										''')
 									]
 									
@@ -672,6 +676,7 @@ class GameDSLJvmModelInferrer extends AbstractModelInferrer {
 								current.append(
 									'''
 									«it.stand.name» = new TextureRegion(screen.getAtlas().findRegion("«it.stand.region.name»"), «it.stand.offset*it.stand.region.width», 0, «it.stand.region.width», «it.stand.region.height»);
+									«it.stand.name».flip(«it.stand.region.flipX.booleanValue», «it.stand.region.flipY.booleanValue»); 
 									'''
 								)
 							}
@@ -680,28 +685,8 @@ class GameDSLJvmModelInferrer extends AbstractModelInferrer {
 						'''
 				        define«sprite.name.toFirstUpper»(new Vector2(«sprite.x» / ''')
 				        append(gameClass)
-				        append('''.PPM, «sprite.y» / «gameClass.simpleName».PPM), null);
+				        append('''.PPM, «sprite.y» / «gameClass.simpleName».PPM));
 				        ''')
-				        if(sprite.initialState.animation !== null) {
-				        	if(sprite.initialState.animation.hasFrames) {
-					        	append(
-					        	'''
-					        	setBounds(0, 0, «sprite.initialState.animation.region.width» / «gameClass.simpleName».PPM, «sprite.initialState.animation.region.height» / «gameClass.simpleName».PPM);
-					        	''')
-					        }
-				        	if(sprite.initialState.animation.hasStands) {
-					        	append(
-					        	'''
-					        	setBounds(0, 0, «sprite.initialState.animation.stands.get(0).region.width» / «gameClass.simpleName».PPM, «sprite.initialState.animation.stands.get(0).region.height» / «gameClass.simpleName».PPM);
-					        	''')
-					        }
-				        }
-				        if(sprite.initialState.stand !== null) {
-				        	append(
-				        	'''
-				        	setBounds(0, 0, «sprite.initialState.stand.region.width» / «gameClass.simpleName».PPM, «sprite.initialState.stand.region.height» / «gameClass.simpleName».PPM);
-				        	''')
-				        }
 						append("setRegion(getFrame(0.0f));\n");
 					]
 				]
@@ -731,6 +716,12 @@ class GameDSLJvmModelInferrer extends AbstractModelInferrer {
 		]
 		type.members += sprite.toField("currentState", "State".typeRef) [initializer=[append('''State.«sprite.initialState.name.toUpperCase»''')]]
 		type.members += sprite.toField("previousState", "State".typeRef) [initializer=[append('''State.«sprite.initialState.name.toUpperCase»''')]]
+		type.members += sprite.toField("positionOffsetX", float.typeRef) [initializer=[append('''0.0f''')]]
+		type.members += sprite.toField("positionOffsetY", float.typeRef) [initializer=[append('''0.0f''')]]
+		val fsprite = sprite
+		sprite.properties.forEach[
+			type.members += fsprite.toField('''«it.name»''', Boolean.typeRef)  [initializer=[append('''false''')]]
+		]
 	}
 
 	def void toOperations(JvmGenericType type, GameSprite sprite, JvmGenericType gameClass) {
@@ -750,7 +741,7 @@ class GameDSLJvmModelInferrer extends AbstractModelInferrer {
 				body = [
 					append(
 					'''
-					return ((HashMap<String,Boolean>)body.getUserData()).get("«prop.name»");
+					return «prop.name»;
 					''')
 				]
 			])
@@ -762,15 +753,37 @@ class GameDSLJvmModelInferrer extends AbstractModelInferrer {
 				body = [
 					append(
 					'''
-					((HashMap<String,Boolean>)body.getUserData()).put("«prop.name»", value);
+					«prop.name» = value;
 					''')
 				]
 			])
 		]
 		
+		sprite.properties.filter[it.onUpdate].forEach[
+			val prop = it
+			type.members += sprite.toMethod('''do«it.name.toFirstUpper»''', Void.TYPE.typeRef) [
+				documentation = prop.documentation
+				body = prop.body
+			]
+		]
+
 		type.members += sprite.toMethod("update", Void.TYPE.typeRef, [
 			parameters += sprite.toParameter("dt", float.typeRef)
 			body = [
+				append(
+				'''
+				setPosition(body.getPosition().x - getWidth() / 2, body.getPosition().y - getHeight() / 2);
+				setRegion(getFrame(dt));
+				''')
+				val current = it
+				sprite.properties.filter[it.onUpdate].forEach[
+					current.append(
+					'''
+					if(«it.name») {
+						do«it.name.toFirstUpper»();
+					}
+					''')
+				]
 			]
 		])
 		type.members += sprite.toMethod("getFrame", TextureRegion.typeRef, [
@@ -791,6 +804,8 @@ class GameDSLJvmModelInferrer extends AbstractModelInferrer {
 						«IF it.animation!==null && it.ifFinished»if(«it.animation.name».isAnimationFinished(stateTimer)) {
 							set«setFalse.name.toFirstUpper»(false);
 						}«ENDIF»
+						positionOffsetX = «IF it.animation!==null»«IF it.animation.hasFrames»«it.animation.region.offsetX»f«ELSEIF it.animation.hasStands»«it.animation.stands.get(0).region.offsetX»f«ENDIF»«ELSEIF it.stand!==null»«it.stand.region.offsetX»f«ENDIF»;
+						positionOffsetY = «IF it.animation!==null»«IF it.animation.hasFrames»«it.animation.region.offsetY»f«ELSEIF it.animation.hasStands»«it.animation.stands.get(0).region.offsetY»f«ENDIF»«ELSEIF it.stand!==null»«it.stand.region.offsetY»f«ENDIF»;
 						break;
 					''')
 				]		        	
@@ -819,9 +834,19 @@ class GameDSLJvmModelInferrer extends AbstractModelInferrer {
 				''')
 			]
 		])
+		type.members += sprite.toMethod('''redefine«sprite.name.toFirstUpper»''', Void.TYPE.typeRef, [
+			body = [
+				append(
+				'''
+				Vector2 position = body.getPosition();
+				world.destroyBody(body);
+				position.add(positionOffsetX / «gameClass.simpleName».PPM, positionOffsetY / «gameClass.simpleName».PPM); 
+				define«sprite.name.toFirstUpper»(position);
+				''')
+			]
+		])
 		type.members += sprite.toMethod('''define«sprite.name.toFirstUpper»''', Void.TYPE.typeRef, [
 			parameters += sprite.toParameter("position", Vector2.typeRef)
-			parameters += sprite.toParameter("shapePosition", Vector2.typeRef)
 			body = [
 				append(BodyDef)
 				append('''
@@ -830,19 +855,6 @@ class GameDSLJvmModelInferrer extends AbstractModelInferrer {
 				bdef.type = BodyDef.BodyType.DynamicBody;
 				body = world.createBody(bdef);
 				''')
-				append(HashMap)
-				append(
-				'''
-				<String,Boolean> userData = new HashMap<String,Boolean>();
-				''')
-				val current = it
-				sprite.properties.forEach[
-					current.append(
-					'''
-					userData.put("«it.name»",false);
-					''')
-				]
-				append("body.setUserData(userData);\n")
 				append(FixtureDef)
 				append(''' fdef = new FixtureDef();
 				''')
@@ -859,11 +871,8 @@ class GameDSLJvmModelInferrer extends AbstractModelInferrer {
 				append('''
 				fdef.filter.maskBits = «mask as int»;
 				fdef.shape = shape;
+				shape.setPosition(new Vector2(-positionOffsetX / «gameClass.simpleName».PPM, -positionOffsetY / «gameClass.simpleName».PPM));
 				body.createFixture(fdef).setUserData(this);
-				if(shapePosition != null) {
-					shape.setPosition(shapePosition);
-					body.createFixture(fdef).setUserData(this);
-				}
 				''')
 				if(sprite.hasSensor) {
 					append(EdgeShape)
@@ -877,7 +886,37 @@ class GameDSLJvmModelInferrer extends AbstractModelInferrer {
 					body.createFixture(fdef).setUserData(this);
 					''')
 				}
+		        if(sprite.initialState.animation !== null) {
+		        	if(sprite.initialState.animation.hasFrames) {
+			        	append(
+			        	'''
+			        	setBounds(position.x, position.y, «sprite.initialState.animation.region.width» / «gameClass.simpleName».PPM, «sprite.initialState.animation.region.height» / «gameClass.simpleName».PPM);
+			        	''')
+			        }
+		        	if(sprite.initialState.animation.hasStands) {
+			        	append(
+			        	'''
+			        	setBounds(position.x, position.y, «sprite.initialState.animation.stands.get(0).region.width» / «gameClass.simpleName».PPM, «sprite.initialState.animation.stands.get(0).region.height» / «gameClass.simpleName».PPM);
+			        	''')
+			        }
+		        }
+		        if(sprite.initialState.stand !== null) {
+		        	append(
+		        	'''
+		        	setBounds(position.x, position.y, «sprite.initialState.stand.region.width» / «gameClass.simpleName».PPM, «sprite.initialState.stand.region.height» / «gameClass.simpleName».PPM);
+		        	''')
+		        }
 			]
 		])
+		sprite.events.forEach[
+			val event = it
+			type.members += sprite.toMethod('''«it.name»''', Void.TYPE.typeRef, [
+				documentation = it.documentation
+				for (p : event.params) {
+					parameters += p.toParameter(p.name, p.parameterType)
+				}
+				body = event.body
+			])		
+		]
 	}
 }

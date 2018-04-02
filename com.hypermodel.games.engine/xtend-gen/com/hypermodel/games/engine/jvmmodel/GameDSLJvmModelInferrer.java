@@ -47,11 +47,11 @@ import com.hypermodel.games.engine.gameDSL.GameScene;
 import com.hypermodel.games.engine.gameDSL.GameScreen;
 import com.hypermodel.games.engine.gameDSL.GameSprite;
 import com.hypermodel.games.engine.gameDSL.GameSpriteAnimation;
+import com.hypermodel.games.engine.gameDSL.GameSpriteEvent;
 import com.hypermodel.games.engine.gameDSL.GameSpriteStand;
 import com.hypermodel.games.engine.gameDSL.GameSpriteState;
 import com.hypermodel.games.engine.generator.GameProperties;
 import java.util.Arrays;
-import java.util.HashMap;
 import java.util.function.Consumer;
 import javax.inject.Inject;
 import org.eclipse.emf.common.util.EList;
@@ -1231,9 +1231,12 @@ public class GameDSLJvmModelInferrer extends AbstractModelInferrer {
                 _builder_1.append("; i++) {");
                 _builder_1.newLineIfNotEmpty();
                 _builder_1.append("\t");
-                _builder_1.append("frames.add(new TextureRegion(screen.getAtlas().findRegion(\"");
-                String _name = it_3.getAnimation().getRegion().getName();
+                _builder_1.append("TextureRegion ");
+                String _name = it_3.getAnimation().getName();
                 _builder_1.append(_name, "\t");
+                _builder_1.append("TextureRegion = new TextureRegion(screen.getAtlas().findRegion(\"");
+                String _name_1 = it_3.getAnimation().getRegion().getName();
+                _builder_1.append(_name_1, "\t");
                 _builder_1.append("\"), i * ");
                 int _width = it_3.getAnimation().getRegion().getWidth();
                 _builder_1.append(_width, "\t");
@@ -1243,7 +1246,24 @@ public class GameDSLJvmModelInferrer extends AbstractModelInferrer {
                 _builder_1.append(", ");
                 int _height = it_3.getAnimation().getRegion().getHeight();
                 _builder_1.append(_height, "\t");
-                _builder_1.append("));");
+                _builder_1.append(");");
+                _builder_1.newLineIfNotEmpty();
+                _builder_1.append("\t");
+                String _name_2 = it_3.getAnimation().getName();
+                _builder_1.append(_name_2, "\t");
+                _builder_1.append("TextureRegion.flip(");
+                boolean _booleanValue = Boolean.valueOf(it_3.getAnimation().getRegion().isFlipX()).booleanValue();
+                _builder_1.append(_booleanValue, "\t");
+                _builder_1.append(", ");
+                boolean _booleanValue_1 = Boolean.valueOf(it_3.getAnimation().getRegion().isFlipY()).booleanValue();
+                _builder_1.append(_booleanValue_1, "\t");
+                _builder_1.append("); ");
+                _builder_1.newLineIfNotEmpty();
+                _builder_1.append("\t");
+                _builder_1.append("frames.add(");
+                String _name_3 = it_3.getAnimation().getName();
+                _builder_1.append(_name_3, "\t");
+                _builder_1.append("TextureRegion);");
                 _builder_1.newLineIfNotEmpty();
                 _builder_1.append("}");
                 _builder_1.newLine();
@@ -1253,9 +1273,12 @@ public class GameDSLJvmModelInferrer extends AbstractModelInferrer {
               if (_isHasStands) {
                 final Consumer<GameSpriteStand> _function_4 = (GameSpriteStand it_4) -> {
                   StringConcatenation _builder_2 = new StringConcatenation();
-                  _builder_2.append("frames.add(new TextureRegion(screen.getAtlas().findRegion(\"");
-                  String _name_1 = it_4.getRegion().getName();
-                  _builder_2.append(_name_1);
+                  _builder_2.append("TextureRegion ");
+                  String _name_4 = it_4.getName();
+                  _builder_2.append(_name_4);
+                  _builder_2.append("TextureRegion = new TextureRegion(screen.getAtlas().findRegion(\"");
+                  String _name_5 = it_4.getRegion().getName();
+                  _builder_2.append(_name_5);
                   _builder_2.append("\"), ");
                   int _offset_2 = it_4.getOffset();
                   int _width_2 = it_4.getRegion().getWidth();
@@ -1267,15 +1290,30 @@ public class GameDSLJvmModelInferrer extends AbstractModelInferrer {
                   _builder_2.append(", ");
                   int _height_1 = it_4.getRegion().getHeight();
                   _builder_2.append(_height_1);
-                  _builder_2.append("));");
+                  _builder_2.append(");");
+                  _builder_2.newLineIfNotEmpty();
+                  String _name_6 = it_4.getName();
+                  _builder_2.append(_name_6);
+                  _builder_2.append("TextureRegion.flip(");
+                  boolean _booleanValue_2 = Boolean.valueOf(it_4.getRegion().isFlipX()).booleanValue();
+                  _builder_2.append(_booleanValue_2);
+                  _builder_2.append(", ");
+                  boolean _booleanValue_3 = Boolean.valueOf(it_4.getRegion().isFlipY()).booleanValue();
+                  _builder_2.append(_booleanValue_3);
+                  _builder_2.append("); ");
+                  _builder_2.newLineIfNotEmpty();
+                  _builder_2.append("frames.add(");
+                  String _name_7 = it_4.getName();
+                  _builder_2.append(_name_7);
+                  _builder_2.append("TextureRegion);");
                   _builder_2.newLineIfNotEmpty();
                   current.append(_builder_2);
                 };
                 it_3.getAnimation().getStands().forEach(_function_4);
               }
               StringConcatenation _builder_2 = new StringConcatenation();
-              String _name_1 = it_3.getAnimation().getName();
-              _builder_2.append(_name_1);
+              String _name_4 = it_3.getAnimation().getName();
+              _builder_2.append(_name_4);
               _builder_2.append(" = new ");
               current.append(_builder_2);
               current.append(Animation.class);
@@ -1293,11 +1331,11 @@ public class GameDSLJvmModelInferrer extends AbstractModelInferrer {
             boolean _tripleNotEquals_1 = (_stand != null);
             if (_tripleNotEquals_1) {
               StringConcatenation _builder_4 = new StringConcatenation();
-              String _name_2 = it_3.getStand().getName();
-              _builder_4.append(_name_2);
+              String _name_5 = it_3.getStand().getName();
+              _builder_4.append(_name_5);
               _builder_4.append(" = new TextureRegion(screen.getAtlas().findRegion(\"");
-              String _name_3 = it_3.getStand().getRegion().getName();
-              _builder_4.append(_name_3);
+              String _name_6 = it_3.getStand().getRegion().getName();
+              _builder_4.append(_name_6);
               _builder_4.append("\"), ");
               int _offset_2 = it_3.getStand().getOffset();
               int _width_2 = it_3.getStand().getRegion().getWidth();
@@ -1310,6 +1348,16 @@ public class GameDSLJvmModelInferrer extends AbstractModelInferrer {
               int _height_1 = it_3.getStand().getRegion().getHeight();
               _builder_4.append(_height_1);
               _builder_4.append(");");
+              _builder_4.newLineIfNotEmpty();
+              String _name_7 = it_3.getStand().getName();
+              _builder_4.append(_name_7);
+              _builder_4.append(".flip(");
+              boolean _booleanValue_2 = Boolean.valueOf(it_3.getStand().getRegion().isFlipX()).booleanValue();
+              _builder_4.append(_booleanValue_2);
+              _builder_4.append(", ");
+              boolean _booleanValue_3 = Boolean.valueOf(it_3.getStand().getRegion().isFlipY()).booleanValue();
+              _builder_4.append(_booleanValue_3);
+              _builder_4.append("); ");
               _builder_4.newLineIfNotEmpty();
               current.append(_builder_4);
             }
@@ -1332,71 +1380,9 @@ public class GameDSLJvmModelInferrer extends AbstractModelInferrer {
           _builder_2.append(" / ");
           String _simpleName = gameClass.getSimpleName();
           _builder_2.append(_simpleName);
-          _builder_2.append(".PPM), null);");
+          _builder_2.append(".PPM));");
           _builder_2.newLineIfNotEmpty();
           it_2.append(_builder_2);
-          GameSpriteAnimation _animation = sprite.getInitialState().getAnimation();
-          boolean _tripleNotEquals = (_animation != null);
-          if (_tripleNotEquals) {
-            boolean _isHasFrames = sprite.getInitialState().getAnimation().isHasFrames();
-            if (_isHasFrames) {
-              StringConcatenation _builder_3 = new StringConcatenation();
-              _builder_3.append("setBounds(0, 0, ");
-              int _width = sprite.getInitialState().getAnimation().getRegion().getWidth();
-              _builder_3.append(_width);
-              _builder_3.append(" / ");
-              String _simpleName_1 = gameClass.getSimpleName();
-              _builder_3.append(_simpleName_1);
-              _builder_3.append(".PPM, ");
-              int _height = sprite.getInitialState().getAnimation().getRegion().getHeight();
-              _builder_3.append(_height);
-              _builder_3.append(" / ");
-              String _simpleName_2 = gameClass.getSimpleName();
-              _builder_3.append(_simpleName_2);
-              _builder_3.append(".PPM);");
-              _builder_3.newLineIfNotEmpty();
-              it_2.append(_builder_3);
-            }
-            boolean _isHasStands = sprite.getInitialState().getAnimation().isHasStands();
-            if (_isHasStands) {
-              StringConcatenation _builder_4 = new StringConcatenation();
-              _builder_4.append("setBounds(0, 0, ");
-              int _width_1 = sprite.getInitialState().getAnimation().getStands().get(0).getRegion().getWidth();
-              _builder_4.append(_width_1);
-              _builder_4.append(" / ");
-              String _simpleName_3 = gameClass.getSimpleName();
-              _builder_4.append(_simpleName_3);
-              _builder_4.append(".PPM, ");
-              int _height_1 = sprite.getInitialState().getAnimation().getStands().get(0).getRegion().getHeight();
-              _builder_4.append(_height_1);
-              _builder_4.append(" / ");
-              String _simpleName_4 = gameClass.getSimpleName();
-              _builder_4.append(_simpleName_4);
-              _builder_4.append(".PPM);");
-              _builder_4.newLineIfNotEmpty();
-              it_2.append(_builder_4);
-            }
-          }
-          GameSpriteStand _stand = sprite.getInitialState().getStand();
-          boolean _tripleNotEquals_1 = (_stand != null);
-          if (_tripleNotEquals_1) {
-            StringConcatenation _builder_5 = new StringConcatenation();
-            _builder_5.append("setBounds(0, 0, ");
-            int _width_2 = sprite.getInitialState().getStand().getRegion().getWidth();
-            _builder_5.append(_width_2);
-            _builder_5.append(" / ");
-            String _simpleName_5 = gameClass.getSimpleName();
-            _builder_5.append(_simpleName_5);
-            _builder_5.append(".PPM, ");
-            int _height_2 = sprite.getInitialState().getStand().getRegion().getHeight();
-            _builder_5.append(_height_2);
-            _builder_5.append(" / ");
-            String _simpleName_6 = gameClass.getSimpleName();
-            _builder_5.append(_simpleName_6);
-            _builder_5.append(".PPM);");
-            _builder_5.newLineIfNotEmpty();
-            it_2.append(_builder_5);
-          }
           it_2.append("setRegion(getFrame(0.0f));\n");
         };
         this._jvmTypesBuilder.setBody(it_1, _function_2);
@@ -1472,6 +1458,46 @@ public class GameDSLJvmModelInferrer extends AbstractModelInferrer {
     };
     JvmField _field_2 = this._jvmTypesBuilder.toField(sprite, "previousState", this._typeReferenceBuilder.typeRef("State"), _function_2);
     this._jvmTypesBuilder.<JvmField>operator_add(_members_5, _field_2);
+    EList<JvmMember> _members_6 = type.getMembers();
+    final Procedure1<JvmField> _function_3 = (JvmField it) -> {
+      final Procedure1<ITreeAppendable> _function_4 = (ITreeAppendable it_1) -> {
+        StringConcatenation _builder = new StringConcatenation();
+        _builder.append("0.0f");
+        it_1.append(_builder);
+      };
+      this._jvmTypesBuilder.setInitializer(it, _function_4);
+    };
+    JvmField _field_3 = this._jvmTypesBuilder.toField(sprite, "positionOffsetX", this._typeReferenceBuilder.typeRef(float.class), _function_3);
+    this._jvmTypesBuilder.<JvmField>operator_add(_members_6, _field_3);
+    EList<JvmMember> _members_7 = type.getMembers();
+    final Procedure1<JvmField> _function_4 = (JvmField it) -> {
+      final Procedure1<ITreeAppendable> _function_5 = (ITreeAppendable it_1) -> {
+        StringConcatenation _builder = new StringConcatenation();
+        _builder.append("0.0f");
+        it_1.append(_builder);
+      };
+      this._jvmTypesBuilder.setInitializer(it, _function_5);
+    };
+    JvmField _field_4 = this._jvmTypesBuilder.toField(sprite, "positionOffsetY", this._typeReferenceBuilder.typeRef(float.class), _function_4);
+    this._jvmTypesBuilder.<JvmField>operator_add(_members_7, _field_4);
+    final GameSprite fsprite = sprite;
+    final Consumer<GameBodyProperty> _function_5 = (GameBodyProperty it) -> {
+      EList<JvmMember> _members_8 = type.getMembers();
+      StringConcatenation _builder = new StringConcatenation();
+      String _name = it.getName();
+      _builder.append(_name);
+      final Procedure1<JvmField> _function_6 = (JvmField it_1) -> {
+        final Procedure1<ITreeAppendable> _function_7 = (ITreeAppendable it_2) -> {
+          StringConcatenation _builder_1 = new StringConcatenation();
+          _builder_1.append("false");
+          it_2.append(_builder_1);
+        };
+        this._jvmTypesBuilder.setInitializer(it_1, _function_7);
+      };
+      JvmField _field_5 = this._jvmTypesBuilder.toField(fsprite, _builder.toString(), this._typeReferenceBuilder.typeRef(Boolean.class), _function_6);
+      this._jvmTypesBuilder.<JvmField>operator_add(_members_8, _field_5);
+    };
+    sprite.getProperties().forEach(_function_5);
   }
   
   public void toOperations(final JvmGenericType type, final GameSprite sprite, final JvmGenericType gameClass) {
@@ -1506,10 +1532,10 @@ public class GameDSLJvmModelInferrer extends AbstractModelInferrer {
       final Procedure1<JvmOperation> _function_2 = (JvmOperation it_1) -> {
         final Procedure1<ITreeAppendable> _function_3 = (ITreeAppendable it_2) -> {
           StringConcatenation _builder_2 = new StringConcatenation();
-          _builder_2.append("return ((HashMap<String,Boolean>)body.getUserData()).get(\"");
+          _builder_2.append("return ");
           String _name = prop.getName();
           _builder_2.append(_name);
-          _builder_2.append("\");");
+          _builder_2.append(";");
           _builder_2.newLineIfNotEmpty();
           it_2.append(_builder_2);
         };
@@ -1532,10 +1558,9 @@ public class GameDSLJvmModelInferrer extends AbstractModelInferrer {
         this._jvmTypesBuilder.<JvmFormalParameter>operator_add(_parameters, _parameter);
         final Procedure1<ITreeAppendable> _function_4 = (ITreeAppendable it_2) -> {
           StringConcatenation _builder_2 = new StringConcatenation();
-          _builder_2.append("((HashMap<String,Boolean>)body.getUserData()).put(\"");
           String _name = prop.getName();
           _builder_2.append(_name);
-          _builder_2.append("\", value);");
+          _builder_2.append(" = value;");
           _builder_2.newLineIfNotEmpty();
           it_2.append(_builder_2);
         };
@@ -1545,23 +1570,69 @@ public class GameDSLJvmModelInferrer extends AbstractModelInferrer {
       this._jvmTypesBuilder.<JvmOperation>operator_add(_members_1, _method_1);
     };
     sprite.getProperties().forEach(_function_2);
+    final Function1<GameBodyProperty, Boolean> _function_3 = (GameBodyProperty it) -> {
+      return Boolean.valueOf(it.isOnUpdate());
+    };
+    final Consumer<GameBodyProperty> _function_4 = (GameBodyProperty it) -> {
+      final GameBodyProperty prop = it;
+      EList<JvmMember> _members_1 = type.getMembers();
+      StringConcatenation _builder_1 = new StringConcatenation();
+      _builder_1.append("do");
+      String _firstUpper_1 = StringExtensions.toFirstUpper(it.getName());
+      _builder_1.append(_firstUpper_1);
+      final Procedure1<JvmOperation> _function_5 = (JvmOperation it_1) -> {
+        this._jvmTypesBuilder.setDocumentation(it_1, this._jvmTypesBuilder.getDocumentation(prop));
+        this._jvmTypesBuilder.setBody(it_1, prop.getBody());
+      };
+      JvmOperation _method_1 = this._jvmTypesBuilder.toMethod(sprite, _builder_1.toString(), this._typeReferenceBuilder.typeRef(Void.TYPE), _function_5);
+      this._jvmTypesBuilder.<JvmOperation>operator_add(_members_1, _method_1);
+    };
+    IterableExtensions.<GameBodyProperty>filter(sprite.getProperties(), _function_3).forEach(_function_4);
     EList<JvmMember> _members_1 = type.getMembers();
-    final Procedure1<JvmOperation> _function_3 = (JvmOperation it) -> {
+    final Procedure1<JvmOperation> _function_5 = (JvmOperation it) -> {
       EList<JvmFormalParameter> _parameters = it.getParameters();
       JvmFormalParameter _parameter = this._jvmTypesBuilder.toParameter(sprite, "dt", this._typeReferenceBuilder.typeRef(float.class));
       this._jvmTypesBuilder.<JvmFormalParameter>operator_add(_parameters, _parameter);
-      final Procedure1<ITreeAppendable> _function_4 = (ITreeAppendable it_1) -> {
+      final Procedure1<ITreeAppendable> _function_6 = (ITreeAppendable it_1) -> {
+        StringConcatenation _builder_1 = new StringConcatenation();
+        _builder_1.append("setPosition(body.getPosition().x - getWidth() / 2, body.getPosition().y - getHeight() / 2);");
+        _builder_1.newLine();
+        _builder_1.append("setRegion(getFrame(dt));");
+        _builder_1.newLine();
+        it_1.append(_builder_1);
+        final ITreeAppendable current = it_1;
+        final Function1<GameBodyProperty, Boolean> _function_7 = (GameBodyProperty it_2) -> {
+          return Boolean.valueOf(it_2.isOnUpdate());
+        };
+        final Consumer<GameBodyProperty> _function_8 = (GameBodyProperty it_2) -> {
+          StringConcatenation _builder_2 = new StringConcatenation();
+          _builder_2.append("if(");
+          String _name = it_2.getName();
+          _builder_2.append(_name);
+          _builder_2.append(") {");
+          _builder_2.newLineIfNotEmpty();
+          _builder_2.append("\t");
+          _builder_2.append("do");
+          String _firstUpper_1 = StringExtensions.toFirstUpper(it_2.getName());
+          _builder_2.append(_firstUpper_1, "\t");
+          _builder_2.append("();");
+          _builder_2.newLineIfNotEmpty();
+          _builder_2.append("}");
+          _builder_2.newLine();
+          current.append(_builder_2);
+        };
+        IterableExtensions.<GameBodyProperty>filter(sprite.getProperties(), _function_7).forEach(_function_8);
       };
-      this._jvmTypesBuilder.setBody(it, _function_4);
+      this._jvmTypesBuilder.setBody(it, _function_6);
     };
-    JvmOperation _method_1 = this._jvmTypesBuilder.toMethod(sprite, "update", this._typeReferenceBuilder.typeRef(Void.TYPE), _function_3);
+    JvmOperation _method_1 = this._jvmTypesBuilder.toMethod(sprite, "update", this._typeReferenceBuilder.typeRef(Void.TYPE), _function_5);
     this._jvmTypesBuilder.<JvmOperation>operator_add(_members_1, _method_1);
     EList<JvmMember> _members_2 = type.getMembers();
-    final Procedure1<JvmOperation> _function_4 = (JvmOperation it) -> {
+    final Procedure1<JvmOperation> _function_6 = (JvmOperation it) -> {
       EList<JvmFormalParameter> _parameters = it.getParameters();
       JvmFormalParameter _parameter = this._jvmTypesBuilder.toParameter(sprite, "dt", this._typeReferenceBuilder.typeRef(float.class));
       this._jvmTypesBuilder.<JvmFormalParameter>operator_add(_parameters, _parameter);
-      final Procedure1<ITreeAppendable> _function_5 = (ITreeAppendable it_1) -> {
+      final Procedure1<ITreeAppendable> _function_7 = (ITreeAppendable it_1) -> {
         StringConcatenation _builder_1 = new StringConcatenation();
         _builder_1.append("currentState = getState();");
         _builder_1.newLine();
@@ -1571,7 +1642,7 @@ public class GameDSLJvmModelInferrer extends AbstractModelInferrer {
         _builder_1.newLine();
         it_1.append(_builder_1);
         final ITreeAppendable current = it_1;
-        final Consumer<GameSpriteState> _function_6 = (GameSpriteState it_2) -> {
+        final Consumer<GameSpriteState> _function_8 = (GameSpriteState it_2) -> {
           StringConcatenation _builder_2 = new StringConcatenation();
           _builder_2.append("case ");
           String _upperCase = it_2.getName().toUpperCase();
@@ -1619,11 +1690,77 @@ public class GameDSLJvmModelInferrer extends AbstractModelInferrer {
           }
           _builder_2.newLineIfNotEmpty();
           _builder_2.append("\t");
+          _builder_2.append("positionOffsetX = ");
+          {
+            GameSpriteAnimation _animation_1 = it_2.getAnimation();
+            boolean _tripleNotEquals_2 = (_animation_1 != null);
+            if (_tripleNotEquals_2) {
+              {
+                boolean _isHasFrames = it_2.getAnimation().isHasFrames();
+                if (_isHasFrames) {
+                  float _offsetX = it_2.getAnimation().getRegion().getOffsetX();
+                  _builder_2.append(_offsetX, "\t");
+                  _builder_2.append("f");
+                } else {
+                  boolean _isHasStands = it_2.getAnimation().isHasStands();
+                  if (_isHasStands) {
+                    float _offsetX_1 = it_2.getAnimation().getStands().get(0).getRegion().getOffsetX();
+                    _builder_2.append(_offsetX_1, "\t");
+                    _builder_2.append("f");
+                  }
+                }
+              }
+            } else {
+              GameSpriteStand _stand_1 = it_2.getStand();
+              boolean _tripleNotEquals_3 = (_stand_1 != null);
+              if (_tripleNotEquals_3) {
+                float _offsetX_2 = it_2.getStand().getRegion().getOffsetX();
+                _builder_2.append(_offsetX_2, "\t");
+                _builder_2.append("f");
+              }
+            }
+          }
+          _builder_2.append(";");
+          _builder_2.newLineIfNotEmpty();
+          _builder_2.append("\t");
+          _builder_2.append("positionOffsetY = ");
+          {
+            GameSpriteAnimation _animation_2 = it_2.getAnimation();
+            boolean _tripleNotEquals_4 = (_animation_2 != null);
+            if (_tripleNotEquals_4) {
+              {
+                boolean _isHasFrames_1 = it_2.getAnimation().isHasFrames();
+                if (_isHasFrames_1) {
+                  float _offsetY = it_2.getAnimation().getRegion().getOffsetY();
+                  _builder_2.append(_offsetY, "\t");
+                  _builder_2.append("f");
+                } else {
+                  boolean _isHasStands_1 = it_2.getAnimation().isHasStands();
+                  if (_isHasStands_1) {
+                    float _offsetY_1 = it_2.getAnimation().getStands().get(0).getRegion().getOffsetY();
+                    _builder_2.append(_offsetY_1, "\t");
+                    _builder_2.append("f");
+                  }
+                }
+              }
+            } else {
+              GameSpriteStand _stand_2 = it_2.getStand();
+              boolean _tripleNotEquals_5 = (_stand_2 != null);
+              if (_tripleNotEquals_5) {
+                float _offsetY_2 = it_2.getStand().getRegion().getOffsetY();
+                _builder_2.append(_offsetY_2, "\t");
+                _builder_2.append("f");
+              }
+            }
+          }
+          _builder_2.append(";");
+          _builder_2.newLineIfNotEmpty();
+          _builder_2.append("\t");
           _builder_2.append("break;");
           _builder_2.newLine();
           current.append(_builder_2);
         };
-        sprite.getStates().forEach(_function_6);
+        sprite.getStates().forEach(_function_8);
         StringConcatenation _builder_2 = new StringConcatenation();
         _builder_2.append("}");
         _builder_2.newLine();
@@ -1635,13 +1772,13 @@ public class GameDSLJvmModelInferrer extends AbstractModelInferrer {
         _builder_2.newLine();
         it_1.append(_builder_2);
       };
-      this._jvmTypesBuilder.setBody(it, _function_5);
+      this._jvmTypesBuilder.setBody(it, _function_7);
     };
-    JvmOperation _method_2 = this._jvmTypesBuilder.toMethod(sprite, "getFrame", this._typeReferenceBuilder.typeRef(TextureRegion.class), _function_4);
+    JvmOperation _method_2 = this._jvmTypesBuilder.toMethod(sprite, "getFrame", this._typeReferenceBuilder.typeRef(TextureRegion.class), _function_6);
     this._jvmTypesBuilder.<JvmOperation>operator_add(_members_2, _method_2);
     EList<JvmMember> _members_3 = type.getMembers();
-    final Procedure1<JvmOperation> _function_5 = (JvmOperation it) -> {
-      final Procedure1<ITreeAppendable> _function_6 = (ITreeAppendable it_1) -> {
+    final Procedure1<JvmOperation> _function_7 = (JvmOperation it) -> {
+      final Procedure1<ITreeAppendable> _function_8 = (ITreeAppendable it_1) -> {
         EList<GameSpriteState> _states_1 = sprite.getStates();
         for (final GameSpriteState state_1 : _states_1) {
           StringConcatenation _builder_1 = new StringConcatenation();
@@ -1668,52 +1805,63 @@ public class GameDSLJvmModelInferrer extends AbstractModelInferrer {
         _builder_2.newLineIfNotEmpty();
         it_1.append(_builder_2);
       };
-      this._jvmTypesBuilder.setBody(it, _function_6);
+      this._jvmTypesBuilder.setBody(it, _function_8);
     };
-    JvmOperation _method_3 = this._jvmTypesBuilder.toMethod(sprite, "getState", this._typeReferenceBuilder.typeRef("State"), _function_5);
+    JvmOperation _method_3 = this._jvmTypesBuilder.toMethod(sprite, "getState", this._typeReferenceBuilder.typeRef("State"), _function_7);
     this._jvmTypesBuilder.<JvmOperation>operator_add(_members_3, _method_3);
     EList<JvmMember> _members_4 = type.getMembers();
     StringConcatenation _builder_1 = new StringConcatenation();
-    _builder_1.append("define");
+    _builder_1.append("redefine");
     String _firstUpper_1 = StringExtensions.toFirstUpper(sprite.getName());
     _builder_1.append(_firstUpper_1);
-    final Procedure1<JvmOperation> _function_6 = (JvmOperation it) -> {
+    final Procedure1<JvmOperation> _function_8 = (JvmOperation it) -> {
+      final Procedure1<ITreeAppendable> _function_9 = (ITreeAppendable it_1) -> {
+        StringConcatenation _builder_2 = new StringConcatenation();
+        _builder_2.append("Vector2 position = body.getPosition();");
+        _builder_2.newLine();
+        _builder_2.append("world.destroyBody(body);");
+        _builder_2.newLine();
+        _builder_2.append("position.add(positionOffsetX / ");
+        String _simpleName = gameClass.getSimpleName();
+        _builder_2.append(_simpleName);
+        _builder_2.append(".PPM, positionOffsetY / ");
+        String _simpleName_1 = gameClass.getSimpleName();
+        _builder_2.append(_simpleName_1);
+        _builder_2.append(".PPM); ");
+        _builder_2.newLineIfNotEmpty();
+        _builder_2.append("define");
+        String _firstUpper_2 = StringExtensions.toFirstUpper(sprite.getName());
+        _builder_2.append(_firstUpper_2);
+        _builder_2.append("(position);");
+        _builder_2.newLineIfNotEmpty();
+        it_1.append(_builder_2);
+      };
+      this._jvmTypesBuilder.setBody(it, _function_9);
+    };
+    JvmOperation _method_4 = this._jvmTypesBuilder.toMethod(sprite, _builder_1.toString(), this._typeReferenceBuilder.typeRef(Void.TYPE), _function_8);
+    this._jvmTypesBuilder.<JvmOperation>operator_add(_members_4, _method_4);
+    EList<JvmMember> _members_5 = type.getMembers();
+    StringConcatenation _builder_2 = new StringConcatenation();
+    _builder_2.append("define");
+    String _firstUpper_2 = StringExtensions.toFirstUpper(sprite.getName());
+    _builder_2.append(_firstUpper_2);
+    final Procedure1<JvmOperation> _function_9 = (JvmOperation it) -> {
       EList<JvmFormalParameter> _parameters = it.getParameters();
       JvmFormalParameter _parameter = this._jvmTypesBuilder.toParameter(sprite, "position", this._typeReferenceBuilder.typeRef(Vector2.class));
       this._jvmTypesBuilder.<JvmFormalParameter>operator_add(_parameters, _parameter);
-      EList<JvmFormalParameter> _parameters_1 = it.getParameters();
-      JvmFormalParameter _parameter_1 = this._jvmTypesBuilder.toParameter(sprite, "shapePosition", this._typeReferenceBuilder.typeRef(Vector2.class));
-      this._jvmTypesBuilder.<JvmFormalParameter>operator_add(_parameters_1, _parameter_1);
-      final Procedure1<ITreeAppendable> _function_7 = (ITreeAppendable it_1) -> {
+      final Procedure1<ITreeAppendable> _function_10 = (ITreeAppendable it_1) -> {
         it_1.append(BodyDef.class);
-        StringConcatenation _builder_2 = new StringConcatenation();
-        _builder_2.append(" ");
-        _builder_2.append("bdef = new BodyDef();");
-        _builder_2.newLine();
-        _builder_2.append("bdef.position.set(position);");
-        _builder_2.newLine();
-        _builder_2.append("bdef.type = BodyDef.BodyType.DynamicBody;");
-        _builder_2.newLine();
-        _builder_2.append("body = world.createBody(bdef);");
-        _builder_2.newLine();
-        it_1.append(_builder_2);
-        it_1.append(HashMap.class);
         StringConcatenation _builder_3 = new StringConcatenation();
-        _builder_3.append("<String,Boolean> userData = new HashMap<String,Boolean>();");
+        _builder_3.append(" ");
+        _builder_3.append("bdef = new BodyDef();");
+        _builder_3.newLine();
+        _builder_3.append("bdef.position.set(position);");
+        _builder_3.newLine();
+        _builder_3.append("bdef.type = BodyDef.BodyType.DynamicBody;");
+        _builder_3.newLine();
+        _builder_3.append("body = world.createBody(bdef);");
         _builder_3.newLine();
         it_1.append(_builder_3);
-        final ITreeAppendable current = it_1;
-        final Consumer<GameBodyProperty> _function_8 = (GameBodyProperty it_2) -> {
-          StringConcatenation _builder_4 = new StringConcatenation();
-          _builder_4.append("userData.put(\"");
-          String _name = it_2.getName();
-          _builder_4.append(_name);
-          _builder_4.append("\",false);");
-          _builder_4.newLineIfNotEmpty();
-          current.append(_builder_4);
-        };
-        sprite.getProperties().forEach(_function_8);
-        it_1.append("body.setUserData(userData);\n");
         it_1.append(FixtureDef.class);
         StringConcatenation _builder_4 = new StringConcatenation();
         _builder_4.append(" ");
@@ -1755,17 +1903,15 @@ public class GameDSLJvmModelInferrer extends AbstractModelInferrer {
         _builder_6.newLineIfNotEmpty();
         _builder_6.append("fdef.shape = shape;");
         _builder_6.newLine();
+        _builder_6.append("shape.setPosition(new Vector2(-positionOffsetX / ");
+        String _simpleName_1 = gameClass.getSimpleName();
+        _builder_6.append(_simpleName_1);
+        _builder_6.append(".PPM, -positionOffsetY / ");
+        String _simpleName_2 = gameClass.getSimpleName();
+        _builder_6.append(_simpleName_2);
+        _builder_6.append(".PPM));");
+        _builder_6.newLineIfNotEmpty();
         _builder_6.append("body.createFixture(fdef).setUserData(this);");
-        _builder_6.newLine();
-        _builder_6.append("if(shapePosition != null) {");
-        _builder_6.newLine();
-        _builder_6.append("\t");
-        _builder_6.append("shape.setPosition(shapePosition);");
-        _builder_6.newLine();
-        _builder_6.append("\t");
-        _builder_6.append("body.createFixture(fdef).setUserData(this);");
-        _builder_6.newLine();
-        _builder_6.append("}");
         _builder_6.newLine();
         it_1.append(_builder_6);
         boolean _isHasSensor = sprite.isHasSensor();
@@ -1779,26 +1925,26 @@ public class GameDSLJvmModelInferrer extends AbstractModelInferrer {
           int _sensorLength = sprite.getSensorLength();
           _builder_7.append(_sensorLength);
           _builder_7.append(" / 2 / ");
-          String _simpleName_1 = gameClass.getSimpleName();
-          _builder_7.append(_simpleName_1);
+          String _simpleName_3 = gameClass.getSimpleName();
+          _builder_7.append(_simpleName_3);
           _builder_7.append(".PPM, ");
           int _radius_1 = sprite.getRadius();
           _builder_7.append(_radius_1);
           _builder_7.append(" / ");
-          String _simpleName_2 = gameClass.getSimpleName();
-          _builder_7.append(_simpleName_2);
+          String _simpleName_4 = gameClass.getSimpleName();
+          _builder_7.append(_simpleName_4);
           _builder_7.append(".PPM), new Vector2(");
           int _sensorLength_1 = sprite.getSensorLength();
           _builder_7.append(_sensorLength_1);
           _builder_7.append(" / 2 / ");
-          String _simpleName_3 = gameClass.getSimpleName();
-          _builder_7.append(_simpleName_3);
+          String _simpleName_5 = gameClass.getSimpleName();
+          _builder_7.append(_simpleName_5);
           _builder_7.append(".PPM, ");
           int _radius_2 = sprite.getRadius();
           _builder_7.append(_radius_2);
           _builder_7.append(" / ");
-          String _simpleName_4 = gameClass.getSimpleName();
-          _builder_7.append(_simpleName_4);
+          String _simpleName_6 = gameClass.getSimpleName();
+          _builder_7.append(_simpleName_6);
           _builder_7.append(".PPM));");
           _builder_7.newLineIfNotEmpty();
           _builder_7.append("fdef.filter.categoryBits = ");
@@ -1815,11 +1961,93 @@ public class GameDSLJvmModelInferrer extends AbstractModelInferrer {
           _builder_7.newLine();
           it_1.append(_builder_7);
         }
+        GameSpriteAnimation _animation = sprite.getInitialState().getAnimation();
+        boolean _tripleNotEquals = (_animation != null);
+        if (_tripleNotEquals) {
+          boolean _isHasFrames = sprite.getInitialState().getAnimation().isHasFrames();
+          if (_isHasFrames) {
+            StringConcatenation _builder_8 = new StringConcatenation();
+            _builder_8.append("setBounds(position.x, position.y, ");
+            int _width = sprite.getInitialState().getAnimation().getRegion().getWidth();
+            _builder_8.append(_width);
+            _builder_8.append(" / ");
+            String _simpleName_7 = gameClass.getSimpleName();
+            _builder_8.append(_simpleName_7);
+            _builder_8.append(".PPM, ");
+            int _height = sprite.getInitialState().getAnimation().getRegion().getHeight();
+            _builder_8.append(_height);
+            _builder_8.append(" / ");
+            String _simpleName_8 = gameClass.getSimpleName();
+            _builder_8.append(_simpleName_8);
+            _builder_8.append(".PPM);");
+            _builder_8.newLineIfNotEmpty();
+            it_1.append(_builder_8);
+          }
+          boolean _isHasStands = sprite.getInitialState().getAnimation().isHasStands();
+          if (_isHasStands) {
+            StringConcatenation _builder_9 = new StringConcatenation();
+            _builder_9.append("setBounds(position.x, position.y, ");
+            int _width_1 = sprite.getInitialState().getAnimation().getStands().get(0).getRegion().getWidth();
+            _builder_9.append(_width_1);
+            _builder_9.append(" / ");
+            String _simpleName_9 = gameClass.getSimpleName();
+            _builder_9.append(_simpleName_9);
+            _builder_9.append(".PPM, ");
+            int _height_1 = sprite.getInitialState().getAnimation().getStands().get(0).getRegion().getHeight();
+            _builder_9.append(_height_1);
+            _builder_9.append(" / ");
+            String _simpleName_10 = gameClass.getSimpleName();
+            _builder_9.append(_simpleName_10);
+            _builder_9.append(".PPM);");
+            _builder_9.newLineIfNotEmpty();
+            it_1.append(_builder_9);
+          }
+        }
+        GameSpriteStand _stand = sprite.getInitialState().getStand();
+        boolean _tripleNotEquals_1 = (_stand != null);
+        if (_tripleNotEquals_1) {
+          StringConcatenation _builder_10 = new StringConcatenation();
+          _builder_10.append("setBounds(position.x, position.y, ");
+          int _width_2 = sprite.getInitialState().getStand().getRegion().getWidth();
+          _builder_10.append(_width_2);
+          _builder_10.append(" / ");
+          String _simpleName_11 = gameClass.getSimpleName();
+          _builder_10.append(_simpleName_11);
+          _builder_10.append(".PPM, ");
+          int _height_2 = sprite.getInitialState().getStand().getRegion().getHeight();
+          _builder_10.append(_height_2);
+          _builder_10.append(" / ");
+          String _simpleName_12 = gameClass.getSimpleName();
+          _builder_10.append(_simpleName_12);
+          _builder_10.append(".PPM);");
+          _builder_10.newLineIfNotEmpty();
+          it_1.append(_builder_10);
+        }
       };
-      this._jvmTypesBuilder.setBody(it, _function_7);
+      this._jvmTypesBuilder.setBody(it, _function_10);
     };
-    JvmOperation _method_4 = this._jvmTypesBuilder.toMethod(sprite, _builder_1.toString(), this._typeReferenceBuilder.typeRef(Void.TYPE), _function_6);
-    this._jvmTypesBuilder.<JvmOperation>operator_add(_members_4, _method_4);
+    JvmOperation _method_5 = this._jvmTypesBuilder.toMethod(sprite, _builder_2.toString(), this._typeReferenceBuilder.typeRef(Void.TYPE), _function_9);
+    this._jvmTypesBuilder.<JvmOperation>operator_add(_members_5, _method_5);
+    final Consumer<GameSpriteEvent> _function_10 = (GameSpriteEvent it) -> {
+      final GameSpriteEvent event = it;
+      EList<JvmMember> _members_6 = type.getMembers();
+      StringConcatenation _builder_3 = new StringConcatenation();
+      String _name = it.getName();
+      _builder_3.append(_name);
+      final Procedure1<JvmOperation> _function_11 = (JvmOperation it_1) -> {
+        this._jvmTypesBuilder.setDocumentation(it_1, this._jvmTypesBuilder.getDocumentation(it_1));
+        EList<JvmFormalParameter> _params = event.getParams();
+        for (final JvmFormalParameter p : _params) {
+          EList<JvmFormalParameter> _parameters = it_1.getParameters();
+          JvmFormalParameter _parameter = this._jvmTypesBuilder.toParameter(p, p.getName(), p.getParameterType());
+          this._jvmTypesBuilder.<JvmFormalParameter>operator_add(_parameters, _parameter);
+        }
+        this._jvmTypesBuilder.setBody(it_1, event.getBody());
+      };
+      JvmOperation _method_6 = this._jvmTypesBuilder.toMethod(sprite, _builder_3.toString(), this._typeReferenceBuilder.typeRef(Void.TYPE), _function_11);
+      this._jvmTypesBuilder.<JvmOperation>operator_add(_members_6, _method_6);
+    };
+    sprite.getEvents().forEach(_function_10);
   }
   
   public void infer(final EObject gamePkg, final IJvmDeclaredTypeAcceptor acceptor, final boolean isPreIndexingPhase) {

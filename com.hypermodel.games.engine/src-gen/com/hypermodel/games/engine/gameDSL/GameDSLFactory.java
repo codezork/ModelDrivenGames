@@ -186,6 +186,15 @@ public interface GameDSLFactory extends EFactory
   GameTextureRegion createGameTextureRegion();
 
   /**
+   * Returns a new object of class '<em>Game Sprite Event</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Game Sprite Event</em>'.
+   * @generated
+   */
+  GameSpriteEvent createGameSpriteEvent();
+
+  /**
    * Returns the package supported by this factory.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->

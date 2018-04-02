@@ -24,6 +24,10 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  *   <li>{@link com.hypermodel.games.engine.gameDSL.impl.GameTextureRegionImpl#getName <em>Name</em>}</li>
  *   <li>{@link com.hypermodel.games.engine.gameDSL.impl.GameTextureRegionImpl#getWidth <em>Width</em>}</li>
  *   <li>{@link com.hypermodel.games.engine.gameDSL.impl.GameTextureRegionImpl#getHeight <em>Height</em>}</li>
+ *   <li>{@link com.hypermodel.games.engine.gameDSL.impl.GameTextureRegionImpl#getOffsetX <em>Offset X</em>}</li>
+ *   <li>{@link com.hypermodel.games.engine.gameDSL.impl.GameTextureRegionImpl#getOffsetY <em>Offset Y</em>}</li>
+ *   <li>{@link com.hypermodel.games.engine.gameDSL.impl.GameTextureRegionImpl#isFlipX <em>Flip X</em>}</li>
+ *   <li>{@link com.hypermodel.games.engine.gameDSL.impl.GameTextureRegionImpl#isFlipY <em>Flip Y</em>}</li>
  * </ul>
  *
  * @generated
@@ -89,6 +93,86 @@ public class GameTextureRegionImpl extends MinimalEObjectImpl.Container implemen
    * @ordered
    */
   protected int height = HEIGHT_EDEFAULT;
+
+  /**
+   * The default value of the '{@link #getOffsetX() <em>Offset X</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getOffsetX()
+   * @generated
+   * @ordered
+   */
+  protected static final float OFFSET_X_EDEFAULT = 0.0F;
+
+  /**
+   * The cached value of the '{@link #getOffsetX() <em>Offset X</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getOffsetX()
+   * @generated
+   * @ordered
+   */
+  protected float offsetX = OFFSET_X_EDEFAULT;
+
+  /**
+   * The default value of the '{@link #getOffsetY() <em>Offset Y</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getOffsetY()
+   * @generated
+   * @ordered
+   */
+  protected static final float OFFSET_Y_EDEFAULT = 0.0F;
+
+  /**
+   * The cached value of the '{@link #getOffsetY() <em>Offset Y</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getOffsetY()
+   * @generated
+   * @ordered
+   */
+  protected float offsetY = OFFSET_Y_EDEFAULT;
+
+  /**
+   * The default value of the '{@link #isFlipX() <em>Flip X</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #isFlipX()
+   * @generated
+   * @ordered
+   */
+  protected static final boolean FLIP_X_EDEFAULT = false;
+
+  /**
+   * The cached value of the '{@link #isFlipX() <em>Flip X</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #isFlipX()
+   * @generated
+   * @ordered
+   */
+  protected boolean flipX = FLIP_X_EDEFAULT;
+
+  /**
+   * The default value of the '{@link #isFlipY() <em>Flip Y</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #isFlipY()
+   * @generated
+   * @ordered
+   */
+  protected static final boolean FLIP_Y_EDEFAULT = false;
+
+  /**
+   * The cached value of the '{@link #isFlipY() <em>Flip Y</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #isFlipY()
+   * @generated
+   * @ordered
+   */
+  protected boolean flipY = FLIP_Y_EDEFAULT;
 
   /**
    * <!-- begin-user-doc -->
@@ -185,6 +269,98 @@ public class GameTextureRegionImpl extends MinimalEObjectImpl.Container implemen
    * <!-- end-user-doc -->
    * @generated
    */
+  public float getOffsetX()
+  {
+    return offsetX;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setOffsetX(float newOffsetX)
+  {
+    float oldOffsetX = offsetX;
+    offsetX = newOffsetX;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, GameDSLPackage.GAME_TEXTURE_REGION__OFFSET_X, oldOffsetX, offsetX));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public float getOffsetY()
+  {
+    return offsetY;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setOffsetY(float newOffsetY)
+  {
+    float oldOffsetY = offsetY;
+    offsetY = newOffsetY;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, GameDSLPackage.GAME_TEXTURE_REGION__OFFSET_Y, oldOffsetY, offsetY));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public boolean isFlipX()
+  {
+    return flipX;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setFlipX(boolean newFlipX)
+  {
+    boolean oldFlipX = flipX;
+    flipX = newFlipX;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, GameDSLPackage.GAME_TEXTURE_REGION__FLIP_X, oldFlipX, flipX));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public boolean isFlipY()
+  {
+    return flipY;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setFlipY(boolean newFlipY)
+  {
+    boolean oldFlipY = flipY;
+    flipY = newFlipY;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, GameDSLPackage.GAME_TEXTURE_REGION__FLIP_Y, oldFlipY, flipY));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   @Override
   public Object eGet(int featureID, boolean resolve, boolean coreType)
   {
@@ -196,6 +372,14 @@ public class GameTextureRegionImpl extends MinimalEObjectImpl.Container implemen
         return getWidth();
       case GameDSLPackage.GAME_TEXTURE_REGION__HEIGHT:
         return getHeight();
+      case GameDSLPackage.GAME_TEXTURE_REGION__OFFSET_X:
+        return getOffsetX();
+      case GameDSLPackage.GAME_TEXTURE_REGION__OFFSET_Y:
+        return getOffsetY();
+      case GameDSLPackage.GAME_TEXTURE_REGION__FLIP_X:
+        return isFlipX();
+      case GameDSLPackage.GAME_TEXTURE_REGION__FLIP_Y:
+        return isFlipY();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -218,6 +402,18 @@ public class GameTextureRegionImpl extends MinimalEObjectImpl.Container implemen
         return;
       case GameDSLPackage.GAME_TEXTURE_REGION__HEIGHT:
         setHeight((Integer)newValue);
+        return;
+      case GameDSLPackage.GAME_TEXTURE_REGION__OFFSET_X:
+        setOffsetX((Float)newValue);
+        return;
+      case GameDSLPackage.GAME_TEXTURE_REGION__OFFSET_Y:
+        setOffsetY((Float)newValue);
+        return;
+      case GameDSLPackage.GAME_TEXTURE_REGION__FLIP_X:
+        setFlipX((Boolean)newValue);
+        return;
+      case GameDSLPackage.GAME_TEXTURE_REGION__FLIP_Y:
+        setFlipY((Boolean)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -242,6 +438,18 @@ public class GameTextureRegionImpl extends MinimalEObjectImpl.Container implemen
       case GameDSLPackage.GAME_TEXTURE_REGION__HEIGHT:
         setHeight(HEIGHT_EDEFAULT);
         return;
+      case GameDSLPackage.GAME_TEXTURE_REGION__OFFSET_X:
+        setOffsetX(OFFSET_X_EDEFAULT);
+        return;
+      case GameDSLPackage.GAME_TEXTURE_REGION__OFFSET_Y:
+        setOffsetY(OFFSET_Y_EDEFAULT);
+        return;
+      case GameDSLPackage.GAME_TEXTURE_REGION__FLIP_X:
+        setFlipX(FLIP_X_EDEFAULT);
+        return;
+      case GameDSLPackage.GAME_TEXTURE_REGION__FLIP_Y:
+        setFlipY(FLIP_Y_EDEFAULT);
+        return;
     }
     super.eUnset(featureID);
   }
@@ -262,6 +470,14 @@ public class GameTextureRegionImpl extends MinimalEObjectImpl.Container implemen
         return width != WIDTH_EDEFAULT;
       case GameDSLPackage.GAME_TEXTURE_REGION__HEIGHT:
         return height != HEIGHT_EDEFAULT;
+      case GameDSLPackage.GAME_TEXTURE_REGION__OFFSET_X:
+        return offsetX != OFFSET_X_EDEFAULT;
+      case GameDSLPackage.GAME_TEXTURE_REGION__OFFSET_Y:
+        return offsetY != OFFSET_Y_EDEFAULT;
+      case GameDSLPackage.GAME_TEXTURE_REGION__FLIP_X:
+        return flipX != FLIP_X_EDEFAULT;
+      case GameDSLPackage.GAME_TEXTURE_REGION__FLIP_Y:
+        return flipY != FLIP_Y_EDEFAULT;
     }
     return super.eIsSet(featureID);
   }
@@ -283,6 +499,14 @@ public class GameTextureRegionImpl extends MinimalEObjectImpl.Container implemen
     result.append(width);
     result.append(", height: ");
     result.append(height);
+    result.append(", offsetX: ");
+    result.append(offsetX);
+    result.append(", offsetY: ");
+    result.append(offsetY);
+    result.append(", flipX: ");
+    result.append(flipX);
+    result.append(", flipY: ");
+    result.append(flipY);
     result.append(')');
     return result.toString();
   }

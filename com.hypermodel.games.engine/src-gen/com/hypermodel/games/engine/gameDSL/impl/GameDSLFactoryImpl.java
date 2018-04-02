@@ -84,6 +84,7 @@ public class GameDSLFactoryImpl extends EFactoryImpl implements GameDSLFactory
       case GameDSLPackage.GAME_SPRITE_ANIMATION: return createGameSpriteAnimation();
       case GameDSLPackage.GAME_SPRITE_STAND: return createGameSpriteStand();
       case GameDSLPackage.GAME_TEXTURE_REGION: return createGameTextureRegion();
+      case GameDSLPackage.GAME_SPRITE_EVENT: return createGameSpriteEvent();
       default:
         throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
     }
@@ -323,6 +324,17 @@ public class GameDSLFactoryImpl extends EFactoryImpl implements GameDSLFactory
   {
     GameTextureRegionImpl gameTextureRegion = new GameTextureRegionImpl();
     return gameTextureRegion;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public GameSpriteEvent createGameSpriteEvent()
+  {
+    GameSpriteEventImpl gameSpriteEvent = new GameSpriteEventImpl();
+    return gameSpriteEvent;
   }
 
   /**

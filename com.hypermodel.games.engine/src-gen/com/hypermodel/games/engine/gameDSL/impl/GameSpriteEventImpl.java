@@ -3,11 +3,15 @@
  */
 package com.hypermodel.games.engine.gameDSL.impl;
 
-import com.hypermodel.games.engine.gameDSL.GameBodyProperty;
 import com.hypermodel.games.engine.gameDSL.GameDSLPackage;
+import com.hypermodel.games.engine.gameDSL.GameSpriteEvent;
+
+import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
+
+import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
@@ -15,24 +19,29 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.InternalEList;
+
+import org.eclipse.xtext.common.types.JvmFormalParameter;
+
 import org.eclipse.xtext.xbase.XExpression;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Game Body Property</b></em>'.
+ * An implementation of the model object '<em><b>Game Sprite Event</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link com.hypermodel.games.engine.gameDSL.impl.GameBodyPropertyImpl#getName <em>Name</em>}</li>
- *   <li>{@link com.hypermodel.games.engine.gameDSL.impl.GameBodyPropertyImpl#isOnUpdate <em>On Update</em>}</li>
- *   <li>{@link com.hypermodel.games.engine.gameDSL.impl.GameBodyPropertyImpl#getBody <em>Body</em>}</li>
+ *   <li>{@link com.hypermodel.games.engine.gameDSL.impl.GameSpriteEventImpl#getName <em>Name</em>}</li>
+ *   <li>{@link com.hypermodel.games.engine.gameDSL.impl.GameSpriteEventImpl#getParams <em>Params</em>}</li>
+ *   <li>{@link com.hypermodel.games.engine.gameDSL.impl.GameSpriteEventImpl#getBody <em>Body</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class GameBodyPropertyImpl extends MinimalEObjectImpl.Container implements GameBodyProperty
+public class GameSpriteEventImpl extends MinimalEObjectImpl.Container implements GameSpriteEvent
 {
   /**
    * The default value of the '{@link #getName() <em>Name</em>}' attribute.
@@ -55,24 +64,14 @@ public class GameBodyPropertyImpl extends MinimalEObjectImpl.Container implement
   protected String name = NAME_EDEFAULT;
 
   /**
-   * The default value of the '{@link #isOnUpdate() <em>On Update</em>}' attribute.
+   * The cached value of the '{@link #getParams() <em>Params</em>}' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #isOnUpdate()
+   * @see #getParams()
    * @generated
    * @ordered
    */
-  protected static final boolean ON_UPDATE_EDEFAULT = false;
-
-  /**
-   * The cached value of the '{@link #isOnUpdate() <em>On Update</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #isOnUpdate()
-   * @generated
-   * @ordered
-   */
-  protected boolean onUpdate = ON_UPDATE_EDEFAULT;
+  protected EList<JvmFormalParameter> params;
 
   /**
    * The cached value of the '{@link #getBody() <em>Body</em>}' containment reference.
@@ -89,7 +88,7 @@ public class GameBodyPropertyImpl extends MinimalEObjectImpl.Container implement
    * <!-- end-user-doc -->
    * @generated
    */
-  protected GameBodyPropertyImpl()
+  protected GameSpriteEventImpl()
   {
     super();
   }
@@ -102,7 +101,7 @@ public class GameBodyPropertyImpl extends MinimalEObjectImpl.Container implement
   @Override
   protected EClass eStaticClass()
   {
-    return GameDSLPackage.Literals.GAME_BODY_PROPERTY;
+    return GameDSLPackage.Literals.GAME_SPRITE_EVENT;
   }
 
   /**
@@ -125,7 +124,7 @@ public class GameBodyPropertyImpl extends MinimalEObjectImpl.Container implement
     String oldName = name;
     name = newName;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, GameDSLPackage.GAME_BODY_PROPERTY__NAME, oldName, name));
+      eNotify(new ENotificationImpl(this, Notification.SET, GameDSLPackage.GAME_SPRITE_EVENT__NAME, oldName, name));
   }
 
   /**
@@ -133,22 +132,13 @@ public class GameBodyPropertyImpl extends MinimalEObjectImpl.Container implement
    * <!-- end-user-doc -->
    * @generated
    */
-  public boolean isOnUpdate()
+  public EList<JvmFormalParameter> getParams()
   {
-    return onUpdate;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void setOnUpdate(boolean newOnUpdate)
-  {
-    boolean oldOnUpdate = onUpdate;
-    onUpdate = newOnUpdate;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, GameDSLPackage.GAME_BODY_PROPERTY__ON_UPDATE, oldOnUpdate, onUpdate));
+    if (params == null)
+    {
+      params = new EObjectContainmentEList<JvmFormalParameter>(JvmFormalParameter.class, this, GameDSLPackage.GAME_SPRITE_EVENT__PARAMS);
+    }
+    return params;
   }
 
   /**
@@ -172,7 +162,7 @@ public class GameBodyPropertyImpl extends MinimalEObjectImpl.Container implement
     body = newBody;
     if (eNotificationRequired())
     {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, GameDSLPackage.GAME_BODY_PROPERTY__BODY, oldBody, newBody);
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, GameDSLPackage.GAME_SPRITE_EVENT__BODY, oldBody, newBody);
       if (msgs == null) msgs = notification; else msgs.add(notification);
     }
     return msgs;
@@ -189,14 +179,14 @@ public class GameBodyPropertyImpl extends MinimalEObjectImpl.Container implement
     {
       NotificationChain msgs = null;
       if (body != null)
-        msgs = ((InternalEObject)body).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - GameDSLPackage.GAME_BODY_PROPERTY__BODY, null, msgs);
+        msgs = ((InternalEObject)body).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - GameDSLPackage.GAME_SPRITE_EVENT__BODY, null, msgs);
       if (newBody != null)
-        msgs = ((InternalEObject)newBody).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - GameDSLPackage.GAME_BODY_PROPERTY__BODY, null, msgs);
+        msgs = ((InternalEObject)newBody).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - GameDSLPackage.GAME_SPRITE_EVENT__BODY, null, msgs);
       msgs = basicSetBody(newBody, msgs);
       if (msgs != null) msgs.dispatch();
     }
     else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, GameDSLPackage.GAME_BODY_PROPERTY__BODY, newBody, newBody));
+      eNotify(new ENotificationImpl(this, Notification.SET, GameDSLPackage.GAME_SPRITE_EVENT__BODY, newBody, newBody));
   }
 
   /**
@@ -209,7 +199,9 @@ public class GameBodyPropertyImpl extends MinimalEObjectImpl.Container implement
   {
     switch (featureID)
     {
-      case GameDSLPackage.GAME_BODY_PROPERTY__BODY:
+      case GameDSLPackage.GAME_SPRITE_EVENT__PARAMS:
+        return ((InternalEList<?>)getParams()).basicRemove(otherEnd, msgs);
+      case GameDSLPackage.GAME_SPRITE_EVENT__BODY:
         return basicSetBody(null, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
@@ -225,11 +217,11 @@ public class GameBodyPropertyImpl extends MinimalEObjectImpl.Container implement
   {
     switch (featureID)
     {
-      case GameDSLPackage.GAME_BODY_PROPERTY__NAME:
+      case GameDSLPackage.GAME_SPRITE_EVENT__NAME:
         return getName();
-      case GameDSLPackage.GAME_BODY_PROPERTY__ON_UPDATE:
-        return isOnUpdate();
-      case GameDSLPackage.GAME_BODY_PROPERTY__BODY:
+      case GameDSLPackage.GAME_SPRITE_EVENT__PARAMS:
+        return getParams();
+      case GameDSLPackage.GAME_SPRITE_EVENT__BODY:
         return getBody();
     }
     return super.eGet(featureID, resolve, coreType);
@@ -240,18 +232,20 @@ public class GameBodyPropertyImpl extends MinimalEObjectImpl.Container implement
    * <!-- end-user-doc -->
    * @generated
    */
+  @SuppressWarnings("unchecked")
   @Override
   public void eSet(int featureID, Object newValue)
   {
     switch (featureID)
     {
-      case GameDSLPackage.GAME_BODY_PROPERTY__NAME:
+      case GameDSLPackage.GAME_SPRITE_EVENT__NAME:
         setName((String)newValue);
         return;
-      case GameDSLPackage.GAME_BODY_PROPERTY__ON_UPDATE:
-        setOnUpdate((Boolean)newValue);
+      case GameDSLPackage.GAME_SPRITE_EVENT__PARAMS:
+        getParams().clear();
+        getParams().addAll((Collection<? extends JvmFormalParameter>)newValue);
         return;
-      case GameDSLPackage.GAME_BODY_PROPERTY__BODY:
+      case GameDSLPackage.GAME_SPRITE_EVENT__BODY:
         setBody((XExpression)newValue);
         return;
     }
@@ -268,13 +262,13 @@ public class GameBodyPropertyImpl extends MinimalEObjectImpl.Container implement
   {
     switch (featureID)
     {
-      case GameDSLPackage.GAME_BODY_PROPERTY__NAME:
+      case GameDSLPackage.GAME_SPRITE_EVENT__NAME:
         setName(NAME_EDEFAULT);
         return;
-      case GameDSLPackage.GAME_BODY_PROPERTY__ON_UPDATE:
-        setOnUpdate(ON_UPDATE_EDEFAULT);
+      case GameDSLPackage.GAME_SPRITE_EVENT__PARAMS:
+        getParams().clear();
         return;
-      case GameDSLPackage.GAME_BODY_PROPERTY__BODY:
+      case GameDSLPackage.GAME_SPRITE_EVENT__BODY:
         setBody((XExpression)null);
         return;
     }
@@ -291,11 +285,11 @@ public class GameBodyPropertyImpl extends MinimalEObjectImpl.Container implement
   {
     switch (featureID)
     {
-      case GameDSLPackage.GAME_BODY_PROPERTY__NAME:
+      case GameDSLPackage.GAME_SPRITE_EVENT__NAME:
         return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
-      case GameDSLPackage.GAME_BODY_PROPERTY__ON_UPDATE:
-        return onUpdate != ON_UPDATE_EDEFAULT;
-      case GameDSLPackage.GAME_BODY_PROPERTY__BODY:
+      case GameDSLPackage.GAME_SPRITE_EVENT__PARAMS:
+        return params != null && !params.isEmpty();
+      case GameDSLPackage.GAME_SPRITE_EVENT__BODY:
         return body != null;
     }
     return super.eIsSet(featureID);
@@ -314,10 +308,8 @@ public class GameBodyPropertyImpl extends MinimalEObjectImpl.Container implement
     StringBuffer result = new StringBuffer(super.toString());
     result.append(" (name: ");
     result.append(name);
-    result.append(", onUpdate: ");
-    result.append(onUpdate);
     result.append(')');
     return result.toString();
   }
 
-} //GameBodyPropertyImpl
+} //GameSpriteEventImpl

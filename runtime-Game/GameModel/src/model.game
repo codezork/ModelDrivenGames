@@ -25,8 +25,10 @@ package com.hypermodel.games {
 	}
 	regions {
 		region marioSmall width 16 height 16  
+		region marioSmallLeft width 16 height 16 flipX  
 		region goomba width 16 height 16
 		region marioGrowing width 16 height 16
+		region marioBig width 16 height 32 positionOffsetY 10.0 
 	}
 	screens {
 		screen PlayScreen 
@@ -39,9 +41,13 @@ package com.hypermodel.games {
 			interactsWith {
 				Mario
 			}
-			bodyProperties {
+			properties {
 				property growing
-				property big  
+				property big
+				property timeToDefineBig onUpdateIfTrue {
+					redefineMario();
+					timeToDefineBig = false; 
+				}   
 			}
 			states {
 				state standSmall if isTrue notMoving() { 
@@ -49,7 +55,7 @@ package com.hypermodel.games {
 				} stand marioStand whichFrame 5 from marioSmall
 				state runningSmallLeft if isTrue runningLeft() {
 					return body.linearVelocity.y == 0 && body.linearVelocity.x < 0 && !isBig
-				} animation marioRunleft duration 0.4 frames 4 startFrame 1 from marioSmall
+				} animation marioRunleft duration 0.4 frames 4 startFrame 1 from marioSmall 
 				state growing if isTrue grows() {
 					return isGrowing
 				} animation marioGrowing duration 0.4 stands {
@@ -59,6 +65,13 @@ package com.hypermodel.games {
 				 
 			}
 			initialState standSmall
+			events {
+				event grow () {
+					growing = true
+					big = true
+					timeToDefineBig = true					
+				}
+			}
 		}
 	}
 } 

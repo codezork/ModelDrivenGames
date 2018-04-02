@@ -80,8 +80,9 @@ GameSprite:
 	'startPositionX' x=INT 'startPositionY' y=INT
 	(hasSensor?='sensorLength' sensorLength=INT 'sensorID' sensorID=INT)?
 	('interactsWith' '{' interactionSprites+=[GameSprite]* '}')?
-	('bodyProperties' '{' properties+=GameBodyProperty* '}')?
-	('states' '{' states+=GameSpriteState* '}' 'initialState' initialState=[GameSpriteState])?;
+	('properties' '{' properties+=GameBodyProperty* '}')?
+	('states' '{' states+=GameSpriteState* '}' 'initialState' initialState=[GameSpriteState])?
+	('events' '{' events+=GameSpriteEvent* '}')?;
 
 GameSpriteState:
 	{GameSpriteState} 'state' name=ValidID 'if' rule=GameRule
@@ -90,7 +91,7 @@ GameSpriteState:
 	stand=GameSpriteStand)?;
 	
 GameBodyProperty:
-	{GameBodyProperty} 'property' name=ValidID;
+	{GameBodyProperty} 'property' name=ValidID (onUpdate?='onUpdateIfTrue' body=XBlockExpression)?;
 	
 GameRule:
 	{GameRule} 'isTrue' name=ValidID '(' (params+=FullJvmFormalParameter (',' params+=FullJvmFormalParameter)?)? ')'
@@ -105,7 +106,13 @@ GameSpriteStand:
 	{GameSpriteStand} 'stand' name=ValidID 'whichFrame' offset=INT 'from' region=[GameTextureRegion];
 
 GameTextureRegion:
-	{GameTextureRegion} 'region' name=ValidID 'width' width=INT 'height' height=INT;
+	{GameTextureRegion} 'region' name=ValidID 'width' width=INT 'height' height=INT 
+	('positionOffsetX' offsetX=SignedNumber)? ('positionOffsetY' offsetY=SignedNumber)?
+	(flipX?='flipX')? (flipY?='flipY')?;
+	
+GameSpriteEvent:
+	{GameSpriteEvent} 'event' name=ValidID '(' (params+=FullJvmFormalParameter (',' params+=FullJvmFormalParameter)?)? ')'
+	body=XBlockExpression; 
 
 enum GameDisplayValueType:
 	int = 'number'|

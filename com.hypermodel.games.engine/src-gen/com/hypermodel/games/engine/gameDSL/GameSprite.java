@@ -28,6 +28,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link com.hypermodel.games.engine.gameDSL.GameSprite#getProperties <em>Properties</em>}</li>
  *   <li>{@link com.hypermodel.games.engine.gameDSL.GameSprite#getStates <em>States</em>}</li>
  *   <li>{@link com.hypermodel.games.engine.gameDSL.GameSprite#getInitialState <em>Initial State</em>}</li>
+ *   <li>{@link com.hypermodel.games.engine.gameDSL.GameSprite#getEvents <em>Events</em>}</li>
  * </ul>
  *
  * @see com.hypermodel.games.engine.gameDSL.GameDSLPackage#getGameSprite()
@@ -317,5 +318,21 @@ public interface GameSprite extends EObject
    * @generated
    */
   void setInitialState(GameSpriteState value);
+
+  /**
+   * Returns the value of the '<em><b>Events</b></em>' containment reference list.
+   * The list contents are of type {@link com.hypermodel.games.engine.gameDSL.GameSpriteEvent}.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Events</em>' containment reference list isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Events</em>' containment reference list.
+   * @see com.hypermodel.games.engine.gameDSL.GameDSLPackage#getGameSprite_Events()
+   * @model containment="true"
+   * @generated
+   */
+  EList<GameSpriteEvent> getEvents();
 
 } // GameSprite

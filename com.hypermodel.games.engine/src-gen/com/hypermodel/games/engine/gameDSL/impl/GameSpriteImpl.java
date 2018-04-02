@@ -6,6 +6,7 @@ package com.hypermodel.games.engine.gameDSL.impl;
 import com.hypermodel.games.engine.gameDSL.GameBodyProperty;
 import com.hypermodel.games.engine.gameDSL.GameDSLPackage;
 import com.hypermodel.games.engine.gameDSL.GameSprite;
+import com.hypermodel.games.engine.gameDSL.GameSpriteEvent;
 import com.hypermodel.games.engine.gameDSL.GameSpriteState;
 
 import java.util.Collection;
@@ -45,6 +46,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link com.hypermodel.games.engine.gameDSL.impl.GameSpriteImpl#getProperties <em>Properties</em>}</li>
  *   <li>{@link com.hypermodel.games.engine.gameDSL.impl.GameSpriteImpl#getStates <em>States</em>}</li>
  *   <li>{@link com.hypermodel.games.engine.gameDSL.impl.GameSpriteImpl#getInitialState <em>Initial State</em>}</li>
+ *   <li>{@link com.hypermodel.games.engine.gameDSL.impl.GameSpriteImpl#getEvents <em>Events</em>}</li>
  * </ul>
  *
  * @generated
@@ -250,6 +252,16 @@ public class GameSpriteImpl extends MinimalEObjectImpl.Container implements Game
    * @ordered
    */
   protected GameSpriteState initialState;
+
+  /**
+   * The cached value of the '{@link #getEvents() <em>Events</em>}' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getEvents()
+   * @generated
+   * @ordered
+   */
+  protected EList<GameSpriteEvent> events;
 
   /**
    * <!-- begin-user-doc -->
@@ -546,6 +558,20 @@ public class GameSpriteImpl extends MinimalEObjectImpl.Container implements Game
    * <!-- end-user-doc -->
    * @generated
    */
+  public EList<GameSpriteEvent> getEvents()
+  {
+    if (events == null)
+    {
+      events = new EObjectContainmentEList<GameSpriteEvent>(GameSpriteEvent.class, this, GameDSLPackage.GAME_SPRITE__EVENTS);
+    }
+    return events;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   @Override
   public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
   {
@@ -555,6 +581,8 @@ public class GameSpriteImpl extends MinimalEObjectImpl.Container implements Game
         return ((InternalEList<?>)getProperties()).basicRemove(otherEnd, msgs);
       case GameDSLPackage.GAME_SPRITE__STATES:
         return ((InternalEList<?>)getStates()).basicRemove(otherEnd, msgs);
+      case GameDSLPackage.GAME_SPRITE__EVENTS:
+        return ((InternalEList<?>)getEvents()).basicRemove(otherEnd, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -594,6 +622,8 @@ public class GameSpriteImpl extends MinimalEObjectImpl.Container implements Game
       case GameDSLPackage.GAME_SPRITE__INITIAL_STATE:
         if (resolve) return getInitialState();
         return basicGetInitialState();
+      case GameDSLPackage.GAME_SPRITE__EVENTS:
+        return getEvents();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -648,6 +678,10 @@ public class GameSpriteImpl extends MinimalEObjectImpl.Container implements Game
       case GameDSLPackage.GAME_SPRITE__INITIAL_STATE:
         setInitialState((GameSpriteState)newValue);
         return;
+      case GameDSLPackage.GAME_SPRITE__EVENTS:
+        getEvents().clear();
+        getEvents().addAll((Collection<? extends GameSpriteEvent>)newValue);
+        return;
     }
     super.eSet(featureID, newValue);
   }
@@ -698,6 +732,9 @@ public class GameSpriteImpl extends MinimalEObjectImpl.Container implements Game
       case GameDSLPackage.GAME_SPRITE__INITIAL_STATE:
         setInitialState((GameSpriteState)null);
         return;
+      case GameDSLPackage.GAME_SPRITE__EVENTS:
+        getEvents().clear();
+        return;
     }
     super.eUnset(featureID);
   }
@@ -736,6 +773,8 @@ public class GameSpriteImpl extends MinimalEObjectImpl.Container implements Game
         return states != null && !states.isEmpty();
       case GameDSLPackage.GAME_SPRITE__INITIAL_STATE:
         return initialState != null;
+      case GameDSLPackage.GAME_SPRITE__EVENTS:
+        return events != null && !events.isEmpty();
     }
     return super.eIsSet(featureID);
   }
