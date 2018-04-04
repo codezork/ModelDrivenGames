@@ -22,6 +22,7 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  * </p>
  * <ul>
  *   <li>{@link com.hypermodel.games.engine.gameDSL.impl.GameTextureRegionImpl#getName <em>Name</em>}</li>
+ *   <li>{@link com.hypermodel.games.engine.gameDSL.impl.GameTextureRegionImpl#getRegion <em>Region</em>}</li>
  *   <li>{@link com.hypermodel.games.engine.gameDSL.impl.GameTextureRegionImpl#getWidth <em>Width</em>}</li>
  *   <li>{@link com.hypermodel.games.engine.gameDSL.impl.GameTextureRegionImpl#getHeight <em>Height</em>}</li>
  *   <li>{@link com.hypermodel.games.engine.gameDSL.impl.GameTextureRegionImpl#getOffsetX <em>Offset X</em>}</li>
@@ -53,6 +54,26 @@ public class GameTextureRegionImpl extends MinimalEObjectImpl.Container implemen
    * @ordered
    */
   protected String name = NAME_EDEFAULT;
+
+  /**
+   * The default value of the '{@link #getRegion() <em>Region</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getRegion()
+   * @generated
+   * @ordered
+   */
+  protected static final String REGION_EDEFAULT = null;
+
+  /**
+   * The cached value of the '{@link #getRegion() <em>Region</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getRegion()
+   * @generated
+   * @ordered
+   */
+  protected String region = REGION_EDEFAULT;
 
   /**
    * The default value of the '{@link #getWidth() <em>Width</em>}' attribute.
@@ -223,6 +244,29 @@ public class GameTextureRegionImpl extends MinimalEObjectImpl.Container implemen
    * <!-- end-user-doc -->
    * @generated
    */
+  public String getRegion()
+  {
+    return region;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setRegion(String newRegion)
+  {
+    String oldRegion = region;
+    region = newRegion;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, GameDSLPackage.GAME_TEXTURE_REGION__REGION, oldRegion, region));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public int getWidth()
   {
     return width;
@@ -368,6 +412,8 @@ public class GameTextureRegionImpl extends MinimalEObjectImpl.Container implemen
     {
       case GameDSLPackage.GAME_TEXTURE_REGION__NAME:
         return getName();
+      case GameDSLPackage.GAME_TEXTURE_REGION__REGION:
+        return getRegion();
       case GameDSLPackage.GAME_TEXTURE_REGION__WIDTH:
         return getWidth();
       case GameDSLPackage.GAME_TEXTURE_REGION__HEIGHT:
@@ -396,6 +442,9 @@ public class GameTextureRegionImpl extends MinimalEObjectImpl.Container implemen
     {
       case GameDSLPackage.GAME_TEXTURE_REGION__NAME:
         setName((String)newValue);
+        return;
+      case GameDSLPackage.GAME_TEXTURE_REGION__REGION:
+        setRegion((String)newValue);
         return;
       case GameDSLPackage.GAME_TEXTURE_REGION__WIDTH:
         setWidth((Integer)newValue);
@@ -432,6 +481,9 @@ public class GameTextureRegionImpl extends MinimalEObjectImpl.Container implemen
       case GameDSLPackage.GAME_TEXTURE_REGION__NAME:
         setName(NAME_EDEFAULT);
         return;
+      case GameDSLPackage.GAME_TEXTURE_REGION__REGION:
+        setRegion(REGION_EDEFAULT);
+        return;
       case GameDSLPackage.GAME_TEXTURE_REGION__WIDTH:
         setWidth(WIDTH_EDEFAULT);
         return;
@@ -466,6 +518,8 @@ public class GameTextureRegionImpl extends MinimalEObjectImpl.Container implemen
     {
       case GameDSLPackage.GAME_TEXTURE_REGION__NAME:
         return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+      case GameDSLPackage.GAME_TEXTURE_REGION__REGION:
+        return REGION_EDEFAULT == null ? region != null : !REGION_EDEFAULT.equals(region);
       case GameDSLPackage.GAME_TEXTURE_REGION__WIDTH:
         return width != WIDTH_EDEFAULT;
       case GameDSLPackage.GAME_TEXTURE_REGION__HEIGHT:
@@ -495,6 +549,8 @@ public class GameTextureRegionImpl extends MinimalEObjectImpl.Container implemen
     StringBuffer result = new StringBuffer(super.toString());
     result.append(" (name: ");
     result.append(name);
+    result.append(", region: ");
+    result.append(region);
     result.append(", width: ");
     result.append(width);
     result.append(", height: ");

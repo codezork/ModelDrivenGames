@@ -728,13 +728,22 @@ public interface GameDSLPackage extends EPackage
   int GAME_SPRITE__RADIUS = 2;
 
   /**
+   * The feature id for the '<em><b>Has Start Position</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int GAME_SPRITE__HAS_START_POSITION = 3;
+
+  /**
    * The feature id for the '<em><b>X</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int GAME_SPRITE__X = 3;
+  int GAME_SPRITE__X = 4;
 
   /**
    * The feature id for the '<em><b>Y</b></em>' attribute.
@@ -743,7 +752,7 @@ public interface GameDSLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int GAME_SPRITE__Y = 4;
+  int GAME_SPRITE__Y = 5;
 
   /**
    * The feature id for the '<em><b>Has Sensor</b></em>' attribute.
@@ -752,16 +761,16 @@ public interface GameDSLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int GAME_SPRITE__HAS_SENSOR = 5;
+  int GAME_SPRITE__HAS_SENSOR = 6;
 
   /**
-   * The feature id for the '<em><b>Sensor Length</b></em>' attribute.
+   * The feature id for the '<em><b>Vectors2d</b></em>' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int GAME_SPRITE__SENSOR_LENGTH = 6;
+  int GAME_SPRITE__VECTORS2D = 7;
 
   /**
    * The feature id for the '<em><b>Sensor ID</b></em>' attribute.
@@ -770,7 +779,7 @@ public interface GameDSLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int GAME_SPRITE__SENSOR_ID = 7;
+  int GAME_SPRITE__SENSOR_ID = 8;
 
   /**
    * The feature id for the '<em><b>Interaction Sprites</b></em>' reference list.
@@ -779,7 +788,7 @@ public interface GameDSLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int GAME_SPRITE__INTERACTION_SPRITES = 8;
+  int GAME_SPRITE__INTERACTION_SPRITES = 9;
 
   /**
    * The feature id for the '<em><b>Properties</b></em>' containment reference list.
@@ -788,7 +797,7 @@ public interface GameDSLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int GAME_SPRITE__PROPERTIES = 9;
+  int GAME_SPRITE__PROPERTIES = 10;
 
   /**
    * The feature id for the '<em><b>States</b></em>' containment reference list.
@@ -797,7 +806,7 @@ public interface GameDSLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int GAME_SPRITE__STATES = 10;
+  int GAME_SPRITE__STATES = 11;
 
   /**
    * The feature id for the '<em><b>Initial State</b></em>' reference.
@@ -806,7 +815,7 @@ public interface GameDSLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int GAME_SPRITE__INITIAL_STATE = 11;
+  int GAME_SPRITE__INITIAL_STATE = 12;
 
   /**
    * The feature id for the '<em><b>Events</b></em>' containment reference list.
@@ -815,7 +824,7 @@ public interface GameDSLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int GAME_SPRITE__EVENTS = 12;
+  int GAME_SPRITE__EVENTS = 13;
 
   /**
    * The number of structural features of the '<em>Game Sprite</em>' class.
@@ -824,7 +833,44 @@ public interface GameDSLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int GAME_SPRITE_FEATURE_COUNT = 13;
+  int GAME_SPRITE_FEATURE_COUNT = 14;
+
+  /**
+   * The meta object id for the '{@link com.hypermodel.games.engine.gameDSL.impl.GameVector2dImpl <em>Game Vector2d</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see com.hypermodel.games.engine.gameDSL.impl.GameVector2dImpl
+   * @see com.hypermodel.games.engine.gameDSL.impl.GameDSLPackageImpl#getGameVector2d()
+   * @generated
+   */
+  int GAME_VECTOR2D = 12;
+
+  /**
+   * The feature id for the '<em><b>X</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int GAME_VECTOR2D__X = 0;
+
+  /**
+   * The feature id for the '<em><b>Y</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int GAME_VECTOR2D__Y = 1;
+
+  /**
+   * The number of structural features of the '<em>Game Vector2d</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int GAME_VECTOR2D_FEATURE_COUNT = 2;
 
   /**
    * The meta object id for the '{@link com.hypermodel.games.engine.gameDSL.impl.GameSpriteStateImpl <em>Game Sprite State</em>}' class.
@@ -834,7 +880,7 @@ public interface GameDSLPackage extends EPackage
    * @see com.hypermodel.games.engine.gameDSL.impl.GameDSLPackageImpl#getGameSpriteState()
    * @generated
    */
-  int GAME_SPRITE_STATE = 12;
+  int GAME_SPRITE_STATE = 13;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -907,7 +953,7 @@ public interface GameDSLPackage extends EPackage
    * @see com.hypermodel.games.engine.gameDSL.impl.GameDSLPackageImpl#getGameBodyProperty()
    * @generated
    */
-  int GAME_BODY_PROPERTY = 13;
+  int GAME_BODY_PROPERTY = 14;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -953,7 +999,7 @@ public interface GameDSLPackage extends EPackage
    * @see com.hypermodel.games.engine.gameDSL.impl.GameDSLPackageImpl#getGameRule()
    * @generated
    */
-  int GAME_RULE = 14;
+  int GAME_RULE = 15;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -999,7 +1045,7 @@ public interface GameDSLPackage extends EPackage
    * @see com.hypermodel.games.engine.gameDSL.impl.GameDSLPackageImpl#getGameSpriteAnimation()
    * @generated
    */
-  int GAME_SPRITE_ANIMATION = 15;
+  int GAME_SPRITE_ANIMATION = 16;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -1090,7 +1136,7 @@ public interface GameDSLPackage extends EPackage
    * @see com.hypermodel.games.engine.gameDSL.impl.GameDSLPackageImpl#getGameSpriteStand()
    * @generated
    */
-  int GAME_SPRITE_STAND = 16;
+  int GAME_SPRITE_STAND = 17;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -1136,7 +1182,7 @@ public interface GameDSLPackage extends EPackage
    * @see com.hypermodel.games.engine.gameDSL.impl.GameDSLPackageImpl#getGameTextureRegion()
    * @generated
    */
-  int GAME_TEXTURE_REGION = 17;
+  int GAME_TEXTURE_REGION = 18;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -1148,13 +1194,22 @@ public interface GameDSLPackage extends EPackage
   int GAME_TEXTURE_REGION__NAME = 0;
 
   /**
+   * The feature id for the '<em><b>Region</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int GAME_TEXTURE_REGION__REGION = 1;
+
+  /**
    * The feature id for the '<em><b>Width</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int GAME_TEXTURE_REGION__WIDTH = 1;
+  int GAME_TEXTURE_REGION__WIDTH = 2;
 
   /**
    * The feature id for the '<em><b>Height</b></em>' attribute.
@@ -1163,7 +1218,7 @@ public interface GameDSLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int GAME_TEXTURE_REGION__HEIGHT = 2;
+  int GAME_TEXTURE_REGION__HEIGHT = 3;
 
   /**
    * The feature id for the '<em><b>Offset X</b></em>' attribute.
@@ -1172,7 +1227,7 @@ public interface GameDSLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int GAME_TEXTURE_REGION__OFFSET_X = 3;
+  int GAME_TEXTURE_REGION__OFFSET_X = 4;
 
   /**
    * The feature id for the '<em><b>Offset Y</b></em>' attribute.
@@ -1181,7 +1236,7 @@ public interface GameDSLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int GAME_TEXTURE_REGION__OFFSET_Y = 4;
+  int GAME_TEXTURE_REGION__OFFSET_Y = 5;
 
   /**
    * The feature id for the '<em><b>Flip X</b></em>' attribute.
@@ -1190,7 +1245,7 @@ public interface GameDSLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int GAME_TEXTURE_REGION__FLIP_X = 5;
+  int GAME_TEXTURE_REGION__FLIP_X = 6;
 
   /**
    * The feature id for the '<em><b>Flip Y</b></em>' attribute.
@@ -1199,7 +1254,7 @@ public interface GameDSLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int GAME_TEXTURE_REGION__FLIP_Y = 6;
+  int GAME_TEXTURE_REGION__FLIP_Y = 7;
 
   /**
    * The number of structural features of the '<em>Game Texture Region</em>' class.
@@ -1208,7 +1263,7 @@ public interface GameDSLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int GAME_TEXTURE_REGION_FEATURE_COUNT = 7;
+  int GAME_TEXTURE_REGION_FEATURE_COUNT = 8;
 
   /**
    * The meta object id for the '{@link com.hypermodel.games.engine.gameDSL.impl.GameSpriteEventImpl <em>Game Sprite Event</em>}' class.
@@ -1218,7 +1273,7 @@ public interface GameDSLPackage extends EPackage
    * @see com.hypermodel.games.engine.gameDSL.impl.GameDSLPackageImpl#getGameSpriteEvent()
    * @generated
    */
-  int GAME_SPRITE_EVENT = 18;
+  int GAME_SPRITE_EVENT = 19;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -1264,7 +1319,7 @@ public interface GameDSLPackage extends EPackage
    * @see com.hypermodel.games.engine.gameDSL.impl.GameDSLPackageImpl#getGameDisplayValueType()
    * @generated
    */
-  int GAME_DISPLAY_VALUE_TYPE = 19;
+  int GAME_DISPLAY_VALUE_TYPE = 20;
 
   /**
    * The meta object id for the '{@link com.hypermodel.games.engine.gameDSL.GameScreenOrientation <em>Game Screen Orientation</em>}' enum.
@@ -1274,7 +1329,7 @@ public interface GameDSLPackage extends EPackage
    * @see com.hypermodel.games.engine.gameDSL.impl.GameDSLPackageImpl#getGameScreenOrientation()
    * @generated
    */
-  int GAME_SCREEN_ORIENTATION = 20;
+  int GAME_SCREEN_ORIENTATION = 21;
 
 
   /**
@@ -1948,6 +2003,17 @@ public interface GameDSLPackage extends EPackage
   EAttribute getGameSprite_Radius();
 
   /**
+   * Returns the meta object for the attribute '{@link com.hypermodel.games.engine.gameDSL.GameSprite#isHasStartPosition <em>Has Start Position</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Has Start Position</em>'.
+   * @see com.hypermodel.games.engine.gameDSL.GameSprite#isHasStartPosition()
+   * @see #getGameSprite()
+   * @generated
+   */
+  EAttribute getGameSprite_HasStartPosition();
+
+  /**
    * Returns the meta object for the attribute '{@link com.hypermodel.games.engine.gameDSL.GameSprite#getX <em>X</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1981,15 +2047,15 @@ public interface GameDSLPackage extends EPackage
   EAttribute getGameSprite_HasSensor();
 
   /**
-   * Returns the meta object for the attribute '{@link com.hypermodel.games.engine.gameDSL.GameSprite#getSensorLength <em>Sensor Length</em>}'.
+   * Returns the meta object for the containment reference list '{@link com.hypermodel.games.engine.gameDSL.GameSprite#getVectors2d <em>Vectors2d</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Sensor Length</em>'.
-   * @see com.hypermodel.games.engine.gameDSL.GameSprite#getSensorLength()
+   * @return the meta object for the containment reference list '<em>Vectors2d</em>'.
+   * @see com.hypermodel.games.engine.gameDSL.GameSprite#getVectors2d()
    * @see #getGameSprite()
    * @generated
    */
-  EAttribute getGameSprite_SensorLength();
+  EReference getGameSprite_Vectors2d();
 
   /**
    * Returns the meta object for the attribute '{@link com.hypermodel.games.engine.gameDSL.GameSprite#getSensorID <em>Sensor ID</em>}'.
@@ -2056,6 +2122,38 @@ public interface GameDSLPackage extends EPackage
    * @generated
    */
   EReference getGameSprite_Events();
+
+  /**
+   * Returns the meta object for class '{@link com.hypermodel.games.engine.gameDSL.GameVector2d <em>Game Vector2d</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Game Vector2d</em>'.
+   * @see com.hypermodel.games.engine.gameDSL.GameVector2d
+   * @generated
+   */
+  EClass getGameVector2d();
+
+  /**
+   * Returns the meta object for the attribute '{@link com.hypermodel.games.engine.gameDSL.GameVector2d#getX <em>X</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>X</em>'.
+   * @see com.hypermodel.games.engine.gameDSL.GameVector2d#getX()
+   * @see #getGameVector2d()
+   * @generated
+   */
+  EAttribute getGameVector2d_X();
+
+  /**
+   * Returns the meta object for the attribute '{@link com.hypermodel.games.engine.gameDSL.GameVector2d#getY <em>Y</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Y</em>'.
+   * @see com.hypermodel.games.engine.gameDSL.GameVector2d#getY()
+   * @see #getGameVector2d()
+   * @generated
+   */
+  EAttribute getGameVector2d_Y();
 
   /**
    * Returns the meta object for class '{@link com.hypermodel.games.engine.gameDSL.GameSpriteState <em>Game Sprite State</em>}'.
@@ -2380,6 +2478,17 @@ public interface GameDSLPackage extends EPackage
    * @generated
    */
   EAttribute getGameTextureRegion_Name();
+
+  /**
+   * Returns the meta object for the attribute '{@link com.hypermodel.games.engine.gameDSL.GameTextureRegion#getRegion <em>Region</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Region</em>'.
+   * @see com.hypermodel.games.engine.gameDSL.GameTextureRegion#getRegion()
+   * @see #getGameTextureRegion()
+   * @generated
+   */
+  EAttribute getGameTextureRegion_Region();
 
   /**
    * Returns the meta object for the attribute '{@link com.hypermodel.games.engine.gameDSL.GameTextureRegion#getWidth <em>Width</em>}'.
@@ -3054,6 +3163,14 @@ public interface GameDSLPackage extends EPackage
     EAttribute GAME_SPRITE__RADIUS = eINSTANCE.getGameSprite_Radius();
 
     /**
+     * The meta object literal for the '<em><b>Has Start Position</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute GAME_SPRITE__HAS_START_POSITION = eINSTANCE.getGameSprite_HasStartPosition();
+
+    /**
      * The meta object literal for the '<em><b>X</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -3078,12 +3195,12 @@ public interface GameDSLPackage extends EPackage
     EAttribute GAME_SPRITE__HAS_SENSOR = eINSTANCE.getGameSprite_HasSensor();
 
     /**
-     * The meta object literal for the '<em><b>Sensor Length</b></em>' attribute feature.
+     * The meta object literal for the '<em><b>Vectors2d</b></em>' containment reference list feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute GAME_SPRITE__SENSOR_LENGTH = eINSTANCE.getGameSprite_SensorLength();
+    EReference GAME_SPRITE__VECTORS2D = eINSTANCE.getGameSprite_Vectors2d();
 
     /**
      * The meta object literal for the '<em><b>Sensor ID</b></em>' attribute feature.
@@ -3132,6 +3249,32 @@ public interface GameDSLPackage extends EPackage
      * @generated
      */
     EReference GAME_SPRITE__EVENTS = eINSTANCE.getGameSprite_Events();
+
+    /**
+     * The meta object literal for the '{@link com.hypermodel.games.engine.gameDSL.impl.GameVector2dImpl <em>Game Vector2d</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see com.hypermodel.games.engine.gameDSL.impl.GameVector2dImpl
+     * @see com.hypermodel.games.engine.gameDSL.impl.GameDSLPackageImpl#getGameVector2d()
+     * @generated
+     */
+    EClass GAME_VECTOR2D = eINSTANCE.getGameVector2d();
+
+    /**
+     * The meta object literal for the '<em><b>X</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute GAME_VECTOR2D__X = eINSTANCE.getGameVector2d_X();
+
+    /**
+     * The meta object literal for the '<em><b>Y</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute GAME_VECTOR2D__Y = eINSTANCE.getGameVector2d_Y();
 
     /**
      * The meta object literal for the '{@link com.hypermodel.games.engine.gameDSL.impl.GameSpriteStateImpl <em>Game Sprite State</em>}' class.
@@ -3384,6 +3527,14 @@ public interface GameDSLPackage extends EPackage
      * @generated
      */
     EAttribute GAME_TEXTURE_REGION__NAME = eINSTANCE.getGameTextureRegion_Name();
+
+    /**
+     * The meta object literal for the '<em><b>Region</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute GAME_TEXTURE_REGION__REGION = eINSTANCE.getGameTextureRegion_Region();
 
     /**
      * The meta object literal for the '<em><b>Width</b></em>' attribute feature.

@@ -19,10 +19,11 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link com.hypermodel.games.engine.gameDSL.GameSprite#getName <em>Name</em>}</li>
  *   <li>{@link com.hypermodel.games.engine.gameDSL.GameSprite#getId <em>Id</em>}</li>
  *   <li>{@link com.hypermodel.games.engine.gameDSL.GameSprite#getRadius <em>Radius</em>}</li>
+ *   <li>{@link com.hypermodel.games.engine.gameDSL.GameSprite#isHasStartPosition <em>Has Start Position</em>}</li>
  *   <li>{@link com.hypermodel.games.engine.gameDSL.GameSprite#getX <em>X</em>}</li>
  *   <li>{@link com.hypermodel.games.engine.gameDSL.GameSprite#getY <em>Y</em>}</li>
  *   <li>{@link com.hypermodel.games.engine.gameDSL.GameSprite#isHasSensor <em>Has Sensor</em>}</li>
- *   <li>{@link com.hypermodel.games.engine.gameDSL.GameSprite#getSensorLength <em>Sensor Length</em>}</li>
+ *   <li>{@link com.hypermodel.games.engine.gameDSL.GameSprite#getVectors2d <em>Vectors2d</em>}</li>
  *   <li>{@link com.hypermodel.games.engine.gameDSL.GameSprite#getSensorID <em>Sensor ID</em>}</li>
  *   <li>{@link com.hypermodel.games.engine.gameDSL.GameSprite#getInteractionSprites <em>Interaction Sprites</em>}</li>
  *   <li>{@link com.hypermodel.games.engine.gameDSL.GameSprite#getProperties <em>Properties</em>}</li>
@@ -116,6 +117,32 @@ public interface GameSprite extends EObject
   void setRadius(int value);
 
   /**
+   * Returns the value of the '<em><b>Has Start Position</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Has Start Position</em>' attribute isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Has Start Position</em>' attribute.
+   * @see #setHasStartPosition(boolean)
+   * @see com.hypermodel.games.engine.gameDSL.GameDSLPackage#getGameSprite_HasStartPosition()
+   * @model
+   * @generated
+   */
+  boolean isHasStartPosition();
+
+  /**
+   * Sets the value of the '{@link com.hypermodel.games.engine.gameDSL.GameSprite#isHasStartPosition <em>Has Start Position</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Has Start Position</em>' attribute.
+   * @see #isHasStartPosition()
+   * @generated
+   */
+  void setHasStartPosition(boolean value);
+
+  /**
    * Returns the value of the '<em><b>X</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <p>
@@ -194,30 +221,20 @@ public interface GameSprite extends EObject
   void setHasSensor(boolean value);
 
   /**
-   * Returns the value of the '<em><b>Sensor Length</b></em>' attribute.
+   * Returns the value of the '<em><b>Vectors2d</b></em>' containment reference list.
+   * The list contents are of type {@link com.hypermodel.games.engine.gameDSL.GameVector2d}.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Sensor Length</em>' attribute isn't clear,
+   * If the meaning of the '<em>Vectors2d</em>' containment reference list isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Sensor Length</em>' attribute.
-   * @see #setSensorLength(int)
-   * @see com.hypermodel.games.engine.gameDSL.GameDSLPackage#getGameSprite_SensorLength()
-   * @model
+   * @return the value of the '<em>Vectors2d</em>' containment reference list.
+   * @see com.hypermodel.games.engine.gameDSL.GameDSLPackage#getGameSprite_Vectors2d()
+   * @model containment="true"
    * @generated
    */
-  int getSensorLength();
-
-  /**
-   * Sets the value of the '{@link com.hypermodel.games.engine.gameDSL.GameSprite#getSensorLength <em>Sensor Length</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Sensor Length</em>' attribute.
-   * @see #getSensorLength()
-   * @generated
-   */
-  void setSensorLength(int value);
+  EList<GameVector2d> getVectors2d();
 
   /**
    * Returns the value of the '<em><b>Sensor ID</b></em>' attribute.

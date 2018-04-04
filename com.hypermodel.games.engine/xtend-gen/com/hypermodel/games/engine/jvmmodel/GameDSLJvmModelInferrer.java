@@ -27,6 +27,7 @@ import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
 import com.badlogic.gdx.physics.box2d.CircleShape;
 import com.badlogic.gdx.physics.box2d.EdgeShape;
 import com.badlogic.gdx.physics.box2d.FixtureDef;
+import com.badlogic.gdx.physics.box2d.PolygonShape;
 import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
@@ -1201,12 +1202,46 @@ public class GameDSLJvmModelInferrer extends AbstractModelInferrer {
         EList<JvmFormalParameter> _parameters = it_1.getParameters();
         JvmFormalParameter _parameter = this._jvmTypesBuilder.toParameter(gamePkg, "screen", this._typeReferenceBuilder.typeRef(screenClass));
         this._jvmTypesBuilder.<JvmFormalParameter>operator_add(_parameters, _parameter);
+        boolean _isHasStartPosition = sprite.isHasStartPosition();
+        boolean _not = (!_isHasStartPosition);
+        if (_not) {
+          EList<JvmFormalParameter> _parameters_1 = it_1.getParameters();
+          JvmFormalParameter _parameter_1 = this._jvmTypesBuilder.toParameter(gamePkg, "x", this._typeReferenceBuilder.typeRef(int.class));
+          this._jvmTypesBuilder.<JvmFormalParameter>operator_add(_parameters_1, _parameter_1);
+          EList<JvmFormalParameter> _parameters_2 = it_1.getParameters();
+          JvmFormalParameter _parameter_2 = this._jvmTypesBuilder.toParameter(gamePkg, "y", this._typeReferenceBuilder.typeRef(int.class));
+          this._jvmTypesBuilder.<JvmFormalParameter>operator_add(_parameters_2, _parameter_2);
+        }
         final Procedure1<ITreeAppendable> _function_2 = (ITreeAppendable it_2) -> {
           StringConcatenation _builder = new StringConcatenation();
           _builder.append("world = screen.getWorld();");
           _builder.newLine();
           _builder.append("stateTimer = 0;");
           _builder.newLine();
+          _builder.append("int xPosition = ");
+          {
+            boolean _isHasStartPosition_1 = sprite.isHasStartPosition();
+            if (_isHasStartPosition_1) {
+              int _x = sprite.getX();
+              _builder.append(_x);
+            } else {
+              _builder.append("x");
+            }
+          }
+          _builder.append(";");
+          _builder.newLineIfNotEmpty();
+          _builder.append("int yPosition = ");
+          {
+            boolean _isHasStartPosition_2 = sprite.isHasStartPosition();
+            if (_isHasStartPosition_2) {
+              int _y = sprite.getY();
+              _builder.append(_y);
+            } else {
+              _builder.append("y");
+            }
+          }
+          _builder.append(";");
+          _builder.newLineIfNotEmpty();
           it_2.append(_builder);
           it_2.append(Array.class);
           it_2.append("<");
@@ -1235,8 +1270,8 @@ public class GameDSLJvmModelInferrer extends AbstractModelInferrer {
                 String _name = it_3.getAnimation().getName();
                 _builder_1.append(_name, "\t");
                 _builder_1.append("TextureRegion = new TextureRegion(screen.getAtlas().findRegion(\"");
-                String _name_1 = it_3.getAnimation().getRegion().getName();
-                _builder_1.append(_name_1, "\t");
+                String _region = it_3.getAnimation().getRegion().getRegion();
+                _builder_1.append(_region, "\t");
                 _builder_1.append("\"), i * ");
                 int _width = it_3.getAnimation().getRegion().getWidth();
                 _builder_1.append(_width, "\t");
@@ -1249,8 +1284,8 @@ public class GameDSLJvmModelInferrer extends AbstractModelInferrer {
                 _builder_1.append(");");
                 _builder_1.newLineIfNotEmpty();
                 _builder_1.append("\t");
-                String _name_2 = it_3.getAnimation().getName();
-                _builder_1.append(_name_2, "\t");
+                String _name_1 = it_3.getAnimation().getName();
+                _builder_1.append(_name_1, "\t");
                 _builder_1.append("TextureRegion.flip(");
                 boolean _booleanValue = Boolean.valueOf(it_3.getAnimation().getRegion().isFlipX()).booleanValue();
                 _builder_1.append(_booleanValue, "\t");
@@ -1261,8 +1296,8 @@ public class GameDSLJvmModelInferrer extends AbstractModelInferrer {
                 _builder_1.newLineIfNotEmpty();
                 _builder_1.append("\t");
                 _builder_1.append("frames.add(");
-                String _name_3 = it_3.getAnimation().getName();
-                _builder_1.append(_name_3, "\t");
+                String _name_2 = it_3.getAnimation().getName();
+                _builder_1.append(_name_2, "\t");
                 _builder_1.append("TextureRegion);");
                 _builder_1.newLineIfNotEmpty();
                 _builder_1.append("}");
@@ -1274,11 +1309,11 @@ public class GameDSLJvmModelInferrer extends AbstractModelInferrer {
                 final Consumer<GameSpriteStand> _function_4 = (GameSpriteStand it_4) -> {
                   StringConcatenation _builder_2 = new StringConcatenation();
                   _builder_2.append("TextureRegion ");
-                  String _name_4 = it_4.getName();
-                  _builder_2.append(_name_4);
+                  String _name_3 = it_4.getName();
+                  _builder_2.append(_name_3);
                   _builder_2.append("TextureRegion = new TextureRegion(screen.getAtlas().findRegion(\"");
-                  String _name_5 = it_4.getRegion().getName();
-                  _builder_2.append(_name_5);
+                  String _name_4 = it_4.getRegion().getName();
+                  _builder_2.append(_name_4);
                   _builder_2.append("\"), ");
                   int _offset_2 = it_4.getOffset();
                   int _width_2 = it_4.getRegion().getWidth();
@@ -1292,8 +1327,8 @@ public class GameDSLJvmModelInferrer extends AbstractModelInferrer {
                   _builder_2.append(_height_1);
                   _builder_2.append(");");
                   _builder_2.newLineIfNotEmpty();
-                  String _name_6 = it_4.getName();
-                  _builder_2.append(_name_6);
+                  String _name_5 = it_4.getName();
+                  _builder_2.append(_name_5);
                   _builder_2.append("TextureRegion.flip(");
                   boolean _booleanValue_2 = Boolean.valueOf(it_4.getRegion().isFlipX()).booleanValue();
                   _builder_2.append(_booleanValue_2);
@@ -1303,8 +1338,8 @@ public class GameDSLJvmModelInferrer extends AbstractModelInferrer {
                   _builder_2.append("); ");
                   _builder_2.newLineIfNotEmpty();
                   _builder_2.append("frames.add(");
-                  String _name_7 = it_4.getName();
-                  _builder_2.append(_name_7);
+                  String _name_6 = it_4.getName();
+                  _builder_2.append(_name_6);
                   _builder_2.append("TextureRegion);");
                   _builder_2.newLineIfNotEmpty();
                   current.append(_builder_2);
@@ -1312,8 +1347,8 @@ public class GameDSLJvmModelInferrer extends AbstractModelInferrer {
                 it_3.getAnimation().getStands().forEach(_function_4);
               }
               StringConcatenation _builder_2 = new StringConcatenation();
-              String _name_4 = it_3.getAnimation().getName();
-              _builder_2.append(_name_4);
+              String _name_3 = it_3.getAnimation().getName();
+              _builder_2.append(_name_3);
               _builder_2.append(" = new ");
               current.append(_builder_2);
               current.append(Animation.class);
@@ -1331,11 +1366,11 @@ public class GameDSLJvmModelInferrer extends AbstractModelInferrer {
             boolean _tripleNotEquals_1 = (_stand != null);
             if (_tripleNotEquals_1) {
               StringConcatenation _builder_4 = new StringConcatenation();
-              String _name_5 = it_3.getStand().getName();
-              _builder_4.append(_name_5);
+              String _name_4 = it_3.getStand().getName();
+              _builder_4.append(_name_4);
               _builder_4.append(" = new TextureRegion(screen.getAtlas().findRegion(\"");
-              String _name_6 = it_3.getStand().getRegion().getName();
-              _builder_4.append(_name_6);
+              String _name_5 = it_3.getStand().getRegion().getName();
+              _builder_4.append(_name_5);
               _builder_4.append("\"), ");
               int _offset_2 = it_3.getStand().getOffset();
               int _width_2 = it_3.getStand().getRegion().getWidth();
@@ -1349,8 +1384,8 @@ public class GameDSLJvmModelInferrer extends AbstractModelInferrer {
               _builder_4.append(_height_1);
               _builder_4.append(");");
               _builder_4.newLineIfNotEmpty();
-              String _name_7 = it_3.getStand().getName();
-              _builder_4.append(_name_7);
+              String _name_6 = it_3.getStand().getName();
+              _builder_4.append(_name_6);
               _builder_4.append(".flip(");
               boolean _booleanValue_2 = Boolean.valueOf(it_3.getStand().getRegion().isFlipX()).booleanValue();
               _builder_4.append(_booleanValue_2);
@@ -1367,17 +1402,11 @@ public class GameDSLJvmModelInferrer extends AbstractModelInferrer {
           _builder_1.append("define");
           String _firstUpper = StringExtensions.toFirstUpper(sprite.getName());
           _builder_1.append(_firstUpper);
-          _builder_1.append("(new Vector2(");
-          int _x = sprite.getX();
-          _builder_1.append(_x);
-          _builder_1.append(" / ");
+          _builder_1.append("(new Vector2(xPosition / ");
           it_2.append(_builder_1);
           it_2.append(gameClass);
           StringConcatenation _builder_2 = new StringConcatenation();
-          _builder_2.append(".PPM, ");
-          int _y = sprite.getY();
-          _builder_2.append(_y);
-          _builder_2.append(" / ");
+          _builder_2.append(".PPM, yPosition / ");
           String _simpleName = gameClass.getSimpleName();
           _builder_2.append(_simpleName);
           _builder_2.append(".PPM));");
@@ -1501,6 +1530,7 @@ public class GameDSLJvmModelInferrer extends AbstractModelInferrer {
   }
   
   public void toOperations(final JvmGenericType type, final GameSprite sprite, final JvmGenericType gameClass) {
+    final int i = ((int) 0);
     EList<GameSpriteState> _states = sprite.getStates();
     for (final GameSpriteState state : _states) {
       EList<JvmMember> _members = type.getMembers();
@@ -1916,112 +1946,161 @@ public class GameDSLJvmModelInferrer extends AbstractModelInferrer {
         it_1.append(_builder_6);
         boolean _isHasSensor = sprite.isHasSensor();
         if (_isHasSensor) {
-          it_1.append(EdgeShape.class);
+          int _length = ((Object[])Conversions.unwrapArray(sprite.getVectors2d(), Object.class)).length;
+          boolean _equals = (_length == 2);
+          if (_equals) {
+            it_1.append(EdgeShape.class);
+          } else {
+            it_1.append(PolygonShape.class);
+          }
           StringConcatenation _builder_7 = new StringConcatenation();
           _builder_7.append(" ");
-          _builder_7.append("head = new EdgeShape();");
-          _builder_7.newLine();
-          _builder_7.append("head.set(new Vector2(-");
-          int _sensorLength = sprite.getSensorLength();
-          _builder_7.append(_sensorLength);
-          _builder_7.append(" / 2 / ");
-          String _simpleName_3 = gameClass.getSimpleName();
-          _builder_7.append(_simpleName_3);
-          _builder_7.append(".PPM, ");
-          int _radius_1 = sprite.getRadius();
-          _builder_7.append(_radius_1);
-          _builder_7.append(" / ");
-          String _simpleName_4 = gameClass.getSimpleName();
-          _builder_7.append(_simpleName_4);
-          _builder_7.append(".PPM), new Vector2(");
-          int _sensorLength_1 = sprite.getSensorLength();
-          _builder_7.append(_sensorLength_1);
-          _builder_7.append(" / 2 / ");
-          String _simpleName_5 = gameClass.getSimpleName();
-          _builder_7.append(_simpleName_5);
-          _builder_7.append(".PPM, ");
-          int _radius_2 = sprite.getRadius();
-          _builder_7.append(_radius_2);
-          _builder_7.append(" / ");
-          String _simpleName_6 = gameClass.getSimpleName();
-          _builder_7.append(_simpleName_6);
-          _builder_7.append(".PPM));");
+          _builder_7.append("head = new ");
+          {
+            int _length_1 = ((Object[])Conversions.unwrapArray(sprite.getVectors2d(), Object.class)).length;
+            boolean _equals_1 = (_length_1 == 2);
+            if (_equals_1) {
+              _builder_7.append("Edge");
+            } else {
+              _builder_7.append("Polygon");
+            }
+          }
+          _builder_7.append("Shape();");
           _builder_7.newLineIfNotEmpty();
-          _builder_7.append("fdef.filter.categoryBits = ");
+          it_1.append(_builder_7);
+          int _length_2 = ((Object[])Conversions.unwrapArray(sprite.getVectors2d(), Object.class)).length;
+          boolean _equals_2 = (_length_2 == 2);
+          if (_equals_2) {
+            StringConcatenation _builder_8 = new StringConcatenation();
+            _builder_8.append("head.set(new Vector2(");
+            int _x = sprite.getVectors2d().get(0).getX();
+            _builder_8.append(_x);
+            _builder_8.append(" / 2 / ");
+            String _simpleName_3 = gameClass.getSimpleName();
+            _builder_8.append(_simpleName_3);
+            _builder_8.append(".PPM, ");
+            int _radius_1 = sprite.getRadius();
+            _builder_8.append(_radius_1);
+            _builder_8.append(" / ");
+            String _simpleName_4 = gameClass.getSimpleName();
+            _builder_8.append(_simpleName_4);
+            _builder_8.append(".PPM), new Vector2(");
+            int _y = sprite.getVectors2d().get(0).getY();
+            _builder_8.append(_y);
+            _builder_8.append(" / 2 / ");
+            String _simpleName_5 = gameClass.getSimpleName();
+            _builder_8.append(_simpleName_5);
+            _builder_8.append(".PPM, ");
+            int _radius_2 = sprite.getRadius();
+            _builder_8.append(_radius_2);
+            _builder_8.append(" / ");
+            String _simpleName_6 = gameClass.getSimpleName();
+            _builder_8.append(_simpleName_6);
+            _builder_8.append(".PPM));");
+            _builder_8.newLineIfNotEmpty();
+            it_1.append(_builder_8);
+          } else {
+            StringConcatenation _builder_9 = new StringConcatenation();
+            _builder_9.append("Vector2[] vertice = new Vector2[");
+            int _length_3 = ((Object[])Conversions.unwrapArray(sprite.getVectors2d(), Object.class)).length;
+            _builder_9.append(_length_3);
+            _builder_9.append("];");
+            _builder_9.newLineIfNotEmpty();
+            it_1.append(_builder_9);
+            for (int idx = 0; (idx < ((Object[])Conversions.unwrapArray(sprite.getVectors2d(), Object.class)).length); idx++) {
+              StringConcatenation _builder_10 = new StringConcatenation();
+              _builder_10.append("vertice[");
+              _builder_10.append(idx);
+              _builder_10.append("] = new Vector2(");
+              int _x_1 = sprite.getVectors2d().get(idx).getX();
+              _builder_10.append(_x_1);
+              _builder_10.append(", ");
+              int _y_1 = sprite.getVectors2d().get(idx).getY();
+              _builder_10.append(_y_1);
+              _builder_10.append(").scl(1 / ");
+              String _simpleName_7 = gameClass.getSimpleName();
+              _builder_10.append(_simpleName_7);
+              _builder_10.append(".PPM);");
+              _builder_10.newLineIfNotEmpty();
+              it_1.append(_builder_10);
+            }
+          }
+          StringConcatenation _builder_10 = new StringConcatenation();
+          _builder_10.append("fdef.filter.categoryBits = ");
           int _sensorID = sprite.getSensorID();
           double _power_2 = Math.pow(2, _sensorID);
-          _builder_7.append(((int) _power_2));
-          _builder_7.append(";");
-          _builder_7.newLineIfNotEmpty();
-          _builder_7.append("fdef.shape = head;");
-          _builder_7.newLine();
-          _builder_7.append("fdef.isSensor = true;");
-          _builder_7.newLine();
-          _builder_7.append("body.createFixture(fdef).setUserData(this);");
-          _builder_7.newLine();
-          it_1.append(_builder_7);
+          _builder_10.append(((int) _power_2));
+          _builder_10.append(";");
+          _builder_10.newLineIfNotEmpty();
+          _builder_10.append("fdef.shape = head;");
+          _builder_10.newLine();
+          _builder_10.append("fdef.isSensor = true;");
+          _builder_10.newLine();
+          _builder_10.append("body.createFixture(fdef).setUserData(this);");
+          _builder_10.newLine();
+          it_1.append(_builder_10);
         }
         GameSpriteAnimation _animation = sprite.getInitialState().getAnimation();
         boolean _tripleNotEquals = (_animation != null);
         if (_tripleNotEquals) {
           boolean _isHasFrames = sprite.getInitialState().getAnimation().isHasFrames();
           if (_isHasFrames) {
-            StringConcatenation _builder_8 = new StringConcatenation();
-            _builder_8.append("setBounds(position.x, position.y, ");
+            StringConcatenation _builder_11 = new StringConcatenation();
+            _builder_11.append("setBounds(position.x, position.y, ");
             int _width = sprite.getInitialState().getAnimation().getRegion().getWidth();
-            _builder_8.append(_width);
-            _builder_8.append(" / ");
+            _builder_11.append(_width);
+            _builder_11.append(" / ");
             String _simpleName_7 = gameClass.getSimpleName();
-            _builder_8.append(_simpleName_7);
-            _builder_8.append(".PPM, ");
+            _builder_11.append(_simpleName_7);
+            _builder_11.append(".PPM, ");
             int _height = sprite.getInitialState().getAnimation().getRegion().getHeight();
-            _builder_8.append(_height);
-            _builder_8.append(" / ");
+            _builder_11.append(_height);
+            _builder_11.append(" / ");
             String _simpleName_8 = gameClass.getSimpleName();
-            _builder_8.append(_simpleName_8);
-            _builder_8.append(".PPM);");
-            _builder_8.newLineIfNotEmpty();
-            it_1.append(_builder_8);
+            _builder_11.append(_simpleName_8);
+            _builder_11.append(".PPM);");
+            _builder_11.newLineIfNotEmpty();
+            it_1.append(_builder_11);
           }
           boolean _isHasStands = sprite.getInitialState().getAnimation().isHasStands();
           if (_isHasStands) {
-            StringConcatenation _builder_9 = new StringConcatenation();
-            _builder_9.append("setBounds(position.x, position.y, ");
+            StringConcatenation _builder_12 = new StringConcatenation();
+            _builder_12.append("setBounds(position.x, position.y, ");
             int _width_1 = sprite.getInitialState().getAnimation().getStands().get(0).getRegion().getWidth();
-            _builder_9.append(_width_1);
-            _builder_9.append(" / ");
+            _builder_12.append(_width_1);
+            _builder_12.append(" / ");
             String _simpleName_9 = gameClass.getSimpleName();
-            _builder_9.append(_simpleName_9);
-            _builder_9.append(".PPM, ");
+            _builder_12.append(_simpleName_9);
+            _builder_12.append(".PPM, ");
             int _height_1 = sprite.getInitialState().getAnimation().getStands().get(0).getRegion().getHeight();
-            _builder_9.append(_height_1);
-            _builder_9.append(" / ");
+            _builder_12.append(_height_1);
+            _builder_12.append(" / ");
             String _simpleName_10 = gameClass.getSimpleName();
-            _builder_9.append(_simpleName_10);
-            _builder_9.append(".PPM);");
-            _builder_9.newLineIfNotEmpty();
-            it_1.append(_builder_9);
+            _builder_12.append(_simpleName_10);
+            _builder_12.append(".PPM);");
+            _builder_12.newLineIfNotEmpty();
+            it_1.append(_builder_12);
           }
         }
         GameSpriteStand _stand = sprite.getInitialState().getStand();
         boolean _tripleNotEquals_1 = (_stand != null);
         if (_tripleNotEquals_1) {
-          StringConcatenation _builder_10 = new StringConcatenation();
-          _builder_10.append("setBounds(position.x, position.y, ");
+          StringConcatenation _builder_13 = new StringConcatenation();
+          _builder_13.append("setBounds(position.x, position.y, ");
           int _width_2 = sprite.getInitialState().getStand().getRegion().getWidth();
-          _builder_10.append(_width_2);
-          _builder_10.append(" / ");
+          _builder_13.append(_width_2);
+          _builder_13.append(" / ");
           String _simpleName_11 = gameClass.getSimpleName();
-          _builder_10.append(_simpleName_11);
-          _builder_10.append(".PPM, ");
+          _builder_13.append(_simpleName_11);
+          _builder_13.append(".PPM, ");
           int _height_2 = sprite.getInitialState().getStand().getRegion().getHeight();
-          _builder_10.append(_height_2);
-          _builder_10.append(" / ");
+          _builder_13.append(_height_2);
+          _builder_13.append(" / ");
           String _simpleName_12 = gameClass.getSimpleName();
-          _builder_10.append(_simpleName_12);
-          _builder_10.append(".PPM);");
-          _builder_10.newLineIfNotEmpty();
-          it_1.append(_builder_10);
+          _builder_13.append(_simpleName_12);
+          _builder_13.append(".PPM);");
+          _builder_13.newLineIfNotEmpty();
+          it_1.append(_builder_13);
         }
       };
       this._jvmTypesBuilder.setBody(it, _function_10);

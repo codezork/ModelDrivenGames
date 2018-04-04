@@ -15,6 +15,7 @@ import org.eclipse.emf.ecore.EObject;
  * </p>
  * <ul>
  *   <li>{@link com.hypermodel.games.engine.gameDSL.GameTextureRegion#getName <em>Name</em>}</li>
+ *   <li>{@link com.hypermodel.games.engine.gameDSL.GameTextureRegion#getRegion <em>Region</em>}</li>
  *   <li>{@link com.hypermodel.games.engine.gameDSL.GameTextureRegion#getWidth <em>Width</em>}</li>
  *   <li>{@link com.hypermodel.games.engine.gameDSL.GameTextureRegion#getHeight <em>Height</em>}</li>
  *   <li>{@link com.hypermodel.games.engine.gameDSL.GameTextureRegion#getOffsetX <em>Offset X</em>}</li>
@@ -54,6 +55,32 @@ public interface GameTextureRegion extends EObject
    * @generated
    */
   void setName(String value);
+
+  /**
+   * Returns the value of the '<em><b>Region</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Region</em>' attribute isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Region</em>' attribute.
+   * @see #setRegion(String)
+   * @see com.hypermodel.games.engine.gameDSL.GameDSLPackage#getGameTextureRegion_Region()
+   * @model
+   * @generated
+   */
+  String getRegion();
+
+  /**
+   * Sets the value of the '{@link com.hypermodel.games.engine.gameDSL.GameTextureRegion#getRegion <em>Region</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Region</em>' attribute.
+   * @see #getRegion()
+   * @generated
+   */
+  void setRegion(String value);
 
   /**
    * Returns the value of the '<em><b>Width</b></em>' attribute.

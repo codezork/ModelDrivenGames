@@ -24,6 +24,7 @@ import com.hypermodel.games.engine.gameDSL.GameSpriteEvent;
 import com.hypermodel.games.engine.gameDSL.GameSpriteStand;
 import com.hypermodel.games.engine.gameDSL.GameSpriteState;
 import com.hypermodel.games.engine.gameDSL.GameTextureRegion;
+import com.hypermodel.games.engine.gameDSL.GameVector2d;
 import com.hypermodel.games.engine.services.GameDSLGrammarAccess;
 import java.util.Set;
 import org.eclipse.emf.ecore.EObject;
@@ -154,6 +155,9 @@ public abstract class AbstractGameDSLSemanticSequencer extends XbaseWithAnnotati
 				return; 
 			case GameDSLPackage.GAME_TEXTURE_REGION:
 				sequence_GameTextureRegion(context, (GameTextureRegion) semanticObject); 
+				return; 
+			case GameDSLPackage.GAME_VECTOR2D:
+				sequence_GameVector2d(context, (GameVector2d) semanticObject); 
 				return; 
 			}
 		else if (epackage == TypesPackage.eINSTANCE)
@@ -728,9 +732,8 @@ public abstract class AbstractGameDSLSemanticSequencer extends XbaseWithAnnotati
 	 *         name=ValidID 
 	 *         id=INT 
 	 *         radius=INT 
-	 *         x=INT 
-	 *         y=INT 
-	 *         (hasSensor?='sensorLength' sensorLength=INT sensorID=INT)? 
+	 *         (hasStartPosition?='startPositionX' x=INT y=INT)? 
+	 *         (hasSensor?='sensor' vectors2d+=GameVector2d* sensorID=INT)? 
 	 *         interactionSprites+=[GameSprite|ID]* 
 	 *         properties+=GameBodyProperty* 
 	 *         (states+=GameSpriteState* initialState=[GameSpriteState|ID])? 
@@ -749,6 +752,7 @@ public abstract class AbstractGameDSLSemanticSequencer extends XbaseWithAnnotati
 	 * Constraint:
 	 *     (
 	 *         name=ValidID 
+	 *         region=STRING 
 	 *         width=INT 
 	 *         height=INT 
 	 *         offsetX=SignedNumber? 
@@ -759,6 +763,27 @@ public abstract class AbstractGameDSLSemanticSequencer extends XbaseWithAnnotati
 	 */
 	protected void sequence_GameTextureRegion(ISerializationContext context, GameTextureRegion semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     GameVector2d returns GameVector2d
+	 *
+	 * Constraint:
+	 *     (x=SignedInteger y=SignedInteger)
+	 */
+	protected void sequence_GameVector2d(ISerializationContext context, GameVector2d semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, GameDSLPackage.Literals.GAME_VECTOR2D__X) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, GameDSLPackage.Literals.GAME_VECTOR2D__X));
+			if (transientValues.isValueTransient(semanticObject, GameDSLPackage.Literals.GAME_VECTOR2D__Y) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, GameDSLPackage.Literals.GAME_VECTOR2D__Y));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getGameVector2dAccess().getXSignedIntegerParserRuleCall_2_0(), semanticObject.getX());
+		feeder.accept(grammarAccess.getGameVector2dAccess().getYSignedIntegerParserRuleCall_4_0(), semanticObject.getY());
+		feeder.finish();
 	}
 	
 	

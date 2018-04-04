@@ -132,6 +132,15 @@ public interface GameDSLFactory extends EFactory
   GameSprite createGameSprite();
 
   /**
+   * Returns a new object of class '<em>Game Vector2d</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Game Vector2d</em>'.
+   * @generated
+   */
+  GameVector2d createGameVector2d();
+
+  /**
    * Returns a new object of class '<em>Game Sprite State</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->

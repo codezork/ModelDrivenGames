@@ -77,13 +77,16 @@ GameDisplay:
 GameSprite:
 	{GameSprite} 'sprite' name=ValidID 'id' id=INT 
 	'radius' radius=INT
-	'startPositionX' x=INT 'startPositionY' y=INT
-	(hasSensor?='sensorLength' sensorLength=INT 'sensorID' sensorID=INT)?
+	(hasStartPosition?='startPositionX' x=INT 'startPositionY' y=INT)?
+	(hasSensor?='sensor' '{' vectors2d+=GameVector2d* '}' 'sensorID' sensorID=INT)?
 	('interactsWith' '{' interactionSprites+=[GameSprite]* '}')?
 	('properties' '{' properties+=GameBodyProperty* '}')?
 	('states' '{' states+=GameSpriteState* '}' 'initialState' initialState=[GameSpriteState])?
 	('events' '{' events+=GameSpriteEvent* '}')?;
 
+GameVector2d:
+	{GameVector2d} 'vector(' x=SignedInteger ',' y=SignedInteger ')'; 
+	
 GameSpriteState:
 	{GameSpriteState} 'state' name=ValidID 'if' rule=GameRule
 	(animation=GameSpriteAnimation (ifFinished?='ifFinished' 
@@ -106,7 +109,7 @@ GameSpriteStand:
 	{GameSpriteStand} 'stand' name=ValidID 'whichFrame' offset=INT 'from' region=[GameTextureRegion];
 
 GameTextureRegion:
-	{GameTextureRegion} 'region' name=ValidID 'width' width=INT 'height' height=INT 
+	{GameTextureRegion} 'region' name=ValidID 'name' region=STRING 'width' width=INT 'height' height=INT 
 	('positionOffsetX' offsetX=SignedNumber)? ('positionOffsetY' offsetY=SignedNumber)?
 	(flipX?='flipX')? (flipY?='flipY')?;
 	
@@ -128,3 +131,6 @@ SignedNumber returns ecore::EFloat:
 
 UnsignedNumber returns ecore::EFloat:
 	INT ('.' (INT));
+	
+SignedInteger returns ecore::EInt:
+	('-')? INT;

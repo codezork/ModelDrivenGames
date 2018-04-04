@@ -24,11 +24,11 @@ package com.hypermodel.games {
 		}
 	}
 	regions {
-		region marioSmall width 16 height 16  
-		region marioSmallLeft width 16 height 16 flipX  
-		region goomba width 16 height 16
-		region marioGrowing width 16 height 16
-		region marioBig width 16 height 32 positionOffsetY 10.0 
+		region marioRunRight name "little_mario" width 16 height 16  
+		region marioRunLeft name "little_mario" width 16 height 16 flipX  
+		region bigMarioRunRight name "big_mario" width 16 height 32 positionOffsetY 10.0  
+		region bigMarioRunLeft name "big_mario" width 16 height 32 positionOffsetY 10.0 flipX
+		region goomba name "goomba" width 16 height 16   
 	}
 	screens {
 		screen PlayScreen 
@@ -37,41 +37,102 @@ package com.hypermodel.games {
 		sprites {
 			sprite Mario id 0 radius 6
 			startPositionX 32 startPositionY 32
-			sensorLength 4 sensorID 6 
+			sensor {
+				vector(-2,6)
+				vector(2,6)
+			} sensorID 6 
 			interactsWith {
-				Mario
+				Goomba
 			}
 			properties {
-				property growing
+				property grow
 				property big
-				property timeToDefineBig onUpdateIfTrue {
+				property timeToDefineBig onUpdateIfTrue { 
 					redefineMario();
 					timeToDefineBig = false; 
+				}   
+				property timeToDefineSmall onUpdateIfTrue {
+					redefineMario();
+					timeToDefineSmall = false; 
 				}   
 			}
 			states {
 				state standSmall if isTrue notMoving() { 
-					return body.linearVelocity.y == 0 && body.linearVelocity.x == 0
-				} stand marioStand whichFrame 5 from marioSmall
+					return body.linearVelocity.y == 0 && body.linearVelocity.x == 0 && !isBig
+				} stand marioStand whichFrame 0 from marioRunRight
+				state standSmallBig if isTrue notMovingBig() { 
+					return body.linearVelocity.y == 0 && body.linearVelocity.x == 0 && isBig
+				} stand bigMarioStand whichFrame 0 from bigMarioRunRight
 				state runningSmallLeft if isTrue runningLeft() {
 					return body.linearVelocity.y == 0 && body.linearVelocity.x < 0 && !isBig
-				} animation marioRunleft duration 0.4 frames 4 startFrame 1 from marioSmall 
-				state growing if isTrue grows() {
+				} animation marioRunleft duration 0.1 frames 4 startFrame 1 from marioRunLeft
+				state runningSmallRight if isTrue runningRight() {
+					return body.linearVelocity.y == 0 && body.linearVelocity.x > 0 && !isBig
+				} animation marioRunRight duration 0.1 frames 4 startFrame 1 from marioRunLeft
+				state runningBigLeft if isTrue runningBigLeft() {
+					return body.linearVelocity.y == 0 && body.linearVelocity.x < 0 && isBig
+				} animation bigMarioRunleft duration 0.1 frames 4 startFrame 1 from bigMarioRunLeft
+				state runningBigRight if isTrue runningBigRight() {
+					return body.linearVelocity.y == 0 && body.linearVelocity.x > 0 && isBig
+				} animation bigMarioRunRight duration 0.1 frames 4 startFrame 1 from bigMarioRunRight
+				state jumpSmallLeft if isTrue jumSmallLeft() {
+					return body.linearVelocity.y > 0 || body.linearVelocity.y < 0 && body.linearVelocity.x > 0 && !isBig && previousState==State.JUMPSMALLLEFT 
+				} stand jumpSmallLeft whichFrame 5 from marioRunLeft
+				state jumpSmallRight if isTrue jumpSmallRight() {
+					return body.linearVelocity.y > 0 || body.linearVelocity.y < 0 && body.linearVelocity.x < 0 && !isBig && previousState==State.JUMPSMALLRIGHT
+				} stand jumpSmallRight whichFrame 5 from marioRunRight 
+				state jumpBigLeft if isTrue jumpBigLeft() {
+					return body.linearVelocity.y > 0 || body.linearVelocity.y < 0 && body.linearVelocity.x > 0 && isBig && previousState==State.RUNNINGBIGLEFT
+				} stand jumpBigLeft whichFrame 5 from bigMarioRunLeft 
+				state jumpBigRight if isTrue jumpBigRight() {
+					return body.linearVelocity.y > 0 || body.linearVelocity.y < 0 && body.linearVelocity.x < 0 && isBig && previousState==State.JUMPBIGRIGHT
+				} stand jumpBigRight whichFrame 5 from bigMarioRunRight
+				state growing if isTrue growing() { 
 					return isGrowing
-				} animation marioGrowing duration 0.4 stands {
-					stand grow1 whichFrame 4 from marioGrowing
-					stand grow2 whichFrame 6 from marioGrowing 
-				} ifFinished setFalse growing 
+				} animation marioGrowing duration 0.2 stands {
+					stand grow1 whichFrame 15 from bigMarioRunLeft
+					stand grow2 whichFrame 0 from bigMarioRunLeft 
+					stand grow3 whichFrame 15 from bigMarioRunLeft
+					stand grow4 whichFrame 0 from bigMarioRunLeft 
+				} ifFinished setFalse grow 
 				 
 			}
 			initialState standSmall
 			events {
-				event grow () {
-					growing = true
+				event grow() {
+					grow = true
 					big = true
 					timeToDefineBig = true					
 				}
+				event hit() {
+					if(isBig) {
+						big = false
+						timeToDefineSmall = true 
+					} else {
+						//Gdx.app.log("MARIO", "-*- DIED -*-")
+					}
+				}
 			}
+			sprite Goomba id 1 radius 6
+			sensor {
+				vector(-5,8)
+				vector(5,8)
+				vector(-3,3)
+				vector(3,3)
+			} sensorID 7
+			interactsWith {
+				Mario
+			}
+			properties {
+				property setToDestroyed
+				property destroyed
+			}
+			states {
+				state runningGoomba if isTrue notDestroyed () {
+					return !destroyed 
+				} animation walkAnimation duration 0.4 frames 2 startFrame 0 from goomba
+			}
+			initialState runningGoomba
 		}
 	}
 } 

@@ -8,6 +8,7 @@ import com.hypermodel.games.engine.gameDSL.GameDSLPackage;
 import com.hypermodel.games.engine.gameDSL.GameSprite;
 import com.hypermodel.games.engine.gameDSL.GameSpriteEvent;
 import com.hypermodel.games.engine.gameDSL.GameSpriteState;
+import com.hypermodel.games.engine.gameDSL.GameVector2d;
 
 import java.util.Collection;
 
@@ -37,10 +38,11 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link com.hypermodel.games.engine.gameDSL.impl.GameSpriteImpl#getName <em>Name</em>}</li>
  *   <li>{@link com.hypermodel.games.engine.gameDSL.impl.GameSpriteImpl#getId <em>Id</em>}</li>
  *   <li>{@link com.hypermodel.games.engine.gameDSL.impl.GameSpriteImpl#getRadius <em>Radius</em>}</li>
+ *   <li>{@link com.hypermodel.games.engine.gameDSL.impl.GameSpriteImpl#isHasStartPosition <em>Has Start Position</em>}</li>
  *   <li>{@link com.hypermodel.games.engine.gameDSL.impl.GameSpriteImpl#getX <em>X</em>}</li>
  *   <li>{@link com.hypermodel.games.engine.gameDSL.impl.GameSpriteImpl#getY <em>Y</em>}</li>
  *   <li>{@link com.hypermodel.games.engine.gameDSL.impl.GameSpriteImpl#isHasSensor <em>Has Sensor</em>}</li>
- *   <li>{@link com.hypermodel.games.engine.gameDSL.impl.GameSpriteImpl#getSensorLength <em>Sensor Length</em>}</li>
+ *   <li>{@link com.hypermodel.games.engine.gameDSL.impl.GameSpriteImpl#getVectors2d <em>Vectors2d</em>}</li>
  *   <li>{@link com.hypermodel.games.engine.gameDSL.impl.GameSpriteImpl#getSensorID <em>Sensor ID</em>}</li>
  *   <li>{@link com.hypermodel.games.engine.gameDSL.impl.GameSpriteImpl#getInteractionSprites <em>Interaction Sprites</em>}</li>
  *   <li>{@link com.hypermodel.games.engine.gameDSL.impl.GameSpriteImpl#getProperties <em>Properties</em>}</li>
@@ -114,6 +116,26 @@ public class GameSpriteImpl extends MinimalEObjectImpl.Container implements Game
   protected int radius = RADIUS_EDEFAULT;
 
   /**
+   * The default value of the '{@link #isHasStartPosition() <em>Has Start Position</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #isHasStartPosition()
+   * @generated
+   * @ordered
+   */
+  protected static final boolean HAS_START_POSITION_EDEFAULT = false;
+
+  /**
+   * The cached value of the '{@link #isHasStartPosition() <em>Has Start Position</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #isHasStartPosition()
+   * @generated
+   * @ordered
+   */
+  protected boolean hasStartPosition = HAS_START_POSITION_EDEFAULT;
+
+  /**
    * The default value of the '{@link #getX() <em>X</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -174,24 +196,14 @@ public class GameSpriteImpl extends MinimalEObjectImpl.Container implements Game
   protected boolean hasSensor = HAS_SENSOR_EDEFAULT;
 
   /**
-   * The default value of the '{@link #getSensorLength() <em>Sensor Length</em>}' attribute.
+   * The cached value of the '{@link #getVectors2d() <em>Vectors2d</em>}' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getSensorLength()
+   * @see #getVectors2d()
    * @generated
    * @ordered
    */
-  protected static final int SENSOR_LENGTH_EDEFAULT = 0;
-
-  /**
-   * The cached value of the '{@link #getSensorLength() <em>Sensor Length</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getSensorLength()
-   * @generated
-   * @ordered
-   */
-  protected int sensorLength = SENSOR_LENGTH_EDEFAULT;
+  protected EList<GameVector2d> vectors2d;
 
   /**
    * The default value of the '{@link #getSensorID() <em>Sensor ID</em>}' attribute.
@@ -358,6 +370,29 @@ public class GameSpriteImpl extends MinimalEObjectImpl.Container implements Game
    * <!-- end-user-doc -->
    * @generated
    */
+  public boolean isHasStartPosition()
+  {
+    return hasStartPosition;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setHasStartPosition(boolean newHasStartPosition)
+  {
+    boolean oldHasStartPosition = hasStartPosition;
+    hasStartPosition = newHasStartPosition;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, GameDSLPackage.GAME_SPRITE__HAS_START_POSITION, oldHasStartPosition, hasStartPosition));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public int getX()
   {
     return x;
@@ -427,22 +462,13 @@ public class GameSpriteImpl extends MinimalEObjectImpl.Container implements Game
    * <!-- end-user-doc -->
    * @generated
    */
-  public int getSensorLength()
+  public EList<GameVector2d> getVectors2d()
   {
-    return sensorLength;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void setSensorLength(int newSensorLength)
-  {
-    int oldSensorLength = sensorLength;
-    sensorLength = newSensorLength;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, GameDSLPackage.GAME_SPRITE__SENSOR_LENGTH, oldSensorLength, sensorLength));
+    if (vectors2d == null)
+    {
+      vectors2d = new EObjectContainmentEList<GameVector2d>(GameVector2d.class, this, GameDSLPackage.GAME_SPRITE__VECTORS2D);
+    }
+    return vectors2d;
   }
 
   /**
@@ -577,6 +603,8 @@ public class GameSpriteImpl extends MinimalEObjectImpl.Container implements Game
   {
     switch (featureID)
     {
+      case GameDSLPackage.GAME_SPRITE__VECTORS2D:
+        return ((InternalEList<?>)getVectors2d()).basicRemove(otherEnd, msgs);
       case GameDSLPackage.GAME_SPRITE__PROPERTIES:
         return ((InternalEList<?>)getProperties()).basicRemove(otherEnd, msgs);
       case GameDSLPackage.GAME_SPRITE__STATES:
@@ -603,14 +631,16 @@ public class GameSpriteImpl extends MinimalEObjectImpl.Container implements Game
         return getId();
       case GameDSLPackage.GAME_SPRITE__RADIUS:
         return getRadius();
+      case GameDSLPackage.GAME_SPRITE__HAS_START_POSITION:
+        return isHasStartPosition();
       case GameDSLPackage.GAME_SPRITE__X:
         return getX();
       case GameDSLPackage.GAME_SPRITE__Y:
         return getY();
       case GameDSLPackage.GAME_SPRITE__HAS_SENSOR:
         return isHasSensor();
-      case GameDSLPackage.GAME_SPRITE__SENSOR_LENGTH:
-        return getSensorLength();
+      case GameDSLPackage.GAME_SPRITE__VECTORS2D:
+        return getVectors2d();
       case GameDSLPackage.GAME_SPRITE__SENSOR_ID:
         return getSensorID();
       case GameDSLPackage.GAME_SPRITE__INTERACTION_SPRITES:
@@ -648,6 +678,9 @@ public class GameSpriteImpl extends MinimalEObjectImpl.Container implements Game
       case GameDSLPackage.GAME_SPRITE__RADIUS:
         setRadius((Integer)newValue);
         return;
+      case GameDSLPackage.GAME_SPRITE__HAS_START_POSITION:
+        setHasStartPosition((Boolean)newValue);
+        return;
       case GameDSLPackage.GAME_SPRITE__X:
         setX((Integer)newValue);
         return;
@@ -657,8 +690,9 @@ public class GameSpriteImpl extends MinimalEObjectImpl.Container implements Game
       case GameDSLPackage.GAME_SPRITE__HAS_SENSOR:
         setHasSensor((Boolean)newValue);
         return;
-      case GameDSLPackage.GAME_SPRITE__SENSOR_LENGTH:
-        setSensorLength((Integer)newValue);
+      case GameDSLPackage.GAME_SPRITE__VECTORS2D:
+        getVectors2d().clear();
+        getVectors2d().addAll((Collection<? extends GameVector2d>)newValue);
         return;
       case GameDSLPackage.GAME_SPRITE__SENSOR_ID:
         setSensorID((Integer)newValue);
@@ -705,6 +739,9 @@ public class GameSpriteImpl extends MinimalEObjectImpl.Container implements Game
       case GameDSLPackage.GAME_SPRITE__RADIUS:
         setRadius(RADIUS_EDEFAULT);
         return;
+      case GameDSLPackage.GAME_SPRITE__HAS_START_POSITION:
+        setHasStartPosition(HAS_START_POSITION_EDEFAULT);
+        return;
       case GameDSLPackage.GAME_SPRITE__X:
         setX(X_EDEFAULT);
         return;
@@ -714,8 +751,8 @@ public class GameSpriteImpl extends MinimalEObjectImpl.Container implements Game
       case GameDSLPackage.GAME_SPRITE__HAS_SENSOR:
         setHasSensor(HAS_SENSOR_EDEFAULT);
         return;
-      case GameDSLPackage.GAME_SPRITE__SENSOR_LENGTH:
-        setSensorLength(SENSOR_LENGTH_EDEFAULT);
+      case GameDSLPackage.GAME_SPRITE__VECTORS2D:
+        getVectors2d().clear();
         return;
       case GameDSLPackage.GAME_SPRITE__SENSOR_ID:
         setSensorID(SENSOR_ID_EDEFAULT);
@@ -755,14 +792,16 @@ public class GameSpriteImpl extends MinimalEObjectImpl.Container implements Game
         return id != ID_EDEFAULT;
       case GameDSLPackage.GAME_SPRITE__RADIUS:
         return radius != RADIUS_EDEFAULT;
+      case GameDSLPackage.GAME_SPRITE__HAS_START_POSITION:
+        return hasStartPosition != HAS_START_POSITION_EDEFAULT;
       case GameDSLPackage.GAME_SPRITE__X:
         return x != X_EDEFAULT;
       case GameDSLPackage.GAME_SPRITE__Y:
         return y != Y_EDEFAULT;
       case GameDSLPackage.GAME_SPRITE__HAS_SENSOR:
         return hasSensor != HAS_SENSOR_EDEFAULT;
-      case GameDSLPackage.GAME_SPRITE__SENSOR_LENGTH:
-        return sensorLength != SENSOR_LENGTH_EDEFAULT;
+      case GameDSLPackage.GAME_SPRITE__VECTORS2D:
+        return vectors2d != null && !vectors2d.isEmpty();
       case GameDSLPackage.GAME_SPRITE__SENSOR_ID:
         return sensorID != SENSOR_ID_EDEFAULT;
       case GameDSLPackage.GAME_SPRITE__INTERACTION_SPRITES:
@@ -796,14 +835,14 @@ public class GameSpriteImpl extends MinimalEObjectImpl.Container implements Game
     result.append(id);
     result.append(", radius: ");
     result.append(radius);
+    result.append(", hasStartPosition: ");
+    result.append(hasStartPosition);
     result.append(", x: ");
     result.append(x);
     result.append(", y: ");
     result.append(y);
     result.append(", hasSensor: ");
     result.append(hasSensor);
-    result.append(", sensorLength: ");
-    result.append(sensorLength);
     result.append(", sensorID: ");
     result.append(sensorID);
     result.append(')');

@@ -88,16 +88,21 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GameDSL.ecore#//GameSprite/name"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GameDSL.ecore#//GameSprite/id"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GameDSL.ecore#//GameSprite/radius"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GameDSL.ecore#//GameSprite/hasStartPosition"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GameDSL.ecore#//GameSprite/x"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GameDSL.ecore#//GameSprite/y"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GameDSL.ecore#//GameSprite/hasSensor"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GameDSL.ecore#//GameSprite/sensorLength"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GameDSL.ecore#//GameSprite/vectors2d"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GameDSL.ecore#//GameSprite/sensorID"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference GameDSL.ecore#//GameSprite/interactionSprites"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GameDSL.ecore#//GameSprite/properties"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GameDSL.ecore#//GameSprite/states"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference GameDSL.ecore#//GameSprite/initialState"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GameDSL.ecore#//GameSprite/events"/>
+    </genClasses>
+    <genClasses ecoreClass="GameDSL.ecore#//GameVector2d">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GameDSL.ecore#//GameVector2d/x"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GameDSL.ecore#//GameVector2d/y"/>
     </genClasses>
     <genClasses ecoreClass="GameDSL.ecore#//GameSpriteState">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GameDSL.ecore#//GameSpriteState/name"/>
@@ -134,6 +139,7 @@
     </genClasses>
     <genClasses ecoreClass="GameDSL.ecore#//GameTextureRegion">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GameDSL.ecore#//GameTextureRegion/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GameDSL.ecore#//GameTextureRegion/region"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GameDSL.ecore#//GameTextureRegion/width"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GameDSL.ecore#//GameTextureRegion/height"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GameDSL.ecore#//GameTextureRegion/offsetX"/>

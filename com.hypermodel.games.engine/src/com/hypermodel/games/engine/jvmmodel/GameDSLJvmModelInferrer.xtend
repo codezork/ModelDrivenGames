@@ -55,6 +55,7 @@ import com.badlogic.gdx.physics.box2d.FixtureDef
 import com.badlogic.gdx.physics.box2d.CircleShape
 import com.badlogic.gdx.physics.box2d.EdgeShape
 import java.util.HashMap
+import com.badlogic.gdx.physics.box2d.PolygonShape
 
 class GameDSLJvmModelInferrer extends AbstractModelInferrer {
 	@Inject extension JvmTypesBuilder
@@ -629,11 +630,17 @@ class GameDSLJvmModelInferrer extends AbstractModelInferrer {
 				it.toFields(sprite)
 				members += sprite.toConstructor [
 					parameters += gamePkg.toParameter("screen", screenClass.typeRef)
+					if(!sprite.hasStartPosition) {
+						parameters += gamePkg.toParameter("x", int.typeRef)
+						parameters += gamePkg.toParameter("y", int.typeRef)
+					}
 					body = [
 						append(
 						'''
 						world = screen.getWorld();
 						stateTimer = 0;
+						int xPosition = «IF sprite.hasStartPosition»«sprite.x»«ELSE»x«ENDIF»;
+						int yPosition = «IF sprite.hasStartPosition»«sprite.y»«ELSE»y«ENDIF»;
 						''')
 						append(Array)
 						append("<")
@@ -646,7 +653,7 @@ class GameDSLJvmModelInferrer extends AbstractModelInferrer {
 									current.append(
 									'''
 									for (int i = «it.animation.offset»; i < «it.animation.frames+it.animation.offset»; i++) {
-										TextureRegion «it.animation.name»TextureRegion = new TextureRegion(screen.getAtlas().findRegion("«it.animation.region.name»"), i * «it.animation.region.width», 0, «it.animation.region.width», «it.animation.region.height»);
+										TextureRegion «it.animation.name»TextureRegion = new TextureRegion(screen.getAtlas().findRegion("«it.animation.region.region»"), i * «it.animation.region.width», 0, «it.animation.region.width», «it.animation.region.height»);
 										«it.animation.name»TextureRegion.flip(«it.animation.region.flipX.booleanValue», «it.animation.region.flipY.booleanValue»); 
 										frames.add(«it.animation.name»TextureRegion);
 									}
@@ -683,9 +690,9 @@ class GameDSLJvmModelInferrer extends AbstractModelInferrer {
 						]
 						append(
 						'''
-				        define«sprite.name.toFirstUpper»(new Vector2(«sprite.x» / ''')
+				        define«sprite.name.toFirstUpper»(new Vector2(xPosition / ''')
 				        append(gameClass)
-				        append('''.PPM, «sprite.y» / «gameClass.simpleName».PPM));
+				        append('''.PPM, yPosition / «gameClass.simpleName».PPM));
 				        ''')
 						append("setRegion(getFrame(0.0f));\n");
 					]
@@ -725,6 +732,7 @@ class GameDSLJvmModelInferrer extends AbstractModelInferrer {
 	}
 
 	def void toOperations(JvmGenericType type, GameSprite sprite, JvmGenericType gameClass) {
+		val i = 0 as int
 		for(state: sprite.states) {
 			type.members += sprite.toMethod('''is«state.rule.name.toFirstUpper»''', boolean.typeRef) [
 				documentation = state.rule.documentation
@@ -875,11 +883,33 @@ class GameDSLJvmModelInferrer extends AbstractModelInferrer {
 				body.createFixture(fdef).setUserData(this);
 				''')
 				if(sprite.hasSensor) {
-					append(EdgeShape)
+					if(sprite.vectors2d.length==2) {
+						append(EdgeShape)
+					} else {
+						append(PolygonShape)
+					}
+					append(
+					''' head = new «IF sprite.vectors2d.length==2»Edge«ELSE»Polygon«ENDIF»Shape();
+					''')
+					if(sprite.vectors2d.length==2) {
+						append(
+						'''
+						head.set(new Vector2(«sprite.vectors2d.get(0).x» / 2 / «gameClass.simpleName».PPM, «sprite.radius» / «gameClass.simpleName».PPM), new Vector2(«sprite.vectors2d.get(0).y» / 2 / «gameClass.simpleName».PPM, «sprite.radius» / «gameClass.simpleName».PPM));
+						''')
+					} else {
+						append(
+						'''
+						Vector2[] vertice = new Vector2[«sprite.vectors2d.length»];
+						''')
+						for(var idx=0;idx<sprite.vectors2d.length;idx++) {
+							append(
+							'''
+							vertice[«idx»] = new Vector2(«sprite.vectors2d.get(idx).x», «sprite.vectors2d.get(idx).y»).scl(1 / «gameClass.simpleName».PPM);
+							''')
+						}
+					}
 					append(
 					'''
-					 head = new EdgeShape();
-					head.set(new Vector2(-«sprite.sensorLength» / 2 / «gameClass.simpleName».PPM, «sprite.radius» / «gameClass.simpleName».PPM), new Vector2(«sprite.sensorLength» / 2 / «gameClass.simpleName».PPM, «sprite.radius» / «gameClass.simpleName».PPM));
 					fdef.filter.categoryBits = «(2**sprite.sensorID) as int»;
 					fdef.shape = head;
 					fdef.isSensor = true;

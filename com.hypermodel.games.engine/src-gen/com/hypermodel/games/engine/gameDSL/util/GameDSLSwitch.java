@@ -157,6 +157,13 @@ public class GameDSLSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
+      case GameDSLPackage.GAME_VECTOR2D:
+      {
+        GameVector2d gameVector2d = (GameVector2d)theEObject;
+        T result = caseGameVector2d(gameVector2d);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
       case GameDSLPackage.GAME_SPRITE_STATE:
       {
         GameSpriteState gameSpriteState = (GameSpriteState)theEObject;
@@ -398,6 +405,22 @@ public class GameDSLSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseGameSprite(GameSprite object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Game Vector2d</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Game Vector2d</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseGameVector2d(GameVector2d object)
   {
     return null;
   }

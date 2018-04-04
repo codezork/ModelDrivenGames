@@ -1560,70 +1560,26 @@ ruleGameSprite returns [EObject current=null]
 				}
 			)
 		)
-		otherlv_7='startPositionX'
-		{
-			newLeafNode(otherlv_7, grammarAccess.getGameSpriteAccess().getStartPositionXKeyword_7());
-		}
-		(
-			(
-				lv_x_8_0=RULE_INT
-				{
-					newLeafNode(lv_x_8_0, grammarAccess.getGameSpriteAccess().getXINTTerminalRuleCall_8_0());
-				}
-				{
-					if ($current==null) {
-						$current = createModelElement(grammarAccess.getGameSpriteRule());
-					}
-					setWithLastConsumed(
-						$current,
-						"x",
-						lv_x_8_0,
-						"org.eclipse.xtext.xbase.Xbase.INT");
-				}
-			)
-		)
-		otherlv_9='startPositionY'
-		{
-			newLeafNode(otherlv_9, grammarAccess.getGameSpriteAccess().getStartPositionYKeyword_9());
-		}
-		(
-			(
-				lv_y_10_0=RULE_INT
-				{
-					newLeafNode(lv_y_10_0, grammarAccess.getGameSpriteAccess().getYINTTerminalRuleCall_10_0());
-				}
-				{
-					if ($current==null) {
-						$current = createModelElement(grammarAccess.getGameSpriteRule());
-					}
-					setWithLastConsumed(
-						$current,
-						"y",
-						lv_y_10_0,
-						"org.eclipse.xtext.xbase.Xbase.INT");
-				}
-			)
-		)
 		(
 			(
 				(
-					lv_hasSensor_11_0='sensorLength'
+					lv_hasStartPosition_7_0='startPositionX'
 					{
-						newLeafNode(lv_hasSensor_11_0, grammarAccess.getGameSpriteAccess().getHasSensorSensorLengthKeyword_11_0_0());
+						newLeafNode(lv_hasStartPosition_7_0, grammarAccess.getGameSpriteAccess().getHasStartPositionStartPositionXKeyword_7_0_0());
 					}
 					{
 						if ($current==null) {
 							$current = createModelElement(grammarAccess.getGameSpriteRule());
 						}
-						setWithLastConsumed($current, "hasSensor", true, "sensorLength");
+						setWithLastConsumed($current, "hasStartPosition", true, "startPositionX");
 					}
 				)
 			)
 			(
 				(
-					lv_sensorLength_12_0=RULE_INT
+					lv_x_8_0=RULE_INT
 					{
-						newLeafNode(lv_sensorLength_12_0, grammarAccess.getGameSpriteAccess().getSensorLengthINTTerminalRuleCall_11_1_0());
+						newLeafNode(lv_x_8_0, grammarAccess.getGameSpriteAccess().getXINTTerminalRuleCall_7_1_0());
 					}
 					{
 						if ($current==null) {
@@ -1631,21 +1587,86 @@ ruleGameSprite returns [EObject current=null]
 						}
 						setWithLastConsumed(
 							$current,
-							"sensorLength",
-							lv_sensorLength_12_0,
+							"x",
+							lv_x_8_0,
 							"org.eclipse.xtext.xbase.Xbase.INT");
 					}
 				)
 			)
-			otherlv_13='sensorID'
+			otherlv_9='startPositionY'
 			{
-				newLeafNode(otherlv_13, grammarAccess.getGameSpriteAccess().getSensorIDKeyword_11_2());
+				newLeafNode(otherlv_9, grammarAccess.getGameSpriteAccess().getStartPositionYKeyword_7_2());
 			}
 			(
 				(
-					lv_sensorID_14_0=RULE_INT
+					lv_y_10_0=RULE_INT
 					{
-						newLeafNode(lv_sensorID_14_0, grammarAccess.getGameSpriteAccess().getSensorIDINTTerminalRuleCall_11_3_0());
+						newLeafNode(lv_y_10_0, grammarAccess.getGameSpriteAccess().getYINTTerminalRuleCall_7_3_0());
+					}
+					{
+						if ($current==null) {
+							$current = createModelElement(grammarAccess.getGameSpriteRule());
+						}
+						setWithLastConsumed(
+							$current,
+							"y",
+							lv_y_10_0,
+							"org.eclipse.xtext.xbase.Xbase.INT");
+					}
+				)
+			)
+		)?
+		(
+			(
+				(
+					lv_hasSensor_11_0='sensor'
+					{
+						newLeafNode(lv_hasSensor_11_0, grammarAccess.getGameSpriteAccess().getHasSensorSensorKeyword_8_0_0());
+					}
+					{
+						if ($current==null) {
+							$current = createModelElement(grammarAccess.getGameSpriteRule());
+						}
+						setWithLastConsumed($current, "hasSensor", true, "sensor");
+					}
+				)
+			)
+			otherlv_12='{'
+			{
+				newLeafNode(otherlv_12, grammarAccess.getGameSpriteAccess().getLeftCurlyBracketKeyword_8_1());
+			}
+			(
+				(
+					{
+						newCompositeNode(grammarAccess.getGameSpriteAccess().getVectors2dGameVector2dParserRuleCall_8_2_0());
+					}
+					lv_vectors2d_13_0=ruleGameVector2d
+					{
+						if ($current==null) {
+							$current = createModelElementForParent(grammarAccess.getGameSpriteRule());
+						}
+						add(
+							$current,
+							"vectors2d",
+							lv_vectors2d_13_0,
+							"com.hypermodel.games.engine.GameDSL.GameVector2d");
+						afterParserOrEnumRuleCall();
+					}
+				)
+			)*
+			otherlv_14='}'
+			{
+				newLeafNode(otherlv_14, grammarAccess.getGameSpriteAccess().getRightCurlyBracketKeyword_8_3());
+			}
+			otherlv_15='sensorID'
+			{
+				newLeafNode(otherlv_15, grammarAccess.getGameSpriteAccess().getSensorIDKeyword_8_4());
+			}
+			(
+				(
+					lv_sensorID_16_0=RULE_INT
+					{
+						newLeafNode(lv_sensorID_16_0, grammarAccess.getGameSpriteAccess().getSensorIDINTTerminalRuleCall_8_5_0());
 					}
 					{
 						if ($current==null) {
@@ -1654,20 +1675,20 @@ ruleGameSprite returns [EObject current=null]
 						setWithLastConsumed(
 							$current,
 							"sensorID",
-							lv_sensorID_14_0,
+							lv_sensorID_16_0,
 							"org.eclipse.xtext.xbase.Xbase.INT");
 					}
 				)
 			)
 		)?
 		(
-			otherlv_15='interactsWith'
+			otherlv_17='interactsWith'
 			{
-				newLeafNode(otherlv_15, grammarAccess.getGameSpriteAccess().getInteractsWithKeyword_12_0());
+				newLeafNode(otherlv_17, grammarAccess.getGameSpriteAccess().getInteractsWithKeyword_9_0());
 			}
-			otherlv_16='{'
+			otherlv_18='{'
 			{
-				newLeafNode(otherlv_16, grammarAccess.getGameSpriteAccess().getLeftCurlyBracketKeyword_12_1());
+				newLeafNode(otherlv_18, grammarAccess.getGameSpriteAccess().getLeftCurlyBracketKeyword_9_1());
 			}
 			(
 				(
@@ -1676,32 +1697,32 @@ ruleGameSprite returns [EObject current=null]
 							$current = createModelElement(grammarAccess.getGameSpriteRule());
 						}
 					}
-					otherlv_17=RULE_ID
+					otherlv_19=RULE_ID
 					{
-						newLeafNode(otherlv_17, grammarAccess.getGameSpriteAccess().getInteractionSpritesGameSpriteCrossReference_12_2_0());
+						newLeafNode(otherlv_19, grammarAccess.getGameSpriteAccess().getInteractionSpritesGameSpriteCrossReference_9_2_0());
 					}
 				)
 			)*
-			otherlv_18='}'
+			otherlv_20='}'
 			{
-				newLeafNode(otherlv_18, grammarAccess.getGameSpriteAccess().getRightCurlyBracketKeyword_12_3());
+				newLeafNode(otherlv_20, grammarAccess.getGameSpriteAccess().getRightCurlyBracketKeyword_9_3());
 			}
 		)?
 		(
-			otherlv_19='properties'
+			otherlv_21='properties'
 			{
-				newLeafNode(otherlv_19, grammarAccess.getGameSpriteAccess().getPropertiesKeyword_13_0());
+				newLeafNode(otherlv_21, grammarAccess.getGameSpriteAccess().getPropertiesKeyword_10_0());
 			}
-			otherlv_20='{'
+			otherlv_22='{'
 			{
-				newLeafNode(otherlv_20, grammarAccess.getGameSpriteAccess().getLeftCurlyBracketKeyword_13_1());
+				newLeafNode(otherlv_22, grammarAccess.getGameSpriteAccess().getLeftCurlyBracketKeyword_10_1());
 			}
 			(
 				(
 					{
-						newCompositeNode(grammarAccess.getGameSpriteAccess().getPropertiesGameBodyPropertyParserRuleCall_13_2_0());
+						newCompositeNode(grammarAccess.getGameSpriteAccess().getPropertiesGameBodyPropertyParserRuleCall_10_2_0());
 					}
-					lv_properties_21_0=ruleGameBodyProperty
+					lv_properties_23_0=ruleGameBodyProperty
 					{
 						if ($current==null) {
 							$current = createModelElementForParent(grammarAccess.getGameSpriteRule());
@@ -1709,32 +1730,32 @@ ruleGameSprite returns [EObject current=null]
 						add(
 							$current,
 							"properties",
-							lv_properties_21_0,
+							lv_properties_23_0,
 							"com.hypermodel.games.engine.GameDSL.GameBodyProperty");
 						afterParserOrEnumRuleCall();
 					}
 				)
 			)*
-			otherlv_22='}'
+			otherlv_24='}'
 			{
-				newLeafNode(otherlv_22, grammarAccess.getGameSpriteAccess().getRightCurlyBracketKeyword_13_3());
+				newLeafNode(otherlv_24, grammarAccess.getGameSpriteAccess().getRightCurlyBracketKeyword_10_3());
 			}
 		)?
 		(
-			otherlv_23='states'
+			otherlv_25='states'
 			{
-				newLeafNode(otherlv_23, grammarAccess.getGameSpriteAccess().getStatesKeyword_14_0());
+				newLeafNode(otherlv_25, grammarAccess.getGameSpriteAccess().getStatesKeyword_11_0());
 			}
-			otherlv_24='{'
+			otherlv_26='{'
 			{
-				newLeafNode(otherlv_24, grammarAccess.getGameSpriteAccess().getLeftCurlyBracketKeyword_14_1());
+				newLeafNode(otherlv_26, grammarAccess.getGameSpriteAccess().getLeftCurlyBracketKeyword_11_1());
 			}
 			(
 				(
 					{
-						newCompositeNode(grammarAccess.getGameSpriteAccess().getStatesGameSpriteStateParserRuleCall_14_2_0());
+						newCompositeNode(grammarAccess.getGameSpriteAccess().getStatesGameSpriteStateParserRuleCall_11_2_0());
 					}
-					lv_states_25_0=ruleGameSpriteState
+					lv_states_27_0=ruleGameSpriteState
 					{
 						if ($current==null) {
 							$current = createModelElementForParent(grammarAccess.getGameSpriteRule());
@@ -1742,19 +1763,19 @@ ruleGameSprite returns [EObject current=null]
 						add(
 							$current,
 							"states",
-							lv_states_25_0,
+							lv_states_27_0,
 							"com.hypermodel.games.engine.GameDSL.GameSpriteState");
 						afterParserOrEnumRuleCall();
 					}
 				)
 			)*
-			otherlv_26='}'
+			otherlv_28='}'
 			{
-				newLeafNode(otherlv_26, grammarAccess.getGameSpriteAccess().getRightCurlyBracketKeyword_14_3());
+				newLeafNode(otherlv_28, grammarAccess.getGameSpriteAccess().getRightCurlyBracketKeyword_11_3());
 			}
-			otherlv_27='initialState'
+			otherlv_29='initialState'
 			{
-				newLeafNode(otherlv_27, grammarAccess.getGameSpriteAccess().getInitialStateKeyword_14_4());
+				newLeafNode(otherlv_29, grammarAccess.getGameSpriteAccess().getInitialStateKeyword_11_4());
 			}
 			(
 				(
@@ -1763,28 +1784,28 @@ ruleGameSprite returns [EObject current=null]
 							$current = createModelElement(grammarAccess.getGameSpriteRule());
 						}
 					}
-					otherlv_28=RULE_ID
+					otherlv_30=RULE_ID
 					{
-						newLeafNode(otherlv_28, grammarAccess.getGameSpriteAccess().getInitialStateGameSpriteStateCrossReference_14_5_0());
+						newLeafNode(otherlv_30, grammarAccess.getGameSpriteAccess().getInitialStateGameSpriteStateCrossReference_11_5_0());
 					}
 				)
 			)
 		)?
 		(
-			otherlv_29='events'
+			otherlv_31='events'
 			{
-				newLeafNode(otherlv_29, grammarAccess.getGameSpriteAccess().getEventsKeyword_15_0());
+				newLeafNode(otherlv_31, grammarAccess.getGameSpriteAccess().getEventsKeyword_12_0());
 			}
-			otherlv_30='{'
+			otherlv_32='{'
 			{
-				newLeafNode(otherlv_30, grammarAccess.getGameSpriteAccess().getLeftCurlyBracketKeyword_15_1());
+				newLeafNode(otherlv_32, grammarAccess.getGameSpriteAccess().getLeftCurlyBracketKeyword_12_1());
 			}
 			(
 				(
 					{
-						newCompositeNode(grammarAccess.getGameSpriteAccess().getEventsGameSpriteEventParserRuleCall_15_2_0());
+						newCompositeNode(grammarAccess.getGameSpriteAccess().getEventsGameSpriteEventParserRuleCall_12_2_0());
 					}
-					lv_events_31_0=ruleGameSpriteEvent
+					lv_events_33_0=ruleGameSpriteEvent
 					{
 						if ($current==null) {
 							$current = createModelElementForParent(grammarAccess.getGameSpriteRule());
@@ -1792,17 +1813,93 @@ ruleGameSprite returns [EObject current=null]
 						add(
 							$current,
 							"events",
-							lv_events_31_0,
+							lv_events_33_0,
 							"com.hypermodel.games.engine.GameDSL.GameSpriteEvent");
 						afterParserOrEnumRuleCall();
 					}
 				)
 			)*
-			otherlv_32='}'
+			otherlv_34='}'
 			{
-				newLeafNode(otherlv_32, grammarAccess.getGameSpriteAccess().getRightCurlyBracketKeyword_15_3());
+				newLeafNode(otherlv_34, grammarAccess.getGameSpriteAccess().getRightCurlyBracketKeyword_12_3());
 			}
 		)?
+	)
+;
+
+// Entry rule entryRuleGameVector2d
+entryRuleGameVector2d returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getGameVector2dRule()); }
+	iv_ruleGameVector2d=ruleGameVector2d
+	{ $current=$iv_ruleGameVector2d.current; }
+	EOF;
+
+// Rule GameVector2d
+ruleGameVector2d returns [EObject current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		(
+			{
+				$current = forceCreateModelElement(
+					grammarAccess.getGameVector2dAccess().getGameVector2dAction_0(),
+					$current);
+			}
+		)
+		otherlv_1='vector('
+		{
+			newLeafNode(otherlv_1, grammarAccess.getGameVector2dAccess().getVectorKeyword_1());
+		}
+		(
+			(
+				{
+					newCompositeNode(grammarAccess.getGameVector2dAccess().getXSignedIntegerParserRuleCall_2_0());
+				}
+				lv_x_2_0=ruleSignedInteger
+				{
+					if ($current==null) {
+						$current = createModelElementForParent(grammarAccess.getGameVector2dRule());
+					}
+					set(
+						$current,
+						"x",
+						lv_x_2_0,
+						"com.hypermodel.games.engine.GameDSL.SignedInteger");
+					afterParserOrEnumRuleCall();
+				}
+			)
+		)
+		otherlv_3=','
+		{
+			newLeafNode(otherlv_3, grammarAccess.getGameVector2dAccess().getCommaKeyword_3());
+		}
+		(
+			(
+				{
+					newCompositeNode(grammarAccess.getGameVector2dAccess().getYSignedIntegerParserRuleCall_4_0());
+				}
+				lv_y_4_0=ruleSignedInteger
+				{
+					if ($current==null) {
+						$current = createModelElementForParent(grammarAccess.getGameVector2dRule());
+					}
+					set(
+						$current,
+						"y",
+						lv_y_4_0,
+						"com.hypermodel.games.engine.GameDSL.SignedInteger");
+					afterParserOrEnumRuleCall();
+				}
+			)
+		)
+		otherlv_5=')'
+		{
+			newLeafNode(otherlv_5, grammarAccess.getGameVector2dAccess().getRightParenthesisKeyword_5());
+		}
 	)
 ;
 
@@ -2482,15 +2579,37 @@ ruleGameTextureRegion returns [EObject current=null]
 				}
 			)
 		)
-		otherlv_3='width'
+		otherlv_3='name'
 		{
-			newLeafNode(otherlv_3, grammarAccess.getGameTextureRegionAccess().getWidthKeyword_3());
+			newLeafNode(otherlv_3, grammarAccess.getGameTextureRegionAccess().getNameKeyword_3());
 		}
 		(
 			(
-				lv_width_4_0=RULE_INT
+				lv_region_4_0=RULE_STRING
 				{
-					newLeafNode(lv_width_4_0, grammarAccess.getGameTextureRegionAccess().getWidthINTTerminalRuleCall_4_0());
+					newLeafNode(lv_region_4_0, grammarAccess.getGameTextureRegionAccess().getRegionSTRINGTerminalRuleCall_4_0());
+				}
+				{
+					if ($current==null) {
+						$current = createModelElement(grammarAccess.getGameTextureRegionRule());
+					}
+					setWithLastConsumed(
+						$current,
+						"region",
+						lv_region_4_0,
+						"org.eclipse.xtext.xbase.Xtype.STRING");
+				}
+			)
+		)
+		otherlv_5='width'
+		{
+			newLeafNode(otherlv_5, grammarAccess.getGameTextureRegionAccess().getWidthKeyword_5());
+		}
+		(
+			(
+				lv_width_6_0=RULE_INT
+				{
+					newLeafNode(lv_width_6_0, grammarAccess.getGameTextureRegionAccess().getWidthINTTerminalRuleCall_6_0());
 				}
 				{
 					if ($current==null) {
@@ -2499,20 +2618,20 @@ ruleGameTextureRegion returns [EObject current=null]
 					setWithLastConsumed(
 						$current,
 						"width",
-						lv_width_4_0,
+						lv_width_6_0,
 						"org.eclipse.xtext.xbase.Xbase.INT");
 				}
 			)
 		)
-		otherlv_5='height'
+		otherlv_7='height'
 		{
-			newLeafNode(otherlv_5, grammarAccess.getGameTextureRegionAccess().getHeightKeyword_5());
+			newLeafNode(otherlv_7, grammarAccess.getGameTextureRegionAccess().getHeightKeyword_7());
 		}
 		(
 			(
-				lv_height_6_0=RULE_INT
+				lv_height_8_0=RULE_INT
 				{
-					newLeafNode(lv_height_6_0, grammarAccess.getGameTextureRegionAccess().getHeightINTTerminalRuleCall_6_0());
+					newLeafNode(lv_height_8_0, grammarAccess.getGameTextureRegionAccess().getHeightINTTerminalRuleCall_8_0());
 				}
 				{
 					if ($current==null) {
@@ -2521,22 +2640,22 @@ ruleGameTextureRegion returns [EObject current=null]
 					setWithLastConsumed(
 						$current,
 						"height",
-						lv_height_6_0,
+						lv_height_8_0,
 						"org.eclipse.xtext.xbase.Xbase.INT");
 				}
 			)
 		)
 		(
-			otherlv_7='positionOffsetX'
+			otherlv_9='positionOffsetX'
 			{
-				newLeafNode(otherlv_7, grammarAccess.getGameTextureRegionAccess().getPositionOffsetXKeyword_7_0());
+				newLeafNode(otherlv_9, grammarAccess.getGameTextureRegionAccess().getPositionOffsetXKeyword_9_0());
 			}
 			(
 				(
 					{
-						newCompositeNode(grammarAccess.getGameTextureRegionAccess().getOffsetXSignedNumberParserRuleCall_7_1_0());
+						newCompositeNode(grammarAccess.getGameTextureRegionAccess().getOffsetXSignedNumberParserRuleCall_9_1_0());
 					}
-					lv_offsetX_8_0=ruleSignedNumber
+					lv_offsetX_10_0=ruleSignedNumber
 					{
 						if ($current==null) {
 							$current = createModelElementForParent(grammarAccess.getGameTextureRegionRule());
@@ -2544,7 +2663,7 @@ ruleGameTextureRegion returns [EObject current=null]
 						set(
 							$current,
 							"offsetX",
-							lv_offsetX_8_0,
+							lv_offsetX_10_0,
 							"com.hypermodel.games.engine.GameDSL.SignedNumber");
 						afterParserOrEnumRuleCall();
 					}
@@ -2552,16 +2671,16 @@ ruleGameTextureRegion returns [EObject current=null]
 			)
 		)?
 		(
-			otherlv_9='positionOffsetY'
+			otherlv_11='positionOffsetY'
 			{
-				newLeafNode(otherlv_9, grammarAccess.getGameTextureRegionAccess().getPositionOffsetYKeyword_8_0());
+				newLeafNode(otherlv_11, grammarAccess.getGameTextureRegionAccess().getPositionOffsetYKeyword_10_0());
 			}
 			(
 				(
 					{
-						newCompositeNode(grammarAccess.getGameTextureRegionAccess().getOffsetYSignedNumberParserRuleCall_8_1_0());
+						newCompositeNode(grammarAccess.getGameTextureRegionAccess().getOffsetYSignedNumberParserRuleCall_10_1_0());
 					}
-					lv_offsetY_10_0=ruleSignedNumber
+					lv_offsetY_12_0=ruleSignedNumber
 					{
 						if ($current==null) {
 							$current = createModelElementForParent(grammarAccess.getGameTextureRegionRule());
@@ -2569,7 +2688,7 @@ ruleGameTextureRegion returns [EObject current=null]
 						set(
 							$current,
 							"offsetY",
-							lv_offsetY_10_0,
+							lv_offsetY_12_0,
 							"com.hypermodel.games.engine.GameDSL.SignedNumber");
 						afterParserOrEnumRuleCall();
 					}
@@ -2578,9 +2697,9 @@ ruleGameTextureRegion returns [EObject current=null]
 		)?
 		(
 			(
-				lv_flipX_11_0='flipX'
+				lv_flipX_13_0='flipX'
 				{
-					newLeafNode(lv_flipX_11_0, grammarAccess.getGameTextureRegionAccess().getFlipXFlipXKeyword_9_0());
+					newLeafNode(lv_flipX_13_0, grammarAccess.getGameTextureRegionAccess().getFlipXFlipXKeyword_11_0());
 				}
 				{
 					if ($current==null) {
@@ -2592,9 +2711,9 @@ ruleGameTextureRegion returns [EObject current=null]
 		)?
 		(
 			(
-				lv_flipY_12_0='flipY'
+				lv_flipY_14_0='flipY'
 				{
-					newLeafNode(lv_flipY_12_0, grammarAccess.getGameTextureRegionAccess().getFlipYFlipYKeyword_10_0());
+					newLeafNode(lv_flipY_14_0, grammarAccess.getGameTextureRegionAccess().getFlipYFlipYKeyword_12_0());
 				}
 				{
 					if ($current==null) {
@@ -2802,6 +2921,39 @@ ruleUnsignedNumber returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRule
 				newLeafNode(this_INT_2, grammarAccess.getUnsignedNumberAccess().getINTTerminalRuleCall_1_1());
 			}
 		)
+	)
+;
+
+// Entry rule entryRuleSignedInteger
+entryRuleSignedInteger returns [String current=null]:
+	{ newCompositeNode(grammarAccess.getSignedIntegerRule()); }
+	iv_ruleSignedInteger=ruleSignedInteger
+	{ $current=$iv_ruleSignedInteger.current.getText(); }
+	EOF;
+
+// Rule SignedInteger
+ruleSignedInteger returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		(
+			kw='-'
+			{
+				$current.merge(kw);
+				newLeafNode(kw, grammarAccess.getSignedIntegerAccess().getHyphenMinusKeyword_0());
+			}
+		)?
+		this_INT_1=RULE_INT
+		{
+			$current.merge(this_INT_1);
+		}
+		{
+			newLeafNode(this_INT_1, grammarAccess.getSignedIntegerAccess().getINTTerminalRuleCall_1());
+		}
 	)
 ;
 
