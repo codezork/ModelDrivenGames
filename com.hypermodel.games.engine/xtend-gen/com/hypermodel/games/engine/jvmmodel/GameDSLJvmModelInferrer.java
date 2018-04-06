@@ -60,6 +60,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.common.types.JvmAnnotationReference;
 import org.eclipse.xtext.common.types.JvmConstructor;
+import org.eclipse.xtext.common.types.JvmDeclaredType;
 import org.eclipse.xtext.common.types.JvmEnumerationLiteral;
 import org.eclipse.xtext.common.types.JvmEnumerationType;
 import org.eclipse.xtext.common.types.JvmField;
@@ -1436,31 +1437,32 @@ public class GameDSLJvmModelInferrer extends AbstractModelInferrer {
     EList<JvmMember> _members_2 = type.getMembers();
     JvmField _field = this._jvmTypesBuilder.toField(sprite, "stateTimer", this._typeReferenceBuilder.typeRef(float.class));
     this._jvmTypesBuilder.<JvmField>operator_add(_members_2, _field);
-    EList<JvmMember> _members_3 = type.getMembers();
     final Procedure1<JvmEnumerationType> _function = (JvmEnumerationType it) -> {
       final Consumer<GameSpriteState> _function_1 = (GameSpriteState state) -> {
-        EList<JvmMember> _members_4 = it.getMembers();
+        EList<JvmMember> _members_3 = it.getMembers();
         JvmEnumerationLiteral _enumerationLiteral = this._jvmTypesBuilder.toEnumerationLiteral(state, state.getName().toUpperCase());
-        this._jvmTypesBuilder.<JvmEnumerationLiteral>operator_add(_members_4, _enumerationLiteral);
+        this._jvmTypesBuilder.<JvmEnumerationLiteral>operator_add(_members_3, _enumerationLiteral);
         GameSpriteAnimation _animation = state.getAnimation();
         boolean _tripleNotEquals = (_animation != null);
         if (_tripleNotEquals) {
-          EList<JvmMember> _members_5 = type.getMembers();
+          EList<JvmMember> _members_4 = type.getMembers();
           JvmField _field_1 = this._jvmTypesBuilder.toField(sprite, state.getAnimation().getName(), this._typeReferenceBuilder.typeRef(Animation.class, this._typeReferenceBuilder.typeRef(TextureRegion.class)));
-          this._jvmTypesBuilder.<JvmField>operator_add(_members_5, _field_1);
+          this._jvmTypesBuilder.<JvmField>operator_add(_members_4, _field_1);
         }
         GameSpriteStand _stand = state.getStand();
         boolean _tripleNotEquals_1 = (_stand != null);
         if (_tripleNotEquals_1) {
-          EList<JvmMember> _members_6 = type.getMembers();
+          EList<JvmMember> _members_5 = type.getMembers();
           JvmField _field_2 = this._jvmTypesBuilder.toField(sprite, state.getStand().getName(), this._typeReferenceBuilder.typeRef(TextureRegion.class));
-          this._jvmTypesBuilder.<JvmField>operator_add(_members_6, _field_2);
+          this._jvmTypesBuilder.<JvmField>operator_add(_members_5, _field_2);
         }
       };
       sprite.getStates().forEach(_function_1);
     };
-    JvmEnumerationType _enumerationType = this._jvmTypesBuilder.toEnumerationType(sprite, "State", _function);
-    this._jvmTypesBuilder.<JvmEnumerationType>operator_add(_members_3, _enumerationType);
+    JvmEnumerationType stateType = this._jvmTypesBuilder.toEnumerationType(sprite, "State", _function);
+    JvmDeclaredType dt = stateType;
+    EList<JvmMember> _members_3 = type.getMembers();
+    this._jvmTypesBuilder.<JvmEnumerationType>operator_add(_members_3, stateType);
     EList<JvmMember> _members_4 = type.getMembers();
     final Procedure1<JvmField> _function_1 = (JvmField it) -> {
       final Procedure1<ITreeAppendable> _function_2 = (ITreeAppendable it_1) -> {
@@ -1472,7 +1474,7 @@ public class GameDSLJvmModelInferrer extends AbstractModelInferrer {
       };
       this._jvmTypesBuilder.setInitializer(it, _function_2);
     };
-    JvmField _field_1 = this._jvmTypesBuilder.toField(sprite, "currentState", this._typeReferenceBuilder.typeRef("State"), _function_1);
+    JvmField _field_1 = this._jvmTypesBuilder.toField(sprite, "currentState", this._typeReferenceBuilder.typeRef(dt), _function_1);
     this._jvmTypesBuilder.<JvmField>operator_add(_members_4, _field_1);
     EList<JvmMember> _members_5 = type.getMembers();
     final Procedure1<JvmField> _function_2 = (JvmField it) -> {
@@ -1485,7 +1487,7 @@ public class GameDSLJvmModelInferrer extends AbstractModelInferrer {
       };
       this._jvmTypesBuilder.setInitializer(it, _function_3);
     };
-    JvmField _field_2 = this._jvmTypesBuilder.toField(sprite, "previousState", this._typeReferenceBuilder.typeRef("State"), _function_2);
+    JvmField _field_2 = this._jvmTypesBuilder.toField(sprite, "previousState", this._typeReferenceBuilder.typeRef(dt), _function_2);
     this._jvmTypesBuilder.<JvmField>operator_add(_members_5, _field_2);
     EList<JvmMember> _members_6 = type.getMembers();
     final Procedure1<JvmField> _function_3 = (JvmField it) -> {

@@ -556,6 +556,7 @@ class GameDSLGenerator extends ExtendedJvmModelGenerator {
 		    dependencies {
 		        compile "com.badlogicgames.gdx:gdx:$gdxVersion"
 		        compile "com.badlogicgames.gdx:gdx-box2d:$gdxVersion"
+		        compile group: 'com.google.guava', name: 'guava', version: '23.5-jre'
 		    }
 		}
 

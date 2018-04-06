@@ -56,6 +56,7 @@ import com.badlogic.gdx.physics.box2d.CircleShape
 import com.badlogic.gdx.physics.box2d.EdgeShape
 import java.util.HashMap
 import com.badlogic.gdx.physics.box2d.PolygonShape
+import org.eclipse.xtext.common.types.JvmDeclaredType
 
 class GameDSLJvmModelInferrer extends AbstractModelInferrer {
 	@Inject extension JvmTypesBuilder
@@ -710,7 +711,7 @@ class GameDSLJvmModelInferrer extends AbstractModelInferrer {
 		field.visibility = JvmVisibility.PUBLIC
 		type.members += field
 		type.members += sprite.toField("stateTimer", float.typeRef)
-		type.members += sprite.toEnumerationType("State") [
+		var stateType = sprite.toEnumerationType("State") [
 			sprite.states.forEach [ state |
 				members += state.toEnumerationLiteral(state.name.toUpperCase)
 				if(state.animation !== null) {
@@ -721,8 +722,10 @@ class GameDSLJvmModelInferrer extends AbstractModelInferrer {
 				}
 			]
 		]
-		type.members += sprite.toField("currentState", "State".typeRef) [initializer=[append('''State.«sprite.initialState.name.toUpperCase»''')]]
-		type.members += sprite.toField("previousState", "State".typeRef) [initializer=[append('''State.«sprite.initialState.name.toUpperCase»''')]]
+		var JvmDeclaredType dt = stateType
+		type.members += stateType
+		type.members += sprite.toField("currentState", typeRef(dt)) [initializer=[append('''State.«sprite.initialState.name.toUpperCase»''')]]
+		type.members += sprite.toField("previousState", typeRef(dt)) [initializer=[append('''State.«sprite.initialState.name.toUpperCase»''')]]
 		type.members += sprite.toField("positionOffsetX", float.typeRef) [initializer=[append('''0.0f''')]]
 		type.members += sprite.toField("positionOffsetY", float.typeRef) [initializer=[append('''0.0f''')]]
 		val fsprite = sprite

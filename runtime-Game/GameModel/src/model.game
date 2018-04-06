@@ -71,21 +71,21 @@ package com.hypermodel.games {
 				} animation marioRunRight duration 0.1 frames 4 startFrame 1 from marioRunLeft
 				state runningBigLeft if isTrue runningBigLeft() {
 					return body.linearVelocity.y == 0 && body.linearVelocity.x < 0 && isBig
-				} animation bigMarioRunleft duration 0.1 frames 4 startFrame 1 from bigMarioRunLeft
+				} animation bigMarioRunleft duration 0.1 frames 4 startFrame 1 from bigMarioRunLeft 
 				state runningBigRight if isTrue runningBigRight() {
 					return body.linearVelocity.y == 0 && body.linearVelocity.x > 0 && isBig
 				} animation bigMarioRunRight duration 0.1 frames 4 startFrame 1 from bigMarioRunRight
 				state jumpSmallLeft if isTrue jumSmallLeft() {
-					return body.linearVelocity.y > 0 || body.linearVelocity.y < 0 && body.linearVelocity.x > 0 && !isBig && previousState==State.JUMPSMALLLEFT 
+					return body.linearVelocity.y > 0 || body.linearVelocity.y < 0 && body.linearVelocity.x > 0 && !isBig && previousState==currentState 
 				} stand jumpSmallLeft whichFrame 5 from marioRunLeft
 				state jumpSmallRight if isTrue jumpSmallRight() {
-					return body.linearVelocity.y > 0 || body.linearVelocity.y < 0 && body.linearVelocity.x < 0 && !isBig && previousState==State.JUMPSMALLRIGHT
+					return body.linearVelocity.y > 0 || body.linearVelocity.y < 0 && body.linearVelocity.x < 0 && !isBig && previousState==currentState
 				} stand jumpSmallRight whichFrame 5 from marioRunRight 
 				state jumpBigLeft if isTrue jumpBigLeft() {
-					return body.linearVelocity.y > 0 || body.linearVelocity.y < 0 && body.linearVelocity.x > 0 && isBig && previousState==State.RUNNINGBIGLEFT
+					return body.linearVelocity.y > 0 || body.linearVelocity.y < 0 && body.linearVelocity.x > 0 && isBig && previousState==currentState
 				} stand jumpBigLeft whichFrame 5 from bigMarioRunLeft 
 				state jumpBigRight if isTrue jumpBigRight() {
-					return body.linearVelocity.y > 0 || body.linearVelocity.y < 0 && body.linearVelocity.x < 0 && isBig && previousState==State.JUMPBIGRIGHT
+					return body.linearVelocity.y > 0 || body.linearVelocity.y < 0 && body.linearVelocity.x < 0 && isBig && previousState==currentState 
 				} stand jumpBigRight whichFrame 5 from bigMarioRunRight
 				state growing if isTrue growing() { 
 					return isGrowing
@@ -113,7 +113,7 @@ package com.hypermodel.games {
 					}
 				}
 			}
-			sprite Goomba id 1 radius 6
+			sprite Goomba id 1 radius 6 
 			sensor {
 				vector(-5,8)
 				vector(5,8)

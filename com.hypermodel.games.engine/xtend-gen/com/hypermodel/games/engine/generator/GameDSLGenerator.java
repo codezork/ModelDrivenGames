@@ -971,6 +971,9 @@ public class GameDSLGenerator extends ExtendedJvmModelGenerator {
       _builder.append("        ");
       _builder.append("compile \"com.badlogicgames.gdx:gdx-box2d:$gdxVersion\"");
       _builder.newLine();
+      _builder.append("        ");
+      _builder.append("compile group: \'com.google.guava\', name: \'guava\', version: \'23.5-jre\'");
+      _builder.newLine();
       _builder.append("    ");
       _builder.append("}");
       _builder.newLine();
