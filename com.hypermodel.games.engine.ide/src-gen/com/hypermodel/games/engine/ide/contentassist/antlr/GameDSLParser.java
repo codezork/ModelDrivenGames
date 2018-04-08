@@ -99,12 +99,13 @@ public class GameDSLParser extends AbstractContentAssistParser {
 					put(grammarAccess.getGameDisplayAccess().getGroup_7(), "rule__GameDisplay__Group_7__0");
 					put(grammarAccess.getGameDisplayAccess().getGroup_8(), "rule__GameDisplay__Group_8__0");
 					put(grammarAccess.getGameSpriteAccess().getGroup(), "rule__GameSprite__Group__0");
-					put(grammarAccess.getGameSpriteAccess().getGroup_7(), "rule__GameSprite__Group_7__0");
-					put(grammarAccess.getGameSpriteAccess().getGroup_8(), "rule__GameSprite__Group_8__0");
-					put(grammarAccess.getGameSpriteAccess().getGroup_9(), "rule__GameSprite__Group_9__0");
-					put(grammarAccess.getGameSpriteAccess().getGroup_10(), "rule__GameSprite__Group_10__0");
-					put(grammarAccess.getGameSpriteAccess().getGroup_11(), "rule__GameSprite__Group_11__0");
-					put(grammarAccess.getGameSpriteAccess().getGroup_12(), "rule__GameSprite__Group_12__0");
+					put(grammarAccess.getGameSpriteAccess().getGroup_7_0(), "rule__GameSprite__Group_7_0__0");
+					put(grammarAccess.getGameSpriteAccess().getGroup_7_1(), "rule__GameSprite__Group_7_1__0");
+					put(grammarAccess.getGameSpriteAccess().getGroup_7_2(), "rule__GameSprite__Group_7_2__0");
+					put(grammarAccess.getGameSpriteAccess().getGroup_7_3(), "rule__GameSprite__Group_7_3__0");
+					put(grammarAccess.getGameSpriteAccess().getGroup_7_4(), "rule__GameSprite__Group_7_4__0");
+					put(grammarAccess.getGameSpriteAccess().getGroup_7_5(), "rule__GameSprite__Group_7_5__0");
+					put(grammarAccess.getGameSpriteAccess().getGroup_7_6(), "rule__GameSprite__Group_7_6__0");
 					put(grammarAccess.getGameVector2dAccess().getGroup(), "rule__GameVector2d__Group__0");
 					put(grammarAccess.getGameSpriteStateAccess().getGroup(), "rule__GameSpriteState__Group__0");
 					put(grammarAccess.getGameSpriteStateAccess().getGroup_5_0(), "rule__GameSpriteState__Group_5_0__0");
@@ -377,17 +378,19 @@ public class GameDSLParser extends AbstractContentAssistParser {
 					put(grammarAccess.getGameSpriteAccess().getNameAssignment_2(), "rule__GameSprite__NameAssignment_2");
 					put(grammarAccess.getGameSpriteAccess().getIdAssignment_4(), "rule__GameSprite__IdAssignment_4");
 					put(grammarAccess.getGameSpriteAccess().getRadiusAssignment_6(), "rule__GameSprite__RadiusAssignment_6");
-					put(grammarAccess.getGameSpriteAccess().getHasStartPositionAssignment_7_0(), "rule__GameSprite__HasStartPositionAssignment_7_0");
-					put(grammarAccess.getGameSpriteAccess().getXAssignment_7_1(), "rule__GameSprite__XAssignment_7_1");
-					put(grammarAccess.getGameSpriteAccess().getYAssignment_7_3(), "rule__GameSprite__YAssignment_7_3");
-					put(grammarAccess.getGameSpriteAccess().getHasSensorAssignment_8_0(), "rule__GameSprite__HasSensorAssignment_8_0");
-					put(grammarAccess.getGameSpriteAccess().getVectors2dAssignment_8_2(), "rule__GameSprite__Vectors2dAssignment_8_2");
-					put(grammarAccess.getGameSpriteAccess().getSensorIDAssignment_8_5(), "rule__GameSprite__SensorIDAssignment_8_5");
-					put(grammarAccess.getGameSpriteAccess().getInteractionSpritesAssignment_9_2(), "rule__GameSprite__InteractionSpritesAssignment_9_2");
-					put(grammarAccess.getGameSpriteAccess().getPropertiesAssignment_10_2(), "rule__GameSprite__PropertiesAssignment_10_2");
-					put(grammarAccess.getGameSpriteAccess().getStatesAssignment_11_2(), "rule__GameSprite__StatesAssignment_11_2");
-					put(grammarAccess.getGameSpriteAccess().getInitialStateAssignment_11_5(), "rule__GameSprite__InitialStateAssignment_11_5");
-					put(grammarAccess.getGameSpriteAccess().getEventsAssignment_12_2(), "rule__GameSprite__EventsAssignment_12_2");
+					put(grammarAccess.getGameSpriteAccess().getHasVelocityAssignment_7_0_0(), "rule__GameSprite__HasVelocityAssignment_7_0_0");
+					put(grammarAccess.getGameSpriteAccess().getVelocityAssignment_7_0_1(), "rule__GameSprite__VelocityAssignment_7_0_1");
+					put(grammarAccess.getGameSpriteAccess().getHasStartPositionAssignment_7_1_0(), "rule__GameSprite__HasStartPositionAssignment_7_1_0");
+					put(grammarAccess.getGameSpriteAccess().getXAssignment_7_1_1(), "rule__GameSprite__XAssignment_7_1_1");
+					put(grammarAccess.getGameSpriteAccess().getYAssignment_7_1_3(), "rule__GameSprite__YAssignment_7_1_3");
+					put(grammarAccess.getGameSpriteAccess().getHasSensorAssignment_7_2_0(), "rule__GameSprite__HasSensorAssignment_7_2_0");
+					put(grammarAccess.getGameSpriteAccess().getVectors2dAssignment_7_2_2(), "rule__GameSprite__Vectors2dAssignment_7_2_2");
+					put(grammarAccess.getGameSpriteAccess().getSensorIDAssignment_7_2_5(), "rule__GameSprite__SensorIDAssignment_7_2_5");
+					put(grammarAccess.getGameSpriteAccess().getInteractionSpritesAssignment_7_3_2(), "rule__GameSprite__InteractionSpritesAssignment_7_3_2");
+					put(grammarAccess.getGameSpriteAccess().getPropertiesAssignment_7_4_2(), "rule__GameSprite__PropertiesAssignment_7_4_2");
+					put(grammarAccess.getGameSpriteAccess().getStatesAssignment_7_5_2(), "rule__GameSprite__StatesAssignment_7_5_2");
+					put(grammarAccess.getGameSpriteAccess().getInitialStateAssignment_7_5_5(), "rule__GameSprite__InitialStateAssignment_7_5_5");
+					put(grammarAccess.getGameSpriteAccess().getEventsAssignment_7_6_2(), "rule__GameSprite__EventsAssignment_7_6_2");
 					put(grammarAccess.getGameVector2dAccess().getXAssignment_2(), "rule__GameVector2d__XAssignment_2");
 					put(grammarAccess.getGameVector2dAccess().getYAssignment_4(), "rule__GameVector2d__YAssignment_4");
 					put(grammarAccess.getGameSpriteStateAccess().getNameAssignment_2(), "rule__GameSpriteState__NameAssignment_2");
@@ -583,6 +586,7 @@ public class GameDSLParser extends AbstractContentAssistParser {
 					put(grammarAccess.getXImportDeclarationAccess().getImportedNamespaceAssignment_1_2(), "rule__XImportDeclaration__ImportedNamespaceAssignment_1_2");
 					put(grammarAccess.getGamePlatformConfigAndroidAccess().getUnorderedGroup_11(), "rule__GamePlatformConfigAndroid__UnorderedGroup_11");
 					put(grammarAccess.getGameRootAccess().getUnorderedGroup_11(), "rule__GameRoot__UnorderedGroup_11");
+					put(grammarAccess.getGameSpriteAccess().getUnorderedGroup_7(), "rule__GameSprite__UnorderedGroup_7");
 				}
 			};
 		}

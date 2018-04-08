@@ -728,6 +728,9 @@ class GameDSLJvmModelInferrer extends AbstractModelInferrer {
 		type.members += sprite.toField("previousState", typeRef(dt)) [initializer=[append('''State.«sprite.initialState.name.toUpperCase»''')]]
 		type.members += sprite.toField("positionOffsetX", float.typeRef) [initializer=[append('''0.0f''')]]
 		type.members += sprite.toField("positionOffsetY", float.typeRef) [initializer=[append('''0.0f''')]]
+		if(sprite.hasVelocity) {
+			type.members += sprite.toField("velocity", Vector2.typeRef) [initializer=[append('''new Vector2(«sprite.velocity.x»,«sprite.velocity.y»)''')]]
+		}
 		val fsprite = sprite
 		sprite.properties.forEach[
 			type.members += fsprite.toField('''«it.name»''', Boolean.typeRef)  [initializer=[append('''false''')]]
@@ -784,7 +787,6 @@ class GameDSLJvmModelInferrer extends AbstractModelInferrer {
 				append(
 				'''
 				setPosition(body.getPosition().x - getWidth() / 2, body.getPosition().y - getHeight() / 2);
-				setRegion(getFrame(dt));
 				''')
 				val current = it
 				sprite.properties.filter[it.onUpdate].forEach[
@@ -795,6 +797,10 @@ class GameDSLJvmModelInferrer extends AbstractModelInferrer {
 					}
 					''')
 				]
+				append(
+				'''
+				setRegion(getFrame(dt));
+				''')
 			]
 		])
 		type.members += sprite.toMethod("getFrame", TextureRegion.typeRef, [

@@ -19,6 +19,8 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link com.hypermodel.games.engine.gameDSL.GameSprite#getName <em>Name</em>}</li>
  *   <li>{@link com.hypermodel.games.engine.gameDSL.GameSprite#getId <em>Id</em>}</li>
  *   <li>{@link com.hypermodel.games.engine.gameDSL.GameSprite#getRadius <em>Radius</em>}</li>
+ *   <li>{@link com.hypermodel.games.engine.gameDSL.GameSprite#isHasVelocity <em>Has Velocity</em>}</li>
+ *   <li>{@link com.hypermodel.games.engine.gameDSL.GameSprite#getVelocity <em>Velocity</em>}</li>
  *   <li>{@link com.hypermodel.games.engine.gameDSL.GameSprite#isHasStartPosition <em>Has Start Position</em>}</li>
  *   <li>{@link com.hypermodel.games.engine.gameDSL.GameSprite#getX <em>X</em>}</li>
  *   <li>{@link com.hypermodel.games.engine.gameDSL.GameSprite#getY <em>Y</em>}</li>
@@ -115,6 +117,58 @@ public interface GameSprite extends EObject
    * @generated
    */
   void setRadius(int value);
+
+  /**
+   * Returns the value of the '<em><b>Has Velocity</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Has Velocity</em>' attribute isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Has Velocity</em>' attribute.
+   * @see #setHasVelocity(boolean)
+   * @see com.hypermodel.games.engine.gameDSL.GameDSLPackage#getGameSprite_HasVelocity()
+   * @model
+   * @generated
+   */
+  boolean isHasVelocity();
+
+  /**
+   * Sets the value of the '{@link com.hypermodel.games.engine.gameDSL.GameSprite#isHasVelocity <em>Has Velocity</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Has Velocity</em>' attribute.
+   * @see #isHasVelocity()
+   * @generated
+   */
+  void setHasVelocity(boolean value);
+
+  /**
+   * Returns the value of the '<em><b>Velocity</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Velocity</em>' containment reference isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Velocity</em>' containment reference.
+   * @see #setVelocity(GameVector2d)
+   * @see com.hypermodel.games.engine.gameDSL.GameDSLPackage#getGameSprite_Velocity()
+   * @model containment="true"
+   * @generated
+   */
+  GameVector2d getVelocity();
+
+  /**
+   * Sets the value of the '{@link com.hypermodel.games.engine.gameDSL.GameSprite#getVelocity <em>Velocity</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Velocity</em>' containment reference.
+   * @see #getVelocity()
+   * @generated
+   */
+  void setVelocity(GameVector2d value);
 
   /**
    * Returns the value of the '<em><b>Has Start Position</b></em>' attribute.

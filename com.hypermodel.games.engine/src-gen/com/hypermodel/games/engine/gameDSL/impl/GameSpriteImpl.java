@@ -38,6 +38,8 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link com.hypermodel.games.engine.gameDSL.impl.GameSpriteImpl#getName <em>Name</em>}</li>
  *   <li>{@link com.hypermodel.games.engine.gameDSL.impl.GameSpriteImpl#getId <em>Id</em>}</li>
  *   <li>{@link com.hypermodel.games.engine.gameDSL.impl.GameSpriteImpl#getRadius <em>Radius</em>}</li>
+ *   <li>{@link com.hypermodel.games.engine.gameDSL.impl.GameSpriteImpl#isHasVelocity <em>Has Velocity</em>}</li>
+ *   <li>{@link com.hypermodel.games.engine.gameDSL.impl.GameSpriteImpl#getVelocity <em>Velocity</em>}</li>
  *   <li>{@link com.hypermodel.games.engine.gameDSL.impl.GameSpriteImpl#isHasStartPosition <em>Has Start Position</em>}</li>
  *   <li>{@link com.hypermodel.games.engine.gameDSL.impl.GameSpriteImpl#getX <em>X</em>}</li>
  *   <li>{@link com.hypermodel.games.engine.gameDSL.impl.GameSpriteImpl#getY <em>Y</em>}</li>
@@ -114,6 +116,36 @@ public class GameSpriteImpl extends MinimalEObjectImpl.Container implements Game
    * @ordered
    */
   protected int radius = RADIUS_EDEFAULT;
+
+  /**
+   * The default value of the '{@link #isHasVelocity() <em>Has Velocity</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #isHasVelocity()
+   * @generated
+   * @ordered
+   */
+  protected static final boolean HAS_VELOCITY_EDEFAULT = false;
+
+  /**
+   * The cached value of the '{@link #isHasVelocity() <em>Has Velocity</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #isHasVelocity()
+   * @generated
+   * @ordered
+   */
+  protected boolean hasVelocity = HAS_VELOCITY_EDEFAULT;
+
+  /**
+   * The cached value of the '{@link #getVelocity() <em>Velocity</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getVelocity()
+   * @generated
+   * @ordered
+   */
+  protected GameVector2d velocity;
 
   /**
    * The default value of the '{@link #isHasStartPosition() <em>Has Start Position</em>}' attribute.
@@ -370,6 +402,77 @@ public class GameSpriteImpl extends MinimalEObjectImpl.Container implements Game
    * <!-- end-user-doc -->
    * @generated
    */
+  public boolean isHasVelocity()
+  {
+    return hasVelocity;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setHasVelocity(boolean newHasVelocity)
+  {
+    boolean oldHasVelocity = hasVelocity;
+    hasVelocity = newHasVelocity;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, GameDSLPackage.GAME_SPRITE__HAS_VELOCITY, oldHasVelocity, hasVelocity));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public GameVector2d getVelocity()
+  {
+    return velocity;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetVelocity(GameVector2d newVelocity, NotificationChain msgs)
+  {
+    GameVector2d oldVelocity = velocity;
+    velocity = newVelocity;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, GameDSLPackage.GAME_SPRITE__VELOCITY, oldVelocity, newVelocity);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setVelocity(GameVector2d newVelocity)
+  {
+    if (newVelocity != velocity)
+    {
+      NotificationChain msgs = null;
+      if (velocity != null)
+        msgs = ((InternalEObject)velocity).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - GameDSLPackage.GAME_SPRITE__VELOCITY, null, msgs);
+      if (newVelocity != null)
+        msgs = ((InternalEObject)newVelocity).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - GameDSLPackage.GAME_SPRITE__VELOCITY, null, msgs);
+      msgs = basicSetVelocity(newVelocity, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, GameDSLPackage.GAME_SPRITE__VELOCITY, newVelocity, newVelocity));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public boolean isHasStartPosition()
   {
     return hasStartPosition;
@@ -603,6 +706,8 @@ public class GameSpriteImpl extends MinimalEObjectImpl.Container implements Game
   {
     switch (featureID)
     {
+      case GameDSLPackage.GAME_SPRITE__VELOCITY:
+        return basicSetVelocity(null, msgs);
       case GameDSLPackage.GAME_SPRITE__VECTORS2D:
         return ((InternalEList<?>)getVectors2d()).basicRemove(otherEnd, msgs);
       case GameDSLPackage.GAME_SPRITE__PROPERTIES:
@@ -631,6 +736,10 @@ public class GameSpriteImpl extends MinimalEObjectImpl.Container implements Game
         return getId();
       case GameDSLPackage.GAME_SPRITE__RADIUS:
         return getRadius();
+      case GameDSLPackage.GAME_SPRITE__HAS_VELOCITY:
+        return isHasVelocity();
+      case GameDSLPackage.GAME_SPRITE__VELOCITY:
+        return getVelocity();
       case GameDSLPackage.GAME_SPRITE__HAS_START_POSITION:
         return isHasStartPosition();
       case GameDSLPackage.GAME_SPRITE__X:
@@ -677,6 +786,12 @@ public class GameSpriteImpl extends MinimalEObjectImpl.Container implements Game
         return;
       case GameDSLPackage.GAME_SPRITE__RADIUS:
         setRadius((Integer)newValue);
+        return;
+      case GameDSLPackage.GAME_SPRITE__HAS_VELOCITY:
+        setHasVelocity((Boolean)newValue);
+        return;
+      case GameDSLPackage.GAME_SPRITE__VELOCITY:
+        setVelocity((GameVector2d)newValue);
         return;
       case GameDSLPackage.GAME_SPRITE__HAS_START_POSITION:
         setHasStartPosition((Boolean)newValue);
@@ -739,6 +854,12 @@ public class GameSpriteImpl extends MinimalEObjectImpl.Container implements Game
       case GameDSLPackage.GAME_SPRITE__RADIUS:
         setRadius(RADIUS_EDEFAULT);
         return;
+      case GameDSLPackage.GAME_SPRITE__HAS_VELOCITY:
+        setHasVelocity(HAS_VELOCITY_EDEFAULT);
+        return;
+      case GameDSLPackage.GAME_SPRITE__VELOCITY:
+        setVelocity((GameVector2d)null);
+        return;
       case GameDSLPackage.GAME_SPRITE__HAS_START_POSITION:
         setHasStartPosition(HAS_START_POSITION_EDEFAULT);
         return;
@@ -792,6 +913,10 @@ public class GameSpriteImpl extends MinimalEObjectImpl.Container implements Game
         return id != ID_EDEFAULT;
       case GameDSLPackage.GAME_SPRITE__RADIUS:
         return radius != RADIUS_EDEFAULT;
+      case GameDSLPackage.GAME_SPRITE__HAS_VELOCITY:
+        return hasVelocity != HAS_VELOCITY_EDEFAULT;
+      case GameDSLPackage.GAME_SPRITE__VELOCITY:
+        return velocity != null;
       case GameDSLPackage.GAME_SPRITE__HAS_START_POSITION:
         return hasStartPosition != HAS_START_POSITION_EDEFAULT;
       case GameDSLPackage.GAME_SPRITE__X:
@@ -835,6 +960,8 @@ public class GameSpriteImpl extends MinimalEObjectImpl.Container implements Game
     result.append(id);
     result.append(", radius: ");
     result.append(radius);
+    result.append(", hasVelocity: ");
+    result.append(hasVelocity);
     result.append(", hasStartPosition: ");
     result.append(hasStartPosition);
     result.append(", x: ");

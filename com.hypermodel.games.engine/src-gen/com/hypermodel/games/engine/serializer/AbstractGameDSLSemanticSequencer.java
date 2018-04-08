@@ -732,12 +732,13 @@ public abstract class AbstractGameDSLSemanticSequencer extends XbaseWithAnnotati
 	 *         name=ValidID 
 	 *         id=INT 
 	 *         radius=INT 
-	 *         (hasStartPosition?='startPositionX' x=INT y=INT)? 
-	 *         (hasSensor?='sensor' vectors2d+=GameVector2d* sensorID=INT)? 
-	 *         interactionSprites+=[GameSprite|ID]* 
-	 *         properties+=GameBodyProperty* 
-	 *         (states+=GameSpriteState* initialState=[GameSpriteState|ID])? 
-	 *         events+=GameSpriteEvent*
+	 *         (
+	 *             (interactionSprites+=[GameSprite|ID] | properties+=GameBodyProperty | events+=GameSpriteEvent)? 
+	 *             (hasVelocity?='velocity' velocity=GameVector2d)? 
+	 *             (states+=GameSpriteState* initialState=[GameSpriteState|ID])? 
+	 *             (hasSensor?='sensor' vectors2d+=GameVector2d* sensorID=INT)? 
+	 *             (hasStartPosition?='startPositionX' x=INT y=INT)?
+	 *         )+
 	 *     )
 	 */
 	protected void sequence_GameSprite(ISerializationContext context, GameSprite semanticObject) {

@@ -77,12 +77,13 @@ GameDisplay:
 GameSprite:
 	{GameSprite} 'sprite' name=ValidID 'id' id=INT 
 	'radius' radius=INT
-	(hasStartPosition?='startPositionX' x=INT 'startPositionY' y=INT)?
-	(hasSensor?='sensor' '{' vectors2d+=GameVector2d* '}' 'sensorID' sensorID=INT)?
-	('interactsWith' '{' interactionSprites+=[GameSprite]* '}')?
-	('properties' '{' properties+=GameBodyProperty* '}')?
-	('states' '{' states+=GameSpriteState* '}' 'initialState' initialState=[GameSpriteState])?
-	('events' '{' events+=GameSpriteEvent* '}')?;
+	((hasVelocity?='velocity' velocity=GameVector2d)? &
+	(hasStartPosition?='startPositionX' x=INT 'startPositionY' y=INT)? &
+	(hasSensor?='sensor' '{' vectors2d+=GameVector2d* '}' 'sensorID' sensorID=INT)? &
+	('interactsWith' '{' interactionSprites+=[GameSprite]* '}')? &
+	('properties' '{' properties+=GameBodyProperty* '}')? & 
+	('states' '{' states+=GameSpriteState* '}' 'initialState' initialState=[GameSpriteState])? &
+	('events' '{' events+=GameSpriteEvent* '}')?);
 
 GameVector2d:
 	{GameVector2d} 'vector(' x=SignedInteger ',' y=SignedInteger ')'; 

@@ -728,13 +728,31 @@ public interface GameDSLPackage extends EPackage
   int GAME_SPRITE__RADIUS = 2;
 
   /**
+   * The feature id for the '<em><b>Has Velocity</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int GAME_SPRITE__HAS_VELOCITY = 3;
+
+  /**
+   * The feature id for the '<em><b>Velocity</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int GAME_SPRITE__VELOCITY = 4;
+
+  /**
    * The feature id for the '<em><b>Has Start Position</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int GAME_SPRITE__HAS_START_POSITION = 3;
+  int GAME_SPRITE__HAS_START_POSITION = 5;
 
   /**
    * The feature id for the '<em><b>X</b></em>' attribute.
@@ -743,7 +761,7 @@ public interface GameDSLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int GAME_SPRITE__X = 4;
+  int GAME_SPRITE__X = 6;
 
   /**
    * The feature id for the '<em><b>Y</b></em>' attribute.
@@ -752,7 +770,7 @@ public interface GameDSLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int GAME_SPRITE__Y = 5;
+  int GAME_SPRITE__Y = 7;
 
   /**
    * The feature id for the '<em><b>Has Sensor</b></em>' attribute.
@@ -761,7 +779,7 @@ public interface GameDSLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int GAME_SPRITE__HAS_SENSOR = 6;
+  int GAME_SPRITE__HAS_SENSOR = 8;
 
   /**
    * The feature id for the '<em><b>Vectors2d</b></em>' containment reference list.
@@ -770,7 +788,7 @@ public interface GameDSLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int GAME_SPRITE__VECTORS2D = 7;
+  int GAME_SPRITE__VECTORS2D = 9;
 
   /**
    * The feature id for the '<em><b>Sensor ID</b></em>' attribute.
@@ -779,7 +797,7 @@ public interface GameDSLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int GAME_SPRITE__SENSOR_ID = 8;
+  int GAME_SPRITE__SENSOR_ID = 10;
 
   /**
    * The feature id for the '<em><b>Interaction Sprites</b></em>' reference list.
@@ -788,7 +806,7 @@ public interface GameDSLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int GAME_SPRITE__INTERACTION_SPRITES = 9;
+  int GAME_SPRITE__INTERACTION_SPRITES = 11;
 
   /**
    * The feature id for the '<em><b>Properties</b></em>' containment reference list.
@@ -797,7 +815,7 @@ public interface GameDSLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int GAME_SPRITE__PROPERTIES = 10;
+  int GAME_SPRITE__PROPERTIES = 12;
 
   /**
    * The feature id for the '<em><b>States</b></em>' containment reference list.
@@ -806,7 +824,7 @@ public interface GameDSLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int GAME_SPRITE__STATES = 11;
+  int GAME_SPRITE__STATES = 13;
 
   /**
    * The feature id for the '<em><b>Initial State</b></em>' reference.
@@ -815,7 +833,7 @@ public interface GameDSLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int GAME_SPRITE__INITIAL_STATE = 12;
+  int GAME_SPRITE__INITIAL_STATE = 14;
 
   /**
    * The feature id for the '<em><b>Events</b></em>' containment reference list.
@@ -824,7 +842,7 @@ public interface GameDSLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int GAME_SPRITE__EVENTS = 13;
+  int GAME_SPRITE__EVENTS = 15;
 
   /**
    * The number of structural features of the '<em>Game Sprite</em>' class.
@@ -833,7 +851,7 @@ public interface GameDSLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int GAME_SPRITE_FEATURE_COUNT = 14;
+  int GAME_SPRITE_FEATURE_COUNT = 16;
 
   /**
    * The meta object id for the '{@link com.hypermodel.games.engine.gameDSL.impl.GameVector2dImpl <em>Game Vector2d</em>}' class.
@@ -2003,6 +2021,28 @@ public interface GameDSLPackage extends EPackage
   EAttribute getGameSprite_Radius();
 
   /**
+   * Returns the meta object for the attribute '{@link com.hypermodel.games.engine.gameDSL.GameSprite#isHasVelocity <em>Has Velocity</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Has Velocity</em>'.
+   * @see com.hypermodel.games.engine.gameDSL.GameSprite#isHasVelocity()
+   * @see #getGameSprite()
+   * @generated
+   */
+  EAttribute getGameSprite_HasVelocity();
+
+  /**
+   * Returns the meta object for the containment reference '{@link com.hypermodel.games.engine.gameDSL.GameSprite#getVelocity <em>Velocity</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Velocity</em>'.
+   * @see com.hypermodel.games.engine.gameDSL.GameSprite#getVelocity()
+   * @see #getGameSprite()
+   * @generated
+   */
+  EReference getGameSprite_Velocity();
+
+  /**
    * Returns the meta object for the attribute '{@link com.hypermodel.games.engine.gameDSL.GameSprite#isHasStartPosition <em>Has Start Position</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -3161,6 +3201,22 @@ public interface GameDSLPackage extends EPackage
      * @generated
      */
     EAttribute GAME_SPRITE__RADIUS = eINSTANCE.getGameSprite_Radius();
+
+    /**
+     * The meta object literal for the '<em><b>Has Velocity</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute GAME_SPRITE__HAS_VELOCITY = eINSTANCE.getGameSprite_HasVelocity();
+
+    /**
+     * The meta object literal for the '<em><b>Velocity</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference GAME_SPRITE__VELOCITY = eINSTANCE.getGameSprite_Velocity();
 
     /**
      * The meta object literal for the '<em><b>Has Start Position</b></em>' attribute feature.

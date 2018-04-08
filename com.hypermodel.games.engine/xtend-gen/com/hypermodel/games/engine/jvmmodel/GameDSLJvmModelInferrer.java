@@ -1511,24 +1511,44 @@ public class GameDSLJvmModelInferrer extends AbstractModelInferrer {
     };
     JvmField _field_4 = this._jvmTypesBuilder.toField(sprite, "positionOffsetY", this._typeReferenceBuilder.typeRef(float.class), _function_4);
     this._jvmTypesBuilder.<JvmField>operator_add(_members_7, _field_4);
-    final GameSprite fsprite = sprite;
-    final Consumer<GameBodyProperty> _function_5 = (GameBodyProperty it) -> {
+    boolean _isHasVelocity = sprite.isHasVelocity();
+    if (_isHasVelocity) {
       EList<JvmMember> _members_8 = type.getMembers();
+      final Procedure1<JvmField> _function_5 = (JvmField it) -> {
+        final Procedure1<ITreeAppendable> _function_6 = (ITreeAppendable it_1) -> {
+          StringConcatenation _builder = new StringConcatenation();
+          _builder.append("new Vector2(");
+          int _x = sprite.getVelocity().getX();
+          _builder.append(_x);
+          _builder.append(",");
+          int _y = sprite.getVelocity().getY();
+          _builder.append(_y);
+          _builder.append(")");
+          it_1.append(_builder);
+        };
+        this._jvmTypesBuilder.setInitializer(it, _function_6);
+      };
+      JvmField _field_5 = this._jvmTypesBuilder.toField(sprite, "velocity", this._typeReferenceBuilder.typeRef(Vector2.class), _function_5);
+      this._jvmTypesBuilder.<JvmField>operator_add(_members_8, _field_5);
+    }
+    final GameSprite fsprite = sprite;
+    final Consumer<GameBodyProperty> _function_6 = (GameBodyProperty it) -> {
+      EList<JvmMember> _members_9 = type.getMembers();
       StringConcatenation _builder = new StringConcatenation();
       String _name = it.getName();
       _builder.append(_name);
-      final Procedure1<JvmField> _function_6 = (JvmField it_1) -> {
-        final Procedure1<ITreeAppendable> _function_7 = (ITreeAppendable it_2) -> {
+      final Procedure1<JvmField> _function_7 = (JvmField it_1) -> {
+        final Procedure1<ITreeAppendable> _function_8 = (ITreeAppendable it_2) -> {
           StringConcatenation _builder_1 = new StringConcatenation();
           _builder_1.append("false");
           it_2.append(_builder_1);
         };
-        this._jvmTypesBuilder.setInitializer(it_1, _function_7);
+        this._jvmTypesBuilder.setInitializer(it_1, _function_8);
       };
-      JvmField _field_5 = this._jvmTypesBuilder.toField(fsprite, _builder.toString(), this._typeReferenceBuilder.typeRef(Boolean.class), _function_6);
-      this._jvmTypesBuilder.<JvmField>operator_add(_members_8, _field_5);
+      JvmField _field_6 = this._jvmTypesBuilder.toField(fsprite, _builder.toString(), this._typeReferenceBuilder.typeRef(Boolean.class), _function_7);
+      this._jvmTypesBuilder.<JvmField>operator_add(_members_9, _field_6);
     };
-    sprite.getProperties().forEach(_function_5);
+    sprite.getProperties().forEach(_function_6);
   }
   
   public void toOperations(final JvmGenericType type, final GameSprite sprite, final JvmGenericType gameClass) {
@@ -1629,8 +1649,6 @@ public class GameDSLJvmModelInferrer extends AbstractModelInferrer {
         StringConcatenation _builder_1 = new StringConcatenation();
         _builder_1.append("setPosition(body.getPosition().x - getWidth() / 2, body.getPosition().y - getHeight() / 2);");
         _builder_1.newLine();
-        _builder_1.append("setRegion(getFrame(dt));");
-        _builder_1.newLine();
         it_1.append(_builder_1);
         final ITreeAppendable current = it_1;
         final Function1<GameBodyProperty, Boolean> _function_7 = (GameBodyProperty it_2) -> {
@@ -1654,6 +1672,10 @@ public class GameDSLJvmModelInferrer extends AbstractModelInferrer {
           current.append(_builder_2);
         };
         IterableExtensions.<GameBodyProperty>filter(sprite.getProperties(), _function_7).forEach(_function_8);
+        StringConcatenation _builder_2 = new StringConcatenation();
+        _builder_2.append("setRegion(getFrame(dt));");
+        _builder_2.newLine();
+        it_1.append(_builder_2);
       };
       this._jvmTypesBuilder.setBody(it, _function_6);
     };
