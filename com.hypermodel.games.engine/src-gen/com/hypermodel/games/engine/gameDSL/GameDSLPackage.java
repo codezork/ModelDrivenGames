@@ -983,13 +983,13 @@ public interface GameDSLPackage extends EPackage
   int GAME_BODY_PROPERTY__NAME = 0;
 
   /**
-   * The feature id for the '<em><b>On Update</b></em>' attribute.
+   * The feature id for the '<em><b>On Update True</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int GAME_BODY_PROPERTY__ON_UPDATE = 1;
+  int GAME_BODY_PROPERTY__ON_UPDATE_TRUE = 1;
 
   /**
    * The feature id for the '<em><b>Body</b></em>' containment reference.
@@ -1001,13 +1001,22 @@ public interface GameDSLPackage extends EPackage
   int GAME_BODY_PROPERTY__BODY = 2;
 
   /**
+   * The feature id for the '<em><b>On Update False</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int GAME_BODY_PROPERTY__ON_UPDATE_FALSE = 3;
+
+  /**
    * The number of structural features of the '<em>Game Body Property</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int GAME_BODY_PROPERTY_FEATURE_COUNT = 3;
+  int GAME_BODY_PROPERTY_FEATURE_COUNT = 4;
 
   /**
    * The meta object id for the '{@link com.hypermodel.games.engine.gameDSL.impl.GameRuleImpl <em>Game Rule</em>}' class.
@@ -2293,15 +2302,15 @@ public interface GameDSLPackage extends EPackage
   EAttribute getGameBodyProperty_Name();
 
   /**
-   * Returns the meta object for the attribute '{@link com.hypermodel.games.engine.gameDSL.GameBodyProperty#isOnUpdate <em>On Update</em>}'.
+   * Returns the meta object for the attribute '{@link com.hypermodel.games.engine.gameDSL.GameBodyProperty#isOnUpdateTrue <em>On Update True</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>On Update</em>'.
-   * @see com.hypermodel.games.engine.gameDSL.GameBodyProperty#isOnUpdate()
+   * @return the meta object for the attribute '<em>On Update True</em>'.
+   * @see com.hypermodel.games.engine.gameDSL.GameBodyProperty#isOnUpdateTrue()
    * @see #getGameBodyProperty()
    * @generated
    */
-  EAttribute getGameBodyProperty_OnUpdate();
+  EAttribute getGameBodyProperty_OnUpdateTrue();
 
   /**
    * Returns the meta object for the containment reference '{@link com.hypermodel.games.engine.gameDSL.GameBodyProperty#getBody <em>Body</em>}'.
@@ -2313,6 +2322,17 @@ public interface GameDSLPackage extends EPackage
    * @generated
    */
   EReference getGameBodyProperty_Body();
+
+  /**
+   * Returns the meta object for the attribute '{@link com.hypermodel.games.engine.gameDSL.GameBodyProperty#isOnUpdateFalse <em>On Update False</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>On Update False</em>'.
+   * @see com.hypermodel.games.engine.gameDSL.GameBodyProperty#isOnUpdateFalse()
+   * @see #getGameBodyProperty()
+   * @generated
+   */
+  EAttribute getGameBodyProperty_OnUpdateFalse();
 
   /**
    * Returns the meta object for class '{@link com.hypermodel.games.engine.gameDSL.GameRule <em>Game Rule</em>}'.
@@ -3409,12 +3429,12 @@ public interface GameDSLPackage extends EPackage
     EAttribute GAME_BODY_PROPERTY__NAME = eINSTANCE.getGameBodyProperty_Name();
 
     /**
-     * The meta object literal for the '<em><b>On Update</b></em>' attribute feature.
+     * The meta object literal for the '<em><b>On Update True</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute GAME_BODY_PROPERTY__ON_UPDATE = eINSTANCE.getGameBodyProperty_OnUpdate();
+    EAttribute GAME_BODY_PROPERTY__ON_UPDATE_TRUE = eINSTANCE.getGameBodyProperty_OnUpdateTrue();
 
     /**
      * The meta object literal for the '<em><b>Body</b></em>' containment reference feature.
@@ -3423,6 +3443,14 @@ public interface GameDSLPackage extends EPackage
      * @generated
      */
     EReference GAME_BODY_PROPERTY__BODY = eINSTANCE.getGameBodyProperty_Body();
+
+    /**
+     * The meta object literal for the '<em><b>On Update False</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute GAME_BODY_PROPERTY__ON_UPDATE_FALSE = eINSTANCE.getGameBodyProperty_OnUpdateFalse();
 
     /**
      * The meta object literal for the '{@link com.hypermodel.games.engine.gameDSL.impl.GameRuleImpl <em>Game Rule</em>}' class.

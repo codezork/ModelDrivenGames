@@ -1969,9 +1969,9 @@ ruleGameVector2d returns [EObject current=null]
 		(
 			(
 				{
-					newCompositeNode(grammarAccess.getGameVector2dAccess().getXSignedIntegerParserRuleCall_2_0());
+					newCompositeNode(grammarAccess.getGameVector2dAccess().getXSignedNumberParserRuleCall_2_0());
 				}
-				lv_x_2_0=ruleSignedInteger
+				lv_x_2_0=ruleSignedNumber
 				{
 					if ($current==null) {
 						$current = createModelElementForParent(grammarAccess.getGameVector2dRule());
@@ -1980,7 +1980,7 @@ ruleGameVector2d returns [EObject current=null]
 						$current,
 						"x",
 						lv_x_2_0,
-						"com.hypermodel.games.engine.GameDSL.SignedInteger");
+						"com.hypermodel.games.engine.GameDSL.SignedNumber");
 					afterParserOrEnumRuleCall();
 				}
 			)
@@ -1992,9 +1992,9 @@ ruleGameVector2d returns [EObject current=null]
 		(
 			(
 				{
-					newCompositeNode(grammarAccess.getGameVector2dAccess().getYSignedIntegerParserRuleCall_4_0());
+					newCompositeNode(grammarAccess.getGameVector2dAccess().getYSignedNumberParserRuleCall_4_0());
 				}
-				lv_y_4_0=ruleSignedInteger
+				lv_y_4_0=ruleSignedNumber
 				{
 					if ($current==null) {
 						$current = createModelElementForParent(grammarAccess.getGameVector2dRule());
@@ -2003,7 +2003,7 @@ ruleGameVector2d returns [EObject current=null]
 						$current,
 						"y",
 						lv_y_4_0,
-						"com.hypermodel.games.engine.GameDSL.SignedInteger");
+						"com.hypermodel.games.engine.GameDSL.SignedNumber");
 					afterParserOrEnumRuleCall();
 				}
 			)
@@ -2212,15 +2212,15 @@ ruleGameBodyProperty returns [EObject current=null]
 		(
 			(
 				(
-					lv_onUpdate_3_0='onUpdateIfTrue'
+					lv_onUpdateTrue_3_0='onUpdateIfTrue'
 					{
-						newLeafNode(lv_onUpdate_3_0, grammarAccess.getGameBodyPropertyAccess().getOnUpdateOnUpdateIfTrueKeyword_3_0_0());
+						newLeafNode(lv_onUpdateTrue_3_0, grammarAccess.getGameBodyPropertyAccess().getOnUpdateTrueOnUpdateIfTrueKeyword_3_0_0());
 					}
 					{
 						if ($current==null) {
 							$current = createModelElement(grammarAccess.getGameBodyPropertyRule());
 						}
-						setWithLastConsumed($current, "onUpdate", true, "onUpdateIfTrue");
+						setWithLastConsumed($current, "onUpdateTrue", true, "onUpdateIfTrue");
 					}
 				)
 			)
@@ -2238,6 +2238,41 @@ ruleGameBodyProperty returns [EObject current=null]
 							$current,
 							"body",
 							lv_body_4_0,
+							"org.eclipse.xtext.xbase.Xbase.XBlockExpression");
+						afterParserOrEnumRuleCall();
+					}
+				)
+			)
+		)?
+		(
+			(
+				(
+					lv_onUpdateFalse_5_0='onUpdateIfFalse'
+					{
+						newLeafNode(lv_onUpdateFalse_5_0, grammarAccess.getGameBodyPropertyAccess().getOnUpdateFalseOnUpdateIfFalseKeyword_4_0_0());
+					}
+					{
+						if ($current==null) {
+							$current = createModelElement(grammarAccess.getGameBodyPropertyRule());
+						}
+						setWithLastConsumed($current, "onUpdateFalse", true, "onUpdateIfFalse");
+					}
+				)
+			)
+			(
+				(
+					{
+						newCompositeNode(grammarAccess.getGameBodyPropertyAccess().getBodyXBlockExpressionParserRuleCall_4_1_0());
+					}
+					lv_body_6_0=ruleXBlockExpression
+					{
+						if ($current==null) {
+							$current = createModelElementForParent(grammarAccess.getGameBodyPropertyRule());
+						}
+						set(
+							$current,
+							"body",
+							lv_body_6_0,
 							"org.eclipse.xtext.xbase.Xbase.XBlockExpression");
 						afterParserOrEnumRuleCall();
 					}
@@ -3033,39 +3068,6 @@ ruleUnsignedNumber returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRule
 				newLeafNode(this_INT_2, grammarAccess.getUnsignedNumberAccess().getINTTerminalRuleCall_1_1());
 			}
 		)
-	)
-;
-
-// Entry rule entryRuleSignedInteger
-entryRuleSignedInteger returns [String current=null]:
-	{ newCompositeNode(grammarAccess.getSignedIntegerRule()); }
-	iv_ruleSignedInteger=ruleSignedInteger
-	{ $current=$iv_ruleSignedInteger.current.getText(); }
-	EOF;
-
-// Rule SignedInteger
-ruleSignedInteger returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()]
-@init {
-	enterRule();
-}
-@after {
-	leaveRule();
-}:
-	(
-		(
-			kw='-'
-			{
-				$current.merge(kw);
-				newLeafNode(kw, grammarAccess.getSignedIntegerAccess().getHyphenMinusKeyword_0());
-			}
-		)?
-		this_INT_1=RULE_INT
-		{
-			$current.merge(this_INT_1);
-		}
-		{
-			newLeafNode(this_INT_1, grammarAccess.getSignedIntegerAccess().getINTTerminalRuleCall_1());
-		}
 	)
 ;
 

@@ -86,7 +86,7 @@ GameSprite:
 	('events' '{' events+=GameSpriteEvent* '}')?);
 
 GameVector2d:
-	{GameVector2d} 'vector(' x=SignedInteger ',' y=SignedInteger ')'; 
+	{GameVector2d} 'vector(' x=SignedNumber ',' y=SignedNumber ')'; 
 	
 GameSpriteState:
 	{GameSpriteState} 'state' name=ValidID 'if' rule=GameRule
@@ -95,7 +95,9 @@ GameSpriteState:
 	stand=GameSpriteStand)?;
 	
 GameBodyProperty:
-	{GameBodyProperty} 'property' name=ValidID (onUpdate?='onUpdateIfTrue' body=XBlockExpression)?;
+	{GameBodyProperty} 'property' name=ValidID 
+	(onUpdateTrue?='onUpdateIfTrue' body=XBlockExpression)?
+	(onUpdateFalse?='onUpdateIfFalse' body=XBlockExpression)?;
 	
 GameRule:
 	{GameRule} 'isTrue' name=ValidID '(' (params+=FullJvmFormalParameter (',' params+=FullJvmFormalParameter)?)? ')'

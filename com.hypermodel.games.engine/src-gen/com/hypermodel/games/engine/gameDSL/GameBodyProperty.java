@@ -17,8 +17,9 @@ import org.eclipse.xtext.xbase.XExpression;
  * </p>
  * <ul>
  *   <li>{@link com.hypermodel.games.engine.gameDSL.GameBodyProperty#getName <em>Name</em>}</li>
- *   <li>{@link com.hypermodel.games.engine.gameDSL.GameBodyProperty#isOnUpdate <em>On Update</em>}</li>
+ *   <li>{@link com.hypermodel.games.engine.gameDSL.GameBodyProperty#isOnUpdateTrue <em>On Update True</em>}</li>
  *   <li>{@link com.hypermodel.games.engine.gameDSL.GameBodyProperty#getBody <em>Body</em>}</li>
+ *   <li>{@link com.hypermodel.games.engine.gameDSL.GameBodyProperty#isOnUpdateFalse <em>On Update False</em>}</li>
  * </ul>
  *
  * @see com.hypermodel.games.engine.gameDSL.GameDSLPackage#getGameBodyProperty()
@@ -54,30 +55,30 @@ public interface GameBodyProperty extends EObject
   void setName(String value);
 
   /**
-   * Returns the value of the '<em><b>On Update</b></em>' attribute.
+   * Returns the value of the '<em><b>On Update True</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>On Update</em>' attribute isn't clear,
+   * If the meaning of the '<em>On Update True</em>' attribute isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>On Update</em>' attribute.
-   * @see #setOnUpdate(boolean)
-   * @see com.hypermodel.games.engine.gameDSL.GameDSLPackage#getGameBodyProperty_OnUpdate()
+   * @return the value of the '<em>On Update True</em>' attribute.
+   * @see #setOnUpdateTrue(boolean)
+   * @see com.hypermodel.games.engine.gameDSL.GameDSLPackage#getGameBodyProperty_OnUpdateTrue()
    * @model
    * @generated
    */
-  boolean isOnUpdate();
+  boolean isOnUpdateTrue();
 
   /**
-   * Sets the value of the '{@link com.hypermodel.games.engine.gameDSL.GameBodyProperty#isOnUpdate <em>On Update</em>}' attribute.
+   * Sets the value of the '{@link com.hypermodel.games.engine.gameDSL.GameBodyProperty#isOnUpdateTrue <em>On Update True</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>On Update</em>' attribute.
-   * @see #isOnUpdate()
+   * @param value the new value of the '<em>On Update True</em>' attribute.
+   * @see #isOnUpdateTrue()
    * @generated
    */
-  void setOnUpdate(boolean value);
+  void setOnUpdateTrue(boolean value);
 
   /**
    * Returns the value of the '<em><b>Body</b></em>' containment reference.
@@ -104,5 +105,31 @@ public interface GameBodyProperty extends EObject
    * @generated
    */
   void setBody(XExpression value);
+
+  /**
+   * Returns the value of the '<em><b>On Update False</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>On Update False</em>' attribute isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>On Update False</em>' attribute.
+   * @see #setOnUpdateFalse(boolean)
+   * @see com.hypermodel.games.engine.gameDSL.GameDSLPackage#getGameBodyProperty_OnUpdateFalse()
+   * @model
+   * @generated
+   */
+  boolean isOnUpdateFalse();
+
+  /**
+   * Sets the value of the '{@link com.hypermodel.games.engine.gameDSL.GameBodyProperty#isOnUpdateFalse <em>On Update False</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>On Update False</em>' attribute.
+   * @see #isOnUpdateFalse()
+   * @generated
+   */
+  void setOnUpdateFalse(boolean value);
 
 } // GameBodyProperty

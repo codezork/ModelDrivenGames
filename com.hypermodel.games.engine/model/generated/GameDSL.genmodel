@@ -116,8 +116,9 @@
     </genClasses>
     <genClasses ecoreClass="GameDSL.ecore#//GameBodyProperty">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GameDSL.ecore#//GameBodyProperty/name"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GameDSL.ecore#//GameBodyProperty/onUpdate"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GameDSL.ecore#//GameBodyProperty/onUpdateTrue"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GameDSL.ecore#//GameBodyProperty/body"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GameDSL.ecore#//GameBodyProperty/onUpdateFalse"/>
     </genClasses>
     <genClasses ecoreClass="GameDSL.ecore#//GameRule">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GameDSL.ecore#//GameRule/name"/>

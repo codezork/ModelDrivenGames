@@ -33,12 +33,12 @@ public interface GameVector2d extends EObject
    * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>X</em>' attribute.
-   * @see #setX(int)
+   * @see #setX(float)
    * @see com.hypermodel.games.engine.gameDSL.GameDSLPackage#getGameVector2d_X()
    * @model
    * @generated
    */
-  int getX();
+  float getX();
 
   /**
    * Sets the value of the '{@link com.hypermodel.games.engine.gameDSL.GameVector2d#getX <em>X</em>}' attribute.
@@ -48,7 +48,7 @@ public interface GameVector2d extends EObject
    * @see #getX()
    * @generated
    */
-  void setX(int value);
+  void setX(float value);
 
   /**
    * Returns the value of the '<em><b>Y</b></em>' attribute.
@@ -59,12 +59,12 @@ public interface GameVector2d extends EObject
    * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Y</em>' attribute.
-   * @see #setY(int)
+   * @see #setY(float)
    * @see com.hypermodel.games.engine.gameDSL.GameDSLPackage#getGameVector2d_Y()
    * @model
    * @generated
    */
-  int getY();
+  float getY();
 
   /**
    * Sets the value of the '{@link com.hypermodel.games.engine.gameDSL.GameVector2d#getY <em>Y</em>}' attribute.
@@ -74,6 +74,6 @@ public interface GameVector2d extends EObject
    * @see #getY()
    * @generated
    */
-  void setY(int value);
+  void setY(float value);
 
 } // GameVector2d

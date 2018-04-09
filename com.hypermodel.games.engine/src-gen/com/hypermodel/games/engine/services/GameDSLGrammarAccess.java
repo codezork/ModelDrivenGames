@@ -1141,17 +1141,17 @@ public class GameDSLGrammarAccess extends AbstractGrammarElementFinder {
 		private final Action cGameVector2dAction_0 = (Action)cGroup.eContents().get(0);
 		private final Keyword cVectorKeyword_1 = (Keyword)cGroup.eContents().get(1);
 		private final Assignment cXAssignment_2 = (Assignment)cGroup.eContents().get(2);
-		private final RuleCall cXSignedIntegerParserRuleCall_2_0 = (RuleCall)cXAssignment_2.eContents().get(0);
+		private final RuleCall cXSignedNumberParserRuleCall_2_0 = (RuleCall)cXAssignment_2.eContents().get(0);
 		private final Keyword cCommaKeyword_3 = (Keyword)cGroup.eContents().get(3);
 		private final Assignment cYAssignment_4 = (Assignment)cGroup.eContents().get(4);
-		private final RuleCall cYSignedIntegerParserRuleCall_4_0 = (RuleCall)cYAssignment_4.eContents().get(0);
+		private final RuleCall cYSignedNumberParserRuleCall_4_0 = (RuleCall)cYAssignment_4.eContents().get(0);
 		private final Keyword cRightParenthesisKeyword_5 = (Keyword)cGroup.eContents().get(5);
 		
 		//GameVector2d:
-		//	{GameVector2d} 'vector(' x=SignedInteger ',' y=SignedInteger ')';
+		//	{GameVector2d} 'vector(' x=SignedNumber ',' y=SignedNumber ')';
 		@Override public ParserRule getRule() { return rule; }
 		
-		//{GameVector2d} 'vector(' x=SignedInteger ',' y=SignedInteger ')'
+		//{GameVector2d} 'vector(' x=SignedNumber ',' y=SignedNumber ')'
 		public Group getGroup() { return cGroup; }
 		
 		//{GameVector2d}
@@ -1160,20 +1160,20 @@ public class GameDSLGrammarAccess extends AbstractGrammarElementFinder {
 		//'vector('
 		public Keyword getVectorKeyword_1() { return cVectorKeyword_1; }
 		
-		//x=SignedInteger
+		//x=SignedNumber
 		public Assignment getXAssignment_2() { return cXAssignment_2; }
 		
-		//SignedInteger
-		public RuleCall getXSignedIntegerParserRuleCall_2_0() { return cXSignedIntegerParserRuleCall_2_0; }
+		//SignedNumber
+		public RuleCall getXSignedNumberParserRuleCall_2_0() { return cXSignedNumberParserRuleCall_2_0; }
 		
 		//','
 		public Keyword getCommaKeyword_3() { return cCommaKeyword_3; }
 		
-		//y=SignedInteger
+		//y=SignedNumber
 		public Assignment getYAssignment_4() { return cYAssignment_4; }
 		
-		//SignedInteger
-		public RuleCall getYSignedIntegerParserRuleCall_4_0() { return cYSignedIntegerParserRuleCall_4_0; }
+		//SignedNumber
+		public RuleCall getYSignedNumberParserRuleCall_4_0() { return cYSignedNumberParserRuleCall_4_0; }
 		
 		//')'
 		public Keyword getRightParenthesisKeyword_5() { return cRightParenthesisKeyword_5; }
@@ -1280,16 +1280,23 @@ public class GameDSLGrammarAccess extends AbstractGrammarElementFinder {
 		private final Assignment cNameAssignment_2 = (Assignment)cGroup.eContents().get(2);
 		private final RuleCall cNameValidIDParserRuleCall_2_0 = (RuleCall)cNameAssignment_2.eContents().get(0);
 		private final Group cGroup_3 = (Group)cGroup.eContents().get(3);
-		private final Assignment cOnUpdateAssignment_3_0 = (Assignment)cGroup_3.eContents().get(0);
-		private final Keyword cOnUpdateOnUpdateIfTrueKeyword_3_0_0 = (Keyword)cOnUpdateAssignment_3_0.eContents().get(0);
+		private final Assignment cOnUpdateTrueAssignment_3_0 = (Assignment)cGroup_3.eContents().get(0);
+		private final Keyword cOnUpdateTrueOnUpdateIfTrueKeyword_3_0_0 = (Keyword)cOnUpdateTrueAssignment_3_0.eContents().get(0);
 		private final Assignment cBodyAssignment_3_1 = (Assignment)cGroup_3.eContents().get(1);
 		private final RuleCall cBodyXBlockExpressionParserRuleCall_3_1_0 = (RuleCall)cBodyAssignment_3_1.eContents().get(0);
+		private final Group cGroup_4 = (Group)cGroup.eContents().get(4);
+		private final Assignment cOnUpdateFalseAssignment_4_0 = (Assignment)cGroup_4.eContents().get(0);
+		private final Keyword cOnUpdateFalseOnUpdateIfFalseKeyword_4_0_0 = (Keyword)cOnUpdateFalseAssignment_4_0.eContents().get(0);
+		private final Assignment cBodyAssignment_4_1 = (Assignment)cGroup_4.eContents().get(1);
+		private final RuleCall cBodyXBlockExpressionParserRuleCall_4_1_0 = (RuleCall)cBodyAssignment_4_1.eContents().get(0);
 		
 		//GameBodyProperty:
-		//	{GameBodyProperty} 'property' name=ValidID (onUpdate?='onUpdateIfTrue' body=XBlockExpression)?;
+		//	{GameBodyProperty} 'property' name=ValidID (onUpdateTrue?='onUpdateIfTrue' body=XBlockExpression)?
+		//	(onUpdateFalse?='onUpdateIfFalse' body=XBlockExpression)?;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//{GameBodyProperty} 'property' name=ValidID (onUpdate?='onUpdateIfTrue' body=XBlockExpression)?
+		//{GameBodyProperty} 'property' name=ValidID (onUpdateTrue?='onUpdateIfTrue' body=XBlockExpression)?
+		//(onUpdateFalse?='onUpdateIfFalse' body=XBlockExpression)?
 		public Group getGroup() { return cGroup; }
 		
 		//{GameBodyProperty}
@@ -1304,20 +1311,35 @@ public class GameDSLGrammarAccess extends AbstractGrammarElementFinder {
 		//ValidID
 		public RuleCall getNameValidIDParserRuleCall_2_0() { return cNameValidIDParserRuleCall_2_0; }
 		
-		//(onUpdate?='onUpdateIfTrue' body=XBlockExpression)?
+		//(onUpdateTrue?='onUpdateIfTrue' body=XBlockExpression)?
 		public Group getGroup_3() { return cGroup_3; }
 		
-		//onUpdate?='onUpdateIfTrue'
-		public Assignment getOnUpdateAssignment_3_0() { return cOnUpdateAssignment_3_0; }
+		//onUpdateTrue?='onUpdateIfTrue'
+		public Assignment getOnUpdateTrueAssignment_3_0() { return cOnUpdateTrueAssignment_3_0; }
 		
 		//'onUpdateIfTrue'
-		public Keyword getOnUpdateOnUpdateIfTrueKeyword_3_0_0() { return cOnUpdateOnUpdateIfTrueKeyword_3_0_0; }
+		public Keyword getOnUpdateTrueOnUpdateIfTrueKeyword_3_0_0() { return cOnUpdateTrueOnUpdateIfTrueKeyword_3_0_0; }
 		
 		//body=XBlockExpression
 		public Assignment getBodyAssignment_3_1() { return cBodyAssignment_3_1; }
 		
 		//XBlockExpression
 		public RuleCall getBodyXBlockExpressionParserRuleCall_3_1_0() { return cBodyXBlockExpressionParserRuleCall_3_1_0; }
+		
+		//(onUpdateFalse?='onUpdateIfFalse' body=XBlockExpression)?
+		public Group getGroup_4() { return cGroup_4; }
+		
+		//onUpdateFalse?='onUpdateIfFalse'
+		public Assignment getOnUpdateFalseAssignment_4_0() { return cOnUpdateFalseAssignment_4_0; }
+		
+		//'onUpdateIfFalse'
+		public Keyword getOnUpdateFalseOnUpdateIfFalseKeyword_4_0_0() { return cOnUpdateFalseOnUpdateIfFalseKeyword_4_0_0; }
+		
+		//body=XBlockExpression
+		public Assignment getBodyAssignment_4_1() { return cBodyAssignment_4_1; }
+		
+		//XBlockExpression
+		public RuleCall getBodyXBlockExpressionParserRuleCall_4_1_0() { return cBodyXBlockExpressionParserRuleCall_4_1_0; }
 	}
 	public class GameRuleElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "com.hypermodel.games.engine.GameDSL.GameRule");
@@ -2149,7 +2171,7 @@ public class GameDSLGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//GameVector2d:
-	//	{GameVector2d} 'vector(' x=SignedInteger ',' y=SignedInteger ')';
+	//	{GameVector2d} 'vector(' x=SignedNumber ',' y=SignedNumber ')';
 	public GameVector2dElements getGameVector2dAccess() {
 		return pGameVector2d;
 	}
@@ -2170,7 +2192,8 @@ public class GameDSLGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//GameBodyProperty:
-	//	{GameBodyProperty} 'property' name=ValidID (onUpdate?='onUpdateIfTrue' body=XBlockExpression)?;
+	//	{GameBodyProperty} 'property' name=ValidID (onUpdateTrue?='onUpdateIfTrue' body=XBlockExpression)?
+	//	(onUpdateFalse?='onUpdateIfFalse' body=XBlockExpression)?;
 	public GameBodyPropertyElements getGameBodyPropertyAccess() {
 		return pGameBodyProperty;
 	}

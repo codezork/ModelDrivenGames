@@ -112,6 +112,7 @@ public class GameDSLParser extends AbstractContentAssistParser {
 					put(grammarAccess.getGameSpriteStateAccess().getGroup_5_0_1(), "rule__GameSpriteState__Group_5_0_1__0");
 					put(grammarAccess.getGameBodyPropertyAccess().getGroup(), "rule__GameBodyProperty__Group__0");
 					put(grammarAccess.getGameBodyPropertyAccess().getGroup_3(), "rule__GameBodyProperty__Group_3__0");
+					put(grammarAccess.getGameBodyPropertyAccess().getGroup_4(), "rule__GameBodyProperty__Group_4__0");
 					put(grammarAccess.getGameRuleAccess().getGroup(), "rule__GameRule__Group__0");
 					put(grammarAccess.getGameRuleAccess().getGroup_4(), "rule__GameRule__Group_4__0");
 					put(grammarAccess.getGameRuleAccess().getGroup_4_1(), "rule__GameRule__Group_4_1__0");
@@ -400,8 +401,10 @@ public class GameDSLParser extends AbstractContentAssistParser {
 					put(grammarAccess.getGameSpriteStateAccess().getSetFalseAssignment_5_0_1_2(), "rule__GameSpriteState__SetFalseAssignment_5_0_1_2");
 					put(grammarAccess.getGameSpriteStateAccess().getStandAssignment_5_1(), "rule__GameSpriteState__StandAssignment_5_1");
 					put(grammarAccess.getGameBodyPropertyAccess().getNameAssignment_2(), "rule__GameBodyProperty__NameAssignment_2");
-					put(grammarAccess.getGameBodyPropertyAccess().getOnUpdateAssignment_3_0(), "rule__GameBodyProperty__OnUpdateAssignment_3_0");
+					put(grammarAccess.getGameBodyPropertyAccess().getOnUpdateTrueAssignment_3_0(), "rule__GameBodyProperty__OnUpdateTrueAssignment_3_0");
 					put(grammarAccess.getGameBodyPropertyAccess().getBodyAssignment_3_1(), "rule__GameBodyProperty__BodyAssignment_3_1");
+					put(grammarAccess.getGameBodyPropertyAccess().getOnUpdateFalseAssignment_4_0(), "rule__GameBodyProperty__OnUpdateFalseAssignment_4_0");
+					put(grammarAccess.getGameBodyPropertyAccess().getBodyAssignment_4_1(), "rule__GameBodyProperty__BodyAssignment_4_1");
 					put(grammarAccess.getGameRuleAccess().getNameAssignment_2(), "rule__GameRule__NameAssignment_2");
 					put(grammarAccess.getGameRuleAccess().getParamsAssignment_4_0(), "rule__GameRule__ParamsAssignment_4_0");
 					put(grammarAccess.getGameRuleAccess().getParamsAssignment_4_1_1(), "rule__GameRule__ParamsAssignment_4_1_1");

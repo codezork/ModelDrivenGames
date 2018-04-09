@@ -26,8 +26,9 @@ import org.eclipse.xtext.xbase.XExpression;
  * </p>
  * <ul>
  *   <li>{@link com.hypermodel.games.engine.gameDSL.impl.GameBodyPropertyImpl#getName <em>Name</em>}</li>
- *   <li>{@link com.hypermodel.games.engine.gameDSL.impl.GameBodyPropertyImpl#isOnUpdate <em>On Update</em>}</li>
+ *   <li>{@link com.hypermodel.games.engine.gameDSL.impl.GameBodyPropertyImpl#isOnUpdateTrue <em>On Update True</em>}</li>
  *   <li>{@link com.hypermodel.games.engine.gameDSL.impl.GameBodyPropertyImpl#getBody <em>Body</em>}</li>
+ *   <li>{@link com.hypermodel.games.engine.gameDSL.impl.GameBodyPropertyImpl#isOnUpdateFalse <em>On Update False</em>}</li>
  * </ul>
  *
  * @generated
@@ -55,24 +56,24 @@ public class GameBodyPropertyImpl extends MinimalEObjectImpl.Container implement
   protected String name = NAME_EDEFAULT;
 
   /**
-   * The default value of the '{@link #isOnUpdate() <em>On Update</em>}' attribute.
+   * The default value of the '{@link #isOnUpdateTrue() <em>On Update True</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #isOnUpdate()
+   * @see #isOnUpdateTrue()
    * @generated
    * @ordered
    */
-  protected static final boolean ON_UPDATE_EDEFAULT = false;
+  protected static final boolean ON_UPDATE_TRUE_EDEFAULT = false;
 
   /**
-   * The cached value of the '{@link #isOnUpdate() <em>On Update</em>}' attribute.
+   * The cached value of the '{@link #isOnUpdateTrue() <em>On Update True</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #isOnUpdate()
+   * @see #isOnUpdateTrue()
    * @generated
    * @ordered
    */
-  protected boolean onUpdate = ON_UPDATE_EDEFAULT;
+  protected boolean onUpdateTrue = ON_UPDATE_TRUE_EDEFAULT;
 
   /**
    * The cached value of the '{@link #getBody() <em>Body</em>}' containment reference.
@@ -83,6 +84,26 @@ public class GameBodyPropertyImpl extends MinimalEObjectImpl.Container implement
    * @ordered
    */
   protected XExpression body;
+
+  /**
+   * The default value of the '{@link #isOnUpdateFalse() <em>On Update False</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #isOnUpdateFalse()
+   * @generated
+   * @ordered
+   */
+  protected static final boolean ON_UPDATE_FALSE_EDEFAULT = false;
+
+  /**
+   * The cached value of the '{@link #isOnUpdateFalse() <em>On Update False</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #isOnUpdateFalse()
+   * @generated
+   * @ordered
+   */
+  protected boolean onUpdateFalse = ON_UPDATE_FALSE_EDEFAULT;
 
   /**
    * <!-- begin-user-doc -->
@@ -133,9 +154,9 @@ public class GameBodyPropertyImpl extends MinimalEObjectImpl.Container implement
    * <!-- end-user-doc -->
    * @generated
    */
-  public boolean isOnUpdate()
+  public boolean isOnUpdateTrue()
   {
-    return onUpdate;
+    return onUpdateTrue;
   }
 
   /**
@@ -143,12 +164,12 @@ public class GameBodyPropertyImpl extends MinimalEObjectImpl.Container implement
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setOnUpdate(boolean newOnUpdate)
+  public void setOnUpdateTrue(boolean newOnUpdateTrue)
   {
-    boolean oldOnUpdate = onUpdate;
-    onUpdate = newOnUpdate;
+    boolean oldOnUpdateTrue = onUpdateTrue;
+    onUpdateTrue = newOnUpdateTrue;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, GameDSLPackage.GAME_BODY_PROPERTY__ON_UPDATE, oldOnUpdate, onUpdate));
+      eNotify(new ENotificationImpl(this, Notification.SET, GameDSLPackage.GAME_BODY_PROPERTY__ON_UPDATE_TRUE, oldOnUpdateTrue, onUpdateTrue));
   }
 
   /**
@@ -204,6 +225,29 @@ public class GameBodyPropertyImpl extends MinimalEObjectImpl.Container implement
    * <!-- end-user-doc -->
    * @generated
    */
+  public boolean isOnUpdateFalse()
+  {
+    return onUpdateFalse;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setOnUpdateFalse(boolean newOnUpdateFalse)
+  {
+    boolean oldOnUpdateFalse = onUpdateFalse;
+    onUpdateFalse = newOnUpdateFalse;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, GameDSLPackage.GAME_BODY_PROPERTY__ON_UPDATE_FALSE, oldOnUpdateFalse, onUpdateFalse));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   @Override
   public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
   {
@@ -227,10 +271,12 @@ public class GameBodyPropertyImpl extends MinimalEObjectImpl.Container implement
     {
       case GameDSLPackage.GAME_BODY_PROPERTY__NAME:
         return getName();
-      case GameDSLPackage.GAME_BODY_PROPERTY__ON_UPDATE:
-        return isOnUpdate();
+      case GameDSLPackage.GAME_BODY_PROPERTY__ON_UPDATE_TRUE:
+        return isOnUpdateTrue();
       case GameDSLPackage.GAME_BODY_PROPERTY__BODY:
         return getBody();
+      case GameDSLPackage.GAME_BODY_PROPERTY__ON_UPDATE_FALSE:
+        return isOnUpdateFalse();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -248,11 +294,14 @@ public class GameBodyPropertyImpl extends MinimalEObjectImpl.Container implement
       case GameDSLPackage.GAME_BODY_PROPERTY__NAME:
         setName((String)newValue);
         return;
-      case GameDSLPackage.GAME_BODY_PROPERTY__ON_UPDATE:
-        setOnUpdate((Boolean)newValue);
+      case GameDSLPackage.GAME_BODY_PROPERTY__ON_UPDATE_TRUE:
+        setOnUpdateTrue((Boolean)newValue);
         return;
       case GameDSLPackage.GAME_BODY_PROPERTY__BODY:
         setBody((XExpression)newValue);
+        return;
+      case GameDSLPackage.GAME_BODY_PROPERTY__ON_UPDATE_FALSE:
+        setOnUpdateFalse((Boolean)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -271,11 +320,14 @@ public class GameBodyPropertyImpl extends MinimalEObjectImpl.Container implement
       case GameDSLPackage.GAME_BODY_PROPERTY__NAME:
         setName(NAME_EDEFAULT);
         return;
-      case GameDSLPackage.GAME_BODY_PROPERTY__ON_UPDATE:
-        setOnUpdate(ON_UPDATE_EDEFAULT);
+      case GameDSLPackage.GAME_BODY_PROPERTY__ON_UPDATE_TRUE:
+        setOnUpdateTrue(ON_UPDATE_TRUE_EDEFAULT);
         return;
       case GameDSLPackage.GAME_BODY_PROPERTY__BODY:
         setBody((XExpression)null);
+        return;
+      case GameDSLPackage.GAME_BODY_PROPERTY__ON_UPDATE_FALSE:
+        setOnUpdateFalse(ON_UPDATE_FALSE_EDEFAULT);
         return;
     }
     super.eUnset(featureID);
@@ -293,10 +345,12 @@ public class GameBodyPropertyImpl extends MinimalEObjectImpl.Container implement
     {
       case GameDSLPackage.GAME_BODY_PROPERTY__NAME:
         return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
-      case GameDSLPackage.GAME_BODY_PROPERTY__ON_UPDATE:
-        return onUpdate != ON_UPDATE_EDEFAULT;
+      case GameDSLPackage.GAME_BODY_PROPERTY__ON_UPDATE_TRUE:
+        return onUpdateTrue != ON_UPDATE_TRUE_EDEFAULT;
       case GameDSLPackage.GAME_BODY_PROPERTY__BODY:
         return body != null;
+      case GameDSLPackage.GAME_BODY_PROPERTY__ON_UPDATE_FALSE:
+        return onUpdateFalse != ON_UPDATE_FALSE_EDEFAULT;
     }
     return super.eIsSet(featureID);
   }
@@ -314,8 +368,10 @@ public class GameBodyPropertyImpl extends MinimalEObjectImpl.Container implement
     StringBuffer result = new StringBuffer(super.toString());
     result.append(" (name: ");
     result.append(name);
-    result.append(", onUpdate: ");
-    result.append(onUpdate);
+    result.append(", onUpdateTrue: ");
+    result.append(onUpdateTrue);
+    result.append(", onUpdateFalse: ");
+    result.append(onUpdateFalse);
     result.append(')');
     return result.toString();
   }

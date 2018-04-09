@@ -469,7 +469,7 @@ public abstract class AbstractGameDSLSemanticSequencer extends XbaseWithAnnotati
 	 *     GameBodyProperty returns GameBodyProperty
 	 *
 	 * Constraint:
-	 *     (name=ValidID (onUpdate?='onUpdateIfTrue' body=XBlockExpression)?)
+	 *     (name=ValidID (onUpdateTrue?='onUpdateIfTrue' body=XBlockExpression)? (onUpdateFalse?='onUpdateIfFalse' body=XBlockExpression)?)
 	 */
 	protected void sequence_GameBodyProperty(ISerializationContext context, GameBodyProperty semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -772,7 +772,7 @@ public abstract class AbstractGameDSLSemanticSequencer extends XbaseWithAnnotati
 	 *     GameVector2d returns GameVector2d
 	 *
 	 * Constraint:
-	 *     (x=SignedInteger y=SignedInteger)
+	 *     (x=SignedNumber y=SignedNumber)
 	 */
 	protected void sequence_GameVector2d(ISerializationContext context, GameVector2d semanticObject) {
 		if (errorAcceptor != null) {
@@ -782,8 +782,8 @@ public abstract class AbstractGameDSLSemanticSequencer extends XbaseWithAnnotati
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, GameDSLPackage.Literals.GAME_VECTOR2D__Y));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getGameVector2dAccess().getXSignedIntegerParserRuleCall_2_0(), semanticObject.getX());
-		feeder.accept(grammarAccess.getGameVector2dAccess().getYSignedIntegerParserRuleCall_4_0(), semanticObject.getY());
+		feeder.accept(grammarAccess.getGameVector2dAccess().getXSignedNumberParserRuleCall_2_0(), semanticObject.getX());
+		feeder.accept(grammarAccess.getGameVector2dAccess().getYSignedNumberParserRuleCall_4_0(), semanticObject.getY());
 		feeder.finish();
 	}
 	

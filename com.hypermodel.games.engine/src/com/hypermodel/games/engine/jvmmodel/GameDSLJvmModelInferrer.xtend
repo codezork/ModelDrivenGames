@@ -9,27 +9,45 @@ import com.badlogic.gdx.backends.android.AndroidApplication
 import com.badlogic.gdx.backends.gwt.GwtApplication
 import com.badlogic.gdx.backends.gwt.GwtApplicationConfiguration
 import com.badlogic.gdx.backends.iosrobovm.IOSApplication
+import com.badlogic.gdx.graphics.Color
 import com.badlogic.gdx.graphics.OrthographicCamera
+import com.badlogic.gdx.graphics.g2d.Animation
+import com.badlogic.gdx.graphics.g2d.BitmapFont
+import com.badlogic.gdx.graphics.g2d.Sprite
 import com.badlogic.gdx.graphics.g2d.SpriteBatch
 import com.badlogic.gdx.graphics.g2d.TextureAtlas
+import com.badlogic.gdx.graphics.g2d.TextureRegion
 import com.badlogic.gdx.maps.tiled.TiledMap
 import com.badlogic.gdx.maps.tiled.TmxMapLoader
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer
+import com.badlogic.gdx.math.Vector2
+import com.badlogic.gdx.physics.box2d.Body
+import com.badlogic.gdx.physics.box2d.BodyDef
 import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer
+import com.badlogic.gdx.physics.box2d.CircleShape
+import com.badlogic.gdx.physics.box2d.EdgeShape
+import com.badlogic.gdx.physics.box2d.FixtureDef
+import com.badlogic.gdx.physics.box2d.PolygonShape
 import com.badlogic.gdx.physics.box2d.World
 import com.badlogic.gdx.scenes.scene2d.Stage
 import com.badlogic.gdx.scenes.scene2d.ui.Label
+import com.badlogic.gdx.scenes.scene2d.ui.Table
+import com.badlogic.gdx.utils.Array
 import com.badlogic.gdx.utils.Disposable
+import com.badlogic.gdx.utils.viewport.FitViewport
 import com.badlogic.gdx.utils.viewport.Viewport
 import com.google.gwt.event.logical.shared.ResizeEvent
 import com.google.gwt.event.logical.shared.ResizeHandler
+import com.hypermodel.games.engine.gameDSL.GameDisplayValueType
 import com.hypermodel.games.engine.gameDSL.GamePackage
 import com.hypermodel.games.engine.gameDSL.GameRoot
 import com.hypermodel.games.engine.gameDSL.GameScene
 import com.hypermodel.games.engine.gameDSL.GameScreen
+import com.hypermodel.games.engine.gameDSL.GameSprite
 import com.hypermodel.games.engine.generator.GameProperties
 import com.hypermodel.games.engine.generator.GameProperties.ProjectType
 import javax.inject.Inject
+import org.eclipse.xtext.common.types.JvmDeclaredType
 import org.eclipse.xtext.common.types.JvmField
 import org.eclipse.xtext.common.types.JvmGenericType
 import org.eclipse.xtext.common.types.JvmVisibility
@@ -38,25 +56,6 @@ import org.eclipse.xtext.xbase.jvmmodel.AbstractModelInferrer
 import org.eclipse.xtext.xbase.jvmmodel.IJvmDeclaredTypeAcceptor
 import org.eclipse.xtext.xbase.jvmmodel.JvmTypesBuilder
 import org.moe.natj.general.Pointer
-import com.hypermodel.games.engine.gameDSL.GameDisplayValueType
-import com.badlogic.gdx.utils.viewport.FitViewport
-import com.badlogic.gdx.scenes.scene2d.ui.Table
-import com.badlogic.gdx.graphics.g2d.BitmapFont
-import com.badlogic.gdx.graphics.Color
-import com.badlogic.gdx.math.Vector2
-import com.hypermodel.games.engine.gameDSL.GameSprite
-import com.badlogic.gdx.graphics.g2d.Sprite
-import com.badlogic.gdx.physics.box2d.Body
-import com.badlogic.gdx.graphics.g2d.Animation
-import com.badlogic.gdx.graphics.g2d.TextureRegion
-import com.badlogic.gdx.utils.Array
-import com.badlogic.gdx.physics.box2d.BodyDef
-import com.badlogic.gdx.physics.box2d.FixtureDef
-import com.badlogic.gdx.physics.box2d.CircleShape
-import com.badlogic.gdx.physics.box2d.EdgeShape
-import java.util.HashMap
-import com.badlogic.gdx.physics.box2d.PolygonShape
-import org.eclipse.xtext.common.types.JvmDeclaredType
 
 class GameDSLJvmModelInferrer extends AbstractModelInferrer {
 	@Inject extension JvmTypesBuilder
@@ -729,7 +728,7 @@ class GameDSLJvmModelInferrer extends AbstractModelInferrer {
 		type.members += sprite.toField("positionOffsetX", float.typeRef) [initializer=[append('''0.0f''')]]
 		type.members += sprite.toField("positionOffsetY", float.typeRef) [initializer=[append('''0.0f''')]]
 		if(sprite.hasVelocity) {
-			type.members += sprite.toField("velocity", Vector2.typeRef) [initializer=[append('''new Vector2(«sprite.velocity.x»,«sprite.velocity.y»)''')]]
+			type.members += sprite.toField("velocity", Vector2.typeRef) [initializer=[append('''new Vector2(«sprite.velocity.x»f,«sprite.velocity.y»f)''')]]
 		}
 		val fsprite = sprite
 		sprite.properties.forEach[
@@ -773,14 +772,22 @@ class GameDSLJvmModelInferrer extends AbstractModelInferrer {
 			])
 		]
 		
-		sprite.properties.filter[it.onUpdate].forEach[
+		sprite.properties.filter[it.onUpdateTrue].forEach[
 			val prop = it
-			type.members += sprite.toMethod('''do«it.name.toFirstUpper»''', Void.TYPE.typeRef) [
+			type.members += sprite.toMethod('''doTrue«it.name.toFirstUpper»''', Void.TYPE.typeRef) [
 				documentation = prop.documentation
 				body = prop.body
 			]
 		]
 
+		sprite.properties.filter[it.onUpdateFalse].forEach[
+			val prop = it
+			type.members += sprite.toMethod('''doFalse«it.name.toFirstUpper»''', Void.TYPE.typeRef) [
+				documentation = prop.documentation
+				body = prop.body
+			]
+		]
+		
 		type.members += sprite.toMethod("update", Void.TYPE.typeRef, [
 			parameters += sprite.toParameter("dt", float.typeRef)
 			body = [
@@ -789,11 +796,19 @@ class GameDSLJvmModelInferrer extends AbstractModelInferrer {
 				setPosition(body.getPosition().x - getWidth() / 2, body.getPosition().y - getHeight() / 2);
 				''')
 				val current = it
-				sprite.properties.filter[it.onUpdate].forEach[
+				sprite.properties.filter[it.onUpdateTrue].forEach[
 					current.append(
 					'''
 					if(«it.name») {
-						do«it.name.toFirstUpper»();
+						doTrue«it.name.toFirstUpper»();
+					}
+					''')
+				]
+				sprite.properties.filter[it.onUpdateFalse].forEach[
+					current.append(
+					'''
+					if(!«it.name») {
+						doFalse«it.name.toFirstUpper»();
 					}
 					''')
 				]
@@ -903,7 +918,7 @@ class GameDSLJvmModelInferrer extends AbstractModelInferrer {
 					if(sprite.vectors2d.length==2) {
 						append(
 						'''
-						head.set(new Vector2(«sprite.vectors2d.get(0).x» / 2 / «gameClass.simpleName».PPM, «sprite.radius» / «gameClass.simpleName».PPM), new Vector2(«sprite.vectors2d.get(0).y» / 2 / «gameClass.simpleName».PPM, «sprite.radius» / «gameClass.simpleName».PPM));
+						head.set(new Vector2(«sprite.vectors2d.get(0).x»f / 2 / «gameClass.simpleName».PPM, «sprite.radius» / «gameClass.simpleName».PPM), new Vector2(«sprite.vectors2d.get(0).y»f / 2 / «gameClass.simpleName».PPM, «sprite.radius» / «gameClass.simpleName».PPM));
 						''')
 					} else {
 						append(
@@ -913,7 +928,7 @@ class GameDSLJvmModelInferrer extends AbstractModelInferrer {
 						for(var idx=0;idx<sprite.vectors2d.length;idx++) {
 							append(
 							'''
-							vertice[«idx»] = new Vector2(«sprite.vectors2d.get(idx).x», «sprite.vectors2d.get(idx).y»).scl(1 / «gameClass.simpleName».PPM);
+							vertice[«idx»] = new Vector2(«sprite.vectors2d.get(idx).x»f, «sprite.vectors2d.get(idx).y»f).scl(1 / «gameClass.simpleName».PPM);
 							''')
 						}
 					}

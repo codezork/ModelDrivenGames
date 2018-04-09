@@ -37,7 +37,7 @@ public class GameVector2dImpl extends MinimalEObjectImpl.Container implements Ga
    * @generated
    * @ordered
    */
-  protected static final int X_EDEFAULT = 0;
+  protected static final float X_EDEFAULT = 0.0F;
 
   /**
    * The cached value of the '{@link #getX() <em>X</em>}' attribute.
@@ -47,7 +47,7 @@ public class GameVector2dImpl extends MinimalEObjectImpl.Container implements Ga
    * @generated
    * @ordered
    */
-  protected int x = X_EDEFAULT;
+  protected float x = X_EDEFAULT;
 
   /**
    * The default value of the '{@link #getY() <em>Y</em>}' attribute.
@@ -57,7 +57,7 @@ public class GameVector2dImpl extends MinimalEObjectImpl.Container implements Ga
    * @generated
    * @ordered
    */
-  protected static final int Y_EDEFAULT = 0;
+  protected static final float Y_EDEFAULT = 0.0F;
 
   /**
    * The cached value of the '{@link #getY() <em>Y</em>}' attribute.
@@ -67,7 +67,7 @@ public class GameVector2dImpl extends MinimalEObjectImpl.Container implements Ga
    * @generated
    * @ordered
    */
-  protected int y = Y_EDEFAULT;
+  protected float y = Y_EDEFAULT;
 
   /**
    * <!-- begin-user-doc -->
@@ -95,7 +95,7 @@ public class GameVector2dImpl extends MinimalEObjectImpl.Container implements Ga
    * <!-- end-user-doc -->
    * @generated
    */
-  public int getX()
+  public float getX()
   {
     return x;
   }
@@ -105,9 +105,9 @@ public class GameVector2dImpl extends MinimalEObjectImpl.Container implements Ga
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setX(int newX)
+  public void setX(float newX)
   {
-    int oldX = x;
+    float oldX = x;
     x = newX;
     if (eNotificationRequired())
       eNotify(new ENotificationImpl(this, Notification.SET, GameDSLPackage.GAME_VECTOR2D__X, oldX, x));
@@ -118,7 +118,7 @@ public class GameVector2dImpl extends MinimalEObjectImpl.Container implements Ga
    * <!-- end-user-doc -->
    * @generated
    */
-  public int getY()
+  public float getY()
   {
     return y;
   }
@@ -128,9 +128,9 @@ public class GameVector2dImpl extends MinimalEObjectImpl.Container implements Ga
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setY(int newY)
+  public void setY(float newY)
   {
-    int oldY = y;
+    float oldY = y;
     y = newY;
     if (eNotificationRequired())
       eNotify(new ENotificationImpl(this, Notification.SET, GameDSLPackage.GAME_VECTOR2D__Y, oldY, y));
@@ -165,10 +165,10 @@ public class GameVector2dImpl extends MinimalEObjectImpl.Container implements Ga
     switch (featureID)
     {
       case GameDSLPackage.GAME_VECTOR2D__X:
-        setX((Integer)newValue);
+        setX((Float)newValue);
         return;
       case GameDSLPackage.GAME_VECTOR2D__Y:
-        setY((Integer)newValue);
+        setY((Float)newValue);
         return;
     }
     super.eSet(featureID, newValue);

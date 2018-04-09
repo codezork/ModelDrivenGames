@@ -1147,7 +1147,7 @@ public class GameDSLPackageImpl extends EPackageImpl implements GameDSLPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getGameBodyProperty_OnUpdate()
+  public EAttribute getGameBodyProperty_OnUpdateTrue()
   {
     return (EAttribute)gameBodyPropertyEClass.getEStructuralFeatures().get(1);
   }
@@ -1160,6 +1160,16 @@ public class GameDSLPackageImpl extends EPackageImpl implements GameDSLPackage
   public EReference getGameBodyProperty_Body()
   {
     return (EReference)gameBodyPropertyEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getGameBodyProperty_OnUpdateFalse()
+  {
+    return (EAttribute)gameBodyPropertyEClass.getEStructuralFeatures().get(3);
   }
 
   /**
@@ -1613,8 +1623,9 @@ public class GameDSLPackageImpl extends EPackageImpl implements GameDSLPackage
 
     gameBodyPropertyEClass = createEClass(GAME_BODY_PROPERTY);
     createEAttribute(gameBodyPropertyEClass, GAME_BODY_PROPERTY__NAME);
-    createEAttribute(gameBodyPropertyEClass, GAME_BODY_PROPERTY__ON_UPDATE);
+    createEAttribute(gameBodyPropertyEClass, GAME_BODY_PROPERTY__ON_UPDATE_TRUE);
     createEReference(gameBodyPropertyEClass, GAME_BODY_PROPERTY__BODY);
+    createEAttribute(gameBodyPropertyEClass, GAME_BODY_PROPERTY__ON_UPDATE_FALSE);
 
     gameRuleEClass = createEClass(GAME_RULE);
     createEAttribute(gameRuleEClass, GAME_RULE__NAME);
@@ -1780,8 +1791,8 @@ public class GameDSLPackageImpl extends EPackageImpl implements GameDSLPackage
     initEReference(getGameSprite_Events(), this.getGameSpriteEvent(), null, "events", null, 0, -1, GameSprite.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(gameVector2dEClass, GameVector2d.class, "GameVector2d", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getGameVector2d_X(), ecorePackage.getEInt(), "x", null, 0, 1, GameVector2d.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getGameVector2d_Y(), ecorePackage.getEInt(), "y", null, 0, 1, GameVector2d.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getGameVector2d_X(), ecorePackage.getEFloat(), "x", null, 0, 1, GameVector2d.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getGameVector2d_Y(), ecorePackage.getEFloat(), "y", null, 0, 1, GameVector2d.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(gameSpriteStateEClass, GameSpriteState.class, "GameSpriteState", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getGameSpriteState_Name(), ecorePackage.getEString(), "name", null, 0, 1, GameSpriteState.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1793,8 +1804,9 @@ public class GameDSLPackageImpl extends EPackageImpl implements GameDSLPackage
 
     initEClass(gameBodyPropertyEClass, GameBodyProperty.class, "GameBodyProperty", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getGameBodyProperty_Name(), ecorePackage.getEString(), "name", null, 0, 1, GameBodyProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getGameBodyProperty_OnUpdate(), ecorePackage.getEBoolean(), "onUpdate", null, 0, 1, GameBodyProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getGameBodyProperty_OnUpdateTrue(), ecorePackage.getEBoolean(), "onUpdateTrue", null, 0, 1, GameBodyProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getGameBodyProperty_Body(), theXbasePackage.getXExpression(), null, "body", null, 0, 1, GameBodyProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getGameBodyProperty_OnUpdateFalse(), ecorePackage.getEBoolean(), "onUpdateFalse", null, 0, 1, GameBodyProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(gameRuleEClass, GameRule.class, "GameRule", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getGameRule_Name(), ecorePackage.getEString(), "name", null, 0, 1, GameRule.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
