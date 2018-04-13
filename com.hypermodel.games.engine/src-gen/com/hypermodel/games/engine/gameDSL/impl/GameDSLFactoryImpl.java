@@ -77,6 +77,7 @@ public class GameDSLFactoryImpl extends EFactoryImpl implements GameDSLFactory
       case GameDSLPackage.GAME_SCENE: return createGameScene();
       case GameDSLPackage.GAME_SCORE: return createGameScore();
       case GameDSLPackage.GAME_DISPLAY: return createGameDisplay();
+      case GameDSLPackage.GAME_TILE: return createGameTile();
       case GameDSLPackage.GAME_SPRITE: return createGameSprite();
       case GameDSLPackage.GAME_VECTOR2D: return createGameVector2d();
       case GameDSLPackage.GAME_SPRITE_STATE: return createGameSpriteState();
@@ -248,6 +249,17 @@ public class GameDSLFactoryImpl extends EFactoryImpl implements GameDSLFactory
   {
     GameDisplayImpl gameDisplay = new GameDisplayImpl();
     return gameDisplay;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public GameTile createGameTile()
+  {
+    GameTileImpl gameTile = new GameTileImpl();
+    return gameTile;
   }
 
   /**

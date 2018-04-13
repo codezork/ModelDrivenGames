@@ -56,6 +56,12 @@ import org.eclipse.xtext.xbase.jvmmodel.AbstractModelInferrer
 import org.eclipse.xtext.xbase.jvmmodel.IJvmDeclaredTypeAcceptor
 import org.eclipse.xtext.xbase.jvmmodel.JvmTypesBuilder
 import org.moe.natj.general.Pointer
+import com.hypermodel.games.engine.gameDSL.GameTile
+import com.badlogic.gdx.maps.MapObject
+import com.badlogic.gdx.maps.tiled.TiledMapTile
+import com.badlogic.gdx.math.Rectangle
+import com.badlogic.gdx.maps.tiled.TiledMapTileLayer
+import com.badlogic.gdx.maps.objects.RectangleMapObject
 
 class GameDSLJvmModelInferrer extends AbstractModelInferrer {
 	@Inject extension JvmTypesBuilder
@@ -360,10 +366,10 @@ class GameDSLJvmModelInferrer extends AbstractModelInferrer {
 						append(FitViewport)
 						append(
 						'''
-						(MarioBros.V_WIDTH / MarioBros.PPM, MarioBros.V_HEIGHT / MarioBros.PPM, gamecam);
+						(«gameClass.simpleName».V_WIDTH / «gameClass.simpleName».PPM, «gameClass.simpleName».V_HEIGHT / «gameClass.simpleName».PPM, gamecam);
 						mapLoader = new TmxMapLoader();
-						map = mapLoader.load("level1.tmx");
-						renderer = new OrthogonalTiledMapRenderer(map, 1 / MarioBros.PPM);
+						map = mapLoader.load("«screen.map»");
+						renderer = new OrthogonalTiledMapRenderer(map, 1 / «gameClass.simpleName».PPM);
 						gamecam.position.set(gamePort.getWorldWidth() / 2, gamePort.getWorldHeight() / 2, 0);
 						world = new World(new ''')
 						append(Vector2)
@@ -381,6 +387,8 @@ class GameDSLJvmModelInferrer extends AbstractModelInferrer {
 		)
 		// sprites
 		screen.sprites.forEach[acceptor.createSprite(gamePkg, gameClass, screenClass, it)]
+		// tiles
+		screen.tiles.forEach[acceptor.createTile(gamePkg, gameClass, screenClass, it)]
 	}
 
 	def void toFields(JvmGenericType type, GamePackage gamePkg, GameScreen screen, JvmGenericType gameClass) {
@@ -900,6 +908,9 @@ class GameDSLJvmModelInferrer extends AbstractModelInferrer {
 				for(s:sprite.interactionSprites) {
 					mask = mask + (2**s.id)
 				}
+				for(t:sprite.interactionTiles) {
+					mask = mask + (2**t.id)
+				}
 				append('''
 				fdef.filter.maskBits = «mask as int»;
 				fdef.shape = shape;
@@ -972,5 +983,89 @@ class GameDSLJvmModelInferrer extends AbstractModelInferrer {
 				body = event.body
 			])		
 		]
+	}
+
+	// tiles
+	def void createTile(IJvmDeclaredTypeAcceptor acceptor, GamePackage gamePkg, JvmGenericType gameClass, JvmGenericType screenClass, GameTile tile) {
+		acceptor.accept(
+			gamePkg.toClass(tile.fullyQualifiedName),
+			[
+				packageName = tile.fullyQualifiedName.skipLast(1).toString
+				documentation = genInfo
+				it.toFields(tile, screenClass)
+				members += tile.toConstructor [
+					parameters += gamePkg.toParameter("screen", screenClass.typeRef)
+					parameters += gamePkg.toParameter("object", MapObject.typeRef)
+					body = [
+						append(
+						'''
+						this.screen = screen;
+						this.object = object;
+						world = screen.getWorld();
+						map = screen.getMap();
+						bounds = ((''')
+						append(RectangleMapObject)
+						append(
+						''' 
+						)object).getRectangle();
+						''')
+						append(BodyDef)
+						append(''' bdef = new BodyDef();
+						''')
+						append(FixtureDef)
+						append(''' fdef = new FixtureDef();
+						''')
+						append(PolygonShape)
+						append(
+						'''
+						 shape = new PolygonShape();
+						bdef.type = BodyDef.BodyType.StaticBody;
+						bdef.position.set((bounds.getX() + bounds.getWidth() / 2) /''') 
+						append(gameClass)
+						append(
+						'''
+						.PPM, (bounds.getY() + bounds.getHeight() / 2) / «gameClass.simpleName».PPM);
+						body = world.createBody(bdef);
+						shape.setAsBox(bounds.getWidth() / 2 / «gameClass.simpleName».PPM, bounds.getHeight() / 2 / «gameClass.simpleName».PPM);
+						fdef.filter.categoryBits = «(2**tile.id) as int»;
+						fdef.shape = shape;
+						body.createFixture(fdef).setUserData(this);
+						''')
+					]
+				]
+				if(tile.hasMapLevel) {
+					it.toOperations(tile, gameClass)
+				}
+			]
+		)
+	}
+
+	def void toFields(JvmGenericType type, GameTile tile, JvmGenericType screenClass) {
+		var field = tile.toField("world", World.typeRef)
+		type.members += field
+		field = tile.toField("map", TiledMap.typeRef)
+		type.members += field
+		field = tile.toField("tile", TiledMapTile.typeRef)
+		type.members += field
+		field = tile.toField("bounds", Rectangle.typeRef)
+		type.members += field
+		field = tile.toField("body", Body.typeRef)
+		type.members += field
+		field = tile.toField("screen", screenClass.typeRef)
+		type.members += field
+		field = tile.toField("object", MapObject.typeRef)
+		type.members += field
+	}
+
+	def void toOperations(JvmGenericType type, GameTile tile, JvmGenericType gameClass) {
+		type.members += tile.toMethod("getCell", TiledMapTileLayer.Cell.typeRef, [
+			body = [
+				append(TiledMapTileLayer)
+				append(''' layer = (TiledMapTileLayer) map.getLayers().get(«tile.mapLevel»);
+				''')
+				append('''return  layer.getCell((int) (body.getPosition().x * «gameClass.simpleName».PPM / «tile.width»), (int) (body.getPosition().y * «gameClass.simpleName».PPM / «tile.height»));
+				''')
+			]
+		])
 	}
 }

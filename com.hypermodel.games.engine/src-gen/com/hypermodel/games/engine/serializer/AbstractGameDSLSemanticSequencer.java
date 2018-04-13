@@ -24,6 +24,7 @@ import com.hypermodel.games.engine.gameDSL.GameSpriteEvent;
 import com.hypermodel.games.engine.gameDSL.GameSpriteStand;
 import com.hypermodel.games.engine.gameDSL.GameSpriteState;
 import com.hypermodel.games.engine.gameDSL.GameTextureRegion;
+import com.hypermodel.games.engine.gameDSL.GameTile;
 import com.hypermodel.games.engine.gameDSL.GameVector2d;
 import com.hypermodel.games.engine.services.GameDSLGrammarAccess;
 import java.util.Set;
@@ -155,6 +156,9 @@ public abstract class AbstractGameDSLSemanticSequencer extends XbaseWithAnnotati
 				return; 
 			case GameDSLPackage.GAME_TEXTURE_REGION:
 				sequence_GameTextureRegion(context, (GameTextureRegion) semanticObject); 
+				return; 
+			case GameDSLPackage.GAME_TILE:
+				sequence_GameTile(context, (GameTile) semanticObject); 
 				return; 
 			case GameDSLPackage.GAME_VECTOR2D:
 				sequence_GameVector2d(context, (GameVector2d) semanticObject); 
@@ -647,7 +651,14 @@ public abstract class AbstractGameDSLSemanticSequencer extends XbaseWithAnnotati
 	 *     GameScreen returns GameScreen
 	 *
 	 * Constraint:
-	 *     (name=ValidID atlasName=STRING scene=[GameScene|ID] sprites+=GameSprite*)
+	 *     (
+	 *         name=ValidID 
+	 *         atlasName=STRING 
+	 *         map=STRING 
+	 *         scene=[GameScene|ID] 
+	 *         tiles+=GameTile* 
+	 *         sprites+=GameSprite*
+	 *     )
 	 */
 	protected void sequence_GameScreen(ISerializationContext context, GameScreen semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -733,7 +744,7 @@ public abstract class AbstractGameDSLSemanticSequencer extends XbaseWithAnnotati
 	 *         id=INT 
 	 *         radius=INT 
 	 *         (
-	 *             (interactionSprites+=[GameSprite|ID] | properties+=GameBodyProperty | events+=GameSpriteEvent)? 
+	 *             (interactionSprites+=[GameSprite|ID] | interactionTiles+=[GameTile|ID] | properties+=GameBodyProperty | events+=GameSpriteEvent)? 
 	 *             (hasVelocity?='velocity' velocity=GameVector2d)? 
 	 *             (states+=GameSpriteState* initialState=[GameSpriteState|ID])? 
 	 *             (hasSensor?='sensor' vectors2d+=GameVector2d* sensorID=INT)? 
@@ -763,6 +774,18 @@ public abstract class AbstractGameDSLSemanticSequencer extends XbaseWithAnnotati
 	 *     )
 	 */
 	protected void sequence_GameTextureRegion(ISerializationContext context, GameTextureRegion semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     GameTile returns GameTile
+	 *
+	 * Constraint:
+	 *     (name=ValidID id=INT (hasMapLevel?='mapLevel' mapLevel=INT width=INT height=INT)?)
+	 */
+	protected void sequence_GameTile(ISerializationContext context, GameTile semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	

@@ -18,7 +18,9 @@ import org.eclipse.emf.ecore.EObject;
  * <ul>
  *   <li>{@link com.hypermodel.games.engine.gameDSL.GameScreen#getName <em>Name</em>}</li>
  *   <li>{@link com.hypermodel.games.engine.gameDSL.GameScreen#getAtlasName <em>Atlas Name</em>}</li>
+ *   <li>{@link com.hypermodel.games.engine.gameDSL.GameScreen#getMap <em>Map</em>}</li>
  *   <li>{@link com.hypermodel.games.engine.gameDSL.GameScreen#getScene <em>Scene</em>}</li>
+ *   <li>{@link com.hypermodel.games.engine.gameDSL.GameScreen#getTiles <em>Tiles</em>}</li>
  *   <li>{@link com.hypermodel.games.engine.gameDSL.GameScreen#getSprites <em>Sprites</em>}</li>
  * </ul>
  *
@@ -81,6 +83,32 @@ public interface GameScreen extends EObject
   void setAtlasName(String value);
 
   /**
+   * Returns the value of the '<em><b>Map</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Map</em>' attribute isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Map</em>' attribute.
+   * @see #setMap(String)
+   * @see com.hypermodel.games.engine.gameDSL.GameDSLPackage#getGameScreen_Map()
+   * @model
+   * @generated
+   */
+  String getMap();
+
+  /**
+   * Sets the value of the '{@link com.hypermodel.games.engine.gameDSL.GameScreen#getMap <em>Map</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Map</em>' attribute.
+   * @see #getMap()
+   * @generated
+   */
+  void setMap(String value);
+
+  /**
    * Returns the value of the '<em><b>Scene</b></em>' reference.
    * <!-- begin-user-doc -->
    * <p>
@@ -105,6 +133,22 @@ public interface GameScreen extends EObject
    * @generated
    */
   void setScene(GameScene value);
+
+  /**
+   * Returns the value of the '<em><b>Tiles</b></em>' containment reference list.
+   * The list contents are of type {@link com.hypermodel.games.engine.gameDSL.GameTile}.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Tiles</em>' containment reference list isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Tiles</em>' containment reference list.
+   * @see com.hypermodel.games.engine.gameDSL.GameDSLPackage#getGameScreen_Tiles()
+   * @model containment="true"
+   * @generated
+   */
+  EList<GameTile> getTiles();
 
   /**
    * Returns the value of the '<em><b>Sprites</b></em>' containment reference list.

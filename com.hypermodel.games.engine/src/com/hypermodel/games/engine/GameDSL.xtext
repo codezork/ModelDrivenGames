@@ -54,7 +54,9 @@ GameRoot:
 GameScreen:
 	{GameScreen} 'screen' name=ValidID 
 	'atlas' atlasName = STRING
+	'map' map = STRING
 	'scene' scene = [GameScene]
+	'tiles' '{' tiles+=GameTile* '}'
 	'sprites' '{' sprites+=GameSprite* '}';
 	
 GameScene:
@@ -74,13 +76,18 @@ GameDisplay:
 	(hasAdder?='addValue')?
 	(hasSetter?='setValue')?;
 	
+GameTile:
+	{GameTile} 'tile' name=ValidID 'id' id=INT 
+	(hasMapLevel?='mapLevel' mapLevel=INT 'width' width=INT 'height' height=INT)?;
+	
 GameSprite:
 	{GameSprite} 'sprite' name=ValidID 'id' id=INT 
 	'radius' radius=INT
 	((hasVelocity?='velocity' velocity=GameVector2d)? &
 	(hasStartPosition?='startPositionX' x=INT 'startPositionY' y=INT)? &
 	(hasSensor?='sensor' '{' vectors2d+=GameVector2d* '}' 'sensorID' sensorID=INT)? &
-	('interactsWith' '{' interactionSprites+=[GameSprite]* '}')? &
+	('interactsDynamic' '{' interactionSprites+=[GameSprite]* '}')? &
+	('interactsStatic' '{' interactionTiles+=[GameTile]* '}')? &
 	('properties' '{' properties+=GameBodyProperty* '}')? & 
 	('states' '{' states+=GameSpriteState* '}' 'initialState' initialState=[GameSpriteState])? &
 	('events' '{' events+=GameSpriteEvent* '}')?);

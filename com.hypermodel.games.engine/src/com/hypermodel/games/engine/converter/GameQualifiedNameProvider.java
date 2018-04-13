@@ -9,6 +9,7 @@ import com.hypermodel.games.engine.gameDSL.GameRoot;
 import com.hypermodel.games.engine.gameDSL.GameScene;
 import com.hypermodel.games.engine.gameDSL.GameScreen;
 import com.hypermodel.games.engine.gameDSL.GameSprite;
+import com.hypermodel.games.engine.gameDSL.GameTile;
 
 @SuppressWarnings("restriction")
 public class GameQualifiedNameProvider extends XbaseQualifiedNameProvider {
@@ -41,6 +42,12 @@ public class GameQualifiedNameProvider extends XbaseQualifiedNameProvider {
 		if (obj instanceof GameSprite) {
 			GamePackage pkg = (GamePackage) obj.eContainer().eContainer().eContainer();
 			String fqn = pkg.getName() + ".sprites." + ((GameSprite) obj).getName();
+			return QualifiedName.create(fqn.split("\\."));
+		}
+
+		if (obj instanceof GameTile) {
+			GamePackage pkg = (GamePackage) obj.eContainer().eContainer().eContainer();
+			String fqn = pkg.getName() + ".tiles." + ((GameTile) obj).getName();
 			return QualifiedName.create(fqn.split("\\."));
 		}
 

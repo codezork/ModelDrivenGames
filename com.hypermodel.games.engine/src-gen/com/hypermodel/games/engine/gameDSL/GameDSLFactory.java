@@ -123,6 +123,15 @@ public interface GameDSLFactory extends EFactory
   GameDisplay createGameDisplay();
 
   /**
+   * Returns a new object of class '<em>Game Tile</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Game Tile</em>'.
+   * @generated
+   */
+  GameTile createGameTile();
+
+  /**
    * Returns a new object of class '<em>Game Sprite</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->

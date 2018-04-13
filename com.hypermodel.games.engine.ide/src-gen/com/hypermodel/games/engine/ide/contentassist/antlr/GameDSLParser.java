@@ -98,6 +98,8 @@ public class GameDSLParser extends AbstractContentAssistParser {
 					put(grammarAccess.getGameDisplayAccess().getGroup(), "rule__GameDisplay__Group__0");
 					put(grammarAccess.getGameDisplayAccess().getGroup_7(), "rule__GameDisplay__Group_7__0");
 					put(grammarAccess.getGameDisplayAccess().getGroup_8(), "rule__GameDisplay__Group_8__0");
+					put(grammarAccess.getGameTileAccess().getGroup(), "rule__GameTile__Group__0");
+					put(grammarAccess.getGameTileAccess().getGroup_5(), "rule__GameTile__Group_5__0");
 					put(grammarAccess.getGameSpriteAccess().getGroup(), "rule__GameSprite__Group__0");
 					put(grammarAccess.getGameSpriteAccess().getGroup_7_0(), "rule__GameSprite__Group_7_0__0");
 					put(grammarAccess.getGameSpriteAccess().getGroup_7_1(), "rule__GameSprite__Group_7_1__0");
@@ -106,6 +108,7 @@ public class GameDSLParser extends AbstractContentAssistParser {
 					put(grammarAccess.getGameSpriteAccess().getGroup_7_4(), "rule__GameSprite__Group_7_4__0");
 					put(grammarAccess.getGameSpriteAccess().getGroup_7_5(), "rule__GameSprite__Group_7_5__0");
 					put(grammarAccess.getGameSpriteAccess().getGroup_7_6(), "rule__GameSprite__Group_7_6__0");
+					put(grammarAccess.getGameSpriteAccess().getGroup_7_7(), "rule__GameSprite__Group_7_7__0");
 					put(grammarAccess.getGameVector2dAccess().getGroup(), "rule__GameVector2d__Group__0");
 					put(grammarAccess.getGameSpriteStateAccess().getGroup(), "rule__GameSpriteState__Group__0");
 					put(grammarAccess.getGameSpriteStateAccess().getGroup_5_0(), "rule__GameSpriteState__Group_5_0__0");
@@ -357,8 +360,10 @@ public class GameDSLParser extends AbstractContentAssistParser {
 					put(grammarAccess.getGameRootAccess().getRegionsAssignment_11_2_2(), "rule__GameRoot__RegionsAssignment_11_2_2");
 					put(grammarAccess.getGameScreenAccess().getNameAssignment_2(), "rule__GameScreen__NameAssignment_2");
 					put(grammarAccess.getGameScreenAccess().getAtlasNameAssignment_4(), "rule__GameScreen__AtlasNameAssignment_4");
-					put(grammarAccess.getGameScreenAccess().getSceneAssignment_6(), "rule__GameScreen__SceneAssignment_6");
-					put(grammarAccess.getGameScreenAccess().getSpritesAssignment_9(), "rule__GameScreen__SpritesAssignment_9");
+					put(grammarAccess.getGameScreenAccess().getMapAssignment_6(), "rule__GameScreen__MapAssignment_6");
+					put(grammarAccess.getGameScreenAccess().getSceneAssignment_8(), "rule__GameScreen__SceneAssignment_8");
+					put(grammarAccess.getGameScreenAccess().getTilesAssignment_11(), "rule__GameScreen__TilesAssignment_11");
+					put(grammarAccess.getGameScreenAccess().getSpritesAssignment_15(), "rule__GameScreen__SpritesAssignment_15");
 					put(grammarAccess.getGameSceneAccess().getNameAssignment_2(), "rule__GameScene__NameAssignment_2");
 					put(grammarAccess.getGameSceneAccess().getHasScoreAssignment_3_0(), "rule__GameScene__HasScoreAssignment_3_0");
 					put(grammarAccess.getGameSceneAccess().getScoreAssignment_3_1(), "rule__GameScene__ScoreAssignment_3_1");
@@ -376,6 +381,12 @@ public class GameDSLParser extends AbstractContentAssistParser {
 					put(grammarAccess.getGameDisplayAccess().getTimePeriodAssignment_8_3(), "rule__GameDisplay__TimePeriodAssignment_8_3");
 					put(grammarAccess.getGameDisplayAccess().getHasAdderAssignment_9(), "rule__GameDisplay__HasAdderAssignment_9");
 					put(grammarAccess.getGameDisplayAccess().getHasSetterAssignment_10(), "rule__GameDisplay__HasSetterAssignment_10");
+					put(grammarAccess.getGameTileAccess().getNameAssignment_2(), "rule__GameTile__NameAssignment_2");
+					put(grammarAccess.getGameTileAccess().getIdAssignment_4(), "rule__GameTile__IdAssignment_4");
+					put(grammarAccess.getGameTileAccess().getHasMapLevelAssignment_5_0(), "rule__GameTile__HasMapLevelAssignment_5_0");
+					put(grammarAccess.getGameTileAccess().getMapLevelAssignment_5_1(), "rule__GameTile__MapLevelAssignment_5_1");
+					put(grammarAccess.getGameTileAccess().getWidthAssignment_5_3(), "rule__GameTile__WidthAssignment_5_3");
+					put(grammarAccess.getGameTileAccess().getHeightAssignment_5_5(), "rule__GameTile__HeightAssignment_5_5");
 					put(grammarAccess.getGameSpriteAccess().getNameAssignment_2(), "rule__GameSprite__NameAssignment_2");
 					put(grammarAccess.getGameSpriteAccess().getIdAssignment_4(), "rule__GameSprite__IdAssignment_4");
 					put(grammarAccess.getGameSpriteAccess().getRadiusAssignment_6(), "rule__GameSprite__RadiusAssignment_6");
@@ -388,10 +399,11 @@ public class GameDSLParser extends AbstractContentAssistParser {
 					put(grammarAccess.getGameSpriteAccess().getVectors2dAssignment_7_2_2(), "rule__GameSprite__Vectors2dAssignment_7_2_2");
 					put(grammarAccess.getGameSpriteAccess().getSensorIDAssignment_7_2_5(), "rule__GameSprite__SensorIDAssignment_7_2_5");
 					put(grammarAccess.getGameSpriteAccess().getInteractionSpritesAssignment_7_3_2(), "rule__GameSprite__InteractionSpritesAssignment_7_3_2");
-					put(grammarAccess.getGameSpriteAccess().getPropertiesAssignment_7_4_2(), "rule__GameSprite__PropertiesAssignment_7_4_2");
-					put(grammarAccess.getGameSpriteAccess().getStatesAssignment_7_5_2(), "rule__GameSprite__StatesAssignment_7_5_2");
-					put(grammarAccess.getGameSpriteAccess().getInitialStateAssignment_7_5_5(), "rule__GameSprite__InitialStateAssignment_7_5_5");
-					put(grammarAccess.getGameSpriteAccess().getEventsAssignment_7_6_2(), "rule__GameSprite__EventsAssignment_7_6_2");
+					put(grammarAccess.getGameSpriteAccess().getInteractionTilesAssignment_7_4_2(), "rule__GameSprite__InteractionTilesAssignment_7_4_2");
+					put(grammarAccess.getGameSpriteAccess().getPropertiesAssignment_7_5_2(), "rule__GameSprite__PropertiesAssignment_7_5_2");
+					put(grammarAccess.getGameSpriteAccess().getStatesAssignment_7_6_2(), "rule__GameSprite__StatesAssignment_7_6_2");
+					put(grammarAccess.getGameSpriteAccess().getInitialStateAssignment_7_6_5(), "rule__GameSprite__InitialStateAssignment_7_6_5");
+					put(grammarAccess.getGameSpriteAccess().getEventsAssignment_7_7_2(), "rule__GameSprite__EventsAssignment_7_7_2");
 					put(grammarAccess.getGameVector2dAccess().getXAssignment_2(), "rule__GameVector2d__XAssignment_2");
 					put(grammarAccess.getGameVector2dAccess().getYAssignment_4(), "rule__GameVector2d__YAssignment_4");
 					put(grammarAccess.getGameSpriteStateAccess().getNameAssignment_2(), "rule__GameSpriteState__NameAssignment_2");

@@ -28,6 +28,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link com.hypermodel.games.engine.gameDSL.GameSprite#getVectors2d <em>Vectors2d</em>}</li>
  *   <li>{@link com.hypermodel.games.engine.gameDSL.GameSprite#getSensorID <em>Sensor ID</em>}</li>
  *   <li>{@link com.hypermodel.games.engine.gameDSL.GameSprite#getInteractionSprites <em>Interaction Sprites</em>}</li>
+ *   <li>{@link com.hypermodel.games.engine.gameDSL.GameSprite#getInteractionTiles <em>Interaction Tiles</em>}</li>
  *   <li>{@link com.hypermodel.games.engine.gameDSL.GameSprite#getProperties <em>Properties</em>}</li>
  *   <li>{@link com.hypermodel.games.engine.gameDSL.GameSprite#getStates <em>States</em>}</li>
  *   <li>{@link com.hypermodel.games.engine.gameDSL.GameSprite#getInitialState <em>Initial State</em>}</li>
@@ -331,6 +332,22 @@ public interface GameSprite extends EObject
    * @generated
    */
   EList<GameSprite> getInteractionSprites();
+
+  /**
+   * Returns the value of the '<em><b>Interaction Tiles</b></em>' reference list.
+   * The list contents are of type {@link com.hypermodel.games.engine.gameDSL.GameTile}.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Interaction Tiles</em>' reference list isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Interaction Tiles</em>' reference list.
+   * @see com.hypermodel.games.engine.gameDSL.GameDSLPackage#getGameSprite_InteractionTiles()
+   * @model
+   * @generated
+   */
+  EList<GameTile> getInteractionTiles();
 
   /**
    * Returns the value of the '<em><b>Properties</b></em>' containment reference list.

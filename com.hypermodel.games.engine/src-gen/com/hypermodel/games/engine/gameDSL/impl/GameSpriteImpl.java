@@ -8,6 +8,7 @@ import com.hypermodel.games.engine.gameDSL.GameDSLPackage;
 import com.hypermodel.games.engine.gameDSL.GameSprite;
 import com.hypermodel.games.engine.gameDSL.GameSpriteEvent;
 import com.hypermodel.games.engine.gameDSL.GameSpriteState;
+import com.hypermodel.games.engine.gameDSL.GameTile;
 import com.hypermodel.games.engine.gameDSL.GameVector2d;
 
 import java.util.Collection;
@@ -47,6 +48,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link com.hypermodel.games.engine.gameDSL.impl.GameSpriteImpl#getVectors2d <em>Vectors2d</em>}</li>
  *   <li>{@link com.hypermodel.games.engine.gameDSL.impl.GameSpriteImpl#getSensorID <em>Sensor ID</em>}</li>
  *   <li>{@link com.hypermodel.games.engine.gameDSL.impl.GameSpriteImpl#getInteractionSprites <em>Interaction Sprites</em>}</li>
+ *   <li>{@link com.hypermodel.games.engine.gameDSL.impl.GameSpriteImpl#getInteractionTiles <em>Interaction Tiles</em>}</li>
  *   <li>{@link com.hypermodel.games.engine.gameDSL.impl.GameSpriteImpl#getProperties <em>Properties</em>}</li>
  *   <li>{@link com.hypermodel.games.engine.gameDSL.impl.GameSpriteImpl#getStates <em>States</em>}</li>
  *   <li>{@link com.hypermodel.games.engine.gameDSL.impl.GameSpriteImpl#getInitialState <em>Initial State</em>}</li>
@@ -266,6 +268,16 @@ public class GameSpriteImpl extends MinimalEObjectImpl.Container implements Game
    * @ordered
    */
   protected EList<GameSprite> interactionSprites;
+
+  /**
+   * The cached value of the '{@link #getInteractionTiles() <em>Interaction Tiles</em>}' reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getInteractionTiles()
+   * @generated
+   * @ordered
+   */
+  protected EList<GameTile> interactionTiles;
 
   /**
    * The cached value of the '{@link #getProperties() <em>Properties</em>}' containment reference list.
@@ -616,6 +628,20 @@ public class GameSpriteImpl extends MinimalEObjectImpl.Container implements Game
    * <!-- end-user-doc -->
    * @generated
    */
+  public EList<GameTile> getInteractionTiles()
+  {
+    if (interactionTiles == null)
+    {
+      interactionTiles = new EObjectResolvingEList<GameTile>(GameTile.class, this, GameDSLPackage.GAME_SPRITE__INTERACTION_TILES);
+    }
+    return interactionTiles;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EList<GameBodyProperty> getProperties()
   {
     if (properties == null)
@@ -754,6 +780,8 @@ public class GameSpriteImpl extends MinimalEObjectImpl.Container implements Game
         return getSensorID();
       case GameDSLPackage.GAME_SPRITE__INTERACTION_SPRITES:
         return getInteractionSprites();
+      case GameDSLPackage.GAME_SPRITE__INTERACTION_TILES:
+        return getInteractionTiles();
       case GameDSLPackage.GAME_SPRITE__PROPERTIES:
         return getProperties();
       case GameDSLPackage.GAME_SPRITE__STATES:
@@ -815,6 +843,10 @@ public class GameSpriteImpl extends MinimalEObjectImpl.Container implements Game
       case GameDSLPackage.GAME_SPRITE__INTERACTION_SPRITES:
         getInteractionSprites().clear();
         getInteractionSprites().addAll((Collection<? extends GameSprite>)newValue);
+        return;
+      case GameDSLPackage.GAME_SPRITE__INTERACTION_TILES:
+        getInteractionTiles().clear();
+        getInteractionTiles().addAll((Collection<? extends GameTile>)newValue);
         return;
       case GameDSLPackage.GAME_SPRITE__PROPERTIES:
         getProperties().clear();
@@ -881,6 +913,9 @@ public class GameSpriteImpl extends MinimalEObjectImpl.Container implements Game
       case GameDSLPackage.GAME_SPRITE__INTERACTION_SPRITES:
         getInteractionSprites().clear();
         return;
+      case GameDSLPackage.GAME_SPRITE__INTERACTION_TILES:
+        getInteractionTiles().clear();
+        return;
       case GameDSLPackage.GAME_SPRITE__PROPERTIES:
         getProperties().clear();
         return;
@@ -931,6 +966,8 @@ public class GameSpriteImpl extends MinimalEObjectImpl.Container implements Game
         return sensorID != SENSOR_ID_EDEFAULT;
       case GameDSLPackage.GAME_SPRITE__INTERACTION_SPRITES:
         return interactionSprites != null && !interactionSprites.isEmpty();
+      case GameDSLPackage.GAME_SPRITE__INTERACTION_TILES:
+        return interactionTiles != null && !interactionTiles.isEmpty();
       case GameDSLPackage.GAME_SPRITE__PROPERTIES:
         return properties != null && !properties.isEmpty();
       case GameDSLPackage.GAME_SPRITE__STATES:

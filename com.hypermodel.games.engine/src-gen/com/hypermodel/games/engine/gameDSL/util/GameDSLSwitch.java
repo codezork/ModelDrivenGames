@@ -150,6 +150,13 @@ public class GameDSLSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
+      case GameDSLPackage.GAME_TILE:
+      {
+        GameTile gameTile = (GameTile)theEObject;
+        T result = caseGameTile(gameTile);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
       case GameDSLPackage.GAME_SPRITE:
       {
         GameSprite gameSprite = (GameSprite)theEObject;
@@ -389,6 +396,22 @@ public class GameDSLSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseGameDisplay(GameDisplay object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Game Tile</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Game Tile</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseGameTile(GameTile object)
   {
     return null;
   }

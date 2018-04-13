@@ -7,6 +7,7 @@ import com.hypermodel.games.engine.gameDSL.GameDSLPackage;
 import com.hypermodel.games.engine.gameDSL.GameScene;
 import com.hypermodel.games.engine.gameDSL.GameScreen;
 import com.hypermodel.games.engine.gameDSL.GameSprite;
+import com.hypermodel.games.engine.gameDSL.GameTile;
 
 import java.util.Collection;
 
@@ -34,7 +35,9 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * <ul>
  *   <li>{@link com.hypermodel.games.engine.gameDSL.impl.GameScreenImpl#getName <em>Name</em>}</li>
  *   <li>{@link com.hypermodel.games.engine.gameDSL.impl.GameScreenImpl#getAtlasName <em>Atlas Name</em>}</li>
+ *   <li>{@link com.hypermodel.games.engine.gameDSL.impl.GameScreenImpl#getMap <em>Map</em>}</li>
  *   <li>{@link com.hypermodel.games.engine.gameDSL.impl.GameScreenImpl#getScene <em>Scene</em>}</li>
+ *   <li>{@link com.hypermodel.games.engine.gameDSL.impl.GameScreenImpl#getTiles <em>Tiles</em>}</li>
  *   <li>{@link com.hypermodel.games.engine.gameDSL.impl.GameScreenImpl#getSprites <em>Sprites</em>}</li>
  * </ul>
  *
@@ -83,6 +86,26 @@ public class GameScreenImpl extends MinimalEObjectImpl.Container implements Game
   protected String atlasName = ATLAS_NAME_EDEFAULT;
 
   /**
+   * The default value of the '{@link #getMap() <em>Map</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getMap()
+   * @generated
+   * @ordered
+   */
+  protected static final String MAP_EDEFAULT = null;
+
+  /**
+   * The cached value of the '{@link #getMap() <em>Map</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getMap()
+   * @generated
+   * @ordered
+   */
+  protected String map = MAP_EDEFAULT;
+
+  /**
    * The cached value of the '{@link #getScene() <em>Scene</em>}' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -91,6 +114,16 @@ public class GameScreenImpl extends MinimalEObjectImpl.Container implements Game
    * @ordered
    */
   protected GameScene scene;
+
+  /**
+   * The cached value of the '{@link #getTiles() <em>Tiles</em>}' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getTiles()
+   * @generated
+   * @ordered
+   */
+  protected EList<GameTile> tiles;
 
   /**
    * The cached value of the '{@link #getSprites() <em>Sprites</em>}' containment reference list.
@@ -174,6 +207,29 @@ public class GameScreenImpl extends MinimalEObjectImpl.Container implements Game
    * <!-- end-user-doc -->
    * @generated
    */
+  public String getMap()
+  {
+    return map;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setMap(String newMap)
+  {
+    String oldMap = map;
+    map = newMap;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, GameDSLPackage.GAME_SCREEN__MAP, oldMap, map));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public GameScene getScene()
   {
     if (scene != null && scene.eIsProxy())
@@ -217,6 +273,20 @@ public class GameScreenImpl extends MinimalEObjectImpl.Container implements Game
    * <!-- end-user-doc -->
    * @generated
    */
+  public EList<GameTile> getTiles()
+  {
+    if (tiles == null)
+    {
+      tiles = new EObjectContainmentEList<GameTile>(GameTile.class, this, GameDSLPackage.GAME_SCREEN__TILES);
+    }
+    return tiles;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EList<GameSprite> getSprites()
   {
     if (sprites == null)
@@ -236,6 +306,8 @@ public class GameScreenImpl extends MinimalEObjectImpl.Container implements Game
   {
     switch (featureID)
     {
+      case GameDSLPackage.GAME_SCREEN__TILES:
+        return ((InternalEList<?>)getTiles()).basicRemove(otherEnd, msgs);
       case GameDSLPackage.GAME_SCREEN__SPRITES:
         return ((InternalEList<?>)getSprites()).basicRemove(otherEnd, msgs);
     }
@@ -256,9 +328,13 @@ public class GameScreenImpl extends MinimalEObjectImpl.Container implements Game
         return getName();
       case GameDSLPackage.GAME_SCREEN__ATLAS_NAME:
         return getAtlasName();
+      case GameDSLPackage.GAME_SCREEN__MAP:
+        return getMap();
       case GameDSLPackage.GAME_SCREEN__SCENE:
         if (resolve) return getScene();
         return basicGetScene();
+      case GameDSLPackage.GAME_SCREEN__TILES:
+        return getTiles();
       case GameDSLPackage.GAME_SCREEN__SPRITES:
         return getSprites();
     }
@@ -282,8 +358,15 @@ public class GameScreenImpl extends MinimalEObjectImpl.Container implements Game
       case GameDSLPackage.GAME_SCREEN__ATLAS_NAME:
         setAtlasName((String)newValue);
         return;
+      case GameDSLPackage.GAME_SCREEN__MAP:
+        setMap((String)newValue);
+        return;
       case GameDSLPackage.GAME_SCREEN__SCENE:
         setScene((GameScene)newValue);
+        return;
+      case GameDSLPackage.GAME_SCREEN__TILES:
+        getTiles().clear();
+        getTiles().addAll((Collection<? extends GameTile>)newValue);
         return;
       case GameDSLPackage.GAME_SCREEN__SPRITES:
         getSprites().clear();
@@ -309,8 +392,14 @@ public class GameScreenImpl extends MinimalEObjectImpl.Container implements Game
       case GameDSLPackage.GAME_SCREEN__ATLAS_NAME:
         setAtlasName(ATLAS_NAME_EDEFAULT);
         return;
+      case GameDSLPackage.GAME_SCREEN__MAP:
+        setMap(MAP_EDEFAULT);
+        return;
       case GameDSLPackage.GAME_SCREEN__SCENE:
         setScene((GameScene)null);
+        return;
+      case GameDSLPackage.GAME_SCREEN__TILES:
+        getTiles().clear();
         return;
       case GameDSLPackage.GAME_SCREEN__SPRITES:
         getSprites().clear();
@@ -333,8 +422,12 @@ public class GameScreenImpl extends MinimalEObjectImpl.Container implements Game
         return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
       case GameDSLPackage.GAME_SCREEN__ATLAS_NAME:
         return ATLAS_NAME_EDEFAULT == null ? atlasName != null : !ATLAS_NAME_EDEFAULT.equals(atlasName);
+      case GameDSLPackage.GAME_SCREEN__MAP:
+        return MAP_EDEFAULT == null ? map != null : !MAP_EDEFAULT.equals(map);
       case GameDSLPackage.GAME_SCREEN__SCENE:
         return scene != null;
+      case GameDSLPackage.GAME_SCREEN__TILES:
+        return tiles != null && !tiles.isEmpty();
       case GameDSLPackage.GAME_SCREEN__SPRITES:
         return sprites != null && !sprites.isEmpty();
     }
@@ -356,6 +449,8 @@ public class GameScreenImpl extends MinimalEObjectImpl.Container implements Game
     result.append(name);
     result.append(", atlasName: ");
     result.append(atlasName);
+    result.append(", map: ");
+    result.append(map);
     result.append(')');
     return result.toString();
   }
