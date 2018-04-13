@@ -47,4 +47,4 @@ Although the author takes all possible care to ensure the correctness of publish
 
 == Known issues
 - Due to unknown effects during heavy generation of files, the generating process is looping sometimes. Normally it stops after some recursions. Somebody should look for this.
-- For the moment, screens, scenes and sprites are created. No running game can be generated yet.
+- For the moment, screens, scenes, tiles and sprites are created. No running game can be generated yet.
