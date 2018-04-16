@@ -46,10 +46,17 @@ GamePlatformConfigIOSMOE: {GamePlatformConfigIOSMOE}
 
 GameRoot:
 	{GameRoot} 'game' name=ValidID
-	'width' width = INT 'height' height = INT 'title' title=STRING 'pixelPerMeter' ppm = INT
-	('scenes' '{' scenes+=GameScene* '}'&
+	'screenWidth' width = INT 'screenHeight' height = INT 
+	'title' title=STRING 'pixelPerMeter' ppm = INT 
+	'tileWidth' tileWidth=INT 'tileHeight' tileHeight=INT
+	('layers' '{' layers+=GameLayer* '}' & 
+	'scenes' '{' scenes+=GameScene* '}'&
 	'screens' '{' screens+=GameScreen* '}'&
 	'regions' '{' regions+=GameTextureRegion* '}');
+	
+GameLayer:
+	{GameLayer} 'layer' name=ValidID 'index' index=INT 
+	'type' type=GameLayerType;
 	
 GameScreen:
 	{GameScreen} 'screen' name=ValidID 
@@ -77,14 +84,16 @@ GameDisplay:
 	(hasSetter?='setValue')?;
 	
 GameTile:
-	{GameTile} 'tile' name=ValidID 'id' id=INT 
-	(hasMapLevel?='mapLevel' mapLevel=INT 'width' width=INT 'height' height=INT)?;
+	{GameTile} 'tile' name=ValidID 'collisionId' id=INT
+	(hasObjectLayer?='objectLayer' objectLayer=[GameLayer])?   
+	(hasTileLayer?='tileLayer' tileLayer=[GameLayer])?;
 	
 GameSprite:
-	{GameSprite} 'sprite' name=ValidID 'id' id=INT 
+	{GameSprite} 'sprite' name=ValidID 'collisionId' id=INT 
 	'radius' radius=INT
 	((hasVelocity?='velocity' velocity=GameVector2d)? &
-	(hasStartPosition?='startPositionX' x=INT 'startPositionY' y=INT)? &
+	((hasLayer?='layer' layer=[GameLayer]) |
+	(hasStartPosition?='startPosition' startPosition=GameVector2d))? &
 	(hasSensor?='sensor' '{' vectors2d+=GameVector2d* '}' 'sensorID' sensorID=INT)? &
 	('interactsDynamic' '{' interactionSprites+=[GameSprite]* '}')? &
 	('interactsStatic' '{' interactionTiles+=[GameTile]* '}')? &
@@ -127,6 +136,12 @@ GameSpriteEvent:
 	{GameSpriteEvent} 'event' name=ValidID '(' (params+=FullJvmFormalParameter (',' params+=FullJvmFormalParameter)?)? ')'
 	body=XBlockExpression; 
 
+enum GameLayerType:
+	tile = 'tile' |
+	object = 'object' |
+	image = 'image' |
+	group = 'group';
+	
 enum GameDisplayValueType:
 	int = 'number'|
 	float = 'decimal'|

@@ -73,6 +73,7 @@ public class GameDSLFactoryImpl extends EFactoryImpl implements GameDSLFactory
       case GameDSLPackage.GAME_PLATFORM_CONFIG_IOS: return createGamePlatformConfigIOS();
       case GameDSLPackage.GAME_PLATFORM_CONFIG_IOSMOE: return createGamePlatformConfigIOSMOE();
       case GameDSLPackage.GAME_ROOT: return createGameRoot();
+      case GameDSLPackage.GAME_LAYER: return createGameLayer();
       case GameDSLPackage.GAME_SCREEN: return createGameScreen();
       case GameDSLPackage.GAME_SCENE: return createGameScene();
       case GameDSLPackage.GAME_SCORE: return createGameScore();
@@ -102,6 +103,8 @@ public class GameDSLFactoryImpl extends EFactoryImpl implements GameDSLFactory
   {
     switch (eDataType.getClassifierID())
     {
+      case GameDSLPackage.GAME_LAYER_TYPE:
+        return createGameLayerTypeFromString(eDataType, initialValue);
       case GameDSLPackage.GAME_DISPLAY_VALUE_TYPE:
         return createGameDisplayValueTypeFromString(eDataType, initialValue);
       case GameDSLPackage.GAME_SCREEN_ORIENTATION:
@@ -121,6 +124,8 @@ public class GameDSLFactoryImpl extends EFactoryImpl implements GameDSLFactory
   {
     switch (eDataType.getClassifierID())
     {
+      case GameDSLPackage.GAME_LAYER_TYPE:
+        return convertGameLayerTypeToString(eDataType, instanceValue);
       case GameDSLPackage.GAME_DISPLAY_VALUE_TYPE:
         return convertGameDisplayValueTypeToString(eDataType, instanceValue);
       case GameDSLPackage.GAME_SCREEN_ORIENTATION:
@@ -205,6 +210,17 @@ public class GameDSLFactoryImpl extends EFactoryImpl implements GameDSLFactory
   {
     GameRootImpl gameRoot = new GameRootImpl();
     return gameRoot;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public GameLayer createGameLayer()
+  {
+    GameLayerImpl gameLayer = new GameLayerImpl();
+    return gameLayer;
   }
 
   /**
@@ -359,6 +375,28 @@ public class GameDSLFactoryImpl extends EFactoryImpl implements GameDSLFactory
   {
     GameSpriteEventImpl gameSpriteEvent = new GameSpriteEventImpl();
     return gameSpriteEvent;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public GameLayerType createGameLayerTypeFromString(EDataType eDataType, String initialValue)
+  {
+    GameLayerType result = GameLayerType.get(initialValue);
+    if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+    return result;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public String convertGameLayerTypeToString(EDataType eDataType, Object instanceValue)
+  {
+    return instanceValue == null ? null : instanceValue.toString();
   }
 
   /**

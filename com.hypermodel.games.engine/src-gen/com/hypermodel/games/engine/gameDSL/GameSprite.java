@@ -21,9 +21,10 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link com.hypermodel.games.engine.gameDSL.GameSprite#getRadius <em>Radius</em>}</li>
  *   <li>{@link com.hypermodel.games.engine.gameDSL.GameSprite#isHasVelocity <em>Has Velocity</em>}</li>
  *   <li>{@link com.hypermodel.games.engine.gameDSL.GameSprite#getVelocity <em>Velocity</em>}</li>
+ *   <li>{@link com.hypermodel.games.engine.gameDSL.GameSprite#isHasLayer <em>Has Layer</em>}</li>
+ *   <li>{@link com.hypermodel.games.engine.gameDSL.GameSprite#getLayer <em>Layer</em>}</li>
  *   <li>{@link com.hypermodel.games.engine.gameDSL.GameSprite#isHasStartPosition <em>Has Start Position</em>}</li>
- *   <li>{@link com.hypermodel.games.engine.gameDSL.GameSprite#getX <em>X</em>}</li>
- *   <li>{@link com.hypermodel.games.engine.gameDSL.GameSprite#getY <em>Y</em>}</li>
+ *   <li>{@link com.hypermodel.games.engine.gameDSL.GameSprite#getStartPosition <em>Start Position</em>}</li>
  *   <li>{@link com.hypermodel.games.engine.gameDSL.GameSprite#isHasSensor <em>Has Sensor</em>}</li>
  *   <li>{@link com.hypermodel.games.engine.gameDSL.GameSprite#getVectors2d <em>Vectors2d</em>}</li>
  *   <li>{@link com.hypermodel.games.engine.gameDSL.GameSprite#getSensorID <em>Sensor ID</em>}</li>
@@ -172,6 +173,58 @@ public interface GameSprite extends EObject
   void setVelocity(GameVector2d value);
 
   /**
+   * Returns the value of the '<em><b>Has Layer</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Has Layer</em>' attribute isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Has Layer</em>' attribute.
+   * @see #setHasLayer(boolean)
+   * @see com.hypermodel.games.engine.gameDSL.GameDSLPackage#getGameSprite_HasLayer()
+   * @model
+   * @generated
+   */
+  boolean isHasLayer();
+
+  /**
+   * Sets the value of the '{@link com.hypermodel.games.engine.gameDSL.GameSprite#isHasLayer <em>Has Layer</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Has Layer</em>' attribute.
+   * @see #isHasLayer()
+   * @generated
+   */
+  void setHasLayer(boolean value);
+
+  /**
+   * Returns the value of the '<em><b>Layer</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Layer</em>' reference isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Layer</em>' reference.
+   * @see #setLayer(GameLayer)
+   * @see com.hypermodel.games.engine.gameDSL.GameDSLPackage#getGameSprite_Layer()
+   * @model
+   * @generated
+   */
+  GameLayer getLayer();
+
+  /**
+   * Sets the value of the '{@link com.hypermodel.games.engine.gameDSL.GameSprite#getLayer <em>Layer</em>}' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Layer</em>' reference.
+   * @see #getLayer()
+   * @generated
+   */
+  void setLayer(GameLayer value);
+
+  /**
    * Returns the value of the '<em><b>Has Start Position</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <p>
@@ -198,56 +251,30 @@ public interface GameSprite extends EObject
   void setHasStartPosition(boolean value);
 
   /**
-   * Returns the value of the '<em><b>X</b></em>' attribute.
+   * Returns the value of the '<em><b>Start Position</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>X</em>' attribute isn't clear,
+   * If the meaning of the '<em>Start Position</em>' containment reference isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>X</em>' attribute.
-   * @see #setX(int)
-   * @see com.hypermodel.games.engine.gameDSL.GameDSLPackage#getGameSprite_X()
-   * @model
+   * @return the value of the '<em>Start Position</em>' containment reference.
+   * @see #setStartPosition(GameVector2d)
+   * @see com.hypermodel.games.engine.gameDSL.GameDSLPackage#getGameSprite_StartPosition()
+   * @model containment="true"
    * @generated
    */
-  int getX();
+  GameVector2d getStartPosition();
 
   /**
-   * Sets the value of the '{@link com.hypermodel.games.engine.gameDSL.GameSprite#getX <em>X</em>}' attribute.
+   * Sets the value of the '{@link com.hypermodel.games.engine.gameDSL.GameSprite#getStartPosition <em>Start Position</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>X</em>' attribute.
-   * @see #getX()
+   * @param value the new value of the '<em>Start Position</em>' containment reference.
+   * @see #getStartPosition()
    * @generated
    */
-  void setX(int value);
-
-  /**
-   * Returns the value of the '<em><b>Y</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Y</em>' attribute isn't clear,
-   * there really should be more of a description here...
-   * </p>
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Y</em>' attribute.
-   * @see #setY(int)
-   * @see com.hypermodel.games.engine.gameDSL.GameDSLPackage#getGameSprite_Y()
-   * @model
-   * @generated
-   */
-  int getY();
-
-  /**
-   * Sets the value of the '{@link com.hypermodel.games.engine.gameDSL.GameSprite#getY <em>Y</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Y</em>' attribute.
-   * @see #getY()
-   * @generated
-   */
-  void setY(int value);
+  void setStartPosition(GameVector2d value);
 
   /**
    * Returns the value of the '<em><b>Has Sensor</b></em>' attribute.

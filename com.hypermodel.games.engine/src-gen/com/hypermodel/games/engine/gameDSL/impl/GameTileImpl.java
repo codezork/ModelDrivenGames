@@ -4,11 +4,13 @@
 package com.hypermodel.games.engine.gameDSL.impl;
 
 import com.hypermodel.games.engine.gameDSL.GameDSLPackage;
+import com.hypermodel.games.engine.gameDSL.GameLayer;
 import com.hypermodel.games.engine.gameDSL.GameTile;
 
 import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
@@ -23,10 +25,10 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  * <ul>
  *   <li>{@link com.hypermodel.games.engine.gameDSL.impl.GameTileImpl#getName <em>Name</em>}</li>
  *   <li>{@link com.hypermodel.games.engine.gameDSL.impl.GameTileImpl#getId <em>Id</em>}</li>
- *   <li>{@link com.hypermodel.games.engine.gameDSL.impl.GameTileImpl#isHasMapLevel <em>Has Map Level</em>}</li>
- *   <li>{@link com.hypermodel.games.engine.gameDSL.impl.GameTileImpl#getMapLevel <em>Map Level</em>}</li>
- *   <li>{@link com.hypermodel.games.engine.gameDSL.impl.GameTileImpl#getWidth <em>Width</em>}</li>
- *   <li>{@link com.hypermodel.games.engine.gameDSL.impl.GameTileImpl#getHeight <em>Height</em>}</li>
+ *   <li>{@link com.hypermodel.games.engine.gameDSL.impl.GameTileImpl#isHasObjectLayer <em>Has Object Layer</em>}</li>
+ *   <li>{@link com.hypermodel.games.engine.gameDSL.impl.GameTileImpl#getObjectLayer <em>Object Layer</em>}</li>
+ *   <li>{@link com.hypermodel.games.engine.gameDSL.impl.GameTileImpl#isHasTileLayer <em>Has Tile Layer</em>}</li>
+ *   <li>{@link com.hypermodel.games.engine.gameDSL.impl.GameTileImpl#getTileLayer <em>Tile Layer</em>}</li>
  * </ul>
  *
  * @generated
@@ -74,84 +76,64 @@ public class GameTileImpl extends MinimalEObjectImpl.Container implements GameTi
   protected int id = ID_EDEFAULT;
 
   /**
-   * The default value of the '{@link #isHasMapLevel() <em>Has Map Level</em>}' attribute.
+   * The default value of the '{@link #isHasObjectLayer() <em>Has Object Layer</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #isHasMapLevel()
+   * @see #isHasObjectLayer()
    * @generated
    * @ordered
    */
-  protected static final boolean HAS_MAP_LEVEL_EDEFAULT = false;
+  protected static final boolean HAS_OBJECT_LAYER_EDEFAULT = false;
 
   /**
-   * The cached value of the '{@link #isHasMapLevel() <em>Has Map Level</em>}' attribute.
+   * The cached value of the '{@link #isHasObjectLayer() <em>Has Object Layer</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #isHasMapLevel()
+   * @see #isHasObjectLayer()
    * @generated
    * @ordered
    */
-  protected boolean hasMapLevel = HAS_MAP_LEVEL_EDEFAULT;
+  protected boolean hasObjectLayer = HAS_OBJECT_LAYER_EDEFAULT;
 
   /**
-   * The default value of the '{@link #getMapLevel() <em>Map Level</em>}' attribute.
+   * The cached value of the '{@link #getObjectLayer() <em>Object Layer</em>}' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getMapLevel()
+   * @see #getObjectLayer()
    * @generated
    * @ordered
    */
-  protected static final int MAP_LEVEL_EDEFAULT = 0;
+  protected GameLayer objectLayer;
 
   /**
-   * The cached value of the '{@link #getMapLevel() <em>Map Level</em>}' attribute.
+   * The default value of the '{@link #isHasTileLayer() <em>Has Tile Layer</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getMapLevel()
+   * @see #isHasTileLayer()
    * @generated
    * @ordered
    */
-  protected int mapLevel = MAP_LEVEL_EDEFAULT;
+  protected static final boolean HAS_TILE_LAYER_EDEFAULT = false;
 
   /**
-   * The default value of the '{@link #getWidth() <em>Width</em>}' attribute.
+   * The cached value of the '{@link #isHasTileLayer() <em>Has Tile Layer</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getWidth()
+   * @see #isHasTileLayer()
    * @generated
    * @ordered
    */
-  protected static final int WIDTH_EDEFAULT = 0;
+  protected boolean hasTileLayer = HAS_TILE_LAYER_EDEFAULT;
 
   /**
-   * The cached value of the '{@link #getWidth() <em>Width</em>}' attribute.
+   * The cached value of the '{@link #getTileLayer() <em>Tile Layer</em>}' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getWidth()
+   * @see #getTileLayer()
    * @generated
    * @ordered
    */
-  protected int width = WIDTH_EDEFAULT;
-
-  /**
-   * The default value of the '{@link #getHeight() <em>Height</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getHeight()
-   * @generated
-   * @ordered
-   */
-  protected static final int HEIGHT_EDEFAULT = 0;
-
-  /**
-   * The cached value of the '{@link #getHeight() <em>Height</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getHeight()
-   * @generated
-   * @ordered
-   */
-  protected int height = HEIGHT_EDEFAULT;
+  protected GameLayer tileLayer;
 
   /**
    * <!-- begin-user-doc -->
@@ -225,9 +207,9 @@ public class GameTileImpl extends MinimalEObjectImpl.Container implements GameTi
    * <!-- end-user-doc -->
    * @generated
    */
-  public boolean isHasMapLevel()
+  public boolean isHasObjectLayer()
   {
-    return hasMapLevel;
+    return hasObjectLayer;
   }
 
   /**
@@ -235,12 +217,12 @@ public class GameTileImpl extends MinimalEObjectImpl.Container implements GameTi
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setHasMapLevel(boolean newHasMapLevel)
+  public void setHasObjectLayer(boolean newHasObjectLayer)
   {
-    boolean oldHasMapLevel = hasMapLevel;
-    hasMapLevel = newHasMapLevel;
+    boolean oldHasObjectLayer = hasObjectLayer;
+    hasObjectLayer = newHasObjectLayer;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, GameDSLPackage.GAME_TILE__HAS_MAP_LEVEL, oldHasMapLevel, hasMapLevel));
+      eNotify(new ENotificationImpl(this, Notification.SET, GameDSLPackage.GAME_TILE__HAS_OBJECT_LAYER, oldHasObjectLayer, hasObjectLayer));
   }
 
   /**
@@ -248,9 +230,19 @@ public class GameTileImpl extends MinimalEObjectImpl.Container implements GameTi
    * <!-- end-user-doc -->
    * @generated
    */
-  public int getMapLevel()
+  public GameLayer getObjectLayer()
   {
-    return mapLevel;
+    if (objectLayer != null && objectLayer.eIsProxy())
+    {
+      InternalEObject oldObjectLayer = (InternalEObject)objectLayer;
+      objectLayer = (GameLayer)eResolveProxy(oldObjectLayer);
+      if (objectLayer != oldObjectLayer)
+      {
+        if (eNotificationRequired())
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, GameDSLPackage.GAME_TILE__OBJECT_LAYER, oldObjectLayer, objectLayer));
+      }
+    }
+    return objectLayer;
   }
 
   /**
@@ -258,12 +250,22 @@ public class GameTileImpl extends MinimalEObjectImpl.Container implements GameTi
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setMapLevel(int newMapLevel)
+  public GameLayer basicGetObjectLayer()
   {
-    int oldMapLevel = mapLevel;
-    mapLevel = newMapLevel;
+    return objectLayer;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setObjectLayer(GameLayer newObjectLayer)
+  {
+    GameLayer oldObjectLayer = objectLayer;
+    objectLayer = newObjectLayer;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, GameDSLPackage.GAME_TILE__MAP_LEVEL, oldMapLevel, mapLevel));
+      eNotify(new ENotificationImpl(this, Notification.SET, GameDSLPackage.GAME_TILE__OBJECT_LAYER, oldObjectLayer, objectLayer));
   }
 
   /**
@@ -271,9 +273,9 @@ public class GameTileImpl extends MinimalEObjectImpl.Container implements GameTi
    * <!-- end-user-doc -->
    * @generated
    */
-  public int getWidth()
+  public boolean isHasTileLayer()
   {
-    return width;
+    return hasTileLayer;
   }
 
   /**
@@ -281,12 +283,12 @@ public class GameTileImpl extends MinimalEObjectImpl.Container implements GameTi
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setWidth(int newWidth)
+  public void setHasTileLayer(boolean newHasTileLayer)
   {
-    int oldWidth = width;
-    width = newWidth;
+    boolean oldHasTileLayer = hasTileLayer;
+    hasTileLayer = newHasTileLayer;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, GameDSLPackage.GAME_TILE__WIDTH, oldWidth, width));
+      eNotify(new ENotificationImpl(this, Notification.SET, GameDSLPackage.GAME_TILE__HAS_TILE_LAYER, oldHasTileLayer, hasTileLayer));
   }
 
   /**
@@ -294,9 +296,19 @@ public class GameTileImpl extends MinimalEObjectImpl.Container implements GameTi
    * <!-- end-user-doc -->
    * @generated
    */
-  public int getHeight()
+  public GameLayer getTileLayer()
   {
-    return height;
+    if (tileLayer != null && tileLayer.eIsProxy())
+    {
+      InternalEObject oldTileLayer = (InternalEObject)tileLayer;
+      tileLayer = (GameLayer)eResolveProxy(oldTileLayer);
+      if (tileLayer != oldTileLayer)
+      {
+        if (eNotificationRequired())
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, GameDSLPackage.GAME_TILE__TILE_LAYER, oldTileLayer, tileLayer));
+      }
+    }
+    return tileLayer;
   }
 
   /**
@@ -304,12 +316,22 @@ public class GameTileImpl extends MinimalEObjectImpl.Container implements GameTi
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setHeight(int newHeight)
+  public GameLayer basicGetTileLayer()
   {
-    int oldHeight = height;
-    height = newHeight;
+    return tileLayer;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setTileLayer(GameLayer newTileLayer)
+  {
+    GameLayer oldTileLayer = tileLayer;
+    tileLayer = newTileLayer;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, GameDSLPackage.GAME_TILE__HEIGHT, oldHeight, height));
+      eNotify(new ENotificationImpl(this, Notification.SET, GameDSLPackage.GAME_TILE__TILE_LAYER, oldTileLayer, tileLayer));
   }
 
   /**
@@ -326,14 +348,16 @@ public class GameTileImpl extends MinimalEObjectImpl.Container implements GameTi
         return getName();
       case GameDSLPackage.GAME_TILE__ID:
         return getId();
-      case GameDSLPackage.GAME_TILE__HAS_MAP_LEVEL:
-        return isHasMapLevel();
-      case GameDSLPackage.GAME_TILE__MAP_LEVEL:
-        return getMapLevel();
-      case GameDSLPackage.GAME_TILE__WIDTH:
-        return getWidth();
-      case GameDSLPackage.GAME_TILE__HEIGHT:
-        return getHeight();
+      case GameDSLPackage.GAME_TILE__HAS_OBJECT_LAYER:
+        return isHasObjectLayer();
+      case GameDSLPackage.GAME_TILE__OBJECT_LAYER:
+        if (resolve) return getObjectLayer();
+        return basicGetObjectLayer();
+      case GameDSLPackage.GAME_TILE__HAS_TILE_LAYER:
+        return isHasTileLayer();
+      case GameDSLPackage.GAME_TILE__TILE_LAYER:
+        if (resolve) return getTileLayer();
+        return basicGetTileLayer();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -354,17 +378,17 @@ public class GameTileImpl extends MinimalEObjectImpl.Container implements GameTi
       case GameDSLPackage.GAME_TILE__ID:
         setId((Integer)newValue);
         return;
-      case GameDSLPackage.GAME_TILE__HAS_MAP_LEVEL:
-        setHasMapLevel((Boolean)newValue);
+      case GameDSLPackage.GAME_TILE__HAS_OBJECT_LAYER:
+        setHasObjectLayer((Boolean)newValue);
         return;
-      case GameDSLPackage.GAME_TILE__MAP_LEVEL:
-        setMapLevel((Integer)newValue);
+      case GameDSLPackage.GAME_TILE__OBJECT_LAYER:
+        setObjectLayer((GameLayer)newValue);
         return;
-      case GameDSLPackage.GAME_TILE__WIDTH:
-        setWidth((Integer)newValue);
+      case GameDSLPackage.GAME_TILE__HAS_TILE_LAYER:
+        setHasTileLayer((Boolean)newValue);
         return;
-      case GameDSLPackage.GAME_TILE__HEIGHT:
-        setHeight((Integer)newValue);
+      case GameDSLPackage.GAME_TILE__TILE_LAYER:
+        setTileLayer((GameLayer)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -386,17 +410,17 @@ public class GameTileImpl extends MinimalEObjectImpl.Container implements GameTi
       case GameDSLPackage.GAME_TILE__ID:
         setId(ID_EDEFAULT);
         return;
-      case GameDSLPackage.GAME_TILE__HAS_MAP_LEVEL:
-        setHasMapLevel(HAS_MAP_LEVEL_EDEFAULT);
+      case GameDSLPackage.GAME_TILE__HAS_OBJECT_LAYER:
+        setHasObjectLayer(HAS_OBJECT_LAYER_EDEFAULT);
         return;
-      case GameDSLPackage.GAME_TILE__MAP_LEVEL:
-        setMapLevel(MAP_LEVEL_EDEFAULT);
+      case GameDSLPackage.GAME_TILE__OBJECT_LAYER:
+        setObjectLayer((GameLayer)null);
         return;
-      case GameDSLPackage.GAME_TILE__WIDTH:
-        setWidth(WIDTH_EDEFAULT);
+      case GameDSLPackage.GAME_TILE__HAS_TILE_LAYER:
+        setHasTileLayer(HAS_TILE_LAYER_EDEFAULT);
         return;
-      case GameDSLPackage.GAME_TILE__HEIGHT:
-        setHeight(HEIGHT_EDEFAULT);
+      case GameDSLPackage.GAME_TILE__TILE_LAYER:
+        setTileLayer((GameLayer)null);
         return;
     }
     super.eUnset(featureID);
@@ -416,14 +440,14 @@ public class GameTileImpl extends MinimalEObjectImpl.Container implements GameTi
         return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
       case GameDSLPackage.GAME_TILE__ID:
         return id != ID_EDEFAULT;
-      case GameDSLPackage.GAME_TILE__HAS_MAP_LEVEL:
-        return hasMapLevel != HAS_MAP_LEVEL_EDEFAULT;
-      case GameDSLPackage.GAME_TILE__MAP_LEVEL:
-        return mapLevel != MAP_LEVEL_EDEFAULT;
-      case GameDSLPackage.GAME_TILE__WIDTH:
-        return width != WIDTH_EDEFAULT;
-      case GameDSLPackage.GAME_TILE__HEIGHT:
-        return height != HEIGHT_EDEFAULT;
+      case GameDSLPackage.GAME_TILE__HAS_OBJECT_LAYER:
+        return hasObjectLayer != HAS_OBJECT_LAYER_EDEFAULT;
+      case GameDSLPackage.GAME_TILE__OBJECT_LAYER:
+        return objectLayer != null;
+      case GameDSLPackage.GAME_TILE__HAS_TILE_LAYER:
+        return hasTileLayer != HAS_TILE_LAYER_EDEFAULT;
+      case GameDSLPackage.GAME_TILE__TILE_LAYER:
+        return tileLayer != null;
     }
     return super.eIsSet(featureID);
   }
@@ -443,14 +467,10 @@ public class GameTileImpl extends MinimalEObjectImpl.Container implements GameTi
     result.append(name);
     result.append(", id: ");
     result.append(id);
-    result.append(", hasMapLevel: ");
-    result.append(hasMapLevel);
-    result.append(", mapLevel: ");
-    result.append(mapLevel);
-    result.append(", width: ");
-    result.append(width);
-    result.append(", height: ");
-    result.append(height);
+    result.append(", hasObjectLayer: ");
+    result.append(hasObjectLayer);
+    result.append(", hasTileLayer: ");
+    result.append(hasTileLayer);
     result.append(')');
     return result.toString();
   }

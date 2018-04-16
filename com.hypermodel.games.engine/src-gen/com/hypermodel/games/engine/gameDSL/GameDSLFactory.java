@@ -87,6 +87,15 @@ public interface GameDSLFactory extends EFactory
   GameRoot createGameRoot();
 
   /**
+   * Returns a new object of class '<em>Game Layer</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Game Layer</em>'.
+   * @generated
+   */
+  GameLayer createGameLayer();
+
+  /**
    * Returns a new object of class '<em>Game Screen</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->

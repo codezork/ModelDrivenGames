@@ -32,6 +32,7 @@ public class GameDSLParser extends AbstractContentAssistParser {
 				private static final long serialVersionUID = 1L;
 				{
 					put(grammarAccess.getGameDisplayAccess().getAlternatives_7_1(), "rule__GameDisplay__Alternatives_7_1");
+					put(grammarAccess.getGameSpriteAccess().getAlternatives_7_1(), "rule__GameSprite__Alternatives_7_1");
 					put(grammarAccess.getGameSpriteStateAccess().getAlternatives_5(), "rule__GameSpriteState__Alternatives_5");
 					put(grammarAccess.getXAnnotationAccess().getAlternatives_3_1(), "rule__XAnnotation__Alternatives_3_1");
 					put(grammarAccess.getXAnnotationElementValueOrCommaListAccess().getAlternatives(), "rule__XAnnotationElementValueOrCommaList__Alternatives");
@@ -76,6 +77,7 @@ public class GameDSLParser extends AbstractContentAssistParser {
 					put(grammarAccess.getJvmWildcardTypeReferenceAccess().getAlternatives_2(), "rule__JvmWildcardTypeReference__Alternatives_2");
 					put(grammarAccess.getXImportDeclarationAccess().getAlternatives_1(), "rule__XImportDeclaration__Alternatives_1");
 					put(grammarAccess.getXImportDeclarationAccess().getAlternatives_1_0_3(), "rule__XImportDeclaration__Alternatives_1_0_3");
+					put(grammarAccess.getGameLayerTypeAccess().getAlternatives(), "rule__GameLayerType__Alternatives");
 					put(grammarAccess.getGameDisplayValueTypeAccess().getAlternatives(), "rule__GameDisplayValueType__Alternatives");
 					put(grammarAccess.getGameScreenOrientationAccess().getAlternatives(), "rule__GameScreenOrientation__Alternatives");
 					put(grammarAccess.getGameModelAccess().getGroup(), "rule__GameModel__Group__0");
@@ -88,9 +90,11 @@ public class GameDSLParser extends AbstractContentAssistParser {
 					put(grammarAccess.getGamePlatformConfigIOSAccess().getGroup(), "rule__GamePlatformConfigIOS__Group__0");
 					put(grammarAccess.getGamePlatformConfigIOSMOEAccess().getGroup(), "rule__GamePlatformConfigIOSMOE__Group__0");
 					put(grammarAccess.getGameRootAccess().getGroup(), "rule__GameRoot__Group__0");
-					put(grammarAccess.getGameRootAccess().getGroup_11_0(), "rule__GameRoot__Group_11_0__0");
-					put(grammarAccess.getGameRootAccess().getGroup_11_1(), "rule__GameRoot__Group_11_1__0");
-					put(grammarAccess.getGameRootAccess().getGroup_11_2(), "rule__GameRoot__Group_11_2__0");
+					put(grammarAccess.getGameRootAccess().getGroup_15_0(), "rule__GameRoot__Group_15_0__0");
+					put(grammarAccess.getGameRootAccess().getGroup_15_1(), "rule__GameRoot__Group_15_1__0");
+					put(grammarAccess.getGameRootAccess().getGroup_15_2(), "rule__GameRoot__Group_15_2__0");
+					put(grammarAccess.getGameRootAccess().getGroup_15_3(), "rule__GameRoot__Group_15_3__0");
+					put(grammarAccess.getGameLayerAccess().getGroup(), "rule__GameLayer__Group__0");
 					put(grammarAccess.getGameScreenAccess().getGroup(), "rule__GameScreen__Group__0");
 					put(grammarAccess.getGameSceneAccess().getGroup(), "rule__GameScene__Group__0");
 					put(grammarAccess.getGameSceneAccess().getGroup_3(), "rule__GameScene__Group_3__0");
@@ -100,9 +104,11 @@ public class GameDSLParser extends AbstractContentAssistParser {
 					put(grammarAccess.getGameDisplayAccess().getGroup_8(), "rule__GameDisplay__Group_8__0");
 					put(grammarAccess.getGameTileAccess().getGroup(), "rule__GameTile__Group__0");
 					put(grammarAccess.getGameTileAccess().getGroup_5(), "rule__GameTile__Group_5__0");
+					put(grammarAccess.getGameTileAccess().getGroup_6(), "rule__GameTile__Group_6__0");
 					put(grammarAccess.getGameSpriteAccess().getGroup(), "rule__GameSprite__Group__0");
 					put(grammarAccess.getGameSpriteAccess().getGroup_7_0(), "rule__GameSprite__Group_7_0__0");
-					put(grammarAccess.getGameSpriteAccess().getGroup_7_1(), "rule__GameSprite__Group_7_1__0");
+					put(grammarAccess.getGameSpriteAccess().getGroup_7_1_0(), "rule__GameSprite__Group_7_1_0__0");
+					put(grammarAccess.getGameSpriteAccess().getGroup_7_1_1(), "rule__GameSprite__Group_7_1_1__0");
 					put(grammarAccess.getGameSpriteAccess().getGroup_7_2(), "rule__GameSprite__Group_7_2__0");
 					put(grammarAccess.getGameSpriteAccess().getGroup_7_3(), "rule__GameSprite__Group_7_3__0");
 					put(grammarAccess.getGameSpriteAccess().getGroup_7_4(), "rule__GameSprite__Group_7_4__0");
@@ -355,9 +361,15 @@ public class GameDSLParser extends AbstractContentAssistParser {
 					put(grammarAccess.getGameRootAccess().getHeightAssignment_6(), "rule__GameRoot__HeightAssignment_6");
 					put(grammarAccess.getGameRootAccess().getTitleAssignment_8(), "rule__GameRoot__TitleAssignment_8");
 					put(grammarAccess.getGameRootAccess().getPpmAssignment_10(), "rule__GameRoot__PpmAssignment_10");
-					put(grammarAccess.getGameRootAccess().getScenesAssignment_11_0_2(), "rule__GameRoot__ScenesAssignment_11_0_2");
-					put(grammarAccess.getGameRootAccess().getScreensAssignment_11_1_2(), "rule__GameRoot__ScreensAssignment_11_1_2");
-					put(grammarAccess.getGameRootAccess().getRegionsAssignment_11_2_2(), "rule__GameRoot__RegionsAssignment_11_2_2");
+					put(grammarAccess.getGameRootAccess().getTileWidthAssignment_12(), "rule__GameRoot__TileWidthAssignment_12");
+					put(grammarAccess.getGameRootAccess().getTileHeightAssignment_14(), "rule__GameRoot__TileHeightAssignment_14");
+					put(grammarAccess.getGameRootAccess().getLayersAssignment_15_0_2(), "rule__GameRoot__LayersAssignment_15_0_2");
+					put(grammarAccess.getGameRootAccess().getScenesAssignment_15_1_2(), "rule__GameRoot__ScenesAssignment_15_1_2");
+					put(grammarAccess.getGameRootAccess().getScreensAssignment_15_2_2(), "rule__GameRoot__ScreensAssignment_15_2_2");
+					put(grammarAccess.getGameRootAccess().getRegionsAssignment_15_3_2(), "rule__GameRoot__RegionsAssignment_15_3_2");
+					put(grammarAccess.getGameLayerAccess().getNameAssignment_2(), "rule__GameLayer__NameAssignment_2");
+					put(grammarAccess.getGameLayerAccess().getIndexAssignment_4(), "rule__GameLayer__IndexAssignment_4");
+					put(grammarAccess.getGameLayerAccess().getTypeAssignment_6(), "rule__GameLayer__TypeAssignment_6");
 					put(grammarAccess.getGameScreenAccess().getNameAssignment_2(), "rule__GameScreen__NameAssignment_2");
 					put(grammarAccess.getGameScreenAccess().getAtlasNameAssignment_4(), "rule__GameScreen__AtlasNameAssignment_4");
 					put(grammarAccess.getGameScreenAccess().getMapAssignment_6(), "rule__GameScreen__MapAssignment_6");
@@ -383,18 +395,19 @@ public class GameDSLParser extends AbstractContentAssistParser {
 					put(grammarAccess.getGameDisplayAccess().getHasSetterAssignment_10(), "rule__GameDisplay__HasSetterAssignment_10");
 					put(grammarAccess.getGameTileAccess().getNameAssignment_2(), "rule__GameTile__NameAssignment_2");
 					put(grammarAccess.getGameTileAccess().getIdAssignment_4(), "rule__GameTile__IdAssignment_4");
-					put(grammarAccess.getGameTileAccess().getHasMapLevelAssignment_5_0(), "rule__GameTile__HasMapLevelAssignment_5_0");
-					put(grammarAccess.getGameTileAccess().getMapLevelAssignment_5_1(), "rule__GameTile__MapLevelAssignment_5_1");
-					put(grammarAccess.getGameTileAccess().getWidthAssignment_5_3(), "rule__GameTile__WidthAssignment_5_3");
-					put(grammarAccess.getGameTileAccess().getHeightAssignment_5_5(), "rule__GameTile__HeightAssignment_5_5");
+					put(grammarAccess.getGameTileAccess().getHasObjectLayerAssignment_5_0(), "rule__GameTile__HasObjectLayerAssignment_5_0");
+					put(grammarAccess.getGameTileAccess().getObjectLayerAssignment_5_1(), "rule__GameTile__ObjectLayerAssignment_5_1");
+					put(grammarAccess.getGameTileAccess().getHasTileLayerAssignment_6_0(), "rule__GameTile__HasTileLayerAssignment_6_0");
+					put(grammarAccess.getGameTileAccess().getTileLayerAssignment_6_1(), "rule__GameTile__TileLayerAssignment_6_1");
 					put(grammarAccess.getGameSpriteAccess().getNameAssignment_2(), "rule__GameSprite__NameAssignment_2");
 					put(grammarAccess.getGameSpriteAccess().getIdAssignment_4(), "rule__GameSprite__IdAssignment_4");
 					put(grammarAccess.getGameSpriteAccess().getRadiusAssignment_6(), "rule__GameSprite__RadiusAssignment_6");
 					put(grammarAccess.getGameSpriteAccess().getHasVelocityAssignment_7_0_0(), "rule__GameSprite__HasVelocityAssignment_7_0_0");
 					put(grammarAccess.getGameSpriteAccess().getVelocityAssignment_7_0_1(), "rule__GameSprite__VelocityAssignment_7_0_1");
-					put(grammarAccess.getGameSpriteAccess().getHasStartPositionAssignment_7_1_0(), "rule__GameSprite__HasStartPositionAssignment_7_1_0");
-					put(grammarAccess.getGameSpriteAccess().getXAssignment_7_1_1(), "rule__GameSprite__XAssignment_7_1_1");
-					put(grammarAccess.getGameSpriteAccess().getYAssignment_7_1_3(), "rule__GameSprite__YAssignment_7_1_3");
+					put(grammarAccess.getGameSpriteAccess().getHasLayerAssignment_7_1_0_0(), "rule__GameSprite__HasLayerAssignment_7_1_0_0");
+					put(grammarAccess.getGameSpriteAccess().getLayerAssignment_7_1_0_1(), "rule__GameSprite__LayerAssignment_7_1_0_1");
+					put(grammarAccess.getGameSpriteAccess().getHasStartPositionAssignment_7_1_1_0(), "rule__GameSprite__HasStartPositionAssignment_7_1_1_0");
+					put(grammarAccess.getGameSpriteAccess().getStartPositionAssignment_7_1_1_1(), "rule__GameSprite__StartPositionAssignment_7_1_1_1");
 					put(grammarAccess.getGameSpriteAccess().getHasSensorAssignment_7_2_0(), "rule__GameSprite__HasSensorAssignment_7_2_0");
 					put(grammarAccess.getGameSpriteAccess().getVectors2dAssignment_7_2_2(), "rule__GameSprite__Vectors2dAssignment_7_2_2");
 					put(grammarAccess.getGameSpriteAccess().getSensorIDAssignment_7_2_5(), "rule__GameSprite__SensorIDAssignment_7_2_5");
@@ -600,7 +613,7 @@ public class GameDSLParser extends AbstractContentAssistParser {
 					put(grammarAccess.getXImportDeclarationAccess().getImportedTypeAssignment_1_1(), "rule__XImportDeclaration__ImportedTypeAssignment_1_1");
 					put(grammarAccess.getXImportDeclarationAccess().getImportedNamespaceAssignment_1_2(), "rule__XImportDeclaration__ImportedNamespaceAssignment_1_2");
 					put(grammarAccess.getGamePlatformConfigAndroidAccess().getUnorderedGroup_11(), "rule__GamePlatformConfigAndroid__UnorderedGroup_11");
-					put(grammarAccess.getGameRootAccess().getUnorderedGroup_11(), "rule__GameRoot__UnorderedGroup_11");
+					put(grammarAccess.getGameRootAccess().getUnorderedGroup_15(), "rule__GameRoot__UnorderedGroup_15");
 					put(grammarAccess.getGameSpriteAccess().getUnorderedGroup_7(), "rule__GameSprite__UnorderedGroup_7");
 				}
 			};

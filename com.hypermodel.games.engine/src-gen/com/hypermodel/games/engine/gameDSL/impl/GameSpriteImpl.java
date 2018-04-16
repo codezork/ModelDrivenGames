@@ -5,6 +5,7 @@ package com.hypermodel.games.engine.gameDSL.impl;
 
 import com.hypermodel.games.engine.gameDSL.GameBodyProperty;
 import com.hypermodel.games.engine.gameDSL.GameDSLPackage;
+import com.hypermodel.games.engine.gameDSL.GameLayer;
 import com.hypermodel.games.engine.gameDSL.GameSprite;
 import com.hypermodel.games.engine.gameDSL.GameSpriteEvent;
 import com.hypermodel.games.engine.gameDSL.GameSpriteState;
@@ -41,9 +42,10 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link com.hypermodel.games.engine.gameDSL.impl.GameSpriteImpl#getRadius <em>Radius</em>}</li>
  *   <li>{@link com.hypermodel.games.engine.gameDSL.impl.GameSpriteImpl#isHasVelocity <em>Has Velocity</em>}</li>
  *   <li>{@link com.hypermodel.games.engine.gameDSL.impl.GameSpriteImpl#getVelocity <em>Velocity</em>}</li>
+ *   <li>{@link com.hypermodel.games.engine.gameDSL.impl.GameSpriteImpl#isHasLayer <em>Has Layer</em>}</li>
+ *   <li>{@link com.hypermodel.games.engine.gameDSL.impl.GameSpriteImpl#getLayer <em>Layer</em>}</li>
  *   <li>{@link com.hypermodel.games.engine.gameDSL.impl.GameSpriteImpl#isHasStartPosition <em>Has Start Position</em>}</li>
- *   <li>{@link com.hypermodel.games.engine.gameDSL.impl.GameSpriteImpl#getX <em>X</em>}</li>
- *   <li>{@link com.hypermodel.games.engine.gameDSL.impl.GameSpriteImpl#getY <em>Y</em>}</li>
+ *   <li>{@link com.hypermodel.games.engine.gameDSL.impl.GameSpriteImpl#getStartPosition <em>Start Position</em>}</li>
  *   <li>{@link com.hypermodel.games.engine.gameDSL.impl.GameSpriteImpl#isHasSensor <em>Has Sensor</em>}</li>
  *   <li>{@link com.hypermodel.games.engine.gameDSL.impl.GameSpriteImpl#getVectors2d <em>Vectors2d</em>}</li>
  *   <li>{@link com.hypermodel.games.engine.gameDSL.impl.GameSpriteImpl#getSensorID <em>Sensor ID</em>}</li>
@@ -150,6 +152,36 @@ public class GameSpriteImpl extends MinimalEObjectImpl.Container implements Game
   protected GameVector2d velocity;
 
   /**
+   * The default value of the '{@link #isHasLayer() <em>Has Layer</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #isHasLayer()
+   * @generated
+   * @ordered
+   */
+  protected static final boolean HAS_LAYER_EDEFAULT = false;
+
+  /**
+   * The cached value of the '{@link #isHasLayer() <em>Has Layer</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #isHasLayer()
+   * @generated
+   * @ordered
+   */
+  protected boolean hasLayer = HAS_LAYER_EDEFAULT;
+
+  /**
+   * The cached value of the '{@link #getLayer() <em>Layer</em>}' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getLayer()
+   * @generated
+   * @ordered
+   */
+  protected GameLayer layer;
+
+  /**
    * The default value of the '{@link #isHasStartPosition() <em>Has Start Position</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -170,44 +202,14 @@ public class GameSpriteImpl extends MinimalEObjectImpl.Container implements Game
   protected boolean hasStartPosition = HAS_START_POSITION_EDEFAULT;
 
   /**
-   * The default value of the '{@link #getX() <em>X</em>}' attribute.
+   * The cached value of the '{@link #getStartPosition() <em>Start Position</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getX()
+   * @see #getStartPosition()
    * @generated
    * @ordered
    */
-  protected static final int X_EDEFAULT = 0;
-
-  /**
-   * The cached value of the '{@link #getX() <em>X</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getX()
-   * @generated
-   * @ordered
-   */
-  protected int x = X_EDEFAULT;
-
-  /**
-   * The default value of the '{@link #getY() <em>Y</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getY()
-   * @generated
-   * @ordered
-   */
-  protected static final int Y_EDEFAULT = 0;
-
-  /**
-   * The cached value of the '{@link #getY() <em>Y</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getY()
-   * @generated
-   * @ordered
-   */
-  protected int y = Y_EDEFAULT;
+  protected GameVector2d startPosition;
 
   /**
    * The default value of the '{@link #isHasSensor() <em>Has Sensor</em>}' attribute.
@@ -485,6 +487,72 @@ public class GameSpriteImpl extends MinimalEObjectImpl.Container implements Game
    * <!-- end-user-doc -->
    * @generated
    */
+  public boolean isHasLayer()
+  {
+    return hasLayer;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setHasLayer(boolean newHasLayer)
+  {
+    boolean oldHasLayer = hasLayer;
+    hasLayer = newHasLayer;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, GameDSLPackage.GAME_SPRITE__HAS_LAYER, oldHasLayer, hasLayer));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public GameLayer getLayer()
+  {
+    if (layer != null && layer.eIsProxy())
+    {
+      InternalEObject oldLayer = (InternalEObject)layer;
+      layer = (GameLayer)eResolveProxy(oldLayer);
+      if (layer != oldLayer)
+      {
+        if (eNotificationRequired())
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, GameDSLPackage.GAME_SPRITE__LAYER, oldLayer, layer));
+      }
+    }
+    return layer;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public GameLayer basicGetLayer()
+  {
+    return layer;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setLayer(GameLayer newLayer)
+  {
+    GameLayer oldLayer = layer;
+    layer = newLayer;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, GameDSLPackage.GAME_SPRITE__LAYER, oldLayer, layer));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public boolean isHasStartPosition()
   {
     return hasStartPosition;
@@ -508,9 +576,9 @@ public class GameSpriteImpl extends MinimalEObjectImpl.Container implements Game
    * <!-- end-user-doc -->
    * @generated
    */
-  public int getX()
+  public GameVector2d getStartPosition()
   {
-    return x;
+    return startPosition;
   }
 
   /**
@@ -518,12 +586,16 @@ public class GameSpriteImpl extends MinimalEObjectImpl.Container implements Game
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setX(int newX)
+  public NotificationChain basicSetStartPosition(GameVector2d newStartPosition, NotificationChain msgs)
   {
-    int oldX = x;
-    x = newX;
+    GameVector2d oldStartPosition = startPosition;
+    startPosition = newStartPosition;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, GameDSLPackage.GAME_SPRITE__X, oldX, x));
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, GameDSLPackage.GAME_SPRITE__START_POSITION, oldStartPosition, newStartPosition);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
   }
 
   /**
@@ -531,22 +603,20 @@ public class GameSpriteImpl extends MinimalEObjectImpl.Container implements Game
    * <!-- end-user-doc -->
    * @generated
    */
-  public int getY()
+  public void setStartPosition(GameVector2d newStartPosition)
   {
-    return y;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void setY(int newY)
-  {
-    int oldY = y;
-    y = newY;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, GameDSLPackage.GAME_SPRITE__Y, oldY, y));
+    if (newStartPosition != startPosition)
+    {
+      NotificationChain msgs = null;
+      if (startPosition != null)
+        msgs = ((InternalEObject)startPosition).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - GameDSLPackage.GAME_SPRITE__START_POSITION, null, msgs);
+      if (newStartPosition != null)
+        msgs = ((InternalEObject)newStartPosition).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - GameDSLPackage.GAME_SPRITE__START_POSITION, null, msgs);
+      msgs = basicSetStartPosition(newStartPosition, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, GameDSLPackage.GAME_SPRITE__START_POSITION, newStartPosition, newStartPosition));
   }
 
   /**
@@ -734,6 +804,8 @@ public class GameSpriteImpl extends MinimalEObjectImpl.Container implements Game
     {
       case GameDSLPackage.GAME_SPRITE__VELOCITY:
         return basicSetVelocity(null, msgs);
+      case GameDSLPackage.GAME_SPRITE__START_POSITION:
+        return basicSetStartPosition(null, msgs);
       case GameDSLPackage.GAME_SPRITE__VECTORS2D:
         return ((InternalEList<?>)getVectors2d()).basicRemove(otherEnd, msgs);
       case GameDSLPackage.GAME_SPRITE__PROPERTIES:
@@ -766,12 +838,15 @@ public class GameSpriteImpl extends MinimalEObjectImpl.Container implements Game
         return isHasVelocity();
       case GameDSLPackage.GAME_SPRITE__VELOCITY:
         return getVelocity();
+      case GameDSLPackage.GAME_SPRITE__HAS_LAYER:
+        return isHasLayer();
+      case GameDSLPackage.GAME_SPRITE__LAYER:
+        if (resolve) return getLayer();
+        return basicGetLayer();
       case GameDSLPackage.GAME_SPRITE__HAS_START_POSITION:
         return isHasStartPosition();
-      case GameDSLPackage.GAME_SPRITE__X:
-        return getX();
-      case GameDSLPackage.GAME_SPRITE__Y:
-        return getY();
+      case GameDSLPackage.GAME_SPRITE__START_POSITION:
+        return getStartPosition();
       case GameDSLPackage.GAME_SPRITE__HAS_SENSOR:
         return isHasSensor();
       case GameDSLPackage.GAME_SPRITE__VECTORS2D:
@@ -821,14 +896,17 @@ public class GameSpriteImpl extends MinimalEObjectImpl.Container implements Game
       case GameDSLPackage.GAME_SPRITE__VELOCITY:
         setVelocity((GameVector2d)newValue);
         return;
+      case GameDSLPackage.GAME_SPRITE__HAS_LAYER:
+        setHasLayer((Boolean)newValue);
+        return;
+      case GameDSLPackage.GAME_SPRITE__LAYER:
+        setLayer((GameLayer)newValue);
+        return;
       case GameDSLPackage.GAME_SPRITE__HAS_START_POSITION:
         setHasStartPosition((Boolean)newValue);
         return;
-      case GameDSLPackage.GAME_SPRITE__X:
-        setX((Integer)newValue);
-        return;
-      case GameDSLPackage.GAME_SPRITE__Y:
-        setY((Integer)newValue);
+      case GameDSLPackage.GAME_SPRITE__START_POSITION:
+        setStartPosition((GameVector2d)newValue);
         return;
       case GameDSLPackage.GAME_SPRITE__HAS_SENSOR:
         setHasSensor((Boolean)newValue);
@@ -892,14 +970,17 @@ public class GameSpriteImpl extends MinimalEObjectImpl.Container implements Game
       case GameDSLPackage.GAME_SPRITE__VELOCITY:
         setVelocity((GameVector2d)null);
         return;
+      case GameDSLPackage.GAME_SPRITE__HAS_LAYER:
+        setHasLayer(HAS_LAYER_EDEFAULT);
+        return;
+      case GameDSLPackage.GAME_SPRITE__LAYER:
+        setLayer((GameLayer)null);
+        return;
       case GameDSLPackage.GAME_SPRITE__HAS_START_POSITION:
         setHasStartPosition(HAS_START_POSITION_EDEFAULT);
         return;
-      case GameDSLPackage.GAME_SPRITE__X:
-        setX(X_EDEFAULT);
-        return;
-      case GameDSLPackage.GAME_SPRITE__Y:
-        setY(Y_EDEFAULT);
+      case GameDSLPackage.GAME_SPRITE__START_POSITION:
+        setStartPosition((GameVector2d)null);
         return;
       case GameDSLPackage.GAME_SPRITE__HAS_SENSOR:
         setHasSensor(HAS_SENSOR_EDEFAULT);
@@ -952,12 +1033,14 @@ public class GameSpriteImpl extends MinimalEObjectImpl.Container implements Game
         return hasVelocity != HAS_VELOCITY_EDEFAULT;
       case GameDSLPackage.GAME_SPRITE__VELOCITY:
         return velocity != null;
+      case GameDSLPackage.GAME_SPRITE__HAS_LAYER:
+        return hasLayer != HAS_LAYER_EDEFAULT;
+      case GameDSLPackage.GAME_SPRITE__LAYER:
+        return layer != null;
       case GameDSLPackage.GAME_SPRITE__HAS_START_POSITION:
         return hasStartPosition != HAS_START_POSITION_EDEFAULT;
-      case GameDSLPackage.GAME_SPRITE__X:
-        return x != X_EDEFAULT;
-      case GameDSLPackage.GAME_SPRITE__Y:
-        return y != Y_EDEFAULT;
+      case GameDSLPackage.GAME_SPRITE__START_POSITION:
+        return startPosition != null;
       case GameDSLPackage.GAME_SPRITE__HAS_SENSOR:
         return hasSensor != HAS_SENSOR_EDEFAULT;
       case GameDSLPackage.GAME_SPRITE__VECTORS2D:
@@ -999,12 +1082,10 @@ public class GameSpriteImpl extends MinimalEObjectImpl.Container implements Game
     result.append(radius);
     result.append(", hasVelocity: ");
     result.append(hasVelocity);
+    result.append(", hasLayer: ");
+    result.append(hasLayer);
     result.append(", hasStartPosition: ");
     result.append(hasStartPosition);
-    result.append(", x: ");
-    result.append(x);
-    result.append(", y: ");
-    result.append(y);
     result.append(", hasSensor: ");
     result.append(hasSensor);
     result.append(", sensorID: ");

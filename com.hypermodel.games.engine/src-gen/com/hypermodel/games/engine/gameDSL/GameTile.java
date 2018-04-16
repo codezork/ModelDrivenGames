@@ -16,10 +16,10 @@ import org.eclipse.emf.ecore.EObject;
  * <ul>
  *   <li>{@link com.hypermodel.games.engine.gameDSL.GameTile#getName <em>Name</em>}</li>
  *   <li>{@link com.hypermodel.games.engine.gameDSL.GameTile#getId <em>Id</em>}</li>
- *   <li>{@link com.hypermodel.games.engine.gameDSL.GameTile#isHasMapLevel <em>Has Map Level</em>}</li>
- *   <li>{@link com.hypermodel.games.engine.gameDSL.GameTile#getMapLevel <em>Map Level</em>}</li>
- *   <li>{@link com.hypermodel.games.engine.gameDSL.GameTile#getWidth <em>Width</em>}</li>
- *   <li>{@link com.hypermodel.games.engine.gameDSL.GameTile#getHeight <em>Height</em>}</li>
+ *   <li>{@link com.hypermodel.games.engine.gameDSL.GameTile#isHasObjectLayer <em>Has Object Layer</em>}</li>
+ *   <li>{@link com.hypermodel.games.engine.gameDSL.GameTile#getObjectLayer <em>Object Layer</em>}</li>
+ *   <li>{@link com.hypermodel.games.engine.gameDSL.GameTile#isHasTileLayer <em>Has Tile Layer</em>}</li>
+ *   <li>{@link com.hypermodel.games.engine.gameDSL.GameTile#getTileLayer <em>Tile Layer</em>}</li>
  * </ul>
  *
  * @see com.hypermodel.games.engine.gameDSL.GameDSLPackage#getGameTile()
@@ -81,107 +81,107 @@ public interface GameTile extends EObject
   void setId(int value);
 
   /**
-   * Returns the value of the '<em><b>Has Map Level</b></em>' attribute.
+   * Returns the value of the '<em><b>Has Object Layer</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Has Map Level</em>' attribute isn't clear,
+   * If the meaning of the '<em>Has Object Layer</em>' attribute isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Has Map Level</em>' attribute.
-   * @see #setHasMapLevel(boolean)
-   * @see com.hypermodel.games.engine.gameDSL.GameDSLPackage#getGameTile_HasMapLevel()
+   * @return the value of the '<em>Has Object Layer</em>' attribute.
+   * @see #setHasObjectLayer(boolean)
+   * @see com.hypermodel.games.engine.gameDSL.GameDSLPackage#getGameTile_HasObjectLayer()
    * @model
    * @generated
    */
-  boolean isHasMapLevel();
+  boolean isHasObjectLayer();
 
   /**
-   * Sets the value of the '{@link com.hypermodel.games.engine.gameDSL.GameTile#isHasMapLevel <em>Has Map Level</em>}' attribute.
+   * Sets the value of the '{@link com.hypermodel.games.engine.gameDSL.GameTile#isHasObjectLayer <em>Has Object Layer</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Has Map Level</em>' attribute.
-   * @see #isHasMapLevel()
+   * @param value the new value of the '<em>Has Object Layer</em>' attribute.
+   * @see #isHasObjectLayer()
    * @generated
    */
-  void setHasMapLevel(boolean value);
+  void setHasObjectLayer(boolean value);
 
   /**
-   * Returns the value of the '<em><b>Map Level</b></em>' attribute.
+   * Returns the value of the '<em><b>Object Layer</b></em>' reference.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Map Level</em>' attribute isn't clear,
+   * If the meaning of the '<em>Object Layer</em>' reference isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Map Level</em>' attribute.
-   * @see #setMapLevel(int)
-   * @see com.hypermodel.games.engine.gameDSL.GameDSLPackage#getGameTile_MapLevel()
+   * @return the value of the '<em>Object Layer</em>' reference.
+   * @see #setObjectLayer(GameLayer)
+   * @see com.hypermodel.games.engine.gameDSL.GameDSLPackage#getGameTile_ObjectLayer()
    * @model
    * @generated
    */
-  int getMapLevel();
+  GameLayer getObjectLayer();
 
   /**
-   * Sets the value of the '{@link com.hypermodel.games.engine.gameDSL.GameTile#getMapLevel <em>Map Level</em>}' attribute.
+   * Sets the value of the '{@link com.hypermodel.games.engine.gameDSL.GameTile#getObjectLayer <em>Object Layer</em>}' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Map Level</em>' attribute.
-   * @see #getMapLevel()
+   * @param value the new value of the '<em>Object Layer</em>' reference.
+   * @see #getObjectLayer()
    * @generated
    */
-  void setMapLevel(int value);
+  void setObjectLayer(GameLayer value);
 
   /**
-   * Returns the value of the '<em><b>Width</b></em>' attribute.
+   * Returns the value of the '<em><b>Has Tile Layer</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Width</em>' attribute isn't clear,
+   * If the meaning of the '<em>Has Tile Layer</em>' attribute isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Width</em>' attribute.
-   * @see #setWidth(int)
-   * @see com.hypermodel.games.engine.gameDSL.GameDSLPackage#getGameTile_Width()
+   * @return the value of the '<em>Has Tile Layer</em>' attribute.
+   * @see #setHasTileLayer(boolean)
+   * @see com.hypermodel.games.engine.gameDSL.GameDSLPackage#getGameTile_HasTileLayer()
    * @model
    * @generated
    */
-  int getWidth();
+  boolean isHasTileLayer();
 
   /**
-   * Sets the value of the '{@link com.hypermodel.games.engine.gameDSL.GameTile#getWidth <em>Width</em>}' attribute.
+   * Sets the value of the '{@link com.hypermodel.games.engine.gameDSL.GameTile#isHasTileLayer <em>Has Tile Layer</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Width</em>' attribute.
-   * @see #getWidth()
+   * @param value the new value of the '<em>Has Tile Layer</em>' attribute.
+   * @see #isHasTileLayer()
    * @generated
    */
-  void setWidth(int value);
+  void setHasTileLayer(boolean value);
 
   /**
-   * Returns the value of the '<em><b>Height</b></em>' attribute.
+   * Returns the value of the '<em><b>Tile Layer</b></em>' reference.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Height</em>' attribute isn't clear,
+   * If the meaning of the '<em>Tile Layer</em>' reference isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Height</em>' attribute.
-   * @see #setHeight(int)
-   * @see com.hypermodel.games.engine.gameDSL.GameDSLPackage#getGameTile_Height()
+   * @return the value of the '<em>Tile Layer</em>' reference.
+   * @see #setTileLayer(GameLayer)
+   * @see com.hypermodel.games.engine.gameDSL.GameDSLPackage#getGameTile_TileLayer()
    * @model
    * @generated
    */
-  int getHeight();
+  GameLayer getTileLayer();
 
   /**
-   * Sets the value of the '{@link com.hypermodel.games.engine.gameDSL.GameTile#getHeight <em>Height</em>}' attribute.
+   * Sets the value of the '{@link com.hypermodel.games.engine.gameDSL.GameTile#getTileLayer <em>Tile Layer</em>}' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Height</em>' attribute.
-   * @see #getHeight()
+   * @param value the new value of the '<em>Tile Layer</em>' reference.
+   * @see #getTileLayer()
    * @generated
    */
-  void setHeight(int value);
+  void setTileLayer(GameLayer value);
 
 } // GameTile

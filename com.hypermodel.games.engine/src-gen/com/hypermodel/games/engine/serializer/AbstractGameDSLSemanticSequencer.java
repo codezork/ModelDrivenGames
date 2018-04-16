@@ -7,6 +7,7 @@ import com.google.inject.Inject;
 import com.hypermodel.games.engine.gameDSL.GameBodyProperty;
 import com.hypermodel.games.engine.gameDSL.GameDSLPackage;
 import com.hypermodel.games.engine.gameDSL.GameDisplay;
+import com.hypermodel.games.engine.gameDSL.GameLayer;
 import com.hypermodel.games.engine.gameDSL.GameModel;
 import com.hypermodel.games.engine.gameDSL.GamePackage;
 import com.hypermodel.games.engine.gameDSL.GamePlatformConfig;
@@ -105,6 +106,9 @@ public abstract class AbstractGameDSLSemanticSequencer extends XbaseWithAnnotati
 				return; 
 			case GameDSLPackage.GAME_DISPLAY:
 				sequence_GameDisplay(context, (GameDisplay) semanticObject); 
+				return; 
+			case GameDSLPackage.GAME_LAYER:
+				sequence_GameLayer(context, (GameLayer) semanticObject); 
 				return; 
 			case GameDSLPackage.GAME_MODEL:
 				sequence_GameModel(context, (GameModel) semanticObject); 
@@ -502,6 +506,30 @@ public abstract class AbstractGameDSLSemanticSequencer extends XbaseWithAnnotati
 	
 	/**
 	 * Contexts:
+	 *     GameLayer returns GameLayer
+	 *
+	 * Constraint:
+	 *     (name=ValidID index=INT type=GameLayerType)
+	 */
+	protected void sequence_GameLayer(ISerializationContext context, GameLayer semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, GameDSLPackage.Literals.GAME_LAYER__NAME) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, GameDSLPackage.Literals.GAME_LAYER__NAME));
+			if (transientValues.isValueTransient(semanticObject, GameDSLPackage.Literals.GAME_LAYER__INDEX) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, GameDSLPackage.Literals.GAME_LAYER__INDEX));
+			if (transientValues.isValueTransient(semanticObject, GameDSLPackage.Literals.GAME_LAYER__TYPE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, GameDSLPackage.Literals.GAME_LAYER__TYPE));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getGameLayerAccess().getNameValidIDParserRuleCall_2_0(), semanticObject.getName());
+		feeder.accept(grammarAccess.getGameLayerAccess().getIndexINTTerminalRuleCall_4_0(), semanticObject.getIndex());
+		feeder.accept(grammarAccess.getGameLayerAccess().getTypeGameLayerTypeEnumRuleCall_6_0(), semanticObject.getType());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Contexts:
 	 *     GameModel returns GameModel
 	 *
 	 * Constraint:
@@ -602,7 +630,9 @@ public abstract class AbstractGameDSLSemanticSequencer extends XbaseWithAnnotati
 	 *         height=INT 
 	 *         title=STRING 
 	 *         ppm=INT 
-	 *         (scenes+=GameScene | screens+=GameScreen | regions+=GameTextureRegion)*
+	 *         tileWidth=INT 
+	 *         tileHeight=INT 
+	 *         (layers+=GameLayer | scenes+=GameScene | screens+=GameScreen | regions+=GameTextureRegion)*
 	 *     )
 	 */
 	protected void sequence_GameRoot(ISerializationContext context, GameRoot semanticObject) {
@@ -746,9 +776,10 @@ public abstract class AbstractGameDSLSemanticSequencer extends XbaseWithAnnotati
 	 *         (
 	 *             (interactionSprites+=[GameSprite|ID] | interactionTiles+=[GameTile|ID] | properties+=GameBodyProperty | events+=GameSpriteEvent)? 
 	 *             (hasVelocity?='velocity' velocity=GameVector2d)? 
+	 *             (hasLayer?='layer' layer=[GameLayer|ID])? 
+	 *             (hasStartPosition?='startPosition' startPosition=GameVector2d)? 
 	 *             (states+=GameSpriteState* initialState=[GameSpriteState|ID])? 
-	 *             (hasSensor?='sensor' vectors2d+=GameVector2d* sensorID=INT)? 
-	 *             (hasStartPosition?='startPositionX' x=INT y=INT)?
+	 *             (hasSensor?='sensor' vectors2d+=GameVector2d* sensorID=INT)?
 	 *         )+
 	 *     )
 	 */
@@ -783,7 +814,7 @@ public abstract class AbstractGameDSLSemanticSequencer extends XbaseWithAnnotati
 	 *     GameTile returns GameTile
 	 *
 	 * Constraint:
-	 *     (name=ValidID id=INT (hasMapLevel?='mapLevel' mapLevel=INT width=INT height=INT)?)
+	 *     (name=ValidID id=INT (hasObjectLayer?='objectLayer' objectLayer=[GameLayer|ID])? (hasTileLayer?='tileLayer' tileLayer=[GameLayer|ID])?)
 	 */
 	protected void sequence_GameTile(ISerializationContext context, GameTile semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);

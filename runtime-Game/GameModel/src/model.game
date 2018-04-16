@@ -1,4 +1,4 @@
-import com.badlogic.gdx.physics.box2d.Body
+import com.badlogic.gdx.physics.box2d.Body 
 
 package com.hypermodel.games {
 	 
@@ -15,7 +15,18 @@ package com.hypermodel.games {
 			useAccelerometer 
 		}   
 	}
-	game MarioBros width 400 height 208 title "MarioBros" pixelPerMeter 100 
+	game MarioBros screenWidth 400 screenHeight 208 title "MarioBros" pixelPerMeter 100
+	tileWidth 16 tileHeight 16
+	layers {
+		layer background index 0 type tile
+		layer graphic index 1 type tile
+		layer ground index 2 type object
+		layer pipes index 3 type object
+		layer coins index 4 type object
+		layer bricks index 5 type object
+		layer goombas index 6 type object
+		layer turtles index 7 type object
+	}
 	scenes {
 		scene Hud isScore topPadding 10 { 
 			display mario valueType number format "%06d" initialValue 0 addValue
@@ -34,17 +45,17 @@ package com.hypermodel.games {
 	screens {
 		screen PlayScreen 
 		atlas "Mario_and_Enemies"
-		map "level1.tmx" 
+		map "level1.tmx"
 		scene Hud
 		tiles {
-			tile Ground id 0
-			tile Pipe id 5
-			tile Brick id 2 mapLevel 1 width 16 height 16
-			tile Coin id 3 mapLevel 1 width 16 height 16
+			tile Ground collisionId 0 objectLayer ground
+			tile Pipe collisionId 5 objectLayer pipes
+			tile Brick collisionId 2 objectLayer bricks tileLayer graphic
+			tile Coin collisionId 3 objectLayer coins tileLayer graphic
 		}
 		sprites {
-			sprite Mario id 1 radius 6
-			startPositionX 32 startPositionY 32
+			sprite Mario collisionId 1 radius 6
+			startPosition vector(32.0,32.0) 
 			sensor {
 				vector(-2.0,6.0)
 				vector(2.0,6.0)
@@ -128,7 +139,7 @@ package com.hypermodel.games {
 					}
 				}
 			}
-			sprite Goomba id 6 radius 6 velocity vector(-1.0,-2.0)
+			sprite Goomba collisionId 6 radius 6 layer goombas velocity vector(-1.0,-2.0)
 			sensor {
 				vector(-5.0,8.0)
 				vector(5.0,8.0)
@@ -170,7 +181,7 @@ package com.hypermodel.games {
 					if (y) ^velocity.y = -^velocity.y;
 				}
 			}
-			sprite Mushroom id 8 radius 6 velocity vector(0.7,0.0)
+			sprite Mushroom collisionId 8 radius 6 velocity vector(0.7,0.0)
 			interactsDynamic {
 				Mario
 			}

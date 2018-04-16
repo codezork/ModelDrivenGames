@@ -21,6 +21,9 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link com.hypermodel.games.engine.gameDSL.GameRoot#getHeight <em>Height</em>}</li>
  *   <li>{@link com.hypermodel.games.engine.gameDSL.GameRoot#getTitle <em>Title</em>}</li>
  *   <li>{@link com.hypermodel.games.engine.gameDSL.GameRoot#getPpm <em>Ppm</em>}</li>
+ *   <li>{@link com.hypermodel.games.engine.gameDSL.GameRoot#getTileWidth <em>Tile Width</em>}</li>
+ *   <li>{@link com.hypermodel.games.engine.gameDSL.GameRoot#getTileHeight <em>Tile Height</em>}</li>
+ *   <li>{@link com.hypermodel.games.engine.gameDSL.GameRoot#getLayers <em>Layers</em>}</li>
  *   <li>{@link com.hypermodel.games.engine.gameDSL.GameRoot#getScenes <em>Scenes</em>}</li>
  *   <li>{@link com.hypermodel.games.engine.gameDSL.GameRoot#getScreens <em>Screens</em>}</li>
  *   <li>{@link com.hypermodel.games.engine.gameDSL.GameRoot#getRegions <em>Regions</em>}</li>
@@ -161,6 +164,74 @@ public interface GameRoot extends EObject
    * @generated
    */
   void setPpm(int value);
+
+  /**
+   * Returns the value of the '<em><b>Tile Width</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Tile Width</em>' attribute isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Tile Width</em>' attribute.
+   * @see #setTileWidth(int)
+   * @see com.hypermodel.games.engine.gameDSL.GameDSLPackage#getGameRoot_TileWidth()
+   * @model
+   * @generated
+   */
+  int getTileWidth();
+
+  /**
+   * Sets the value of the '{@link com.hypermodel.games.engine.gameDSL.GameRoot#getTileWidth <em>Tile Width</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Tile Width</em>' attribute.
+   * @see #getTileWidth()
+   * @generated
+   */
+  void setTileWidth(int value);
+
+  /**
+   * Returns the value of the '<em><b>Tile Height</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Tile Height</em>' attribute isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Tile Height</em>' attribute.
+   * @see #setTileHeight(int)
+   * @see com.hypermodel.games.engine.gameDSL.GameDSLPackage#getGameRoot_TileHeight()
+   * @model
+   * @generated
+   */
+  int getTileHeight();
+
+  /**
+   * Sets the value of the '{@link com.hypermodel.games.engine.gameDSL.GameRoot#getTileHeight <em>Tile Height</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Tile Height</em>' attribute.
+   * @see #getTileHeight()
+   * @generated
+   */
+  void setTileHeight(int value);
+
+  /**
+   * Returns the value of the '<em><b>Layers</b></em>' containment reference list.
+   * The list contents are of type {@link com.hypermodel.games.engine.gameDSL.GameLayer}.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Layers</em>' containment reference list isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Layers</em>' containment reference list.
+   * @see com.hypermodel.games.engine.gameDSL.GameDSLPackage#getGameRoot_Layers()
+   * @model containment="true"
+   * @generated
+   */
+  EList<GameLayer> getLayers();
 
   /**
    * Returns the value of the '<em><b>Scenes</b></em>' containment reference list.

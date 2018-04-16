@@ -4,6 +4,7 @@
 package com.hypermodel.games.engine.gameDSL.impl;
 
 import com.hypermodel.games.engine.gameDSL.GameDSLPackage;
+import com.hypermodel.games.engine.gameDSL.GameLayer;
 import com.hypermodel.games.engine.gameDSL.GameRoot;
 import com.hypermodel.games.engine.gameDSL.GameScene;
 import com.hypermodel.games.engine.gameDSL.GameScreen;
@@ -38,6 +39,9 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link com.hypermodel.games.engine.gameDSL.impl.GameRootImpl#getHeight <em>Height</em>}</li>
  *   <li>{@link com.hypermodel.games.engine.gameDSL.impl.GameRootImpl#getTitle <em>Title</em>}</li>
  *   <li>{@link com.hypermodel.games.engine.gameDSL.impl.GameRootImpl#getPpm <em>Ppm</em>}</li>
+ *   <li>{@link com.hypermodel.games.engine.gameDSL.impl.GameRootImpl#getTileWidth <em>Tile Width</em>}</li>
+ *   <li>{@link com.hypermodel.games.engine.gameDSL.impl.GameRootImpl#getTileHeight <em>Tile Height</em>}</li>
+ *   <li>{@link com.hypermodel.games.engine.gameDSL.impl.GameRootImpl#getLayers <em>Layers</em>}</li>
  *   <li>{@link com.hypermodel.games.engine.gameDSL.impl.GameRootImpl#getScenes <em>Scenes</em>}</li>
  *   <li>{@link com.hypermodel.games.engine.gameDSL.impl.GameRootImpl#getScreens <em>Screens</em>}</li>
  *   <li>{@link com.hypermodel.games.engine.gameDSL.impl.GameRootImpl#getRegions <em>Regions</em>}</li>
@@ -146,6 +150,56 @@ public class GameRootImpl extends MinimalEObjectImpl.Container implements GameRo
    * @ordered
    */
   protected int ppm = PPM_EDEFAULT;
+
+  /**
+   * The default value of the '{@link #getTileWidth() <em>Tile Width</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getTileWidth()
+   * @generated
+   * @ordered
+   */
+  protected static final int TILE_WIDTH_EDEFAULT = 0;
+
+  /**
+   * The cached value of the '{@link #getTileWidth() <em>Tile Width</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getTileWidth()
+   * @generated
+   * @ordered
+   */
+  protected int tileWidth = TILE_WIDTH_EDEFAULT;
+
+  /**
+   * The default value of the '{@link #getTileHeight() <em>Tile Height</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getTileHeight()
+   * @generated
+   * @ordered
+   */
+  protected static final int TILE_HEIGHT_EDEFAULT = 0;
+
+  /**
+   * The cached value of the '{@link #getTileHeight() <em>Tile Height</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getTileHeight()
+   * @generated
+   * @ordered
+   */
+  protected int tileHeight = TILE_HEIGHT_EDEFAULT;
+
+  /**
+   * The cached value of the '{@link #getLayers() <em>Layers</em>}' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getLayers()
+   * @generated
+   * @ordered
+   */
+  protected EList<GameLayer> layers;
 
   /**
    * The cached value of the '{@link #getScenes() <em>Scenes</em>}' containment reference list.
@@ -318,6 +372,66 @@ public class GameRootImpl extends MinimalEObjectImpl.Container implements GameRo
    * <!-- end-user-doc -->
    * @generated
    */
+  public int getTileWidth()
+  {
+    return tileWidth;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setTileWidth(int newTileWidth)
+  {
+    int oldTileWidth = tileWidth;
+    tileWidth = newTileWidth;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, GameDSLPackage.GAME_ROOT__TILE_WIDTH, oldTileWidth, tileWidth));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public int getTileHeight()
+  {
+    return tileHeight;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setTileHeight(int newTileHeight)
+  {
+    int oldTileHeight = tileHeight;
+    tileHeight = newTileHeight;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, GameDSLPackage.GAME_ROOT__TILE_HEIGHT, oldTileHeight, tileHeight));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EList<GameLayer> getLayers()
+  {
+    if (layers == null)
+    {
+      layers = new EObjectContainmentEList<GameLayer>(GameLayer.class, this, GameDSLPackage.GAME_ROOT__LAYERS);
+    }
+    return layers;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EList<GameScene> getScenes()
   {
     if (scenes == null)
@@ -365,6 +479,8 @@ public class GameRootImpl extends MinimalEObjectImpl.Container implements GameRo
   {
     switch (featureID)
     {
+      case GameDSLPackage.GAME_ROOT__LAYERS:
+        return ((InternalEList<?>)getLayers()).basicRemove(otherEnd, msgs);
       case GameDSLPackage.GAME_ROOT__SCENES:
         return ((InternalEList<?>)getScenes()).basicRemove(otherEnd, msgs);
       case GameDSLPackage.GAME_ROOT__SCREENS:
@@ -395,6 +511,12 @@ public class GameRootImpl extends MinimalEObjectImpl.Container implements GameRo
         return getTitle();
       case GameDSLPackage.GAME_ROOT__PPM:
         return getPpm();
+      case GameDSLPackage.GAME_ROOT__TILE_WIDTH:
+        return getTileWidth();
+      case GameDSLPackage.GAME_ROOT__TILE_HEIGHT:
+        return getTileHeight();
+      case GameDSLPackage.GAME_ROOT__LAYERS:
+        return getLayers();
       case GameDSLPackage.GAME_ROOT__SCENES:
         return getScenes();
       case GameDSLPackage.GAME_ROOT__SCREENS:
@@ -430,6 +552,16 @@ public class GameRootImpl extends MinimalEObjectImpl.Container implements GameRo
         return;
       case GameDSLPackage.GAME_ROOT__PPM:
         setPpm((Integer)newValue);
+        return;
+      case GameDSLPackage.GAME_ROOT__TILE_WIDTH:
+        setTileWidth((Integer)newValue);
+        return;
+      case GameDSLPackage.GAME_ROOT__TILE_HEIGHT:
+        setTileHeight((Integer)newValue);
+        return;
+      case GameDSLPackage.GAME_ROOT__LAYERS:
+        getLayers().clear();
+        getLayers().addAll((Collection<? extends GameLayer>)newValue);
         return;
       case GameDSLPackage.GAME_ROOT__SCENES:
         getScenes().clear();
@@ -472,6 +604,15 @@ public class GameRootImpl extends MinimalEObjectImpl.Container implements GameRo
       case GameDSLPackage.GAME_ROOT__PPM:
         setPpm(PPM_EDEFAULT);
         return;
+      case GameDSLPackage.GAME_ROOT__TILE_WIDTH:
+        setTileWidth(TILE_WIDTH_EDEFAULT);
+        return;
+      case GameDSLPackage.GAME_ROOT__TILE_HEIGHT:
+        setTileHeight(TILE_HEIGHT_EDEFAULT);
+        return;
+      case GameDSLPackage.GAME_ROOT__LAYERS:
+        getLayers().clear();
+        return;
       case GameDSLPackage.GAME_ROOT__SCENES:
         getScenes().clear();
         return;
@@ -505,6 +646,12 @@ public class GameRootImpl extends MinimalEObjectImpl.Container implements GameRo
         return TITLE_EDEFAULT == null ? title != null : !TITLE_EDEFAULT.equals(title);
       case GameDSLPackage.GAME_ROOT__PPM:
         return ppm != PPM_EDEFAULT;
+      case GameDSLPackage.GAME_ROOT__TILE_WIDTH:
+        return tileWidth != TILE_WIDTH_EDEFAULT;
+      case GameDSLPackage.GAME_ROOT__TILE_HEIGHT:
+        return tileHeight != TILE_HEIGHT_EDEFAULT;
+      case GameDSLPackage.GAME_ROOT__LAYERS:
+        return layers != null && !layers.isEmpty();
       case GameDSLPackage.GAME_ROOT__SCENES:
         return scenes != null && !scenes.isEmpty();
       case GameDSLPackage.GAME_ROOT__SCREENS:
@@ -536,6 +683,10 @@ public class GameRootImpl extends MinimalEObjectImpl.Container implements GameRo
     result.append(title);
     result.append(", ppm: ");
     result.append(ppm);
+    result.append(", tileWidth: ");
+    result.append(tileWidth);
+    result.append(", tileHeight: ");
+    result.append(tileHeight);
     result.append(')');
     return result.toString();
   }
