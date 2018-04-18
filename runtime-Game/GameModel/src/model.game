@@ -25,7 +25,7 @@ package com.hypermodel.games {
 		layer coins index 4 type object
 		layer bricks index 5 type object
 		layer goombas index 6 type object
-		layer turtles index 7 type object
+		layer turtles index 7 type object 
 	}
 	scenes {
 		scene Hud isScore topPadding 10 { 
