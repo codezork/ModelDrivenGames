@@ -30,8 +30,14 @@ import com.badlogic.gdx.physics.box2d.Body
 import com.badlogic.gdx.physics.box2d.BodyDef
 import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer
 import com.badlogic.gdx.physics.box2d.CircleShape
+import com.badlogic.gdx.physics.box2d.Contact
+import com.badlogic.gdx.physics.box2d.ContactImpulse
+import com.badlogic.gdx.physics.box2d.ContactListener
 import com.badlogic.gdx.physics.box2d.EdgeShape
+import com.badlogic.gdx.physics.box2d.Filter
+import com.badlogic.gdx.physics.box2d.Fixture
 import com.badlogic.gdx.physics.box2d.FixtureDef
+import com.badlogic.gdx.physics.box2d.Manifold
 import com.badlogic.gdx.physics.box2d.PolygonShape
 import com.badlogic.gdx.physics.box2d.World
 import com.badlogic.gdx.scenes.scene2d.Stage
@@ -43,6 +49,8 @@ import com.badlogic.gdx.utils.viewport.FitViewport
 import com.badlogic.gdx.utils.viewport.Viewport
 import com.google.gwt.event.logical.shared.ResizeEvent
 import com.google.gwt.event.logical.shared.ResizeHandler
+import com.hypermodel.games.engine.gameDSL.GameActor
+import com.hypermodel.games.engine.gameDSL.GameContactType
 import com.hypermodel.games.engine.gameDSL.GameDisplayValueType
 import com.hypermodel.games.engine.gameDSL.GamePackage
 import com.hypermodel.games.engine.gameDSL.GameRoot
@@ -58,6 +66,7 @@ import org.eclipse.xtext.common.types.JvmField
 import org.eclipse.xtext.common.types.JvmGenericType
 import org.eclipse.xtext.common.types.JvmVisibility
 import org.eclipse.xtext.naming.IQualifiedNameProvider
+import org.eclipse.xtext.xbase.compiler.output.ITreeAppendable
 import org.eclipse.xtext.xbase.jvmmodel.AbstractModelInferrer
 import org.eclipse.xtext.xbase.jvmmodel.IJvmDeclaredTypeAcceptor
 import org.eclipse.xtext.xbase.jvmmodel.JvmTypesBuilder
@@ -88,6 +97,8 @@ class GameDSLJvmModelInferrer extends AbstractModelInferrer {
 			game.scenes.forEach[acceptor.createScene(gamePkg, rootClass, it)]
 			// screens
 			game.screens.forEach[acceptor.createScreen(gamePkg, rootClass, it, game)]
+			// contactListener
+			acceptor.createContactListener(gamePkg, game)
 		]
 	}
 
@@ -907,11 +918,12 @@ class GameDSLJvmModelInferrer extends AbstractModelInferrer {
 				fdef.filter.categoryBits = «(2**sprite.id) as int»;
 				''')
 				var mask = 0.0
-				for(s:sprite.interactionSprites) {
-					mask = mask + (2**s.id)
-				}
-				for(t:sprite.interactionTiles) {
-					mask = mask + (2**t.id)
+				for(actor:sprite.actors) {
+					if(actor.sprite !== null) {
+						mask = mask + (2**actor.sprite.id)
+					} else if(actor.tile !== null) {
+						mask = mask + (2**actor.tile.id)
+					}
 				}
 				append('''
 				fdef.filter.maskBits = «mask as int»;
@@ -1031,7 +1043,8 @@ class GameDSLJvmModelInferrer extends AbstractModelInferrer {
 						shape.setAsBox(bounds.getWidth() / 2 / «gameClass.simpleName».PPM, bounds.getHeight() / 2 / «gameClass.simpleName».PPM);
 						fdef.filter.categoryBits = «(2**tile.id) as int»;
 						fdef.shape = shape;
-						body.createFixture(fdef).setUserData(this);
+						fixture = body.createFixture(fdef);
+						fixture.setUserData(this);
 						''')
 					]
 				]
@@ -1057,9 +1070,16 @@ class GameDSLJvmModelInferrer extends AbstractModelInferrer {
 		type.members += field
 		field = tile.toField("object", MapObject.typeRef)
 		type.members += field
+		field = tile.toField("fixture", Fixture.typeRef)
+		type.members += field
 	}
 
 	def void toOperations(JvmGenericType type, GameTile tile, JvmGenericType gameClass, GameRoot root) {
+		type.members += tile.toMethod("getMap", TiledMap.typeRef, [
+			body = [
+				append('''return map;''')
+			]
+		])
 		type.members += tile.toMethod("getCell", TiledMapTileLayer.Cell.typeRef, [
 			body = [
 				append(TiledMapTileLayer)
@@ -1069,9 +1089,22 @@ class GameDSLJvmModelInferrer extends AbstractModelInferrer {
 				''')
 			]
 		])
+		type.members += tile.toMethod("setCategoryFilter", Void.TYPE.typeRef, [
+			parameters += tile.toParameter("filterBit", int.typeRef)
+			body = [
+				append(Filter)
+				append(''' filter = new Filter();
+				''')
+				append(
+				'''
+				filter.categoryBits = (short)filterBit;
+				fixture.setFilterData(filter);
+				''')
+			]
+		])
 	}
 
-	// ceator
+	// creator
 	def void createCreator(IJvmDeclaredTypeAcceptor acceptor, GamePackage gamePkg, JvmGenericType gameClass, JvmGenericType screenClass, GameScreen screen, GameRoot game) {
 		acceptor.accept(
 			gamePkg.toClass(gamePkg.fullyQualifiedName+".WorldCreator"),
@@ -1165,5 +1198,120 @@ class GameDSLJvmModelInferrer extends AbstractModelInferrer {
 				
 			]
 		])
+	}
+
+	// contact
+	def void createContactListener(IJvmDeclaredTypeAcceptor acceptor, GamePackage gamePkg, GameRoot game) {
+		acceptor.accept(
+			gamePkg.toClass(gamePkg.fullyQualifiedName+".WorldContact"),
+			[
+				superTypes += ContactListener.typeRef
+				packageName = game.fullyQualifiedName.skipLast(1).toString
+				documentation = genInfo
+				it.toContactOperations(game)
+			]
+		)
+	}
+
+	def void toContactOperations(JvmGenericType type, GameRoot game) {
+		type.members += game.toMethod("beginContact", Void.TYPE.typeRef, [
+			parameters += game.toParameter("contact", Contact.typeRef)
+			body = [
+				append(Fixture)
+				append(
+				''' fixA = contact.getFixtureA();
+				''')
+				append(
+				'''
+				Fixture fixB = contact.getFixtureB();
+				int cDef = fixA.getFilterData().categoryBits | fixB.getFilterData().categoryBits;
+				switch(cDef) {
+				''')
+				val current = it
+				game.screens.forEach[screen|
+					screen.sprites.forEach[sprite|
+						sprite.actors.filter[it.hasCollision && it.beginContact !== null].forEach[actor|
+							current.append(decodeCollision(actor, sprite, actor.beginContact.name))
+						]
+					]
+				]
+				append(
+				'''
+				}
+				''')
+			]
+		])
+		type.members += game.toMethod("endContact", Void.TYPE.typeRef, [
+			parameters += game.toParameter("contact", Contact.typeRef)
+			body = [
+				append(Fixture)
+				append(
+				''' fixA = contact.getFixtureA();
+				''')
+				append(
+				'''
+				Fixture fixB = contact.getFixtureB();
+				int cDef = fixA.getFilterData().categoryBits | fixB.getFilterData().categoryBits;
+				switch(cDef) {
+				''')
+				val current = it
+				game.screens.forEach[screen|
+					screen.sprites.forEach[sprite|
+						sprite.actors.filter[it.hasCollision && it.endContact !== null].forEach[actor|
+							current.append(decodeCollision(actor, sprite, actor.endContact.name))
+						]
+					]
+				]
+				append(
+				'''
+				}
+				''')
+			]
+		])
+		type.members += game.toMethod("preSolve", Void.TYPE.typeRef, [
+			parameters += game.toParameter("contact", Contact.typeRef)
+			parameters += game.toParameter("oldManifold", Manifold.typeRef)
+			body = [
+				append('''
+				''')
+			]
+		])
+		type.members += game.toMethod("postSolve", Void.TYPE.typeRef, [
+			parameters += game.toParameter("contact", Contact.typeRef)
+			parameters += game.toParameter("impulse", ContactImpulse.typeRef)
+			body = [
+				append('''
+				''')
+			]
+		])
+	}
+	
+	protected def decodeCollision(GameActor actor, GameSprite sprite, String methodName) {
+		var id1 = 0
+		if(actor.typeA==GameContactType.FIXTURE) {
+			id1 = sprite.id
+		} else if(actor.typeA==GameContactType.SENSOR) {
+			id1 = sprite.sensorID 
+		}
+		var id2 = 0
+		if(actor.sprite !== null) {
+			if(actor.typeB==GameContactType.FIXTURE) {
+				id2 = actor.sprite.id
+			} else if(actor.typeB==GameContactType.SENSOR) {
+				id2 = actor.sprite.sensorID
+			}
+		} else if (actor.tile !== null) {
+			id2 = actor.tile.id
+		}
+		return
+		'''
+		case «id1+id2»:
+			if(fixA.getFilterData().categoryBits == «id1») {
+				((«sprite.fullyQualifiedName»)fixA.getUserData()).«methodName»((«IF actor.sprite!==null»«actor.sprite.name.toFirstUpper»«ELSEIF actor.tile!==null»«actor.tile.fullyQualifiedName»«ENDIF»)fixB.getUserData());
+			} else {
+				((«sprite.fullyQualifiedName»)fixB.getUserData()).«methodName»((«IF actor.sprite!==null»«actor.sprite.name.toFirstUpper»«ELSEIF actor.tile!==null»«actor.tile.fullyQualifiedName»«ENDIF»)fixA.getUserData());
+			}
+			break;
+		'''
 	}
 }

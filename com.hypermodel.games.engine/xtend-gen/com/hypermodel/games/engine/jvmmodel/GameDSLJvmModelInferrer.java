@@ -30,8 +30,14 @@ import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.physics.box2d.BodyDef;
 import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
 import com.badlogic.gdx.physics.box2d.CircleShape;
+import com.badlogic.gdx.physics.box2d.Contact;
+import com.badlogic.gdx.physics.box2d.ContactImpulse;
+import com.badlogic.gdx.physics.box2d.ContactListener;
 import com.badlogic.gdx.physics.box2d.EdgeShape;
+import com.badlogic.gdx.physics.box2d.Filter;
+import com.badlogic.gdx.physics.box2d.Fixture;
 import com.badlogic.gdx.physics.box2d.FixtureDef;
+import com.badlogic.gdx.physics.box2d.Manifold;
 import com.badlogic.gdx.physics.box2d.PolygonShape;
 import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.scenes.scene2d.Stage;
@@ -44,16 +50,18 @@ import com.badlogic.gdx.utils.viewport.Viewport;
 import com.google.common.base.Objects;
 import com.google.gwt.event.logical.shared.ResizeEvent;
 import com.google.gwt.event.logical.shared.ResizeHandler;
+import com.hypermodel.games.engine.gameDSL.GameActor;
 import com.hypermodel.games.engine.gameDSL.GameBodyProperty;
+import com.hypermodel.games.engine.gameDSL.GameContactType;
 import com.hypermodel.games.engine.gameDSL.GameDisplay;
 import com.hypermodel.games.engine.gameDSL.GameDisplayValueType;
+import com.hypermodel.games.engine.gameDSL.GameEvent;
 import com.hypermodel.games.engine.gameDSL.GamePackage;
 import com.hypermodel.games.engine.gameDSL.GameRoot;
 import com.hypermodel.games.engine.gameDSL.GameScene;
 import com.hypermodel.games.engine.gameDSL.GameScreen;
 import com.hypermodel.games.engine.gameDSL.GameSprite;
 import com.hypermodel.games.engine.gameDSL.GameSpriteAnimation;
-import com.hypermodel.games.engine.gameDSL.GameSpriteEvent;
 import com.hypermodel.games.engine.gameDSL.GameSpriteStand;
 import com.hypermodel.games.engine.gameDSL.GameSpriteState;
 import com.hypermodel.games.engine.gameDSL.GameTile;
@@ -130,6 +138,7 @@ public class GameDSLJvmModelInferrer extends AbstractModelInferrer {
         this.createScreen(acceptor, gamePkg, rootClass, it, game);
       };
       game.getScreens().forEach(_function_5);
+      this.createContactListener(acceptor, gamePkg, game);
     };
     gamePkg.getGames().forEach(_function);
   }
@@ -2013,19 +2022,25 @@ public class GameDSLJvmModelInferrer extends AbstractModelInferrer {
         _builder_5.newLineIfNotEmpty();
         it_1.append(_builder_5);
         double mask = 0.0;
-        EList<GameSprite> _interactionSprites = sprite.getInteractionSprites();
-        for (final GameSprite s : _interactionSprites) {
-          int _id_1 = s.getId();
-          double _power_1 = Math.pow(2, _id_1);
-          double _plus = (mask + _power_1);
-          mask = _plus;
-        }
-        EList<GameTile> _interactionTiles = sprite.getInteractionTiles();
-        for (final GameTile t : _interactionTiles) {
-          int _id_2 = t.getId();
-          double _power_2 = Math.pow(2, _id_2);
-          double _plus_1 = (mask + _power_2);
-          mask = _plus_1;
+        EList<GameActor> _actors = sprite.getActors();
+        for (final GameActor actor : _actors) {
+          GameSprite _sprite = actor.getSprite();
+          boolean _tripleNotEquals = (_sprite != null);
+          if (_tripleNotEquals) {
+            int _id_1 = actor.getSprite().getId();
+            double _power_1 = Math.pow(2, _id_1);
+            double _plus = (mask + _power_1);
+            mask = _plus;
+          } else {
+            GameTile _tile = actor.getTile();
+            boolean _tripleNotEquals_1 = (_tile != null);
+            if (_tripleNotEquals_1) {
+              int _id_2 = actor.getTile().getId();
+              double _power_2 = Math.pow(2, _id_2);
+              double _plus_1 = (mask + _power_2);
+              mask = _plus_1;
+            }
+          }
         }
         StringConcatenation _builder_6 = new StringConcatenation();
         _builder_6.append("fdef.filter.maskBits = ");
@@ -2142,8 +2157,8 @@ public class GameDSLJvmModelInferrer extends AbstractModelInferrer {
           it_1.append(_builder_10);
         }
         GameSpriteAnimation _animation = sprite.getInitialState().getAnimation();
-        boolean _tripleNotEquals = (_animation != null);
-        if (_tripleNotEquals) {
+        boolean _tripleNotEquals_2 = (_animation != null);
+        if (_tripleNotEquals_2) {
           boolean _isHasFrames = sprite.getInitialState().getAnimation().isHasFrames();
           if (_isHasFrames) {
             StringConcatenation _builder_11 = new StringConcatenation();
@@ -2184,8 +2199,8 @@ public class GameDSLJvmModelInferrer extends AbstractModelInferrer {
           }
         }
         GameSpriteStand _stand = sprite.getInitialState().getStand();
-        boolean _tripleNotEquals_1 = (_stand != null);
-        if (_tripleNotEquals_1) {
+        boolean _tripleNotEquals_3 = (_stand != null);
+        if (_tripleNotEquals_3) {
           StringConcatenation _builder_13 = new StringConcatenation();
           _builder_13.append("setBounds(position.x, position.y, ");
           int _width_2 = sprite.getInitialState().getStand().getRegion().getWidth();
@@ -2208,8 +2223,8 @@ public class GameDSLJvmModelInferrer extends AbstractModelInferrer {
     };
     JvmOperation _method_5 = this._jvmTypesBuilder.toMethod(sprite, _builder_2.toString(), this._typeReferenceBuilder.typeRef(Void.TYPE), _function_11);
     this._jvmTypesBuilder.<JvmOperation>operator_add(_members_5, _method_5);
-    final Consumer<GameSpriteEvent> _function_12 = (GameSpriteEvent it) -> {
-      final GameSpriteEvent event = it;
+    final Consumer<GameEvent> _function_12 = (GameEvent it) -> {
+      final GameEvent event = it;
       EList<JvmMember> _members_6 = type.getMembers();
       StringConcatenation _builder_3 = new StringConcatenation();
       String _name = it.getName();
@@ -2306,7 +2321,9 @@ public class GameDSLJvmModelInferrer extends AbstractModelInferrer {
           _builder_5.newLineIfNotEmpty();
           _builder_5.append("fdef.shape = shape;");
           _builder_5.newLine();
-          _builder_5.append("body.createFixture(fdef).setUserData(this);");
+          _builder_5.append("fixture = body.createFixture(fdef);");
+          _builder_5.newLine();
+          _builder_5.append("fixture.setUserData(this);");
           _builder_5.newLine();
           it_2.append(_builder_5);
         };
@@ -2345,12 +2362,26 @@ public class GameDSLJvmModelInferrer extends AbstractModelInferrer {
     field = this._jvmTypesBuilder.toField(tile, "object", this._typeReferenceBuilder.typeRef(MapObject.class));
     EList<JvmMember> _members_6 = type.getMembers();
     this._jvmTypesBuilder.<JvmField>operator_add(_members_6, field);
+    field = this._jvmTypesBuilder.toField(tile, "fixture", this._typeReferenceBuilder.typeRef(Fixture.class));
+    EList<JvmMember> _members_7 = type.getMembers();
+    this._jvmTypesBuilder.<JvmField>operator_add(_members_7, field);
   }
   
   public void toOperations(final JvmGenericType type, final GameTile tile, final JvmGenericType gameClass, final GameRoot root) {
     EList<JvmMember> _members = type.getMembers();
     final Procedure1<JvmOperation> _function = (JvmOperation it) -> {
       final Procedure1<ITreeAppendable> _function_1 = (ITreeAppendable it_1) -> {
+        StringConcatenation _builder = new StringConcatenation();
+        _builder.append("return map;");
+        it_1.append(_builder);
+      };
+      this._jvmTypesBuilder.setBody(it, _function_1);
+    };
+    JvmOperation _method = this._jvmTypesBuilder.toMethod(tile, "getMap", this._typeReferenceBuilder.typeRef(TiledMap.class), _function);
+    this._jvmTypesBuilder.<JvmOperation>operator_add(_members, _method);
+    EList<JvmMember> _members_1 = type.getMembers();
+    final Procedure1<JvmOperation> _function_1 = (JvmOperation it) -> {
+      final Procedure1<ITreeAppendable> _function_2 = (ITreeAppendable it_1) -> {
         it_1.append(TiledMapTileLayer.class);
         StringConcatenation _builder = new StringConcatenation();
         _builder.append(" ");
@@ -2377,10 +2408,33 @@ public class GameDSLJvmModelInferrer extends AbstractModelInferrer {
         _builder_1.newLineIfNotEmpty();
         it_1.append(_builder_1);
       };
-      this._jvmTypesBuilder.setBody(it, _function_1);
+      this._jvmTypesBuilder.setBody(it, _function_2);
     };
-    JvmOperation _method = this._jvmTypesBuilder.toMethod(tile, "getCell", this._typeReferenceBuilder.typeRef(TiledMapTileLayer.Cell.class), _function);
-    this._jvmTypesBuilder.<JvmOperation>operator_add(_members, _method);
+    JvmOperation _method_1 = this._jvmTypesBuilder.toMethod(tile, "getCell", this._typeReferenceBuilder.typeRef(TiledMapTileLayer.Cell.class), _function_1);
+    this._jvmTypesBuilder.<JvmOperation>operator_add(_members_1, _method_1);
+    EList<JvmMember> _members_2 = type.getMembers();
+    final Procedure1<JvmOperation> _function_2 = (JvmOperation it) -> {
+      EList<JvmFormalParameter> _parameters = it.getParameters();
+      JvmFormalParameter _parameter = this._jvmTypesBuilder.toParameter(tile, "filterBit", this._typeReferenceBuilder.typeRef(int.class));
+      this._jvmTypesBuilder.<JvmFormalParameter>operator_add(_parameters, _parameter);
+      final Procedure1<ITreeAppendable> _function_3 = (ITreeAppendable it_1) -> {
+        it_1.append(Filter.class);
+        StringConcatenation _builder = new StringConcatenation();
+        _builder.append(" ");
+        _builder.append("filter = new Filter();");
+        _builder.newLine();
+        it_1.append(_builder);
+        StringConcatenation _builder_1 = new StringConcatenation();
+        _builder_1.append("filter.categoryBits = (short)filterBit;");
+        _builder_1.newLine();
+        _builder_1.append("fixture.setFilterData(filter);");
+        _builder_1.newLine();
+        it_1.append(_builder_1);
+      };
+      this._jvmTypesBuilder.setBody(it, _function_3);
+    };
+    JvmOperation _method_2 = this._jvmTypesBuilder.toMethod(tile, "setCategoryFilter", this._typeReferenceBuilder.typeRef(Void.TYPE), _function_2);
+    this._jvmTypesBuilder.<JvmOperation>operator_add(_members_2, _method_2);
   }
   
   public void createCreator(final IJvmDeclaredTypeAcceptor acceptor, final GamePackage gamePkg, final JvmGenericType gameClass, final JvmGenericType screenClass, final GameScreen screen, final GameRoot game) {
@@ -2567,6 +2621,247 @@ public class GameDSLJvmModelInferrer extends AbstractModelInferrer {
     };
     JvmOperation _method = this._jvmTypesBuilder.toMethod(game, "getSprites", this._typeReferenceBuilder.typeRef(Array.class, this._typeReferenceBuilder.typeRef(Sprite.class)), _function);
     this._jvmTypesBuilder.<JvmOperation>operator_add(_members, _method);
+  }
+  
+  public void createContactListener(final IJvmDeclaredTypeAcceptor acceptor, final GamePackage gamePkg, final GameRoot game) {
+    QualifiedName _fullyQualifiedName = this._iQualifiedNameProvider.getFullyQualifiedName(gamePkg);
+    String _plus = (_fullyQualifiedName + ".WorldContact");
+    final Procedure1<JvmGenericType> _function = (JvmGenericType it) -> {
+      EList<JvmTypeReference> _superTypes = it.getSuperTypes();
+      JvmTypeReference _typeRef = this._typeReferenceBuilder.typeRef(ContactListener.class);
+      this._jvmTypesBuilder.<JvmTypeReference>operator_add(_superTypes, _typeRef);
+      it.setPackageName(this._iQualifiedNameProvider.getFullyQualifiedName(game).skipLast(1).toString());
+      this._jvmTypesBuilder.setDocumentation(it, this.genInfo);
+      this.toContactOperations(it, game);
+    };
+    acceptor.<JvmGenericType>accept(
+      this._jvmTypesBuilder.toClass(gamePkg, _plus), _function);
+  }
+  
+  public void toContactOperations(final JvmGenericType type, final GameRoot game) {
+    EList<JvmMember> _members = type.getMembers();
+    final Procedure1<JvmOperation> _function = (JvmOperation it) -> {
+      EList<JvmFormalParameter> _parameters = it.getParameters();
+      JvmFormalParameter _parameter = this._jvmTypesBuilder.toParameter(game, "contact", this._typeReferenceBuilder.typeRef(Contact.class));
+      this._jvmTypesBuilder.<JvmFormalParameter>operator_add(_parameters, _parameter);
+      final Procedure1<ITreeAppendable> _function_1 = (ITreeAppendable it_1) -> {
+        it_1.append(Fixture.class);
+        StringConcatenation _builder = new StringConcatenation();
+        _builder.append(" ");
+        _builder.append("fixA = contact.getFixtureA();");
+        _builder.newLine();
+        it_1.append(_builder);
+        StringConcatenation _builder_1 = new StringConcatenation();
+        _builder_1.append("Fixture fixB = contact.getFixtureB();");
+        _builder_1.newLine();
+        _builder_1.append("int cDef = fixA.getFilterData().categoryBits | fixB.getFilterData().categoryBits;");
+        _builder_1.newLine();
+        _builder_1.append("switch(cDef) {");
+        _builder_1.newLine();
+        it_1.append(_builder_1);
+        final ITreeAppendable current = it_1;
+        final Consumer<GameScreen> _function_2 = (GameScreen screen) -> {
+          final Consumer<GameSprite> _function_3 = (GameSprite sprite) -> {
+            final Function1<GameActor, Boolean> _function_4 = (GameActor it_2) -> {
+              return Boolean.valueOf((it_2.isHasCollision() && (it_2.getBeginContact() != null)));
+            };
+            final Consumer<GameActor> _function_5 = (GameActor actor) -> {
+              current.append(this.decodeCollision(actor, sprite, actor.getBeginContact().getName()));
+            };
+            IterableExtensions.<GameActor>filter(sprite.getActors(), _function_4).forEach(_function_5);
+          };
+          screen.getSprites().forEach(_function_3);
+        };
+        game.getScreens().forEach(_function_2);
+        StringConcatenation _builder_2 = new StringConcatenation();
+        _builder_2.append("}");
+        _builder_2.newLine();
+        it_1.append(_builder_2);
+      };
+      this._jvmTypesBuilder.setBody(it, _function_1);
+    };
+    JvmOperation _method = this._jvmTypesBuilder.toMethod(game, "beginContact", this._typeReferenceBuilder.typeRef(Void.TYPE), _function);
+    this._jvmTypesBuilder.<JvmOperation>operator_add(_members, _method);
+    EList<JvmMember> _members_1 = type.getMembers();
+    final Procedure1<JvmOperation> _function_1 = (JvmOperation it) -> {
+      EList<JvmFormalParameter> _parameters = it.getParameters();
+      JvmFormalParameter _parameter = this._jvmTypesBuilder.toParameter(game, "contact", this._typeReferenceBuilder.typeRef(Contact.class));
+      this._jvmTypesBuilder.<JvmFormalParameter>operator_add(_parameters, _parameter);
+      final Procedure1<ITreeAppendable> _function_2 = (ITreeAppendable it_1) -> {
+        it_1.append(Fixture.class);
+        StringConcatenation _builder = new StringConcatenation();
+        _builder.append(" ");
+        _builder.append("fixA = contact.getFixtureA();");
+        _builder.newLine();
+        it_1.append(_builder);
+        StringConcatenation _builder_1 = new StringConcatenation();
+        _builder_1.append("Fixture fixB = contact.getFixtureB();");
+        _builder_1.newLine();
+        _builder_1.append("int cDef = fixA.getFilterData().categoryBits | fixB.getFilterData().categoryBits;");
+        _builder_1.newLine();
+        _builder_1.append("switch(cDef) {");
+        _builder_1.newLine();
+        it_1.append(_builder_1);
+        final ITreeAppendable current = it_1;
+        final Consumer<GameScreen> _function_3 = (GameScreen screen) -> {
+          final Consumer<GameSprite> _function_4 = (GameSprite sprite) -> {
+            final Function1<GameActor, Boolean> _function_5 = (GameActor it_2) -> {
+              return Boolean.valueOf((it_2.isHasCollision() && (it_2.getEndContact() != null)));
+            };
+            final Consumer<GameActor> _function_6 = (GameActor actor) -> {
+              current.append(this.decodeCollision(actor, sprite, actor.getEndContact().getName()));
+            };
+            IterableExtensions.<GameActor>filter(sprite.getActors(), _function_5).forEach(_function_6);
+          };
+          screen.getSprites().forEach(_function_4);
+        };
+        game.getScreens().forEach(_function_3);
+        StringConcatenation _builder_2 = new StringConcatenation();
+        _builder_2.append("}");
+        _builder_2.newLine();
+        it_1.append(_builder_2);
+      };
+      this._jvmTypesBuilder.setBody(it, _function_2);
+    };
+    JvmOperation _method_1 = this._jvmTypesBuilder.toMethod(game, "endContact", this._typeReferenceBuilder.typeRef(Void.TYPE), _function_1);
+    this._jvmTypesBuilder.<JvmOperation>operator_add(_members_1, _method_1);
+    EList<JvmMember> _members_2 = type.getMembers();
+    final Procedure1<JvmOperation> _function_2 = (JvmOperation it) -> {
+      EList<JvmFormalParameter> _parameters = it.getParameters();
+      JvmFormalParameter _parameter = this._jvmTypesBuilder.toParameter(game, "contact", this._typeReferenceBuilder.typeRef(Contact.class));
+      this._jvmTypesBuilder.<JvmFormalParameter>operator_add(_parameters, _parameter);
+      EList<JvmFormalParameter> _parameters_1 = it.getParameters();
+      JvmFormalParameter _parameter_1 = this._jvmTypesBuilder.toParameter(game, "oldManifold", this._typeReferenceBuilder.typeRef(Manifold.class));
+      this._jvmTypesBuilder.<JvmFormalParameter>operator_add(_parameters_1, _parameter_1);
+      final Procedure1<ITreeAppendable> _function_3 = (ITreeAppendable it_1) -> {
+        StringConcatenation _builder = new StringConcatenation();
+        it_1.append(_builder);
+      };
+      this._jvmTypesBuilder.setBody(it, _function_3);
+    };
+    JvmOperation _method_2 = this._jvmTypesBuilder.toMethod(game, "preSolve", this._typeReferenceBuilder.typeRef(Void.TYPE), _function_2);
+    this._jvmTypesBuilder.<JvmOperation>operator_add(_members_2, _method_2);
+    EList<JvmMember> _members_3 = type.getMembers();
+    final Procedure1<JvmOperation> _function_3 = (JvmOperation it) -> {
+      EList<JvmFormalParameter> _parameters = it.getParameters();
+      JvmFormalParameter _parameter = this._jvmTypesBuilder.toParameter(game, "contact", this._typeReferenceBuilder.typeRef(Contact.class));
+      this._jvmTypesBuilder.<JvmFormalParameter>operator_add(_parameters, _parameter);
+      EList<JvmFormalParameter> _parameters_1 = it.getParameters();
+      JvmFormalParameter _parameter_1 = this._jvmTypesBuilder.toParameter(game, "impulse", this._typeReferenceBuilder.typeRef(ContactImpulse.class));
+      this._jvmTypesBuilder.<JvmFormalParameter>operator_add(_parameters_1, _parameter_1);
+      final Procedure1<ITreeAppendable> _function_4 = (ITreeAppendable it_1) -> {
+        StringConcatenation _builder = new StringConcatenation();
+        it_1.append(_builder);
+      };
+      this._jvmTypesBuilder.setBody(it, _function_4);
+    };
+    JvmOperation _method_3 = this._jvmTypesBuilder.toMethod(game, "postSolve", this._typeReferenceBuilder.typeRef(Void.TYPE), _function_3);
+    this._jvmTypesBuilder.<JvmOperation>operator_add(_members_3, _method_3);
+  }
+  
+  protected String decodeCollision(final GameActor actor, final GameSprite sprite, final String methodName) {
+    int id1 = 0;
+    GameContactType _typeA = actor.getTypeA();
+    boolean _equals = Objects.equal(_typeA, GameContactType.FIXTURE);
+    if (_equals) {
+      id1 = sprite.getId();
+    } else {
+      GameContactType _typeA_1 = actor.getTypeA();
+      boolean _equals_1 = Objects.equal(_typeA_1, GameContactType.SENSOR);
+      if (_equals_1) {
+        id1 = sprite.getSensorID();
+      }
+    }
+    int id2 = 0;
+    GameSprite _sprite = actor.getSprite();
+    boolean _tripleNotEquals = (_sprite != null);
+    if (_tripleNotEquals) {
+      GameContactType _typeB = actor.getTypeB();
+      boolean _equals_2 = Objects.equal(_typeB, GameContactType.FIXTURE);
+      if (_equals_2) {
+        id2 = actor.getSprite().getId();
+      } else {
+        GameContactType _typeB_1 = actor.getTypeB();
+        boolean _equals_3 = Objects.equal(_typeB_1, GameContactType.SENSOR);
+        if (_equals_3) {
+          id2 = actor.getSprite().getSensorID();
+        }
+      }
+    } else {
+      GameTile _tile = actor.getTile();
+      boolean _tripleNotEquals_1 = (_tile != null);
+      if (_tripleNotEquals_1) {
+        id2 = actor.getTile().getId();
+      }
+    }
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("case ");
+    _builder.append((id1 + id2));
+    _builder.append(":");
+    _builder.newLineIfNotEmpty();
+    _builder.append("\t");
+    _builder.append("if(fixA.getFilterData().categoryBits == ");
+    _builder.append(id1, "\t");
+    _builder.append(") {");
+    _builder.newLineIfNotEmpty();
+    _builder.append("\t\t");
+    _builder.append("((");
+    QualifiedName _fullyQualifiedName = this._iQualifiedNameProvider.getFullyQualifiedName(sprite);
+    _builder.append(_fullyQualifiedName, "\t\t");
+    _builder.append(")fixA.getUserData()).");
+    _builder.append(methodName, "\t\t");
+    _builder.append("((");
+    {
+      GameSprite _sprite_1 = actor.getSprite();
+      boolean _tripleNotEquals_2 = (_sprite_1 != null);
+      if (_tripleNotEquals_2) {
+        String _firstUpper = StringExtensions.toFirstUpper(actor.getSprite().getName());
+        _builder.append(_firstUpper, "\t\t");
+      } else {
+        GameTile _tile_1 = actor.getTile();
+        boolean _tripleNotEquals_3 = (_tile_1 != null);
+        if (_tripleNotEquals_3) {
+          QualifiedName _fullyQualifiedName_1 = this._iQualifiedNameProvider.getFullyQualifiedName(actor.getTile());
+          _builder.append(_fullyQualifiedName_1, "\t\t");
+        }
+      }
+    }
+    _builder.append(")fixB.getUserData());");
+    _builder.newLineIfNotEmpty();
+    _builder.append("\t");
+    _builder.append("} else {");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.append("((");
+    QualifiedName _fullyQualifiedName_2 = this._iQualifiedNameProvider.getFullyQualifiedName(sprite);
+    _builder.append(_fullyQualifiedName_2, "\t\t");
+    _builder.append(")fixB.getUserData()).");
+    _builder.append(methodName, "\t\t");
+    _builder.append("((");
+    {
+      GameSprite _sprite_2 = actor.getSprite();
+      boolean _tripleNotEquals_4 = (_sprite_2 != null);
+      if (_tripleNotEquals_4) {
+        String _firstUpper_1 = StringExtensions.toFirstUpper(actor.getSprite().getName());
+        _builder.append(_firstUpper_1, "\t\t");
+      } else {
+        GameTile _tile_2 = actor.getTile();
+        boolean _tripleNotEquals_5 = (_tile_2 != null);
+        if (_tripleNotEquals_5) {
+          QualifiedName _fullyQualifiedName_3 = this._iQualifiedNameProvider.getFullyQualifiedName(actor.getTile());
+          _builder.append(_fullyQualifiedName_3, "\t\t");
+        }
+      }
+    }
+    _builder.append(")fixA.getUserData());");
+    _builder.newLineIfNotEmpty();
+    _builder.append("\t");
+    _builder.append("}");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("break;");
+    _builder.newLine();
+    return _builder.toString();
   }
   
   public void infer(final EObject gamePkg, final IJvmDeclaredTypeAcceptor acceptor, final boolean isPreIndexingPhase) {

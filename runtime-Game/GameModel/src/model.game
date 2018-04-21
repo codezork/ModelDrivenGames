@@ -59,17 +59,15 @@ package com.hypermodel.games {
 			sensor {
 				vector(-2.0,6.0)
 				vector(2.0,6.0)
-			} sensorID 6 
-			interactsDynamic {
-				Goomba
-				Mushroom
-			}
-			interactsStatic {
-				Brick
-				Coin
-				Ground
-				Pipe
-			}
+			} sensorID 6
+			actors {
+				sprite Goomba
+				sprite Mushroom
+				tile Brick at fixture collidesWith sensor trigger atBeginOfContact brickHit 
+				tile Coin at fixture collidesWith sensor trigger atBeginOfContact coinHit
+				tile Ground
+				tile Pipe
+			} 
 			properties {
 				property grow
 				property big
@@ -119,7 +117,7 @@ package com.hypermodel.games {
 					stand grow1 whichFrame 15 from bigMarioRunLeft
 					stand grow2 whichFrame 0 from bigMarioRunLeft 
 					stand grow3 whichFrame 15 from bigMarioRunLeft
-					stand grow4 whichFrame 0 from bigMarioRunLeft
+					stand grow4 whichFrame 0 from bigMarioRunLeft 
 				} ifFinished setFalse grow 
 				 
 			}
@@ -138,6 +136,17 @@ package com.hypermodel.games {
 						//Gdx.app.log("MARIO", "-*- DIED -*-")
 					}
 				}
+				event brickHit(Brick brick) {
+					if(isBig) {
+						brick.categoryFilter = 16;
+						brick.cell.setTile(null);
+						Hud.addMario(200);
+					}
+				}
+				event coinHit(Coin coin) {
+					coin.cell.setTile(coin.getMap().getTileSets().getTileSet("tileset_gutter").getTile(28));
+            		Hud.addMario(100);
+				}
 			}
 			sprite Goomba collisionId 6 radius 6 layer goombas velocity vector(-1.0,-2.0)
 			sensor {
@@ -146,14 +155,12 @@ package com.hypermodel.games {
 				vector(-3.0,3.0)
 				vector(3.0,3.0)
 			} sensorID 7
-			interactsDynamic {
-				Mario
-			}
-			interactsStatic {
-				Brick
-				Coin
-				Ground
-				Pipe
+			actors {
+				sprite Mario
+				tile Brick
+				tile Coin
+				tile Ground
+				tile Pipe
 			}
 			properties {
 				property setToDestroyed onUpdateIfTrue { 
@@ -182,14 +189,12 @@ package com.hypermodel.games {
 				}
 			}
 			sprite Mushroom collisionId 8 radius 6 velocity vector(0.7,0.0)
-			interactsDynamic {
-				Mario
-			}
-			interactsStatic {
-				Brick
-				Coin
-				Ground
-				Pipe
+			actors {
+				sprite Mario
+				tile Brick
+				tile Coin
+				tile Ground
+				tile Pipe
 			}
 			properties {
 				property setToDestroyed onUpdateIfTrue { 

@@ -120,17 +120,24 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="vectors2d" upperBound="-1"
         eType="#//GameVector2d" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="sensorID" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="interactionSprites" unique="false"
-        upperBound="-1" eType="#//GameSprite"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="interactionTiles" unique="false"
-        upperBound="-1" eType="#//GameTile"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="actors" upperBound="-1"
+        eType="#//GameActor" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="properties" upperBound="-1"
         eType="#//GameBodyProperty" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="states" upperBound="-1"
         eType="#//GameSpriteState" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="initialState" eType="#//GameSpriteState"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="events" upperBound="-1"
-        eType="#//GameSpriteEvent" containment="true"/>
+        eType="#//GameEvent" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="GameActor">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="sprite" eType="#//GameSprite"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="tile" eType="#//GameTile"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="typeA" eType="#//GameContactType"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="hasCollision" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="typeB" eType="#//GameContactType"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="beginContact" eType="#//GameEvent"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="endContact" eType="#//GameEvent"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="GameVector2d">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="x" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EFloat"/>
@@ -188,7 +195,7 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="flipX" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="flipY" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="GameSpriteEvent">
+  <eClassifiers xsi:type="ecore:EClass" name="GameEvent">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="params" upperBound="-1"
         eType="ecore:EClass platform:/resource/org.eclipse.xtext.common.types/model/JavaVMTypes.ecore#//JvmFormalParameter"
@@ -210,5 +217,9 @@
   <eClassifiers xsi:type="ecore:EEnum" name="GameScreenOrientation">
     <eLiterals name="landscape" literal="landscape"/>
     <eLiterals name="portrait" value="1" literal="portrait"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="GameContactType">
+    <eLiterals name="fixture" literal="fixture"/>
+    <eLiterals name="sensor" value="1" literal="sensor"/>
   </eClassifiers>
 </ecore:EPackage>

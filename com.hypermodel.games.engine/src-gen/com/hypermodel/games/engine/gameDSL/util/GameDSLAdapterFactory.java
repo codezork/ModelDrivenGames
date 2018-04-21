@@ -146,6 +146,11 @@ public class GameDSLAdapterFactory extends AdapterFactoryImpl
         return createGameSpriteAdapter();
       }
       @Override
+      public Adapter caseGameActor(GameActor object)
+      {
+        return createGameActorAdapter();
+      }
+      @Override
       public Adapter caseGameVector2d(GameVector2d object)
       {
         return createGameVector2dAdapter();
@@ -181,9 +186,9 @@ public class GameDSLAdapterFactory extends AdapterFactoryImpl
         return createGameTextureRegionAdapter();
       }
       @Override
-      public Adapter caseGameSpriteEvent(GameSpriteEvent object)
+      public Adapter caseGameEvent(GameEvent object)
       {
-        return createGameSpriteEventAdapter();
+        return createGameEventAdapter();
       }
       @Override
       public Adapter defaultCase(EObject object)
@@ -418,6 +423,21 @@ public class GameDSLAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
+   * Creates a new adapter for an object of class '{@link com.hypermodel.games.engine.gameDSL.GameActor <em>Game Actor</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see com.hypermodel.games.engine.gameDSL.GameActor
+   * @generated
+   */
+  public Adapter createGameActorAdapter()
+  {
+    return null;
+  }
+
+  /**
    * Creates a new adapter for an object of class '{@link com.hypermodel.games.engine.gameDSL.GameVector2d <em>Game Vector2d</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
@@ -523,16 +543,16 @@ public class GameDSLAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link com.hypermodel.games.engine.gameDSL.GameSpriteEvent <em>Game Sprite Event</em>}'.
+   * Creates a new adapter for an object of class '{@link com.hypermodel.games.engine.gameDSL.GameEvent <em>Game Event</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see com.hypermodel.games.engine.gameDSL.GameSpriteEvent
+   * @see com.hypermodel.games.engine.gameDSL.GameEvent
    * @generated
    */
-  public Adapter createGameSpriteEventAdapter()
+  public Adapter createGameEventAdapter()
   {
     return null;
   }
