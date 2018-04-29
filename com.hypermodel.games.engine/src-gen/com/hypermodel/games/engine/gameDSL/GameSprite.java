@@ -32,7 +32,9 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link com.hypermodel.games.engine.gameDSL.GameSprite#getProperties <em>Properties</em>}</li>
  *   <li>{@link com.hypermodel.games.engine.gameDSL.GameSprite#getStates <em>States</em>}</li>
  *   <li>{@link com.hypermodel.games.engine.gameDSL.GameSprite#getInitialState <em>Initial State</em>}</li>
+ *   <li>{@link com.hypermodel.games.engine.gameDSL.GameSprite#getGameOverState <em>Game Over State</em>}</li>
  *   <li>{@link com.hypermodel.games.engine.gameDSL.GameSprite#getEvents <em>Events</em>}</li>
+ *   <li>{@link com.hypermodel.games.engine.gameDSL.GameSprite#getInputs <em>Inputs</em>}</li>
  * </ul>
  *
  * @see com.hypermodel.games.engine.gameDSL.GameDSLPackage#getGameSprite()
@@ -418,6 +420,32 @@ public interface GameSprite extends EObject
   void setInitialState(GameSpriteState value);
 
   /**
+   * Returns the value of the '<em><b>Game Over State</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Game Over State</em>' reference isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Game Over State</em>' reference.
+   * @see #setGameOverState(GameSpriteState)
+   * @see com.hypermodel.games.engine.gameDSL.GameDSLPackage#getGameSprite_GameOverState()
+   * @model
+   * @generated
+   */
+  GameSpriteState getGameOverState();
+
+  /**
+   * Sets the value of the '{@link com.hypermodel.games.engine.gameDSL.GameSprite#getGameOverState <em>Game Over State</em>}' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Game Over State</em>' reference.
+   * @see #getGameOverState()
+   * @generated
+   */
+  void setGameOverState(GameSpriteState value);
+
+  /**
    * Returns the value of the '<em><b>Events</b></em>' containment reference list.
    * The list contents are of type {@link com.hypermodel.games.engine.gameDSL.GameEvent}.
    * <!-- begin-user-doc -->
@@ -432,5 +460,21 @@ public interface GameSprite extends EObject
    * @generated
    */
   EList<GameEvent> getEvents();
+
+  /**
+   * Returns the value of the '<em><b>Inputs</b></em>' containment reference list.
+   * The list contents are of type {@link com.hypermodel.games.engine.gameDSL.GameInput}.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Inputs</em>' containment reference list isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Inputs</em>' containment reference list.
+   * @see com.hypermodel.games.engine.gameDSL.GameDSLPackage#getGameSprite_Inputs()
+   * @model containment="true"
+   * @generated
+   */
+  EList<GameInput> getInputs();
 
 } // GameSprite

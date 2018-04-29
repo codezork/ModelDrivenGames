@@ -26,6 +26,9 @@ Hint: be careful with the launch sequence of equinox bundles for the 2.IDE - the
 
 For using Android you must install ADT - http://dl-ssl.google.com/android/eclipse/. 
 
+=== Java
+You'll need Java version 1.7 if using Android SDK 23 and below. See https://stackoverflow.com/questions/37902840/got-unsupported-class-file-version-52-0-after-including-a-module-to-a-project
+
 === Xtext
 At this time the current version of Xtext 2.13 is used. The grammar is developed in a  "first" IDE and you must start a "second" IDE (runtime-Game) from the first one, to be able to check the grammar changes on the fly. Grammar changes must be "compiled" by right clicking on the .mwe2 file and selecting Run as... MWE2 workflow. More information can be found in the Xtext documentation.
 
@@ -53,4 +56,4 @@ Although the author takes all possible care to ensure the correctness of publish
 
 == Known issues
 - Due to unknown effects during heavy generation of project-files and combined natures, the generating process is looping sometimes. Normally it stops after some recursions. Somebody should look for this.
-- For the moment, screens, scenes, tiles, sprites and the world-creator are created. No running game can be generated yet.
+- The running game is not completed yet, but you can see the world and mario running around using the desktop project.

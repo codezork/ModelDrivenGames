@@ -45,6 +45,11 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="height" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="title" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="ppm" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="timeStep" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EFloat"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="velocityIterations" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="positionIterations" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="worldWidth" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="worldHeight" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="tileWidth" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="tileHeight" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="layers" upperBound="-1"
@@ -127,8 +132,16 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="states" upperBound="-1"
         eType="#//GameSpriteState" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="initialState" eType="#//GameSpriteState"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="gameOverState" eType="#//GameSpriteState"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="events" upperBound="-1"
         eType="#//GameEvent" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="inputs" upperBound="-1"
+        eType="#//GameInput" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="GameInput">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="keyType" eType="#//GameKeyInputType"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="key" eType="#//GameKeyInputKey"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="trigger" eType="#//GameEvent"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="GameActor">
     <eStructuralFeatures xsi:type="ecore:EReference" name="sprite" eType="#//GameSprite"/>
@@ -221,5 +234,15 @@
   <eClassifiers xsi:type="ecore:EEnum" name="GameContactType">
     <eLiterals name="fixture" literal="fixture"/>
     <eLiterals name="sensor" value="1" literal="sensor"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="GameKeyInputType">
+    <eLiterals name="justPressed" literal="justPressed"/>
+    <eLiterals name="pressed" value="1" literal="pressed"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="GameKeyInputKey">
+    <eLiterals name="left" literal="left"/>
+    <eLiterals name="right" value="1" literal="right"/>
+    <eLiterals name="up" value="2" literal="up"/>
+    <eLiterals name="space" value="3" literal="space"/>
   </eClassifiers>
 </ecore:EPackage>

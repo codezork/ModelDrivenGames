@@ -21,6 +21,11 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link com.hypermodel.games.engine.gameDSL.GameRoot#getHeight <em>Height</em>}</li>
  *   <li>{@link com.hypermodel.games.engine.gameDSL.GameRoot#getTitle <em>Title</em>}</li>
  *   <li>{@link com.hypermodel.games.engine.gameDSL.GameRoot#getPpm <em>Ppm</em>}</li>
+ *   <li>{@link com.hypermodel.games.engine.gameDSL.GameRoot#getTimeStep <em>Time Step</em>}</li>
+ *   <li>{@link com.hypermodel.games.engine.gameDSL.GameRoot#getVelocityIterations <em>Velocity Iterations</em>}</li>
+ *   <li>{@link com.hypermodel.games.engine.gameDSL.GameRoot#getPositionIterations <em>Position Iterations</em>}</li>
+ *   <li>{@link com.hypermodel.games.engine.gameDSL.GameRoot#getWorldWidth <em>World Width</em>}</li>
+ *   <li>{@link com.hypermodel.games.engine.gameDSL.GameRoot#getWorldHeight <em>World Height</em>}</li>
  *   <li>{@link com.hypermodel.games.engine.gameDSL.GameRoot#getTileWidth <em>Tile Width</em>}</li>
  *   <li>{@link com.hypermodel.games.engine.gameDSL.GameRoot#getTileHeight <em>Tile Height</em>}</li>
  *   <li>{@link com.hypermodel.games.engine.gameDSL.GameRoot#getLayers <em>Layers</em>}</li>
@@ -164,6 +169,136 @@ public interface GameRoot extends EObject
    * @generated
    */
   void setPpm(int value);
+
+  /**
+   * Returns the value of the '<em><b>Time Step</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Time Step</em>' attribute isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Time Step</em>' attribute.
+   * @see #setTimeStep(float)
+   * @see com.hypermodel.games.engine.gameDSL.GameDSLPackage#getGameRoot_TimeStep()
+   * @model
+   * @generated
+   */
+  float getTimeStep();
+
+  /**
+   * Sets the value of the '{@link com.hypermodel.games.engine.gameDSL.GameRoot#getTimeStep <em>Time Step</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Time Step</em>' attribute.
+   * @see #getTimeStep()
+   * @generated
+   */
+  void setTimeStep(float value);
+
+  /**
+   * Returns the value of the '<em><b>Velocity Iterations</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Velocity Iterations</em>' attribute isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Velocity Iterations</em>' attribute.
+   * @see #setVelocityIterations(int)
+   * @see com.hypermodel.games.engine.gameDSL.GameDSLPackage#getGameRoot_VelocityIterations()
+   * @model
+   * @generated
+   */
+  int getVelocityIterations();
+
+  /**
+   * Sets the value of the '{@link com.hypermodel.games.engine.gameDSL.GameRoot#getVelocityIterations <em>Velocity Iterations</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Velocity Iterations</em>' attribute.
+   * @see #getVelocityIterations()
+   * @generated
+   */
+  void setVelocityIterations(int value);
+
+  /**
+   * Returns the value of the '<em><b>Position Iterations</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Position Iterations</em>' attribute isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Position Iterations</em>' attribute.
+   * @see #setPositionIterations(int)
+   * @see com.hypermodel.games.engine.gameDSL.GameDSLPackage#getGameRoot_PositionIterations()
+   * @model
+   * @generated
+   */
+  int getPositionIterations();
+
+  /**
+   * Sets the value of the '{@link com.hypermodel.games.engine.gameDSL.GameRoot#getPositionIterations <em>Position Iterations</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Position Iterations</em>' attribute.
+   * @see #getPositionIterations()
+   * @generated
+   */
+  void setPositionIterations(int value);
+
+  /**
+   * Returns the value of the '<em><b>World Width</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>World Width</em>' attribute isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>World Width</em>' attribute.
+   * @see #setWorldWidth(int)
+   * @see com.hypermodel.games.engine.gameDSL.GameDSLPackage#getGameRoot_WorldWidth()
+   * @model
+   * @generated
+   */
+  int getWorldWidth();
+
+  /**
+   * Sets the value of the '{@link com.hypermodel.games.engine.gameDSL.GameRoot#getWorldWidth <em>World Width</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>World Width</em>' attribute.
+   * @see #getWorldWidth()
+   * @generated
+   */
+  void setWorldWidth(int value);
+
+  /**
+   * Returns the value of the '<em><b>World Height</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>World Height</em>' attribute isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>World Height</em>' attribute.
+   * @see #setWorldHeight(int)
+   * @see com.hypermodel.games.engine.gameDSL.GameDSLPackage#getGameRoot_WorldHeight()
+   * @model
+   * @generated
+   */
+  int getWorldHeight();
+
+  /**
+   * Sets the value of the '{@link com.hypermodel.games.engine.gameDSL.GameRoot#getWorldHeight <em>World Height</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>World Height</em>' attribute.
+   * @see #getWorldHeight()
+   * @generated
+   */
+  void setWorldHeight(int value);
 
   /**
    * Returns the value of the '<em><b>Tile Width</b></em>' attribute.

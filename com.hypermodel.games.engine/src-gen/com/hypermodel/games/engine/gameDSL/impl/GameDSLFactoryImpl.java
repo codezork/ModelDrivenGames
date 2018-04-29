@@ -80,6 +80,7 @@ public class GameDSLFactoryImpl extends EFactoryImpl implements GameDSLFactory
       case GameDSLPackage.GAME_DISPLAY: return createGameDisplay();
       case GameDSLPackage.GAME_TILE: return createGameTile();
       case GameDSLPackage.GAME_SPRITE: return createGameSprite();
+      case GameDSLPackage.GAME_INPUT: return createGameInput();
       case GameDSLPackage.GAME_ACTOR: return createGameActor();
       case GameDSLPackage.GAME_VECTOR2D: return createGameVector2d();
       case GameDSLPackage.GAME_SPRITE_STATE: return createGameSpriteState();
@@ -112,6 +113,10 @@ public class GameDSLFactoryImpl extends EFactoryImpl implements GameDSLFactory
         return createGameScreenOrientationFromString(eDataType, initialValue);
       case GameDSLPackage.GAME_CONTACT_TYPE:
         return createGameContactTypeFromString(eDataType, initialValue);
+      case GameDSLPackage.GAME_KEY_INPUT_TYPE:
+        return createGameKeyInputTypeFromString(eDataType, initialValue);
+      case GameDSLPackage.GAME_KEY_INPUT_KEY:
+        return createGameKeyInputKeyFromString(eDataType, initialValue);
       default:
         throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
     }
@@ -135,6 +140,10 @@ public class GameDSLFactoryImpl extends EFactoryImpl implements GameDSLFactory
         return convertGameScreenOrientationToString(eDataType, instanceValue);
       case GameDSLPackage.GAME_CONTACT_TYPE:
         return convertGameContactTypeToString(eDataType, instanceValue);
+      case GameDSLPackage.GAME_KEY_INPUT_TYPE:
+        return convertGameKeyInputTypeToString(eDataType, instanceValue);
+      case GameDSLPackage.GAME_KEY_INPUT_KEY:
+        return convertGameKeyInputKeyToString(eDataType, instanceValue);
       default:
         throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
     }
@@ -292,6 +301,17 @@ public class GameDSLFactoryImpl extends EFactoryImpl implements GameDSLFactory
   {
     GameSpriteImpl gameSprite = new GameSpriteImpl();
     return gameSprite;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public GameInput createGameInput()
+  {
+    GameInputImpl gameInput = new GameInputImpl();
+    return gameInput;
   }
 
   /**
@@ -477,6 +497,50 @@ public class GameDSLFactoryImpl extends EFactoryImpl implements GameDSLFactory
    * @generated
    */
   public String convertGameContactTypeToString(EDataType eDataType, Object instanceValue)
+  {
+    return instanceValue == null ? null : instanceValue.toString();
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public GameKeyInputType createGameKeyInputTypeFromString(EDataType eDataType, String initialValue)
+  {
+    GameKeyInputType result = GameKeyInputType.get(initialValue);
+    if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+    return result;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public String convertGameKeyInputTypeToString(EDataType eDataType, Object instanceValue)
+  {
+    return instanceValue == null ? null : instanceValue.toString();
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public GameKeyInputKey createGameKeyInputKeyFromString(EDataType eDataType, String initialValue)
+  {
+    GameKeyInputKey result = GameKeyInputKey.get(initialValue);
+    if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+    return result;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public String convertGameKeyInputKeyToString(EDataType eDataType, Object instanceValue)
   {
     return instanceValue == null ? null : instanceValue.toString();
   }

@@ -150,6 +150,15 @@ public interface GameDSLFactory extends EFactory
   GameSprite createGameSprite();
 
   /**
+   * Returns a new object of class '<em>Game Input</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Game Input</em>'.
+   * @generated
+   */
+  GameInput createGameInput();
+
+  /**
    * Returns a new object of class '<em>Game Actor</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->

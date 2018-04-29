@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.0" tiledversion="2018.03.04" orientation="orthogonal" renderorder="right-down" width="240" height="13" tilewidth="16" tileheight="16" infinite="0" nextobjectid="153">
  <tileset firstgid="1" name="tileset_gutter" tilewidth="16" tileheight="16" spacing="2" margin="1" tilecount="924" columns="33">
-  <image source="../../../../../../../libgdx/SuperMario/android/assets/tileset_gutter.png" width="594" height="504"/>
+  <image source="tileset_gutter.png" width="594" height="504"/>
   <tile id="0">
    <properties>
     <property name="blocked" value=""/>
@@ -113,12 +113,12 @@
  </tileset>
  <layer name="Background Color" width="240" height="13">
   <data encoding="base64" compression="zlib">
-   eJzt1TEKwCAQBMDDaPL/5/g7r7CwDDYiDOz02yzbS0QHAAAAAIBLZOJJbXrTF+d7Af81m4VrlPm7dfldGwYAAABg1wCcWd5E
+   eJztzqENADAIADDC/w/xHGEXTKAQFfWtjCiAJw8cgJ0+cAAAAAAAAAAAAAD4Gdrn5xc=
   </data>
  </layer>
  <layer name="Graphic Layer" width="240" height="13">
   <data encoding="base64" compression="zlib">
-   eJztl01OwzAQhd2wAtoiYNWtl0CLBBSk3oyDAGsuAeRs2TBRO8p08PgndpomWOqnOM7Yfh77xU1ZKFXuOFFNOZPJDAvuX7yvr1XRQOspb1D3DnxEaMA+YvuJGTt23KHPIevfspgcdu4xoC/Ro1jH6+k9ra/LX3D9Bn488irlFvuw9dPVfnDpH8Mcsn5/NpNw/X1Bz1V6j16WPEuhbW1rk3JvxO6Htv0NdQ5Zvz/o39R7qAu4f8vir39pHfd3xfpa/KNvafhZkWJjchTaVtKDzxY7TM/HhlZbXHGbAf5/pmep9N3b9vzNZPpGq/H613RfMUpDWYrLZI4Jrcbr30xmzGiVzr9T1dD3vGLh32EF+Y7q8nvqFHJ7BiiP/kNifUkxP6ltIfRLcy2VffoPGRPRylx2oVX7tlxb23yjBo6rneTfGbSdAxeR+wn3ZUwfx0b93/vTY2438OyWePIqIPZYsc2hT7TBg9qQS65fG7wite1auwmXfpN/6zN3SYg5g3Ff9r2+IfvO953jmhv15CVcH4BrId7l32PwjWsOKdcgBG3xIK3j+rXgFVMd1R97JtH2XIOkScq/yb/z3dm7Uk05dA3OIW4KzA7s3zWM9Ux4mdj33ZrEYZ3vO4fGrdmYFXmO4z9adGBsCv0pcsf785lDyjXwhe93HJPXc/02r/B6rp/vj1D92N6kQdJE9T+xd5Dk33vi31fHGnDuIGYJrBL4tz6WMvukyk3Oc/qcZvb5BRdfbQI=
+   eJztl81SwjAQx9Pe/ABHPXHNUQVnVHSGN/NBkLMvgfBsvZgMXVnW3XzQ0NJOOvymId0ku9v9N+22VGpbU6E2AAe0JbtMJtMtVpdUr3BU5D93fVn3rRjbUOwcXzWrluNfJlq37zFk/3dMinZjbwLWJ+yvWLe+sz3WdXtT8rrFeZVya+f4qdm0XA/rgHX7HkP2P5xFEe9/V4AO6X9u/61KXr+crZTXVLXRtB6Ona+vMWT/wwH9pq6hU0D1uy3/69KlX6rvCbP/DhUbugvJtkmOYsdK/sC1SQ13fWhotcNnt+jx+7NrTw3RL7f/ZjJdo9Vw9WvPLs1yh9SPj65jy2QsWg1XvyFkTWb6ilbp9Hut9nQdV1Pod5j5/X1HnfJ76sLk9rIIe5bE2IaSIj5pbCnMi3MttUPmj1kT0Ipv+9Dq+LHUt2PzDT5QfOMk/Y7M2LHhpmE9QV02mePcsO/j3wGxPZhrj0iTdxG254orhi7RjAY1k0vqv2a0Io09te8cPv85/do9d4posgdDXXZ9f2PqLvSZ44sNa/LWnF8M94K9T7/noBtfDCnvQQzaoUHcR/3Xgla4Pux/0z0Jj6c+SD5J+ef0O6733pnat2PvwZWxuzaMWtbv3Kz1jvgo3HU3R3bQF/rMwXZzsmaFrsP6rw4/wDaF/ylyR+cLiSHlPQiF1jusSfup/y6t0H7qP62PWP9hPOeD5BP2/408gyT9PiP9fnruAeXJ2EwNswT6tdtS5pBUucl5Tp/TzCG/XNpD6Q==
   </data>
  </layer>
  <objectgroup name="Ground">

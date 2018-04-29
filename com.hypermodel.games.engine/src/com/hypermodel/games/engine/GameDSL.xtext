@@ -48,6 +48,8 @@ GameRoot:
 	{GameRoot} 'game' name=ValidID
 	'screenWidth' width = INT 'screenHeight' height = INT 
 	'title' title=STRING 'pixelPerMeter' ppm = INT 
+	'timeStep' timeStep=UnsignedNumber 'velocityIterations' velocityIterations=INT 'positionIterations' positionIterations=INT
+	'worldWidth' worldWidth=INT 'worldHeight' worldHeight=INT
 	'tileWidth' tileWidth=INT 'tileHeight' tileHeight=INT
 	('layers' '{' layers+=GameLayer* '}' & 
 	'scenes' '{' scenes+=GameScene* '}'&
@@ -97,12 +99,19 @@ GameSprite:
 	(hasSensor?='sensor' '{' vectors2d+=GameVector2d* '}' 'sensorID' sensorID=INT)? &
 	('actors' '{' actors+=GameActor* '}')? &
 	('properties' '{' properties+=GameBodyProperty* '}')? & 
-	('states' '{' states+=GameSpriteState* '}' 'initialState' initialState=[GameSpriteState])? &
-	('events' '{' events+=GameEvent* '}')?);
+	('states' '{' states+=GameSpriteState* '}' 
+	'initialState' initialState=[GameSpriteState]
+	('gameOverState' gameOverState=[GameSpriteState])?)? &
+	('events' '{' events+=GameEvent* '}')? &
+	('inputs' '{' inputs+=GameInput* '}')?);
 
+GameInput:
+	{GameInput} 'input' keyType=GameKeyInputType key=GameKeyInputKey
+	trigger=[GameEvent];
+	
 GameActor:
 	{GameActor} (('sprite' sprite=[GameSprite]) | ('tile' tile=[GameTile]))
-	('at' typeA=GameContactType hasCollision?='collidesWith' typeB=GameContactType 'trigger' 
+	('at' typeA=GameContactType hasCollision?='collidesWith' typeB=GameContactType 
 	(('atBeginOfContact' beginContact=[GameEvent])|('atEndOfContact' endContact=[GameEvent])))?;
 	
 GameVector2d:
@@ -158,6 +167,16 @@ enum GameScreenOrientation:
 enum GameContactType:
 	fixture = 'fixture'|
 	sensor = 'sensor';
+	
+enum GameKeyInputType:
+	justPressed = 'justPressed'|
+	pressed = 'pressed';
+	
+enum GameKeyInputKey:
+	left = 'left'|
+	right = 'right'|
+	up = 'up'|
+	space = 'space';
 	
 SignedNumber returns ecore::EFloat:
 	('-')? UnsignedNumber;

@@ -146,6 +146,11 @@ public class GameDSLAdapterFactory extends AdapterFactoryImpl
         return createGameSpriteAdapter();
       }
       @Override
+      public Adapter caseGameInput(GameInput object)
+      {
+        return createGameInputAdapter();
+      }
+      @Override
       public Adapter caseGameActor(GameActor object)
       {
         return createGameActorAdapter();
@@ -418,6 +423,21 @@ public class GameDSLAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createGameSpriteAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link com.hypermodel.games.engine.gameDSL.GameInput <em>Game Input</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see com.hypermodel.games.engine.gameDSL.GameInput
+   * @generated
+   */
+  public Adapter createGameInputAdapter()
   {
     return null;
   }

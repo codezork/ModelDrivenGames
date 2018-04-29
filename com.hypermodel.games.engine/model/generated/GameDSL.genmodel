@@ -25,6 +25,16 @@
       <genEnumLiterals ecoreEnumLiteral="GameDSL.ecore#//GameContactType/fixture"/>
       <genEnumLiterals ecoreEnumLiteral="GameDSL.ecore#//GameContactType/sensor"/>
     </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="GameDSL.ecore#//GameKeyInputType">
+      <genEnumLiterals ecoreEnumLiteral="GameDSL.ecore#//GameKeyInputType/justPressed"/>
+      <genEnumLiterals ecoreEnumLiteral="GameDSL.ecore#//GameKeyInputType/pressed"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="GameDSL.ecore#//GameKeyInputKey">
+      <genEnumLiterals ecoreEnumLiteral="GameDSL.ecore#//GameKeyInputKey/left"/>
+      <genEnumLiterals ecoreEnumLiteral="GameDSL.ecore#//GameKeyInputKey/right"/>
+      <genEnumLiterals ecoreEnumLiteral="GameDSL.ecore#//GameKeyInputKey/up"/>
+      <genEnumLiterals ecoreEnumLiteral="GameDSL.ecore#//GameKeyInputKey/space"/>
+    </genEnums>
     <genClasses ecoreClass="GameDSL.ecore#//GameModel">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GameDSL.ecore#//GameModel/importSection"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GameDSL.ecore#//GameModel/packages"/>
@@ -61,6 +71,11 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GameDSL.ecore#//GameRoot/height"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GameDSL.ecore#//GameRoot/title"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GameDSL.ecore#//GameRoot/ppm"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GameDSL.ecore#//GameRoot/timeStep"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GameDSL.ecore#//GameRoot/velocityIterations"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GameDSL.ecore#//GameRoot/positionIterations"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GameDSL.ecore#//GameRoot/worldWidth"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GameDSL.ecore#//GameRoot/worldHeight"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GameDSL.ecore#//GameRoot/tileWidth"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GameDSL.ecore#//GameRoot/tileHeight"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GameDSL.ecore#//GameRoot/layers"/>
@@ -129,7 +144,14 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GameDSL.ecore#//GameSprite/properties"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GameDSL.ecore#//GameSprite/states"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference GameDSL.ecore#//GameSprite/initialState"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference GameDSL.ecore#//GameSprite/gameOverState"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GameDSL.ecore#//GameSprite/events"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GameDSL.ecore#//GameSprite/inputs"/>
+    </genClasses>
+    <genClasses ecoreClass="GameDSL.ecore#//GameInput">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GameDSL.ecore#//GameInput/keyType"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GameDSL.ecore#//GameInput/key"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference GameDSL.ecore#//GameInput/trigger"/>
     </genClasses>
     <genClasses ecoreClass="GameDSL.ecore#//GameActor">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference GameDSL.ecore#//GameActor/sprite"/>
