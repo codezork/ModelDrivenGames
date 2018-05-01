@@ -4,7 +4,7 @@
 package com.hypermodel.games.engine.gameDSL.impl;
 
 import com.hypermodel.games.engine.gameDSL.GameDSLPackage;
-import com.hypermodel.games.engine.gameDSL.GameSpriteEvent;
+import com.hypermodel.games.engine.gameDSL.GameEvent;
 
 import java.util.Collection;
 
@@ -28,20 +28,20 @@ import org.eclipse.xtext.xbase.XExpression;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Game Sprite Event</b></em>'.
+ * An implementation of the model object '<em><b>Game Event</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link com.hypermodel.games.engine.gameDSL.impl.GameSpriteEventImpl#getName <em>Name</em>}</li>
- *   <li>{@link com.hypermodel.games.engine.gameDSL.impl.GameSpriteEventImpl#getParams <em>Params</em>}</li>
- *   <li>{@link com.hypermodel.games.engine.gameDSL.impl.GameSpriteEventImpl#getBody <em>Body</em>}</li>
+ *   <li>{@link com.hypermodel.games.engine.gameDSL.impl.GameEventImpl#getName <em>Name</em>}</li>
+ *   <li>{@link com.hypermodel.games.engine.gameDSL.impl.GameEventImpl#getParams <em>Params</em>}</li>
+ *   <li>{@link com.hypermodel.games.engine.gameDSL.impl.GameEventImpl#getBody <em>Body</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class GameSpriteEventImpl extends MinimalEObjectImpl.Container implements GameSpriteEvent
+public class GameEventImpl extends MinimalEObjectImpl.Container implements GameEvent
 {
   /**
    * The default value of the '{@link #getName() <em>Name</em>}' attribute.
@@ -88,7 +88,7 @@ public class GameSpriteEventImpl extends MinimalEObjectImpl.Container implements
    * <!-- end-user-doc -->
    * @generated
    */
-  protected GameSpriteEventImpl()
+  protected GameEventImpl()
   {
     super();
   }
@@ -101,7 +101,7 @@ public class GameSpriteEventImpl extends MinimalEObjectImpl.Container implements
   @Override
   protected EClass eStaticClass()
   {
-    return GameDSLPackage.Literals.GAME_SPRITE_EVENT;
+    return GameDSLPackage.Literals.GAME_EVENT;
   }
 
   /**
@@ -124,7 +124,7 @@ public class GameSpriteEventImpl extends MinimalEObjectImpl.Container implements
     String oldName = name;
     name = newName;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, GameDSLPackage.GAME_SPRITE_EVENT__NAME, oldName, name));
+      eNotify(new ENotificationImpl(this, Notification.SET, GameDSLPackage.GAME_EVENT__NAME, oldName, name));
   }
 
   /**
@@ -136,7 +136,7 @@ public class GameSpriteEventImpl extends MinimalEObjectImpl.Container implements
   {
     if (params == null)
     {
-      params = new EObjectContainmentEList<JvmFormalParameter>(JvmFormalParameter.class, this, GameDSLPackage.GAME_SPRITE_EVENT__PARAMS);
+      params = new EObjectContainmentEList<JvmFormalParameter>(JvmFormalParameter.class, this, GameDSLPackage.GAME_EVENT__PARAMS);
     }
     return params;
   }
@@ -162,7 +162,7 @@ public class GameSpriteEventImpl extends MinimalEObjectImpl.Container implements
     body = newBody;
     if (eNotificationRequired())
     {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, GameDSLPackage.GAME_SPRITE_EVENT__BODY, oldBody, newBody);
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, GameDSLPackage.GAME_EVENT__BODY, oldBody, newBody);
       if (msgs == null) msgs = notification; else msgs.add(notification);
     }
     return msgs;
@@ -179,14 +179,14 @@ public class GameSpriteEventImpl extends MinimalEObjectImpl.Container implements
     {
       NotificationChain msgs = null;
       if (body != null)
-        msgs = ((InternalEObject)body).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - GameDSLPackage.GAME_SPRITE_EVENT__BODY, null, msgs);
+        msgs = ((InternalEObject)body).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - GameDSLPackage.GAME_EVENT__BODY, null, msgs);
       if (newBody != null)
-        msgs = ((InternalEObject)newBody).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - GameDSLPackage.GAME_SPRITE_EVENT__BODY, null, msgs);
+        msgs = ((InternalEObject)newBody).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - GameDSLPackage.GAME_EVENT__BODY, null, msgs);
       msgs = basicSetBody(newBody, msgs);
       if (msgs != null) msgs.dispatch();
     }
     else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, GameDSLPackage.GAME_SPRITE_EVENT__BODY, newBody, newBody));
+      eNotify(new ENotificationImpl(this, Notification.SET, GameDSLPackage.GAME_EVENT__BODY, newBody, newBody));
   }
 
   /**
@@ -199,9 +199,9 @@ public class GameSpriteEventImpl extends MinimalEObjectImpl.Container implements
   {
     switch (featureID)
     {
-      case GameDSLPackage.GAME_SPRITE_EVENT__PARAMS:
+      case GameDSLPackage.GAME_EVENT__PARAMS:
         return ((InternalEList<?>)getParams()).basicRemove(otherEnd, msgs);
-      case GameDSLPackage.GAME_SPRITE_EVENT__BODY:
+      case GameDSLPackage.GAME_EVENT__BODY:
         return basicSetBody(null, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
@@ -217,11 +217,11 @@ public class GameSpriteEventImpl extends MinimalEObjectImpl.Container implements
   {
     switch (featureID)
     {
-      case GameDSLPackage.GAME_SPRITE_EVENT__NAME:
+      case GameDSLPackage.GAME_EVENT__NAME:
         return getName();
-      case GameDSLPackage.GAME_SPRITE_EVENT__PARAMS:
+      case GameDSLPackage.GAME_EVENT__PARAMS:
         return getParams();
-      case GameDSLPackage.GAME_SPRITE_EVENT__BODY:
+      case GameDSLPackage.GAME_EVENT__BODY:
         return getBody();
     }
     return super.eGet(featureID, resolve, coreType);
@@ -238,14 +238,14 @@ public class GameSpriteEventImpl extends MinimalEObjectImpl.Container implements
   {
     switch (featureID)
     {
-      case GameDSLPackage.GAME_SPRITE_EVENT__NAME:
+      case GameDSLPackage.GAME_EVENT__NAME:
         setName((String)newValue);
         return;
-      case GameDSLPackage.GAME_SPRITE_EVENT__PARAMS:
+      case GameDSLPackage.GAME_EVENT__PARAMS:
         getParams().clear();
         getParams().addAll((Collection<? extends JvmFormalParameter>)newValue);
         return;
-      case GameDSLPackage.GAME_SPRITE_EVENT__BODY:
+      case GameDSLPackage.GAME_EVENT__BODY:
         setBody((XExpression)newValue);
         return;
     }
@@ -262,13 +262,13 @@ public class GameSpriteEventImpl extends MinimalEObjectImpl.Container implements
   {
     switch (featureID)
     {
-      case GameDSLPackage.GAME_SPRITE_EVENT__NAME:
+      case GameDSLPackage.GAME_EVENT__NAME:
         setName(NAME_EDEFAULT);
         return;
-      case GameDSLPackage.GAME_SPRITE_EVENT__PARAMS:
+      case GameDSLPackage.GAME_EVENT__PARAMS:
         getParams().clear();
         return;
-      case GameDSLPackage.GAME_SPRITE_EVENT__BODY:
+      case GameDSLPackage.GAME_EVENT__BODY:
         setBody((XExpression)null);
         return;
     }
@@ -285,11 +285,11 @@ public class GameSpriteEventImpl extends MinimalEObjectImpl.Container implements
   {
     switch (featureID)
     {
-      case GameDSLPackage.GAME_SPRITE_EVENT__NAME:
+      case GameDSLPackage.GAME_EVENT__NAME:
         return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
-      case GameDSLPackage.GAME_SPRITE_EVENT__PARAMS:
+      case GameDSLPackage.GAME_EVENT__PARAMS:
         return params != null && !params.isEmpty();
-      case GameDSLPackage.GAME_SPRITE_EVENT__BODY:
+      case GameDSLPackage.GAME_EVENT__BODY:
         return body != null;
     }
     return super.eIsSet(featureID);
@@ -312,4 +312,4 @@ public class GameSpriteEventImpl extends MinimalEObjectImpl.Container implements
     return result.toString();
   }
 
-} //GameSpriteEventImpl
+} //GameEventImpl

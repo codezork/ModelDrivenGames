@@ -3,13 +3,14 @@
  */
 package com.hypermodel.games.engine.gameDSL.impl;
 
+import com.hypermodel.games.engine.gameDSL.GameActor;
 import com.hypermodel.games.engine.gameDSL.GameBodyProperty;
 import com.hypermodel.games.engine.gameDSL.GameDSLPackage;
+import com.hypermodel.games.engine.gameDSL.GameEvent;
+import com.hypermodel.games.engine.gameDSL.GameInput;
 import com.hypermodel.games.engine.gameDSL.GameLayer;
 import com.hypermodel.games.engine.gameDSL.GameSprite;
-import com.hypermodel.games.engine.gameDSL.GameSpriteEvent;
 import com.hypermodel.games.engine.gameDSL.GameSpriteState;
-import com.hypermodel.games.engine.gameDSL.GameTile;
 import com.hypermodel.games.engine.gameDSL.GameVector2d;
 
 import java.util.Collection;
@@ -26,7 +27,6 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
-import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
@@ -49,12 +49,13 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link com.hypermodel.games.engine.gameDSL.impl.GameSpriteImpl#isHasSensor <em>Has Sensor</em>}</li>
  *   <li>{@link com.hypermodel.games.engine.gameDSL.impl.GameSpriteImpl#getVectors2d <em>Vectors2d</em>}</li>
  *   <li>{@link com.hypermodel.games.engine.gameDSL.impl.GameSpriteImpl#getSensorID <em>Sensor ID</em>}</li>
- *   <li>{@link com.hypermodel.games.engine.gameDSL.impl.GameSpriteImpl#getInteractionSprites <em>Interaction Sprites</em>}</li>
- *   <li>{@link com.hypermodel.games.engine.gameDSL.impl.GameSpriteImpl#getInteractionTiles <em>Interaction Tiles</em>}</li>
+ *   <li>{@link com.hypermodel.games.engine.gameDSL.impl.GameSpriteImpl#getActors <em>Actors</em>}</li>
  *   <li>{@link com.hypermodel.games.engine.gameDSL.impl.GameSpriteImpl#getProperties <em>Properties</em>}</li>
  *   <li>{@link com.hypermodel.games.engine.gameDSL.impl.GameSpriteImpl#getStates <em>States</em>}</li>
  *   <li>{@link com.hypermodel.games.engine.gameDSL.impl.GameSpriteImpl#getInitialState <em>Initial State</em>}</li>
+ *   <li>{@link com.hypermodel.games.engine.gameDSL.impl.GameSpriteImpl#getGameOverState <em>Game Over State</em>}</li>
  *   <li>{@link com.hypermodel.games.engine.gameDSL.impl.GameSpriteImpl#getEvents <em>Events</em>}</li>
+ *   <li>{@link com.hypermodel.games.engine.gameDSL.impl.GameSpriteImpl#getInputs <em>Inputs</em>}</li>
  * </ul>
  *
  * @generated
@@ -262,24 +263,14 @@ public class GameSpriteImpl extends MinimalEObjectImpl.Container implements Game
   protected int sensorID = SENSOR_ID_EDEFAULT;
 
   /**
-   * The cached value of the '{@link #getInteractionSprites() <em>Interaction Sprites</em>}' reference list.
+   * The cached value of the '{@link #getActors() <em>Actors</em>}' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getInteractionSprites()
+   * @see #getActors()
    * @generated
    * @ordered
    */
-  protected EList<GameSprite> interactionSprites;
-
-  /**
-   * The cached value of the '{@link #getInteractionTiles() <em>Interaction Tiles</em>}' reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getInteractionTiles()
-   * @generated
-   * @ordered
-   */
-  protected EList<GameTile> interactionTiles;
+  protected EList<GameActor> actors;
 
   /**
    * The cached value of the '{@link #getProperties() <em>Properties</em>}' containment reference list.
@@ -312,6 +303,16 @@ public class GameSpriteImpl extends MinimalEObjectImpl.Container implements Game
   protected GameSpriteState initialState;
 
   /**
+   * The cached value of the '{@link #getGameOverState() <em>Game Over State</em>}' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getGameOverState()
+   * @generated
+   * @ordered
+   */
+  protected GameSpriteState gameOverState;
+
+  /**
    * The cached value of the '{@link #getEvents() <em>Events</em>}' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -319,7 +320,17 @@ public class GameSpriteImpl extends MinimalEObjectImpl.Container implements Game
    * @generated
    * @ordered
    */
-  protected EList<GameSpriteEvent> events;
+  protected EList<GameEvent> events;
+
+  /**
+   * The cached value of the '{@link #getInputs() <em>Inputs</em>}' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getInputs()
+   * @generated
+   * @ordered
+   */
+  protected EList<GameInput> inputs;
 
   /**
    * <!-- begin-user-doc -->
@@ -684,27 +695,13 @@ public class GameSpriteImpl extends MinimalEObjectImpl.Container implements Game
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<GameSprite> getInteractionSprites()
+  public EList<GameActor> getActors()
   {
-    if (interactionSprites == null)
+    if (actors == null)
     {
-      interactionSprites = new EObjectResolvingEList<GameSprite>(GameSprite.class, this, GameDSLPackage.GAME_SPRITE__INTERACTION_SPRITES);
+      actors = new EObjectContainmentEList<GameActor>(GameActor.class, this, GameDSLPackage.GAME_SPRITE__ACTORS);
     }
-    return interactionSprites;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EList<GameTile> getInteractionTiles()
-  {
-    if (interactionTiles == null)
-    {
-      interactionTiles = new EObjectResolvingEList<GameTile>(GameTile.class, this, GameDSLPackage.GAME_SPRITE__INTERACTION_TILES);
-    }
-    return interactionTiles;
+    return actors;
   }
 
   /**
@@ -783,13 +780,70 @@ public class GameSpriteImpl extends MinimalEObjectImpl.Container implements Game
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<GameSpriteEvent> getEvents()
+  public GameSpriteState getGameOverState()
+  {
+    if (gameOverState != null && gameOverState.eIsProxy())
+    {
+      InternalEObject oldGameOverState = (InternalEObject)gameOverState;
+      gameOverState = (GameSpriteState)eResolveProxy(oldGameOverState);
+      if (gameOverState != oldGameOverState)
+      {
+        if (eNotificationRequired())
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, GameDSLPackage.GAME_SPRITE__GAME_OVER_STATE, oldGameOverState, gameOverState));
+      }
+    }
+    return gameOverState;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public GameSpriteState basicGetGameOverState()
+  {
+    return gameOverState;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setGameOverState(GameSpriteState newGameOverState)
+  {
+    GameSpriteState oldGameOverState = gameOverState;
+    gameOverState = newGameOverState;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, GameDSLPackage.GAME_SPRITE__GAME_OVER_STATE, oldGameOverState, gameOverState));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EList<GameEvent> getEvents()
   {
     if (events == null)
     {
-      events = new EObjectContainmentEList<GameSpriteEvent>(GameSpriteEvent.class, this, GameDSLPackage.GAME_SPRITE__EVENTS);
+      events = new EObjectContainmentEList<GameEvent>(GameEvent.class, this, GameDSLPackage.GAME_SPRITE__EVENTS);
     }
     return events;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EList<GameInput> getInputs()
+  {
+    if (inputs == null)
+    {
+      inputs = new EObjectContainmentEList<GameInput>(GameInput.class, this, GameDSLPackage.GAME_SPRITE__INPUTS);
+    }
+    return inputs;
   }
 
   /**
@@ -808,12 +862,16 @@ public class GameSpriteImpl extends MinimalEObjectImpl.Container implements Game
         return basicSetStartPosition(null, msgs);
       case GameDSLPackage.GAME_SPRITE__VECTORS2D:
         return ((InternalEList<?>)getVectors2d()).basicRemove(otherEnd, msgs);
+      case GameDSLPackage.GAME_SPRITE__ACTORS:
+        return ((InternalEList<?>)getActors()).basicRemove(otherEnd, msgs);
       case GameDSLPackage.GAME_SPRITE__PROPERTIES:
         return ((InternalEList<?>)getProperties()).basicRemove(otherEnd, msgs);
       case GameDSLPackage.GAME_SPRITE__STATES:
         return ((InternalEList<?>)getStates()).basicRemove(otherEnd, msgs);
       case GameDSLPackage.GAME_SPRITE__EVENTS:
         return ((InternalEList<?>)getEvents()).basicRemove(otherEnd, msgs);
+      case GameDSLPackage.GAME_SPRITE__INPUTS:
+        return ((InternalEList<?>)getInputs()).basicRemove(otherEnd, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -853,10 +911,8 @@ public class GameSpriteImpl extends MinimalEObjectImpl.Container implements Game
         return getVectors2d();
       case GameDSLPackage.GAME_SPRITE__SENSOR_ID:
         return getSensorID();
-      case GameDSLPackage.GAME_SPRITE__INTERACTION_SPRITES:
-        return getInteractionSprites();
-      case GameDSLPackage.GAME_SPRITE__INTERACTION_TILES:
-        return getInteractionTiles();
+      case GameDSLPackage.GAME_SPRITE__ACTORS:
+        return getActors();
       case GameDSLPackage.GAME_SPRITE__PROPERTIES:
         return getProperties();
       case GameDSLPackage.GAME_SPRITE__STATES:
@@ -864,8 +920,13 @@ public class GameSpriteImpl extends MinimalEObjectImpl.Container implements Game
       case GameDSLPackage.GAME_SPRITE__INITIAL_STATE:
         if (resolve) return getInitialState();
         return basicGetInitialState();
+      case GameDSLPackage.GAME_SPRITE__GAME_OVER_STATE:
+        if (resolve) return getGameOverState();
+        return basicGetGameOverState();
       case GameDSLPackage.GAME_SPRITE__EVENTS:
         return getEvents();
+      case GameDSLPackage.GAME_SPRITE__INPUTS:
+        return getInputs();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -918,13 +979,9 @@ public class GameSpriteImpl extends MinimalEObjectImpl.Container implements Game
       case GameDSLPackage.GAME_SPRITE__SENSOR_ID:
         setSensorID((Integer)newValue);
         return;
-      case GameDSLPackage.GAME_SPRITE__INTERACTION_SPRITES:
-        getInteractionSprites().clear();
-        getInteractionSprites().addAll((Collection<? extends GameSprite>)newValue);
-        return;
-      case GameDSLPackage.GAME_SPRITE__INTERACTION_TILES:
-        getInteractionTiles().clear();
-        getInteractionTiles().addAll((Collection<? extends GameTile>)newValue);
+      case GameDSLPackage.GAME_SPRITE__ACTORS:
+        getActors().clear();
+        getActors().addAll((Collection<? extends GameActor>)newValue);
         return;
       case GameDSLPackage.GAME_SPRITE__PROPERTIES:
         getProperties().clear();
@@ -937,9 +994,16 @@ public class GameSpriteImpl extends MinimalEObjectImpl.Container implements Game
       case GameDSLPackage.GAME_SPRITE__INITIAL_STATE:
         setInitialState((GameSpriteState)newValue);
         return;
+      case GameDSLPackage.GAME_SPRITE__GAME_OVER_STATE:
+        setGameOverState((GameSpriteState)newValue);
+        return;
       case GameDSLPackage.GAME_SPRITE__EVENTS:
         getEvents().clear();
-        getEvents().addAll((Collection<? extends GameSpriteEvent>)newValue);
+        getEvents().addAll((Collection<? extends GameEvent>)newValue);
+        return;
+      case GameDSLPackage.GAME_SPRITE__INPUTS:
+        getInputs().clear();
+        getInputs().addAll((Collection<? extends GameInput>)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -991,11 +1055,8 @@ public class GameSpriteImpl extends MinimalEObjectImpl.Container implements Game
       case GameDSLPackage.GAME_SPRITE__SENSOR_ID:
         setSensorID(SENSOR_ID_EDEFAULT);
         return;
-      case GameDSLPackage.GAME_SPRITE__INTERACTION_SPRITES:
-        getInteractionSprites().clear();
-        return;
-      case GameDSLPackage.GAME_SPRITE__INTERACTION_TILES:
-        getInteractionTiles().clear();
+      case GameDSLPackage.GAME_SPRITE__ACTORS:
+        getActors().clear();
         return;
       case GameDSLPackage.GAME_SPRITE__PROPERTIES:
         getProperties().clear();
@@ -1006,8 +1067,14 @@ public class GameSpriteImpl extends MinimalEObjectImpl.Container implements Game
       case GameDSLPackage.GAME_SPRITE__INITIAL_STATE:
         setInitialState((GameSpriteState)null);
         return;
+      case GameDSLPackage.GAME_SPRITE__GAME_OVER_STATE:
+        setGameOverState((GameSpriteState)null);
+        return;
       case GameDSLPackage.GAME_SPRITE__EVENTS:
         getEvents().clear();
+        return;
+      case GameDSLPackage.GAME_SPRITE__INPUTS:
+        getInputs().clear();
         return;
     }
     super.eUnset(featureID);
@@ -1047,18 +1114,20 @@ public class GameSpriteImpl extends MinimalEObjectImpl.Container implements Game
         return vectors2d != null && !vectors2d.isEmpty();
       case GameDSLPackage.GAME_SPRITE__SENSOR_ID:
         return sensorID != SENSOR_ID_EDEFAULT;
-      case GameDSLPackage.GAME_SPRITE__INTERACTION_SPRITES:
-        return interactionSprites != null && !interactionSprites.isEmpty();
-      case GameDSLPackage.GAME_SPRITE__INTERACTION_TILES:
-        return interactionTiles != null && !interactionTiles.isEmpty();
+      case GameDSLPackage.GAME_SPRITE__ACTORS:
+        return actors != null && !actors.isEmpty();
       case GameDSLPackage.GAME_SPRITE__PROPERTIES:
         return properties != null && !properties.isEmpty();
       case GameDSLPackage.GAME_SPRITE__STATES:
         return states != null && !states.isEmpty();
       case GameDSLPackage.GAME_SPRITE__INITIAL_STATE:
         return initialState != null;
+      case GameDSLPackage.GAME_SPRITE__GAME_OVER_STATE:
+        return gameOverState != null;
       case GameDSLPackage.GAME_SPRITE__EVENTS:
         return events != null && !events.isEmpty();
+      case GameDSLPackage.GAME_SPRITE__INPUTS:
+        return inputs != null && !inputs.isEmpty();
     }
     return super.eIsSet(featureID);
   }

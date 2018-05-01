@@ -402,51 +402,74 @@ public class GameDSLGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cPixelPerMeterKeyword_9 = (Keyword)cGroup.eContents().get(9);
 		private final Assignment cPpmAssignment_10 = (Assignment)cGroup.eContents().get(10);
 		private final RuleCall cPpmINTTerminalRuleCall_10_0 = (RuleCall)cPpmAssignment_10.eContents().get(0);
-		private final Keyword cTileWidthKeyword_11 = (Keyword)cGroup.eContents().get(11);
-		private final Assignment cTileWidthAssignment_12 = (Assignment)cGroup.eContents().get(12);
-		private final RuleCall cTileWidthINTTerminalRuleCall_12_0 = (RuleCall)cTileWidthAssignment_12.eContents().get(0);
-		private final Keyword cTileHeightKeyword_13 = (Keyword)cGroup.eContents().get(13);
-		private final Assignment cTileHeightAssignment_14 = (Assignment)cGroup.eContents().get(14);
-		private final RuleCall cTileHeightINTTerminalRuleCall_14_0 = (RuleCall)cTileHeightAssignment_14.eContents().get(0);
-		private final UnorderedGroup cUnorderedGroup_15 = (UnorderedGroup)cGroup.eContents().get(15);
-		private final Group cGroup_15_0 = (Group)cUnorderedGroup_15.eContents().get(0);
-		private final Keyword cLayersKeyword_15_0_0 = (Keyword)cGroup_15_0.eContents().get(0);
-		private final Keyword cLeftCurlyBracketKeyword_15_0_1 = (Keyword)cGroup_15_0.eContents().get(1);
-		private final Assignment cLayersAssignment_15_0_2 = (Assignment)cGroup_15_0.eContents().get(2);
-		private final RuleCall cLayersGameLayerParserRuleCall_15_0_2_0 = (RuleCall)cLayersAssignment_15_0_2.eContents().get(0);
-		private final Keyword cRightCurlyBracketKeyword_15_0_3 = (Keyword)cGroup_15_0.eContents().get(3);
-		private final Group cGroup_15_1 = (Group)cUnorderedGroup_15.eContents().get(1);
-		private final Keyword cScenesKeyword_15_1_0 = (Keyword)cGroup_15_1.eContents().get(0);
-		private final Keyword cLeftCurlyBracketKeyword_15_1_1 = (Keyword)cGroup_15_1.eContents().get(1);
-		private final Assignment cScenesAssignment_15_1_2 = (Assignment)cGroup_15_1.eContents().get(2);
-		private final RuleCall cScenesGameSceneParserRuleCall_15_1_2_0 = (RuleCall)cScenesAssignment_15_1_2.eContents().get(0);
-		private final Keyword cRightCurlyBracketKeyword_15_1_3 = (Keyword)cGroup_15_1.eContents().get(3);
-		private final Group cGroup_15_2 = (Group)cUnorderedGroup_15.eContents().get(2);
-		private final Keyword cScreensKeyword_15_2_0 = (Keyword)cGroup_15_2.eContents().get(0);
-		private final Keyword cLeftCurlyBracketKeyword_15_2_1 = (Keyword)cGroup_15_2.eContents().get(1);
-		private final Assignment cScreensAssignment_15_2_2 = (Assignment)cGroup_15_2.eContents().get(2);
-		private final RuleCall cScreensGameScreenParserRuleCall_15_2_2_0 = (RuleCall)cScreensAssignment_15_2_2.eContents().get(0);
-		private final Keyword cRightCurlyBracketKeyword_15_2_3 = (Keyword)cGroup_15_2.eContents().get(3);
-		private final Group cGroup_15_3 = (Group)cUnorderedGroup_15.eContents().get(3);
-		private final Keyword cRegionsKeyword_15_3_0 = (Keyword)cGroup_15_3.eContents().get(0);
-		private final Keyword cLeftCurlyBracketKeyword_15_3_1 = (Keyword)cGroup_15_3.eContents().get(1);
-		private final Assignment cRegionsAssignment_15_3_2 = (Assignment)cGroup_15_3.eContents().get(2);
-		private final RuleCall cRegionsGameTextureRegionParserRuleCall_15_3_2_0 = (RuleCall)cRegionsAssignment_15_3_2.eContents().get(0);
-		private final Keyword cRightCurlyBracketKeyword_15_3_3 = (Keyword)cGroup_15_3.eContents().get(3);
+		private final Keyword cTimeStepKeyword_11 = (Keyword)cGroup.eContents().get(11);
+		private final Assignment cTimeStepAssignment_12 = (Assignment)cGroup.eContents().get(12);
+		private final RuleCall cTimeStepUnsignedNumberParserRuleCall_12_0 = (RuleCall)cTimeStepAssignment_12.eContents().get(0);
+		private final Keyword cVelocityIterationsKeyword_13 = (Keyword)cGroup.eContents().get(13);
+		private final Assignment cVelocityIterationsAssignment_14 = (Assignment)cGroup.eContents().get(14);
+		private final RuleCall cVelocityIterationsINTTerminalRuleCall_14_0 = (RuleCall)cVelocityIterationsAssignment_14.eContents().get(0);
+		private final Keyword cPositionIterationsKeyword_15 = (Keyword)cGroup.eContents().get(15);
+		private final Assignment cPositionIterationsAssignment_16 = (Assignment)cGroup.eContents().get(16);
+		private final RuleCall cPositionIterationsINTTerminalRuleCall_16_0 = (RuleCall)cPositionIterationsAssignment_16.eContents().get(0);
+		private final Keyword cWorldWidthKeyword_17 = (Keyword)cGroup.eContents().get(17);
+		private final Assignment cWorldWidthAssignment_18 = (Assignment)cGroup.eContents().get(18);
+		private final RuleCall cWorldWidthINTTerminalRuleCall_18_0 = (RuleCall)cWorldWidthAssignment_18.eContents().get(0);
+		private final Keyword cWorldHeightKeyword_19 = (Keyword)cGroup.eContents().get(19);
+		private final Assignment cWorldHeightAssignment_20 = (Assignment)cGroup.eContents().get(20);
+		private final RuleCall cWorldHeightINTTerminalRuleCall_20_0 = (RuleCall)cWorldHeightAssignment_20.eContents().get(0);
+		private final Keyword cTileWidthKeyword_21 = (Keyword)cGroup.eContents().get(21);
+		private final Assignment cTileWidthAssignment_22 = (Assignment)cGroup.eContents().get(22);
+		private final RuleCall cTileWidthINTTerminalRuleCall_22_0 = (RuleCall)cTileWidthAssignment_22.eContents().get(0);
+		private final Keyword cTileHeightKeyword_23 = (Keyword)cGroup.eContents().get(23);
+		private final Assignment cTileHeightAssignment_24 = (Assignment)cGroup.eContents().get(24);
+		private final RuleCall cTileHeightINTTerminalRuleCall_24_0 = (RuleCall)cTileHeightAssignment_24.eContents().get(0);
+		private final Assignment cDebugAssignment_25 = (Assignment)cGroup.eContents().get(25);
+		private final Keyword cDebugDebugKeyword_25_0 = (Keyword)cDebugAssignment_25.eContents().get(0);
+		private final UnorderedGroup cUnorderedGroup_26 = (UnorderedGroup)cGroup.eContents().get(26);
+		private final Group cGroup_26_0 = (Group)cUnorderedGroup_26.eContents().get(0);
+		private final Keyword cLayersKeyword_26_0_0 = (Keyword)cGroup_26_0.eContents().get(0);
+		private final Keyword cLeftCurlyBracketKeyword_26_0_1 = (Keyword)cGroup_26_0.eContents().get(1);
+		private final Assignment cLayersAssignment_26_0_2 = (Assignment)cGroup_26_0.eContents().get(2);
+		private final RuleCall cLayersGameLayerParserRuleCall_26_0_2_0 = (RuleCall)cLayersAssignment_26_0_2.eContents().get(0);
+		private final Keyword cRightCurlyBracketKeyword_26_0_3 = (Keyword)cGroup_26_0.eContents().get(3);
+		private final Group cGroup_26_1 = (Group)cUnorderedGroup_26.eContents().get(1);
+		private final Keyword cScenesKeyword_26_1_0 = (Keyword)cGroup_26_1.eContents().get(0);
+		private final Keyword cLeftCurlyBracketKeyword_26_1_1 = (Keyword)cGroup_26_1.eContents().get(1);
+		private final Assignment cScenesAssignment_26_1_2 = (Assignment)cGroup_26_1.eContents().get(2);
+		private final RuleCall cScenesGameSceneParserRuleCall_26_1_2_0 = (RuleCall)cScenesAssignment_26_1_2.eContents().get(0);
+		private final Keyword cRightCurlyBracketKeyword_26_1_3 = (Keyword)cGroup_26_1.eContents().get(3);
+		private final Group cGroup_26_2 = (Group)cUnorderedGroup_26.eContents().get(2);
+		private final Keyword cScreensKeyword_26_2_0 = (Keyword)cGroup_26_2.eContents().get(0);
+		private final Keyword cLeftCurlyBracketKeyword_26_2_1 = (Keyword)cGroup_26_2.eContents().get(1);
+		private final Assignment cScreensAssignment_26_2_2 = (Assignment)cGroup_26_2.eContents().get(2);
+		private final RuleCall cScreensGameScreenParserRuleCall_26_2_2_0 = (RuleCall)cScreensAssignment_26_2_2.eContents().get(0);
+		private final Keyword cRightCurlyBracketKeyword_26_2_3 = (Keyword)cGroup_26_2.eContents().get(3);
+		private final Group cGroup_26_3 = (Group)cUnorderedGroup_26.eContents().get(3);
+		private final Keyword cRegionsKeyword_26_3_0 = (Keyword)cGroup_26_3.eContents().get(0);
+		private final Keyword cLeftCurlyBracketKeyword_26_3_1 = (Keyword)cGroup_26_3.eContents().get(1);
+		private final Assignment cRegionsAssignment_26_3_2 = (Assignment)cGroup_26_3.eContents().get(2);
+		private final RuleCall cRegionsGameTextureRegionParserRuleCall_26_3_2_0 = (RuleCall)cRegionsAssignment_26_3_2.eContents().get(0);
+		private final Keyword cRightCurlyBracketKeyword_26_3_3 = (Keyword)cGroup_26_3.eContents().get(3);
 		
 		//GameRoot:
 		//	{GameRoot} 'game' name=ValidID
 		//	'screenWidth' width=INT 'screenHeight' height=INT
 		//	'title' title=STRING 'pixelPerMeter' ppm=INT
-		//	'tileWidth' tileWidth=INT 'tileHeight' tileHeight=INT ('layers' '{' layers+=GameLayer* '}' &
+		//	'timeStep' timeStep=UnsignedNumber 'velocityIterations' velocityIterations=INT 'positionIterations'
+		//	positionIterations=INT
+		//	'worldWidth' worldWidth=INT 'worldHeight' worldHeight=INT
+		//	'tileWidth' tileWidth=INT 'tileHeight' tileHeight=INT
+		//	debug?='debug'? ('layers' '{' layers+=GameLayer* '}' &
 		//	'scenes' '{' scenes+=GameScene* '}' &
 		//	'screens' '{' screens+=GameScreen* '}' &
 		//	'regions' '{' regions+=GameTextureRegion* '}');
 		@Override public ParserRule getRule() { return rule; }
 		
 		//{GameRoot} 'game' name=ValidID 'screenWidth' width=INT 'screenHeight' height=INT 'title' title=STRING 'pixelPerMeter'
-		//ppm=INT 'tileWidth' tileWidth=INT 'tileHeight' tileHeight=INT ('layers' '{' layers+=GameLayer* '}' & 'scenes' '{'
-		//scenes+=GameScene* '}' & 'screens' '{' screens+=GameScreen* '}' & 'regions' '{' regions+=GameTextureRegion* '}')
+		//ppm=INT 'timeStep' timeStep=UnsignedNumber 'velocityIterations' velocityIterations=INT 'positionIterations'
+		//positionIterations=INT 'worldWidth' worldWidth=INT 'worldHeight' worldHeight=INT 'tileWidth' tileWidth=INT
+		//'tileHeight' tileHeight=INT debug?='debug'? ('layers' '{' layers+=GameLayer* '}' & 'scenes' '{' scenes+=GameScene* '}'
+		//& 'screens' '{' screens+=GameScreen* '}' & 'regions' '{' regions+=GameTextureRegion* '}')
 		public Group getGroup() { return cGroup; }
 		
 		//{GameRoot}
@@ -497,99 +520,150 @@ public class GameDSLGrammarAccess extends AbstractGrammarElementFinder {
 		//INT
 		public RuleCall getPpmINTTerminalRuleCall_10_0() { return cPpmINTTerminalRuleCall_10_0; }
 		
+		//'timeStep'
+		public Keyword getTimeStepKeyword_11() { return cTimeStepKeyword_11; }
+		
+		//timeStep=UnsignedNumber
+		public Assignment getTimeStepAssignment_12() { return cTimeStepAssignment_12; }
+		
+		//UnsignedNumber
+		public RuleCall getTimeStepUnsignedNumberParserRuleCall_12_0() { return cTimeStepUnsignedNumberParserRuleCall_12_0; }
+		
+		//'velocityIterations'
+		public Keyword getVelocityIterationsKeyword_13() { return cVelocityIterationsKeyword_13; }
+		
+		//velocityIterations=INT
+		public Assignment getVelocityIterationsAssignment_14() { return cVelocityIterationsAssignment_14; }
+		
+		//INT
+		public RuleCall getVelocityIterationsINTTerminalRuleCall_14_0() { return cVelocityIterationsINTTerminalRuleCall_14_0; }
+		
+		//'positionIterations'
+		public Keyword getPositionIterationsKeyword_15() { return cPositionIterationsKeyword_15; }
+		
+		//positionIterations=INT
+		public Assignment getPositionIterationsAssignment_16() { return cPositionIterationsAssignment_16; }
+		
+		//INT
+		public RuleCall getPositionIterationsINTTerminalRuleCall_16_0() { return cPositionIterationsINTTerminalRuleCall_16_0; }
+		
+		//'worldWidth'
+		public Keyword getWorldWidthKeyword_17() { return cWorldWidthKeyword_17; }
+		
+		//worldWidth=INT
+		public Assignment getWorldWidthAssignment_18() { return cWorldWidthAssignment_18; }
+		
+		//INT
+		public RuleCall getWorldWidthINTTerminalRuleCall_18_0() { return cWorldWidthINTTerminalRuleCall_18_0; }
+		
+		//'worldHeight'
+		public Keyword getWorldHeightKeyword_19() { return cWorldHeightKeyword_19; }
+		
+		//worldHeight=INT
+		public Assignment getWorldHeightAssignment_20() { return cWorldHeightAssignment_20; }
+		
+		//INT
+		public RuleCall getWorldHeightINTTerminalRuleCall_20_0() { return cWorldHeightINTTerminalRuleCall_20_0; }
+		
 		//'tileWidth'
-		public Keyword getTileWidthKeyword_11() { return cTileWidthKeyword_11; }
+		public Keyword getTileWidthKeyword_21() { return cTileWidthKeyword_21; }
 		
 		//tileWidth=INT
-		public Assignment getTileWidthAssignment_12() { return cTileWidthAssignment_12; }
+		public Assignment getTileWidthAssignment_22() { return cTileWidthAssignment_22; }
 		
 		//INT
-		public RuleCall getTileWidthINTTerminalRuleCall_12_0() { return cTileWidthINTTerminalRuleCall_12_0; }
+		public RuleCall getTileWidthINTTerminalRuleCall_22_0() { return cTileWidthINTTerminalRuleCall_22_0; }
 		
 		//'tileHeight'
-		public Keyword getTileHeightKeyword_13() { return cTileHeightKeyword_13; }
+		public Keyword getTileHeightKeyword_23() { return cTileHeightKeyword_23; }
 		
 		//tileHeight=INT
-		public Assignment getTileHeightAssignment_14() { return cTileHeightAssignment_14; }
+		public Assignment getTileHeightAssignment_24() { return cTileHeightAssignment_24; }
 		
 		//INT
-		public RuleCall getTileHeightINTTerminalRuleCall_14_0() { return cTileHeightINTTerminalRuleCall_14_0; }
+		public RuleCall getTileHeightINTTerminalRuleCall_24_0() { return cTileHeightINTTerminalRuleCall_24_0; }
+		
+		//debug?='debug'?
+		public Assignment getDebugAssignment_25() { return cDebugAssignment_25; }
+		
+		//'debug'
+		public Keyword getDebugDebugKeyword_25_0() { return cDebugDebugKeyword_25_0; }
 		
 		//'layers' '{' layers+=GameLayer* '}' & 'scenes' '{' scenes+=GameScene* '}' & 'screens' '{' screens+=GameScreen* '}' &
 		//'regions' '{' regions+=GameTextureRegion* '}'
-		public UnorderedGroup getUnorderedGroup_15() { return cUnorderedGroup_15; }
+		public UnorderedGroup getUnorderedGroup_26() { return cUnorderedGroup_26; }
 		
 		//'layers' '{' layers+=GameLayer* '}'
-		public Group getGroup_15_0() { return cGroup_15_0; }
+		public Group getGroup_26_0() { return cGroup_26_0; }
 		
 		//'layers'
-		public Keyword getLayersKeyword_15_0_0() { return cLayersKeyword_15_0_0; }
+		public Keyword getLayersKeyword_26_0_0() { return cLayersKeyword_26_0_0; }
 		
 		//'{'
-		public Keyword getLeftCurlyBracketKeyword_15_0_1() { return cLeftCurlyBracketKeyword_15_0_1; }
+		public Keyword getLeftCurlyBracketKeyword_26_0_1() { return cLeftCurlyBracketKeyword_26_0_1; }
 		
 		//layers+=GameLayer*
-		public Assignment getLayersAssignment_15_0_2() { return cLayersAssignment_15_0_2; }
+		public Assignment getLayersAssignment_26_0_2() { return cLayersAssignment_26_0_2; }
 		
 		//GameLayer
-		public RuleCall getLayersGameLayerParserRuleCall_15_0_2_0() { return cLayersGameLayerParserRuleCall_15_0_2_0; }
+		public RuleCall getLayersGameLayerParserRuleCall_26_0_2_0() { return cLayersGameLayerParserRuleCall_26_0_2_0; }
 		
 		//'}'
-		public Keyword getRightCurlyBracketKeyword_15_0_3() { return cRightCurlyBracketKeyword_15_0_3; }
+		public Keyword getRightCurlyBracketKeyword_26_0_3() { return cRightCurlyBracketKeyword_26_0_3; }
 		
 		//'scenes' '{' scenes+=GameScene* '}'
-		public Group getGroup_15_1() { return cGroup_15_1; }
+		public Group getGroup_26_1() { return cGroup_26_1; }
 		
 		//'scenes'
-		public Keyword getScenesKeyword_15_1_0() { return cScenesKeyword_15_1_0; }
+		public Keyword getScenesKeyword_26_1_0() { return cScenesKeyword_26_1_0; }
 		
 		//'{'
-		public Keyword getLeftCurlyBracketKeyword_15_1_1() { return cLeftCurlyBracketKeyword_15_1_1; }
+		public Keyword getLeftCurlyBracketKeyword_26_1_1() { return cLeftCurlyBracketKeyword_26_1_1; }
 		
 		//scenes+=GameScene*
-		public Assignment getScenesAssignment_15_1_2() { return cScenesAssignment_15_1_2; }
+		public Assignment getScenesAssignment_26_1_2() { return cScenesAssignment_26_1_2; }
 		
 		//GameScene
-		public RuleCall getScenesGameSceneParserRuleCall_15_1_2_0() { return cScenesGameSceneParserRuleCall_15_1_2_0; }
+		public RuleCall getScenesGameSceneParserRuleCall_26_1_2_0() { return cScenesGameSceneParserRuleCall_26_1_2_0; }
 		
 		//'}'
-		public Keyword getRightCurlyBracketKeyword_15_1_3() { return cRightCurlyBracketKeyword_15_1_3; }
+		public Keyword getRightCurlyBracketKeyword_26_1_3() { return cRightCurlyBracketKeyword_26_1_3; }
 		
 		//'screens' '{' screens+=GameScreen* '}'
-		public Group getGroup_15_2() { return cGroup_15_2; }
+		public Group getGroup_26_2() { return cGroup_26_2; }
 		
 		//'screens'
-		public Keyword getScreensKeyword_15_2_0() { return cScreensKeyword_15_2_0; }
+		public Keyword getScreensKeyword_26_2_0() { return cScreensKeyword_26_2_0; }
 		
 		//'{'
-		public Keyword getLeftCurlyBracketKeyword_15_2_1() { return cLeftCurlyBracketKeyword_15_2_1; }
+		public Keyword getLeftCurlyBracketKeyword_26_2_1() { return cLeftCurlyBracketKeyword_26_2_1; }
 		
 		//screens+=GameScreen*
-		public Assignment getScreensAssignment_15_2_2() { return cScreensAssignment_15_2_2; }
+		public Assignment getScreensAssignment_26_2_2() { return cScreensAssignment_26_2_2; }
 		
 		//GameScreen
-		public RuleCall getScreensGameScreenParserRuleCall_15_2_2_0() { return cScreensGameScreenParserRuleCall_15_2_2_0; }
+		public RuleCall getScreensGameScreenParserRuleCall_26_2_2_0() { return cScreensGameScreenParserRuleCall_26_2_2_0; }
 		
 		//'}'
-		public Keyword getRightCurlyBracketKeyword_15_2_3() { return cRightCurlyBracketKeyword_15_2_3; }
+		public Keyword getRightCurlyBracketKeyword_26_2_3() { return cRightCurlyBracketKeyword_26_2_3; }
 		
 		//'regions' '{' regions+=GameTextureRegion* '}'
-		public Group getGroup_15_3() { return cGroup_15_3; }
+		public Group getGroup_26_3() { return cGroup_26_3; }
 		
 		//'regions'
-		public Keyword getRegionsKeyword_15_3_0() { return cRegionsKeyword_15_3_0; }
+		public Keyword getRegionsKeyword_26_3_0() { return cRegionsKeyword_26_3_0; }
 		
 		//'{'
-		public Keyword getLeftCurlyBracketKeyword_15_3_1() { return cLeftCurlyBracketKeyword_15_3_1; }
+		public Keyword getLeftCurlyBracketKeyword_26_3_1() { return cLeftCurlyBracketKeyword_26_3_1; }
 		
 		//regions+=GameTextureRegion*
-		public Assignment getRegionsAssignment_15_3_2() { return cRegionsAssignment_15_3_2; }
+		public Assignment getRegionsAssignment_26_3_2() { return cRegionsAssignment_26_3_2; }
 		
 		//GameTextureRegion
-		public RuleCall getRegionsGameTextureRegionParserRuleCall_15_3_2_0() { return cRegionsGameTextureRegionParserRuleCall_15_3_2_0; }
+		public RuleCall getRegionsGameTextureRegionParserRuleCall_26_3_2_0() { return cRegionsGameTextureRegionParserRuleCall_26_3_2_0; }
 		
 		//'}'
-		public Keyword getRightCurlyBracketKeyword_15_3_3() { return cRightCurlyBracketKeyword_15_3_3; }
+		public Keyword getRightCurlyBracketKeyword_26_3_3() { return cRightCurlyBracketKeyword_26_3_3; }
 	}
 	public class GameLayerElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "com.hypermodel.games.engine.GameDSL.GameLayer");
@@ -1126,58 +1200,61 @@ public class GameDSLGrammarAccess extends AbstractGrammarElementFinder {
 		private final Assignment cSensorIDAssignment_7_2_5 = (Assignment)cGroup_7_2.eContents().get(5);
 		private final RuleCall cSensorIDINTTerminalRuleCall_7_2_5_0 = (RuleCall)cSensorIDAssignment_7_2_5.eContents().get(0);
 		private final Group cGroup_7_3 = (Group)cUnorderedGroup_7.eContents().get(3);
-		private final Keyword cInteractsDynamicKeyword_7_3_0 = (Keyword)cGroup_7_3.eContents().get(0);
+		private final Keyword cActorsKeyword_7_3_0 = (Keyword)cGroup_7_3.eContents().get(0);
 		private final Keyword cLeftCurlyBracketKeyword_7_3_1 = (Keyword)cGroup_7_3.eContents().get(1);
-		private final Assignment cInteractionSpritesAssignment_7_3_2 = (Assignment)cGroup_7_3.eContents().get(2);
-		private final CrossReference cInteractionSpritesGameSpriteCrossReference_7_3_2_0 = (CrossReference)cInteractionSpritesAssignment_7_3_2.eContents().get(0);
-		private final RuleCall cInteractionSpritesGameSpriteIDTerminalRuleCall_7_3_2_0_1 = (RuleCall)cInteractionSpritesGameSpriteCrossReference_7_3_2_0.eContents().get(1);
+		private final Assignment cActorsAssignment_7_3_2 = (Assignment)cGroup_7_3.eContents().get(2);
+		private final RuleCall cActorsGameActorParserRuleCall_7_3_2_0 = (RuleCall)cActorsAssignment_7_3_2.eContents().get(0);
 		private final Keyword cRightCurlyBracketKeyword_7_3_3 = (Keyword)cGroup_7_3.eContents().get(3);
 		private final Group cGroup_7_4 = (Group)cUnorderedGroup_7.eContents().get(4);
-		private final Keyword cInteractsStaticKeyword_7_4_0 = (Keyword)cGroup_7_4.eContents().get(0);
+		private final Keyword cPropertiesKeyword_7_4_0 = (Keyword)cGroup_7_4.eContents().get(0);
 		private final Keyword cLeftCurlyBracketKeyword_7_4_1 = (Keyword)cGroup_7_4.eContents().get(1);
-		private final Assignment cInteractionTilesAssignment_7_4_2 = (Assignment)cGroup_7_4.eContents().get(2);
-		private final CrossReference cInteractionTilesGameTileCrossReference_7_4_2_0 = (CrossReference)cInteractionTilesAssignment_7_4_2.eContents().get(0);
-		private final RuleCall cInteractionTilesGameTileIDTerminalRuleCall_7_4_2_0_1 = (RuleCall)cInteractionTilesGameTileCrossReference_7_4_2_0.eContents().get(1);
+		private final Assignment cPropertiesAssignment_7_4_2 = (Assignment)cGroup_7_4.eContents().get(2);
+		private final RuleCall cPropertiesGameBodyPropertyParserRuleCall_7_4_2_0 = (RuleCall)cPropertiesAssignment_7_4_2.eContents().get(0);
 		private final Keyword cRightCurlyBracketKeyword_7_4_3 = (Keyword)cGroup_7_4.eContents().get(3);
 		private final Group cGroup_7_5 = (Group)cUnorderedGroup_7.eContents().get(5);
-		private final Keyword cPropertiesKeyword_7_5_0 = (Keyword)cGroup_7_5.eContents().get(0);
+		private final Keyword cStatesKeyword_7_5_0 = (Keyword)cGroup_7_5.eContents().get(0);
 		private final Keyword cLeftCurlyBracketKeyword_7_5_1 = (Keyword)cGroup_7_5.eContents().get(1);
-		private final Assignment cPropertiesAssignment_7_5_2 = (Assignment)cGroup_7_5.eContents().get(2);
-		private final RuleCall cPropertiesGameBodyPropertyParserRuleCall_7_5_2_0 = (RuleCall)cPropertiesAssignment_7_5_2.eContents().get(0);
+		private final Assignment cStatesAssignment_7_5_2 = (Assignment)cGroup_7_5.eContents().get(2);
+		private final RuleCall cStatesGameSpriteStateParserRuleCall_7_5_2_0 = (RuleCall)cStatesAssignment_7_5_2.eContents().get(0);
 		private final Keyword cRightCurlyBracketKeyword_7_5_3 = (Keyword)cGroup_7_5.eContents().get(3);
+		private final Keyword cInitialStateKeyword_7_5_4 = (Keyword)cGroup_7_5.eContents().get(4);
+		private final Assignment cInitialStateAssignment_7_5_5 = (Assignment)cGroup_7_5.eContents().get(5);
+		private final CrossReference cInitialStateGameSpriteStateCrossReference_7_5_5_0 = (CrossReference)cInitialStateAssignment_7_5_5.eContents().get(0);
+		private final RuleCall cInitialStateGameSpriteStateIDTerminalRuleCall_7_5_5_0_1 = (RuleCall)cInitialStateGameSpriteStateCrossReference_7_5_5_0.eContents().get(1);
+		private final Group cGroup_7_5_6 = (Group)cGroup_7_5.eContents().get(6);
+		private final Keyword cGameOverStateKeyword_7_5_6_0 = (Keyword)cGroup_7_5_6.eContents().get(0);
+		private final Assignment cGameOverStateAssignment_7_5_6_1 = (Assignment)cGroup_7_5_6.eContents().get(1);
+		private final CrossReference cGameOverStateGameSpriteStateCrossReference_7_5_6_1_0 = (CrossReference)cGameOverStateAssignment_7_5_6_1.eContents().get(0);
+		private final RuleCall cGameOverStateGameSpriteStateIDTerminalRuleCall_7_5_6_1_0_1 = (RuleCall)cGameOverStateGameSpriteStateCrossReference_7_5_6_1_0.eContents().get(1);
 		private final Group cGroup_7_6 = (Group)cUnorderedGroup_7.eContents().get(6);
-		private final Keyword cStatesKeyword_7_6_0 = (Keyword)cGroup_7_6.eContents().get(0);
+		private final Keyword cEventsKeyword_7_6_0 = (Keyword)cGroup_7_6.eContents().get(0);
 		private final Keyword cLeftCurlyBracketKeyword_7_6_1 = (Keyword)cGroup_7_6.eContents().get(1);
-		private final Assignment cStatesAssignment_7_6_2 = (Assignment)cGroup_7_6.eContents().get(2);
-		private final RuleCall cStatesGameSpriteStateParserRuleCall_7_6_2_0 = (RuleCall)cStatesAssignment_7_6_2.eContents().get(0);
+		private final Assignment cEventsAssignment_7_6_2 = (Assignment)cGroup_7_6.eContents().get(2);
+		private final RuleCall cEventsGameEventParserRuleCall_7_6_2_0 = (RuleCall)cEventsAssignment_7_6_2.eContents().get(0);
 		private final Keyword cRightCurlyBracketKeyword_7_6_3 = (Keyword)cGroup_7_6.eContents().get(3);
-		private final Keyword cInitialStateKeyword_7_6_4 = (Keyword)cGroup_7_6.eContents().get(4);
-		private final Assignment cInitialStateAssignment_7_6_5 = (Assignment)cGroup_7_6.eContents().get(5);
-		private final CrossReference cInitialStateGameSpriteStateCrossReference_7_6_5_0 = (CrossReference)cInitialStateAssignment_7_6_5.eContents().get(0);
-		private final RuleCall cInitialStateGameSpriteStateIDTerminalRuleCall_7_6_5_0_1 = (RuleCall)cInitialStateGameSpriteStateCrossReference_7_6_5_0.eContents().get(1);
 		private final Group cGroup_7_7 = (Group)cUnorderedGroup_7.eContents().get(7);
-		private final Keyword cEventsKeyword_7_7_0 = (Keyword)cGroup_7_7.eContents().get(0);
+		private final Keyword cInputsKeyword_7_7_0 = (Keyword)cGroup_7_7.eContents().get(0);
 		private final Keyword cLeftCurlyBracketKeyword_7_7_1 = (Keyword)cGroup_7_7.eContents().get(1);
-		private final Assignment cEventsAssignment_7_7_2 = (Assignment)cGroup_7_7.eContents().get(2);
-		private final RuleCall cEventsGameSpriteEventParserRuleCall_7_7_2_0 = (RuleCall)cEventsAssignment_7_7_2.eContents().get(0);
+		private final Assignment cInputsAssignment_7_7_2 = (Assignment)cGroup_7_7.eContents().get(2);
+		private final RuleCall cInputsGameInputParserRuleCall_7_7_2_0 = (RuleCall)cInputsAssignment_7_7_2.eContents().get(0);
 		private final Keyword cRightCurlyBracketKeyword_7_7_3 = (Keyword)cGroup_7_7.eContents().get(3);
 		
 		//GameSprite:
 		//	{GameSprite} 'sprite' name=ValidID 'collisionId' id=INT
 		//	'radius' radius=INT ((hasVelocity?='velocity' velocity=GameVector2d)? & (hasLayer?='layer' layer=[GameLayer] |
 		//	hasStartPosition?='startPosition' startPosition=GameVector2d)? & (hasSensor?='sensor' '{' vectors2d+=GameVector2d*
-		//	'}' 'sensorID' sensorID=INT)? & ('interactsDynamic' '{' interactionSprites+=[GameSprite]* '}')? & ('interactsStatic'
-		//	'{' interactionTiles+=[GameTile]* '}')? & ('properties' '{' properties+=GameBodyProperty* '}')? & ('states' '{'
-		//	states+=GameSpriteState* '}' 'initialState' initialState=[GameSpriteState])? & ('events' '{' events+=GameSpriteEvent*
-		//	'}')?);
+		//	'}' 'sensorID' sensorID=INT)? & ('actors' '{' actors+=GameActor* '}')? & ('properties' '{'
+		//	properties+=GameBodyProperty* '}')? & ('states' '{' states+=GameSpriteState* '}'
+		//	'initialState' initialState=[GameSpriteState] ('gameOverState' gameOverState=[GameSpriteState])?)? & ('events' '{'
+		//	events+=GameEvent* '}')? & ('inputs' '{' inputs+=GameInput* '}')?);
 		@Override public ParserRule getRule() { return rule; }
 		
 		//{GameSprite} 'sprite' name=ValidID 'collisionId' id=INT 'radius' radius=INT ((hasVelocity?='velocity'
 		//velocity=GameVector2d)? & (hasLayer?='layer' layer=[GameLayer] | hasStartPosition?='startPosition'
 		//startPosition=GameVector2d)? & (hasSensor?='sensor' '{' vectors2d+=GameVector2d* '}' 'sensorID' sensorID=INT)? &
-		//('interactsDynamic' '{' interactionSprites+=[GameSprite]* '}')? & ('interactsStatic' '{' interactionTiles+=[GameTile]*
-		//'}')? & ('properties' '{' properties+=GameBodyProperty* '}')? & ('states' '{' states+=GameSpriteState* '}'
-		//'initialState' initialState=[GameSpriteState])? & ('events' '{' events+=GameSpriteEvent* '}')?)
+		//('actors' '{' actors+=GameActor* '}')? & ('properties' '{' properties+=GameBodyProperty* '}')? & ('states' '{'
+		//states+=GameSpriteState* '}' 'initialState' initialState=[GameSpriteState] ('gameOverState'
+		//gameOverState=[GameSpriteState])?)? & ('events' '{' events+=GameEvent* '}')? & ('inputs' '{' inputs+=GameInput* '}')?)
 		public Group getGroup() { return cGroup; }
 		
 		//{GameSprite}
@@ -1212,10 +1289,9 @@ public class GameDSLGrammarAccess extends AbstractGrammarElementFinder {
 		
 		//(hasVelocity?='velocity' velocity=GameVector2d)? & (hasLayer?='layer' layer=[GameLayer] |
 		//hasStartPosition?='startPosition' startPosition=GameVector2d)? & (hasSensor?='sensor' '{' vectors2d+=GameVector2d* '}'
-		//'sensorID' sensorID=INT)? & ('interactsDynamic' '{' interactionSprites+=[GameSprite]* '}')? & ('interactsStatic' '{'
-		//interactionTiles+=[GameTile]* '}')? & ('properties' '{' properties+=GameBodyProperty* '}')? & ('states' '{'
-		//states+=GameSpriteState* '}' 'initialState' initialState=[GameSpriteState])? & ('events' '{' events+=GameSpriteEvent*
-		//'}')?
+		//'sensorID' sensorID=INT)? & ('actors' '{' actors+=GameActor* '}')? & ('properties' '{' properties+=GameBodyProperty*
+		//'}')? & ('states' '{' states+=GameSpriteState* '}' 'initialState' initialState=[GameSpriteState] ('gameOverState'
+		//gameOverState=[GameSpriteState])?)? & ('events' '{' events+=GameEvent* '}')? & ('inputs' '{' inputs+=GameInput* '}')?
 		public UnorderedGroup getUnorderedGroup_7() { return cUnorderedGroup_7; }
 		
 		//(hasVelocity?='velocity' velocity=GameVector2d)?
@@ -1299,113 +1375,311 @@ public class GameDSLGrammarAccess extends AbstractGrammarElementFinder {
 		//INT
 		public RuleCall getSensorIDINTTerminalRuleCall_7_2_5_0() { return cSensorIDINTTerminalRuleCall_7_2_5_0; }
 		
-		//('interactsDynamic' '{' interactionSprites+=[GameSprite]* '}')?
+		//('actors' '{' actors+=GameActor* '}')?
 		public Group getGroup_7_3() { return cGroup_7_3; }
 		
-		//'interactsDynamic'
-		public Keyword getInteractsDynamicKeyword_7_3_0() { return cInteractsDynamicKeyword_7_3_0; }
+		//'actors'
+		public Keyword getActorsKeyword_7_3_0() { return cActorsKeyword_7_3_0; }
 		
 		//'{'
 		public Keyword getLeftCurlyBracketKeyword_7_3_1() { return cLeftCurlyBracketKeyword_7_3_1; }
 		
-		//interactionSprites+=[GameSprite]*
-		public Assignment getInteractionSpritesAssignment_7_3_2() { return cInteractionSpritesAssignment_7_3_2; }
+		//actors+=GameActor*
+		public Assignment getActorsAssignment_7_3_2() { return cActorsAssignment_7_3_2; }
 		
-		//[GameSprite]
-		public CrossReference getInteractionSpritesGameSpriteCrossReference_7_3_2_0() { return cInteractionSpritesGameSpriteCrossReference_7_3_2_0; }
-		
-		//ID
-		public RuleCall getInteractionSpritesGameSpriteIDTerminalRuleCall_7_3_2_0_1() { return cInteractionSpritesGameSpriteIDTerminalRuleCall_7_3_2_0_1; }
+		//GameActor
+		public RuleCall getActorsGameActorParserRuleCall_7_3_2_0() { return cActorsGameActorParserRuleCall_7_3_2_0; }
 		
 		//'}'
 		public Keyword getRightCurlyBracketKeyword_7_3_3() { return cRightCurlyBracketKeyword_7_3_3; }
 		
-		//('interactsStatic' '{' interactionTiles+=[GameTile]* '}')?
+		//('properties' '{' properties+=GameBodyProperty* '}')?
 		public Group getGroup_7_4() { return cGroup_7_4; }
 		
-		//'interactsStatic'
-		public Keyword getInteractsStaticKeyword_7_4_0() { return cInteractsStaticKeyword_7_4_0; }
+		//'properties'
+		public Keyword getPropertiesKeyword_7_4_0() { return cPropertiesKeyword_7_4_0; }
 		
 		//'{'
 		public Keyword getLeftCurlyBracketKeyword_7_4_1() { return cLeftCurlyBracketKeyword_7_4_1; }
 		
-		//interactionTiles+=[GameTile]*
-		public Assignment getInteractionTilesAssignment_7_4_2() { return cInteractionTilesAssignment_7_4_2; }
+		//properties+=GameBodyProperty*
+		public Assignment getPropertiesAssignment_7_4_2() { return cPropertiesAssignment_7_4_2; }
 		
-		//[GameTile]
-		public CrossReference getInteractionTilesGameTileCrossReference_7_4_2_0() { return cInteractionTilesGameTileCrossReference_7_4_2_0; }
-		
-		//ID
-		public RuleCall getInteractionTilesGameTileIDTerminalRuleCall_7_4_2_0_1() { return cInteractionTilesGameTileIDTerminalRuleCall_7_4_2_0_1; }
+		//GameBodyProperty
+		public RuleCall getPropertiesGameBodyPropertyParserRuleCall_7_4_2_0() { return cPropertiesGameBodyPropertyParserRuleCall_7_4_2_0; }
 		
 		//'}'
 		public Keyword getRightCurlyBracketKeyword_7_4_3() { return cRightCurlyBracketKeyword_7_4_3; }
 		
-		//('properties' '{' properties+=GameBodyProperty* '}')?
+		//('states' '{' states+=GameSpriteState* '}' 'initialState' initialState=[GameSpriteState] ('gameOverState'
+		//gameOverState=[GameSpriteState])?)?
 		public Group getGroup_7_5() { return cGroup_7_5; }
 		
-		//'properties'
-		public Keyword getPropertiesKeyword_7_5_0() { return cPropertiesKeyword_7_5_0; }
+		//'states'
+		public Keyword getStatesKeyword_7_5_0() { return cStatesKeyword_7_5_0; }
 		
 		//'{'
 		public Keyword getLeftCurlyBracketKeyword_7_5_1() { return cLeftCurlyBracketKeyword_7_5_1; }
 		
-		//properties+=GameBodyProperty*
-		public Assignment getPropertiesAssignment_7_5_2() { return cPropertiesAssignment_7_5_2; }
+		//states+=GameSpriteState*
+		public Assignment getStatesAssignment_7_5_2() { return cStatesAssignment_7_5_2; }
 		
-		//GameBodyProperty
-		public RuleCall getPropertiesGameBodyPropertyParserRuleCall_7_5_2_0() { return cPropertiesGameBodyPropertyParserRuleCall_7_5_2_0; }
+		//GameSpriteState
+		public RuleCall getStatesGameSpriteStateParserRuleCall_7_5_2_0() { return cStatesGameSpriteStateParserRuleCall_7_5_2_0; }
 		
 		//'}'
 		public Keyword getRightCurlyBracketKeyword_7_5_3() { return cRightCurlyBracketKeyword_7_5_3; }
 		
-		//('states' '{' states+=GameSpriteState* '}' 'initialState' initialState=[GameSpriteState])?
+		//'initialState'
+		public Keyword getInitialStateKeyword_7_5_4() { return cInitialStateKeyword_7_5_4; }
+		
+		//initialState=[GameSpriteState]
+		public Assignment getInitialStateAssignment_7_5_5() { return cInitialStateAssignment_7_5_5; }
+		
+		//[GameSpriteState]
+		public CrossReference getInitialStateGameSpriteStateCrossReference_7_5_5_0() { return cInitialStateGameSpriteStateCrossReference_7_5_5_0; }
+		
+		//ID
+		public RuleCall getInitialStateGameSpriteStateIDTerminalRuleCall_7_5_5_0_1() { return cInitialStateGameSpriteStateIDTerminalRuleCall_7_5_5_0_1; }
+		
+		//('gameOverState' gameOverState=[GameSpriteState])?
+		public Group getGroup_7_5_6() { return cGroup_7_5_6; }
+		
+		//'gameOverState'
+		public Keyword getGameOverStateKeyword_7_5_6_0() { return cGameOverStateKeyword_7_5_6_0; }
+		
+		//gameOverState=[GameSpriteState]
+		public Assignment getGameOverStateAssignment_7_5_6_1() { return cGameOverStateAssignment_7_5_6_1; }
+		
+		//[GameSpriteState]
+		public CrossReference getGameOverStateGameSpriteStateCrossReference_7_5_6_1_0() { return cGameOverStateGameSpriteStateCrossReference_7_5_6_1_0; }
+		
+		//ID
+		public RuleCall getGameOverStateGameSpriteStateIDTerminalRuleCall_7_5_6_1_0_1() { return cGameOverStateGameSpriteStateIDTerminalRuleCall_7_5_6_1_0_1; }
+		
+		//('events' '{' events+=GameEvent* '}')?
 		public Group getGroup_7_6() { return cGroup_7_6; }
 		
-		//'states'
-		public Keyword getStatesKeyword_7_6_0() { return cStatesKeyword_7_6_0; }
+		//'events'
+		public Keyword getEventsKeyword_7_6_0() { return cEventsKeyword_7_6_0; }
 		
 		//'{'
 		public Keyword getLeftCurlyBracketKeyword_7_6_1() { return cLeftCurlyBracketKeyword_7_6_1; }
 		
-		//states+=GameSpriteState*
-		public Assignment getStatesAssignment_7_6_2() { return cStatesAssignment_7_6_2; }
+		//events+=GameEvent*
+		public Assignment getEventsAssignment_7_6_2() { return cEventsAssignment_7_6_2; }
 		
-		//GameSpriteState
-		public RuleCall getStatesGameSpriteStateParserRuleCall_7_6_2_0() { return cStatesGameSpriteStateParserRuleCall_7_6_2_0; }
+		//GameEvent
+		public RuleCall getEventsGameEventParserRuleCall_7_6_2_0() { return cEventsGameEventParserRuleCall_7_6_2_0; }
 		
 		//'}'
 		public Keyword getRightCurlyBracketKeyword_7_6_3() { return cRightCurlyBracketKeyword_7_6_3; }
 		
-		//'initialState'
-		public Keyword getInitialStateKeyword_7_6_4() { return cInitialStateKeyword_7_6_4; }
-		
-		//initialState=[GameSpriteState]
-		public Assignment getInitialStateAssignment_7_6_5() { return cInitialStateAssignment_7_6_5; }
-		
-		//[GameSpriteState]
-		public CrossReference getInitialStateGameSpriteStateCrossReference_7_6_5_0() { return cInitialStateGameSpriteStateCrossReference_7_6_5_0; }
-		
-		//ID
-		public RuleCall getInitialStateGameSpriteStateIDTerminalRuleCall_7_6_5_0_1() { return cInitialStateGameSpriteStateIDTerminalRuleCall_7_6_5_0_1; }
-		
-		//('events' '{' events+=GameSpriteEvent* '}')?
+		//('inputs' '{' inputs+=GameInput* '}')?
 		public Group getGroup_7_7() { return cGroup_7_7; }
 		
-		//'events'
-		public Keyword getEventsKeyword_7_7_0() { return cEventsKeyword_7_7_0; }
+		//'inputs'
+		public Keyword getInputsKeyword_7_7_0() { return cInputsKeyword_7_7_0; }
 		
 		//'{'
 		public Keyword getLeftCurlyBracketKeyword_7_7_1() { return cLeftCurlyBracketKeyword_7_7_1; }
 		
-		//events+=GameSpriteEvent*
-		public Assignment getEventsAssignment_7_7_2() { return cEventsAssignment_7_7_2; }
+		//inputs+=GameInput*
+		public Assignment getInputsAssignment_7_7_2() { return cInputsAssignment_7_7_2; }
 		
-		//GameSpriteEvent
-		public RuleCall getEventsGameSpriteEventParserRuleCall_7_7_2_0() { return cEventsGameSpriteEventParserRuleCall_7_7_2_0; }
+		//GameInput
+		public RuleCall getInputsGameInputParserRuleCall_7_7_2_0() { return cInputsGameInputParserRuleCall_7_7_2_0; }
 		
 		//'}'
 		public Keyword getRightCurlyBracketKeyword_7_7_3() { return cRightCurlyBracketKeyword_7_7_3; }
+	}
+	public class GameInputElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "com.hypermodel.games.engine.GameDSL.GameInput");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Action cGameInputAction_0 = (Action)cGroup.eContents().get(0);
+		private final Keyword cInputKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Assignment cKeyTypeAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cKeyTypeGameKeyInputTypeEnumRuleCall_2_0 = (RuleCall)cKeyTypeAssignment_2.eContents().get(0);
+		private final Assignment cKeyAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final RuleCall cKeyGameKeyInputKeyEnumRuleCall_3_0 = (RuleCall)cKeyAssignment_3.eContents().get(0);
+		private final Assignment cTriggerAssignment_4 = (Assignment)cGroup.eContents().get(4);
+		private final CrossReference cTriggerGameEventCrossReference_4_0 = (CrossReference)cTriggerAssignment_4.eContents().get(0);
+		private final RuleCall cTriggerGameEventIDTerminalRuleCall_4_0_1 = (RuleCall)cTriggerGameEventCrossReference_4_0.eContents().get(1);
+		
+		//GameInput:
+		//	{GameInput} 'input' keyType=GameKeyInputType key=GameKeyInputKey
+		//	trigger=[GameEvent];
+		@Override public ParserRule getRule() { return rule; }
+		
+		//{GameInput} 'input' keyType=GameKeyInputType key=GameKeyInputKey trigger=[GameEvent]
+		public Group getGroup() { return cGroup; }
+		
+		//{GameInput}
+		public Action getGameInputAction_0() { return cGameInputAction_0; }
+		
+		//'input'
+		public Keyword getInputKeyword_1() { return cInputKeyword_1; }
+		
+		//keyType=GameKeyInputType
+		public Assignment getKeyTypeAssignment_2() { return cKeyTypeAssignment_2; }
+		
+		//GameKeyInputType
+		public RuleCall getKeyTypeGameKeyInputTypeEnumRuleCall_2_0() { return cKeyTypeGameKeyInputTypeEnumRuleCall_2_0; }
+		
+		//key=GameKeyInputKey
+		public Assignment getKeyAssignment_3() { return cKeyAssignment_3; }
+		
+		//GameKeyInputKey
+		public RuleCall getKeyGameKeyInputKeyEnumRuleCall_3_0() { return cKeyGameKeyInputKeyEnumRuleCall_3_0; }
+		
+		//trigger=[GameEvent]
+		public Assignment getTriggerAssignment_4() { return cTriggerAssignment_4; }
+		
+		//[GameEvent]
+		public CrossReference getTriggerGameEventCrossReference_4_0() { return cTriggerGameEventCrossReference_4_0; }
+		
+		//ID
+		public RuleCall getTriggerGameEventIDTerminalRuleCall_4_0_1() { return cTriggerGameEventIDTerminalRuleCall_4_0_1; }
+	}
+	public class GameActorElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "com.hypermodel.games.engine.GameDSL.GameActor");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Action cGameActorAction_0 = (Action)cGroup.eContents().get(0);
+		private final Alternatives cAlternatives_1 = (Alternatives)cGroup.eContents().get(1);
+		private final Group cGroup_1_0 = (Group)cAlternatives_1.eContents().get(0);
+		private final Keyword cSpriteKeyword_1_0_0 = (Keyword)cGroup_1_0.eContents().get(0);
+		private final Assignment cSpriteAssignment_1_0_1 = (Assignment)cGroup_1_0.eContents().get(1);
+		private final CrossReference cSpriteGameSpriteCrossReference_1_0_1_0 = (CrossReference)cSpriteAssignment_1_0_1.eContents().get(0);
+		private final RuleCall cSpriteGameSpriteIDTerminalRuleCall_1_0_1_0_1 = (RuleCall)cSpriteGameSpriteCrossReference_1_0_1_0.eContents().get(1);
+		private final Group cGroup_1_1 = (Group)cAlternatives_1.eContents().get(1);
+		private final Keyword cTileKeyword_1_1_0 = (Keyword)cGroup_1_1.eContents().get(0);
+		private final Assignment cTileAssignment_1_1_1 = (Assignment)cGroup_1_1.eContents().get(1);
+		private final CrossReference cTileGameTileCrossReference_1_1_1_0 = (CrossReference)cTileAssignment_1_1_1.eContents().get(0);
+		private final RuleCall cTileGameTileIDTerminalRuleCall_1_1_1_0_1 = (RuleCall)cTileGameTileCrossReference_1_1_1_0.eContents().get(1);
+		private final Group cGroup_2 = (Group)cGroup.eContents().get(2);
+		private final Keyword cAtKeyword_2_0 = (Keyword)cGroup_2.eContents().get(0);
+		private final Assignment cTypeAAssignment_2_1 = (Assignment)cGroup_2.eContents().get(1);
+		private final RuleCall cTypeAGameContactTypeEnumRuleCall_2_1_0 = (RuleCall)cTypeAAssignment_2_1.eContents().get(0);
+		private final Assignment cHasCollisionAssignment_2_2 = (Assignment)cGroup_2.eContents().get(2);
+		private final Keyword cHasCollisionCollidesWithKeyword_2_2_0 = (Keyword)cHasCollisionAssignment_2_2.eContents().get(0);
+		private final Assignment cTypeBAssignment_2_3 = (Assignment)cGroup_2.eContents().get(3);
+		private final RuleCall cTypeBGameContactTypeEnumRuleCall_2_3_0 = (RuleCall)cTypeBAssignment_2_3.eContents().get(0);
+		private final Alternatives cAlternatives_2_4 = (Alternatives)cGroup_2.eContents().get(4);
+		private final Group cGroup_2_4_0 = (Group)cAlternatives_2_4.eContents().get(0);
+		private final Keyword cAtBeginOfContactKeyword_2_4_0_0 = (Keyword)cGroup_2_4_0.eContents().get(0);
+		private final Assignment cBeginContactAssignment_2_4_0_1 = (Assignment)cGroup_2_4_0.eContents().get(1);
+		private final CrossReference cBeginContactGameEventCrossReference_2_4_0_1_0 = (CrossReference)cBeginContactAssignment_2_4_0_1.eContents().get(0);
+		private final RuleCall cBeginContactGameEventIDTerminalRuleCall_2_4_0_1_0_1 = (RuleCall)cBeginContactGameEventCrossReference_2_4_0_1_0.eContents().get(1);
+		private final Group cGroup_2_4_1 = (Group)cAlternatives_2_4.eContents().get(1);
+		private final Keyword cAtEndOfContactKeyword_2_4_1_0 = (Keyword)cGroup_2_4_1.eContents().get(0);
+		private final Assignment cEndContactAssignment_2_4_1_1 = (Assignment)cGroup_2_4_1.eContents().get(1);
+		private final CrossReference cEndContactGameEventCrossReference_2_4_1_1_0 = (CrossReference)cEndContactAssignment_2_4_1_1.eContents().get(0);
+		private final RuleCall cEndContactGameEventIDTerminalRuleCall_2_4_1_1_0_1 = (RuleCall)cEndContactGameEventCrossReference_2_4_1_1_0.eContents().get(1);
+		
+		//GameActor:
+		//	{GameActor} ('sprite' sprite=[GameSprite] | 'tile' tile=[GameTile]) ('at' typeA=GameContactType
+		//	hasCollision?='collidesWith' typeB=GameContactType ('atBeginOfContact' beginContact=[GameEvent] | 'atEndOfContact'
+		//	endContact=[GameEvent]))?;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//{GameActor} ('sprite' sprite=[GameSprite] | 'tile' tile=[GameTile]) ('at' typeA=GameContactType
+		//hasCollision?='collidesWith' typeB=GameContactType ('atBeginOfContact' beginContact=[GameEvent] | 'atEndOfContact'
+		//endContact=[GameEvent]))?
+		public Group getGroup() { return cGroup; }
+		
+		//{GameActor}
+		public Action getGameActorAction_0() { return cGameActorAction_0; }
+		
+		//'sprite' sprite=[GameSprite] | 'tile' tile=[GameTile]
+		public Alternatives getAlternatives_1() { return cAlternatives_1; }
+		
+		//'sprite' sprite=[GameSprite]
+		public Group getGroup_1_0() { return cGroup_1_0; }
+		
+		//'sprite'
+		public Keyword getSpriteKeyword_1_0_0() { return cSpriteKeyword_1_0_0; }
+		
+		//sprite=[GameSprite]
+		public Assignment getSpriteAssignment_1_0_1() { return cSpriteAssignment_1_0_1; }
+		
+		//[GameSprite]
+		public CrossReference getSpriteGameSpriteCrossReference_1_0_1_0() { return cSpriteGameSpriteCrossReference_1_0_1_0; }
+		
+		//ID
+		public RuleCall getSpriteGameSpriteIDTerminalRuleCall_1_0_1_0_1() { return cSpriteGameSpriteIDTerminalRuleCall_1_0_1_0_1; }
+		
+		//'tile' tile=[GameTile]
+		public Group getGroup_1_1() { return cGroup_1_1; }
+		
+		//'tile'
+		public Keyword getTileKeyword_1_1_0() { return cTileKeyword_1_1_0; }
+		
+		//tile=[GameTile]
+		public Assignment getTileAssignment_1_1_1() { return cTileAssignment_1_1_1; }
+		
+		//[GameTile]
+		public CrossReference getTileGameTileCrossReference_1_1_1_0() { return cTileGameTileCrossReference_1_1_1_0; }
+		
+		//ID
+		public RuleCall getTileGameTileIDTerminalRuleCall_1_1_1_0_1() { return cTileGameTileIDTerminalRuleCall_1_1_1_0_1; }
+		
+		//('at' typeA=GameContactType hasCollision?='collidesWith' typeB=GameContactType ('atBeginOfContact'
+		//beginContact=[GameEvent] | 'atEndOfContact' endContact=[GameEvent]))?
+		public Group getGroup_2() { return cGroup_2; }
+		
+		//'at'
+		public Keyword getAtKeyword_2_0() { return cAtKeyword_2_0; }
+		
+		//typeA=GameContactType
+		public Assignment getTypeAAssignment_2_1() { return cTypeAAssignment_2_1; }
+		
+		//GameContactType
+		public RuleCall getTypeAGameContactTypeEnumRuleCall_2_1_0() { return cTypeAGameContactTypeEnumRuleCall_2_1_0; }
+		
+		//hasCollision?='collidesWith'
+		public Assignment getHasCollisionAssignment_2_2() { return cHasCollisionAssignment_2_2; }
+		
+		//'collidesWith'
+		public Keyword getHasCollisionCollidesWithKeyword_2_2_0() { return cHasCollisionCollidesWithKeyword_2_2_0; }
+		
+		//typeB=GameContactType
+		public Assignment getTypeBAssignment_2_3() { return cTypeBAssignment_2_3; }
+		
+		//GameContactType
+		public RuleCall getTypeBGameContactTypeEnumRuleCall_2_3_0() { return cTypeBGameContactTypeEnumRuleCall_2_3_0; }
+		
+		//'atBeginOfContact' beginContact=[GameEvent] | 'atEndOfContact' endContact=[GameEvent]
+		public Alternatives getAlternatives_2_4() { return cAlternatives_2_4; }
+		
+		//'atBeginOfContact' beginContact=[GameEvent]
+		public Group getGroup_2_4_0() { return cGroup_2_4_0; }
+		
+		//'atBeginOfContact'
+		public Keyword getAtBeginOfContactKeyword_2_4_0_0() { return cAtBeginOfContactKeyword_2_4_0_0; }
+		
+		//beginContact=[GameEvent]
+		public Assignment getBeginContactAssignment_2_4_0_1() { return cBeginContactAssignment_2_4_0_1; }
+		
+		//[GameEvent]
+		public CrossReference getBeginContactGameEventCrossReference_2_4_0_1_0() { return cBeginContactGameEventCrossReference_2_4_0_1_0; }
+		
+		//ID
+		public RuleCall getBeginContactGameEventIDTerminalRuleCall_2_4_0_1_0_1() { return cBeginContactGameEventIDTerminalRuleCall_2_4_0_1_0_1; }
+		
+		//'atEndOfContact' endContact=[GameEvent]
+		public Group getGroup_2_4_1() { return cGroup_2_4_1; }
+		
+		//'atEndOfContact'
+		public Keyword getAtEndOfContactKeyword_2_4_1_0() { return cAtEndOfContactKeyword_2_4_1_0; }
+		
+		//endContact=[GameEvent]
+		public Assignment getEndContactAssignment_2_4_1_1() { return cEndContactAssignment_2_4_1_1; }
+		
+		//[GameEvent]
+		public CrossReference getEndContactGameEventCrossReference_2_4_1_1_0() { return cEndContactGameEventCrossReference_2_4_1_1_0; }
+		
+		//ID
+		public RuleCall getEndContactGameEventIDTerminalRuleCall_2_4_1_1_0_1() { return cEndContactGameEventIDTerminalRuleCall_2_4_1_1_0_1; }
 	}
 	public class GameVector2dElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "com.hypermodel.games.engine.GameDSL.GameVector2d");
@@ -1972,10 +2246,10 @@ public class GameDSLGrammarAccess extends AbstractGrammarElementFinder {
 		//'flipY'
 		public Keyword getFlipYFlipYKeyword_12_0() { return cFlipYFlipYKeyword_12_0; }
 	}
-	public class GameSpriteEventElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "com.hypermodel.games.engine.GameDSL.GameSpriteEvent");
+	public class GameEventElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "com.hypermodel.games.engine.GameDSL.GameEvent");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Action cGameSpriteEventAction_0 = (Action)cGroup.eContents().get(0);
+		private final Action cGameEventAction_0 = (Action)cGroup.eContents().get(0);
 		private final Keyword cEventKeyword_1 = (Keyword)cGroup.eContents().get(1);
 		private final Assignment cNameAssignment_2 = (Assignment)cGroup.eContents().get(2);
 		private final RuleCall cNameValidIDParserRuleCall_2_0 = (RuleCall)cNameAssignment_2.eContents().get(0);
@@ -1991,18 +2265,17 @@ public class GameDSLGrammarAccess extends AbstractGrammarElementFinder {
 		private final Assignment cBodyAssignment_6 = (Assignment)cGroup.eContents().get(6);
 		private final RuleCall cBodyXBlockExpressionParserRuleCall_6_0 = (RuleCall)cBodyAssignment_6.eContents().get(0);
 		
-		//GameSpriteEvent:
-		//	{GameSpriteEvent} 'event' name=ValidID '(' (params+=FullJvmFormalParameter (',' params+=FullJvmFormalParameter)?)?
-		//	')'
+		//GameEvent:
+		//	{GameEvent} 'event' name=ValidID '(' (params+=FullJvmFormalParameter (',' params+=FullJvmFormalParameter)?)? ')'
 		//	body=XBlockExpression;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//{GameSpriteEvent} 'event' name=ValidID '(' (params+=FullJvmFormalParameter (',' params+=FullJvmFormalParameter)?)? ')'
+		//{GameEvent} 'event' name=ValidID '(' (params+=FullJvmFormalParameter (',' params+=FullJvmFormalParameter)?)? ')'
 		//body=XBlockExpression
 		public Group getGroup() { return cGroup; }
 		
-		//{GameSpriteEvent}
-		public Action getGameSpriteEventAction_0() { return cGameSpriteEventAction_0; }
+		//{GameEvent}
+		public Action getGameEventAction_0() { return cGameEventAction_0; }
 		
 		//'event'
 		public Keyword getEventKeyword_1() { return cEventKeyword_1; }
@@ -2223,6 +2496,108 @@ public class GameDSLGrammarAccess extends AbstractGrammarElementFinder {
 		//'portrait'
 		public Keyword getPortraitPortraitKeyword_1_0() { return cPortraitPortraitKeyword_1_0; }
 	}
+	public class GameContactTypeElements extends AbstractEnumRuleElementFinder {
+		private final EnumRule rule = (EnumRule) GrammarUtil.findRuleForName(getGrammar(), "com.hypermodel.games.engine.GameDSL.GameContactType");
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final EnumLiteralDeclaration cFixtureEnumLiteralDeclaration_0 = (EnumLiteralDeclaration)cAlternatives.eContents().get(0);
+		private final Keyword cFixtureFixtureKeyword_0_0 = (Keyword)cFixtureEnumLiteralDeclaration_0.eContents().get(0);
+		private final EnumLiteralDeclaration cSensorEnumLiteralDeclaration_1 = (EnumLiteralDeclaration)cAlternatives.eContents().get(1);
+		private final Keyword cSensorSensorKeyword_1_0 = (Keyword)cSensorEnumLiteralDeclaration_1.eContents().get(0);
+		
+		//enum GameContactType:
+		//	fixture |
+		//	sensor;
+		public EnumRule getRule() { return rule; }
+		
+		//fixture | sensor
+		public Alternatives getAlternatives() { return cAlternatives; }
+		
+		//fixture
+		public EnumLiteralDeclaration getFixtureEnumLiteralDeclaration_0() { return cFixtureEnumLiteralDeclaration_0; }
+		
+		//'fixture'
+		public Keyword getFixtureFixtureKeyword_0_0() { return cFixtureFixtureKeyword_0_0; }
+		
+		//sensor
+		public EnumLiteralDeclaration getSensorEnumLiteralDeclaration_1() { return cSensorEnumLiteralDeclaration_1; }
+		
+		//'sensor'
+		public Keyword getSensorSensorKeyword_1_0() { return cSensorSensorKeyword_1_0; }
+	}
+	public class GameKeyInputTypeElements extends AbstractEnumRuleElementFinder {
+		private final EnumRule rule = (EnumRule) GrammarUtil.findRuleForName(getGrammar(), "com.hypermodel.games.engine.GameDSL.GameKeyInputType");
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final EnumLiteralDeclaration cJustPressedEnumLiteralDeclaration_0 = (EnumLiteralDeclaration)cAlternatives.eContents().get(0);
+		private final Keyword cJustPressedJustPressedKeyword_0_0 = (Keyword)cJustPressedEnumLiteralDeclaration_0.eContents().get(0);
+		private final EnumLiteralDeclaration cPressedEnumLiteralDeclaration_1 = (EnumLiteralDeclaration)cAlternatives.eContents().get(1);
+		private final Keyword cPressedPressedKeyword_1_0 = (Keyword)cPressedEnumLiteralDeclaration_1.eContents().get(0);
+		
+		//enum GameKeyInputType:
+		//	justPressed |
+		//	pressed;
+		public EnumRule getRule() { return rule; }
+		
+		//justPressed | pressed
+		public Alternatives getAlternatives() { return cAlternatives; }
+		
+		//justPressed
+		public EnumLiteralDeclaration getJustPressedEnumLiteralDeclaration_0() { return cJustPressedEnumLiteralDeclaration_0; }
+		
+		//'justPressed'
+		public Keyword getJustPressedJustPressedKeyword_0_0() { return cJustPressedJustPressedKeyword_0_0; }
+		
+		//pressed
+		public EnumLiteralDeclaration getPressedEnumLiteralDeclaration_1() { return cPressedEnumLiteralDeclaration_1; }
+		
+		//'pressed'
+		public Keyword getPressedPressedKeyword_1_0() { return cPressedPressedKeyword_1_0; }
+	}
+	public class GameKeyInputKeyElements extends AbstractEnumRuleElementFinder {
+		private final EnumRule rule = (EnumRule) GrammarUtil.findRuleForName(getGrammar(), "com.hypermodel.games.engine.GameDSL.GameKeyInputKey");
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final EnumLiteralDeclaration cLeftEnumLiteralDeclaration_0 = (EnumLiteralDeclaration)cAlternatives.eContents().get(0);
+		private final Keyword cLeftLeftKeyword_0_0 = (Keyword)cLeftEnumLiteralDeclaration_0.eContents().get(0);
+		private final EnumLiteralDeclaration cRightEnumLiteralDeclaration_1 = (EnumLiteralDeclaration)cAlternatives.eContents().get(1);
+		private final Keyword cRightRightKeyword_1_0 = (Keyword)cRightEnumLiteralDeclaration_1.eContents().get(0);
+		private final EnumLiteralDeclaration cUpEnumLiteralDeclaration_2 = (EnumLiteralDeclaration)cAlternatives.eContents().get(2);
+		private final Keyword cUpUpKeyword_2_0 = (Keyword)cUpEnumLiteralDeclaration_2.eContents().get(0);
+		private final EnumLiteralDeclaration cSpaceEnumLiteralDeclaration_3 = (EnumLiteralDeclaration)cAlternatives.eContents().get(3);
+		private final Keyword cSpaceSpaceKeyword_3_0 = (Keyword)cSpaceEnumLiteralDeclaration_3.eContents().get(0);
+		
+		//enum GameKeyInputKey:
+		//	left |
+		//	right |
+		//	up |
+		//	space;
+		public EnumRule getRule() { return rule; }
+		
+		//left | right | up | space
+		public Alternatives getAlternatives() { return cAlternatives; }
+		
+		//left
+		public EnumLiteralDeclaration getLeftEnumLiteralDeclaration_0() { return cLeftEnumLiteralDeclaration_0; }
+		
+		//'left'
+		public Keyword getLeftLeftKeyword_0_0() { return cLeftLeftKeyword_0_0; }
+		
+		//right
+		public EnumLiteralDeclaration getRightEnumLiteralDeclaration_1() { return cRightEnumLiteralDeclaration_1; }
+		
+		//'right'
+		public Keyword getRightRightKeyword_1_0() { return cRightRightKeyword_1_0; }
+		
+		//up
+		public EnumLiteralDeclaration getUpEnumLiteralDeclaration_2() { return cUpEnumLiteralDeclaration_2; }
+		
+		//'up'
+		public Keyword getUpUpKeyword_2_0() { return cUpUpKeyword_2_0; }
+		
+		//space
+		public EnumLiteralDeclaration getSpaceEnumLiteralDeclaration_3() { return cSpaceEnumLiteralDeclaration_3; }
+		
+		//'space'
+		public Keyword getSpaceSpaceKeyword_3_0() { return cSpaceSpaceKeyword_3_0; }
+	}
 	
 	private final GameModelElements pGameModel;
 	private final GamePackageElements pGamePackage;
@@ -2238,6 +2613,8 @@ public class GameDSLGrammarAccess extends AbstractGrammarElementFinder {
 	private final GameDisplayElements pGameDisplay;
 	private final GameTileElements pGameTile;
 	private final GameSpriteElements pGameSprite;
+	private final GameInputElements pGameInput;
+	private final GameActorElements pGameActor;
 	private final GameVector2dElements pGameVector2d;
 	private final GameSpriteStateElements pGameSpriteState;
 	private final GameBodyPropertyElements pGameBodyProperty;
@@ -2245,10 +2622,13 @@ public class GameDSLGrammarAccess extends AbstractGrammarElementFinder {
 	private final GameSpriteAnimationElements pGameSpriteAnimation;
 	private final GameSpriteStandElements pGameSpriteStand;
 	private final GameTextureRegionElements pGameTextureRegion;
-	private final GameSpriteEventElements pGameSpriteEvent;
+	private final GameEventElements pGameEvent;
 	private final GameLayerTypeElements eGameLayerType;
 	private final GameDisplayValueTypeElements eGameDisplayValueType;
 	private final GameScreenOrientationElements eGameScreenOrientation;
+	private final GameContactTypeElements eGameContactType;
+	private final GameKeyInputTypeElements eGameKeyInputType;
+	private final GameKeyInputKeyElements eGameKeyInputKey;
 	private final SignedNumberElements pSignedNumber;
 	private final UnsignedNumberElements pUnsignedNumber;
 	private final SignedIntegerElements pSignedInteger;
@@ -2284,6 +2664,8 @@ public class GameDSLGrammarAccess extends AbstractGrammarElementFinder {
 		this.pGameDisplay = new GameDisplayElements();
 		this.pGameTile = new GameTileElements();
 		this.pGameSprite = new GameSpriteElements();
+		this.pGameInput = new GameInputElements();
+		this.pGameActor = new GameActorElements();
 		this.pGameVector2d = new GameVector2dElements();
 		this.pGameSpriteState = new GameSpriteStateElements();
 		this.pGameBodyProperty = new GameBodyPropertyElements();
@@ -2291,10 +2673,13 @@ public class GameDSLGrammarAccess extends AbstractGrammarElementFinder {
 		this.pGameSpriteAnimation = new GameSpriteAnimationElements();
 		this.pGameSpriteStand = new GameSpriteStandElements();
 		this.pGameTextureRegion = new GameTextureRegionElements();
-		this.pGameSpriteEvent = new GameSpriteEventElements();
+		this.pGameEvent = new GameEventElements();
 		this.eGameLayerType = new GameLayerTypeElements();
 		this.eGameDisplayValueType = new GameDisplayValueTypeElements();
 		this.eGameScreenOrientation = new GameScreenOrientationElements();
+		this.eGameContactType = new GameContactTypeElements();
+		this.eGameKeyInputType = new GameKeyInputTypeElements();
+		this.eGameKeyInputKey = new GameKeyInputKeyElements();
 		this.pSignedNumber = new SignedNumberElements();
 		this.pUnsignedNumber = new UnsignedNumberElements();
 		this.pSignedInteger = new SignedIntegerElements();
@@ -2419,7 +2804,11 @@ public class GameDSLGrammarAccess extends AbstractGrammarElementFinder {
 	//	{GameRoot} 'game' name=ValidID
 	//	'screenWidth' width=INT 'screenHeight' height=INT
 	//	'title' title=STRING 'pixelPerMeter' ppm=INT
-	//	'tileWidth' tileWidth=INT 'tileHeight' tileHeight=INT ('layers' '{' layers+=GameLayer* '}' &
+	//	'timeStep' timeStep=UnsignedNumber 'velocityIterations' velocityIterations=INT 'positionIterations'
+	//	positionIterations=INT
+	//	'worldWidth' worldWidth=INT 'worldHeight' worldHeight=INT
+	//	'tileWidth' tileWidth=INT 'tileHeight' tileHeight=INT
+	//	debug?='debug'? ('layers' '{' layers+=GameLayer* '}' &
 	//	'scenes' '{' scenes+=GameScene* '}' &
 	//	'screens' '{' screens+=GameScreen* '}' &
 	//	'regions' '{' regions+=GameTextureRegion* '}');
@@ -2509,16 +2898,39 @@ public class GameDSLGrammarAccess extends AbstractGrammarElementFinder {
 	//	{GameSprite} 'sprite' name=ValidID 'collisionId' id=INT
 	//	'radius' radius=INT ((hasVelocity?='velocity' velocity=GameVector2d)? & (hasLayer?='layer' layer=[GameLayer] |
 	//	hasStartPosition?='startPosition' startPosition=GameVector2d)? & (hasSensor?='sensor' '{' vectors2d+=GameVector2d*
-	//	'}' 'sensorID' sensorID=INT)? & ('interactsDynamic' '{' interactionSprites+=[GameSprite]* '}')? & ('interactsStatic'
-	//	'{' interactionTiles+=[GameTile]* '}')? & ('properties' '{' properties+=GameBodyProperty* '}')? & ('states' '{'
-	//	states+=GameSpriteState* '}' 'initialState' initialState=[GameSpriteState])? & ('events' '{' events+=GameSpriteEvent*
-	//	'}')?);
+	//	'}' 'sensorID' sensorID=INT)? & ('actors' '{' actors+=GameActor* '}')? & ('properties' '{'
+	//	properties+=GameBodyProperty* '}')? & ('states' '{' states+=GameSpriteState* '}'
+	//	'initialState' initialState=[GameSpriteState] ('gameOverState' gameOverState=[GameSpriteState])?)? & ('events' '{'
+	//	events+=GameEvent* '}')? & ('inputs' '{' inputs+=GameInput* '}')?);
 	public GameSpriteElements getGameSpriteAccess() {
 		return pGameSprite;
 	}
 	
 	public ParserRule getGameSpriteRule() {
 		return getGameSpriteAccess().getRule();
+	}
+	
+	//GameInput:
+	//	{GameInput} 'input' keyType=GameKeyInputType key=GameKeyInputKey
+	//	trigger=[GameEvent];
+	public GameInputElements getGameInputAccess() {
+		return pGameInput;
+	}
+	
+	public ParserRule getGameInputRule() {
+		return getGameInputAccess().getRule();
+	}
+	
+	//GameActor:
+	//	{GameActor} ('sprite' sprite=[GameSprite] | 'tile' tile=[GameTile]) ('at' typeA=GameContactType
+	//	hasCollision?='collidesWith' typeB=GameContactType ('atBeginOfContact' beginContact=[GameEvent] | 'atEndOfContact'
+	//	endContact=[GameEvent]))?;
+	public GameActorElements getGameActorAccess() {
+		return pGameActor;
+	}
+	
+	public ParserRule getGameActorRule() {
+		return getGameActorAccess().getRule();
 	}
 	
 	//GameVector2d:
@@ -2597,16 +3009,15 @@ public class GameDSLGrammarAccess extends AbstractGrammarElementFinder {
 		return getGameTextureRegionAccess().getRule();
 	}
 	
-	//GameSpriteEvent:
-	//	{GameSpriteEvent} 'event' name=ValidID '(' (params+=FullJvmFormalParameter (',' params+=FullJvmFormalParameter)?)?
-	//	')'
+	//GameEvent:
+	//	{GameEvent} 'event' name=ValidID '(' (params+=FullJvmFormalParameter (',' params+=FullJvmFormalParameter)?)? ')'
 	//	body=XBlockExpression;
-	public GameSpriteEventElements getGameSpriteEventAccess() {
-		return pGameSpriteEvent;
+	public GameEventElements getGameEventAccess() {
+		return pGameEvent;
 	}
 	
-	public ParserRule getGameSpriteEventRule() {
-		return getGameSpriteEventAccess().getRule();
+	public ParserRule getGameEventRule() {
+		return getGameEventAccess().getRule();
 	}
 	
 	//enum GameLayerType:
@@ -2643,6 +3054,41 @@ public class GameDSLGrammarAccess extends AbstractGrammarElementFinder {
 	
 	public EnumRule getGameScreenOrientationRule() {
 		return getGameScreenOrientationAccess().getRule();
+	}
+	
+	//enum GameContactType:
+	//	fixture |
+	//	sensor;
+	public GameContactTypeElements getGameContactTypeAccess() {
+		return eGameContactType;
+	}
+	
+	public EnumRule getGameContactTypeRule() {
+		return getGameContactTypeAccess().getRule();
+	}
+	
+	//enum GameKeyInputType:
+	//	justPressed |
+	//	pressed;
+	public GameKeyInputTypeElements getGameKeyInputTypeAccess() {
+		return eGameKeyInputType;
+	}
+	
+	public EnumRule getGameKeyInputTypeRule() {
+		return getGameKeyInputTypeAccess().getRule();
+	}
+	
+	//enum GameKeyInputKey:
+	//	left |
+	//	right |
+	//	up |
+	//	space;
+	public GameKeyInputKeyElements getGameKeyInputKeyAccess() {
+		return eGameKeyInputKey;
+	}
+	
+	public EnumRule getGameKeyInputKeyRule() {
+		return getGameKeyInputKeyAccess().getRule();
 	}
 	
 	//SignedNumber ecore::EFloat:

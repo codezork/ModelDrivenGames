@@ -9,6 +9,7 @@ import com.hypermodel.games.engine.gameDSL.GameRoot;
 import com.hypermodel.games.engine.gameDSL.GameScene;
 import com.hypermodel.games.engine.gameDSL.GameScreen;
 import com.hypermodel.games.engine.gameDSL.GameSprite;
+import com.hypermodel.games.engine.gameDSL.GameSpriteState;
 import com.hypermodel.games.engine.gameDSL.GameTile;
 
 @SuppressWarnings("restriction")

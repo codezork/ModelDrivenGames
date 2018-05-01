@@ -7,11 +7,10 @@ import apple.uikit.c.UIKit
 import com.badlogic.gdx.Gdx
 import com.badlogic.gdx.backends.android.AndroidApplicationConfiguration
 import com.badlogic.gdx.backends.gwt.GwtApplicationConfiguration
+import com.badlogic.gdx.backends.iosmoe.IOSApplication
 import com.badlogic.gdx.backends.iosrobovm.IOSApplicationConfiguration
 import com.badlogic.gdx.backends.lwjgl.LwjglApplication
 import com.badlogic.gdx.backends.lwjgl.LwjglApplicationConfiguration
-import com.badlogic.gdx.graphics.GL20
-import com.badlogic.gdx.graphics.Texture
 import com.badlogic.gdx.graphics.g2d.SpriteBatch
 import com.google.gwt.user.client.Window
 import com.hypermodel.games.engine.gameDSL.GameModel
@@ -32,10 +31,11 @@ import org.eclipse.core.internal.resources.ProjectDescription
 import org.eclipse.core.resources.IContainer
 import org.eclipse.core.resources.IProject
 import org.eclipse.core.resources.ResourcesPlugin
+import org.eclipse.core.runtime.CoreException
 import org.eclipse.core.runtime.FileLocator
 import org.eclipse.core.runtime.NullProgressMonitor
 import org.eclipse.core.runtime.Path
-import org.eclipse.core.runtime.Platform 
+import org.eclipse.core.runtime.Platform
 import org.eclipse.emf.ecore.EObject
 import org.eclipse.emf.ecore.resource.Resource
 import org.eclipse.jdt.core.IClasspathEntry
@@ -92,16 +92,16 @@ class GameDSLGenerator extends ExtendedJvmModelGenerator {
 				} else if(superType.identifier.endsWith("IOSApplication$Delegate")) {
 					if(context.containerType.simpleName.startsWith("IOSMOE")) {
 						addClasses(importManager, _typeReferenceBuilder
-							, com.badlogic.gdx.backends.iosmoe.IOSApplication
+							, IOSApplication
 							, com.badlogic.gdx.backends.iosmoe.IOSApplicationConfiguration
-							, apple.uikit.c.UIKit
+							, UIKit
 						)
 					} else {
 						addClasses(importManager, _typeReferenceBuilder
 							, com.badlogic.gdx.backends.iosrobovm.IOSApplication
-							, com.badlogic.gdx.backends.iosrobovm.IOSApplicationConfiguration
-							, org.robovm.apple.uikit.UIApplication
-							, org.robovm.apple.foundation.NSAutoreleasePool
+							, IOSApplicationConfiguration
+							, UIApplication
+							, NSAutoreleasePool
 						)
 					}
 				}
@@ -112,6 +112,7 @@ class GameDSLGenerator extends ExtendedJvmModelGenerator {
 	
 	override doGenerate(Resource input, IFileSystemAccess fsa) {
 		var model = input.contents.get(0) as GameModel
+//		setWorkspaceAutoBuild(false);
 		for(pckg:model.packages) {
 			// get core module
 			var type = input.contents.get(ProjectType.core.ordinal+1) as JvmDeclaredType
@@ -142,6 +143,14 @@ class GameDSLGenerator extends ExtendedJvmModelGenerator {
 				}
 			}
 		}
+		setWorkspaceAutoBuild(false);
+	}
+	
+	def static void setWorkspaceAutoBuild(boolean flag) throws CoreException {
+		var workspace = ResourcesPlugin.getWorkspace();
+		var description = workspace.getDescription();
+		description.setAutoBuilding(flag);
+		workspace.setDescription(description);
 	}
 	
 	def copyPlatformResources(IProject project, ProjectType pType) {
@@ -556,7 +565,6 @@ class GameDSLGenerator extends ExtendedJvmModelGenerator {
 		    dependencies {
 		        compile "com.badlogicgames.gdx:gdx:$gdxVersion"
 		        compile "com.badlogicgames.gdx:gdx-box2d:$gdxVersion"
-		        compile group: 'com.google.guava', name: 'guava', version: '23.5-jre'
 		    }
 		}
 

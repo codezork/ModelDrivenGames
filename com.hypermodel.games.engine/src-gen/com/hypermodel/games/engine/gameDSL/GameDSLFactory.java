@@ -150,6 +150,24 @@ public interface GameDSLFactory extends EFactory
   GameSprite createGameSprite();
 
   /**
+   * Returns a new object of class '<em>Game Input</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Game Input</em>'.
+   * @generated
+   */
+  GameInput createGameInput();
+
+  /**
+   * Returns a new object of class '<em>Game Actor</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Game Actor</em>'.
+   * @generated
+   */
+  GameActor createGameActor();
+
+  /**
    * Returns a new object of class '<em>Game Vector2d</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -213,13 +231,13 @@ public interface GameDSLFactory extends EFactory
   GameTextureRegion createGameTextureRegion();
 
   /**
-   * Returns a new object of class '<em>Game Sprite Event</em>'.
+   * Returns a new object of class '<em>Game Event</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Game Sprite Event</em>'.
+   * @return a new object of class '<em>Game Event</em>'.
    * @generated
    */
-  GameSpriteEvent createGameSpriteEvent();
+  GameEvent createGameEvent();
 
   /**
    * Returns the package supported by this factory.

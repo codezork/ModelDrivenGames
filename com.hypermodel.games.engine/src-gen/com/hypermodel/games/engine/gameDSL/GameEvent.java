@@ -13,23 +13,23 @@ import org.eclipse.xtext.xbase.XExpression;
 
 /**
  * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Game Sprite Event</b></em>'.
+ * A representation of the model object '<em><b>Game Event</b></em>'.
  * <!-- end-user-doc -->
  *
  * <p>
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link com.hypermodel.games.engine.gameDSL.GameSpriteEvent#getName <em>Name</em>}</li>
- *   <li>{@link com.hypermodel.games.engine.gameDSL.GameSpriteEvent#getParams <em>Params</em>}</li>
- *   <li>{@link com.hypermodel.games.engine.gameDSL.GameSpriteEvent#getBody <em>Body</em>}</li>
+ *   <li>{@link com.hypermodel.games.engine.gameDSL.GameEvent#getName <em>Name</em>}</li>
+ *   <li>{@link com.hypermodel.games.engine.gameDSL.GameEvent#getParams <em>Params</em>}</li>
+ *   <li>{@link com.hypermodel.games.engine.gameDSL.GameEvent#getBody <em>Body</em>}</li>
  * </ul>
  *
- * @see com.hypermodel.games.engine.gameDSL.GameDSLPackage#getGameSpriteEvent()
+ * @see com.hypermodel.games.engine.gameDSL.GameDSLPackage#getGameEvent()
  * @model
  * @generated
  */
-public interface GameSpriteEvent extends EObject
+public interface GameEvent extends EObject
 {
   /**
    * Returns the value of the '<em><b>Name</b></em>' attribute.
@@ -41,14 +41,14 @@ public interface GameSpriteEvent extends EObject
    * <!-- end-user-doc -->
    * @return the value of the '<em>Name</em>' attribute.
    * @see #setName(String)
-   * @see com.hypermodel.games.engine.gameDSL.GameDSLPackage#getGameSpriteEvent_Name()
+   * @see com.hypermodel.games.engine.gameDSL.GameDSLPackage#getGameEvent_Name()
    * @model
    * @generated
    */
   String getName();
 
   /**
-   * Sets the value of the '{@link com.hypermodel.games.engine.gameDSL.GameSpriteEvent#getName <em>Name</em>}' attribute.
+   * Sets the value of the '{@link com.hypermodel.games.engine.gameDSL.GameEvent#getName <em>Name</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @param value the new value of the '<em>Name</em>' attribute.
@@ -67,7 +67,7 @@ public interface GameSpriteEvent extends EObject
    * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Params</em>' containment reference list.
-   * @see com.hypermodel.games.engine.gameDSL.GameDSLPackage#getGameSpriteEvent_Params()
+   * @see com.hypermodel.games.engine.gameDSL.GameDSLPackage#getGameEvent_Params()
    * @model containment="true"
    * @generated
    */
@@ -83,14 +83,14 @@ public interface GameSpriteEvent extends EObject
    * <!-- end-user-doc -->
    * @return the value of the '<em>Body</em>' containment reference.
    * @see #setBody(XExpression)
-   * @see com.hypermodel.games.engine.gameDSL.GameDSLPackage#getGameSpriteEvent_Body()
+   * @see com.hypermodel.games.engine.gameDSL.GameDSLPackage#getGameEvent_Body()
    * @model containment="true"
    * @generated
    */
   XExpression getBody();
 
   /**
-   * Sets the value of the '{@link com.hypermodel.games.engine.gameDSL.GameSpriteEvent#getBody <em>Body</em>}' containment reference.
+   * Sets the value of the '{@link com.hypermodel.games.engine.gameDSL.GameEvent#getBody <em>Body</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @param value the new value of the '<em>Body</em>' containment reference.
@@ -99,4 +99,4 @@ public interface GameSpriteEvent extends EObject
    */
   void setBody(XExpression value);
 
-} // GameSpriteEvent
+} // GameEvent
