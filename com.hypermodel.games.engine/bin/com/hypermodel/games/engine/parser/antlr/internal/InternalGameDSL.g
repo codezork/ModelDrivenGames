@@ -950,30 +950,44 @@ ruleGameRoot returns [EObject current=null]
 		)
 		(
 			(
+				lv_debug_25_0='debug'
+				{
+					newLeafNode(lv_debug_25_0, grammarAccess.getGameRootAccess().getDebugDebugKeyword_25_0());
+				}
+				{
+					if ($current==null) {
+						$current = createModelElement(grammarAccess.getGameRootRule());
+					}
+					setWithLastConsumed($current, "debug", true, "debug");
+				}
+			)
+		)?
+		(
+			(
 				{ 
-				  getUnorderedGroupHelper().enter(grammarAccess.getGameRootAccess().getUnorderedGroup_25());
+				  getUnorderedGroupHelper().enter(grammarAccess.getGameRootAccess().getUnorderedGroup_26());
 				}
 				(
 					(
 			(
-				{getUnorderedGroupHelper().canSelect(grammarAccess.getGameRootAccess().getUnorderedGroup_25(), 0)}?=>(
+				{getUnorderedGroupHelper().canSelect(grammarAccess.getGameRootAccess().getUnorderedGroup_26(), 0)}?=>(
 					{
-						getUnorderedGroupHelper().select(grammarAccess.getGameRootAccess().getUnorderedGroup_25(), 0);
+						getUnorderedGroupHelper().select(grammarAccess.getGameRootAccess().getUnorderedGroup_26(), 0);
 					}
-								({true}?=>(otherlv_26='layers'
+								({true}?=>(otherlv_27='layers'
 								{
-									newLeafNode(otherlv_26, grammarAccess.getGameRootAccess().getLayersKeyword_25_0_0());
+									newLeafNode(otherlv_27, grammarAccess.getGameRootAccess().getLayersKeyword_26_0_0());
 								}
-								otherlv_27='{'
+								otherlv_28='{'
 								{
-									newLeafNode(otherlv_27, grammarAccess.getGameRootAccess().getLeftCurlyBracketKeyword_25_0_1());
+									newLeafNode(otherlv_28, grammarAccess.getGameRootAccess().getLeftCurlyBracketKeyword_26_0_1());
 								}
 								(
 									(
 										{
-											newCompositeNode(grammarAccess.getGameRootAccess().getLayersGameLayerParserRuleCall_25_0_2_0());
+											newCompositeNode(grammarAccess.getGameRootAccess().getLayersGameLayerParserRuleCall_26_0_2_0());
 										}
-										lv_layers_28_0=ruleGameLayer
+										lv_layers_29_0=ruleGameLayer
 										{
 											if ($current==null) {
 												$current = createModelElementForParent(grammarAccess.getGameRootRule());
@@ -981,41 +995,41 @@ ruleGameRoot returns [EObject current=null]
 											add(
 												$current,
 												"layers",
-												lv_layers_28_0,
+												lv_layers_29_0,
 												"com.hypermodel.games.engine.GameDSL.GameLayer");
 											afterParserOrEnumRuleCall();
 										}
 									)
 								)*
-								otherlv_29='}'
+								otherlv_30='}'
 								{
-									newLeafNode(otherlv_29, grammarAccess.getGameRootAccess().getRightCurlyBracketKeyword_25_0_3());
+									newLeafNode(otherlv_30, grammarAccess.getGameRootAccess().getRightCurlyBracketKeyword_26_0_3());
 								}
 								))
 					{ 
-						getUnorderedGroupHelper().returnFromSelection(grammarAccess.getGameRootAccess().getUnorderedGroup_25());
+						getUnorderedGroupHelper().returnFromSelection(grammarAccess.getGameRootAccess().getUnorderedGroup_26());
 					}
 				)
 			)|
 			(
-				{getUnorderedGroupHelper().canSelect(grammarAccess.getGameRootAccess().getUnorderedGroup_25(), 1)}?=>(
+				{getUnorderedGroupHelper().canSelect(grammarAccess.getGameRootAccess().getUnorderedGroup_26(), 1)}?=>(
 					{
-						getUnorderedGroupHelper().select(grammarAccess.getGameRootAccess().getUnorderedGroup_25(), 1);
+						getUnorderedGroupHelper().select(grammarAccess.getGameRootAccess().getUnorderedGroup_26(), 1);
 					}
-								({true}?=>(otherlv_30='scenes'
+								({true}?=>(otherlv_31='scenes'
 								{
-									newLeafNode(otherlv_30, grammarAccess.getGameRootAccess().getScenesKeyword_25_1_0());
+									newLeafNode(otherlv_31, grammarAccess.getGameRootAccess().getScenesKeyword_26_1_0());
 								}
-								otherlv_31='{'
+								otherlv_32='{'
 								{
-									newLeafNode(otherlv_31, grammarAccess.getGameRootAccess().getLeftCurlyBracketKeyword_25_1_1());
+									newLeafNode(otherlv_32, grammarAccess.getGameRootAccess().getLeftCurlyBracketKeyword_26_1_1());
 								}
 								(
 									(
 										{
-											newCompositeNode(grammarAccess.getGameRootAccess().getScenesGameSceneParserRuleCall_25_1_2_0());
+											newCompositeNode(grammarAccess.getGameRootAccess().getScenesGameSceneParserRuleCall_26_1_2_0());
 										}
-										lv_scenes_32_0=ruleGameScene
+										lv_scenes_33_0=ruleGameScene
 										{
 											if ($current==null) {
 												$current = createModelElementForParent(grammarAccess.getGameRootRule());
@@ -1023,41 +1037,41 @@ ruleGameRoot returns [EObject current=null]
 											add(
 												$current,
 												"scenes",
-												lv_scenes_32_0,
+												lv_scenes_33_0,
 												"com.hypermodel.games.engine.GameDSL.GameScene");
 											afterParserOrEnumRuleCall();
 										}
 									)
 								)*
-								otherlv_33='}'
+								otherlv_34='}'
 								{
-									newLeafNode(otherlv_33, grammarAccess.getGameRootAccess().getRightCurlyBracketKeyword_25_1_3());
+									newLeafNode(otherlv_34, grammarAccess.getGameRootAccess().getRightCurlyBracketKeyword_26_1_3());
 								}
 								))
 					{ 
-						getUnorderedGroupHelper().returnFromSelection(grammarAccess.getGameRootAccess().getUnorderedGroup_25());
+						getUnorderedGroupHelper().returnFromSelection(grammarAccess.getGameRootAccess().getUnorderedGroup_26());
 					}
 				)
 			)|
 			(
-				{getUnorderedGroupHelper().canSelect(grammarAccess.getGameRootAccess().getUnorderedGroup_25(), 2)}?=>(
+				{getUnorderedGroupHelper().canSelect(grammarAccess.getGameRootAccess().getUnorderedGroup_26(), 2)}?=>(
 					{
-						getUnorderedGroupHelper().select(grammarAccess.getGameRootAccess().getUnorderedGroup_25(), 2);
+						getUnorderedGroupHelper().select(grammarAccess.getGameRootAccess().getUnorderedGroup_26(), 2);
 					}
-								({true}?=>(otherlv_34='screens'
+								({true}?=>(otherlv_35='screens'
 								{
-									newLeafNode(otherlv_34, grammarAccess.getGameRootAccess().getScreensKeyword_25_2_0());
+									newLeafNode(otherlv_35, grammarAccess.getGameRootAccess().getScreensKeyword_26_2_0());
 								}
-								otherlv_35='{'
+								otherlv_36='{'
 								{
-									newLeafNode(otherlv_35, grammarAccess.getGameRootAccess().getLeftCurlyBracketKeyword_25_2_1());
+									newLeafNode(otherlv_36, grammarAccess.getGameRootAccess().getLeftCurlyBracketKeyword_26_2_1());
 								}
 								(
 									(
 										{
-											newCompositeNode(grammarAccess.getGameRootAccess().getScreensGameScreenParserRuleCall_25_2_2_0());
+											newCompositeNode(grammarAccess.getGameRootAccess().getScreensGameScreenParserRuleCall_26_2_2_0());
 										}
-										lv_screens_36_0=ruleGameScreen
+										lv_screens_37_0=ruleGameScreen
 										{
 											if ($current==null) {
 												$current = createModelElementForParent(grammarAccess.getGameRootRule());
@@ -1065,41 +1079,41 @@ ruleGameRoot returns [EObject current=null]
 											add(
 												$current,
 												"screens",
-												lv_screens_36_0,
+												lv_screens_37_0,
 												"com.hypermodel.games.engine.GameDSL.GameScreen");
 											afterParserOrEnumRuleCall();
 										}
 									)
 								)*
-								otherlv_37='}'
+								otherlv_38='}'
 								{
-									newLeafNode(otherlv_37, grammarAccess.getGameRootAccess().getRightCurlyBracketKeyword_25_2_3());
+									newLeafNode(otherlv_38, grammarAccess.getGameRootAccess().getRightCurlyBracketKeyword_26_2_3());
 								}
 								))
 					{ 
-						getUnorderedGroupHelper().returnFromSelection(grammarAccess.getGameRootAccess().getUnorderedGroup_25());
+						getUnorderedGroupHelper().returnFromSelection(grammarAccess.getGameRootAccess().getUnorderedGroup_26());
 					}
 				)
 			)|
 			(
-				{getUnorderedGroupHelper().canSelect(grammarAccess.getGameRootAccess().getUnorderedGroup_25(), 3)}?=>(
+				{getUnorderedGroupHelper().canSelect(grammarAccess.getGameRootAccess().getUnorderedGroup_26(), 3)}?=>(
 					{
-						getUnorderedGroupHelper().select(grammarAccess.getGameRootAccess().getUnorderedGroup_25(), 3);
+						getUnorderedGroupHelper().select(grammarAccess.getGameRootAccess().getUnorderedGroup_26(), 3);
 					}
-								({true}?=>(otherlv_38='regions'
+								({true}?=>(otherlv_39='regions'
 								{
-									newLeafNode(otherlv_38, grammarAccess.getGameRootAccess().getRegionsKeyword_25_3_0());
+									newLeafNode(otherlv_39, grammarAccess.getGameRootAccess().getRegionsKeyword_26_3_0());
 								}
-								otherlv_39='{'
+								otherlv_40='{'
 								{
-									newLeafNode(otherlv_39, grammarAccess.getGameRootAccess().getLeftCurlyBracketKeyword_25_3_1());
+									newLeafNode(otherlv_40, grammarAccess.getGameRootAccess().getLeftCurlyBracketKeyword_26_3_1());
 								}
 								(
 									(
 										{
-											newCompositeNode(grammarAccess.getGameRootAccess().getRegionsGameTextureRegionParserRuleCall_25_3_2_0());
+											newCompositeNode(grammarAccess.getGameRootAccess().getRegionsGameTextureRegionParserRuleCall_26_3_2_0());
 										}
-										lv_regions_40_0=ruleGameTextureRegion
+										lv_regions_41_0=ruleGameTextureRegion
 										{
 											if ($current==null) {
 												$current = createModelElementForParent(grammarAccess.getGameRootRule());
@@ -1107,28 +1121,28 @@ ruleGameRoot returns [EObject current=null]
 											add(
 												$current,
 												"regions",
-												lv_regions_40_0,
+												lv_regions_41_0,
 												"com.hypermodel.games.engine.GameDSL.GameTextureRegion");
 											afterParserOrEnumRuleCall();
 										}
 									)
 								)*
-								otherlv_41='}'
+								otherlv_42='}'
 								{
-									newLeafNode(otherlv_41, grammarAccess.getGameRootAccess().getRightCurlyBracketKeyword_25_3_3());
+									newLeafNode(otherlv_42, grammarAccess.getGameRootAccess().getRightCurlyBracketKeyword_26_3_3());
 								}
 								))
 					{ 
-						getUnorderedGroupHelper().returnFromSelection(grammarAccess.getGameRootAccess().getUnorderedGroup_25());
+						getUnorderedGroupHelper().returnFromSelection(grammarAccess.getGameRootAccess().getUnorderedGroup_26());
 					}
 				)
 			)
 					)+
-					{getUnorderedGroupHelper().canLeave(grammarAccess.getGameRootAccess().getUnorderedGroup_25())}?
+					{getUnorderedGroupHelper().canLeave(grammarAccess.getGameRootAccess().getUnorderedGroup_26())}?
 				)
 			)
 				{ 
-				  getUnorderedGroupHelper().leave(grammarAccess.getGameRootAccess().getUnorderedGroup_25());
+				  getUnorderedGroupHelper().leave(grammarAccess.getGameRootAccess().getUnorderedGroup_26());
 				}
 		)
 	)

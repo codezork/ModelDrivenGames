@@ -10,16 +10,16 @@ package com.hypermodel.games {
 			orientation landscape
 		}
 		ios {     
-		} 
+		}
 		iosmoe {   
 			useAccelerometer 
 		}   
 	}
 	game MarioBros screenWidth 400 screenHeight 208 title "MarioBros" pixelPerMeter 100 
 	timeStep 0.0167 velocityIterations 6 positionIterations 2 worldWidth 240 worldHeight 13 
-	tileWidth 16 tileHeight 16
+	tileWidth 16 tileHeight 16 
 	layers {
-		layer background index 0 type tile 
+		layer background index 0 type tile
 		layer graphic index 1 type tile
 		layer ground index 2 type object
 		layer pipes index 3 type object
@@ -61,9 +61,8 @@ package com.hypermodel.games {
 			sensor {
 				vector(-2.0,6.0)
 				vector(2.0,6.0)
-			} sensorID 6
+			} sensorID 9
 			actors {
-				sprite Goomba
 				sprite Mushroom
 				tile Brick at fixture collidesWith sensor atBeginOfContact brickHit 
 				tile Coin at fixture collidesWith sensor atBeginOfContact coinHit
@@ -95,7 +94,7 @@ package com.hypermodel.games {
 				} animation marioRunleft duration 0.1 frames 4 startFrame 1 from marioRunLeft
 				state runningSmallRight if isTrue runningRight() {
 					return body.linearVelocity.y == 0 && body.linearVelocity.x > 0 && !isBig
-				} animation marioRunRight duration 0.1 frames 4 startFrame 1 from marioRunLeft
+				} animation marioRunRight duration 0.1 frames 4 startFrame 1 from marioRunRight
 				state runningBigLeft if isTrue runningBigLeft() {
 					return body.linearVelocity.y == 0 && body.linearVelocity.x < 0 && isBig
 				} animation bigMarioRunleft duration 0.1 frames 4 startFrame 1 from bigMarioRunLeft 
@@ -103,16 +102,16 @@ package com.hypermodel.games {
 					return body.linearVelocity.y == 0 && body.linearVelocity.x > 0 && isBig
 				} animation bigMarioRunRight duration 0.1 frames 4 startFrame 1 from bigMarioRunRight
 				state jumpSmallLeft if isTrue jumpSmallLeft() {
-					return body.linearVelocity.y > 0 || body.linearVelocity.y < 0 && body.linearVelocity.x > 0 && !isBig && previousState.equals(currentState) 
+					return !isBig && body.linearVelocity.x < 0 && (body.linearVelocity.y > 0 || body.linearVelocity.y < 0  && previousState.equals(State.JUMPSMALLLEFT)) 
 				} stand jumpSmallLeft whichFrame 5 from marioRunLeft
 				state jumpSmallRight if isTrue jumpSmallRight() {
-					return body.linearVelocity.y > 0 || body.linearVelocity.y < 0 && body.linearVelocity.x < 0 && !isBig && previousState.equals(currentState)
+					return !isBig && body.linearVelocity.x > 0 && (body.linearVelocity.y > 0 || body.linearVelocity.y < 0  && previousState.equals(State.JUMPSMALLRIGHT)) 
 				} stand jumpSmallRight whichFrame 5 from marioRunRight 
 				state jumpBigLeft if isTrue jumpBigLeft() {
-					return body.linearVelocity.y > 0 || body.linearVelocity.y < 0 && body.linearVelocity.x > 0 && isBig && previousState.equals(currentState)
+					return isBig && body.linearVelocity.x < 0 && (body.linearVelocity.y > 0 || body.linearVelocity.y < 0  && previousState.equals(State.JUMPBIGLEFT)) 
 				} stand jumpBigLeft whichFrame 5 from bigMarioRunLeft 
 				state jumpBigRight if isTrue jumpBigRight() {
-					return body.linearVelocity.y > 0 || body.linearVelocity.y < 0 && body.linearVelocity.x < 0 && isBig && previousState.equals(currentState) 
+					return isBig && body.linearVelocity.x > 0 && (body.linearVelocity.y > 0 || body.linearVelocity.y < 0  && previousState.equals(State.JUMPBIGRIGHT)) 
 				} stand jumpBigRight whichFrame 5 from bigMarioRunRight
 				state growing if isTrue doGrowing() { 
 					return grows
@@ -129,9 +128,12 @@ package com.hypermodel.games {
 			initialState standSmall gameOverState dead 
 			events {
 				event grow() {
-					grows = true
-					big = true
-					timeToDefineBig = true					
+					if(!isBig) {
+						grows = true
+						big = true
+						timeToDefineBig = true
+						setBounds(getX(), getY(), getWidth(), getHeight() * 2)
+					}					
 				}
 				event hit() {
 					if(isBig) {
@@ -153,7 +155,7 @@ package com.hypermodel.games {
             		Hud.addMario(100);
 				}
 				event jump() {  
-					if(!currentState.equals(State.DEAD) && !currentState.equals(State.JUMPBIGLEFT)) { 
+					if(!currentState.equals(State.DEAD) && !currentState.equals(State.JUMPBIGLEFT) && !currentState.equals(State.JUMPBIGRIGHT) && !currentState.equals(State.JUMPSMALLLEFT) && !currentState.equals(State.JUMPSMALLRIGHT)) { 
 						body.applyLinearImpulse(new Vector2(0, 4f), body.getWorldCenter(), true)
 						currentState = State.JUMPBIGLEFT
 					}
@@ -182,19 +184,20 @@ package com.hypermodel.games {
 				vector(3.0,3.0)
 			} sensorID 7
 			actors {
-				sprite Mario
+				sprite Mario at fixture collidesWith sensor atBeginOfContact hitOnHead
+				sprite Goomba at fixture collidesWith fixture atBeginOfContact hitByGoomba
+				tile Pipe at fixture collidesWith fixture atBeginOfContact reverseVelocityX
 				tile Brick
 				tile Coin
-				tile Ground
-				tile Pipe
+				tile Ground 
 			}
 			properties {
-				property setToDestroyed onUpdateIfTrue { 
+				property setToDestroyed onUpdateIfTrue {  
 					world.destroyBody(body)
-            		destroyed = true;
+            		destroyed = true
             		stateTimer = 0
 				}
-				property destroyed onUpdateIfFalse { 
+				property destroyed onUpdateIfFalse {
 		            body.setLinearVelocity(^velocity);
 		            setPosition(body.getPosition().x - getWidth() / 2, body.getPosition().y - getHeight() / 2);
 				}
@@ -209,9 +212,17 @@ package com.hypermodel.games {
 			}
 			initialState runningGoomba
 			events {
-				event reverseVelocity (boolean x, boolean y) {
-					if(x) ^velocity.x = -^velocity.x;
-					if (y) ^velocity.y = -^velocity.y;
+				event reverseVelocityX(Pipe pipe) {
+					^velocity.x = -^velocity.x;
+				}
+				event reverseVelocityY(Pipe pipe) {
+					^velocity.y = -^velocity.y;
+				}
+				event hitOnHead(Mario mario) {
+					setToDestroyed = true
+				}
+				event hitByGoomba(Goomba goomba) { 
+					reverseVelocityX(null) 
 				}
 			}
 			sprite Mushroom collisionId 8 radius 6 velocity vector(0.7,0.0)

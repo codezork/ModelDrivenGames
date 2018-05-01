@@ -95,10 +95,10 @@ public class GameDSLParser extends AbstractContentAssistParser {
 					put(grammarAccess.getGamePlatformConfigIOSAccess().getGroup(), "rule__GamePlatformConfigIOS__Group__0");
 					put(grammarAccess.getGamePlatformConfigIOSMOEAccess().getGroup(), "rule__GamePlatformConfigIOSMOE__Group__0");
 					put(grammarAccess.getGameRootAccess().getGroup(), "rule__GameRoot__Group__0");
-					put(grammarAccess.getGameRootAccess().getGroup_25_0(), "rule__GameRoot__Group_25_0__0");
-					put(grammarAccess.getGameRootAccess().getGroup_25_1(), "rule__GameRoot__Group_25_1__0");
-					put(grammarAccess.getGameRootAccess().getGroup_25_2(), "rule__GameRoot__Group_25_2__0");
-					put(grammarAccess.getGameRootAccess().getGroup_25_3(), "rule__GameRoot__Group_25_3__0");
+					put(grammarAccess.getGameRootAccess().getGroup_26_0(), "rule__GameRoot__Group_26_0__0");
+					put(grammarAccess.getGameRootAccess().getGroup_26_1(), "rule__GameRoot__Group_26_1__0");
+					put(grammarAccess.getGameRootAccess().getGroup_26_2(), "rule__GameRoot__Group_26_2__0");
+					put(grammarAccess.getGameRootAccess().getGroup_26_3(), "rule__GameRoot__Group_26_3__0");
 					put(grammarAccess.getGameLayerAccess().getGroup(), "rule__GameLayer__Group__0");
 					put(grammarAccess.getGameScreenAccess().getGroup(), "rule__GameScreen__Group__0");
 					put(grammarAccess.getGameSceneAccess().getGroup(), "rule__GameScene__Group__0");
@@ -381,10 +381,11 @@ public class GameDSLParser extends AbstractContentAssistParser {
 					put(grammarAccess.getGameRootAccess().getWorldHeightAssignment_20(), "rule__GameRoot__WorldHeightAssignment_20");
 					put(grammarAccess.getGameRootAccess().getTileWidthAssignment_22(), "rule__GameRoot__TileWidthAssignment_22");
 					put(grammarAccess.getGameRootAccess().getTileHeightAssignment_24(), "rule__GameRoot__TileHeightAssignment_24");
-					put(grammarAccess.getGameRootAccess().getLayersAssignment_25_0_2(), "rule__GameRoot__LayersAssignment_25_0_2");
-					put(grammarAccess.getGameRootAccess().getScenesAssignment_25_1_2(), "rule__GameRoot__ScenesAssignment_25_1_2");
-					put(grammarAccess.getGameRootAccess().getScreensAssignment_25_2_2(), "rule__GameRoot__ScreensAssignment_25_2_2");
-					put(grammarAccess.getGameRootAccess().getRegionsAssignment_25_3_2(), "rule__GameRoot__RegionsAssignment_25_3_2");
+					put(grammarAccess.getGameRootAccess().getDebugAssignment_25(), "rule__GameRoot__DebugAssignment_25");
+					put(grammarAccess.getGameRootAccess().getLayersAssignment_26_0_2(), "rule__GameRoot__LayersAssignment_26_0_2");
+					put(grammarAccess.getGameRootAccess().getScenesAssignment_26_1_2(), "rule__GameRoot__ScenesAssignment_26_1_2");
+					put(grammarAccess.getGameRootAccess().getScreensAssignment_26_2_2(), "rule__GameRoot__ScreensAssignment_26_2_2");
+					put(grammarAccess.getGameRootAccess().getRegionsAssignment_26_3_2(), "rule__GameRoot__RegionsAssignment_26_3_2");
 					put(grammarAccess.getGameLayerAccess().getNameAssignment_2(), "rule__GameLayer__NameAssignment_2");
 					put(grammarAccess.getGameLayerAccess().getIndexAssignment_4(), "rule__GameLayer__IndexAssignment_4");
 					put(grammarAccess.getGameLayerAccess().getTypeAssignment_6(), "rule__GameLayer__TypeAssignment_6");
@@ -642,7 +643,7 @@ public class GameDSLParser extends AbstractContentAssistParser {
 					put(grammarAccess.getXImportDeclarationAccess().getImportedTypeAssignment_1_1(), "rule__XImportDeclaration__ImportedTypeAssignment_1_1");
 					put(grammarAccess.getXImportDeclarationAccess().getImportedNamespaceAssignment_1_2(), "rule__XImportDeclaration__ImportedNamespaceAssignment_1_2");
 					put(grammarAccess.getGamePlatformConfigAndroidAccess().getUnorderedGroup_11(), "rule__GamePlatformConfigAndroid__UnorderedGroup_11");
-					put(grammarAccess.getGameRootAccess().getUnorderedGroup_25(), "rule__GameRoot__UnorderedGroup_25");
+					put(grammarAccess.getGameRootAccess().getUnorderedGroup_26(), "rule__GameRoot__UnorderedGroup_26");
 					put(grammarAccess.getGameSpriteAccess().getUnorderedGroup_7(), "rule__GameSprite__UnorderedGroup_7");
 				}
 			};

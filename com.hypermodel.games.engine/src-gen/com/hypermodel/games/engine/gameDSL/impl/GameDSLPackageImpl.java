@@ -711,9 +711,9 @@ public class GameDSLPackageImpl extends EPackageImpl implements GameDSLPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getGameRoot_Layers()
+  public EAttribute getGameRoot_Debug()
   {
-    return (EReference)gameRootEClass.getEStructuralFeatures().get(12);
+    return (EAttribute)gameRootEClass.getEStructuralFeatures().get(12);
   }
 
   /**
@@ -721,7 +721,7 @@ public class GameDSLPackageImpl extends EPackageImpl implements GameDSLPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getGameRoot_Scenes()
+  public EReference getGameRoot_Layers()
   {
     return (EReference)gameRootEClass.getEStructuralFeatures().get(13);
   }
@@ -731,7 +731,7 @@ public class GameDSLPackageImpl extends EPackageImpl implements GameDSLPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getGameRoot_Screens()
+  public EReference getGameRoot_Scenes()
   {
     return (EReference)gameRootEClass.getEStructuralFeatures().get(14);
   }
@@ -741,9 +741,19 @@ public class GameDSLPackageImpl extends EPackageImpl implements GameDSLPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getGameRoot_Regions()
+  public EReference getGameRoot_Screens()
   {
     return (EReference)gameRootEClass.getEStructuralFeatures().get(15);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getGameRoot_Regions()
+  {
+    return (EReference)gameRootEClass.getEStructuralFeatures().get(16);
   }
 
   /**
@@ -2029,6 +2039,7 @@ public class GameDSLPackageImpl extends EPackageImpl implements GameDSLPackage
     createEAttribute(gameRootEClass, GAME_ROOT__WORLD_HEIGHT);
     createEAttribute(gameRootEClass, GAME_ROOT__TILE_WIDTH);
     createEAttribute(gameRootEClass, GAME_ROOT__TILE_HEIGHT);
+    createEAttribute(gameRootEClass, GAME_ROOT__DEBUG);
     createEReference(gameRootEClass, GAME_ROOT__LAYERS);
     createEReference(gameRootEClass, GAME_ROOT__SCENES);
     createEReference(gameRootEClass, GAME_ROOT__SCREENS);
@@ -2254,6 +2265,7 @@ public class GameDSLPackageImpl extends EPackageImpl implements GameDSLPackage
     initEAttribute(getGameRoot_WorldHeight(), ecorePackage.getEInt(), "worldHeight", null, 0, 1, GameRoot.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getGameRoot_TileWidth(), ecorePackage.getEInt(), "tileWidth", null, 0, 1, GameRoot.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getGameRoot_TileHeight(), ecorePackage.getEInt(), "tileHeight", null, 0, 1, GameRoot.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getGameRoot_Debug(), ecorePackage.getEBoolean(), "debug", null, 0, 1, GameRoot.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getGameRoot_Layers(), this.getGameLayer(), null, "layers", null, 0, -1, GameRoot.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getGameRoot_Scenes(), this.getGameScene(), null, "scenes", null, 0, -1, GameRoot.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getGameRoot_Screens(), this.getGameScreen(), null, "screens", null, 0, -1, GameRoot.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

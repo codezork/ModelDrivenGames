@@ -453,13 +453,22 @@ public interface GameDSLPackage extends EPackage
   int GAME_ROOT__TILE_HEIGHT = 11;
 
   /**
+   * The feature id for the '<em><b>Debug</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int GAME_ROOT__DEBUG = 12;
+
+  /**
    * The feature id for the '<em><b>Layers</b></em>' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int GAME_ROOT__LAYERS = 12;
+  int GAME_ROOT__LAYERS = 13;
 
   /**
    * The feature id for the '<em><b>Scenes</b></em>' containment reference list.
@@ -468,7 +477,7 @@ public interface GameDSLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int GAME_ROOT__SCENES = 13;
+  int GAME_ROOT__SCENES = 14;
 
   /**
    * The feature id for the '<em><b>Screens</b></em>' containment reference list.
@@ -477,7 +486,7 @@ public interface GameDSLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int GAME_ROOT__SCREENS = 14;
+  int GAME_ROOT__SCREENS = 15;
 
   /**
    * The feature id for the '<em><b>Regions</b></em>' containment reference list.
@@ -486,7 +495,7 @@ public interface GameDSLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int GAME_ROOT__REGIONS = 15;
+  int GAME_ROOT__REGIONS = 16;
 
   /**
    * The number of structural features of the '<em>Game Root</em>' class.
@@ -495,7 +504,7 @@ public interface GameDSLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int GAME_ROOT_FEATURE_COUNT = 16;
+  int GAME_ROOT_FEATURE_COUNT = 17;
 
   /**
    * The meta object id for the '{@link com.hypermodel.games.engine.gameDSL.impl.GameLayerImpl <em>Game Layer</em>}' class.
@@ -2162,6 +2171,17 @@ public interface GameDSLPackage extends EPackage
    * @generated
    */
   EAttribute getGameRoot_TileHeight();
+
+  /**
+   * Returns the meta object for the attribute '{@link com.hypermodel.games.engine.gameDSL.GameRoot#isDebug <em>Debug</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Debug</em>'.
+   * @see com.hypermodel.games.engine.gameDSL.GameRoot#isDebug()
+   * @see #getGameRoot()
+   * @generated
+   */
+  EAttribute getGameRoot_Debug();
 
   /**
    * Returns the meta object for the containment reference list '{@link com.hypermodel.games.engine.gameDSL.GameRoot#getLayers <em>Layers</em>}'.
@@ -3847,6 +3867,14 @@ public interface GameDSLPackage extends EPackage
      * @generated
      */
     EAttribute GAME_ROOT__TILE_HEIGHT = eINSTANCE.getGameRoot_TileHeight();
+
+    /**
+     * The meta object literal for the '<em><b>Debug</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute GAME_ROOT__DEBUG = eINSTANCE.getGameRoot_Debug();
 
     /**
      * The meta object literal for the '<em><b>Layers</b></em>' containment reference list feature.

@@ -28,6 +28,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link com.hypermodel.games.engine.gameDSL.GameRoot#getWorldHeight <em>World Height</em>}</li>
  *   <li>{@link com.hypermodel.games.engine.gameDSL.GameRoot#getTileWidth <em>Tile Width</em>}</li>
  *   <li>{@link com.hypermodel.games.engine.gameDSL.GameRoot#getTileHeight <em>Tile Height</em>}</li>
+ *   <li>{@link com.hypermodel.games.engine.gameDSL.GameRoot#isDebug <em>Debug</em>}</li>
  *   <li>{@link com.hypermodel.games.engine.gameDSL.GameRoot#getLayers <em>Layers</em>}</li>
  *   <li>{@link com.hypermodel.games.engine.gameDSL.GameRoot#getScenes <em>Scenes</em>}</li>
  *   <li>{@link com.hypermodel.games.engine.gameDSL.GameRoot#getScreens <em>Screens</em>}</li>
@@ -351,6 +352,32 @@ public interface GameRoot extends EObject
    * @generated
    */
   void setTileHeight(int value);
+
+  /**
+   * Returns the value of the '<em><b>Debug</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Debug</em>' attribute isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Debug</em>' attribute.
+   * @see #setDebug(boolean)
+   * @see com.hypermodel.games.engine.gameDSL.GameDSLPackage#getGameRoot_Debug()
+   * @model
+   * @generated
+   */
+  boolean isDebug();
+
+  /**
+   * Sets the value of the '{@link com.hypermodel.games.engine.gameDSL.GameRoot#isDebug <em>Debug</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Debug</em>' attribute.
+   * @see #isDebug()
+   * @generated
+   */
+  void setDebug(boolean value);
 
   /**
    * Returns the value of the '<em><b>Layers</b></em>' containment reference list.

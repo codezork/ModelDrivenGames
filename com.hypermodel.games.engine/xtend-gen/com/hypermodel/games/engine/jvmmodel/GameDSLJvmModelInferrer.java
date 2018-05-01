@@ -646,7 +646,7 @@ public class GameDSLJvmModelInferrer extends AbstractModelInferrer {
       this._jvmTypesBuilder.<JvmTypeReference>operator_add(_superTypes, _typeRef);
       it.setPackageName(this._iQualifiedNameProvider.getFullyQualifiedName(screen).skipLast(1).toString());
       this._jvmTypesBuilder.setDocumentation(it, this.genInfo);
-      this.toFields(it, gamePkg, screen, gameClass, creatorClass, contactClass, playerClass);
+      this.toFields(it, gamePkg, root, screen, gameClass, creatorClass, contactClass, playerClass);
       EList<JvmMember> _members = it.getMembers();
       final Procedure1<JvmConstructor> _function_2 = (JvmConstructor it_1) -> {
         EList<JvmFormalParameter> _parameters = it_1.getParameters();
@@ -701,8 +701,13 @@ public class GameDSLJvmModelInferrer extends AbstractModelInferrer {
           StringConcatenation _builder_2 = new StringConcatenation();
           _builder_2.append("(0, -10), true);");
           _builder_2.newLine();
-          _builder_2.append("b2dr = new Box2DDebugRenderer();");
-          _builder_2.newLine();
+          {
+            boolean _isDebug = root.isDebug();
+            if (_isDebug) {
+              _builder_2.append("b2dr = new Box2DDebugRenderer();");
+            }
+          }
+          _builder_2.newLineIfNotEmpty();
           {
             GameScene _scene = screen.getScene();
             boolean _tripleNotEquals = (_scene != null);
@@ -754,7 +759,7 @@ public class GameDSLJvmModelInferrer extends AbstractModelInferrer {
     screen.getTiles().forEach(_function_3);
   }
   
-  public void toFields(final JvmGenericType type, final GamePackage gamePkg, final GameScreen screen, final JvmGenericType gameClass, final JvmGenericType creatorClass, final JvmGenericType contactClass, final JvmGenericType playerClass) {
+  public void toFields(final JvmGenericType type, final GamePackage gamePkg, final GameRoot game, final GameScreen screen, final JvmGenericType gameClass, final JvmGenericType creatorClass, final JvmGenericType contactClass, final JvmGenericType playerClass) {
     JvmField field = null;
     EList<JvmMember> _members = type.getMembers();
     JvmField _field = this._jvmTypesBuilder.toField(screen, "game", this._typeReferenceBuilder.typeRef(gameClass));
@@ -780,9 +785,12 @@ public class GameDSLJvmModelInferrer extends AbstractModelInferrer {
     EList<JvmMember> _members_7 = type.getMembers();
     JvmField _field_7 = this._jvmTypesBuilder.toField(screen, "world", this._typeReferenceBuilder.typeRef(World.class));
     this._jvmTypesBuilder.<JvmField>operator_add(_members_7, _field_7);
-    EList<JvmMember> _members_8 = type.getMembers();
-    JvmField _field_8 = this._jvmTypesBuilder.toField(screen, "b2dr", this._typeReferenceBuilder.typeRef(Box2DDebugRenderer.class));
-    this._jvmTypesBuilder.<JvmField>operator_add(_members_8, _field_8);
+    boolean _isDebug = game.isDebug();
+    if (_isDebug) {
+      EList<JvmMember> _members_8 = type.getMembers();
+      JvmField _field_8 = this._jvmTypesBuilder.toField(screen, "b2dr", this._typeReferenceBuilder.typeRef(Box2DDebugRenderer.class));
+      this._jvmTypesBuilder.<JvmField>operator_add(_members_8, _field_8);
+    }
     EList<JvmMember> _members_9 = type.getMembers();
     JvmField _field_9 = this._jvmTypesBuilder.toField(screen, "music", this._typeReferenceBuilder.typeRef(Music.class));
     this._jvmTypesBuilder.<JvmField>operator_add(_members_9, _field_9);
@@ -873,8 +881,13 @@ public class GameDSLJvmModelInferrer extends AbstractModelInferrer {
         _builder.newLine();
         _builder.append("world.dispose();");
         _builder.newLine();
-        _builder.append("b2dr.dispose();");
-        _builder.newLine();
+        {
+          boolean _isDebug = game.isDebug();
+          if (_isDebug) {
+            _builder.append("b2dr.dispose();");
+          }
+        }
+        _builder.newLineIfNotEmpty();
         {
           GameScene _scene = screen.getScene();
           boolean _tripleNotEquals = (_scene != null);
@@ -998,8 +1011,13 @@ public class GameDSLJvmModelInferrer extends AbstractModelInferrer {
         _builder_2.newLine();
         _builder_2.append("game.batch.end();");
         _builder_2.newLine();
-        _builder_2.append("b2dr.render(world, gamecam.combined);");
-        _builder_2.newLine();
+        {
+          boolean _isDebug = game.isDebug();
+          if (_isDebug) {
+            _builder_2.append("b2dr.render(world, gamecam.combined);");
+          }
+        }
+        _builder_2.newLineIfNotEmpty();
         _builder_2.append("game.batch.setProjectionMatrix(hud.stage.getCamera().combined);");
         _builder_2.newLine();
         _builder_2.append("hud.stage.draw();");
@@ -1494,15 +1512,20 @@ public class GameDSLJvmModelInferrer extends AbstractModelInferrer {
                 _builder_1.append(");");
                 _builder_1.newLineIfNotEmpty();
                 _builder_1.append("\t");
-                String _name_1 = it_3.getAnimation().getName();
-                _builder_1.append(_name_1, "\t");
-                _builder_1.append("TextureRegion.flip(");
-                boolean _booleanValue = Boolean.valueOf(it_3.getAnimation().getRegion().isFlipX()).booleanValue();
-                _builder_1.append(_booleanValue, "\t");
-                _builder_1.append(", ");
-                boolean _booleanValue_1 = Boolean.valueOf(it_3.getAnimation().getRegion().isFlipY()).booleanValue();
-                _builder_1.append(_booleanValue_1, "\t");
-                _builder_1.append("); ");
+                {
+                  if ((it_3.getAnimation().getRegion().isFlipX() || it_3.getAnimation().getRegion().isFlipY())) {
+                    String _name_1 = it_3.getAnimation().getName();
+                    _builder_1.append(_name_1, "\t");
+                    _builder_1.append("TextureRegion.flip(");
+                    boolean _booleanValue = Boolean.valueOf(it_3.getAnimation().getRegion().isFlipX()).booleanValue();
+                    _builder_1.append(_booleanValue, "\t");
+                    _builder_1.append(", ");
+                    boolean _booleanValue_1 = Boolean.valueOf(it_3.getAnimation().getRegion().isFlipY()).booleanValue();
+                    _builder_1.append(_booleanValue_1, "\t");
+                    _builder_1.append(");");
+                  }
+                }
+                _builder_1.append(" ");
                 _builder_1.newLineIfNotEmpty();
                 _builder_1.append("\t");
                 _builder_1.append("frames.add(");
@@ -1537,15 +1560,20 @@ public class GameDSLJvmModelInferrer extends AbstractModelInferrer {
                   _builder_2.append(_height_1);
                   _builder_2.append(");");
                   _builder_2.newLineIfNotEmpty();
-                  String _name_4 = it_4.getName();
-                  _builder_2.append(_name_4);
-                  _builder_2.append("TextureRegion.flip(");
-                  boolean _booleanValue_2 = Boolean.valueOf(it_4.getRegion().isFlipX()).booleanValue();
-                  _builder_2.append(_booleanValue_2);
-                  _builder_2.append(", ");
-                  boolean _booleanValue_3 = Boolean.valueOf(it_4.getRegion().isFlipY()).booleanValue();
-                  _builder_2.append(_booleanValue_3);
-                  _builder_2.append("); ");
+                  {
+                    if ((it_4.getRegion().isFlipX() || it_4.getRegion().isFlipY())) {
+                      String _name_4 = it_4.getName();
+                      _builder_2.append(_name_4);
+                      _builder_2.append("TextureRegion.flip(");
+                      boolean _booleanValue_2 = Boolean.valueOf(it_4.getRegion().isFlipX()).booleanValue();
+                      _builder_2.append(_booleanValue_2);
+                      _builder_2.append(", ");
+                      boolean _booleanValue_3 = Boolean.valueOf(it_4.getRegion().isFlipY()).booleanValue();
+                      _builder_2.append(_booleanValue_3);
+                      _builder_2.append(");");
+                    }
+                  }
+                  _builder_2.append(" ");
                   _builder_2.newLineIfNotEmpty();
                   _builder_2.append("frames.add(");
                   String _name_5 = it_4.getName();
@@ -1594,15 +1622,20 @@ public class GameDSLJvmModelInferrer extends AbstractModelInferrer {
               _builder_4.append(_height_1);
               _builder_4.append(");");
               _builder_4.newLineIfNotEmpty();
-              String _name_5 = it_3.getStand().getName();
-              _builder_4.append(_name_5);
-              _builder_4.append(".flip(");
-              boolean _booleanValue_2 = Boolean.valueOf(it_3.getStand().getRegion().isFlipX()).booleanValue();
-              _builder_4.append(_booleanValue_2);
-              _builder_4.append(", ");
-              boolean _booleanValue_3 = Boolean.valueOf(it_3.getStand().getRegion().isFlipY()).booleanValue();
-              _builder_4.append(_booleanValue_3);
-              _builder_4.append("); ");
+              {
+                if ((it_3.getStand().getRegion().isFlipX() || it_3.getStand().getRegion().isFlipY())) {
+                  String _name_5 = it_3.getStand().getName();
+                  _builder_4.append(_name_5);
+                  _builder_4.append(".flip(");
+                  boolean _booleanValue_2 = Boolean.valueOf(it_3.getStand().getRegion().isFlipX()).booleanValue();
+                  _builder_4.append(_booleanValue_2);
+                  _builder_4.append(", ");
+                  boolean _booleanValue_3 = Boolean.valueOf(it_3.getStand().getRegion().isFlipY()).booleanValue();
+                  _builder_4.append(_booleanValue_3);
+                  _builder_4.append(");");
+                }
+              }
+              _builder_4.append(" ");
               _builder_4.newLineIfNotEmpty();
               current.append(_builder_4);
             }
@@ -2724,7 +2757,13 @@ public class GameDSLJvmModelInferrer extends AbstractModelInferrer {
             _builder_10.append(_firstLower_1, "\t");
             _builder_10.append(".add(new ");
             _builder_10.append(spriteFQN, "\t");
-            _builder_10.append("(screen, rect.getX(), rect.getY()));");
+            _builder_10.append("(screen, rect.getX() / ");
+            String _simpleName = gameClass.getSimpleName();
+            _builder_10.append(_simpleName, "\t");
+            _builder_10.append(".PPM, rect.getY() / ");
+            String _simpleName_1 = gameClass.getSimpleName();
+            _builder_10.append(_simpleName_1, "\t");
+            _builder_10.append(".PPM));");
             _builder_10.newLineIfNotEmpty();
             current.append(_builder_10);
             current.append("\n}\n");
@@ -3070,14 +3109,14 @@ public class GameDSLJvmModelInferrer extends AbstractModelInferrer {
       GameSprite _sprite_1 = actor.getSprite();
       boolean _tripleNotEquals_2 = (_sprite_1 != null);
       if (_tripleNotEquals_2) {
-        String _firstUpper = StringExtensions.toFirstUpper(actor.getSprite().getName());
-        _builder.append(_firstUpper, "\t\t");
+        QualifiedName _fullyQualifiedName_1 = this._iQualifiedNameProvider.getFullyQualifiedName(actor.getSprite());
+        _builder.append(_fullyQualifiedName_1, "\t\t");
       } else {
         GameTile _tile_1 = actor.getTile();
         boolean _tripleNotEquals_3 = (_tile_1 != null);
         if (_tripleNotEquals_3) {
-          QualifiedName _fullyQualifiedName_1 = this._iQualifiedNameProvider.getFullyQualifiedName(actor.getTile());
-          _builder.append(_fullyQualifiedName_1, "\t\t");
+          QualifiedName _fullyQualifiedName_2 = this._iQualifiedNameProvider.getFullyQualifiedName(actor.getTile());
+          _builder.append(_fullyQualifiedName_2, "\t\t");
         }
       }
     }
@@ -3088,8 +3127,8 @@ public class GameDSLJvmModelInferrer extends AbstractModelInferrer {
     _builder.newLine();
     _builder.append("\t\t");
     _builder.append("((");
-    QualifiedName _fullyQualifiedName_2 = this._iQualifiedNameProvider.getFullyQualifiedName(sprite);
-    _builder.append(_fullyQualifiedName_2, "\t\t");
+    QualifiedName _fullyQualifiedName_3 = this._iQualifiedNameProvider.getFullyQualifiedName(sprite);
+    _builder.append(_fullyQualifiedName_3, "\t\t");
     _builder.append(")fixB.getUserData()).");
     _builder.append(methodName, "\t\t");
     _builder.append("((");
@@ -3097,14 +3136,14 @@ public class GameDSLJvmModelInferrer extends AbstractModelInferrer {
       GameSprite _sprite_2 = actor.getSprite();
       boolean _tripleNotEquals_4 = (_sprite_2 != null);
       if (_tripleNotEquals_4) {
-        String _firstUpper_1 = StringExtensions.toFirstUpper(actor.getSprite().getName());
-        _builder.append(_firstUpper_1, "\t\t");
+        QualifiedName _fullyQualifiedName_4 = this._iQualifiedNameProvider.getFullyQualifiedName(actor.getSprite());
+        _builder.append(_fullyQualifiedName_4, "\t\t");
       } else {
         GameTile _tile_2 = actor.getTile();
         boolean _tripleNotEquals_5 = (_tile_2 != null);
         if (_tripleNotEquals_5) {
-          QualifiedName _fullyQualifiedName_3 = this._iQualifiedNameProvider.getFullyQualifiedName(actor.getTile());
-          _builder.append(_fullyQualifiedName_3, "\t\t");
+          QualifiedName _fullyQualifiedName_5 = this._iQualifiedNameProvider.getFullyQualifiedName(actor.getTile());
+          _builder.append(_fullyQualifiedName_5, "\t\t");
         }
       }
     }

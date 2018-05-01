@@ -387,7 +387,7 @@ class GameDSLJvmModelInferrer extends AbstractModelInferrer {
 				superTypes += Screen.typeRef
 				packageName = screen.fullyQualifiedName.skipLast(1).toString
 				documentation = genInfo
-				it.toFields(gamePkg, screen, gameClass, creatorClass, contactClass, playerClass)
+				it.toFields(gamePkg, root, screen, gameClass, creatorClass, contactClass, playerClass)
 				members += screen.toConstructor [
 					parameters += gamePkg.toParameter("game", gameClass.typeRef)
 					body = [
@@ -410,7 +410,7 @@ class GameDSLJvmModelInferrer extends AbstractModelInferrer {
 						append(
 						'''
 						(0, -10), true);
-						b2dr = new Box2DDebugRenderer();
+						«IF root.debug»b2dr = new Box2DDebugRenderer();«ENDIF»
 						«IF screen.scene !== null»«screen.scene.name.toFirstLower» = new «screen.scene.name.toFirstUpper»(game.batch);«ENDIF»
 						creator = new «creatorClass.fullyQualifiedName»(this);
 						«IF playerClass !== null»player = new «playerClass.fullyQualifiedName»(this);«ENDIF»
@@ -428,7 +428,7 @@ class GameDSLJvmModelInferrer extends AbstractModelInferrer {
 		screen.tiles.forEach[acceptor.createTile(gamePkg, gameClass, screenClass, it, root)]
 	}
 
-	def void toFields(JvmGenericType type, GamePackage gamePkg, GameScreen screen, JvmGenericType gameClass, JvmGenericType creatorClass, JvmGenericType contactClass, JvmGenericType playerClass) {
+	def void toFields(JvmGenericType type, GamePackage gamePkg, GameRoot game, GameScreen screen, JvmGenericType gameClass, JvmGenericType creatorClass, JvmGenericType contactClass, JvmGenericType playerClass) {
 		var JvmField field = null
 		type.members += screen.toField("game", gameClass.typeRef)
 		type.members += screen.toField("atlas", TextureAtlas.typeRef)
@@ -438,7 +438,7 @@ class GameDSLJvmModelInferrer extends AbstractModelInferrer {
 		type.members += screen.toField("map", TiledMap.typeRef);
 		type.members += screen.toField("renderer", OrthogonalTiledMapRenderer.typeRef);
 		type.members += screen.toField("world", World.typeRef);
-		type.members += screen.toField("b2dr", Box2DDebugRenderer.typeRef);
+		if(game.debug) type.members += screen.toField("b2dr", Box2DDebugRenderer.typeRef);
 		type.members += screen.toField("music", Music.typeRef);
 		type.members += screen.toField("creator", creatorClass.typeRef);
 		if(playerClass !== null) {
@@ -491,7 +491,7 @@ class GameDSLJvmModelInferrer extends AbstractModelInferrer {
 				map.dispose();
 				renderer.dispose();
 				world.dispose();
-				b2dr.dispose();
+				«IF game.debug»b2dr.dispose();«ENDIF»
 				«IF screen.scene !== null»«screen.scene.name.toFirstLower».dispose();«ENDIF»
 				''')
 			]
@@ -549,7 +549,7 @@ class GameDSLJvmModelInferrer extends AbstractModelInferrer {
 				player.draw(game.batch);
 				creator.drawSprites(game.batch);
 				game.batch.end();
-				b2dr.render(world, gamecam.combined);
+				«IF game.debug»b2dr.render(world, gamecam.combined);«ENDIF»
 				game.batch.setProjectionMatrix(hud.stage.getCamera().combined);
 				hud.stage.draw();
 			    ''')
@@ -749,7 +749,7 @@ class GameDSLJvmModelInferrer extends AbstractModelInferrer {
 									'''
 									for (int i = «it.animation.offset»; i < «it.animation.frames+it.animation.offset»; i++) {
 										TextureRegion «it.animation.name»TextureRegion = new TextureRegion(screen.getAtlas().findRegion("«it.animation.region.region»"), i * «it.animation.region.width», 0, «it.animation.region.width», «it.animation.region.height»);
-										«it.animation.name»TextureRegion.flip(«it.animation.region.flipX.booleanValue», «it.animation.region.flipY.booleanValue»); 
+										«IF it.animation.region.flipX||it.animation.region.flipY»«it.animation.name»TextureRegion.flip(«it.animation.region.flipX.booleanValue», «it.animation.region.flipY.booleanValue»);«ENDIF» 
 										frames.add(«it.animation.name»TextureRegion);
 									}
 									''')
@@ -759,7 +759,7 @@ class GameDSLJvmModelInferrer extends AbstractModelInferrer {
 										current.append(
 										'''
 										TextureRegion «it.name»TextureRegion = new TextureRegion(screen.getAtlas().findRegion("«it.region.region»"), «it.offset*it.region.width», 0, «it.region.width», «it.region.height»);
-										«it.name»TextureRegion.flip(«it.region.flipX.booleanValue», «it.region.flipY.booleanValue»); 
+										«IF it.region.flipX||it.region.flipY»«it.name»TextureRegion.flip(«it.region.flipX.booleanValue», «it.region.flipY.booleanValue»);«ENDIF» 
 										frames.add(«it.name»TextureRegion);
 										''')
 									]
@@ -778,7 +778,7 @@ class GameDSLJvmModelInferrer extends AbstractModelInferrer {
 								current.append(
 									'''
 									«it.stand.name» = new TextureRegion(screen.getAtlas().findRegion("«it.stand.region.region»"), «it.stand.offset*it.stand.region.width», 0, «it.stand.region.width», «it.stand.region.height»);
-									«it.stand.name».flip(«it.stand.region.flipX.booleanValue», «it.stand.region.flipY.booleanValue»); 
+									«IF it.stand.region.flipX||it.stand.region.flipY»«it.stand.name».flip(«it.stand.region.flipX.booleanValue», «it.stand.region.flipY.booleanValue»);«ENDIF» 
 									'''
 								)
 							}
@@ -1238,7 +1238,7 @@ class GameDSLJvmModelInferrer extends AbstractModelInferrer {
 							current.append(RectangleMapObject)
 							current.append(''') object).getRectangle();
 							''')
-							current.append('''	«it.name.toFirstLower».add(new «spriteFQN»(screen, rect.getX(), rect.getY()));
+							current.append('''	«it.name.toFirstLower».add(new «spriteFQN»(screen, rect.getX() / «gameClass.simpleName».PPM, rect.getY() / «gameClass.simpleName».PPM));
 							''')
 							current.append("\n}\n")
 						]
@@ -1416,9 +1416,9 @@ class GameDSLJvmModelInferrer extends AbstractModelInferrer {
 		'''
 		case «id1+id2»:
 			if(fixA.getFilterData().categoryBits == «id1») {
-				((«sprite.fullyQualifiedName»)fixA.getUserData()).«methodName»((«IF actor.sprite!==null»«actor.sprite.name.toFirstUpper»«ELSEIF actor.tile!==null»«actor.tile.fullyQualifiedName»«ENDIF»)fixB.getUserData());
+				((«sprite.fullyQualifiedName»)fixA.getUserData()).«methodName»((«IF actor.sprite!==null»«actor.sprite.fullyQualifiedName»«ELSEIF actor.tile!==null»«actor.tile.fullyQualifiedName»«ENDIF»)fixB.getUserData());
 			} else {
-				((«sprite.fullyQualifiedName»)fixB.getUserData()).«methodName»((«IF actor.sprite!==null»«actor.sprite.name.toFirstUpper»«ELSEIF actor.tile!==null»«actor.tile.fullyQualifiedName»«ENDIF»)fixA.getUserData());
+				((«sprite.fullyQualifiedName»)fixB.getUserData()).«methodName»((«IF actor.sprite!==null»«actor.sprite.fullyQualifiedName»«ELSEIF actor.tile!==null»«actor.tile.fullyQualifiedName»«ENDIF»)fixA.getUserData());
 			}
 			break;
 		'''

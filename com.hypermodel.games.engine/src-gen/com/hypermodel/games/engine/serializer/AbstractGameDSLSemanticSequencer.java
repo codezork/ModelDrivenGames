@@ -696,6 +696,7 @@ public abstract class AbstractGameDSLSemanticSequencer extends XbaseWithAnnotati
 	 *         worldHeight=INT 
 	 *         tileWidth=INT 
 	 *         tileHeight=INT 
+	 *         debug?='debug'? 
 	 *         (layers+=GameLayer | scenes+=GameScene | screens+=GameScreen | regions+=GameTextureRegion)*
 	 *     )
 	 */

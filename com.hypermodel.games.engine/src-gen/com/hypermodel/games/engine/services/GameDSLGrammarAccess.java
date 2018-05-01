@@ -423,31 +423,33 @@ public class GameDSLGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cTileHeightKeyword_23 = (Keyword)cGroup.eContents().get(23);
 		private final Assignment cTileHeightAssignment_24 = (Assignment)cGroup.eContents().get(24);
 		private final RuleCall cTileHeightINTTerminalRuleCall_24_0 = (RuleCall)cTileHeightAssignment_24.eContents().get(0);
-		private final UnorderedGroup cUnorderedGroup_25 = (UnorderedGroup)cGroup.eContents().get(25);
-		private final Group cGroup_25_0 = (Group)cUnorderedGroup_25.eContents().get(0);
-		private final Keyword cLayersKeyword_25_0_0 = (Keyword)cGroup_25_0.eContents().get(0);
-		private final Keyword cLeftCurlyBracketKeyword_25_0_1 = (Keyword)cGroup_25_0.eContents().get(1);
-		private final Assignment cLayersAssignment_25_0_2 = (Assignment)cGroup_25_0.eContents().get(2);
-		private final RuleCall cLayersGameLayerParserRuleCall_25_0_2_0 = (RuleCall)cLayersAssignment_25_0_2.eContents().get(0);
-		private final Keyword cRightCurlyBracketKeyword_25_0_3 = (Keyword)cGroup_25_0.eContents().get(3);
-		private final Group cGroup_25_1 = (Group)cUnorderedGroup_25.eContents().get(1);
-		private final Keyword cScenesKeyword_25_1_0 = (Keyword)cGroup_25_1.eContents().get(0);
-		private final Keyword cLeftCurlyBracketKeyword_25_1_1 = (Keyword)cGroup_25_1.eContents().get(1);
-		private final Assignment cScenesAssignment_25_1_2 = (Assignment)cGroup_25_1.eContents().get(2);
-		private final RuleCall cScenesGameSceneParserRuleCall_25_1_2_0 = (RuleCall)cScenesAssignment_25_1_2.eContents().get(0);
-		private final Keyword cRightCurlyBracketKeyword_25_1_3 = (Keyword)cGroup_25_1.eContents().get(3);
-		private final Group cGroup_25_2 = (Group)cUnorderedGroup_25.eContents().get(2);
-		private final Keyword cScreensKeyword_25_2_0 = (Keyword)cGroup_25_2.eContents().get(0);
-		private final Keyword cLeftCurlyBracketKeyword_25_2_1 = (Keyword)cGroup_25_2.eContents().get(1);
-		private final Assignment cScreensAssignment_25_2_2 = (Assignment)cGroup_25_2.eContents().get(2);
-		private final RuleCall cScreensGameScreenParserRuleCall_25_2_2_0 = (RuleCall)cScreensAssignment_25_2_2.eContents().get(0);
-		private final Keyword cRightCurlyBracketKeyword_25_2_3 = (Keyword)cGroup_25_2.eContents().get(3);
-		private final Group cGroup_25_3 = (Group)cUnorderedGroup_25.eContents().get(3);
-		private final Keyword cRegionsKeyword_25_3_0 = (Keyword)cGroup_25_3.eContents().get(0);
-		private final Keyword cLeftCurlyBracketKeyword_25_3_1 = (Keyword)cGroup_25_3.eContents().get(1);
-		private final Assignment cRegionsAssignment_25_3_2 = (Assignment)cGroup_25_3.eContents().get(2);
-		private final RuleCall cRegionsGameTextureRegionParserRuleCall_25_3_2_0 = (RuleCall)cRegionsAssignment_25_3_2.eContents().get(0);
-		private final Keyword cRightCurlyBracketKeyword_25_3_3 = (Keyword)cGroup_25_3.eContents().get(3);
+		private final Assignment cDebugAssignment_25 = (Assignment)cGroup.eContents().get(25);
+		private final Keyword cDebugDebugKeyword_25_0 = (Keyword)cDebugAssignment_25.eContents().get(0);
+		private final UnorderedGroup cUnorderedGroup_26 = (UnorderedGroup)cGroup.eContents().get(26);
+		private final Group cGroup_26_0 = (Group)cUnorderedGroup_26.eContents().get(0);
+		private final Keyword cLayersKeyword_26_0_0 = (Keyword)cGroup_26_0.eContents().get(0);
+		private final Keyword cLeftCurlyBracketKeyword_26_0_1 = (Keyword)cGroup_26_0.eContents().get(1);
+		private final Assignment cLayersAssignment_26_0_2 = (Assignment)cGroup_26_0.eContents().get(2);
+		private final RuleCall cLayersGameLayerParserRuleCall_26_0_2_0 = (RuleCall)cLayersAssignment_26_0_2.eContents().get(0);
+		private final Keyword cRightCurlyBracketKeyword_26_0_3 = (Keyword)cGroup_26_0.eContents().get(3);
+		private final Group cGroup_26_1 = (Group)cUnorderedGroup_26.eContents().get(1);
+		private final Keyword cScenesKeyword_26_1_0 = (Keyword)cGroup_26_1.eContents().get(0);
+		private final Keyword cLeftCurlyBracketKeyword_26_1_1 = (Keyword)cGroup_26_1.eContents().get(1);
+		private final Assignment cScenesAssignment_26_1_2 = (Assignment)cGroup_26_1.eContents().get(2);
+		private final RuleCall cScenesGameSceneParserRuleCall_26_1_2_0 = (RuleCall)cScenesAssignment_26_1_2.eContents().get(0);
+		private final Keyword cRightCurlyBracketKeyword_26_1_3 = (Keyword)cGroup_26_1.eContents().get(3);
+		private final Group cGroup_26_2 = (Group)cUnorderedGroup_26.eContents().get(2);
+		private final Keyword cScreensKeyword_26_2_0 = (Keyword)cGroup_26_2.eContents().get(0);
+		private final Keyword cLeftCurlyBracketKeyword_26_2_1 = (Keyword)cGroup_26_2.eContents().get(1);
+		private final Assignment cScreensAssignment_26_2_2 = (Assignment)cGroup_26_2.eContents().get(2);
+		private final RuleCall cScreensGameScreenParserRuleCall_26_2_2_0 = (RuleCall)cScreensAssignment_26_2_2.eContents().get(0);
+		private final Keyword cRightCurlyBracketKeyword_26_2_3 = (Keyword)cGroup_26_2.eContents().get(3);
+		private final Group cGroup_26_3 = (Group)cUnorderedGroup_26.eContents().get(3);
+		private final Keyword cRegionsKeyword_26_3_0 = (Keyword)cGroup_26_3.eContents().get(0);
+		private final Keyword cLeftCurlyBracketKeyword_26_3_1 = (Keyword)cGroup_26_3.eContents().get(1);
+		private final Assignment cRegionsAssignment_26_3_2 = (Assignment)cGroup_26_3.eContents().get(2);
+		private final RuleCall cRegionsGameTextureRegionParserRuleCall_26_3_2_0 = (RuleCall)cRegionsAssignment_26_3_2.eContents().get(0);
+		private final Keyword cRightCurlyBracketKeyword_26_3_3 = (Keyword)cGroup_26_3.eContents().get(3);
 		
 		//GameRoot:
 		//	{GameRoot} 'game' name=ValidID
@@ -456,7 +458,8 @@ public class GameDSLGrammarAccess extends AbstractGrammarElementFinder {
 		//	'timeStep' timeStep=UnsignedNumber 'velocityIterations' velocityIterations=INT 'positionIterations'
 		//	positionIterations=INT
 		//	'worldWidth' worldWidth=INT 'worldHeight' worldHeight=INT
-		//	'tileWidth' tileWidth=INT 'tileHeight' tileHeight=INT ('layers' '{' layers+=GameLayer* '}' &
+		//	'tileWidth' tileWidth=INT 'tileHeight' tileHeight=INT
+		//	debug?='debug'? ('layers' '{' layers+=GameLayer* '}' &
 		//	'scenes' '{' scenes+=GameScene* '}' &
 		//	'screens' '{' screens+=GameScreen* '}' &
 		//	'regions' '{' regions+=GameTextureRegion* '}');
@@ -465,8 +468,8 @@ public class GameDSLGrammarAccess extends AbstractGrammarElementFinder {
 		//{GameRoot} 'game' name=ValidID 'screenWidth' width=INT 'screenHeight' height=INT 'title' title=STRING 'pixelPerMeter'
 		//ppm=INT 'timeStep' timeStep=UnsignedNumber 'velocityIterations' velocityIterations=INT 'positionIterations'
 		//positionIterations=INT 'worldWidth' worldWidth=INT 'worldHeight' worldHeight=INT 'tileWidth' tileWidth=INT
-		//'tileHeight' tileHeight=INT ('layers' '{' layers+=GameLayer* '}' & 'scenes' '{' scenes+=GameScene* '}' & 'screens' '{'
-		//screens+=GameScreen* '}' & 'regions' '{' regions+=GameTextureRegion* '}')
+		//'tileHeight' tileHeight=INT debug?='debug'? ('layers' '{' layers+=GameLayer* '}' & 'scenes' '{' scenes+=GameScene* '}'
+		//& 'screens' '{' screens+=GameScreen* '}' & 'regions' '{' regions+=GameTextureRegion* '}')
 		public Group getGroup() { return cGroup; }
 		
 		//{GameRoot}
@@ -580,81 +583,87 @@ public class GameDSLGrammarAccess extends AbstractGrammarElementFinder {
 		//INT
 		public RuleCall getTileHeightINTTerminalRuleCall_24_0() { return cTileHeightINTTerminalRuleCall_24_0; }
 		
+		//debug?='debug'?
+		public Assignment getDebugAssignment_25() { return cDebugAssignment_25; }
+		
+		//'debug'
+		public Keyword getDebugDebugKeyword_25_0() { return cDebugDebugKeyword_25_0; }
+		
 		//'layers' '{' layers+=GameLayer* '}' & 'scenes' '{' scenes+=GameScene* '}' & 'screens' '{' screens+=GameScreen* '}' &
 		//'regions' '{' regions+=GameTextureRegion* '}'
-		public UnorderedGroup getUnorderedGroup_25() { return cUnorderedGroup_25; }
+		public UnorderedGroup getUnorderedGroup_26() { return cUnorderedGroup_26; }
 		
 		//'layers' '{' layers+=GameLayer* '}'
-		public Group getGroup_25_0() { return cGroup_25_0; }
+		public Group getGroup_26_0() { return cGroup_26_0; }
 		
 		//'layers'
-		public Keyword getLayersKeyword_25_0_0() { return cLayersKeyword_25_0_0; }
+		public Keyword getLayersKeyword_26_0_0() { return cLayersKeyword_26_0_0; }
 		
 		//'{'
-		public Keyword getLeftCurlyBracketKeyword_25_0_1() { return cLeftCurlyBracketKeyword_25_0_1; }
+		public Keyword getLeftCurlyBracketKeyword_26_0_1() { return cLeftCurlyBracketKeyword_26_0_1; }
 		
 		//layers+=GameLayer*
-		public Assignment getLayersAssignment_25_0_2() { return cLayersAssignment_25_0_2; }
+		public Assignment getLayersAssignment_26_0_2() { return cLayersAssignment_26_0_2; }
 		
 		//GameLayer
-		public RuleCall getLayersGameLayerParserRuleCall_25_0_2_0() { return cLayersGameLayerParserRuleCall_25_0_2_0; }
+		public RuleCall getLayersGameLayerParserRuleCall_26_0_2_0() { return cLayersGameLayerParserRuleCall_26_0_2_0; }
 		
 		//'}'
-		public Keyword getRightCurlyBracketKeyword_25_0_3() { return cRightCurlyBracketKeyword_25_0_3; }
+		public Keyword getRightCurlyBracketKeyword_26_0_3() { return cRightCurlyBracketKeyword_26_0_3; }
 		
 		//'scenes' '{' scenes+=GameScene* '}'
-		public Group getGroup_25_1() { return cGroup_25_1; }
+		public Group getGroup_26_1() { return cGroup_26_1; }
 		
 		//'scenes'
-		public Keyword getScenesKeyword_25_1_0() { return cScenesKeyword_25_1_0; }
+		public Keyword getScenesKeyword_26_1_0() { return cScenesKeyword_26_1_0; }
 		
 		//'{'
-		public Keyword getLeftCurlyBracketKeyword_25_1_1() { return cLeftCurlyBracketKeyword_25_1_1; }
+		public Keyword getLeftCurlyBracketKeyword_26_1_1() { return cLeftCurlyBracketKeyword_26_1_1; }
 		
 		//scenes+=GameScene*
-		public Assignment getScenesAssignment_25_1_2() { return cScenesAssignment_25_1_2; }
+		public Assignment getScenesAssignment_26_1_2() { return cScenesAssignment_26_1_2; }
 		
 		//GameScene
-		public RuleCall getScenesGameSceneParserRuleCall_25_1_2_0() { return cScenesGameSceneParserRuleCall_25_1_2_0; }
+		public RuleCall getScenesGameSceneParserRuleCall_26_1_2_0() { return cScenesGameSceneParserRuleCall_26_1_2_0; }
 		
 		//'}'
-		public Keyword getRightCurlyBracketKeyword_25_1_3() { return cRightCurlyBracketKeyword_25_1_3; }
+		public Keyword getRightCurlyBracketKeyword_26_1_3() { return cRightCurlyBracketKeyword_26_1_3; }
 		
 		//'screens' '{' screens+=GameScreen* '}'
-		public Group getGroup_25_2() { return cGroup_25_2; }
+		public Group getGroup_26_2() { return cGroup_26_2; }
 		
 		//'screens'
-		public Keyword getScreensKeyword_25_2_0() { return cScreensKeyword_25_2_0; }
+		public Keyword getScreensKeyword_26_2_0() { return cScreensKeyword_26_2_0; }
 		
 		//'{'
-		public Keyword getLeftCurlyBracketKeyword_25_2_1() { return cLeftCurlyBracketKeyword_25_2_1; }
+		public Keyword getLeftCurlyBracketKeyword_26_2_1() { return cLeftCurlyBracketKeyword_26_2_1; }
 		
 		//screens+=GameScreen*
-		public Assignment getScreensAssignment_25_2_2() { return cScreensAssignment_25_2_2; }
+		public Assignment getScreensAssignment_26_2_2() { return cScreensAssignment_26_2_2; }
 		
 		//GameScreen
-		public RuleCall getScreensGameScreenParserRuleCall_25_2_2_0() { return cScreensGameScreenParserRuleCall_25_2_2_0; }
+		public RuleCall getScreensGameScreenParserRuleCall_26_2_2_0() { return cScreensGameScreenParserRuleCall_26_2_2_0; }
 		
 		//'}'
-		public Keyword getRightCurlyBracketKeyword_25_2_3() { return cRightCurlyBracketKeyword_25_2_3; }
+		public Keyword getRightCurlyBracketKeyword_26_2_3() { return cRightCurlyBracketKeyword_26_2_3; }
 		
 		//'regions' '{' regions+=GameTextureRegion* '}'
-		public Group getGroup_25_3() { return cGroup_25_3; }
+		public Group getGroup_26_3() { return cGroup_26_3; }
 		
 		//'regions'
-		public Keyword getRegionsKeyword_25_3_0() { return cRegionsKeyword_25_3_0; }
+		public Keyword getRegionsKeyword_26_3_0() { return cRegionsKeyword_26_3_0; }
 		
 		//'{'
-		public Keyword getLeftCurlyBracketKeyword_25_3_1() { return cLeftCurlyBracketKeyword_25_3_1; }
+		public Keyword getLeftCurlyBracketKeyword_26_3_1() { return cLeftCurlyBracketKeyword_26_3_1; }
 		
 		//regions+=GameTextureRegion*
-		public Assignment getRegionsAssignment_25_3_2() { return cRegionsAssignment_25_3_2; }
+		public Assignment getRegionsAssignment_26_3_2() { return cRegionsAssignment_26_3_2; }
 		
 		//GameTextureRegion
-		public RuleCall getRegionsGameTextureRegionParserRuleCall_25_3_2_0() { return cRegionsGameTextureRegionParserRuleCall_25_3_2_0; }
+		public RuleCall getRegionsGameTextureRegionParserRuleCall_26_3_2_0() { return cRegionsGameTextureRegionParserRuleCall_26_3_2_0; }
 		
 		//'}'
-		public Keyword getRightCurlyBracketKeyword_25_3_3() { return cRightCurlyBracketKeyword_25_3_3; }
+		public Keyword getRightCurlyBracketKeyword_26_3_3() { return cRightCurlyBracketKeyword_26_3_3; }
 	}
 	public class GameLayerElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "com.hypermodel.games.engine.GameDSL.GameLayer");
@@ -2798,7 +2807,8 @@ public class GameDSLGrammarAccess extends AbstractGrammarElementFinder {
 	//	'timeStep' timeStep=UnsignedNumber 'velocityIterations' velocityIterations=INT 'positionIterations'
 	//	positionIterations=INT
 	//	'worldWidth' worldWidth=INT 'worldHeight' worldHeight=INT
-	//	'tileWidth' tileWidth=INT 'tileHeight' tileHeight=INT ('layers' '{' layers+=GameLayer* '}' &
+	//	'tileWidth' tileWidth=INT 'tileHeight' tileHeight=INT
+	//	debug?='debug'? ('layers' '{' layers+=GameLayer* '}' &
 	//	'scenes' '{' scenes+=GameScene* '}' &
 	//	'screens' '{' screens+=GameScreen* '}' &
 	//	'regions' '{' regions+=GameTextureRegion* '}');

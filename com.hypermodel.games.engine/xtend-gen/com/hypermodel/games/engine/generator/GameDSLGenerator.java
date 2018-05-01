@@ -40,8 +40,11 @@ import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IFolder;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IProjectDescription;
+import org.eclipse.core.resources.IWorkspace;
+import org.eclipse.core.resources.IWorkspaceDescription;
 import org.eclipse.core.resources.IWorkspaceRoot;
 import org.eclipse.core.resources.ResourcesPlugin;
+import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.FileLocator;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.Path;
@@ -214,9 +217,17 @@ public class GameDSLGenerator extends ExtendedJvmModelGenerator {
           }
         }
       }
+      GameDSLGenerator.setWorkspaceAutoBuild(false);
     } catch (Throwable _e) {
       throw Exceptions.sneakyThrow(_e);
     }
+  }
+  
+  public static void setWorkspaceAutoBuild(final boolean flag) throws CoreException {
+    IWorkspace workspace = ResourcesPlugin.getWorkspace();
+    IWorkspaceDescription description = workspace.getDescription();
+    description.setAutoBuilding(flag);
+    workspace.setDescription(description);
   }
   
   public void copyPlatformResources(final IProject project, final GameProperties.ProjectType pType) {

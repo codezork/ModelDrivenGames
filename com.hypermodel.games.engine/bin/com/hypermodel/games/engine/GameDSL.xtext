@@ -51,6 +51,7 @@ GameRoot:
 	'timeStep' timeStep=UnsignedNumber 'velocityIterations' velocityIterations=INT 'positionIterations' positionIterations=INT
 	'worldWidth' worldWidth=INT 'worldHeight' worldHeight=INT
 	'tileWidth' tileWidth=INT 'tileHeight' tileHeight=INT
+	(debug?='debug')?
 	('layers' '{' layers+=GameLayer* '}' & 
 	'scenes' '{' scenes+=GameScene* '}'&
 	'screens' '{' screens+=GameScreen* '}'&

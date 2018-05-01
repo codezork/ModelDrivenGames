@@ -46,6 +46,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link com.hypermodel.games.engine.gameDSL.impl.GameRootImpl#getWorldHeight <em>World Height</em>}</li>
  *   <li>{@link com.hypermodel.games.engine.gameDSL.impl.GameRootImpl#getTileWidth <em>Tile Width</em>}</li>
  *   <li>{@link com.hypermodel.games.engine.gameDSL.impl.GameRootImpl#getTileHeight <em>Tile Height</em>}</li>
+ *   <li>{@link com.hypermodel.games.engine.gameDSL.impl.GameRootImpl#isDebug <em>Debug</em>}</li>
  *   <li>{@link com.hypermodel.games.engine.gameDSL.impl.GameRootImpl#getLayers <em>Layers</em>}</li>
  *   <li>{@link com.hypermodel.games.engine.gameDSL.impl.GameRootImpl#getScenes <em>Scenes</em>}</li>
  *   <li>{@link com.hypermodel.games.engine.gameDSL.impl.GameRootImpl#getScreens <em>Screens</em>}</li>
@@ -295,6 +296,26 @@ public class GameRootImpl extends MinimalEObjectImpl.Container implements GameRo
    * @ordered
    */
   protected int tileHeight = TILE_HEIGHT_EDEFAULT;
+
+  /**
+   * The default value of the '{@link #isDebug() <em>Debug</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #isDebug()
+   * @generated
+   * @ordered
+   */
+  protected static final boolean DEBUG_EDEFAULT = false;
+
+  /**
+   * The cached value of the '{@link #isDebug() <em>Debug</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #isDebug()
+   * @generated
+   * @ordered
+   */
+  protected boolean debug = DEBUG_EDEFAULT;
 
   /**
    * The cached value of the '{@link #getLayers() <em>Layers</em>}' containment reference list.
@@ -638,6 +659,29 @@ public class GameRootImpl extends MinimalEObjectImpl.Container implements GameRo
    * <!-- end-user-doc -->
    * @generated
    */
+  public boolean isDebug()
+  {
+    return debug;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setDebug(boolean newDebug)
+  {
+    boolean oldDebug = debug;
+    debug = newDebug;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, GameDSLPackage.GAME_ROOT__DEBUG, oldDebug, debug));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EList<GameLayer> getLayers()
   {
     if (layers == null)
@@ -745,6 +789,8 @@ public class GameRootImpl extends MinimalEObjectImpl.Container implements GameRo
         return getTileWidth();
       case GameDSLPackage.GAME_ROOT__TILE_HEIGHT:
         return getTileHeight();
+      case GameDSLPackage.GAME_ROOT__DEBUG:
+        return isDebug();
       case GameDSLPackage.GAME_ROOT__LAYERS:
         return getLayers();
       case GameDSLPackage.GAME_ROOT__SCENES:
@@ -803,6 +849,9 @@ public class GameRootImpl extends MinimalEObjectImpl.Container implements GameRo
         return;
       case GameDSLPackage.GAME_ROOT__TILE_HEIGHT:
         setTileHeight((Integer)newValue);
+        return;
+      case GameDSLPackage.GAME_ROOT__DEBUG:
+        setDebug((Boolean)newValue);
         return;
       case GameDSLPackage.GAME_ROOT__LAYERS:
         getLayers().clear();
@@ -870,6 +919,9 @@ public class GameRootImpl extends MinimalEObjectImpl.Container implements GameRo
       case GameDSLPackage.GAME_ROOT__TILE_HEIGHT:
         setTileHeight(TILE_HEIGHT_EDEFAULT);
         return;
+      case GameDSLPackage.GAME_ROOT__DEBUG:
+        setDebug(DEBUG_EDEFAULT);
+        return;
       case GameDSLPackage.GAME_ROOT__LAYERS:
         getLayers().clear();
         return;
@@ -920,6 +972,8 @@ public class GameRootImpl extends MinimalEObjectImpl.Container implements GameRo
         return tileWidth != TILE_WIDTH_EDEFAULT;
       case GameDSLPackage.GAME_ROOT__TILE_HEIGHT:
         return tileHeight != TILE_HEIGHT_EDEFAULT;
+      case GameDSLPackage.GAME_ROOT__DEBUG:
+        return debug != DEBUG_EDEFAULT;
       case GameDSLPackage.GAME_ROOT__LAYERS:
         return layers != null && !layers.isEmpty();
       case GameDSLPackage.GAME_ROOT__SCENES:
@@ -967,6 +1021,8 @@ public class GameRootImpl extends MinimalEObjectImpl.Container implements GameRo
     result.append(tileWidth);
     result.append(", tileHeight: ");
     result.append(tileHeight);
+    result.append(", debug: ");
+    result.append(debug);
     result.append(')');
     return result.toString();
   }
