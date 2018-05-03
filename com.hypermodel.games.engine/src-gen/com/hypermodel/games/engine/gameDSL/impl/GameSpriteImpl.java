@@ -9,6 +9,7 @@ import com.hypermodel.games.engine.gameDSL.GameDSLPackage;
 import com.hypermodel.games.engine.gameDSL.GameEvent;
 import com.hypermodel.games.engine.gameDSL.GameInput;
 import com.hypermodel.games.engine.gameDSL.GameLayer;
+import com.hypermodel.games.engine.gameDSL.GameRule;
 import com.hypermodel.games.engine.gameDSL.GameSprite;
 import com.hypermodel.games.engine.gameDSL.GameSpriteState;
 import com.hypermodel.games.engine.gameDSL.GameVector2d;
@@ -49,6 +50,8 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link com.hypermodel.games.engine.gameDSL.impl.GameSpriteImpl#isHasSensor <em>Has Sensor</em>}</li>
  *   <li>{@link com.hypermodel.games.engine.gameDSL.impl.GameSpriteImpl#getVectors2d <em>Vectors2d</em>}</li>
  *   <li>{@link com.hypermodel.games.engine.gameDSL.impl.GameSpriteImpl#getSensorID <em>Sensor ID</em>}</li>
+ *   <li>{@link com.hypermodel.games.engine.gameDSL.impl.GameSpriteImpl#isHasActivationRule <em>Has Activation Rule</em>}</li>
+ *   <li>{@link com.hypermodel.games.engine.gameDSL.impl.GameSpriteImpl#getRule <em>Rule</em>}</li>
  *   <li>{@link com.hypermodel.games.engine.gameDSL.impl.GameSpriteImpl#getActors <em>Actors</em>}</li>
  *   <li>{@link com.hypermodel.games.engine.gameDSL.impl.GameSpriteImpl#getProperties <em>Properties</em>}</li>
  *   <li>{@link com.hypermodel.games.engine.gameDSL.impl.GameSpriteImpl#getStates <em>States</em>}</li>
@@ -261,6 +264,36 @@ public class GameSpriteImpl extends MinimalEObjectImpl.Container implements Game
    * @ordered
    */
   protected int sensorID = SENSOR_ID_EDEFAULT;
+
+  /**
+   * The default value of the '{@link #isHasActivationRule() <em>Has Activation Rule</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #isHasActivationRule()
+   * @generated
+   * @ordered
+   */
+  protected static final boolean HAS_ACTIVATION_RULE_EDEFAULT = false;
+
+  /**
+   * The cached value of the '{@link #isHasActivationRule() <em>Has Activation Rule</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #isHasActivationRule()
+   * @generated
+   * @ordered
+   */
+  protected boolean hasActivationRule = HAS_ACTIVATION_RULE_EDEFAULT;
+
+  /**
+   * The cached value of the '{@link #getRule() <em>Rule</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getRule()
+   * @generated
+   * @ordered
+   */
+  protected GameRule rule;
 
   /**
    * The cached value of the '{@link #getActors() <em>Actors</em>}' containment reference list.
@@ -695,6 +728,77 @@ public class GameSpriteImpl extends MinimalEObjectImpl.Container implements Game
    * <!-- end-user-doc -->
    * @generated
    */
+  public boolean isHasActivationRule()
+  {
+    return hasActivationRule;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setHasActivationRule(boolean newHasActivationRule)
+  {
+    boolean oldHasActivationRule = hasActivationRule;
+    hasActivationRule = newHasActivationRule;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, GameDSLPackage.GAME_SPRITE__HAS_ACTIVATION_RULE, oldHasActivationRule, hasActivationRule));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public GameRule getRule()
+  {
+    return rule;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetRule(GameRule newRule, NotificationChain msgs)
+  {
+    GameRule oldRule = rule;
+    rule = newRule;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, GameDSLPackage.GAME_SPRITE__RULE, oldRule, newRule);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setRule(GameRule newRule)
+  {
+    if (newRule != rule)
+    {
+      NotificationChain msgs = null;
+      if (rule != null)
+        msgs = ((InternalEObject)rule).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - GameDSLPackage.GAME_SPRITE__RULE, null, msgs);
+      if (newRule != null)
+        msgs = ((InternalEObject)newRule).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - GameDSLPackage.GAME_SPRITE__RULE, null, msgs);
+      msgs = basicSetRule(newRule, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, GameDSLPackage.GAME_SPRITE__RULE, newRule, newRule));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EList<GameActor> getActors()
   {
     if (actors == null)
@@ -862,6 +966,8 @@ public class GameSpriteImpl extends MinimalEObjectImpl.Container implements Game
         return basicSetStartPosition(null, msgs);
       case GameDSLPackage.GAME_SPRITE__VECTORS2D:
         return ((InternalEList<?>)getVectors2d()).basicRemove(otherEnd, msgs);
+      case GameDSLPackage.GAME_SPRITE__RULE:
+        return basicSetRule(null, msgs);
       case GameDSLPackage.GAME_SPRITE__ACTORS:
         return ((InternalEList<?>)getActors()).basicRemove(otherEnd, msgs);
       case GameDSLPackage.GAME_SPRITE__PROPERTIES:
@@ -911,6 +1017,10 @@ public class GameSpriteImpl extends MinimalEObjectImpl.Container implements Game
         return getVectors2d();
       case GameDSLPackage.GAME_SPRITE__SENSOR_ID:
         return getSensorID();
+      case GameDSLPackage.GAME_SPRITE__HAS_ACTIVATION_RULE:
+        return isHasActivationRule();
+      case GameDSLPackage.GAME_SPRITE__RULE:
+        return getRule();
       case GameDSLPackage.GAME_SPRITE__ACTORS:
         return getActors();
       case GameDSLPackage.GAME_SPRITE__PROPERTIES:
@@ -978,6 +1088,12 @@ public class GameSpriteImpl extends MinimalEObjectImpl.Container implements Game
         return;
       case GameDSLPackage.GAME_SPRITE__SENSOR_ID:
         setSensorID((Integer)newValue);
+        return;
+      case GameDSLPackage.GAME_SPRITE__HAS_ACTIVATION_RULE:
+        setHasActivationRule((Boolean)newValue);
+        return;
+      case GameDSLPackage.GAME_SPRITE__RULE:
+        setRule((GameRule)newValue);
         return;
       case GameDSLPackage.GAME_SPRITE__ACTORS:
         getActors().clear();
@@ -1055,6 +1171,12 @@ public class GameSpriteImpl extends MinimalEObjectImpl.Container implements Game
       case GameDSLPackage.GAME_SPRITE__SENSOR_ID:
         setSensorID(SENSOR_ID_EDEFAULT);
         return;
+      case GameDSLPackage.GAME_SPRITE__HAS_ACTIVATION_RULE:
+        setHasActivationRule(HAS_ACTIVATION_RULE_EDEFAULT);
+        return;
+      case GameDSLPackage.GAME_SPRITE__RULE:
+        setRule((GameRule)null);
+        return;
       case GameDSLPackage.GAME_SPRITE__ACTORS:
         getActors().clear();
         return;
@@ -1114,6 +1236,10 @@ public class GameSpriteImpl extends MinimalEObjectImpl.Container implements Game
         return vectors2d != null && !vectors2d.isEmpty();
       case GameDSLPackage.GAME_SPRITE__SENSOR_ID:
         return sensorID != SENSOR_ID_EDEFAULT;
+      case GameDSLPackage.GAME_SPRITE__HAS_ACTIVATION_RULE:
+        return hasActivationRule != HAS_ACTIVATION_RULE_EDEFAULT;
+      case GameDSLPackage.GAME_SPRITE__RULE:
+        return rule != null;
       case GameDSLPackage.GAME_SPRITE__ACTORS:
         return actors != null && !actors.isEmpty();
       case GameDSLPackage.GAME_SPRITE__PROPERTIES:
@@ -1159,6 +1285,8 @@ public class GameSpriteImpl extends MinimalEObjectImpl.Container implements Game
     result.append(hasSensor);
     result.append(", sensorID: ");
     result.append(sensorID);
+    result.append(", hasActivationRule: ");
+    result.append(hasActivationRule);
     result.append(')');
     return result.toString();
   }

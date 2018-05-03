@@ -141,6 +141,8 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GameDSL.ecore#//GameSprite/hasSensor"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GameDSL.ecore#//GameSprite/vectors2d"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GameDSL.ecore#//GameSprite/sensorID"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GameDSL.ecore#//GameSprite/hasActivationRule"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GameDSL.ecore#//GameSprite/rule"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GameDSL.ecore#//GameSprite/actors"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GameDSL.ecore#//GameSprite/properties"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GameDSL.ecore#//GameSprite/states"/>

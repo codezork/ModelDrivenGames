@@ -1027,13 +1027,31 @@ public interface GameDSLPackage extends EPackage
   int GAME_SPRITE__SENSOR_ID = 11;
 
   /**
+   * The feature id for the '<em><b>Has Activation Rule</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int GAME_SPRITE__HAS_ACTIVATION_RULE = 12;
+
+  /**
+   * The feature id for the '<em><b>Rule</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int GAME_SPRITE__RULE = 13;
+
+  /**
    * The feature id for the '<em><b>Actors</b></em>' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int GAME_SPRITE__ACTORS = 12;
+  int GAME_SPRITE__ACTORS = 14;
 
   /**
    * The feature id for the '<em><b>Properties</b></em>' containment reference list.
@@ -1042,7 +1060,7 @@ public interface GameDSLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int GAME_SPRITE__PROPERTIES = 13;
+  int GAME_SPRITE__PROPERTIES = 15;
 
   /**
    * The feature id for the '<em><b>States</b></em>' containment reference list.
@@ -1051,7 +1069,7 @@ public interface GameDSLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int GAME_SPRITE__STATES = 14;
+  int GAME_SPRITE__STATES = 16;
 
   /**
    * The feature id for the '<em><b>Initial State</b></em>' reference.
@@ -1060,7 +1078,7 @@ public interface GameDSLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int GAME_SPRITE__INITIAL_STATE = 15;
+  int GAME_SPRITE__INITIAL_STATE = 17;
 
   /**
    * The feature id for the '<em><b>Game Over State</b></em>' reference.
@@ -1069,7 +1087,7 @@ public interface GameDSLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int GAME_SPRITE__GAME_OVER_STATE = 16;
+  int GAME_SPRITE__GAME_OVER_STATE = 18;
 
   /**
    * The feature id for the '<em><b>Events</b></em>' containment reference list.
@@ -1078,7 +1096,7 @@ public interface GameDSLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int GAME_SPRITE__EVENTS = 17;
+  int GAME_SPRITE__EVENTS = 19;
 
   /**
    * The feature id for the '<em><b>Inputs</b></em>' containment reference list.
@@ -1087,7 +1105,7 @@ public interface GameDSLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int GAME_SPRITE__INPUTS = 18;
+  int GAME_SPRITE__INPUTS = 20;
 
   /**
    * The number of structural features of the '<em>Game Sprite</em>' class.
@@ -1096,7 +1114,7 @@ public interface GameDSLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int GAME_SPRITE_FEATURE_COUNT = 19;
+  int GAME_SPRITE_FEATURE_COUNT = 21;
 
   /**
    * The meta object id for the '{@link com.hypermodel.games.engine.gameDSL.impl.GameInputImpl <em>Game Input</em>}' class.
@@ -2782,6 +2800,28 @@ public interface GameDSLPackage extends EPackage
   EAttribute getGameSprite_SensorID();
 
   /**
+   * Returns the meta object for the attribute '{@link com.hypermodel.games.engine.gameDSL.GameSprite#isHasActivationRule <em>Has Activation Rule</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Has Activation Rule</em>'.
+   * @see com.hypermodel.games.engine.gameDSL.GameSprite#isHasActivationRule()
+   * @see #getGameSprite()
+   * @generated
+   */
+  EAttribute getGameSprite_HasActivationRule();
+
+  /**
+   * Returns the meta object for the containment reference '{@link com.hypermodel.games.engine.gameDSL.GameSprite#getRule <em>Rule</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Rule</em>'.
+   * @see com.hypermodel.games.engine.gameDSL.GameSprite#getRule()
+   * @see #getGameSprite()
+   * @generated
+   */
+  EReference getGameSprite_Rule();
+
+  /**
    * Returns the meta object for the containment reference list '{@link com.hypermodel.games.engine.gameDSL.GameSprite#getActors <em>Actors</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -4329,6 +4369,22 @@ public interface GameDSLPackage extends EPackage
      * @generated
      */
     EAttribute GAME_SPRITE__SENSOR_ID = eINSTANCE.getGameSprite_SensorID();
+
+    /**
+     * The meta object literal for the '<em><b>Has Activation Rule</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute GAME_SPRITE__HAS_ACTIVATION_RULE = eINSTANCE.getGameSprite_HasActivationRule();
+
+    /**
+     * The meta object literal for the '<em><b>Rule</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference GAME_SPRITE__RULE = eINSTANCE.getGameSprite_Rule();
 
     /**
      * The meta object literal for the '<em><b>Actors</b></em>' containment reference list feature.

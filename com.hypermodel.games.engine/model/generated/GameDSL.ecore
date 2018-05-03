@@ -126,6 +126,9 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="vectors2d" upperBound="-1"
         eType="#//GameVector2d" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="sensorID" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="hasActivationRule" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="rule" eType="#//GameRule"
+        containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="actors" upperBound="-1"
         eType="#//GameActor" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="properties" upperBound="-1"

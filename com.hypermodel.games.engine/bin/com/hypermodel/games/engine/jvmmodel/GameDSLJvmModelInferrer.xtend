@@ -77,6 +77,7 @@ import com.badlogic.gdx.graphics.GL20
 import com.badlogic.gdx.graphics.g2d.Batch
 import org.eclipse.xtext.common.types.TypesFactory
 import org.eclipse.xtext.common.types.access.IJvmTypeProvider
+import java.util.stream.Collectors
 
 class GameDSLJvmModelInferrer extends AbstractModelInferrer {
 	@Inject extension JvmTypesBuilder
@@ -423,9 +424,9 @@ class GameDSLJvmModelInferrer extends AbstractModelInferrer {
 			]
 		)
 		// sprites
-		screen.sprites.forEach[acceptor.createSprite(gamePkg, gameClass, screenClass, it)]
+		screen.sprites.forEach[acceptor.createSprite(gamePkg, root, gameClass, screenClass, it)]
 		// tiles
-		screen.tiles.forEach[acceptor.createTile(gamePkg, gameClass, screenClass, it, root)]
+		screen.tiles.forEach[acceptor.createTile(gamePkg, root, gameClass, screenClass, it)]
 	}
 
 	def void toFields(JvmGenericType type, GamePackage gamePkg, GameRoot game, GameScreen screen, JvmGenericType gameClass, JvmGenericType creatorClass, JvmGenericType contactClass, JvmGenericType playerClass) {
@@ -528,7 +529,7 @@ class GameDSLJvmModelInferrer extends AbstractModelInferrer {
 			    '''
 			    world.step(«game.timeStep»f, «game.velocityIterations», «game.positionIterations»);
 			    player.update(delta);
-			    creator.updateSprites(delta, player.getX());
+			    creator.updateSprites(delta, player);
 			    hud.update(delta);
 			    gamecam.position.x = player.body.getPosition().x;
 			    gamecam.update();
@@ -715,7 +716,7 @@ class GameDSLJvmModelInferrer extends AbstractModelInferrer {
 	}
 
 	// sprites
-	def void createSprite(IJvmDeclaredTypeAcceptor acceptor, GamePackage gamePkg, JvmGenericType gameClass, JvmGenericType screenClass, GameSprite sprite) {
+	def void createSprite(IJvmDeclaredTypeAcceptor acceptor, GamePackage gamePkg, GameRoot game, JvmGenericType gameClass, JvmGenericType screenClass, GameSprite sprite) {
 		acceptor.accept(
 			gamePkg.toClass(sprite.fullyQualifiedName),
 			[
@@ -734,8 +735,8 @@ class GameDSLJvmModelInferrer extends AbstractModelInferrer {
 						'''
 						world = screen.getWorld();
 						stateTimer = 0;
-						float xPosition = «IF sprite.hasStartPosition»«sprite.startPosition.x»f«ELSE»x«ENDIF»;
-						float yPosition = «IF sprite.hasStartPosition»«sprite.startPosition.y»f«ELSE»y«ENDIF»;
+						float xPosition = «IF sprite.hasStartPosition»«sprite.startPosition.x/game.ppm»f«ELSE»x«ENDIF»;
+						float yPosition = «IF sprite.hasStartPosition»«sprite.startPosition.y/game.ppm»f«ELSE»y«ENDIF»;
 						''')
 						append(Array)
 						append("<")
@@ -785,11 +786,12 @@ class GameDSLJvmModelInferrer extends AbstractModelInferrer {
 						]
 						append(
 						'''
-				        define«sprite.name.toFirstUpper»(new Vector2(xPosition / ''')
-				        append(gameClass)
-				        append('''.PPM, yPosition / «gameClass.simpleName».PPM));
+				        define«sprite.name.toFirstUpper»(new Vector2(xPosition, yPosition));
 				        ''')
 						append("setRegion(getFrame(0.0f));\n");
+						if(sprite.hasActivationRule) {
+							append("body.setActive(false);\n")
+						}
 					]
 				]
 				it.toOperations(sprite, gameClass)
@@ -885,9 +887,20 @@ class GameDSLJvmModelInferrer extends AbstractModelInferrer {
 				body = prop.body
 			]
 		]
-		
+		if(sprite.hasActivationRule) {
+			type.members += sprite.toMethod('''is«sprite.rule.name.toFirstUpper»''', boolean.typeRef) [
+				documentation = sprite.rule.documentation
+				for (p : sprite.rule.params) {
+					parameters += p.toParameter(p.name, p.parameterType)
+				}
+				body = sprite.rule.body
+			]
+		}
 		type.members += sprite.toMethod("update", Void.TYPE.typeRef, [
 			parameters += sprite.toParameter("dt", float.typeRef)
+			if(sprite.hasLayer) {	// it interacts with a player
+				parameters += sprite.toParameter("player", Sprite.typeRef)
+			}
 			body = [
 				append(
 				'''
@@ -914,6 +927,18 @@ class GameDSLJvmModelInferrer extends AbstractModelInferrer {
 				'''
 				setRegion(getFrame(dt));
 				''')
+				if(sprite.hasActivationRule) {
+					append(
+					'''
+					if(is«sprite.rule.name.toFirstUpper»''')
+					append(sprite.rule.params.stream.map[p|p.name].collect(Collectors.joining(",","(",")")))
+					append(
+					'''
+					){
+						body.setActive(true);
+					}
+					''')
+				}
 			]
 		])
 		type.members += sprite.toMethod("getFrame", TextureRegion.typeRef, [
@@ -970,7 +995,11 @@ class GameDSLJvmModelInferrer extends AbstractModelInferrer {
 				'''
 				Vector2 position = body.getPosition();
 				world.destroyBody(body);
-				position.add(positionOffsetX / «gameClass.simpleName».PPM, positionOffsetY / «gameClass.simpleName».PPM); 
+				position.add(positionOffsetX / ''')
+				append(gameClass)
+				append(
+				'''
+				.PPM, positionOffsetY / «gameClass.simpleName».PPM); 
 				define«sprite.name.toFirstUpper»(position);
 				''')
 			]
@@ -1081,7 +1110,7 @@ class GameDSLJvmModelInferrer extends AbstractModelInferrer {
 	}
 
 	// tiles
-	def void createTile(IJvmDeclaredTypeAcceptor acceptor, GamePackage gamePkg, JvmGenericType gameClass, JvmGenericType screenClass, GameTile tile, GameRoot root) {
+	def void createTile(IJvmDeclaredTypeAcceptor acceptor, GamePackage gamePkg, GameRoot root, JvmGenericType gameClass, JvmGenericType screenClass, GameTile tile) {
 		acceptor.accept(
 			gamePkg.toClass(tile.fullyQualifiedName),
 			[
@@ -1265,7 +1294,7 @@ class GameDSLJvmModelInferrer extends AbstractModelInferrer {
 	def void toCreatorOperations(JvmGenericType type, GameRoot game, GameScreen screen, JvmGenericType gameClass) {
 		type.members += game.toMethod("updateSprites", Void.TYPE.typeRef, [
 			parameters += game.toParameter("dt", float.typeRef)
-			parameters += game.toParameter("playerXPosition", float.typeRef)
+			parameters += game.toParameter("player", Sprite.typeRef)
 			body = [
 				val current = it
 				screen.sprites.filter[it.hasLayer].forEach[
@@ -1275,12 +1304,7 @@ class GameDSLJvmModelInferrer extends AbstractModelInferrer {
 					current.append(spriteFQN)
 					current.append(''' sprite:«it.name.toFirstLower») {
 					''')
-					current.append("	sprite.update(dt);\n")
-					current.append('''	if(sprite.getX() < playerXPosition + «game.worldWidth-game.tileWidth» / «gameClass.simpleName».PPM) {
-					''')
-					current.append("		sprite.body.setActive(true);\n")
-					current.append('''	}
-					''')
+					current.append("	sprite.update(dt, player);\n")
 					current.append(
 					'''
 					}''')
@@ -1414,10 +1438,11 @@ class GameDSLJvmModelInferrer extends AbstractModelInferrer {
 		}
 		return
 		'''
-		case «id1+id2»:
+		case «id1»|«id2»:
 			if(fixA.getFilterData().categoryBits == «id1») {
 				((«sprite.fullyQualifiedName»)fixA.getUserData()).«methodName»((«IF actor.sprite!==null»«actor.sprite.fullyQualifiedName»«ELSEIF actor.tile!==null»«actor.tile.fullyQualifiedName»«ENDIF»)fixB.getUserData());
-			} else {
+			} 
+			if(fixA.getFilterData().categoryBits == «id2») {
 				((«sprite.fullyQualifiedName»)fixB.getUserData()).«methodName»((«IF actor.sprite!==null»«actor.sprite.fullyQualifiedName»«ELSEIF actor.tile!==null»«actor.tile.fullyQualifiedName»«ENDIF»)fixA.getUserData());
 			}
 			break;

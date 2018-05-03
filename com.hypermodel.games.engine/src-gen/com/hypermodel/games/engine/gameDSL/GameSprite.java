@@ -28,6 +28,8 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link com.hypermodel.games.engine.gameDSL.GameSprite#isHasSensor <em>Has Sensor</em>}</li>
  *   <li>{@link com.hypermodel.games.engine.gameDSL.GameSprite#getVectors2d <em>Vectors2d</em>}</li>
  *   <li>{@link com.hypermodel.games.engine.gameDSL.GameSprite#getSensorID <em>Sensor ID</em>}</li>
+ *   <li>{@link com.hypermodel.games.engine.gameDSL.GameSprite#isHasActivationRule <em>Has Activation Rule</em>}</li>
+ *   <li>{@link com.hypermodel.games.engine.gameDSL.GameSprite#getRule <em>Rule</em>}</li>
  *   <li>{@link com.hypermodel.games.engine.gameDSL.GameSprite#getActors <em>Actors</em>}</li>
  *   <li>{@link com.hypermodel.games.engine.gameDSL.GameSprite#getProperties <em>Properties</em>}</li>
  *   <li>{@link com.hypermodel.games.engine.gameDSL.GameSprite#getStates <em>States</em>}</li>
@@ -344,6 +346,58 @@ public interface GameSprite extends EObject
    * @generated
    */
   void setSensorID(int value);
+
+  /**
+   * Returns the value of the '<em><b>Has Activation Rule</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Has Activation Rule</em>' attribute isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Has Activation Rule</em>' attribute.
+   * @see #setHasActivationRule(boolean)
+   * @see com.hypermodel.games.engine.gameDSL.GameDSLPackage#getGameSprite_HasActivationRule()
+   * @model
+   * @generated
+   */
+  boolean isHasActivationRule();
+
+  /**
+   * Sets the value of the '{@link com.hypermodel.games.engine.gameDSL.GameSprite#isHasActivationRule <em>Has Activation Rule</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Has Activation Rule</em>' attribute.
+   * @see #isHasActivationRule()
+   * @generated
+   */
+  void setHasActivationRule(boolean value);
+
+  /**
+   * Returns the value of the '<em><b>Rule</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Rule</em>' containment reference isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Rule</em>' containment reference.
+   * @see #setRule(GameRule)
+   * @see com.hypermodel.games.engine.gameDSL.GameDSLPackage#getGameSprite_Rule()
+   * @model containment="true"
+   * @generated
+   */
+  GameRule getRule();
+
+  /**
+   * Sets the value of the '{@link com.hypermodel.games.engine.gameDSL.GameSprite#getRule <em>Rule</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Rule</em>' containment reference.
+   * @see #getRule()
+   * @generated
+   */
+  void setRule(GameRule value);
 
   /**
    * Returns the value of the '<em><b>Actors</b></em>' containment reference list.

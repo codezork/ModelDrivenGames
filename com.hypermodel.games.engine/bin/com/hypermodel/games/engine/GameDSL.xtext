@@ -98,6 +98,7 @@ GameSprite:
 	((hasLayer?='layer' layer=[GameLayer]) |
 	(hasStartPosition?='startPosition' startPosition=GameVector2d))? &
 	(hasSensor?='sensor' '{' vectors2d+=GameVector2d* '}' 'sensorID' sensorID=INT)? &
+	(hasActivationRule?='activate' 'if' rule=GameRule)? &
 	('actors' '{' actors+=GameActor* '}')? &
 	('properties' '{' properties+=GameBodyProperty* '}')? & 
 	('states' '{' states+=GameSpriteState* '}' 

@@ -831,6 +831,7 @@ public abstract class AbstractGameDSLSemanticSequencer extends XbaseWithAnnotati
 	 *             (hasVelocity?='velocity' velocity=GameVector2d)? 
 	 *             (hasLayer?='layer' layer=[GameLayer|ID])? 
 	 *             (hasStartPosition?='startPosition' startPosition=GameVector2d)? 
+	 *             (hasActivationRule?='activate' rule=GameRule)? 
 	 *             (hasSensor?='sensor' vectors2d+=GameVector2d* sensorID=INT)? 
 	 *             (states+=GameSpriteState* initialState=[GameSpriteState|ID] gameOverState=[GameSpriteState|ID]?)?
 	 *         )+
