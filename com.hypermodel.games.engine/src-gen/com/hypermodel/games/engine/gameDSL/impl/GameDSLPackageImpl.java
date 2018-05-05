@@ -1411,19 +1411,9 @@ public class GameDSLPackageImpl extends EPackageImpl implements GameDSLPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getGameActor_Sprite()
+  public EAttribute getGameActor_HasCollisionCondition()
   {
-    return (EReference)gameActorEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getGameActor_Tile()
-  {
-    return (EReference)gameActorEClass.getEStructuralFeatures().get(1);
+    return (EAttribute)gameActorEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -1433,17 +1423,7 @@ public class GameDSLPackageImpl extends EPackageImpl implements GameDSLPackage
    */
   public EAttribute getGameActor_TypeA()
   {
-    return (EAttribute)gameActorEClass.getEStructuralFeatures().get(2);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EAttribute getGameActor_HasCollision()
-  {
-    return (EAttribute)gameActorEClass.getEStructuralFeatures().get(3);
+    return (EAttribute)gameActorEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -1453,7 +1433,37 @@ public class GameDSLPackageImpl extends EPackageImpl implements GameDSLPackage
    */
   public EAttribute getGameActor_TypeB()
   {
-    return (EAttribute)gameActorEClass.getEStructuralFeatures().get(4);
+    return (EAttribute)gameActorEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getGameActor_Sprite()
+  {
+    return (EReference)gameActorEClass.getEStructuralFeatures().get(3);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getGameActor_Tile()
+  {
+    return (EReference)gameActorEClass.getEStructuralFeatures().get(4);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getGameActor_HasCollisionConsequence()
+  {
+    return (EAttribute)gameActorEClass.getEStructuralFeatures().get(5);
   }
 
   /**
@@ -1463,7 +1473,7 @@ public class GameDSLPackageImpl extends EPackageImpl implements GameDSLPackage
    */
   public EReference getGameActor_BeginContact()
   {
-    return (EReference)gameActorEClass.getEStructuralFeatures().get(5);
+    return (EReference)gameActorEClass.getEStructuralFeatures().get(6);
   }
 
   /**
@@ -1473,7 +1483,7 @@ public class GameDSLPackageImpl extends EPackageImpl implements GameDSLPackage
    */
   public EReference getGameActor_EndContact()
   {
-    return (EReference)gameActorEClass.getEStructuralFeatures().get(6);
+    return (EReference)gameActorEClass.getEStructuralFeatures().get(7);
   }
 
   /**
@@ -2138,11 +2148,12 @@ public class GameDSLPackageImpl extends EPackageImpl implements GameDSLPackage
     createEReference(gameInputEClass, GAME_INPUT__TRIGGER);
 
     gameActorEClass = createEClass(GAME_ACTOR);
+    createEAttribute(gameActorEClass, GAME_ACTOR__HAS_COLLISION_CONDITION);
+    createEAttribute(gameActorEClass, GAME_ACTOR__TYPE_A);
+    createEAttribute(gameActorEClass, GAME_ACTOR__TYPE_B);
     createEReference(gameActorEClass, GAME_ACTOR__SPRITE);
     createEReference(gameActorEClass, GAME_ACTOR__TILE);
-    createEAttribute(gameActorEClass, GAME_ACTOR__TYPE_A);
-    createEAttribute(gameActorEClass, GAME_ACTOR__HAS_COLLISION);
-    createEAttribute(gameActorEClass, GAME_ACTOR__TYPE_B);
+    createEAttribute(gameActorEClass, GAME_ACTOR__HAS_COLLISION_CONSEQUENCE);
     createEReference(gameActorEClass, GAME_ACTOR__BEGIN_CONTACT);
     createEReference(gameActorEClass, GAME_ACTOR__END_CONTACT);
 
@@ -2366,11 +2377,12 @@ public class GameDSLPackageImpl extends EPackageImpl implements GameDSLPackage
     initEReference(getGameInput_Trigger(), this.getGameEvent(), null, "trigger", null, 0, 1, GameInput.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(gameActorEClass, GameActor.class, "GameActor", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getGameActor_HasCollisionCondition(), ecorePackage.getEBoolean(), "hasCollisionCondition", null, 0, 1, GameActor.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getGameActor_TypeA(), this.getGameContactType(), "typeA", null, 0, 1, GameActor.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getGameActor_TypeB(), this.getGameContactType(), "typeB", null, 0, 1, GameActor.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getGameActor_Sprite(), this.getGameSprite(), null, "sprite", null, 0, 1, GameActor.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getGameActor_Tile(), this.getGameTile(), null, "tile", null, 0, 1, GameActor.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getGameActor_TypeA(), this.getGameContactType(), "typeA", null, 0, 1, GameActor.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getGameActor_HasCollision(), ecorePackage.getEBoolean(), "hasCollision", null, 0, 1, GameActor.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getGameActor_TypeB(), this.getGameContactType(), "typeB", null, 0, 1, GameActor.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getGameActor_HasCollisionConsequence(), ecorePackage.getEBoolean(), "hasCollisionConsequence", null, 0, 1, GameActor.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getGameActor_BeginContact(), this.getGameEvent(), null, "beginContact", null, 0, 1, GameActor.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getGameActor_EndContact(), this.getGameEvent(), null, "endContact", null, 0, 1, GameActor.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 

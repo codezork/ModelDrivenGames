@@ -26,11 +26,12 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  * The following features are implemented:
  * </p>
  * <ul>
+ *   <li>{@link com.hypermodel.games.engine.gameDSL.impl.GameActorImpl#isHasCollisionCondition <em>Has Collision Condition</em>}</li>
+ *   <li>{@link com.hypermodel.games.engine.gameDSL.impl.GameActorImpl#getTypeA <em>Type A</em>}</li>
+ *   <li>{@link com.hypermodel.games.engine.gameDSL.impl.GameActorImpl#getTypeB <em>Type B</em>}</li>
  *   <li>{@link com.hypermodel.games.engine.gameDSL.impl.GameActorImpl#getSprite <em>Sprite</em>}</li>
  *   <li>{@link com.hypermodel.games.engine.gameDSL.impl.GameActorImpl#getTile <em>Tile</em>}</li>
- *   <li>{@link com.hypermodel.games.engine.gameDSL.impl.GameActorImpl#getTypeA <em>Type A</em>}</li>
- *   <li>{@link com.hypermodel.games.engine.gameDSL.impl.GameActorImpl#isHasCollision <em>Has Collision</em>}</li>
- *   <li>{@link com.hypermodel.games.engine.gameDSL.impl.GameActorImpl#getTypeB <em>Type B</em>}</li>
+ *   <li>{@link com.hypermodel.games.engine.gameDSL.impl.GameActorImpl#isHasCollisionConsequence <em>Has Collision Consequence</em>}</li>
  *   <li>{@link com.hypermodel.games.engine.gameDSL.impl.GameActorImpl#getBeginContact <em>Begin Contact</em>}</li>
  *   <li>{@link com.hypermodel.games.engine.gameDSL.impl.GameActorImpl#getEndContact <em>End Contact</em>}</li>
  * </ul>
@@ -40,24 +41,24 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 public class GameActorImpl extends MinimalEObjectImpl.Container implements GameActor
 {
   /**
-   * The cached value of the '{@link #getSprite() <em>Sprite</em>}' reference.
+   * The default value of the '{@link #isHasCollisionCondition() <em>Has Collision Condition</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getSprite()
+   * @see #isHasCollisionCondition()
    * @generated
    * @ordered
    */
-  protected GameSprite sprite;
+  protected static final boolean HAS_COLLISION_CONDITION_EDEFAULT = false;
 
   /**
-   * The cached value of the '{@link #getTile() <em>Tile</em>}' reference.
+   * The cached value of the '{@link #isHasCollisionCondition() <em>Has Collision Condition</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getTile()
+   * @see #isHasCollisionCondition()
    * @generated
    * @ordered
    */
-  protected GameTile tile;
+  protected boolean hasCollisionCondition = HAS_COLLISION_CONDITION_EDEFAULT;
 
   /**
    * The default value of the '{@link #getTypeA() <em>Type A</em>}' attribute.
@@ -80,26 +81,6 @@ public class GameActorImpl extends MinimalEObjectImpl.Container implements GameA
   protected GameContactType typeA = TYPE_A_EDEFAULT;
 
   /**
-   * The default value of the '{@link #isHasCollision() <em>Has Collision</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #isHasCollision()
-   * @generated
-   * @ordered
-   */
-  protected static final boolean HAS_COLLISION_EDEFAULT = false;
-
-  /**
-   * The cached value of the '{@link #isHasCollision() <em>Has Collision</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #isHasCollision()
-   * @generated
-   * @ordered
-   */
-  protected boolean hasCollision = HAS_COLLISION_EDEFAULT;
-
-  /**
    * The default value of the '{@link #getTypeB() <em>Type B</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -118,6 +99,46 @@ public class GameActorImpl extends MinimalEObjectImpl.Container implements GameA
    * @ordered
    */
   protected GameContactType typeB = TYPE_B_EDEFAULT;
+
+  /**
+   * The cached value of the '{@link #getSprite() <em>Sprite</em>}' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getSprite()
+   * @generated
+   * @ordered
+   */
+  protected GameSprite sprite;
+
+  /**
+   * The cached value of the '{@link #getTile() <em>Tile</em>}' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getTile()
+   * @generated
+   * @ordered
+   */
+  protected GameTile tile;
+
+  /**
+   * The default value of the '{@link #isHasCollisionConsequence() <em>Has Collision Consequence</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #isHasCollisionConsequence()
+   * @generated
+   * @ordered
+   */
+  protected static final boolean HAS_COLLISION_CONSEQUENCE_EDEFAULT = false;
+
+  /**
+   * The cached value of the '{@link #isHasCollisionConsequence() <em>Has Collision Consequence</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #isHasCollisionConsequence()
+   * @generated
+   * @ordered
+   */
+  protected boolean hasCollisionConsequence = HAS_COLLISION_CONSEQUENCE_EDEFAULT;
 
   /**
    * The cached value of the '{@link #getBeginContact() <em>Begin Contact</em>}' reference.
@@ -158,6 +179,75 @@ public class GameActorImpl extends MinimalEObjectImpl.Container implements GameA
   protected EClass eStaticClass()
   {
     return GameDSLPackage.Literals.GAME_ACTOR;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public boolean isHasCollisionCondition()
+  {
+    return hasCollisionCondition;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setHasCollisionCondition(boolean newHasCollisionCondition)
+  {
+    boolean oldHasCollisionCondition = hasCollisionCondition;
+    hasCollisionCondition = newHasCollisionCondition;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, GameDSLPackage.GAME_ACTOR__HAS_COLLISION_CONDITION, oldHasCollisionCondition, hasCollisionCondition));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public GameContactType getTypeA()
+  {
+    return typeA;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setTypeA(GameContactType newTypeA)
+  {
+    GameContactType oldTypeA = typeA;
+    typeA = newTypeA == null ? TYPE_A_EDEFAULT : newTypeA;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, GameDSLPackage.GAME_ACTOR__TYPE_A, oldTypeA, typeA));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public GameContactType getTypeB()
+  {
+    return typeB;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setTypeB(GameContactType newTypeB)
+  {
+    GameContactType oldTypeB = typeB;
+    typeB = newTypeB == null ? TYPE_B_EDEFAULT : newTypeB;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, GameDSLPackage.GAME_ACTOR__TYPE_B, oldTypeB, typeB));
   }
 
   /**
@@ -251,9 +341,9 @@ public class GameActorImpl extends MinimalEObjectImpl.Container implements GameA
    * <!-- end-user-doc -->
    * @generated
    */
-  public GameContactType getTypeA()
+  public boolean isHasCollisionConsequence()
   {
-    return typeA;
+    return hasCollisionConsequence;
   }
 
   /**
@@ -261,58 +351,12 @@ public class GameActorImpl extends MinimalEObjectImpl.Container implements GameA
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setTypeA(GameContactType newTypeA)
+  public void setHasCollisionConsequence(boolean newHasCollisionConsequence)
   {
-    GameContactType oldTypeA = typeA;
-    typeA = newTypeA == null ? TYPE_A_EDEFAULT : newTypeA;
+    boolean oldHasCollisionConsequence = hasCollisionConsequence;
+    hasCollisionConsequence = newHasCollisionConsequence;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, GameDSLPackage.GAME_ACTOR__TYPE_A, oldTypeA, typeA));
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public boolean isHasCollision()
-  {
-    return hasCollision;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void setHasCollision(boolean newHasCollision)
-  {
-    boolean oldHasCollision = hasCollision;
-    hasCollision = newHasCollision;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, GameDSLPackage.GAME_ACTOR__HAS_COLLISION, oldHasCollision, hasCollision));
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public GameContactType getTypeB()
-  {
-    return typeB;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void setTypeB(GameContactType newTypeB)
-  {
-    GameContactType oldTypeB = typeB;
-    typeB = newTypeB == null ? TYPE_B_EDEFAULT : newTypeB;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, GameDSLPackage.GAME_ACTOR__TYPE_B, oldTypeB, typeB));
+      eNotify(new ENotificationImpl(this, Notification.SET, GameDSLPackage.GAME_ACTOR__HAS_COLLISION_CONSEQUENCE, oldHasCollisionConsequence, hasCollisionConsequence));
   }
 
   /**
@@ -411,18 +455,20 @@ public class GameActorImpl extends MinimalEObjectImpl.Container implements GameA
   {
     switch (featureID)
     {
+      case GameDSLPackage.GAME_ACTOR__HAS_COLLISION_CONDITION:
+        return isHasCollisionCondition();
+      case GameDSLPackage.GAME_ACTOR__TYPE_A:
+        return getTypeA();
+      case GameDSLPackage.GAME_ACTOR__TYPE_B:
+        return getTypeB();
       case GameDSLPackage.GAME_ACTOR__SPRITE:
         if (resolve) return getSprite();
         return basicGetSprite();
       case GameDSLPackage.GAME_ACTOR__TILE:
         if (resolve) return getTile();
         return basicGetTile();
-      case GameDSLPackage.GAME_ACTOR__TYPE_A:
-        return getTypeA();
-      case GameDSLPackage.GAME_ACTOR__HAS_COLLISION:
-        return isHasCollision();
-      case GameDSLPackage.GAME_ACTOR__TYPE_B:
-        return getTypeB();
+      case GameDSLPackage.GAME_ACTOR__HAS_COLLISION_CONSEQUENCE:
+        return isHasCollisionConsequence();
       case GameDSLPackage.GAME_ACTOR__BEGIN_CONTACT:
         if (resolve) return getBeginContact();
         return basicGetBeginContact();
@@ -443,20 +489,23 @@ public class GameActorImpl extends MinimalEObjectImpl.Container implements GameA
   {
     switch (featureID)
     {
+      case GameDSLPackage.GAME_ACTOR__HAS_COLLISION_CONDITION:
+        setHasCollisionCondition((Boolean)newValue);
+        return;
+      case GameDSLPackage.GAME_ACTOR__TYPE_A:
+        setTypeA((GameContactType)newValue);
+        return;
+      case GameDSLPackage.GAME_ACTOR__TYPE_B:
+        setTypeB((GameContactType)newValue);
+        return;
       case GameDSLPackage.GAME_ACTOR__SPRITE:
         setSprite((GameSprite)newValue);
         return;
       case GameDSLPackage.GAME_ACTOR__TILE:
         setTile((GameTile)newValue);
         return;
-      case GameDSLPackage.GAME_ACTOR__TYPE_A:
-        setTypeA((GameContactType)newValue);
-        return;
-      case GameDSLPackage.GAME_ACTOR__HAS_COLLISION:
-        setHasCollision((Boolean)newValue);
-        return;
-      case GameDSLPackage.GAME_ACTOR__TYPE_B:
-        setTypeB((GameContactType)newValue);
+      case GameDSLPackage.GAME_ACTOR__HAS_COLLISION_CONSEQUENCE:
+        setHasCollisionConsequence((Boolean)newValue);
         return;
       case GameDSLPackage.GAME_ACTOR__BEGIN_CONTACT:
         setBeginContact((GameEvent)newValue);
@@ -478,20 +527,23 @@ public class GameActorImpl extends MinimalEObjectImpl.Container implements GameA
   {
     switch (featureID)
     {
+      case GameDSLPackage.GAME_ACTOR__HAS_COLLISION_CONDITION:
+        setHasCollisionCondition(HAS_COLLISION_CONDITION_EDEFAULT);
+        return;
+      case GameDSLPackage.GAME_ACTOR__TYPE_A:
+        setTypeA(TYPE_A_EDEFAULT);
+        return;
+      case GameDSLPackage.GAME_ACTOR__TYPE_B:
+        setTypeB(TYPE_B_EDEFAULT);
+        return;
       case GameDSLPackage.GAME_ACTOR__SPRITE:
         setSprite((GameSprite)null);
         return;
       case GameDSLPackage.GAME_ACTOR__TILE:
         setTile((GameTile)null);
         return;
-      case GameDSLPackage.GAME_ACTOR__TYPE_A:
-        setTypeA(TYPE_A_EDEFAULT);
-        return;
-      case GameDSLPackage.GAME_ACTOR__HAS_COLLISION:
-        setHasCollision(HAS_COLLISION_EDEFAULT);
-        return;
-      case GameDSLPackage.GAME_ACTOR__TYPE_B:
-        setTypeB(TYPE_B_EDEFAULT);
+      case GameDSLPackage.GAME_ACTOR__HAS_COLLISION_CONSEQUENCE:
+        setHasCollisionConsequence(HAS_COLLISION_CONSEQUENCE_EDEFAULT);
         return;
       case GameDSLPackage.GAME_ACTOR__BEGIN_CONTACT:
         setBeginContact((GameEvent)null);
@@ -513,16 +565,18 @@ public class GameActorImpl extends MinimalEObjectImpl.Container implements GameA
   {
     switch (featureID)
     {
+      case GameDSLPackage.GAME_ACTOR__HAS_COLLISION_CONDITION:
+        return hasCollisionCondition != HAS_COLLISION_CONDITION_EDEFAULT;
+      case GameDSLPackage.GAME_ACTOR__TYPE_A:
+        return typeA != TYPE_A_EDEFAULT;
+      case GameDSLPackage.GAME_ACTOR__TYPE_B:
+        return typeB != TYPE_B_EDEFAULT;
       case GameDSLPackage.GAME_ACTOR__SPRITE:
         return sprite != null;
       case GameDSLPackage.GAME_ACTOR__TILE:
         return tile != null;
-      case GameDSLPackage.GAME_ACTOR__TYPE_A:
-        return typeA != TYPE_A_EDEFAULT;
-      case GameDSLPackage.GAME_ACTOR__HAS_COLLISION:
-        return hasCollision != HAS_COLLISION_EDEFAULT;
-      case GameDSLPackage.GAME_ACTOR__TYPE_B:
-        return typeB != TYPE_B_EDEFAULT;
+      case GameDSLPackage.GAME_ACTOR__HAS_COLLISION_CONSEQUENCE:
+        return hasCollisionConsequence != HAS_COLLISION_CONSEQUENCE_EDEFAULT;
       case GameDSLPackage.GAME_ACTOR__BEGIN_CONTACT:
         return beginContact != null;
       case GameDSLPackage.GAME_ACTOR__END_CONTACT:
@@ -542,12 +596,14 @@ public class GameActorImpl extends MinimalEObjectImpl.Container implements GameA
     if (eIsProxy()) return super.toString();
 
     StringBuffer result = new StringBuffer(super.toString());
-    result.append(" (typeA: ");
+    result.append(" (hasCollisionCondition: ");
+    result.append(hasCollisionCondition);
+    result.append(", typeA: ");
     result.append(typeA);
-    result.append(", hasCollision: ");
-    result.append(hasCollision);
     result.append(", typeB: ");
     result.append(typeB);
+    result.append(", hasCollisionConsequence: ");
+    result.append(hasCollisionConsequence);
     result.append(')');
     return result.toString();
   }

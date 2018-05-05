@@ -1572,141 +1572,156 @@ public class GameDSLGrammarAccess extends AbstractGrammarElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "com.hypermodel.games.engine.GameDSL.GameActor");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Action cGameActorAction_0 = (Action)cGroup.eContents().get(0);
-		private final Alternatives cAlternatives_1 = (Alternatives)cGroup.eContents().get(1);
-		private final Group cGroup_1_0 = (Group)cAlternatives_1.eContents().get(0);
-		private final Keyword cSpriteKeyword_1_0_0 = (Keyword)cGroup_1_0.eContents().get(0);
-		private final Assignment cSpriteAssignment_1_0_1 = (Assignment)cGroup_1_0.eContents().get(1);
-		private final CrossReference cSpriteGameSpriteCrossReference_1_0_1_0 = (CrossReference)cSpriteAssignment_1_0_1.eContents().get(0);
-		private final RuleCall cSpriteGameSpriteIDTerminalRuleCall_1_0_1_0_1 = (RuleCall)cSpriteGameSpriteCrossReference_1_0_1_0.eContents().get(1);
-		private final Group cGroup_1_1 = (Group)cAlternatives_1.eContents().get(1);
-		private final Keyword cTileKeyword_1_1_0 = (Keyword)cGroup_1_1.eContents().get(0);
-		private final Assignment cTileAssignment_1_1_1 = (Assignment)cGroup_1_1.eContents().get(1);
-		private final CrossReference cTileGameTileCrossReference_1_1_1_0 = (CrossReference)cTileAssignment_1_1_1.eContents().get(0);
-		private final RuleCall cTileGameTileIDTerminalRuleCall_1_1_1_0_1 = (RuleCall)cTileGameTileCrossReference_1_1_1_0.eContents().get(1);
-		private final Group cGroup_2 = (Group)cGroup.eContents().get(2);
-		private final Keyword cAtKeyword_2_0 = (Keyword)cGroup_2.eContents().get(0);
-		private final Assignment cTypeAAssignment_2_1 = (Assignment)cGroup_2.eContents().get(1);
-		private final RuleCall cTypeAGameContactTypeEnumRuleCall_2_1_0 = (RuleCall)cTypeAAssignment_2_1.eContents().get(0);
-		private final Assignment cHasCollisionAssignment_2_2 = (Assignment)cGroup_2.eContents().get(2);
-		private final Keyword cHasCollisionCollidesWithKeyword_2_2_0 = (Keyword)cHasCollisionAssignment_2_2.eContents().get(0);
-		private final Assignment cTypeBAssignment_2_3 = (Assignment)cGroup_2.eContents().get(3);
-		private final RuleCall cTypeBGameContactTypeEnumRuleCall_2_3_0 = (RuleCall)cTypeBAssignment_2_3.eContents().get(0);
-		private final Alternatives cAlternatives_2_4 = (Alternatives)cGroup_2.eContents().get(4);
-		private final Group cGroup_2_4_0 = (Group)cAlternatives_2_4.eContents().get(0);
-		private final Keyword cAtBeginOfContactKeyword_2_4_0_0 = (Keyword)cGroup_2_4_0.eContents().get(0);
-		private final Assignment cBeginContactAssignment_2_4_0_1 = (Assignment)cGroup_2_4_0.eContents().get(1);
-		private final CrossReference cBeginContactGameEventCrossReference_2_4_0_1_0 = (CrossReference)cBeginContactAssignment_2_4_0_1.eContents().get(0);
-		private final RuleCall cBeginContactGameEventIDTerminalRuleCall_2_4_0_1_0_1 = (RuleCall)cBeginContactGameEventCrossReference_2_4_0_1_0.eContents().get(1);
-		private final Group cGroup_2_4_1 = (Group)cAlternatives_2_4.eContents().get(1);
-		private final Keyword cAtEndOfContactKeyword_2_4_1_0 = (Keyword)cGroup_2_4_1.eContents().get(0);
-		private final Assignment cEndContactAssignment_2_4_1_1 = (Assignment)cGroup_2_4_1.eContents().get(1);
-		private final CrossReference cEndContactGameEventCrossReference_2_4_1_1_0 = (CrossReference)cEndContactAssignment_2_4_1_1.eContents().get(0);
-		private final RuleCall cEndContactGameEventIDTerminalRuleCall_2_4_1_1_0_1 = (RuleCall)cEndContactGameEventCrossReference_2_4_1_1_0.eContents().get(1);
+		private final Group cGroup_1 = (Group)cGroup.eContents().get(1);
+		private final Assignment cHasCollisionConditionAssignment_1_0 = (Assignment)cGroup_1.eContents().get(0);
+		private final Keyword cHasCollisionConditionWhenKeyword_1_0_0 = (Keyword)cHasCollisionConditionAssignment_1_0.eContents().get(0);
+		private final Assignment cTypeAAssignment_1_1 = (Assignment)cGroup_1.eContents().get(1);
+		private final RuleCall cTypeAGameContactTypeEnumRuleCall_1_1_0 = (RuleCall)cTypeAAssignment_1_1.eContents().get(0);
+		private final Keyword cCollidesWithKeyword_1_2 = (Keyword)cGroup_1.eContents().get(2);
+		private final Assignment cTypeBAssignment_1_3 = (Assignment)cGroup_1.eContents().get(3);
+		private final RuleCall cTypeBGameContactTypeEnumRuleCall_1_3_0 = (RuleCall)cTypeBAssignment_1_3.eContents().get(0);
+		private final Keyword cOfKeyword_1_4 = (Keyword)cGroup_1.eContents().get(4);
+		private final Alternatives cAlternatives_2 = (Alternatives)cGroup.eContents().get(2);
+		private final Group cGroup_2_0 = (Group)cAlternatives_2.eContents().get(0);
+		private final Keyword cSpriteKeyword_2_0_0 = (Keyword)cGroup_2_0.eContents().get(0);
+		private final Assignment cSpriteAssignment_2_0_1 = (Assignment)cGroup_2_0.eContents().get(1);
+		private final CrossReference cSpriteGameSpriteCrossReference_2_0_1_0 = (CrossReference)cSpriteAssignment_2_0_1.eContents().get(0);
+		private final RuleCall cSpriteGameSpriteIDTerminalRuleCall_2_0_1_0_1 = (RuleCall)cSpriteGameSpriteCrossReference_2_0_1_0.eContents().get(1);
+		private final Group cGroup_2_1 = (Group)cAlternatives_2.eContents().get(1);
+		private final Keyword cTileKeyword_2_1_0 = (Keyword)cGroup_2_1.eContents().get(0);
+		private final Assignment cTileAssignment_2_1_1 = (Assignment)cGroup_2_1.eContents().get(1);
+		private final CrossReference cTileGameTileCrossReference_2_1_1_0 = (CrossReference)cTileAssignment_2_1_1.eContents().get(0);
+		private final RuleCall cTileGameTileIDTerminalRuleCall_2_1_1_0_1 = (RuleCall)cTileGameTileCrossReference_2_1_1_0.eContents().get(1);
+		private final Group cGroup_3 = (Group)cGroup.eContents().get(3);
+		private final Assignment cHasCollisionConsequenceAssignment_3_0 = (Assignment)cGroup_3.eContents().get(0);
+		private final Keyword cHasCollisionConsequenceDoKeyword_3_0_0 = (Keyword)cHasCollisionConsequenceAssignment_3_0.eContents().get(0);
+		private final Alternatives cAlternatives_3_1 = (Alternatives)cGroup_3.eContents().get(1);
+		private final Group cGroup_3_1_0 = (Group)cAlternatives_3_1.eContents().get(0);
+		private final Keyword cAtBeginOfContactKeyword_3_1_0_0 = (Keyword)cGroup_3_1_0.eContents().get(0);
+		private final Assignment cBeginContactAssignment_3_1_0_1 = (Assignment)cGroup_3_1_0.eContents().get(1);
+		private final CrossReference cBeginContactGameEventCrossReference_3_1_0_1_0 = (CrossReference)cBeginContactAssignment_3_1_0_1.eContents().get(0);
+		private final RuleCall cBeginContactGameEventIDTerminalRuleCall_3_1_0_1_0_1 = (RuleCall)cBeginContactGameEventCrossReference_3_1_0_1_0.eContents().get(1);
+		private final Group cGroup_3_1_1 = (Group)cAlternatives_3_1.eContents().get(1);
+		private final Keyword cAtEndOfContactKeyword_3_1_1_0 = (Keyword)cGroup_3_1_1.eContents().get(0);
+		private final Assignment cEndContactAssignment_3_1_1_1 = (Assignment)cGroup_3_1_1.eContents().get(1);
+		private final CrossReference cEndContactGameEventCrossReference_3_1_1_1_0 = (CrossReference)cEndContactAssignment_3_1_1_1.eContents().get(0);
+		private final RuleCall cEndContactGameEventIDTerminalRuleCall_3_1_1_1_0_1 = (RuleCall)cEndContactGameEventCrossReference_3_1_1_1_0.eContents().get(1);
 		
 		//GameActor:
-		//	{GameActor} ('sprite' sprite=[GameSprite] | 'tile' tile=[GameTile]) ('at' typeA=GameContactType
-		//	hasCollision?='collidesWith' typeB=GameContactType ('atBeginOfContact' beginContact=[GameEvent] | 'atEndOfContact'
-		//	endContact=[GameEvent]))?;
+		//	{GameActor} (hasCollisionCondition?='when' typeA=GameContactType 'collidesWith' typeB=GameContactType 'of')?
+		//	('sprite' sprite=[GameSprite] | 'tile' tile=[GameTile]) (hasCollisionConsequence?='do' ('atBeginOfContact'
+		//	beginContact=[GameEvent] | 'atEndOfContact' endContact=[GameEvent]))?;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//{GameActor} ('sprite' sprite=[GameSprite] | 'tile' tile=[GameTile]) ('at' typeA=GameContactType
-		//hasCollision?='collidesWith' typeB=GameContactType ('atBeginOfContact' beginContact=[GameEvent] | 'atEndOfContact'
-		//endContact=[GameEvent]))?
+		//{GameActor} (hasCollisionCondition?='when' typeA=GameContactType 'collidesWith' typeB=GameContactType 'of')? ('sprite'
+		//sprite=[GameSprite] | 'tile' tile=[GameTile]) (hasCollisionConsequence?='do' ('atBeginOfContact'
+		//beginContact=[GameEvent] | 'atEndOfContact' endContact=[GameEvent]))?
 		public Group getGroup() { return cGroup; }
 		
 		//{GameActor}
 		public Action getGameActorAction_0() { return cGameActorAction_0; }
 		
-		//'sprite' sprite=[GameSprite] | 'tile' tile=[GameTile]
-		public Alternatives getAlternatives_1() { return cAlternatives_1; }
+		//(hasCollisionCondition?='when' typeA=GameContactType 'collidesWith' typeB=GameContactType 'of')?
+		public Group getGroup_1() { return cGroup_1; }
 		
-		//'sprite' sprite=[GameSprite]
-		public Group getGroup_1_0() { return cGroup_1_0; }
+		//hasCollisionCondition?='when'
+		public Assignment getHasCollisionConditionAssignment_1_0() { return cHasCollisionConditionAssignment_1_0; }
 		
-		//'sprite'
-		public Keyword getSpriteKeyword_1_0_0() { return cSpriteKeyword_1_0_0; }
-		
-		//sprite=[GameSprite]
-		public Assignment getSpriteAssignment_1_0_1() { return cSpriteAssignment_1_0_1; }
-		
-		//[GameSprite]
-		public CrossReference getSpriteGameSpriteCrossReference_1_0_1_0() { return cSpriteGameSpriteCrossReference_1_0_1_0; }
-		
-		//ID
-		public RuleCall getSpriteGameSpriteIDTerminalRuleCall_1_0_1_0_1() { return cSpriteGameSpriteIDTerminalRuleCall_1_0_1_0_1; }
-		
-		//'tile' tile=[GameTile]
-		public Group getGroup_1_1() { return cGroup_1_1; }
-		
-		//'tile'
-		public Keyword getTileKeyword_1_1_0() { return cTileKeyword_1_1_0; }
-		
-		//tile=[GameTile]
-		public Assignment getTileAssignment_1_1_1() { return cTileAssignment_1_1_1; }
-		
-		//[GameTile]
-		public CrossReference getTileGameTileCrossReference_1_1_1_0() { return cTileGameTileCrossReference_1_1_1_0; }
-		
-		//ID
-		public RuleCall getTileGameTileIDTerminalRuleCall_1_1_1_0_1() { return cTileGameTileIDTerminalRuleCall_1_1_1_0_1; }
-		
-		//('at' typeA=GameContactType hasCollision?='collidesWith' typeB=GameContactType ('atBeginOfContact'
-		//beginContact=[GameEvent] | 'atEndOfContact' endContact=[GameEvent]))?
-		public Group getGroup_2() { return cGroup_2; }
-		
-		//'at'
-		public Keyword getAtKeyword_2_0() { return cAtKeyword_2_0; }
+		//'when'
+		public Keyword getHasCollisionConditionWhenKeyword_1_0_0() { return cHasCollisionConditionWhenKeyword_1_0_0; }
 		
 		//typeA=GameContactType
-		public Assignment getTypeAAssignment_2_1() { return cTypeAAssignment_2_1; }
+		public Assignment getTypeAAssignment_1_1() { return cTypeAAssignment_1_1; }
 		
 		//GameContactType
-		public RuleCall getTypeAGameContactTypeEnumRuleCall_2_1_0() { return cTypeAGameContactTypeEnumRuleCall_2_1_0; }
-		
-		//hasCollision?='collidesWith'
-		public Assignment getHasCollisionAssignment_2_2() { return cHasCollisionAssignment_2_2; }
+		public RuleCall getTypeAGameContactTypeEnumRuleCall_1_1_0() { return cTypeAGameContactTypeEnumRuleCall_1_1_0; }
 		
 		//'collidesWith'
-		public Keyword getHasCollisionCollidesWithKeyword_2_2_0() { return cHasCollisionCollidesWithKeyword_2_2_0; }
+		public Keyword getCollidesWithKeyword_1_2() { return cCollidesWithKeyword_1_2; }
 		
 		//typeB=GameContactType
-		public Assignment getTypeBAssignment_2_3() { return cTypeBAssignment_2_3; }
+		public Assignment getTypeBAssignment_1_3() { return cTypeBAssignment_1_3; }
 		
 		//GameContactType
-		public RuleCall getTypeBGameContactTypeEnumRuleCall_2_3_0() { return cTypeBGameContactTypeEnumRuleCall_2_3_0; }
+		public RuleCall getTypeBGameContactTypeEnumRuleCall_1_3_0() { return cTypeBGameContactTypeEnumRuleCall_1_3_0; }
+		
+		//'of'
+		public Keyword getOfKeyword_1_4() { return cOfKeyword_1_4; }
+		
+		//'sprite' sprite=[GameSprite] | 'tile' tile=[GameTile]
+		public Alternatives getAlternatives_2() { return cAlternatives_2; }
+		
+		//'sprite' sprite=[GameSprite]
+		public Group getGroup_2_0() { return cGroup_2_0; }
+		
+		//'sprite'
+		public Keyword getSpriteKeyword_2_0_0() { return cSpriteKeyword_2_0_0; }
+		
+		//sprite=[GameSprite]
+		public Assignment getSpriteAssignment_2_0_1() { return cSpriteAssignment_2_0_1; }
+		
+		//[GameSprite]
+		public CrossReference getSpriteGameSpriteCrossReference_2_0_1_0() { return cSpriteGameSpriteCrossReference_2_0_1_0; }
+		
+		//ID
+		public RuleCall getSpriteGameSpriteIDTerminalRuleCall_2_0_1_0_1() { return cSpriteGameSpriteIDTerminalRuleCall_2_0_1_0_1; }
+		
+		//'tile' tile=[GameTile]
+		public Group getGroup_2_1() { return cGroup_2_1; }
+		
+		//'tile'
+		public Keyword getTileKeyword_2_1_0() { return cTileKeyword_2_1_0; }
+		
+		//tile=[GameTile]
+		public Assignment getTileAssignment_2_1_1() { return cTileAssignment_2_1_1; }
+		
+		//[GameTile]
+		public CrossReference getTileGameTileCrossReference_2_1_1_0() { return cTileGameTileCrossReference_2_1_1_0; }
+		
+		//ID
+		public RuleCall getTileGameTileIDTerminalRuleCall_2_1_1_0_1() { return cTileGameTileIDTerminalRuleCall_2_1_1_0_1; }
+		
+		//(hasCollisionConsequence?='do' ('atBeginOfContact' beginContact=[GameEvent] | 'atEndOfContact' endContact=[GameEvent]))?
+		public Group getGroup_3() { return cGroup_3; }
+		
+		//hasCollisionConsequence?='do'
+		public Assignment getHasCollisionConsequenceAssignment_3_0() { return cHasCollisionConsequenceAssignment_3_0; }
+		
+		//'do'
+		public Keyword getHasCollisionConsequenceDoKeyword_3_0_0() { return cHasCollisionConsequenceDoKeyword_3_0_0; }
 		
 		//'atBeginOfContact' beginContact=[GameEvent] | 'atEndOfContact' endContact=[GameEvent]
-		public Alternatives getAlternatives_2_4() { return cAlternatives_2_4; }
+		public Alternatives getAlternatives_3_1() { return cAlternatives_3_1; }
 		
 		//'atBeginOfContact' beginContact=[GameEvent]
-		public Group getGroup_2_4_0() { return cGroup_2_4_0; }
+		public Group getGroup_3_1_0() { return cGroup_3_1_0; }
 		
 		//'atBeginOfContact'
-		public Keyword getAtBeginOfContactKeyword_2_4_0_0() { return cAtBeginOfContactKeyword_2_4_0_0; }
+		public Keyword getAtBeginOfContactKeyword_3_1_0_0() { return cAtBeginOfContactKeyword_3_1_0_0; }
 		
 		//beginContact=[GameEvent]
-		public Assignment getBeginContactAssignment_2_4_0_1() { return cBeginContactAssignment_2_4_0_1; }
+		public Assignment getBeginContactAssignment_3_1_0_1() { return cBeginContactAssignment_3_1_0_1; }
 		
 		//[GameEvent]
-		public CrossReference getBeginContactGameEventCrossReference_2_4_0_1_0() { return cBeginContactGameEventCrossReference_2_4_0_1_0; }
+		public CrossReference getBeginContactGameEventCrossReference_3_1_0_1_0() { return cBeginContactGameEventCrossReference_3_1_0_1_0; }
 		
 		//ID
-		public RuleCall getBeginContactGameEventIDTerminalRuleCall_2_4_0_1_0_1() { return cBeginContactGameEventIDTerminalRuleCall_2_4_0_1_0_1; }
+		public RuleCall getBeginContactGameEventIDTerminalRuleCall_3_1_0_1_0_1() { return cBeginContactGameEventIDTerminalRuleCall_3_1_0_1_0_1; }
 		
 		//'atEndOfContact' endContact=[GameEvent]
-		public Group getGroup_2_4_1() { return cGroup_2_4_1; }
+		public Group getGroup_3_1_1() { return cGroup_3_1_1; }
 		
 		//'atEndOfContact'
-		public Keyword getAtEndOfContactKeyword_2_4_1_0() { return cAtEndOfContactKeyword_2_4_1_0; }
+		public Keyword getAtEndOfContactKeyword_3_1_1_0() { return cAtEndOfContactKeyword_3_1_1_0; }
 		
 		//endContact=[GameEvent]
-		public Assignment getEndContactAssignment_2_4_1_1() { return cEndContactAssignment_2_4_1_1; }
+		public Assignment getEndContactAssignment_3_1_1_1() { return cEndContactAssignment_3_1_1_1; }
 		
 		//[GameEvent]
-		public CrossReference getEndContactGameEventCrossReference_2_4_1_1_0() { return cEndContactGameEventCrossReference_2_4_1_1_0; }
+		public CrossReference getEndContactGameEventCrossReference_3_1_1_1_0() { return cEndContactGameEventCrossReference_3_1_1_1_0; }
 		
 		//ID
-		public RuleCall getEndContactGameEventIDTerminalRuleCall_2_4_1_1_0_1() { return cEndContactGameEventIDTerminalRuleCall_2_4_1_1_0_1; }
+		public RuleCall getEndContactGameEventIDTerminalRuleCall_3_1_1_1_0_1() { return cEndContactGameEventIDTerminalRuleCall_3_1_1_1_0_1; }
 	}
 	public class GameVector2dElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "com.hypermodel.games.engine.GameDSL.GameVector2d");
@@ -2950,9 +2965,9 @@ public class GameDSLGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//GameActor:
-	//	{GameActor} ('sprite' sprite=[GameSprite] | 'tile' tile=[GameTile]) ('at' typeA=GameContactType
-	//	hasCollision?='collidesWith' typeB=GameContactType ('atBeginOfContact' beginContact=[GameEvent] | 'atEndOfContact'
-	//	endContact=[GameEvent]))?;
+	//	{GameActor} (hasCollisionCondition?='when' typeA=GameContactType 'collidesWith' typeB=GameContactType 'of')?
+	//	('sprite' sprite=[GameSprite] | 'tile' tile=[GameTile]) (hasCollisionConsequence?='do' ('atBeginOfContact'
+	//	beginContact=[GameEvent] | 'atEndOfContact' endContact=[GameEvent]))?;
 	public GameActorElements getGameActorAccess() {
 		return pGameActor;
 	}

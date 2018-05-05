@@ -1,6 +1,7 @@
 import com.badlogic.gdx.physics.box2d.Body
 import com.badlogic.gdx.math.Vector2
 import com.badlogic.gdx.graphics.g2d.Sprite
+import com.badlogic.gdx.Gdx
 
 package com.hypermodel.games { 
 	configuration { 
@@ -17,8 +18,8 @@ package com.hypermodel.games {
 		}   
 	}
 	game MarioBros screenWidth 400 screenHeight 208 title "MarioBros" pixelPerMeter 100 
-	timeStep 0.0167 velocityIterations 6 positionIterations 2 worldWidth 240 worldHeight 13 
-	tileWidth 16 tileHeight 16 
+	timeStep 0.0167 velocityIterations 6 positionIterations 2 worldWidth 240 worldHeight 13
+	tileWidth 16 tileHeight 16 debug
 	layers {
 		layer background index 0 type tile
 		layer graphic index 1 type tile
@@ -57,18 +58,19 @@ package com.hypermodel.games {
 			tile Coin collisionId 3 objectLayer coins tileLayer graphic
 		}
 		sprites {
-			sprite Mario collisionId 1 radius 6
-			startPosition vector(32.0,32.0) 
+			sprite Mario collisionId 1 radius 6 
+			startPosition vector(32.0,25.0) 
 			sensor {
-				vector(-2.0,6.0)
-				vector(2.0,6.0)
+				vector(-3.0,8.0)
+				vector(3.0,8.0)  
 			} sensorID 9
 			actors {
 				sprite Mushroom
-				tile Brick at fixture collidesWith sensor atBeginOfContact brickHit 
-				tile Coin at fixture collidesWith sensor atBeginOfContact coinHit
+				when fixture collidesWith fixture of sprite Goomba do atBeginOfContact hit 
+				when sensor collidesWith fixture of tile Brick do atBeginOfContact brickHit 
+				when sensor collidesWith fixture of tile Coin do atBeginOfContact coinHit
 				tile Ground
-				tile Pipe
+				tile Pipe 
 			} 
 			properties {
 				property grows
@@ -136,12 +138,12 @@ package com.hypermodel.games {
 						setBounds(getX(), getY(), getWidth(), getHeight() * 2)
 					}					
 				}
-				event hit() {
+				event hit(Goomba goomba) {
 					if(isBig) {
 						big = false
 						timeToDefineSmall = true 
 					} else {
-						//Gdx.app.log("MARIO", "-*- DIED -*-")
+						Gdx.app.log("MARIO", "-*- DIED -*-")
 					}
 				}
 				event brickHit(Brick brick) {
@@ -165,7 +167,7 @@ package com.hypermodel.games {
 					if(!currentState.equals(State.DEAD) && body.getLinearVelocity().x <= 1) {
 						body.applyLinearImpulse(new Vector2(0.1f, 0), body.getWorldCenter(), true)
 					}
-				}
+				}  
 				event accelerateLeft() {
 					if(!currentState.equals(State.DEAD) && body.getLinearVelocity().x >= -1) {
 						body.applyLinearImpulse(new Vector2(-0.1f, 0), body.getWorldCenter(), true)
@@ -173,33 +175,37 @@ package com.hypermodel.games {
 				}
 			}
 			inputs {
-				input justPressed up jump
+				input justPressed up jump 
 				input pressed left accelerateLeft
 				input pressed right accelerateRight 
 			}
-			sprite Goomba collisionId 6 radius 6 layer goombas velocity vector(-1.0,-2.0) 
+			
+			
+			sprite Goomba collisionId 6 radius 6 layer goombas velocity vector(-1.0,-2.0)
 			sensor {
-				vector(-5.0,8.0)
-				vector(5.0,8.0)
-				vector(-3.0,3.0)
-				vector(3.0,3.0)
+				vector(-5.0,9.0)
+				vector(5.0,9.0)
+				vector(-3.0,7.0)
+				vector(3.0,7.0)
 			} sensorID 7
 			activate if isTrue playerNear(Sprite player) {
-				return body.position.x < player.getX() + 2.24
+				return !destroyed && body.position.x < player.getX() + 2.24
 			}
 			actors {
-				sprite Mario at sensor collidesWith fixture atBeginOfContact hitOnHead
-				sprite Goomba at fixture collidesWith fixture atBeginOfContact hitByGoomba
-				tile Pipe at fixture collidesWith fixture atBeginOfContact reverseVelocityX 
+				when sensor collidesWith fixture of sprite Mario do atBeginOfContact hitOnHead
+				when fixture collidesWith fixture of sprite Goomba do atBeginOfContact hitByGoomba
+				when fixture collidesWith fixture of tile Pipe do atBeginOfContact reverseVelocityX 
 				tile Brick
 				tile Coin
 				tile Ground 
 			}
 			properties { 
-				property setToDestroyed onUpdateIfTrue {  
-					world.destroyBody(body)
-            		destroyed = true
-            		stateTimer = 0
+				property setToDestroyed onUpdateIfTrue {
+					if(!destroyed) {  
+						world.destroyBody(body)
+	            		destroyed = true
+	            		stateTimer = 0 
+	            	}
 				}
 				property destroyed onUpdateIfFalse {
 		            body.setLinearVelocity(^velocity);

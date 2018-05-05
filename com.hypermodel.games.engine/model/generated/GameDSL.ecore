@@ -148,11 +148,14 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="trigger" eType="#//GameEvent"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="GameActor">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="hasCollisionCondition"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="typeA" eType="#//GameContactType"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="typeB" eType="#//GameContactType"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="sprite" eType="#//GameSprite"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="tile" eType="#//GameTile"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="typeA" eType="#//GameContactType"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="hasCollision" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="typeB" eType="#//GameContactType"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="hasCollisionConsequence"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="beginContact" eType="#//GameEvent"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="endContact" eType="#//GameEvent"/>
   </eClassifiers>

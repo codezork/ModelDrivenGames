@@ -486,8 +486,9 @@ public abstract class AbstractGameDSLSemanticSequencer extends XbaseWithAnnotati
 	 *
 	 * Constraint:
 	 *     (
+	 *         (hasCollisionCondition?='when' typeA=GameContactType typeB=GameContactType)? 
 	 *         (sprite=[GameSprite|ID] | tile=[GameTile|ID]) 
-	 *         (typeA=GameContactType hasCollision?='collidesWith' typeB=GameContactType (beginContact=[GameEvent|ID] | endContact=[GameEvent|ID]))?
+	 *         (hasCollisionConsequence?='do' (beginContact=[GameEvent|ID] | endContact=[GameEvent|ID]))?
 	 *     )
 	 */
 	protected void sequence_GameActor(ISerializationContext context, GameActor semanticObject) {

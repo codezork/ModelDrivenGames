@@ -112,9 +112,8 @@ GameInput:
 	trigger=[GameEvent];
 	
 GameActor:
-	{GameActor} (('sprite' sprite=[GameSprite]) | ('tile' tile=[GameTile]))
-	('at' typeA=GameContactType hasCollision?='collidesWith' typeB=GameContactType 
-	(('atBeginOfContact' beginContact=[GameEvent])|('atEndOfContact' endContact=[GameEvent])))?;
+	{GameActor} (hasCollisionCondition?='when' typeA=GameContactType 'collidesWith' typeB=GameContactType 'of')? (('sprite' sprite=[GameSprite]) | ('tile' tile=[GameTile]))
+	(hasCollisionConsequence?='do' (('atBeginOfContact' beginContact=[GameEvent])|('atEndOfContact' endContact=[GameEvent])))?;
 	
 GameVector2d:
 	{GameVector2d} 'vector(' x=SignedNumber ',' y=SignedNumber ')'; 

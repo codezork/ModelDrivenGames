@@ -2289,14 +2289,21 @@ public class GameDSLJvmModelInferrer extends AbstractModelInferrer {
             double _power_1 = Math.pow(2, _id_1);
             double _plus = (mask + _power_1);
             mask = _plus;
+            boolean _isHasSensor = actor.getSprite().isHasSensor();
+            if (_isHasSensor) {
+              int _sensorID = actor.getSprite().getSensorID();
+              double _power_2 = Math.pow(2, _sensorID);
+              double _plus_1 = (mask + _power_2);
+              mask = _plus_1;
+            }
           } else {
             GameTile _tile = actor.getTile();
             boolean _tripleNotEquals_1 = (_tile != null);
             if (_tripleNotEquals_1) {
               int _id_2 = actor.getTile().getId();
-              double _power_2 = Math.pow(2, _id_2);
-              double _plus_1 = (mask + _power_2);
-              mask = _plus_1;
+              double _power_3 = Math.pow(2, _id_2);
+              double _plus_2 = (mask + _power_3);
+              mask = _plus_2;
             }
           }
         }
@@ -2318,8 +2325,8 @@ public class GameDSLJvmModelInferrer extends AbstractModelInferrer {
         _builder_7.append("body.createFixture(fdef).setUserData(this);");
         _builder_7.newLine();
         it_1.append(_builder_7);
-        boolean _isHasSensor = sprite.isHasSensor();
-        if (_isHasSensor) {
+        boolean _isHasSensor_1 = sprite.isHasSensor();
+        if (_isHasSensor_1) {
           int _length = ((Object[])Conversions.unwrapArray(sprite.getVectors2d(), Object.class)).length;
           boolean _equals = (_length == 2);
           if (_equals) {
@@ -2349,25 +2356,25 @@ public class GameDSLJvmModelInferrer extends AbstractModelInferrer {
             _builder_9.append("head.set(new Vector2(");
             float _x = sprite.getVectors2d().get(0).getX();
             _builder_9.append(_x);
-            _builder_9.append("f / 2 / ");
+            _builder_9.append("f/");
             String _simpleName_3 = gameClass.getSimpleName();
             _builder_9.append(_simpleName_3);
             _builder_9.append(".PPM, ");
-            int _radius_1 = sprite.getRadius();
-            _builder_9.append(_radius_1);
-            _builder_9.append(" / ");
+            float _y = sprite.getVectors2d().get(0).getY();
+            _builder_9.append(_y);
+            _builder_9.append("f/");
             String _simpleName_4 = gameClass.getSimpleName();
             _builder_9.append(_simpleName_4);
             _builder_9.append(".PPM), new Vector2(");
-            float _y = sprite.getVectors2d().get(0).getY();
-            _builder_9.append(_y);
-            _builder_9.append("f / 2 / ");
+            float _x_1 = sprite.getVectors2d().get(1).getX();
+            _builder_9.append(_x_1);
+            _builder_9.append("f/");
             String _simpleName_5 = gameClass.getSimpleName();
             _builder_9.append(_simpleName_5);
             _builder_9.append(".PPM, ");
-            int _radius_2 = sprite.getRadius();
-            _builder_9.append(_radius_2);
-            _builder_9.append(" / ");
+            float _y_1 = sprite.getVectors2d().get(1).getY();
+            _builder_9.append(_y_1);
+            _builder_9.append("f/");
             String _simpleName_6 = gameClass.getSimpleName();
             _builder_9.append(_simpleName_6);
             _builder_9.append(".PPM));");
@@ -2386,11 +2393,11 @@ public class GameDSLJvmModelInferrer extends AbstractModelInferrer {
               _builder_11.append("vertice[");
               _builder_11.append(idx);
               _builder_11.append("] = new Vector2(");
-              float _x_1 = sprite.getVectors2d().get(idx).getX();
-              _builder_11.append(_x_1);
+              float _x_2 = sprite.getVectors2d().get(idx).getX();
+              _builder_11.append(_x_2);
               _builder_11.append("f, ");
-              float _y_1 = sprite.getVectors2d().get(idx).getY();
-              _builder_11.append(_y_1);
+              float _y_2 = sprite.getVectors2d().get(idx).getY();
+              _builder_11.append(_y_2);
               _builder_11.append("f).scl(1 / ");
               String _simpleName_7 = gameClass.getSimpleName();
               _builder_11.append(_simpleName_7);
@@ -2405,9 +2412,9 @@ public class GameDSLJvmModelInferrer extends AbstractModelInferrer {
           }
           StringConcatenation _builder_12 = new StringConcatenation();
           _builder_12.append("fdef.filter.categoryBits = ");
-          int _sensorID = sprite.getSensorID();
-          double _power_3 = Math.pow(2, _sensorID);
-          _builder_12.append(((int) _power_3));
+          int _sensorID_1 = sprite.getSensorID();
+          double _power_4 = Math.pow(2, _sensorID_1);
+          _builder_12.append(((int) _power_4));
           _builder_12.append(";");
           _builder_12.newLineIfNotEmpty();
           _builder_12.append("fdef.shape = head;");
@@ -2979,7 +2986,7 @@ public class GameDSLJvmModelInferrer extends AbstractModelInferrer {
         final Consumer<GameScreen> _function_2 = (GameScreen screen) -> {
           final Consumer<GameSprite> _function_3 = (GameSprite sprite) -> {
             final Function1<GameActor, Boolean> _function_4 = (GameActor it_2) -> {
-              return Boolean.valueOf((it_2.isHasCollision() && (it_2.getBeginContact() != null)));
+              return Boolean.valueOf(((it_2.isHasCollisionCondition() && it_2.isHasCollisionConsequence()) && (it_2.getBeginContact() != null)));
             };
             final Consumer<GameActor> _function_5 = (GameActor actor) -> {
               current.append(this.decodeCollision(actor, sprite, actor.getBeginContact().getName()));
@@ -3022,7 +3029,7 @@ public class GameDSLJvmModelInferrer extends AbstractModelInferrer {
         final Consumer<GameScreen> _function_3 = (GameScreen screen) -> {
           final Consumer<GameSprite> _function_4 = (GameSprite sprite) -> {
             final Function1<GameActor, Boolean> _function_5 = (GameActor it_2) -> {
-              return Boolean.valueOf((it_2.isHasCollision() && (it_2.getEndContact() != null)));
+              return Boolean.valueOf(((it_2.isHasCollisionCondition() && it_2.isHasCollisionConsequence()) && (it_2.getEndContact() != null)));
             };
             final Consumer<GameActor> _function_6 = (GameActor actor) -> {
               current.append(this.decodeCollision(actor, sprite, actor.getEndContact().getName()));

@@ -2553,7 +2553,7 @@ public class GameDSLGenerator extends ExtendedJvmModelGenerator {
       _builder.append("android:screenOrientation=\"");
       String _literal = pkg.getConfig().getAndroid().getOrientation().getLiteral();
       _builder.append(_literal, "            ");
-      _builder.append("\"");
+      _builder.append("\" ");
       _builder.newLineIfNotEmpty();
       _builder.append("            ");
       _builder.append("android:configChanges=\"keyboard|keyboardHidden|navigation|orientation|screenSize\">");

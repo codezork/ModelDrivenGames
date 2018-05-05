@@ -1173,22 +1173,13 @@ public interface GameDSLPackage extends EPackage
   int GAME_ACTOR = 15;
 
   /**
-   * The feature id for the '<em><b>Sprite</b></em>' reference.
+   * The feature id for the '<em><b>Has Collision Condition</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int GAME_ACTOR__SPRITE = 0;
-
-  /**
-   * The feature id for the '<em><b>Tile</b></em>' reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int GAME_ACTOR__TILE = 1;
+  int GAME_ACTOR__HAS_COLLISION_CONDITION = 0;
 
   /**
    * The feature id for the '<em><b>Type A</b></em>' attribute.
@@ -1197,16 +1188,7 @@ public interface GameDSLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int GAME_ACTOR__TYPE_A = 2;
-
-  /**
-   * The feature id for the '<em><b>Has Collision</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int GAME_ACTOR__HAS_COLLISION = 3;
+  int GAME_ACTOR__TYPE_A = 1;
 
   /**
    * The feature id for the '<em><b>Type B</b></em>' attribute.
@@ -1215,7 +1197,34 @@ public interface GameDSLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int GAME_ACTOR__TYPE_B = 4;
+  int GAME_ACTOR__TYPE_B = 2;
+
+  /**
+   * The feature id for the '<em><b>Sprite</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int GAME_ACTOR__SPRITE = 3;
+
+  /**
+   * The feature id for the '<em><b>Tile</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int GAME_ACTOR__TILE = 4;
+
+  /**
+   * The feature id for the '<em><b>Has Collision Consequence</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int GAME_ACTOR__HAS_COLLISION_CONSEQUENCE = 5;
 
   /**
    * The feature id for the '<em><b>Begin Contact</b></em>' reference.
@@ -1224,7 +1233,7 @@ public interface GameDSLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int GAME_ACTOR__BEGIN_CONTACT = 5;
+  int GAME_ACTOR__BEGIN_CONTACT = 6;
 
   /**
    * The feature id for the '<em><b>End Contact</b></em>' reference.
@@ -1233,7 +1242,7 @@ public interface GameDSLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int GAME_ACTOR__END_CONTACT = 6;
+  int GAME_ACTOR__END_CONTACT = 7;
 
   /**
    * The number of structural features of the '<em>Game Actor</em>' class.
@@ -1242,7 +1251,7 @@ public interface GameDSLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int GAME_ACTOR_FEATURE_COUNT = 7;
+  int GAME_ACTOR_FEATURE_COUNT = 8;
 
   /**
    * The meta object id for the '{@link com.hypermodel.games.engine.gameDSL.impl.GameVector2dImpl <em>Game Vector2d</em>}' class.
@@ -2952,6 +2961,39 @@ public interface GameDSLPackage extends EPackage
   EClass getGameActor();
 
   /**
+   * Returns the meta object for the attribute '{@link com.hypermodel.games.engine.gameDSL.GameActor#isHasCollisionCondition <em>Has Collision Condition</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Has Collision Condition</em>'.
+   * @see com.hypermodel.games.engine.gameDSL.GameActor#isHasCollisionCondition()
+   * @see #getGameActor()
+   * @generated
+   */
+  EAttribute getGameActor_HasCollisionCondition();
+
+  /**
+   * Returns the meta object for the attribute '{@link com.hypermodel.games.engine.gameDSL.GameActor#getTypeA <em>Type A</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Type A</em>'.
+   * @see com.hypermodel.games.engine.gameDSL.GameActor#getTypeA()
+   * @see #getGameActor()
+   * @generated
+   */
+  EAttribute getGameActor_TypeA();
+
+  /**
+   * Returns the meta object for the attribute '{@link com.hypermodel.games.engine.gameDSL.GameActor#getTypeB <em>Type B</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Type B</em>'.
+   * @see com.hypermodel.games.engine.gameDSL.GameActor#getTypeB()
+   * @see #getGameActor()
+   * @generated
+   */
+  EAttribute getGameActor_TypeB();
+
+  /**
    * Returns the meta object for the reference '{@link com.hypermodel.games.engine.gameDSL.GameActor#getSprite <em>Sprite</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -2974,37 +3016,15 @@ public interface GameDSLPackage extends EPackage
   EReference getGameActor_Tile();
 
   /**
-   * Returns the meta object for the attribute '{@link com.hypermodel.games.engine.gameDSL.GameActor#getTypeA <em>Type A</em>}'.
+   * Returns the meta object for the attribute '{@link com.hypermodel.games.engine.gameDSL.GameActor#isHasCollisionConsequence <em>Has Collision Consequence</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Type A</em>'.
-   * @see com.hypermodel.games.engine.gameDSL.GameActor#getTypeA()
+   * @return the meta object for the attribute '<em>Has Collision Consequence</em>'.
+   * @see com.hypermodel.games.engine.gameDSL.GameActor#isHasCollisionConsequence()
    * @see #getGameActor()
    * @generated
    */
-  EAttribute getGameActor_TypeA();
-
-  /**
-   * Returns the meta object for the attribute '{@link com.hypermodel.games.engine.gameDSL.GameActor#isHasCollision <em>Has Collision</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Has Collision</em>'.
-   * @see com.hypermodel.games.engine.gameDSL.GameActor#isHasCollision()
-   * @see #getGameActor()
-   * @generated
-   */
-  EAttribute getGameActor_HasCollision();
-
-  /**
-   * Returns the meta object for the attribute '{@link com.hypermodel.games.engine.gameDSL.GameActor#getTypeB <em>Type B</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Type B</em>'.
-   * @see com.hypermodel.games.engine.gameDSL.GameActor#getTypeB()
-   * @see #getGameActor()
-   * @generated
-   */
-  EAttribute getGameActor_TypeB();
+  EAttribute getGameActor_HasCollisionConsequence();
 
   /**
    * Returns the meta object for the reference '{@link com.hypermodel.games.engine.gameDSL.GameActor#getBeginContact <em>Begin Contact</em>}'.
@@ -4487,6 +4507,30 @@ public interface GameDSLPackage extends EPackage
     EClass GAME_ACTOR = eINSTANCE.getGameActor();
 
     /**
+     * The meta object literal for the '<em><b>Has Collision Condition</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute GAME_ACTOR__HAS_COLLISION_CONDITION = eINSTANCE.getGameActor_HasCollisionCondition();
+
+    /**
+     * The meta object literal for the '<em><b>Type A</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute GAME_ACTOR__TYPE_A = eINSTANCE.getGameActor_TypeA();
+
+    /**
+     * The meta object literal for the '<em><b>Type B</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute GAME_ACTOR__TYPE_B = eINSTANCE.getGameActor_TypeB();
+
+    /**
      * The meta object literal for the '<em><b>Sprite</b></em>' reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -4503,28 +4547,12 @@ public interface GameDSLPackage extends EPackage
     EReference GAME_ACTOR__TILE = eINSTANCE.getGameActor_Tile();
 
     /**
-     * The meta object literal for the '<em><b>Type A</b></em>' attribute feature.
+     * The meta object literal for the '<em><b>Has Collision Consequence</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute GAME_ACTOR__TYPE_A = eINSTANCE.getGameActor_TypeA();
-
-    /**
-     * The meta object literal for the '<em><b>Has Collision</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute GAME_ACTOR__HAS_COLLISION = eINSTANCE.getGameActor_HasCollision();
-
-    /**
-     * The meta object literal for the '<em><b>Type B</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute GAME_ACTOR__TYPE_B = eINSTANCE.getGameActor_TypeB();
+    EAttribute GAME_ACTOR__HAS_COLLISION_CONSEQUENCE = eINSTANCE.getGameActor_HasCollisionConsequence();
 
     /**
      * The meta object literal for the '<em><b>Begin Contact</b></em>' reference feature.

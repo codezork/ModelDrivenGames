@@ -2658,56 +2658,25 @@ ruleGameActor returns [EObject current=null]
 		)
 		(
 			(
-				otherlv_1='sprite'
-				{
-					newLeafNode(otherlv_1, grammarAccess.getGameActorAccess().getSpriteKeyword_1_0_0());
-				}
 				(
-					(
-						{
-							if ($current==null) {
-								$current = createModelElement(grammarAccess.getGameActorRule());
-							}
+					lv_hasCollisionCondition_1_0='when'
+					{
+						newLeafNode(lv_hasCollisionCondition_1_0, grammarAccess.getGameActorAccess().getHasCollisionConditionWhenKeyword_1_0_0());
+					}
+					{
+						if ($current==null) {
+							$current = createModelElement(grammarAccess.getGameActorRule());
 						}
-						otherlv_2=RULE_ID
-						{
-							newLeafNode(otherlv_2, grammarAccess.getGameActorAccess().getSpriteGameSpriteCrossReference_1_0_1_0());
-						}
-					)
+						setWithLastConsumed($current, "hasCollisionCondition", true, "when");
+					}
 				)
 			)
-			    |
-			(
-				otherlv_3='tile'
-				{
-					newLeafNode(otherlv_3, grammarAccess.getGameActorAccess().getTileKeyword_1_1_0());
-				}
-				(
-					(
-						{
-							if ($current==null) {
-								$current = createModelElement(grammarAccess.getGameActorRule());
-							}
-						}
-						otherlv_4=RULE_ID
-						{
-							newLeafNode(otherlv_4, grammarAccess.getGameActorAccess().getTileGameTileCrossReference_1_1_1_0());
-						}
-					)
-				)
-			)
-		)
-		(
-			otherlv_5='at'
-			{
-				newLeafNode(otherlv_5, grammarAccess.getGameActorAccess().getAtKeyword_2_0());
-			}
 			(
 				(
 					{
-						newCompositeNode(grammarAccess.getGameActorAccess().getTypeAGameContactTypeEnumRuleCall_2_1_0());
+						newCompositeNode(grammarAccess.getGameActorAccess().getTypeAGameContactTypeEnumRuleCall_1_1_0());
 					}
-					lv_typeA_6_0=ruleGameContactType
+					lv_typeA_2_0=ruleGameContactType
 					{
 						if ($current==null) {
 							$current = createModelElementForParent(grammarAccess.getGameActorRule());
@@ -2715,32 +2684,22 @@ ruleGameActor returns [EObject current=null]
 						set(
 							$current,
 							"typeA",
-							lv_typeA_6_0,
+							lv_typeA_2_0,
 							"com.hypermodel.games.engine.GameDSL.GameContactType");
 						afterParserOrEnumRuleCall();
 					}
 				)
 			)
-			(
-				(
-					lv_hasCollision_7_0='collidesWith'
-					{
-						newLeafNode(lv_hasCollision_7_0, grammarAccess.getGameActorAccess().getHasCollisionCollidesWithKeyword_2_2_0());
-					}
-					{
-						if ($current==null) {
-							$current = createModelElement(grammarAccess.getGameActorRule());
-						}
-						setWithLastConsumed($current, "hasCollision", true, "collidesWith");
-					}
-				)
-			)
+			otherlv_3='collidesWith'
+			{
+				newLeafNode(otherlv_3, grammarAccess.getGameActorAccess().getCollidesWithKeyword_1_2());
+			}
 			(
 				(
 					{
-						newCompositeNode(grammarAccess.getGameActorAccess().getTypeBGameContactTypeEnumRuleCall_2_3_0());
+						newCompositeNode(grammarAccess.getGameActorAccess().getTypeBGameContactTypeEnumRuleCall_1_3_0());
 					}
-					lv_typeB_8_0=ruleGameContactType
+					lv_typeB_4_0=ruleGameContactType
 					{
 						if ($current==null) {
 							$current = createModelElementForParent(grammarAccess.getGameActorRule());
@@ -2748,37 +2707,78 @@ ruleGameActor returns [EObject current=null]
 						set(
 							$current,
 							"typeB",
-							lv_typeB_8_0,
+							lv_typeB_4_0,
 							"com.hypermodel.games.engine.GameDSL.GameContactType");
 						afterParserOrEnumRuleCall();
 					}
 				)
 			)
+			otherlv_5='of'
+			{
+				newLeafNode(otherlv_5, grammarAccess.getGameActorAccess().getOfKeyword_1_4());
+			}
+		)?
+		(
 			(
+				otherlv_6='sprite'
+				{
+					newLeafNode(otherlv_6, grammarAccess.getGameActorAccess().getSpriteKeyword_2_0_0());
+				}
 				(
-					otherlv_9='atBeginOfContact'
-					{
-						newLeafNode(otherlv_9, grammarAccess.getGameActorAccess().getAtBeginOfContactKeyword_2_4_0_0());
-					}
 					(
-						(
-							{
-								if ($current==null) {
-									$current = createModelElement(grammarAccess.getGameActorRule());
-								}
+						{
+							if ($current==null) {
+								$current = createModelElement(grammarAccess.getGameActorRule());
 							}
-							otherlv_10=RULE_ID
-							{
-								newLeafNode(otherlv_10, grammarAccess.getGameActorAccess().getBeginContactGameEventCrossReference_2_4_0_1_0());
-							}
-						)
+						}
+						otherlv_7=RULE_ID
+						{
+							newLeafNode(otherlv_7, grammarAccess.getGameActorAccess().getSpriteGameSpriteCrossReference_2_0_1_0());
+						}
 					)
 				)
-				    |
+			)
+			    |
+			(
+				otherlv_8='tile'
+				{
+					newLeafNode(otherlv_8, grammarAccess.getGameActorAccess().getTileKeyword_2_1_0());
+				}
 				(
-					otherlv_11='atEndOfContact'
+					(
+						{
+							if ($current==null) {
+								$current = createModelElement(grammarAccess.getGameActorRule());
+							}
+						}
+						otherlv_9=RULE_ID
+						{
+							newLeafNode(otherlv_9, grammarAccess.getGameActorAccess().getTileGameTileCrossReference_2_1_1_0());
+						}
+					)
+				)
+			)
+		)
+		(
+			(
+				(
+					lv_hasCollisionConsequence_10_0='do'
 					{
-						newLeafNode(otherlv_11, grammarAccess.getGameActorAccess().getAtEndOfContactKeyword_2_4_1_0());
+						newLeafNode(lv_hasCollisionConsequence_10_0, grammarAccess.getGameActorAccess().getHasCollisionConsequenceDoKeyword_3_0_0());
+					}
+					{
+						if ($current==null) {
+							$current = createModelElement(grammarAccess.getGameActorRule());
+						}
+						setWithLastConsumed($current, "hasCollisionConsequence", true, "do");
+					}
+				)
+			)
+			(
+				(
+					otherlv_11='atBeginOfContact'
+					{
+						newLeafNode(otherlv_11, grammarAccess.getGameActorAccess().getAtBeginOfContactKeyword_3_1_0_0());
 					}
 					(
 						(
@@ -2789,7 +2789,27 @@ ruleGameActor returns [EObject current=null]
 							}
 							otherlv_12=RULE_ID
 							{
-								newLeafNode(otherlv_12, grammarAccess.getGameActorAccess().getEndContactGameEventCrossReference_2_4_1_1_0());
+								newLeafNode(otherlv_12, grammarAccess.getGameActorAccess().getBeginContactGameEventCrossReference_3_1_0_1_0());
+							}
+						)
+					)
+				)
+				    |
+				(
+					otherlv_13='atEndOfContact'
+					{
+						newLeafNode(otherlv_13, grammarAccess.getGameActorAccess().getAtEndOfContactKeyword_3_1_1_0());
+					}
+					(
+						(
+							{
+								if ($current==null) {
+									$current = createModelElement(grammarAccess.getGameActorRule());
+								}
+							}
+							otherlv_14=RULE_ID
+							{
+								newLeafNode(otherlv_14, grammarAccess.getGameActorAccess().getEndContactGameEventCrossReference_3_1_1_1_0());
 							}
 						)
 					)

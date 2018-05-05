@@ -1027,6 +1027,9 @@ class GameDSLJvmModelInferrer extends AbstractModelInferrer {
 				for(actor:sprite.actors) {
 					if(actor.sprite !== null) {
 						mask = mask + (2**actor.sprite.id)
+						if(actor.sprite.hasSensor) {
+							mask = mask + (2**actor.sprite.sensorID)
+						}
 					} else if(actor.tile !== null) {
 						mask = mask + (2**actor.tile.id)
 					}
@@ -1049,7 +1052,7 @@ class GameDSLJvmModelInferrer extends AbstractModelInferrer {
 					if(sprite.vectors2d.length==2) {
 						append(
 						'''
-						head.set(new Vector2(«sprite.vectors2d.get(0).x»f / 2 / «gameClass.simpleName».PPM, «sprite.radius» / «gameClass.simpleName».PPM), new Vector2(«sprite.vectors2d.get(0).y»f / 2 / «gameClass.simpleName».PPM, «sprite.radius» / «gameClass.simpleName».PPM));
+						head.set(new Vector2(«sprite.vectors2d.get(0).x»f/«gameClass.simpleName».PPM, «sprite.vectors2d.get(0).y»f/«gameClass.simpleName».PPM), new Vector2(«sprite.vectors2d.get(1).x»f/«gameClass.simpleName».PPM, «sprite.vectors2d.get(1).y»f/«gameClass.simpleName».PPM));
 						''')
 					} else {
 						append(
@@ -1363,7 +1366,7 @@ class GameDSLJvmModelInferrer extends AbstractModelInferrer {
 				val current = it
 				game.screens.forEach[screen|
 					screen.sprites.forEach[sprite|
-						sprite.actors.filter[it.hasCollision && it.beginContact !== null].forEach[actor|
+						sprite.actors.filter[hasCollisionCondition && hasCollisionConsequence && it.beginContact !== null].forEach[actor|
 							current.append(decodeCollision(actor, sprite, actor.beginContact.name))
 						]
 					]
@@ -1390,7 +1393,7 @@ class GameDSLJvmModelInferrer extends AbstractModelInferrer {
 				val current = it
 				game.screens.forEach[screen|
 					screen.sprites.forEach[sprite|
-						sprite.actors.filter[it.hasCollision && it.endContact !== null].forEach[actor|
+						sprite.actors.filter[hasCollisionCondition && hasCollisionConsequence && it.endContact !== null].forEach[actor|
 							current.append(decodeCollision(actor, sprite, actor.endContact.name))
 						]
 					]

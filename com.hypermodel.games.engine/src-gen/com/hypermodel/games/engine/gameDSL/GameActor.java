@@ -14,11 +14,12 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
+ *   <li>{@link com.hypermodel.games.engine.gameDSL.GameActor#isHasCollisionCondition <em>Has Collision Condition</em>}</li>
+ *   <li>{@link com.hypermodel.games.engine.gameDSL.GameActor#getTypeA <em>Type A</em>}</li>
+ *   <li>{@link com.hypermodel.games.engine.gameDSL.GameActor#getTypeB <em>Type B</em>}</li>
  *   <li>{@link com.hypermodel.games.engine.gameDSL.GameActor#getSprite <em>Sprite</em>}</li>
  *   <li>{@link com.hypermodel.games.engine.gameDSL.GameActor#getTile <em>Tile</em>}</li>
- *   <li>{@link com.hypermodel.games.engine.gameDSL.GameActor#getTypeA <em>Type A</em>}</li>
- *   <li>{@link com.hypermodel.games.engine.gameDSL.GameActor#isHasCollision <em>Has Collision</em>}</li>
- *   <li>{@link com.hypermodel.games.engine.gameDSL.GameActor#getTypeB <em>Type B</em>}</li>
+ *   <li>{@link com.hypermodel.games.engine.gameDSL.GameActor#isHasCollisionConsequence <em>Has Collision Consequence</em>}</li>
  *   <li>{@link com.hypermodel.games.engine.gameDSL.GameActor#getBeginContact <em>Begin Contact</em>}</li>
  *   <li>{@link com.hypermodel.games.engine.gameDSL.GameActor#getEndContact <em>End Contact</em>}</li>
  * </ul>
@@ -29,6 +30,90 @@ import org.eclipse.emf.ecore.EObject;
  */
 public interface GameActor extends EObject
 {
+  /**
+   * Returns the value of the '<em><b>Has Collision Condition</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Has Collision Condition</em>' attribute isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Has Collision Condition</em>' attribute.
+   * @see #setHasCollisionCondition(boolean)
+   * @see com.hypermodel.games.engine.gameDSL.GameDSLPackage#getGameActor_HasCollisionCondition()
+   * @model
+   * @generated
+   */
+  boolean isHasCollisionCondition();
+
+  /**
+   * Sets the value of the '{@link com.hypermodel.games.engine.gameDSL.GameActor#isHasCollisionCondition <em>Has Collision Condition</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Has Collision Condition</em>' attribute.
+   * @see #isHasCollisionCondition()
+   * @generated
+   */
+  void setHasCollisionCondition(boolean value);
+
+  /**
+   * Returns the value of the '<em><b>Type A</b></em>' attribute.
+   * The literals are from the enumeration {@link com.hypermodel.games.engine.gameDSL.GameContactType}.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Type A</em>' attribute isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Type A</em>' attribute.
+   * @see com.hypermodel.games.engine.gameDSL.GameContactType
+   * @see #setTypeA(GameContactType)
+   * @see com.hypermodel.games.engine.gameDSL.GameDSLPackage#getGameActor_TypeA()
+   * @model
+   * @generated
+   */
+  GameContactType getTypeA();
+
+  /**
+   * Sets the value of the '{@link com.hypermodel.games.engine.gameDSL.GameActor#getTypeA <em>Type A</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Type A</em>' attribute.
+   * @see com.hypermodel.games.engine.gameDSL.GameContactType
+   * @see #getTypeA()
+   * @generated
+   */
+  void setTypeA(GameContactType value);
+
+  /**
+   * Returns the value of the '<em><b>Type B</b></em>' attribute.
+   * The literals are from the enumeration {@link com.hypermodel.games.engine.gameDSL.GameContactType}.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Type B</em>' attribute isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Type B</em>' attribute.
+   * @see com.hypermodel.games.engine.gameDSL.GameContactType
+   * @see #setTypeB(GameContactType)
+   * @see com.hypermodel.games.engine.gameDSL.GameDSLPackage#getGameActor_TypeB()
+   * @model
+   * @generated
+   */
+  GameContactType getTypeB();
+
+  /**
+   * Sets the value of the '{@link com.hypermodel.games.engine.gameDSL.GameActor#getTypeB <em>Type B</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Type B</em>' attribute.
+   * @see com.hypermodel.games.engine.gameDSL.GameContactType
+   * @see #getTypeB()
+   * @generated
+   */
+  void setTypeB(GameContactType value);
+
   /**
    * Returns the value of the '<em><b>Sprite</b></em>' reference.
    * <!-- begin-user-doc -->
@@ -82,88 +167,30 @@ public interface GameActor extends EObject
   void setTile(GameTile value);
 
   /**
-   * Returns the value of the '<em><b>Type A</b></em>' attribute.
-   * The literals are from the enumeration {@link com.hypermodel.games.engine.gameDSL.GameContactType}.
+   * Returns the value of the '<em><b>Has Collision Consequence</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Type A</em>' attribute isn't clear,
+   * If the meaning of the '<em>Has Collision Consequence</em>' attribute isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Type A</em>' attribute.
-   * @see com.hypermodel.games.engine.gameDSL.GameContactType
-   * @see #setTypeA(GameContactType)
-   * @see com.hypermodel.games.engine.gameDSL.GameDSLPackage#getGameActor_TypeA()
+   * @return the value of the '<em>Has Collision Consequence</em>' attribute.
+   * @see #setHasCollisionConsequence(boolean)
+   * @see com.hypermodel.games.engine.gameDSL.GameDSLPackage#getGameActor_HasCollisionConsequence()
    * @model
    * @generated
    */
-  GameContactType getTypeA();
+  boolean isHasCollisionConsequence();
 
   /**
-   * Sets the value of the '{@link com.hypermodel.games.engine.gameDSL.GameActor#getTypeA <em>Type A</em>}' attribute.
+   * Sets the value of the '{@link com.hypermodel.games.engine.gameDSL.GameActor#isHasCollisionConsequence <em>Has Collision Consequence</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Type A</em>' attribute.
-   * @see com.hypermodel.games.engine.gameDSL.GameContactType
-   * @see #getTypeA()
+   * @param value the new value of the '<em>Has Collision Consequence</em>' attribute.
+   * @see #isHasCollisionConsequence()
    * @generated
    */
-  void setTypeA(GameContactType value);
-
-  /**
-   * Returns the value of the '<em><b>Has Collision</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Has Collision</em>' attribute isn't clear,
-   * there really should be more of a description here...
-   * </p>
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Has Collision</em>' attribute.
-   * @see #setHasCollision(boolean)
-   * @see com.hypermodel.games.engine.gameDSL.GameDSLPackage#getGameActor_HasCollision()
-   * @model
-   * @generated
-   */
-  boolean isHasCollision();
-
-  /**
-   * Sets the value of the '{@link com.hypermodel.games.engine.gameDSL.GameActor#isHasCollision <em>Has Collision</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Has Collision</em>' attribute.
-   * @see #isHasCollision()
-   * @generated
-   */
-  void setHasCollision(boolean value);
-
-  /**
-   * Returns the value of the '<em><b>Type B</b></em>' attribute.
-   * The literals are from the enumeration {@link com.hypermodel.games.engine.gameDSL.GameContactType}.
-   * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Type B</em>' attribute isn't clear,
-   * there really should be more of a description here...
-   * </p>
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Type B</em>' attribute.
-   * @see com.hypermodel.games.engine.gameDSL.GameContactType
-   * @see #setTypeB(GameContactType)
-   * @see com.hypermodel.games.engine.gameDSL.GameDSLPackage#getGameActor_TypeB()
-   * @model
-   * @generated
-   */
-  GameContactType getTypeB();
-
-  /**
-   * Sets the value of the '{@link com.hypermodel.games.engine.gameDSL.GameActor#getTypeB <em>Type B</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Type B</em>' attribute.
-   * @see com.hypermodel.games.engine.gameDSL.GameContactType
-   * @see #getTypeB()
-   * @generated
-   */
-  void setTypeB(GameContactType value);
+  void setHasCollisionConsequence(boolean value);
 
   /**
    * Returns the value of the '<em><b>Begin Contact</b></em>' reference.

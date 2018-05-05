@@ -1171,7 +1171,7 @@ class GameDSLGenerator extends ExtendedJvmModelGenerator {
 		        <activity
 		            android:name="«packageName».AndroidLauncher"
 		            android:label="@string/app_name" 
-		            android:screenOrientation="«pkg.config.android.orientation.literal»"
+		            android:screenOrientation="«pkg.config.android.orientation.literal»" 
 		            android:configChanges="keyboard|keyboardHidden|navigation|orientation|screenSize">
 		            <intent-filter>
 		                <action android:name="android.intent.action.MAIN" />

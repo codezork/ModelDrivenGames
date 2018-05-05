@@ -157,11 +157,12 @@
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference GameDSL.ecore#//GameInput/trigger"/>
     </genClasses>
     <genClasses ecoreClass="GameDSL.ecore#//GameActor">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GameDSL.ecore#//GameActor/hasCollisionCondition"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GameDSL.ecore#//GameActor/typeA"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GameDSL.ecore#//GameActor/typeB"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference GameDSL.ecore#//GameActor/sprite"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference GameDSL.ecore#//GameActor/tile"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GameDSL.ecore#//GameActor/typeA"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GameDSL.ecore#//GameActor/hasCollision"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GameDSL.ecore#//GameActor/typeB"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GameDSL.ecore#//GameActor/hasCollisionConsequence"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference GameDSL.ecore#//GameActor/beginContact"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference GameDSL.ecore#//GameActor/endContact"/>
     </genClasses>
