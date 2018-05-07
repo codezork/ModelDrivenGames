@@ -1165,101 +1165,134 @@ public class GameDSLGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cSpriteKeyword_1 = (Keyword)cGroup.eContents().get(1);
 		private final Assignment cNameAssignment_2 = (Assignment)cGroup.eContents().get(2);
 		private final RuleCall cNameValidIDParserRuleCall_2_0 = (RuleCall)cNameAssignment_2.eContents().get(0);
-		private final Keyword cCollisionIdKeyword_3 = (Keyword)cGroup.eContents().get(3);
-		private final Assignment cIdAssignment_4 = (Assignment)cGroup.eContents().get(4);
-		private final RuleCall cIdINTTerminalRuleCall_4_0 = (RuleCall)cIdAssignment_4.eContents().get(0);
-		private final Keyword cRadiusKeyword_5 = (Keyword)cGroup.eContents().get(5);
-		private final Assignment cRadiusAssignment_6 = (Assignment)cGroup.eContents().get(6);
-		private final RuleCall cRadiusINTTerminalRuleCall_6_0 = (RuleCall)cRadiusAssignment_6.eContents().get(0);
-		private final UnorderedGroup cUnorderedGroup_7 = (UnorderedGroup)cGroup.eContents().get(7);
-		private final Group cGroup_7_0 = (Group)cUnorderedGroup_7.eContents().get(0);
-		private final Assignment cHasVelocityAssignment_7_0_0 = (Assignment)cGroup_7_0.eContents().get(0);
-		private final Keyword cHasVelocityVelocityKeyword_7_0_0_0 = (Keyword)cHasVelocityAssignment_7_0_0.eContents().get(0);
-		private final Assignment cVelocityAssignment_7_0_1 = (Assignment)cGroup_7_0.eContents().get(1);
-		private final RuleCall cVelocityGameVector2dParserRuleCall_7_0_1_0 = (RuleCall)cVelocityAssignment_7_0_1.eContents().get(0);
-		private final Alternatives cAlternatives_7_1 = (Alternatives)cUnorderedGroup_7.eContents().get(1);
-		private final Group cGroup_7_1_0 = (Group)cAlternatives_7_1.eContents().get(0);
-		private final Assignment cHasLayerAssignment_7_1_0_0 = (Assignment)cGroup_7_1_0.eContents().get(0);
-		private final Keyword cHasLayerLayerKeyword_7_1_0_0_0 = (Keyword)cHasLayerAssignment_7_1_0_0.eContents().get(0);
-		private final Assignment cLayerAssignment_7_1_0_1 = (Assignment)cGroup_7_1_0.eContents().get(1);
-		private final CrossReference cLayerGameLayerCrossReference_7_1_0_1_0 = (CrossReference)cLayerAssignment_7_1_0_1.eContents().get(0);
-		private final RuleCall cLayerGameLayerIDTerminalRuleCall_7_1_0_1_0_1 = (RuleCall)cLayerGameLayerCrossReference_7_1_0_1_0.eContents().get(1);
-		private final Group cGroup_7_1_1 = (Group)cAlternatives_7_1.eContents().get(1);
-		private final Assignment cHasStartPositionAssignment_7_1_1_0 = (Assignment)cGroup_7_1_1.eContents().get(0);
-		private final Keyword cHasStartPositionStartPositionKeyword_7_1_1_0_0 = (Keyword)cHasStartPositionAssignment_7_1_1_0.eContents().get(0);
-		private final Assignment cStartPositionAssignment_7_1_1_1 = (Assignment)cGroup_7_1_1.eContents().get(1);
-		private final RuleCall cStartPositionGameVector2dParserRuleCall_7_1_1_1_0 = (RuleCall)cStartPositionAssignment_7_1_1_1.eContents().get(0);
-		private final Group cGroup_7_2 = (Group)cUnorderedGroup_7.eContents().get(2);
-		private final Assignment cHasSensorAssignment_7_2_0 = (Assignment)cGroup_7_2.eContents().get(0);
-		private final Keyword cHasSensorSensorKeyword_7_2_0_0 = (Keyword)cHasSensorAssignment_7_2_0.eContents().get(0);
-		private final Keyword cLeftCurlyBracketKeyword_7_2_1 = (Keyword)cGroup_7_2.eContents().get(1);
-		private final Assignment cVectors2dAssignment_7_2_2 = (Assignment)cGroup_7_2.eContents().get(2);
-		private final RuleCall cVectors2dGameVector2dParserRuleCall_7_2_2_0 = (RuleCall)cVectors2dAssignment_7_2_2.eContents().get(0);
-		private final Keyword cRightCurlyBracketKeyword_7_2_3 = (Keyword)cGroup_7_2.eContents().get(3);
-		private final Keyword cSensorIDKeyword_7_2_4 = (Keyword)cGroup_7_2.eContents().get(4);
-		private final Assignment cSensorIDAssignment_7_2_5 = (Assignment)cGroup_7_2.eContents().get(5);
-		private final RuleCall cSensorIDINTTerminalRuleCall_7_2_5_0 = (RuleCall)cSensorIDAssignment_7_2_5.eContents().get(0);
-		private final Group cGroup_7_3 = (Group)cUnorderedGroup_7.eContents().get(3);
-		private final Assignment cHasActivationRuleAssignment_7_3_0 = (Assignment)cGroup_7_3.eContents().get(0);
-		private final Keyword cHasActivationRuleActivateKeyword_7_3_0_0 = (Keyword)cHasActivationRuleAssignment_7_3_0.eContents().get(0);
-		private final Keyword cIfKeyword_7_3_1 = (Keyword)cGroup_7_3.eContents().get(1);
-		private final Assignment cRuleAssignment_7_3_2 = (Assignment)cGroup_7_3.eContents().get(2);
-		private final RuleCall cRuleGameRuleParserRuleCall_7_3_2_0 = (RuleCall)cRuleAssignment_7_3_2.eContents().get(0);
-		private final Group cGroup_7_4 = (Group)cUnorderedGroup_7.eContents().get(4);
-		private final Keyword cActorsKeyword_7_4_0 = (Keyword)cGroup_7_4.eContents().get(0);
-		private final Keyword cLeftCurlyBracketKeyword_7_4_1 = (Keyword)cGroup_7_4.eContents().get(1);
-		private final Assignment cActorsAssignment_7_4_2 = (Assignment)cGroup_7_4.eContents().get(2);
-		private final RuleCall cActorsGameActorParserRuleCall_7_4_2_0 = (RuleCall)cActorsAssignment_7_4_2.eContents().get(0);
-		private final Keyword cRightCurlyBracketKeyword_7_4_3 = (Keyword)cGroup_7_4.eContents().get(3);
-		private final Group cGroup_7_5 = (Group)cUnorderedGroup_7.eContents().get(5);
-		private final Keyword cPropertiesKeyword_7_5_0 = (Keyword)cGroup_7_5.eContents().get(0);
-		private final Keyword cLeftCurlyBracketKeyword_7_5_1 = (Keyword)cGroup_7_5.eContents().get(1);
-		private final Assignment cPropertiesAssignment_7_5_2 = (Assignment)cGroup_7_5.eContents().get(2);
-		private final RuleCall cPropertiesGameBodyPropertyParserRuleCall_7_5_2_0 = (RuleCall)cPropertiesAssignment_7_5_2.eContents().get(0);
-		private final Keyword cRightCurlyBracketKeyword_7_5_3 = (Keyword)cGroup_7_5.eContents().get(3);
-		private final Group cGroup_7_6 = (Group)cUnorderedGroup_7.eContents().get(6);
-		private final Keyword cStatesKeyword_7_6_0 = (Keyword)cGroup_7_6.eContents().get(0);
-		private final Keyword cLeftCurlyBracketKeyword_7_6_1 = (Keyword)cGroup_7_6.eContents().get(1);
-		private final Assignment cStatesAssignment_7_6_2 = (Assignment)cGroup_7_6.eContents().get(2);
-		private final RuleCall cStatesGameSpriteStateParserRuleCall_7_6_2_0 = (RuleCall)cStatesAssignment_7_6_2.eContents().get(0);
-		private final Keyword cRightCurlyBracketKeyword_7_6_3 = (Keyword)cGroup_7_6.eContents().get(3);
-		private final Keyword cInitialStateKeyword_7_6_4 = (Keyword)cGroup_7_6.eContents().get(4);
-		private final Assignment cInitialStateAssignment_7_6_5 = (Assignment)cGroup_7_6.eContents().get(5);
-		private final CrossReference cInitialStateGameSpriteStateCrossReference_7_6_5_0 = (CrossReference)cInitialStateAssignment_7_6_5.eContents().get(0);
-		private final RuleCall cInitialStateGameSpriteStateIDTerminalRuleCall_7_6_5_0_1 = (RuleCall)cInitialStateGameSpriteStateCrossReference_7_6_5_0.eContents().get(1);
-		private final Group cGroup_7_6_6 = (Group)cGroup_7_6.eContents().get(6);
-		private final Keyword cGameOverStateKeyword_7_6_6_0 = (Keyword)cGroup_7_6_6.eContents().get(0);
-		private final Assignment cGameOverStateAssignment_7_6_6_1 = (Assignment)cGroup_7_6_6.eContents().get(1);
-		private final CrossReference cGameOverStateGameSpriteStateCrossReference_7_6_6_1_0 = (CrossReference)cGameOverStateAssignment_7_6_6_1.eContents().get(0);
-		private final RuleCall cGameOverStateGameSpriteStateIDTerminalRuleCall_7_6_6_1_0_1 = (RuleCall)cGameOverStateGameSpriteStateCrossReference_7_6_6_1_0.eContents().get(1);
-		private final Group cGroup_7_7 = (Group)cUnorderedGroup_7.eContents().get(7);
-		private final Keyword cEventsKeyword_7_7_0 = (Keyword)cGroup_7_7.eContents().get(0);
-		private final Keyword cLeftCurlyBracketKeyword_7_7_1 = (Keyword)cGroup_7_7.eContents().get(1);
-		private final Assignment cEventsAssignment_7_7_2 = (Assignment)cGroup_7_7.eContents().get(2);
-		private final RuleCall cEventsGameEventParserRuleCall_7_7_2_0 = (RuleCall)cEventsAssignment_7_7_2.eContents().get(0);
-		private final Keyword cRightCurlyBracketKeyword_7_7_3 = (Keyword)cGroup_7_7.eContents().get(3);
-		private final Group cGroup_7_8 = (Group)cUnorderedGroup_7.eContents().get(8);
-		private final Keyword cInputsKeyword_7_8_0 = (Keyword)cGroup_7_8.eContents().get(0);
-		private final Keyword cLeftCurlyBracketKeyword_7_8_1 = (Keyword)cGroup_7_8.eContents().get(1);
-		private final Assignment cInputsAssignment_7_8_2 = (Assignment)cGroup_7_8.eContents().get(2);
-		private final RuleCall cInputsGameInputParserRuleCall_7_8_2_0 = (RuleCall)cInputsAssignment_7_8_2.eContents().get(0);
-		private final Keyword cRightCurlyBracketKeyword_7_8_3 = (Keyword)cGroup_7_8.eContents().get(3);
+		private final UnorderedGroup cUnorderedGroup_3 = (UnorderedGroup)cGroup.eContents().get(3);
+		private final Group cGroup_3_0 = (Group)cUnorderedGroup_3.eContents().get(0);
+		private final Alternatives cAlternatives_3_0_0 = (Alternatives)cGroup_3_0.eContents().get(0);
+		private final Group cGroup_3_0_0_0 = (Group)cAlternatives_3_0_0.eContents().get(0);
+		private final Assignment cIsEnemyAssignment_3_0_0_0_0 = (Assignment)cGroup_3_0_0_0.eContents().get(0);
+		private final Keyword cIsEnemyIsEnemyKeyword_3_0_0_0_0_0 = (Keyword)cIsEnemyAssignment_3_0_0_0_0.eContents().get(0);
+		private final UnorderedGroup cUnorderedGroup_3_0_0_0_1 = (UnorderedGroup)cGroup_3_0_0_0.eContents().get(1);
+		private final Group cGroup_3_0_0_0_1_0 = (Group)cUnorderedGroup_3_0_0_0_1.eContents().get(0);
+		private final Keyword cLayerKeyword_3_0_0_0_1_0_0 = (Keyword)cGroup_3_0_0_0_1_0.eContents().get(0);
+		private final Assignment cLayerAssignment_3_0_0_0_1_0_1 = (Assignment)cGroup_3_0_0_0_1_0.eContents().get(1);
+		private final CrossReference cLayerGameLayerCrossReference_3_0_0_0_1_0_1_0 = (CrossReference)cLayerAssignment_3_0_0_0_1_0_1.eContents().get(0);
+		private final RuleCall cLayerGameLayerIDTerminalRuleCall_3_0_0_0_1_0_1_0_1 = (RuleCall)cLayerGameLayerCrossReference_3_0_0_0_1_0_1_0.eContents().get(1);
+		private final Group cGroup_3_0_0_0_1_1 = (Group)cUnorderedGroup_3_0_0_0_1.eContents().get(1);
+		private final Assignment cIsDestructableAssignment_3_0_0_0_1_1_0 = (Assignment)cGroup_3_0_0_0_1_1.eContents().get(0);
+		private final Keyword cIsDestructableDestructableKeyword_3_0_0_0_1_1_0_0 = (Keyword)cIsDestructableAssignment_3_0_0_0_1_1_0.eContents().get(0);
+		private final Keyword cByPropertyKeyword_3_0_0_0_1_1_1 = (Keyword)cGroup_3_0_0_0_1_1.eContents().get(1);
+		private final Assignment cDestroyPropertyAssignment_3_0_0_0_1_1_2 = (Assignment)cGroup_3_0_0_0_1_1.eContents().get(2);
+		private final CrossReference cDestroyPropertyGameBodyPropertyCrossReference_3_0_0_0_1_1_2_0 = (CrossReference)cDestroyPropertyAssignment_3_0_0_0_1_1_2.eContents().get(0);
+		private final RuleCall cDestroyPropertyGameBodyPropertyIDTerminalRuleCall_3_0_0_0_1_1_2_0_1 = (RuleCall)cDestroyPropertyGameBodyPropertyCrossReference_3_0_0_0_1_1_2_0.eContents().get(1);
+		private final Group cGroup_3_0_0_0_1_2 = (Group)cUnorderedGroup_3_0_0_0_1.eContents().get(2);
+		private final Assignment cHasVelocityAssignment_3_0_0_0_1_2_0 = (Assignment)cGroup_3_0_0_0_1_2.eContents().get(0);
+		private final Keyword cHasVelocityVelocityKeyword_3_0_0_0_1_2_0_0 = (Keyword)cHasVelocityAssignment_3_0_0_0_1_2_0.eContents().get(0);
+		private final Assignment cVelocityAssignment_3_0_0_0_1_2_1 = (Assignment)cGroup_3_0_0_0_1_2.eContents().get(1);
+		private final RuleCall cVelocityGameVector2dParserRuleCall_3_0_0_0_1_2_1_0 = (RuleCall)cVelocityAssignment_3_0_0_0_1_2_1.eContents().get(0);
+		private final Group cGroup_3_0_0_0_1_3 = (Group)cUnorderedGroup_3_0_0_0_1.eContents().get(3);
+		private final Assignment cHasActivationRuleAssignment_3_0_0_0_1_3_0 = (Assignment)cGroup_3_0_0_0_1_3.eContents().get(0);
+		private final Keyword cHasActivationRuleActivateKeyword_3_0_0_0_1_3_0_0 = (Keyword)cHasActivationRuleAssignment_3_0_0_0_1_3_0.eContents().get(0);
+		private final Keyword cIfKeyword_3_0_0_0_1_3_1 = (Keyword)cGroup_3_0_0_0_1_3.eContents().get(1);
+		private final Assignment cRuleAssignment_3_0_0_0_1_3_2 = (Assignment)cGroup_3_0_0_0_1_3.eContents().get(2);
+		private final RuleCall cRuleGameRuleParserRuleCall_3_0_0_0_1_3_2_0 = (RuleCall)cRuleAssignment_3_0_0_0_1_3_2.eContents().get(0);
+		private final Alternatives cAlternatives_3_0_0_1 = (Alternatives)cAlternatives_3_0_0.eContents().get(1);
+		private final Group cGroup_3_0_0_1_0 = (Group)cAlternatives_3_0_0_1.eContents().get(0);
+		private final Assignment cIsItemAssignment_3_0_0_1_0_0 = (Assignment)cGroup_3_0_0_1_0.eContents().get(0);
+		private final Keyword cIsItemIsItemKeyword_3_0_0_1_0_0_0 = (Keyword)cIsItemAssignment_3_0_0_1_0_0.eContents().get(0);
+		private final UnorderedGroup cUnorderedGroup_3_0_0_1_0_1 = (UnorderedGroup)cGroup_3_0_0_1_0.eContents().get(1);
+		private final Group cGroup_3_0_0_1_0_1_0 = (Group)cUnorderedGroup_3_0_0_1_0_1.eContents().get(0);
+		private final Assignment cIsDestructableAssignment_3_0_0_1_0_1_0_0 = (Assignment)cGroup_3_0_0_1_0_1_0.eContents().get(0);
+		private final Keyword cIsDestructableDestructableKeyword_3_0_0_1_0_1_0_0_0 = (Keyword)cIsDestructableAssignment_3_0_0_1_0_1_0_0.eContents().get(0);
+		private final Keyword cByPropertyKeyword_3_0_0_1_0_1_0_1 = (Keyword)cGroup_3_0_0_1_0_1_0.eContents().get(1);
+		private final Assignment cDestroyPropertyAssignment_3_0_0_1_0_1_0_2 = (Assignment)cGroup_3_0_0_1_0_1_0.eContents().get(2);
+		private final CrossReference cDestroyPropertyGameBodyPropertyCrossReference_3_0_0_1_0_1_0_2_0 = (CrossReference)cDestroyPropertyAssignment_3_0_0_1_0_1_0_2.eContents().get(0);
+		private final RuleCall cDestroyPropertyGameBodyPropertyIDTerminalRuleCall_3_0_0_1_0_1_0_2_0_1 = (RuleCall)cDestroyPropertyGameBodyPropertyCrossReference_3_0_0_1_0_1_0_2_0.eContents().get(1);
+		private final Group cGroup_3_0_0_1_0_1_1 = (Group)cUnorderedGroup_3_0_0_1_0_1.eContents().get(1);
+		private final Assignment cHasVelocityAssignment_3_0_0_1_0_1_1_0 = (Assignment)cGroup_3_0_0_1_0_1_1.eContents().get(0);
+		private final Keyword cHasVelocityVelocityKeyword_3_0_0_1_0_1_1_0_0 = (Keyword)cHasVelocityAssignment_3_0_0_1_0_1_1_0.eContents().get(0);
+		private final Assignment cVelocityAssignment_3_0_0_1_0_1_1_1 = (Assignment)cGroup_3_0_0_1_0_1_1.eContents().get(1);
+		private final RuleCall cVelocityGameVector2dParserRuleCall_3_0_0_1_0_1_1_1_0 = (RuleCall)cVelocityAssignment_3_0_0_1_0_1_1_1.eContents().get(0);
+		private final Group cGroup_3_0_0_1_1 = (Group)cAlternatives_3_0_0_1.eContents().get(1);
+		private final Assignment cIsPlayerAssignment_3_0_0_1_1_0 = (Assignment)cGroup_3_0_0_1_1.eContents().get(0);
+		private final Keyword cIsPlayerIsPlayerKeyword_3_0_0_1_1_0_0 = (Keyword)cIsPlayerAssignment_3_0_0_1_1_0.eContents().get(0);
+		private final Keyword cStartPositionKeyword_3_0_0_1_1_1 = (Keyword)cGroup_3_0_0_1_1.eContents().get(1);
+		private final Assignment cStartPositionAssignment_3_0_0_1_1_2 = (Assignment)cGroup_3_0_0_1_1.eContents().get(2);
+		private final RuleCall cStartPositionGameVector2dParserRuleCall_3_0_0_1_1_2_0 = (RuleCall)cStartPositionAssignment_3_0_0_1_1_2.eContents().get(0);
+		private final Keyword cCollisionIdKeyword_3_0_1 = (Keyword)cGroup_3_0.eContents().get(1);
+		private final Assignment cIdAssignment_3_0_2 = (Assignment)cGroup_3_0.eContents().get(2);
+		private final RuleCall cIdINTTerminalRuleCall_3_0_2_0 = (RuleCall)cIdAssignment_3_0_2.eContents().get(0);
+		private final Keyword cRadiusKeyword_3_0_3 = (Keyword)cGroup_3_0.eContents().get(3);
+		private final Assignment cRadiusAssignment_3_0_4 = (Assignment)cGroup_3_0.eContents().get(4);
+		private final RuleCall cRadiusINTTerminalRuleCall_3_0_4_0 = (RuleCall)cRadiusAssignment_3_0_4.eContents().get(0);
+		private final Group cGroup_3_0_5 = (Group)cGroup_3_0.eContents().get(5);
+		private final Assignment cHasSensorAssignment_3_0_5_0 = (Assignment)cGroup_3_0_5.eContents().get(0);
+		private final Keyword cHasSensorSensorKeyword_3_0_5_0_0 = (Keyword)cHasSensorAssignment_3_0_5_0.eContents().get(0);
+		private final Keyword cLeftCurlyBracketKeyword_3_0_5_1 = (Keyword)cGroup_3_0_5.eContents().get(1);
+		private final Assignment cVectors2dAssignment_3_0_5_2 = (Assignment)cGroup_3_0_5.eContents().get(2);
+		private final RuleCall cVectors2dGameVector2dParserRuleCall_3_0_5_2_0 = (RuleCall)cVectors2dAssignment_3_0_5_2.eContents().get(0);
+		private final Keyword cRightCurlyBracketKeyword_3_0_5_3 = (Keyword)cGroup_3_0_5.eContents().get(3);
+		private final Keyword cSensorIDKeyword_3_0_5_4 = (Keyword)cGroup_3_0_5.eContents().get(4);
+		private final Assignment cSensorIDAssignment_3_0_5_5 = (Assignment)cGroup_3_0_5.eContents().get(5);
+		private final RuleCall cSensorIDINTTerminalRuleCall_3_0_5_5_0 = (RuleCall)cSensorIDAssignment_3_0_5_5.eContents().get(0);
+		private final Group cGroup_3_1 = (Group)cUnorderedGroup_3.eContents().get(1);
+		private final Keyword cActorsKeyword_3_1_0 = (Keyword)cGroup_3_1.eContents().get(0);
+		private final Keyword cLeftCurlyBracketKeyword_3_1_1 = (Keyword)cGroup_3_1.eContents().get(1);
+		private final Assignment cActorsAssignment_3_1_2 = (Assignment)cGroup_3_1.eContents().get(2);
+		private final RuleCall cActorsGameActorParserRuleCall_3_1_2_0 = (RuleCall)cActorsAssignment_3_1_2.eContents().get(0);
+		private final Keyword cRightCurlyBracketKeyword_3_1_3 = (Keyword)cGroup_3_1.eContents().get(3);
+		private final Group cGroup_3_2 = (Group)cUnorderedGroup_3.eContents().get(2);
+		private final Keyword cPropertiesKeyword_3_2_0 = (Keyword)cGroup_3_2.eContents().get(0);
+		private final Keyword cLeftCurlyBracketKeyword_3_2_1 = (Keyword)cGroup_3_2.eContents().get(1);
+		private final Assignment cPropertiesAssignment_3_2_2 = (Assignment)cGroup_3_2.eContents().get(2);
+		private final RuleCall cPropertiesGameBodyPropertyParserRuleCall_3_2_2_0 = (RuleCall)cPropertiesAssignment_3_2_2.eContents().get(0);
+		private final Keyword cRightCurlyBracketKeyword_3_2_3 = (Keyword)cGroup_3_2.eContents().get(3);
+		private final Group cGroup_3_3 = (Group)cUnorderedGroup_3.eContents().get(3);
+		private final Keyword cStatesKeyword_3_3_0 = (Keyword)cGroup_3_3.eContents().get(0);
+		private final Keyword cLeftCurlyBracketKeyword_3_3_1 = (Keyword)cGroup_3_3.eContents().get(1);
+		private final Assignment cStatesAssignment_3_3_2 = (Assignment)cGroup_3_3.eContents().get(2);
+		private final RuleCall cStatesGameSpriteStateParserRuleCall_3_3_2_0 = (RuleCall)cStatesAssignment_3_3_2.eContents().get(0);
+		private final Keyword cRightCurlyBracketKeyword_3_3_3 = (Keyword)cGroup_3_3.eContents().get(3);
+		private final Keyword cInitialStateKeyword_3_3_4 = (Keyword)cGroup_3_3.eContents().get(4);
+		private final Assignment cInitialStateAssignment_3_3_5 = (Assignment)cGroup_3_3.eContents().get(5);
+		private final CrossReference cInitialStateGameSpriteStateCrossReference_3_3_5_0 = (CrossReference)cInitialStateAssignment_3_3_5.eContents().get(0);
+		private final RuleCall cInitialStateGameSpriteStateIDTerminalRuleCall_3_3_5_0_1 = (RuleCall)cInitialStateGameSpriteStateCrossReference_3_3_5_0.eContents().get(1);
+		private final Group cGroup_3_3_6 = (Group)cGroup_3_3.eContents().get(6);
+		private final Keyword cGameOverStateKeyword_3_3_6_0 = (Keyword)cGroup_3_3_6.eContents().get(0);
+		private final Assignment cGameOverStateAssignment_3_3_6_1 = (Assignment)cGroup_3_3_6.eContents().get(1);
+		private final CrossReference cGameOverStateGameSpriteStateCrossReference_3_3_6_1_0 = (CrossReference)cGameOverStateAssignment_3_3_6_1.eContents().get(0);
+		private final RuleCall cGameOverStateGameSpriteStateIDTerminalRuleCall_3_3_6_1_0_1 = (RuleCall)cGameOverStateGameSpriteStateCrossReference_3_3_6_1_0.eContents().get(1);
+		private final Group cGroup_3_4 = (Group)cUnorderedGroup_3.eContents().get(4);
+		private final Keyword cEventsKeyword_3_4_0 = (Keyword)cGroup_3_4.eContents().get(0);
+		private final Keyword cLeftCurlyBracketKeyword_3_4_1 = (Keyword)cGroup_3_4.eContents().get(1);
+		private final Assignment cEventsAssignment_3_4_2 = (Assignment)cGroup_3_4.eContents().get(2);
+		private final RuleCall cEventsGameEventParserRuleCall_3_4_2_0 = (RuleCall)cEventsAssignment_3_4_2.eContents().get(0);
+		private final Keyword cRightCurlyBracketKeyword_3_4_3 = (Keyword)cGroup_3_4.eContents().get(3);
+		private final Group cGroup_3_5 = (Group)cUnorderedGroup_3.eContents().get(5);
+		private final Keyword cInputsKeyword_3_5_0 = (Keyword)cGroup_3_5.eContents().get(0);
+		private final Keyword cLeftCurlyBracketKeyword_3_5_1 = (Keyword)cGroup_3_5.eContents().get(1);
+		private final Assignment cInputsAssignment_3_5_2 = (Assignment)cGroup_3_5.eContents().get(2);
+		private final RuleCall cInputsGameInputParserRuleCall_3_5_2_0 = (RuleCall)cInputsAssignment_3_5_2.eContents().get(0);
+		private final Keyword cRightCurlyBracketKeyword_3_5_3 = (Keyword)cGroup_3_5.eContents().get(3);
 		
 		//GameSprite:
-		//	{GameSprite} 'sprite' name=ValidID 'collisionId' id=INT
-		//	'radius' radius=INT ((hasVelocity?='velocity' velocity=GameVector2d)? & (hasLayer?='layer' layer=[GameLayer] |
-		//	hasStartPosition?='startPosition' startPosition=GameVector2d)? & (hasSensor?='sensor' '{' vectors2d+=GameVector2d*
-		//	'}' 'sensorID' sensorID=INT)? & (hasActivationRule?='activate' 'if' rule=GameRule)? & ('actors' '{'
-		//	actors+=GameActor* '}')? & ('properties' '{' properties+=GameBodyProperty* '}')? & ('states' '{'
-		//	states+=GameSpriteState* '}'
+		//	{GameSprite} 'sprite' name=ValidID ((isEnemy?='isEnemy' (('layer' layer=[GameLayer])? &
+		//	(isDestructable?='destructable' 'byProperty' destroyProperty=[GameBodyProperty])? & (hasVelocity?='velocity'
+		//	velocity=GameVector2d)? & (hasActivationRule?='activate' 'if' rule=GameRule)?) | (isItem?='isItem'
+		//	((isDestructable?='destructable' 'byProperty' destroyProperty=[GameBodyProperty])? & (hasVelocity?='velocity'
+		//	velocity=GameVector2d)?) | isPlayer?='isPlayer' 'startPosition' startPosition=GameVector2d)?)
+		//	'collisionId' id=INT 'radius' radius=INT (hasSensor?='sensor' '{' vectors2d+=GameVector2d* '}' 'sensorID'
+		//	sensorID=INT)? & ('actors' '{' actors+=GameActor* '}')? & ('properties' '{' properties+=GameBodyProperty* '}')? &
+		//	('states' '{' states+=GameSpriteState* '}'
 		//	'initialState' initialState=[GameSpriteState] ('gameOverState' gameOverState=[GameSpriteState])?)? & ('events' '{'
 		//	events+=GameEvent* '}')? & ('inputs' '{' inputs+=GameInput* '}')?);
 		@Override public ParserRule getRule() { return rule; }
 		
-		//{GameSprite} 'sprite' name=ValidID 'collisionId' id=INT 'radius' radius=INT ((hasVelocity?='velocity'
-		//velocity=GameVector2d)? & (hasLayer?='layer' layer=[GameLayer] | hasStartPosition?='startPosition'
-		//startPosition=GameVector2d)? & (hasSensor?='sensor' '{' vectors2d+=GameVector2d* '}' 'sensorID' sensorID=INT)? &
-		//(hasActivationRule?='activate' 'if' rule=GameRule)? & ('actors' '{' actors+=GameActor* '}')? & ('properties' '{'
+		//{GameSprite} 'sprite' name=ValidID ((isEnemy?='isEnemy' (('layer' layer=[GameLayer])? & (isDestructable?='destructable'
+		//'byProperty' destroyProperty=[GameBodyProperty])? & (hasVelocity?='velocity' velocity=GameVector2d)? &
+		//(hasActivationRule?='activate' 'if' rule=GameRule)?) | (isItem?='isItem' ((isDestructable?='destructable' 'byProperty'
+		//destroyProperty=[GameBodyProperty])? & (hasVelocity?='velocity' velocity=GameVector2d)?) | isPlayer?='isPlayer'
+		//'startPosition' startPosition=GameVector2d)?) 'collisionId' id=INT 'radius' radius=INT (hasSensor?='sensor' '{'
+		//vectors2d+=GameVector2d* '}' 'sensorID' sensorID=INT)? & ('actors' '{' actors+=GameActor* '}')? & ('properties' '{'
 		//properties+=GameBodyProperty* '}')? & ('states' '{' states+=GameSpriteState* '}' 'initialState'
 		//initialState=[GameSpriteState] ('gameOverState' gameOverState=[GameSpriteState])?)? & ('events' '{' events+=GameEvent*
 		//'}')? & ('inputs' '{' inputs+=GameInput* '}')?)
@@ -1277,248 +1310,353 @@ public class GameDSLGrammarAccess extends AbstractGrammarElementFinder {
 		//ValidID
 		public RuleCall getNameValidIDParserRuleCall_2_0() { return cNameValidIDParserRuleCall_2_0; }
 		
-		//'collisionId'
-		public Keyword getCollisionIdKeyword_3() { return cCollisionIdKeyword_3; }
+		//(isEnemy?='isEnemy' (('layer' layer=[GameLayer])? & (isDestructable?='destructable' 'byProperty'
+		//destroyProperty=[GameBodyProperty])? & (hasVelocity?='velocity' velocity=GameVector2d)? &
+		//(hasActivationRule?='activate' 'if' rule=GameRule)?) | (isItem?='isItem' ((isDestructable?='destructable' 'byProperty'
+		//destroyProperty=[GameBodyProperty])? & (hasVelocity?='velocity' velocity=GameVector2d)?) | isPlayer?='isPlayer'
+		//'startPosition' startPosition=GameVector2d)?) 'collisionId' id=INT 'radius' radius=INT (hasSensor?='sensor' '{'
+		//vectors2d+=GameVector2d* '}' 'sensorID' sensorID=INT)? & ('actors' '{' actors+=GameActor* '}')? & ('properties' '{'
+		//properties+=GameBodyProperty* '}')? & ('states' '{' states+=GameSpriteState* '}' 'initialState'
+		//initialState=[GameSpriteState] ('gameOverState' gameOverState=[GameSpriteState])?)? & ('events' '{' events+=GameEvent*
+		//'}')? & ('inputs' '{' inputs+=GameInput* '}')?
+		public UnorderedGroup getUnorderedGroup_3() { return cUnorderedGroup_3; }
 		
-		//id=INT
-		public Assignment getIdAssignment_4() { return cIdAssignment_4; }
+		//(isEnemy?='isEnemy' (('layer' layer=[GameLayer])? & (isDestructable?='destructable' 'byProperty'
+		//destroyProperty=[GameBodyProperty])? & (hasVelocity?='velocity' velocity=GameVector2d)? &
+		//(hasActivationRule?='activate' 'if' rule=GameRule)?) | (isItem?='isItem' ((isDestructable?='destructable' 'byProperty'
+		//destroyProperty=[GameBodyProperty])? & (hasVelocity?='velocity' velocity=GameVector2d)?) | isPlayer?='isPlayer'
+		//'startPosition' startPosition=GameVector2d)?) 'collisionId' id=INT 'radius' radius=INT (hasSensor?='sensor' '{'
+		//vectors2d+=GameVector2d* '}' 'sensorID' sensorID=INT)?
+		public Group getGroup_3_0() { return cGroup_3_0; }
 		
-		//INT
-		public RuleCall getIdINTTerminalRuleCall_4_0() { return cIdINTTerminalRuleCall_4_0; }
+		//isEnemy?='isEnemy' (('layer' layer=[GameLayer])? & (isDestructable?='destructable' 'byProperty'
+		//destroyProperty=[GameBodyProperty])? & (hasVelocity?='velocity' velocity=GameVector2d)? &
+		//(hasActivationRule?='activate' 'if' rule=GameRule)?) | (isItem?='isItem' ((isDestructable?='destructable' 'byProperty'
+		//destroyProperty=[GameBodyProperty])? & (hasVelocity?='velocity' velocity=GameVector2d)?) | isPlayer?='isPlayer'
+		//'startPosition' startPosition=GameVector2d)?
+		public Alternatives getAlternatives_3_0_0() { return cAlternatives_3_0_0; }
 		
-		//'radius'
-		public Keyword getRadiusKeyword_5() { return cRadiusKeyword_5; }
+		//isEnemy?='isEnemy' (('layer' layer=[GameLayer])? & (isDestructable?='destructable' 'byProperty'
+		//destroyProperty=[GameBodyProperty])? & (hasVelocity?='velocity' velocity=GameVector2d)? &
+		//(hasActivationRule?='activate' 'if' rule=GameRule)?)
+		public Group getGroup_3_0_0_0() { return cGroup_3_0_0_0; }
 		
-		//radius=INT
-		public Assignment getRadiusAssignment_6() { return cRadiusAssignment_6; }
+		//isEnemy?='isEnemy'
+		public Assignment getIsEnemyAssignment_3_0_0_0_0() { return cIsEnemyAssignment_3_0_0_0_0; }
 		
-		//INT
-		public RuleCall getRadiusINTTerminalRuleCall_6_0() { return cRadiusINTTerminalRuleCall_6_0; }
+		//'isEnemy'
+		public Keyword getIsEnemyIsEnemyKeyword_3_0_0_0_0_0() { return cIsEnemyIsEnemyKeyword_3_0_0_0_0_0; }
 		
-		//(hasVelocity?='velocity' velocity=GameVector2d)? & (hasLayer?='layer' layer=[GameLayer] |
-		//hasStartPosition?='startPosition' startPosition=GameVector2d)? & (hasSensor?='sensor' '{' vectors2d+=GameVector2d* '}'
-		//'sensorID' sensorID=INT)? & (hasActivationRule?='activate' 'if' rule=GameRule)? & ('actors' '{' actors+=GameActor*
-		//'}')? & ('properties' '{' properties+=GameBodyProperty* '}')? & ('states' '{' states+=GameSpriteState* '}'
-		//'initialState' initialState=[GameSpriteState] ('gameOverState' gameOverState=[GameSpriteState])?)? & ('events' '{'
-		//events+=GameEvent* '}')? & ('inputs' '{' inputs+=GameInput* '}')?
-		public UnorderedGroup getUnorderedGroup_7() { return cUnorderedGroup_7; }
+		//('layer' layer=[GameLayer])? & (isDestructable?='destructable' 'byProperty' destroyProperty=[GameBodyProperty])? &
+		//(hasVelocity?='velocity' velocity=GameVector2d)? & (hasActivationRule?='activate' 'if' rule=GameRule)?
+		public UnorderedGroup getUnorderedGroup_3_0_0_0_1() { return cUnorderedGroup_3_0_0_0_1; }
 		
-		//(hasVelocity?='velocity' velocity=GameVector2d)?
-		public Group getGroup_7_0() { return cGroup_7_0; }
-		
-		//hasVelocity?='velocity'
-		public Assignment getHasVelocityAssignment_7_0_0() { return cHasVelocityAssignment_7_0_0; }
-		
-		//'velocity'
-		public Keyword getHasVelocityVelocityKeyword_7_0_0_0() { return cHasVelocityVelocityKeyword_7_0_0_0; }
-		
-		//velocity=GameVector2d
-		public Assignment getVelocityAssignment_7_0_1() { return cVelocityAssignment_7_0_1; }
-		
-		//GameVector2d
-		public RuleCall getVelocityGameVector2dParserRuleCall_7_0_1_0() { return cVelocityGameVector2dParserRuleCall_7_0_1_0; }
-		
-		//(hasLayer?='layer' layer=[GameLayer] | hasStartPosition?='startPosition' startPosition=GameVector2d)?
-		public Alternatives getAlternatives_7_1() { return cAlternatives_7_1; }
-		
-		//hasLayer?='layer' layer=[GameLayer]
-		public Group getGroup_7_1_0() { return cGroup_7_1_0; }
-		
-		//hasLayer?='layer'
-		public Assignment getHasLayerAssignment_7_1_0_0() { return cHasLayerAssignment_7_1_0_0; }
+		//('layer' layer=[GameLayer])?
+		public Group getGroup_3_0_0_0_1_0() { return cGroup_3_0_0_0_1_0; }
 		
 		//'layer'
-		public Keyword getHasLayerLayerKeyword_7_1_0_0_0() { return cHasLayerLayerKeyword_7_1_0_0_0; }
+		public Keyword getLayerKeyword_3_0_0_0_1_0_0() { return cLayerKeyword_3_0_0_0_1_0_0; }
 		
 		//layer=[GameLayer]
-		public Assignment getLayerAssignment_7_1_0_1() { return cLayerAssignment_7_1_0_1; }
+		public Assignment getLayerAssignment_3_0_0_0_1_0_1() { return cLayerAssignment_3_0_0_0_1_0_1; }
 		
 		//[GameLayer]
-		public CrossReference getLayerGameLayerCrossReference_7_1_0_1_0() { return cLayerGameLayerCrossReference_7_1_0_1_0; }
+		public CrossReference getLayerGameLayerCrossReference_3_0_0_0_1_0_1_0() { return cLayerGameLayerCrossReference_3_0_0_0_1_0_1_0; }
 		
 		//ID
-		public RuleCall getLayerGameLayerIDTerminalRuleCall_7_1_0_1_0_1() { return cLayerGameLayerIDTerminalRuleCall_7_1_0_1_0_1; }
+		public RuleCall getLayerGameLayerIDTerminalRuleCall_3_0_0_0_1_0_1_0_1() { return cLayerGameLayerIDTerminalRuleCall_3_0_0_0_1_0_1_0_1; }
 		
-		//hasStartPosition?='startPosition' startPosition=GameVector2d
-		public Group getGroup_7_1_1() { return cGroup_7_1_1; }
+		//(isDestructable?='destructable' 'byProperty' destroyProperty=[GameBodyProperty])?
+		public Group getGroup_3_0_0_0_1_1() { return cGroup_3_0_0_0_1_1; }
 		
-		//hasStartPosition?='startPosition'
-		public Assignment getHasStartPositionAssignment_7_1_1_0() { return cHasStartPositionAssignment_7_1_1_0; }
+		//isDestructable?='destructable'
+		public Assignment getIsDestructableAssignment_3_0_0_0_1_1_0() { return cIsDestructableAssignment_3_0_0_0_1_1_0; }
 		
-		//'startPosition'
-		public Keyword getHasStartPositionStartPositionKeyword_7_1_1_0_0() { return cHasStartPositionStartPositionKeyword_7_1_1_0_0; }
+		//'destructable'
+		public Keyword getIsDestructableDestructableKeyword_3_0_0_0_1_1_0_0() { return cIsDestructableDestructableKeyword_3_0_0_0_1_1_0_0; }
 		
-		//startPosition=GameVector2d
-		public Assignment getStartPositionAssignment_7_1_1_1() { return cStartPositionAssignment_7_1_1_1; }
+		//'byProperty'
+		public Keyword getByPropertyKeyword_3_0_0_0_1_1_1() { return cByPropertyKeyword_3_0_0_0_1_1_1; }
+		
+		//destroyProperty=[GameBodyProperty]
+		public Assignment getDestroyPropertyAssignment_3_0_0_0_1_1_2() { return cDestroyPropertyAssignment_3_0_0_0_1_1_2; }
+		
+		//[GameBodyProperty]
+		public CrossReference getDestroyPropertyGameBodyPropertyCrossReference_3_0_0_0_1_1_2_0() { return cDestroyPropertyGameBodyPropertyCrossReference_3_0_0_0_1_1_2_0; }
+		
+		//ID
+		public RuleCall getDestroyPropertyGameBodyPropertyIDTerminalRuleCall_3_0_0_0_1_1_2_0_1() { return cDestroyPropertyGameBodyPropertyIDTerminalRuleCall_3_0_0_0_1_1_2_0_1; }
+		
+		//(hasVelocity?='velocity' velocity=GameVector2d)?
+		public Group getGroup_3_0_0_0_1_2() { return cGroup_3_0_0_0_1_2; }
+		
+		//hasVelocity?='velocity'
+		public Assignment getHasVelocityAssignment_3_0_0_0_1_2_0() { return cHasVelocityAssignment_3_0_0_0_1_2_0; }
+		
+		//'velocity'
+		public Keyword getHasVelocityVelocityKeyword_3_0_0_0_1_2_0_0() { return cHasVelocityVelocityKeyword_3_0_0_0_1_2_0_0; }
+		
+		//velocity=GameVector2d
+		public Assignment getVelocityAssignment_3_0_0_0_1_2_1() { return cVelocityAssignment_3_0_0_0_1_2_1; }
 		
 		//GameVector2d
-		public RuleCall getStartPositionGameVector2dParserRuleCall_7_1_1_1_0() { return cStartPositionGameVector2dParserRuleCall_7_1_1_1_0; }
-		
-		//(hasSensor?='sensor' '{' vectors2d+=GameVector2d* '}' 'sensorID' sensorID=INT)?
-		public Group getGroup_7_2() { return cGroup_7_2; }
-		
-		//hasSensor?='sensor'
-		public Assignment getHasSensorAssignment_7_2_0() { return cHasSensorAssignment_7_2_0; }
-		
-		//'sensor'
-		public Keyword getHasSensorSensorKeyword_7_2_0_0() { return cHasSensorSensorKeyword_7_2_0_0; }
-		
-		//'{'
-		public Keyword getLeftCurlyBracketKeyword_7_2_1() { return cLeftCurlyBracketKeyword_7_2_1; }
-		
-		//vectors2d+=GameVector2d*
-		public Assignment getVectors2dAssignment_7_2_2() { return cVectors2dAssignment_7_2_2; }
-		
-		//GameVector2d
-		public RuleCall getVectors2dGameVector2dParserRuleCall_7_2_2_0() { return cVectors2dGameVector2dParserRuleCall_7_2_2_0; }
-		
-		//'}'
-		public Keyword getRightCurlyBracketKeyword_7_2_3() { return cRightCurlyBracketKeyword_7_2_3; }
-		
-		//'sensorID'
-		public Keyword getSensorIDKeyword_7_2_4() { return cSensorIDKeyword_7_2_4; }
-		
-		//sensorID=INT
-		public Assignment getSensorIDAssignment_7_2_5() { return cSensorIDAssignment_7_2_5; }
-		
-		//INT
-		public RuleCall getSensorIDINTTerminalRuleCall_7_2_5_0() { return cSensorIDINTTerminalRuleCall_7_2_5_0; }
+		public RuleCall getVelocityGameVector2dParserRuleCall_3_0_0_0_1_2_1_0() { return cVelocityGameVector2dParserRuleCall_3_0_0_0_1_2_1_0; }
 		
 		//(hasActivationRule?='activate' 'if' rule=GameRule)?
-		public Group getGroup_7_3() { return cGroup_7_3; }
+		public Group getGroup_3_0_0_0_1_3() { return cGroup_3_0_0_0_1_3; }
 		
 		//hasActivationRule?='activate'
-		public Assignment getHasActivationRuleAssignment_7_3_0() { return cHasActivationRuleAssignment_7_3_0; }
+		public Assignment getHasActivationRuleAssignment_3_0_0_0_1_3_0() { return cHasActivationRuleAssignment_3_0_0_0_1_3_0; }
 		
 		//'activate'
-		public Keyword getHasActivationRuleActivateKeyword_7_3_0_0() { return cHasActivationRuleActivateKeyword_7_3_0_0; }
+		public Keyword getHasActivationRuleActivateKeyword_3_0_0_0_1_3_0_0() { return cHasActivationRuleActivateKeyword_3_0_0_0_1_3_0_0; }
 		
 		//'if'
-		public Keyword getIfKeyword_7_3_1() { return cIfKeyword_7_3_1; }
+		public Keyword getIfKeyword_3_0_0_0_1_3_1() { return cIfKeyword_3_0_0_0_1_3_1; }
 		
 		//rule=GameRule
-		public Assignment getRuleAssignment_7_3_2() { return cRuleAssignment_7_3_2; }
+		public Assignment getRuleAssignment_3_0_0_0_1_3_2() { return cRuleAssignment_3_0_0_0_1_3_2; }
 		
 		//GameRule
-		public RuleCall getRuleGameRuleParserRuleCall_7_3_2_0() { return cRuleGameRuleParserRuleCall_7_3_2_0; }
+		public RuleCall getRuleGameRuleParserRuleCall_3_0_0_0_1_3_2_0() { return cRuleGameRuleParserRuleCall_3_0_0_0_1_3_2_0; }
+		
+		//(isItem?='isItem' ((isDestructable?='destructable' 'byProperty' destroyProperty=[GameBodyProperty])? &
+		//(hasVelocity?='velocity' velocity=GameVector2d)?) | isPlayer?='isPlayer' 'startPosition' startPosition=GameVector2d)?
+		public Alternatives getAlternatives_3_0_0_1() { return cAlternatives_3_0_0_1; }
+		
+		//isItem?='isItem' ((isDestructable?='destructable' 'byProperty' destroyProperty=[GameBodyProperty])? &
+		//(hasVelocity?='velocity' velocity=GameVector2d)?)
+		public Group getGroup_3_0_0_1_0() { return cGroup_3_0_0_1_0; }
+		
+		//isItem?='isItem'
+		public Assignment getIsItemAssignment_3_0_0_1_0_0() { return cIsItemAssignment_3_0_0_1_0_0; }
+		
+		//'isItem'
+		public Keyword getIsItemIsItemKeyword_3_0_0_1_0_0_0() { return cIsItemIsItemKeyword_3_0_0_1_0_0_0; }
+		
+		//(isDestructable?='destructable' 'byProperty' destroyProperty=[GameBodyProperty])? & (hasVelocity?='velocity'
+		//velocity=GameVector2d)?
+		public UnorderedGroup getUnorderedGroup_3_0_0_1_0_1() { return cUnorderedGroup_3_0_0_1_0_1; }
+		
+		//(isDestructable?='destructable' 'byProperty' destroyProperty=[GameBodyProperty])?
+		public Group getGroup_3_0_0_1_0_1_0() { return cGroup_3_0_0_1_0_1_0; }
+		
+		//isDestructable?='destructable'
+		public Assignment getIsDestructableAssignment_3_0_0_1_0_1_0_0() { return cIsDestructableAssignment_3_0_0_1_0_1_0_0; }
+		
+		//'destructable'
+		public Keyword getIsDestructableDestructableKeyword_3_0_0_1_0_1_0_0_0() { return cIsDestructableDestructableKeyword_3_0_0_1_0_1_0_0_0; }
+		
+		//'byProperty'
+		public Keyword getByPropertyKeyword_3_0_0_1_0_1_0_1() { return cByPropertyKeyword_3_0_0_1_0_1_0_1; }
+		
+		//destroyProperty=[GameBodyProperty]
+		public Assignment getDestroyPropertyAssignment_3_0_0_1_0_1_0_2() { return cDestroyPropertyAssignment_3_0_0_1_0_1_0_2; }
+		
+		//[GameBodyProperty]
+		public CrossReference getDestroyPropertyGameBodyPropertyCrossReference_3_0_0_1_0_1_0_2_0() { return cDestroyPropertyGameBodyPropertyCrossReference_3_0_0_1_0_1_0_2_0; }
+		
+		//ID
+		public RuleCall getDestroyPropertyGameBodyPropertyIDTerminalRuleCall_3_0_0_1_0_1_0_2_0_1() { return cDestroyPropertyGameBodyPropertyIDTerminalRuleCall_3_0_0_1_0_1_0_2_0_1; }
+		
+		//(hasVelocity?='velocity' velocity=GameVector2d)?
+		public Group getGroup_3_0_0_1_0_1_1() { return cGroup_3_0_0_1_0_1_1; }
+		
+		//hasVelocity?='velocity'
+		public Assignment getHasVelocityAssignment_3_0_0_1_0_1_1_0() { return cHasVelocityAssignment_3_0_0_1_0_1_1_0; }
+		
+		//'velocity'
+		public Keyword getHasVelocityVelocityKeyword_3_0_0_1_0_1_1_0_0() { return cHasVelocityVelocityKeyword_3_0_0_1_0_1_1_0_0; }
+		
+		//velocity=GameVector2d
+		public Assignment getVelocityAssignment_3_0_0_1_0_1_1_1() { return cVelocityAssignment_3_0_0_1_0_1_1_1; }
+		
+		//GameVector2d
+		public RuleCall getVelocityGameVector2dParserRuleCall_3_0_0_1_0_1_1_1_0() { return cVelocityGameVector2dParserRuleCall_3_0_0_1_0_1_1_1_0; }
+		
+		//isPlayer?='isPlayer' 'startPosition' startPosition=GameVector2d
+		public Group getGroup_3_0_0_1_1() { return cGroup_3_0_0_1_1; }
+		
+		//isPlayer?='isPlayer'
+		public Assignment getIsPlayerAssignment_3_0_0_1_1_0() { return cIsPlayerAssignment_3_0_0_1_1_0; }
+		
+		//'isPlayer'
+		public Keyword getIsPlayerIsPlayerKeyword_3_0_0_1_1_0_0() { return cIsPlayerIsPlayerKeyword_3_0_0_1_1_0_0; }
+		
+		//'startPosition'
+		public Keyword getStartPositionKeyword_3_0_0_1_1_1() { return cStartPositionKeyword_3_0_0_1_1_1; }
+		
+		//startPosition=GameVector2d
+		public Assignment getStartPositionAssignment_3_0_0_1_1_2() { return cStartPositionAssignment_3_0_0_1_1_2; }
+		
+		//GameVector2d
+		public RuleCall getStartPositionGameVector2dParserRuleCall_3_0_0_1_1_2_0() { return cStartPositionGameVector2dParserRuleCall_3_0_0_1_1_2_0; }
+		
+		//'collisionId'
+		public Keyword getCollisionIdKeyword_3_0_1() { return cCollisionIdKeyword_3_0_1; }
+		
+		//id=INT
+		public Assignment getIdAssignment_3_0_2() { return cIdAssignment_3_0_2; }
+		
+		//INT
+		public RuleCall getIdINTTerminalRuleCall_3_0_2_0() { return cIdINTTerminalRuleCall_3_0_2_0; }
+		
+		//'radius'
+		public Keyword getRadiusKeyword_3_0_3() { return cRadiusKeyword_3_0_3; }
+		
+		//radius=INT
+		public Assignment getRadiusAssignment_3_0_4() { return cRadiusAssignment_3_0_4; }
+		
+		//INT
+		public RuleCall getRadiusINTTerminalRuleCall_3_0_4_0() { return cRadiusINTTerminalRuleCall_3_0_4_0; }
+		
+		//(hasSensor?='sensor' '{' vectors2d+=GameVector2d* '}' 'sensorID' sensorID=INT)?
+		public Group getGroup_3_0_5() { return cGroup_3_0_5; }
+		
+		//hasSensor?='sensor'
+		public Assignment getHasSensorAssignment_3_0_5_0() { return cHasSensorAssignment_3_0_5_0; }
+		
+		//'sensor'
+		public Keyword getHasSensorSensorKeyword_3_0_5_0_0() { return cHasSensorSensorKeyword_3_0_5_0_0; }
+		
+		//'{'
+		public Keyword getLeftCurlyBracketKeyword_3_0_5_1() { return cLeftCurlyBracketKeyword_3_0_5_1; }
+		
+		//vectors2d+=GameVector2d*
+		public Assignment getVectors2dAssignment_3_0_5_2() { return cVectors2dAssignment_3_0_5_2; }
+		
+		//GameVector2d
+		public RuleCall getVectors2dGameVector2dParserRuleCall_3_0_5_2_0() { return cVectors2dGameVector2dParserRuleCall_3_0_5_2_0; }
+		
+		//'}'
+		public Keyword getRightCurlyBracketKeyword_3_0_5_3() { return cRightCurlyBracketKeyword_3_0_5_3; }
+		
+		//'sensorID'
+		public Keyword getSensorIDKeyword_3_0_5_4() { return cSensorIDKeyword_3_0_5_4; }
+		
+		//sensorID=INT
+		public Assignment getSensorIDAssignment_3_0_5_5() { return cSensorIDAssignment_3_0_5_5; }
+		
+		//INT
+		public RuleCall getSensorIDINTTerminalRuleCall_3_0_5_5_0() { return cSensorIDINTTerminalRuleCall_3_0_5_5_0; }
 		
 		//('actors' '{' actors+=GameActor* '}')?
-		public Group getGroup_7_4() { return cGroup_7_4; }
+		public Group getGroup_3_1() { return cGroup_3_1; }
 		
 		//'actors'
-		public Keyword getActorsKeyword_7_4_0() { return cActorsKeyword_7_4_0; }
+		public Keyword getActorsKeyword_3_1_0() { return cActorsKeyword_3_1_0; }
 		
 		//'{'
-		public Keyword getLeftCurlyBracketKeyword_7_4_1() { return cLeftCurlyBracketKeyword_7_4_1; }
+		public Keyword getLeftCurlyBracketKeyword_3_1_1() { return cLeftCurlyBracketKeyword_3_1_1; }
 		
 		//actors+=GameActor*
-		public Assignment getActorsAssignment_7_4_2() { return cActorsAssignment_7_4_2; }
+		public Assignment getActorsAssignment_3_1_2() { return cActorsAssignment_3_1_2; }
 		
 		//GameActor
-		public RuleCall getActorsGameActorParserRuleCall_7_4_2_0() { return cActorsGameActorParserRuleCall_7_4_2_0; }
+		public RuleCall getActorsGameActorParserRuleCall_3_1_2_0() { return cActorsGameActorParserRuleCall_3_1_2_0; }
 		
 		//'}'
-		public Keyword getRightCurlyBracketKeyword_7_4_3() { return cRightCurlyBracketKeyword_7_4_3; }
+		public Keyword getRightCurlyBracketKeyword_3_1_3() { return cRightCurlyBracketKeyword_3_1_3; }
 		
 		//('properties' '{' properties+=GameBodyProperty* '}')?
-		public Group getGroup_7_5() { return cGroup_7_5; }
+		public Group getGroup_3_2() { return cGroup_3_2; }
 		
 		//'properties'
-		public Keyword getPropertiesKeyword_7_5_0() { return cPropertiesKeyword_7_5_0; }
+		public Keyword getPropertiesKeyword_3_2_0() { return cPropertiesKeyword_3_2_0; }
 		
 		//'{'
-		public Keyword getLeftCurlyBracketKeyword_7_5_1() { return cLeftCurlyBracketKeyword_7_5_1; }
+		public Keyword getLeftCurlyBracketKeyword_3_2_1() { return cLeftCurlyBracketKeyword_3_2_1; }
 		
 		//properties+=GameBodyProperty*
-		public Assignment getPropertiesAssignment_7_5_2() { return cPropertiesAssignment_7_5_2; }
+		public Assignment getPropertiesAssignment_3_2_2() { return cPropertiesAssignment_3_2_2; }
 		
 		//GameBodyProperty
-		public RuleCall getPropertiesGameBodyPropertyParserRuleCall_7_5_2_0() { return cPropertiesGameBodyPropertyParserRuleCall_7_5_2_0; }
+		public RuleCall getPropertiesGameBodyPropertyParserRuleCall_3_2_2_0() { return cPropertiesGameBodyPropertyParserRuleCall_3_2_2_0; }
 		
 		//'}'
-		public Keyword getRightCurlyBracketKeyword_7_5_3() { return cRightCurlyBracketKeyword_7_5_3; }
+		public Keyword getRightCurlyBracketKeyword_3_2_3() { return cRightCurlyBracketKeyword_3_2_3; }
 		
 		//('states' '{' states+=GameSpriteState* '}' 'initialState' initialState=[GameSpriteState] ('gameOverState'
 		//gameOverState=[GameSpriteState])?)?
-		public Group getGroup_7_6() { return cGroup_7_6; }
+		public Group getGroup_3_3() { return cGroup_3_3; }
 		
 		//'states'
-		public Keyword getStatesKeyword_7_6_0() { return cStatesKeyword_7_6_0; }
+		public Keyword getStatesKeyword_3_3_0() { return cStatesKeyword_3_3_0; }
 		
 		//'{'
-		public Keyword getLeftCurlyBracketKeyword_7_6_1() { return cLeftCurlyBracketKeyword_7_6_1; }
+		public Keyword getLeftCurlyBracketKeyword_3_3_1() { return cLeftCurlyBracketKeyword_3_3_1; }
 		
 		//states+=GameSpriteState*
-		public Assignment getStatesAssignment_7_6_2() { return cStatesAssignment_7_6_2; }
+		public Assignment getStatesAssignment_3_3_2() { return cStatesAssignment_3_3_2; }
 		
 		//GameSpriteState
-		public RuleCall getStatesGameSpriteStateParserRuleCall_7_6_2_0() { return cStatesGameSpriteStateParserRuleCall_7_6_2_0; }
+		public RuleCall getStatesGameSpriteStateParserRuleCall_3_3_2_0() { return cStatesGameSpriteStateParserRuleCall_3_3_2_0; }
 		
 		//'}'
-		public Keyword getRightCurlyBracketKeyword_7_6_3() { return cRightCurlyBracketKeyword_7_6_3; }
+		public Keyword getRightCurlyBracketKeyword_3_3_3() { return cRightCurlyBracketKeyword_3_3_3; }
 		
 		//'initialState'
-		public Keyword getInitialStateKeyword_7_6_4() { return cInitialStateKeyword_7_6_4; }
+		public Keyword getInitialStateKeyword_3_3_4() { return cInitialStateKeyword_3_3_4; }
 		
 		//initialState=[GameSpriteState]
-		public Assignment getInitialStateAssignment_7_6_5() { return cInitialStateAssignment_7_6_5; }
+		public Assignment getInitialStateAssignment_3_3_5() { return cInitialStateAssignment_3_3_5; }
 		
 		//[GameSpriteState]
-		public CrossReference getInitialStateGameSpriteStateCrossReference_7_6_5_0() { return cInitialStateGameSpriteStateCrossReference_7_6_5_0; }
+		public CrossReference getInitialStateGameSpriteStateCrossReference_3_3_5_0() { return cInitialStateGameSpriteStateCrossReference_3_3_5_0; }
 		
 		//ID
-		public RuleCall getInitialStateGameSpriteStateIDTerminalRuleCall_7_6_5_0_1() { return cInitialStateGameSpriteStateIDTerminalRuleCall_7_6_5_0_1; }
+		public RuleCall getInitialStateGameSpriteStateIDTerminalRuleCall_3_3_5_0_1() { return cInitialStateGameSpriteStateIDTerminalRuleCall_3_3_5_0_1; }
 		
 		//('gameOverState' gameOverState=[GameSpriteState])?
-		public Group getGroup_7_6_6() { return cGroup_7_6_6; }
+		public Group getGroup_3_3_6() { return cGroup_3_3_6; }
 		
 		//'gameOverState'
-		public Keyword getGameOverStateKeyword_7_6_6_0() { return cGameOverStateKeyword_7_6_6_0; }
+		public Keyword getGameOverStateKeyword_3_3_6_0() { return cGameOverStateKeyword_3_3_6_0; }
 		
 		//gameOverState=[GameSpriteState]
-		public Assignment getGameOverStateAssignment_7_6_6_1() { return cGameOverStateAssignment_7_6_6_1; }
+		public Assignment getGameOverStateAssignment_3_3_6_1() { return cGameOverStateAssignment_3_3_6_1; }
 		
 		//[GameSpriteState]
-		public CrossReference getGameOverStateGameSpriteStateCrossReference_7_6_6_1_0() { return cGameOverStateGameSpriteStateCrossReference_7_6_6_1_0; }
+		public CrossReference getGameOverStateGameSpriteStateCrossReference_3_3_6_1_0() { return cGameOverStateGameSpriteStateCrossReference_3_3_6_1_0; }
 		
 		//ID
-		public RuleCall getGameOverStateGameSpriteStateIDTerminalRuleCall_7_6_6_1_0_1() { return cGameOverStateGameSpriteStateIDTerminalRuleCall_7_6_6_1_0_1; }
+		public RuleCall getGameOverStateGameSpriteStateIDTerminalRuleCall_3_3_6_1_0_1() { return cGameOverStateGameSpriteStateIDTerminalRuleCall_3_3_6_1_0_1; }
 		
 		//('events' '{' events+=GameEvent* '}')?
-		public Group getGroup_7_7() { return cGroup_7_7; }
+		public Group getGroup_3_4() { return cGroup_3_4; }
 		
 		//'events'
-		public Keyword getEventsKeyword_7_7_0() { return cEventsKeyword_7_7_0; }
+		public Keyword getEventsKeyword_3_4_0() { return cEventsKeyword_3_4_0; }
 		
 		//'{'
-		public Keyword getLeftCurlyBracketKeyword_7_7_1() { return cLeftCurlyBracketKeyword_7_7_1; }
+		public Keyword getLeftCurlyBracketKeyword_3_4_1() { return cLeftCurlyBracketKeyword_3_4_1; }
 		
 		//events+=GameEvent*
-		public Assignment getEventsAssignment_7_7_2() { return cEventsAssignment_7_7_2; }
+		public Assignment getEventsAssignment_3_4_2() { return cEventsAssignment_3_4_2; }
 		
 		//GameEvent
-		public RuleCall getEventsGameEventParserRuleCall_7_7_2_0() { return cEventsGameEventParserRuleCall_7_7_2_0; }
+		public RuleCall getEventsGameEventParserRuleCall_3_4_2_0() { return cEventsGameEventParserRuleCall_3_4_2_0; }
 		
 		//'}'
-		public Keyword getRightCurlyBracketKeyword_7_7_3() { return cRightCurlyBracketKeyword_7_7_3; }
+		public Keyword getRightCurlyBracketKeyword_3_4_3() { return cRightCurlyBracketKeyword_3_4_3; }
 		
 		//('inputs' '{' inputs+=GameInput* '}')?
-		public Group getGroup_7_8() { return cGroup_7_8; }
+		public Group getGroup_3_5() { return cGroup_3_5; }
 		
 		//'inputs'
-		public Keyword getInputsKeyword_7_8_0() { return cInputsKeyword_7_8_0; }
+		public Keyword getInputsKeyword_3_5_0() { return cInputsKeyword_3_5_0; }
 		
 		//'{'
-		public Keyword getLeftCurlyBracketKeyword_7_8_1() { return cLeftCurlyBracketKeyword_7_8_1; }
+		public Keyword getLeftCurlyBracketKeyword_3_5_1() { return cLeftCurlyBracketKeyword_3_5_1; }
 		
 		//inputs+=GameInput*
-		public Assignment getInputsAssignment_7_8_2() { return cInputsAssignment_7_8_2; }
+		public Assignment getInputsAssignment_3_5_2() { return cInputsAssignment_3_5_2; }
 		
 		//GameInput
-		public RuleCall getInputsGameInputParserRuleCall_7_8_2_0() { return cInputsGameInputParserRuleCall_7_8_2_0; }
+		public RuleCall getInputsGameInputParserRuleCall_3_5_2_0() { return cInputsGameInputParserRuleCall_3_5_2_0; }
 		
 		//'}'
-		public Keyword getRightCurlyBracketKeyword_7_8_3() { return cRightCurlyBracketKeyword_7_8_3; }
+		public Keyword getRightCurlyBracketKeyword_3_5_3() { return cRightCurlyBracketKeyword_3_5_3; }
 	}
 	public class GameInputElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "com.hypermodel.games.engine.GameDSL.GameInput");
@@ -2937,12 +3075,14 @@ public class GameDSLGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//GameSprite:
-	//	{GameSprite} 'sprite' name=ValidID 'collisionId' id=INT
-	//	'radius' radius=INT ((hasVelocity?='velocity' velocity=GameVector2d)? & (hasLayer?='layer' layer=[GameLayer] |
-	//	hasStartPosition?='startPosition' startPosition=GameVector2d)? & (hasSensor?='sensor' '{' vectors2d+=GameVector2d*
-	//	'}' 'sensorID' sensorID=INT)? & (hasActivationRule?='activate' 'if' rule=GameRule)? & ('actors' '{'
-	//	actors+=GameActor* '}')? & ('properties' '{' properties+=GameBodyProperty* '}')? & ('states' '{'
-	//	states+=GameSpriteState* '}'
+	//	{GameSprite} 'sprite' name=ValidID ((isEnemy?='isEnemy' (('layer' layer=[GameLayer])? &
+	//	(isDestructable?='destructable' 'byProperty' destroyProperty=[GameBodyProperty])? & (hasVelocity?='velocity'
+	//	velocity=GameVector2d)? & (hasActivationRule?='activate' 'if' rule=GameRule)?) | (isItem?='isItem'
+	//	((isDestructable?='destructable' 'byProperty' destroyProperty=[GameBodyProperty])? & (hasVelocity?='velocity'
+	//	velocity=GameVector2d)?) | isPlayer?='isPlayer' 'startPosition' startPosition=GameVector2d)?)
+	//	'collisionId' id=INT 'radius' radius=INT (hasSensor?='sensor' '{' vectors2d+=GameVector2d* '}' 'sensorID'
+	//	sensorID=INT)? & ('actors' '{' actors+=GameActor* '}')? & ('properties' '{' properties+=GameBodyProperty* '}')? &
+	//	('states' '{' states+=GameSpriteState* '}'
 	//	'initialState' initialState=[GameSpriteState] ('gameOverState' gameOverState=[GameSpriteState])?)? & ('events' '{'
 	//	events+=GameEvent* '}')? & ('inputs' '{' inputs+=GameInput* '}')?);
 	public GameSpriteElements getGameSpriteAccess() {

@@ -92,13 +92,21 @@ GameTile:
 	(hasTileLayer?='tileLayer' tileLayer=[GameLayer])?;
 	
 GameSprite:
-	{GameSprite} 'sprite' name=ValidID 'collisionId' id=INT 
-	'radius' radius=INT
-	((hasVelocity?='velocity' velocity=GameVector2d)? &
-	((hasLayer?='layer' layer=[GameLayer]) |
-	(hasStartPosition?='startPosition' startPosition=GameVector2d))? &
+	{GameSprite} 'sprite' name=ValidID 
+	(
+	(isEnemy?='isEnemy' 
+		(('layer' layer=[GameLayer])? & 
+		(isDestructable?='destructable' 'byProperty' destroyProperty=[GameBodyProperty])? & 
+		(hasVelocity?='velocity' velocity=GameVector2d)? &
+		(hasActivationRule?='activate' 'if' rule=GameRule)?)
+	|
+	(isItem?='isItem' 
+		((isDestructable?='destructable' 'byProperty' destroyProperty=[GameBodyProperty])? & 
+		(hasVelocity?='velocity' velocity=GameVector2d)?)
+	|
+	(isPlayer?='isPlayer' 'startPosition' startPosition=GameVector2d))?)
+	'collisionId' id=INT 'radius' radius=INT
 	(hasSensor?='sensor' '{' vectors2d+=GameVector2d* '}' 'sensorID' sensorID=INT)? &
-	(hasActivationRule?='activate' 'if' rule=GameRule)? &
 	('actors' '{' actors+=GameActor* '}')? &
 	('properties' '{' properties+=GameBodyProperty* '}')? & 
 	('states' '{' states+=GameSpriteState* '}' 

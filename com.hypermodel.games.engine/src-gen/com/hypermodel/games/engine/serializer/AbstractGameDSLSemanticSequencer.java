@@ -825,16 +825,27 @@ public abstract class AbstractGameDSLSemanticSequencer extends XbaseWithAnnotati
 	 * Constraint:
 	 *     (
 	 *         name=ValidID 
-	 *         id=INT 
-	 *         radius=INT 
 	 *         (
 	 *             (actors+=GameActor | properties+=GameBodyProperty | events+=GameEvent | inputs+=GameInput)? 
-	 *             (hasVelocity?='velocity' velocity=GameVector2d)? 
-	 *             (hasLayer?='layer' layer=[GameLayer|ID])? 
-	 *             (hasStartPosition?='startPosition' startPosition=GameVector2d)? 
-	 *             (hasActivationRule?='activate' rule=GameRule)? 
-	 *             (hasSensor?='sensor' vectors2d+=GameVector2d* sensorID=INT)? 
-	 *             (states+=GameSpriteState* initialState=[GameSpriteState|ID] gameOverState=[GameSpriteState|ID]?)?
+	 *             (states+=GameSpriteState* initialState=[GameSpriteState|ID] gameOverState=[GameSpriteState|ID]?)? 
+	 *             (
+	 *                 (
+	 *                     (
+	 *                         isEnemy?='isEnemy' 
+	 *                         (
+	 *                             layer=[GameLayer|ID]? 
+	 *                             (isDestructable?='destructable' destroyProperty=[GameBodyProperty|ID])? 
+	 *                             (hasVelocity?='velocity' velocity=GameVector2d)? 
+	 *                             (hasActivationRule?='activate' rule=GameRule)?
+	 *                         )+
+	 *                     ) | 
+	 *                     (isItem?='isItem' ((isDestructable?='destructable' destroyProperty=[GameBodyProperty|ID]) | (hasVelocity?='velocity' velocity=GameVector2d))*) | 
+	 *                     (isPlayer?='isPlayer' startPosition=GameVector2d)
+	 *                 )? 
+	 *                 id=INT 
+	 *                 radius=INT 
+	 *                 (hasSensor?='sensor' vectors2d+=GameVector2d* sensorID=INT)?
+	 *             )?
 	 *         )+
 	 *     )
 	 */

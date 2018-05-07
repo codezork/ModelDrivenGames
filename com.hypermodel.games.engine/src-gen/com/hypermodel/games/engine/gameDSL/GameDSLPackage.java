@@ -928,49 +928,13 @@ public interface GameDSLPackage extends EPackage
   int GAME_SPRITE__NAME = 0;
 
   /**
-   * The feature id for the '<em><b>Id</b></em>' attribute.
+   * The feature id for the '<em><b>Is Enemy</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int GAME_SPRITE__ID = 1;
-
-  /**
-   * The feature id for the '<em><b>Radius</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int GAME_SPRITE__RADIUS = 2;
-
-  /**
-   * The feature id for the '<em><b>Has Velocity</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int GAME_SPRITE__HAS_VELOCITY = 3;
-
-  /**
-   * The feature id for the '<em><b>Velocity</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int GAME_SPRITE__VELOCITY = 4;
-
-  /**
-   * The feature id for the '<em><b>Has Layer</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int GAME_SPRITE__HAS_LAYER = 5;
+  int GAME_SPRITE__IS_ENEMY = 1;
 
   /**
    * The feature id for the '<em><b>Layer</b></em>' reference.
@@ -979,52 +943,43 @@ public interface GameDSLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int GAME_SPRITE__LAYER = 6;
+  int GAME_SPRITE__LAYER = 2;
 
   /**
-   * The feature id for the '<em><b>Has Start Position</b></em>' attribute.
+   * The feature id for the '<em><b>Is Destructable</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int GAME_SPRITE__HAS_START_POSITION = 7;
+  int GAME_SPRITE__IS_DESTRUCTABLE = 3;
 
   /**
-   * The feature id for the '<em><b>Start Position</b></em>' containment reference.
+   * The feature id for the '<em><b>Destroy Property</b></em>' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int GAME_SPRITE__START_POSITION = 8;
+  int GAME_SPRITE__DESTROY_PROPERTY = 4;
 
   /**
-   * The feature id for the '<em><b>Has Sensor</b></em>' attribute.
+   * The feature id for the '<em><b>Has Velocity</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int GAME_SPRITE__HAS_SENSOR = 9;
+  int GAME_SPRITE__HAS_VELOCITY = 5;
 
   /**
-   * The feature id for the '<em><b>Vectors2d</b></em>' containment reference list.
+   * The feature id for the '<em><b>Velocity</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int GAME_SPRITE__VECTORS2D = 10;
-
-  /**
-   * The feature id for the '<em><b>Sensor ID</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int GAME_SPRITE__SENSOR_ID = 11;
+  int GAME_SPRITE__VELOCITY = 6;
 
   /**
    * The feature id for the '<em><b>Has Activation Rule</b></em>' attribute.
@@ -1033,7 +988,7 @@ public interface GameDSLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int GAME_SPRITE__HAS_ACTIVATION_RULE = 12;
+  int GAME_SPRITE__HAS_ACTIVATION_RULE = 7;
 
   /**
    * The feature id for the '<em><b>Rule</b></em>' containment reference.
@@ -1042,7 +997,79 @@ public interface GameDSLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int GAME_SPRITE__RULE = 13;
+  int GAME_SPRITE__RULE = 8;
+
+  /**
+   * The feature id for the '<em><b>Is Item</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int GAME_SPRITE__IS_ITEM = 9;
+
+  /**
+   * The feature id for the '<em><b>Is Player</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int GAME_SPRITE__IS_PLAYER = 10;
+
+  /**
+   * The feature id for the '<em><b>Start Position</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int GAME_SPRITE__START_POSITION = 11;
+
+  /**
+   * The feature id for the '<em><b>Id</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int GAME_SPRITE__ID = 12;
+
+  /**
+   * The feature id for the '<em><b>Radius</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int GAME_SPRITE__RADIUS = 13;
+
+  /**
+   * The feature id for the '<em><b>Has Sensor</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int GAME_SPRITE__HAS_SENSOR = 14;
+
+  /**
+   * The feature id for the '<em><b>Vectors2d</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int GAME_SPRITE__VECTORS2D = 15;
+
+  /**
+   * The feature id for the '<em><b>Sensor ID</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int GAME_SPRITE__SENSOR_ID = 16;
 
   /**
    * The feature id for the '<em><b>Actors</b></em>' containment reference list.
@@ -1051,7 +1078,7 @@ public interface GameDSLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int GAME_SPRITE__ACTORS = 14;
+  int GAME_SPRITE__ACTORS = 17;
 
   /**
    * The feature id for the '<em><b>Properties</b></em>' containment reference list.
@@ -1060,7 +1087,7 @@ public interface GameDSLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int GAME_SPRITE__PROPERTIES = 15;
+  int GAME_SPRITE__PROPERTIES = 18;
 
   /**
    * The feature id for the '<em><b>States</b></em>' containment reference list.
@@ -1069,7 +1096,7 @@ public interface GameDSLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int GAME_SPRITE__STATES = 16;
+  int GAME_SPRITE__STATES = 19;
 
   /**
    * The feature id for the '<em><b>Initial State</b></em>' reference.
@@ -1078,7 +1105,7 @@ public interface GameDSLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int GAME_SPRITE__INITIAL_STATE = 17;
+  int GAME_SPRITE__INITIAL_STATE = 20;
 
   /**
    * The feature id for the '<em><b>Game Over State</b></em>' reference.
@@ -1087,7 +1114,7 @@ public interface GameDSLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int GAME_SPRITE__GAME_OVER_STATE = 18;
+  int GAME_SPRITE__GAME_OVER_STATE = 21;
 
   /**
    * The feature id for the '<em><b>Events</b></em>' containment reference list.
@@ -1096,7 +1123,7 @@ public interface GameDSLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int GAME_SPRITE__EVENTS = 19;
+  int GAME_SPRITE__EVENTS = 22;
 
   /**
    * The feature id for the '<em><b>Inputs</b></em>' containment reference list.
@@ -1105,7 +1132,7 @@ public interface GameDSLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int GAME_SPRITE__INPUTS = 20;
+  int GAME_SPRITE__INPUTS = 23;
 
   /**
    * The number of structural features of the '<em>Game Sprite</em>' class.
@@ -1114,7 +1141,7 @@ public interface GameDSLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int GAME_SPRITE_FEATURE_COUNT = 21;
+  int GAME_SPRITE_FEATURE_COUNT = 24;
 
   /**
    * The meta object id for the '{@link com.hypermodel.games.engine.gameDSL.impl.GameInputImpl <em>Game Input</em>}' class.
@@ -2688,26 +2715,48 @@ public interface GameDSLPackage extends EPackage
   EAttribute getGameSprite_Name();
 
   /**
-   * Returns the meta object for the attribute '{@link com.hypermodel.games.engine.gameDSL.GameSprite#getId <em>Id</em>}'.
+   * Returns the meta object for the attribute '{@link com.hypermodel.games.engine.gameDSL.GameSprite#isIsEnemy <em>Is Enemy</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Id</em>'.
-   * @see com.hypermodel.games.engine.gameDSL.GameSprite#getId()
+   * @return the meta object for the attribute '<em>Is Enemy</em>'.
+   * @see com.hypermodel.games.engine.gameDSL.GameSprite#isIsEnemy()
    * @see #getGameSprite()
    * @generated
    */
-  EAttribute getGameSprite_Id();
+  EAttribute getGameSprite_IsEnemy();
 
   /**
-   * Returns the meta object for the attribute '{@link com.hypermodel.games.engine.gameDSL.GameSprite#getRadius <em>Radius</em>}'.
+   * Returns the meta object for the reference '{@link com.hypermodel.games.engine.gameDSL.GameSprite#getLayer <em>Layer</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Radius</em>'.
-   * @see com.hypermodel.games.engine.gameDSL.GameSprite#getRadius()
+   * @return the meta object for the reference '<em>Layer</em>'.
+   * @see com.hypermodel.games.engine.gameDSL.GameSprite#getLayer()
    * @see #getGameSprite()
    * @generated
    */
-  EAttribute getGameSprite_Radius();
+  EReference getGameSprite_Layer();
+
+  /**
+   * Returns the meta object for the attribute '{@link com.hypermodel.games.engine.gameDSL.GameSprite#isIsDestructable <em>Is Destructable</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Is Destructable</em>'.
+   * @see com.hypermodel.games.engine.gameDSL.GameSprite#isIsDestructable()
+   * @see #getGameSprite()
+   * @generated
+   */
+  EAttribute getGameSprite_IsDestructable();
+
+  /**
+   * Returns the meta object for the reference '{@link com.hypermodel.games.engine.gameDSL.GameSprite#getDestroyProperty <em>Destroy Property</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the reference '<em>Destroy Property</em>'.
+   * @see com.hypermodel.games.engine.gameDSL.GameSprite#getDestroyProperty()
+   * @see #getGameSprite()
+   * @generated
+   */
+  EReference getGameSprite_DestroyProperty();
 
   /**
    * Returns the meta object for the attribute '{@link com.hypermodel.games.engine.gameDSL.GameSprite#isHasVelocity <em>Has Velocity</em>}'.
@@ -2732,37 +2781,48 @@ public interface GameDSLPackage extends EPackage
   EReference getGameSprite_Velocity();
 
   /**
-   * Returns the meta object for the attribute '{@link com.hypermodel.games.engine.gameDSL.GameSprite#isHasLayer <em>Has Layer</em>}'.
+   * Returns the meta object for the attribute '{@link com.hypermodel.games.engine.gameDSL.GameSprite#isHasActivationRule <em>Has Activation Rule</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Has Layer</em>'.
-   * @see com.hypermodel.games.engine.gameDSL.GameSprite#isHasLayer()
+   * @return the meta object for the attribute '<em>Has Activation Rule</em>'.
+   * @see com.hypermodel.games.engine.gameDSL.GameSprite#isHasActivationRule()
    * @see #getGameSprite()
    * @generated
    */
-  EAttribute getGameSprite_HasLayer();
+  EAttribute getGameSprite_HasActivationRule();
 
   /**
-   * Returns the meta object for the reference '{@link com.hypermodel.games.engine.gameDSL.GameSprite#getLayer <em>Layer</em>}'.
+   * Returns the meta object for the containment reference '{@link com.hypermodel.games.engine.gameDSL.GameSprite#getRule <em>Rule</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the reference '<em>Layer</em>'.
-   * @see com.hypermodel.games.engine.gameDSL.GameSprite#getLayer()
+   * @return the meta object for the containment reference '<em>Rule</em>'.
+   * @see com.hypermodel.games.engine.gameDSL.GameSprite#getRule()
    * @see #getGameSprite()
    * @generated
    */
-  EReference getGameSprite_Layer();
+  EReference getGameSprite_Rule();
 
   /**
-   * Returns the meta object for the attribute '{@link com.hypermodel.games.engine.gameDSL.GameSprite#isHasStartPosition <em>Has Start Position</em>}'.
+   * Returns the meta object for the attribute '{@link com.hypermodel.games.engine.gameDSL.GameSprite#isIsItem <em>Is Item</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Has Start Position</em>'.
-   * @see com.hypermodel.games.engine.gameDSL.GameSprite#isHasStartPosition()
+   * @return the meta object for the attribute '<em>Is Item</em>'.
+   * @see com.hypermodel.games.engine.gameDSL.GameSprite#isIsItem()
    * @see #getGameSprite()
    * @generated
    */
-  EAttribute getGameSprite_HasStartPosition();
+  EAttribute getGameSprite_IsItem();
+
+  /**
+   * Returns the meta object for the attribute '{@link com.hypermodel.games.engine.gameDSL.GameSprite#isIsPlayer <em>Is Player</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Is Player</em>'.
+   * @see com.hypermodel.games.engine.gameDSL.GameSprite#isIsPlayer()
+   * @see #getGameSprite()
+   * @generated
+   */
+  EAttribute getGameSprite_IsPlayer();
 
   /**
    * Returns the meta object for the containment reference '{@link com.hypermodel.games.engine.gameDSL.GameSprite#getStartPosition <em>Start Position</em>}'.
@@ -2774,6 +2834,28 @@ public interface GameDSLPackage extends EPackage
    * @generated
    */
   EReference getGameSprite_StartPosition();
+
+  /**
+   * Returns the meta object for the attribute '{@link com.hypermodel.games.engine.gameDSL.GameSprite#getId <em>Id</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Id</em>'.
+   * @see com.hypermodel.games.engine.gameDSL.GameSprite#getId()
+   * @see #getGameSprite()
+   * @generated
+   */
+  EAttribute getGameSprite_Id();
+
+  /**
+   * Returns the meta object for the attribute '{@link com.hypermodel.games.engine.gameDSL.GameSprite#getRadius <em>Radius</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Radius</em>'.
+   * @see com.hypermodel.games.engine.gameDSL.GameSprite#getRadius()
+   * @see #getGameSprite()
+   * @generated
+   */
+  EAttribute getGameSprite_Radius();
 
   /**
    * Returns the meta object for the attribute '{@link com.hypermodel.games.engine.gameDSL.GameSprite#isHasSensor <em>Has Sensor</em>}'.
@@ -2807,28 +2889,6 @@ public interface GameDSLPackage extends EPackage
    * @generated
    */
   EAttribute getGameSprite_SensorID();
-
-  /**
-   * Returns the meta object for the attribute '{@link com.hypermodel.games.engine.gameDSL.GameSprite#isHasActivationRule <em>Has Activation Rule</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Has Activation Rule</em>'.
-   * @see com.hypermodel.games.engine.gameDSL.GameSprite#isHasActivationRule()
-   * @see #getGameSprite()
-   * @generated
-   */
-  EAttribute getGameSprite_HasActivationRule();
-
-  /**
-   * Returns the meta object for the containment reference '{@link com.hypermodel.games.engine.gameDSL.GameSprite#getRule <em>Rule</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Rule</em>'.
-   * @see com.hypermodel.games.engine.gameDSL.GameSprite#getRule()
-   * @see #getGameSprite()
-   * @generated
-   */
-  EReference getGameSprite_Rule();
 
   /**
    * Returns the meta object for the containment reference list '{@link com.hypermodel.games.engine.gameDSL.GameSprite#getActors <em>Actors</em>}'.
@@ -4303,20 +4363,36 @@ public interface GameDSLPackage extends EPackage
     EAttribute GAME_SPRITE__NAME = eINSTANCE.getGameSprite_Name();
 
     /**
-     * The meta object literal for the '<em><b>Id</b></em>' attribute feature.
+     * The meta object literal for the '<em><b>Is Enemy</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute GAME_SPRITE__ID = eINSTANCE.getGameSprite_Id();
+    EAttribute GAME_SPRITE__IS_ENEMY = eINSTANCE.getGameSprite_IsEnemy();
 
     /**
-     * The meta object literal for the '<em><b>Radius</b></em>' attribute feature.
+     * The meta object literal for the '<em><b>Layer</b></em>' reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute GAME_SPRITE__RADIUS = eINSTANCE.getGameSprite_Radius();
+    EReference GAME_SPRITE__LAYER = eINSTANCE.getGameSprite_Layer();
+
+    /**
+     * The meta object literal for the '<em><b>Is Destructable</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute GAME_SPRITE__IS_DESTRUCTABLE = eINSTANCE.getGameSprite_IsDestructable();
+
+    /**
+     * The meta object literal for the '<em><b>Destroy Property</b></em>' reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference GAME_SPRITE__DESTROY_PROPERTY = eINSTANCE.getGameSprite_DestroyProperty();
 
     /**
      * The meta object literal for the '<em><b>Has Velocity</b></em>' attribute feature.
@@ -4335,28 +4411,36 @@ public interface GameDSLPackage extends EPackage
     EReference GAME_SPRITE__VELOCITY = eINSTANCE.getGameSprite_Velocity();
 
     /**
-     * The meta object literal for the '<em><b>Has Layer</b></em>' attribute feature.
+     * The meta object literal for the '<em><b>Has Activation Rule</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute GAME_SPRITE__HAS_LAYER = eINSTANCE.getGameSprite_HasLayer();
+    EAttribute GAME_SPRITE__HAS_ACTIVATION_RULE = eINSTANCE.getGameSprite_HasActivationRule();
 
     /**
-     * The meta object literal for the '<em><b>Layer</b></em>' reference feature.
+     * The meta object literal for the '<em><b>Rule</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference GAME_SPRITE__LAYER = eINSTANCE.getGameSprite_Layer();
+    EReference GAME_SPRITE__RULE = eINSTANCE.getGameSprite_Rule();
 
     /**
-     * The meta object literal for the '<em><b>Has Start Position</b></em>' attribute feature.
+     * The meta object literal for the '<em><b>Is Item</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute GAME_SPRITE__HAS_START_POSITION = eINSTANCE.getGameSprite_HasStartPosition();
+    EAttribute GAME_SPRITE__IS_ITEM = eINSTANCE.getGameSprite_IsItem();
+
+    /**
+     * The meta object literal for the '<em><b>Is Player</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute GAME_SPRITE__IS_PLAYER = eINSTANCE.getGameSprite_IsPlayer();
 
     /**
      * The meta object literal for the '<em><b>Start Position</b></em>' containment reference feature.
@@ -4365,6 +4449,22 @@ public interface GameDSLPackage extends EPackage
      * @generated
      */
     EReference GAME_SPRITE__START_POSITION = eINSTANCE.getGameSprite_StartPosition();
+
+    /**
+     * The meta object literal for the '<em><b>Id</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute GAME_SPRITE__ID = eINSTANCE.getGameSprite_Id();
+
+    /**
+     * The meta object literal for the '<em><b>Radius</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute GAME_SPRITE__RADIUS = eINSTANCE.getGameSprite_Radius();
 
     /**
      * The meta object literal for the '<em><b>Has Sensor</b></em>' attribute feature.
@@ -4389,22 +4489,6 @@ public interface GameDSLPackage extends EPackage
      * @generated
      */
     EAttribute GAME_SPRITE__SENSOR_ID = eINSTANCE.getGameSprite_SensorID();
-
-    /**
-     * The meta object literal for the '<em><b>Has Activation Rule</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute GAME_SPRITE__HAS_ACTIVATION_RULE = eINSTANCE.getGameSprite_HasActivationRule();
-
-    /**
-     * The meta object literal for the '<em><b>Rule</b></em>' containment reference feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference GAME_SPRITE__RULE = eINSTANCE.getGameSprite_Rule();
 
     /**
      * The meta object literal for the '<em><b>Actors</b></em>' containment reference list feature.

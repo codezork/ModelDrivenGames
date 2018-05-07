@@ -17,19 +17,22 @@ import org.eclipse.emf.ecore.EObject;
  * </p>
  * <ul>
  *   <li>{@link com.hypermodel.games.engine.gameDSL.GameSprite#getName <em>Name</em>}</li>
- *   <li>{@link com.hypermodel.games.engine.gameDSL.GameSprite#getId <em>Id</em>}</li>
- *   <li>{@link com.hypermodel.games.engine.gameDSL.GameSprite#getRadius <em>Radius</em>}</li>
+ *   <li>{@link com.hypermodel.games.engine.gameDSL.GameSprite#isIsEnemy <em>Is Enemy</em>}</li>
+ *   <li>{@link com.hypermodel.games.engine.gameDSL.GameSprite#getLayer <em>Layer</em>}</li>
+ *   <li>{@link com.hypermodel.games.engine.gameDSL.GameSprite#isIsDestructable <em>Is Destructable</em>}</li>
+ *   <li>{@link com.hypermodel.games.engine.gameDSL.GameSprite#getDestroyProperty <em>Destroy Property</em>}</li>
  *   <li>{@link com.hypermodel.games.engine.gameDSL.GameSprite#isHasVelocity <em>Has Velocity</em>}</li>
  *   <li>{@link com.hypermodel.games.engine.gameDSL.GameSprite#getVelocity <em>Velocity</em>}</li>
- *   <li>{@link com.hypermodel.games.engine.gameDSL.GameSprite#isHasLayer <em>Has Layer</em>}</li>
- *   <li>{@link com.hypermodel.games.engine.gameDSL.GameSprite#getLayer <em>Layer</em>}</li>
- *   <li>{@link com.hypermodel.games.engine.gameDSL.GameSprite#isHasStartPosition <em>Has Start Position</em>}</li>
+ *   <li>{@link com.hypermodel.games.engine.gameDSL.GameSprite#isHasActivationRule <em>Has Activation Rule</em>}</li>
+ *   <li>{@link com.hypermodel.games.engine.gameDSL.GameSprite#getRule <em>Rule</em>}</li>
+ *   <li>{@link com.hypermodel.games.engine.gameDSL.GameSprite#isIsItem <em>Is Item</em>}</li>
+ *   <li>{@link com.hypermodel.games.engine.gameDSL.GameSprite#isIsPlayer <em>Is Player</em>}</li>
  *   <li>{@link com.hypermodel.games.engine.gameDSL.GameSprite#getStartPosition <em>Start Position</em>}</li>
+ *   <li>{@link com.hypermodel.games.engine.gameDSL.GameSprite#getId <em>Id</em>}</li>
+ *   <li>{@link com.hypermodel.games.engine.gameDSL.GameSprite#getRadius <em>Radius</em>}</li>
  *   <li>{@link com.hypermodel.games.engine.gameDSL.GameSprite#isHasSensor <em>Has Sensor</em>}</li>
  *   <li>{@link com.hypermodel.games.engine.gameDSL.GameSprite#getVectors2d <em>Vectors2d</em>}</li>
  *   <li>{@link com.hypermodel.games.engine.gameDSL.GameSprite#getSensorID <em>Sensor ID</em>}</li>
- *   <li>{@link com.hypermodel.games.engine.gameDSL.GameSprite#isHasActivationRule <em>Has Activation Rule</em>}</li>
- *   <li>{@link com.hypermodel.games.engine.gameDSL.GameSprite#getRule <em>Rule</em>}</li>
  *   <li>{@link com.hypermodel.games.engine.gameDSL.GameSprite#getActors <em>Actors</em>}</li>
  *   <li>{@link com.hypermodel.games.engine.gameDSL.GameSprite#getProperties <em>Properties</em>}</li>
  *   <li>{@link com.hypermodel.games.engine.gameDSL.GameSprite#getStates <em>States</em>}</li>
@@ -72,56 +75,108 @@ public interface GameSprite extends EObject
   void setName(String value);
 
   /**
-   * Returns the value of the '<em><b>Id</b></em>' attribute.
+   * Returns the value of the '<em><b>Is Enemy</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Id</em>' attribute isn't clear,
+   * If the meaning of the '<em>Is Enemy</em>' attribute isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Id</em>' attribute.
-   * @see #setId(int)
-   * @see com.hypermodel.games.engine.gameDSL.GameDSLPackage#getGameSprite_Id()
+   * @return the value of the '<em>Is Enemy</em>' attribute.
+   * @see #setIsEnemy(boolean)
+   * @see com.hypermodel.games.engine.gameDSL.GameDSLPackage#getGameSprite_IsEnemy()
    * @model
    * @generated
    */
-  int getId();
+  boolean isIsEnemy();
 
   /**
-   * Sets the value of the '{@link com.hypermodel.games.engine.gameDSL.GameSprite#getId <em>Id</em>}' attribute.
+   * Sets the value of the '{@link com.hypermodel.games.engine.gameDSL.GameSprite#isIsEnemy <em>Is Enemy</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Id</em>' attribute.
-   * @see #getId()
+   * @param value the new value of the '<em>Is Enemy</em>' attribute.
+   * @see #isIsEnemy()
    * @generated
    */
-  void setId(int value);
+  void setIsEnemy(boolean value);
 
   /**
-   * Returns the value of the '<em><b>Radius</b></em>' attribute.
+   * Returns the value of the '<em><b>Layer</b></em>' reference.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Radius</em>' attribute isn't clear,
+   * If the meaning of the '<em>Layer</em>' reference isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Radius</em>' attribute.
-   * @see #setRadius(int)
-   * @see com.hypermodel.games.engine.gameDSL.GameDSLPackage#getGameSprite_Radius()
+   * @return the value of the '<em>Layer</em>' reference.
+   * @see #setLayer(GameLayer)
+   * @see com.hypermodel.games.engine.gameDSL.GameDSLPackage#getGameSprite_Layer()
    * @model
    * @generated
    */
-  int getRadius();
+  GameLayer getLayer();
 
   /**
-   * Sets the value of the '{@link com.hypermodel.games.engine.gameDSL.GameSprite#getRadius <em>Radius</em>}' attribute.
+   * Sets the value of the '{@link com.hypermodel.games.engine.gameDSL.GameSprite#getLayer <em>Layer</em>}' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Radius</em>' attribute.
-   * @see #getRadius()
+   * @param value the new value of the '<em>Layer</em>' reference.
+   * @see #getLayer()
    * @generated
    */
-  void setRadius(int value);
+  void setLayer(GameLayer value);
+
+  /**
+   * Returns the value of the '<em><b>Is Destructable</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Is Destructable</em>' attribute isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Is Destructable</em>' attribute.
+   * @see #setIsDestructable(boolean)
+   * @see com.hypermodel.games.engine.gameDSL.GameDSLPackage#getGameSprite_IsDestructable()
+   * @model
+   * @generated
+   */
+  boolean isIsDestructable();
+
+  /**
+   * Sets the value of the '{@link com.hypermodel.games.engine.gameDSL.GameSprite#isIsDestructable <em>Is Destructable</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Is Destructable</em>' attribute.
+   * @see #isIsDestructable()
+   * @generated
+   */
+  void setIsDestructable(boolean value);
+
+  /**
+   * Returns the value of the '<em><b>Destroy Property</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Destroy Property</em>' reference isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Destroy Property</em>' reference.
+   * @see #setDestroyProperty(GameBodyProperty)
+   * @see com.hypermodel.games.engine.gameDSL.GameDSLPackage#getGameSprite_DestroyProperty()
+   * @model
+   * @generated
+   */
+  GameBodyProperty getDestroyProperty();
+
+  /**
+   * Sets the value of the '{@link com.hypermodel.games.engine.gameDSL.GameSprite#getDestroyProperty <em>Destroy Property</em>}' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Destroy Property</em>' reference.
+   * @see #getDestroyProperty()
+   * @generated
+   */
+  void setDestroyProperty(GameBodyProperty value);
 
   /**
    * Returns the value of the '<em><b>Has Velocity</b></em>' attribute.
@@ -176,82 +231,108 @@ public interface GameSprite extends EObject
   void setVelocity(GameVector2d value);
 
   /**
-   * Returns the value of the '<em><b>Has Layer</b></em>' attribute.
+   * Returns the value of the '<em><b>Has Activation Rule</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Has Layer</em>' attribute isn't clear,
+   * If the meaning of the '<em>Has Activation Rule</em>' attribute isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Has Layer</em>' attribute.
-   * @see #setHasLayer(boolean)
-   * @see com.hypermodel.games.engine.gameDSL.GameDSLPackage#getGameSprite_HasLayer()
+   * @return the value of the '<em>Has Activation Rule</em>' attribute.
+   * @see #setHasActivationRule(boolean)
+   * @see com.hypermodel.games.engine.gameDSL.GameDSLPackage#getGameSprite_HasActivationRule()
    * @model
    * @generated
    */
-  boolean isHasLayer();
+  boolean isHasActivationRule();
 
   /**
-   * Sets the value of the '{@link com.hypermodel.games.engine.gameDSL.GameSprite#isHasLayer <em>Has Layer</em>}' attribute.
+   * Sets the value of the '{@link com.hypermodel.games.engine.gameDSL.GameSprite#isHasActivationRule <em>Has Activation Rule</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Has Layer</em>' attribute.
-   * @see #isHasLayer()
+   * @param value the new value of the '<em>Has Activation Rule</em>' attribute.
+   * @see #isHasActivationRule()
    * @generated
    */
-  void setHasLayer(boolean value);
+  void setHasActivationRule(boolean value);
 
   /**
-   * Returns the value of the '<em><b>Layer</b></em>' reference.
+   * Returns the value of the '<em><b>Rule</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Layer</em>' reference isn't clear,
+   * If the meaning of the '<em>Rule</em>' containment reference isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Layer</em>' reference.
-   * @see #setLayer(GameLayer)
-   * @see com.hypermodel.games.engine.gameDSL.GameDSLPackage#getGameSprite_Layer()
-   * @model
+   * @return the value of the '<em>Rule</em>' containment reference.
+   * @see #setRule(GameRule)
+   * @see com.hypermodel.games.engine.gameDSL.GameDSLPackage#getGameSprite_Rule()
+   * @model containment="true"
    * @generated
    */
-  GameLayer getLayer();
+  GameRule getRule();
 
   /**
-   * Sets the value of the '{@link com.hypermodel.games.engine.gameDSL.GameSprite#getLayer <em>Layer</em>}' reference.
+   * Sets the value of the '{@link com.hypermodel.games.engine.gameDSL.GameSprite#getRule <em>Rule</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Layer</em>' reference.
-   * @see #getLayer()
+   * @param value the new value of the '<em>Rule</em>' containment reference.
+   * @see #getRule()
    * @generated
    */
-  void setLayer(GameLayer value);
+  void setRule(GameRule value);
 
   /**
-   * Returns the value of the '<em><b>Has Start Position</b></em>' attribute.
+   * Returns the value of the '<em><b>Is Item</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Has Start Position</em>' attribute isn't clear,
+   * If the meaning of the '<em>Is Item</em>' attribute isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Has Start Position</em>' attribute.
-   * @see #setHasStartPosition(boolean)
-   * @see com.hypermodel.games.engine.gameDSL.GameDSLPackage#getGameSprite_HasStartPosition()
+   * @return the value of the '<em>Is Item</em>' attribute.
+   * @see #setIsItem(boolean)
+   * @see com.hypermodel.games.engine.gameDSL.GameDSLPackage#getGameSprite_IsItem()
    * @model
    * @generated
    */
-  boolean isHasStartPosition();
+  boolean isIsItem();
 
   /**
-   * Sets the value of the '{@link com.hypermodel.games.engine.gameDSL.GameSprite#isHasStartPosition <em>Has Start Position</em>}' attribute.
+   * Sets the value of the '{@link com.hypermodel.games.engine.gameDSL.GameSprite#isIsItem <em>Is Item</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Has Start Position</em>' attribute.
-   * @see #isHasStartPosition()
+   * @param value the new value of the '<em>Is Item</em>' attribute.
+   * @see #isIsItem()
    * @generated
    */
-  void setHasStartPosition(boolean value);
+  void setIsItem(boolean value);
+
+  /**
+   * Returns the value of the '<em><b>Is Player</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Is Player</em>' attribute isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Is Player</em>' attribute.
+   * @see #setIsPlayer(boolean)
+   * @see com.hypermodel.games.engine.gameDSL.GameDSLPackage#getGameSprite_IsPlayer()
+   * @model
+   * @generated
+   */
+  boolean isIsPlayer();
+
+  /**
+   * Sets the value of the '{@link com.hypermodel.games.engine.gameDSL.GameSprite#isIsPlayer <em>Is Player</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Is Player</em>' attribute.
+   * @see #isIsPlayer()
+   * @generated
+   */
+  void setIsPlayer(boolean value);
 
   /**
    * Returns the value of the '<em><b>Start Position</b></em>' containment reference.
@@ -278,6 +359,58 @@ public interface GameSprite extends EObject
    * @generated
    */
   void setStartPosition(GameVector2d value);
+
+  /**
+   * Returns the value of the '<em><b>Id</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Id</em>' attribute isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Id</em>' attribute.
+   * @see #setId(int)
+   * @see com.hypermodel.games.engine.gameDSL.GameDSLPackage#getGameSprite_Id()
+   * @model
+   * @generated
+   */
+  int getId();
+
+  /**
+   * Sets the value of the '{@link com.hypermodel.games.engine.gameDSL.GameSprite#getId <em>Id</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Id</em>' attribute.
+   * @see #getId()
+   * @generated
+   */
+  void setId(int value);
+
+  /**
+   * Returns the value of the '<em><b>Radius</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Radius</em>' attribute isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Radius</em>' attribute.
+   * @see #setRadius(int)
+   * @see com.hypermodel.games.engine.gameDSL.GameDSLPackage#getGameSprite_Radius()
+   * @model
+   * @generated
+   */
+  int getRadius();
+
+  /**
+   * Sets the value of the '{@link com.hypermodel.games.engine.gameDSL.GameSprite#getRadius <em>Radius</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Radius</em>' attribute.
+   * @see #getRadius()
+   * @generated
+   */
+  void setRadius(int value);
 
   /**
    * Returns the value of the '<em><b>Has Sensor</b></em>' attribute.
@@ -346,58 +479,6 @@ public interface GameSprite extends EObject
    * @generated
    */
   void setSensorID(int value);
-
-  /**
-   * Returns the value of the '<em><b>Has Activation Rule</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Has Activation Rule</em>' attribute isn't clear,
-   * there really should be more of a description here...
-   * </p>
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Has Activation Rule</em>' attribute.
-   * @see #setHasActivationRule(boolean)
-   * @see com.hypermodel.games.engine.gameDSL.GameDSLPackage#getGameSprite_HasActivationRule()
-   * @model
-   * @generated
-   */
-  boolean isHasActivationRule();
-
-  /**
-   * Sets the value of the '{@link com.hypermodel.games.engine.gameDSL.GameSprite#isHasActivationRule <em>Has Activation Rule</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Has Activation Rule</em>' attribute.
-   * @see #isHasActivationRule()
-   * @generated
-   */
-  void setHasActivationRule(boolean value);
-
-  /**
-   * Returns the value of the '<em><b>Rule</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Rule</em>' containment reference isn't clear,
-   * there really should be more of a description here...
-   * </p>
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Rule</em>' containment reference.
-   * @see #setRule(GameRule)
-   * @see com.hypermodel.games.engine.gameDSL.GameDSLPackage#getGameSprite_Rule()
-   * @model containment="true"
-   * @generated
-   */
-  GameRule getRule();
-
-  /**
-   * Sets the value of the '{@link com.hypermodel.games.engine.gameDSL.GameSprite#getRule <em>Rule</em>}' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Rule</em>' containment reference.
-   * @see #getRule()
-   * @generated
-   */
-  void setRule(GameRule value);
 
   /**
    * Returns the value of the '<em><b>Actors</b></em>' containment reference list.

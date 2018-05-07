@@ -112,7 +112,6 @@ class GameDSLGenerator extends ExtendedJvmModelGenerator {
 	
 	override doGenerate(Resource input, IFileSystemAccess fsa) {
 		var model = input.contents.get(0) as GameModel
-//		setWorkspaceAutoBuild(false);
 		for(pckg:model.packages) {
 			// get core module
 			var type = input.contents.get(ProjectType.core.ordinal+1) as JvmDeclaredType

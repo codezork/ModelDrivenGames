@@ -3,7 +3,7 @@ import com.badlogic.gdx.math.Vector2
 import com.badlogic.gdx.graphics.g2d.Sprite
 import com.badlogic.gdx.Gdx
 
-package com.hypermodel.games { 
+package com.hypermodel.games {
 	configuration { 
 		android { 
 			minAndroidVersion 9
@@ -58,14 +58,14 @@ package com.hypermodel.games {
 			tile Coin collisionId 3 objectLayer coins tileLayer graphic
 		}
 		sprites {
-			sprite Mario collisionId 1 radius 6 
-			startPosition vector(32.0,25.0) 
+			sprite Mario isPlayer startPosition vector(32.0,25.0)
+			collisionId 1 radius 6 
 			sensor {
 				vector(-3.0,8.0)
 				vector(3.0,8.0)  
 			} sensorID 9
 			actors {
-				sprite Mushroom
+//				sprite Mushroom
 				when fixture collidesWith fixture of sprite Goomba do atBeginOfContact hit 
 				when sensor collidesWith fixture of tile Brick do atBeginOfContact brickHit 
 				when sensor collidesWith fixture of tile Coin do atBeginOfContact coinHit
@@ -154,6 +154,9 @@ package com.hypermodel.games {
 					}
 				}
 				event coinHit(Coin coin) {
+					if(coin.getProperties().containsKey("mushroom")) {
+						creator.spawnItem(new ItemDef(coin.getPositionWithOffset(new Vector2(0.0f, 16.0f)),Mushroom));
+					}
 					coin.cell.setTile(coin.getMap().getTileSets().getTileSet("tileset_gutter").getTile(28));
             		Hud.addMario(100);
 				}
@@ -181,16 +184,18 @@ package com.hypermodel.games {
 			}
 			
 			
-			sprite Goomba collisionId 6 radius 6 layer goombas velocity vector(-1.0,-2.0)
+			sprite Goomba isEnemy layer goombas destructable byProperty destroyed 
+			activate if isTrue playerNear(Sprite ^player) {
+				return !destroyed && body.position.x < ^player.getX() + 2.24
+			}
+			velocity vector(-1.0,-2.0)
+			collisionId 6 radius 6 
 			sensor {
 				vector(-5.0,9.0)
 				vector(5.0,9.0)
 				vector(-3.0,7.0)
 				vector(3.0,7.0)
-			} sensorID 7
-			activate if isTrue playerNear(Sprite player) {
-				return !destroyed && body.position.x < player.getX() + 2.24
-			}
+			} sensorID 7 
 			actors {
 				when sensor collidesWith fixture of sprite Mario do atBeginOfContact hitOnHead
 				when fixture collidesWith fixture of sprite Goomba do atBeginOfContact hitByGoomba
@@ -233,7 +238,9 @@ package com.hypermodel.games {
 				}
 			}
 
-			sprite Mushroom collisionId 8 radius 6 velocity vector(0.7,0.0)
+			sprite Mushroom isItem destructable byProperty destroyed
+			velocity vector(0.7,0.0)
+			collisionId 8 radius 6 
 			actors {
 				sprite Mario
 				tile Brick

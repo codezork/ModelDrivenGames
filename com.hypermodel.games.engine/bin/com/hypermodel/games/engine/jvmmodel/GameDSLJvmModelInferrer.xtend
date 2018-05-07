@@ -78,6 +78,8 @@ import com.badlogic.gdx.graphics.g2d.Batch
 import org.eclipse.xtext.common.types.TypesFactory
 import org.eclipse.xtext.common.types.access.IJvmTypeProvider
 import java.util.stream.Collectors
+import java.util.concurrent.LinkedBlockingQueue
+import com.badlogic.gdx.maps.MapProperties
 
 class GameDSLJvmModelInferrer extends AbstractModelInferrer {
 	@Inject extension JvmTypesBuilder
@@ -371,12 +373,14 @@ class GameDSLJvmModelInferrer extends AbstractModelInferrer {
 		
 		val screenClass = gamePkg.toClass(screen.fullyQualifiedName) 
 
+		// itemDef
+		val itemDefClass = acceptor.createItemDef(gamePkg)
 		// creator
 		val creatorClass = gamePkg.toClass(gamePkg.fullyQualifiedName+".WorldCreator")
-		acceptor.createCreator(gamePkg, creatorClass, gameClass, screenClass, screen, root)
+		acceptor.createCreator(gamePkg, creatorClass, gameClass, screenClass, itemDefClass, screen, root)
 
 		// player
-		val playerSprite = screen.sprites.findFirst[it.hasStartPosition]
+		val playerSprite = screen.sprites.findFirst[it.isPlayer]
 		var JvmGenericType pClass = null 
 		if(playerSprite !== null) {
 			pClass = gamePkg.toClass(playerSprite.fullyQualifiedName)
@@ -414,7 +418,7 @@ class GameDSLJvmModelInferrer extends AbstractModelInferrer {
 						«IF root.debug»b2dr = new Box2DDebugRenderer();«ENDIF»
 						«IF screen.scene !== null»«screen.scene.name.toFirstLower» = new «screen.scene.name.toFirstUpper»(game.batch);«ENDIF»
 						creator = new «creatorClass.fullyQualifiedName»(this);
-						«IF playerClass !== null»player = new «playerClass.fullyQualifiedName»(this);«ENDIF»
+						«IF playerClass !== null»player = new «playerClass.fullyQualifiedName»(this, creator);«ENDIF»
 						world.setContactListener(new «contactClass.fullyQualifiedName»());
 						''')
 						
@@ -424,9 +428,9 @@ class GameDSLJvmModelInferrer extends AbstractModelInferrer {
 			]
 		)
 		// sprites
-		screen.sprites.forEach[acceptor.createSprite(gamePkg, root, gameClass, screenClass, it)]
+		screen.sprites.forEach[acceptor.createSprite(gamePkg, root, gameClass, screenClass, creatorClass, it)]
 		// tiles
-		screen.tiles.forEach[acceptor.createTile(gamePkg, root, gameClass, screenClass, it)]
+		screen.tiles.forEach[acceptor.createTile(gamePkg, root, gameClass, screenClass, creatorClass, it)]
 	}
 
 	def void toFields(JvmGenericType type, GamePackage gamePkg, GameRoot game, GameScreen screen, JvmGenericType gameClass, JvmGenericType creatorClass, JvmGenericType contactClass, JvmGenericType playerClass) {
@@ -445,8 +449,6 @@ class GameDSLJvmModelInferrer extends AbstractModelInferrer {
 		if(playerClass !== null) {
 			type.members += screen.toField("player", playerClass.typeRef);
 		}
-//		type.members += screen.toField("items", Array, Item.typeRef)) ;
-//		type.members += screen.toField("itemsToSpawn", LinkedBlockingQueue, ItemDef.typeRef)) ;
 		if(screen.scene !== null) {
 			field = screen.toField(screen.scene.name.toFirstLower, gamePkg.toClass(screen.scene.fullyQualifiedName).typeRef)
 			field.visibility = JvmVisibility.PUBLIC 
@@ -527,11 +529,12 @@ class GameDSLJvmModelInferrer extends AbstractModelInferrer {
 			    }
 			    append(
 			    '''
+			    creator.handleSpawningItems();
 			    world.step(«game.timeStep»f, «game.velocityIterations», «game.positionIterations»);
 			    player.update(delta);
 			    creator.updateSprites(delta, player);
 			    hud.update(delta);
-			    gamecam.position.x = player.body.getPosition().x;
+			    gamecam.position.x = player.getPositionWithOffset(null).x;
 			    gamecam.update();
 			    renderer.setView(gamecam);
 			    ''')
@@ -716,27 +719,30 @@ class GameDSLJvmModelInferrer extends AbstractModelInferrer {
 	}
 
 	// sprites
-	def void createSprite(IJvmDeclaredTypeAcceptor acceptor, GamePackage gamePkg, GameRoot game, JvmGenericType gameClass, JvmGenericType screenClass, GameSprite sprite) {
+	def void createSprite(IJvmDeclaredTypeAcceptor acceptor, GamePackage gamePkg, GameRoot game, JvmGenericType gameClass, JvmGenericType screenClass, JvmGenericType creatorClass, GameSprite sprite) {
 		acceptor.accept(
 			gamePkg.toClass(sprite.fullyQualifiedName),
 			[
 				superTypes += Sprite.typeRef
 				packageName = sprite.fullyQualifiedName.skipLast(1).toString
 				documentation = genInfo
-				it.toFields(sprite)
+				it.toFields(screenClass, creatorClass, sprite)
 				members += sprite.toConstructor [
 					parameters += gamePkg.toParameter("screen", screenClass.typeRef)
-					if(!sprite.hasStartPosition) {
+					parameters += gamePkg.toParameter("creator", creatorClass.typeRef)
+					if(sprite.isEnemy||sprite.isItem) {
 						parameters += gamePkg.toParameter("x", float.typeRef)
 						parameters += gamePkg.toParameter("y", float.typeRef)
 					}
 					body = [
 						append(
 						'''
+						this.screen = screen;
+						this.creator = creator;
 						world = screen.getWorld();
 						stateTimer = 0;
-						float xPosition = «IF sprite.hasStartPosition»«sprite.startPosition.x/game.ppm»f«ELSE»x«ENDIF»;
-						float yPosition = «IF sprite.hasStartPosition»«sprite.startPosition.y/game.ppm»f«ELSE»y«ENDIF»;
+						float xPosition = «IF sprite.isPlayer»«sprite.startPosition.x/game.ppm»f«ELSE»x«ENDIF»;
+						float yPosition = «IF sprite.isPlayer»«sprite.startPosition.y/game.ppm»f«ELSE»y«ENDIF»;
 						''')
 						append(Array)
 						append("<")
@@ -799,15 +805,12 @@ class GameDSLJvmModelInferrer extends AbstractModelInferrer {
 		)
 	}
 
-	def void toFields(JvmGenericType type, GameSprite sprite) {
-		var field = sprite.toField("world", World.typeRef)
-		field.visibility = JvmVisibility.PUBLIC
-		type.members += field
-		field = sprite.toField("body", Body.typeRef)
-		field.visibility = JvmVisibility.PUBLIC
-		type.members += field
+	def void toFields(JvmGenericType type, JvmGenericType screenClass, JvmGenericType creatorClass, GameSprite sprite) {
+		type.members += sprite.toField("screen", screenClass.typeRef)
+		type.members += sprite.toField("creator", creatorClass.typeRef)
+		type.members += sprite.toField("world", World.typeRef)
+		type.members += sprite.toField("body", Body.typeRef)
 		type.members += sprite.toField("stateTimer", float.typeRef)
-		
 		var stateType = sprite.toEnumerationType("State") [
 			sprite.states.forEach [ state |
 				members += state.toEnumerationLiteral(state.name.toUpperCase)
@@ -896,9 +899,21 @@ class GameDSLJvmModelInferrer extends AbstractModelInferrer {
 				body = sprite.rule.body
 			]
 		}
+		if(sprite.isIsDestructable) {
+			type.members += sprite.toMethod('''draw''', Void.TYPE.typeRef, [
+				parameters += sprite.toParameter("batch", Batch.typeRef)
+				body = [
+					append(
+					'''
+					if(!«sprite.destroyProperty.name» || stateTimer < 1) {
+						super.draw(batch);
+					}''')
+				]
+			])
+		}
 		type.members += sprite.toMethod("update", Void.TYPE.typeRef, [
 			parameters += sprite.toParameter("dt", float.typeRef)
-			if(sprite.hasLayer) {	// it interacts with a player
+			if(sprite.isEnemy||sprite.isItem) {	// it interacts with a player
 				parameters += sprite.toParameter("player", Sprite.typeRef)
 			}
 			body = [
@@ -986,6 +1001,19 @@ class GameDSLJvmModelInferrer extends AbstractModelInferrer {
 				append(
 				'''
 				return State.«sprite.initialState.name.toUpperCase»;
+				''')
+			]
+		])
+		type.members += sprite.toMethod("getPositionWithOffset", Vector2.typeRef, [
+			parameters += sprite.toParameter("vector", Vector2.typeRef)
+			body = [
+				append(
+				'''
+				if(vector != null) {
+					return new Vector2(body.getPosition().x + vector.x/«gameClass.simpleName».PPM, body.getPosition().y + vector.y/«gameClass.simpleName».PPM);
+				} else {
+					return body.getPosition();
+				}
 				''')
 			]
 		])
@@ -1113,20 +1141,22 @@ class GameDSLJvmModelInferrer extends AbstractModelInferrer {
 	}
 
 	// tiles
-	def void createTile(IJvmDeclaredTypeAcceptor acceptor, GamePackage gamePkg, GameRoot root, JvmGenericType gameClass, JvmGenericType screenClass, GameTile tile) {
+	def void createTile(IJvmDeclaredTypeAcceptor acceptor, GamePackage gamePkg, GameRoot root, JvmGenericType gameClass, JvmGenericType screenClass, JvmGenericType creatorClass, GameTile tile) {
 		acceptor.accept(
 			gamePkg.toClass(tile.fullyQualifiedName),
 			[
 				packageName = tile.fullyQualifiedName.skipLast(1).toString
 				documentation = genInfo
-				it.toFields(tile, screenClass)
+				it.toFields(tile, screenClass, creatorClass)
 				members += tile.toConstructor [
 					parameters += gamePkg.toParameter("screen", screenClass.typeRef)
+					parameters += gamePkg.toParameter("creator", creatorClass.typeRef)
 					parameters += gamePkg.toParameter("object", MapObject.typeRef)
 					body = [
 						append(
 						'''
 						this.screen = screen;
+						this.creator = creator;
 						this.object = object;
 						world = screen.getWorld();
 						map = screen.getMap();
@@ -1168,7 +1198,7 @@ class GameDSLJvmModelInferrer extends AbstractModelInferrer {
 		)
 	}
 
-	def void toFields(JvmGenericType type, GameTile tile, JvmGenericType screenClass) {
+	def void toFields(JvmGenericType type, GameTile tile, JvmGenericType screenClass, JvmGenericType creatorClass) {
 		var field = tile.toField("world", World.typeRef)
 		type.members += field
 		field = tile.toField("map", TiledMap.typeRef)
@@ -1180,6 +1210,8 @@ class GameDSLJvmModelInferrer extends AbstractModelInferrer {
 		field = tile.toField("body", Body.typeRef)
 		type.members += field
 		field = tile.toField("screen", screenClass.typeRef)
+		type.members += field
+		field = tile.toField("creator", creatorClass.typeRef)
 		type.members += field
 		field = tile.toField("object", MapObject.typeRef)
 		type.members += field
@@ -1193,6 +1225,25 @@ class GameDSLJvmModelInferrer extends AbstractModelInferrer {
 				append('''return map;''')
 			]
 		])
+		type.members += tile.toMethod("getProperties", MapProperties.typeRef, [
+			body = [
+				append('''return object.getProperties();''')
+			]
+		])
+		type.members += tile.toMethod("getPositionWithOffset", Vector2.typeRef, [
+			parameters += tile.toParameter("vector", Vector2.typeRef)
+			body = [
+				append(
+				'''
+				if(vector != null) {
+					return new Vector2(body.getPosition().x + vector.x/«gameClass.simpleName».PPM, body.getPosition().y + vector.y/«gameClass.simpleName».PPM);
+				} else {
+					return body.getPosition();
+				}
+				''')
+			]
+		])
+		
 		type.members += tile.toMethod("getCell", TiledMapTileLayer.Cell.typeRef, [
 			body = [
 				append(TiledMapTileLayer)
@@ -1217,19 +1268,54 @@ class GameDSLJvmModelInferrer extends AbstractModelInferrer {
 		])
 	}
 
+	// itemDef
+	def JvmGenericType createItemDef(IJvmDeclaredTypeAcceptor acceptor, GamePackage gamePkg) {
+		val itemDefClass = gamePkg.toClass(gamePkg.getName() + ".sprites.ItemDef")
+		acceptor.accept(
+			itemDefClass,
+			[
+				packageName = gamePkg.getName() + ".sprites"
+				documentation = genInfo
+				it.toItemDefFields(gamePkg)
+				members += gamePkg.toConstructor [
+					parameters += gamePkg.toParameter("position", Vector2.typeRef)
+					parameters += gamePkg.toParameter("type", Class.typeRef(wildcard))
+					body = [
+						append(
+						'''
+						this.position = position;
+						this.type = type;
+						''')
+					]
+				]
+			]
+		)
+		return itemDefClass
+	}
+	
+	def void toItemDefFields(JvmGenericType type, GamePackage gamePkg) {
+		var field = gamePkg.toField("position", Vector2.typeRef)
+		field.visibility = JvmVisibility.PUBLIC
+		type.members += field
+		field = gamePkg.toField("type", Class.typeRef(wildcard))
+		field.visibility = JvmVisibility.PUBLIC
+		type.members += field
+	}
+	
 	// creator
-	def void createCreator(IJvmDeclaredTypeAcceptor acceptor, GamePackage gamePkg, JvmGenericType creatorClass, JvmGenericType gameClass, JvmGenericType screenClass, GameScreen screen, GameRoot game) {
+	def void createCreator(IJvmDeclaredTypeAcceptor acceptor, GamePackage gamePkg, JvmGenericType creatorClass, JvmGenericType gameClass, JvmGenericType screenClass, JvmGenericType itemDefClass, GameScreen screen, GameRoot game) {
 		acceptor.accept(
 			creatorClass,
 			[
 				packageName = game.fullyQualifiedName.skipLast(1).toString
 				documentation = genInfo
-				it.toCreatorFields(game, screen)
+				it.toCreatorFields(game, screen, screenClass, itemDefClass)
 				members += game.toConstructor [
 					parameters += gamePkg.toParameter("screen", screenClass.typeRef)
 					body = [
 						append(
 						'''
+						this.screen = screen;
 						world = screen.getWorld();
 						map = screen.getMap();
 						''')
@@ -1245,15 +1331,11 @@ class GameDSLJvmModelInferrer extends AbstractModelInferrer {
 							'''
 							.class)){
 							''')
-							current.append('''	new «it.fullyQualifiedName.skipLast(1).toString».«it.name.toFirstUpper»(screen, object);''')
+							current.append('''	new «it.fullyQualifiedName.skipLast(1).toString».«it.name.toFirstUpper»(screen, this, object);''')
 							current.append("\n}\n")
 						]
-						screen.sprites.filter[it.hasLayer].forEach[
+						screen.sprites.filter[it.isEnemy && it.layer !== null].forEach[
 							var spriteFQN = '''«it.fullyQualifiedName.skipLast(1).toString».«it.name.toFirstUpper»''' 
-							current.append('''«it.name.toFirstLower» = new ''')
-							current.append(Array)
-							current.append('''<«spriteFQN»>();
-							''')
 							current.append(
 							'''
 							for(''')
@@ -1270,37 +1352,38 @@ class GameDSLJvmModelInferrer extends AbstractModelInferrer {
 							current.append(RectangleMapObject)
 							current.append(''') object).getRectangle();
 							''')
-							current.append('''	«it.name.toFirstLower».add(new «spriteFQN»(screen, rect.getX() / «gameClass.simpleName».PPM, rect.getY() / «gameClass.simpleName».PPM));
+							current.append('''	«it.name.toFirstLower».add(new «spriteFQN»(screen, this, rect.getX() / «gameClass.simpleName».PPM, rect.getY() / «gameClass.simpleName».PPM));
 							''')
 							current.append("\n}\n")
 						]
 					]
 				]
-				it.toCreatorOperations(game, screen, gameClass)
+				it.toCreatorOperations(game, screen, screenClass, gameClass, itemDefClass)
 			]
 		)
 	}
 
-	def void toCreatorFields(JvmGenericType type, GameRoot game, GameScreen screen) {
-		var field = game.toField("world", World.typeRef)
+	def void toCreatorFields(JvmGenericType type, GameRoot game, GameScreen screen, JvmGenericType screenClass, JvmGenericType itemDefClass) {
+		type.members += game.toField("screen", screenClass.typeRef)
+		type.members += game.toField("world", World.typeRef)
+		type.members += game.toField("map", TiledMap.typeRef)
+		var field = game.toField("itemsToSpawn", LinkedBlockingQueue.typeRef(itemDefClass.typeRef)) [initializer=[append('''new LinkedBlockingQueue<ItemDef>()''')]]
 		type.members += field
-		field = game.toField("map", TiledMap.typeRef)
-		type.members += field
-		screen.sprites.filter[it.hasLayer].forEach[
-			var spriteFQN = '''«it.fullyQualifiedName.skipLast(1).toString».«it.name.toFirstUpper»'''
-			var array = game.toField(it.name.toFirstLower, Array.typeRef(spriteFQN.typeRef))
+		screen.sprites.filter[it.isEnemy||it.isItem].forEach[
+			val spriteFQN = '''«it.fullyQualifiedName.skipLast(1).toString».«it.name.toFirstUpper»'''
+			var array = game.toField(it.name.toFirstLower, Array.typeRef(spriteFQN.typeRef))  [initializer=[append('''new Array<«spriteFQN»>()''')]]
 			array.visibility = JvmVisibility.PRIVATE
 			type.members += array
 		]
 	}
 
-	def void toCreatorOperations(JvmGenericType type, GameRoot game, GameScreen screen, JvmGenericType gameClass) {
+	def void toCreatorOperations(JvmGenericType type, GameRoot game, GameScreen screen, JvmGenericType screenClass, JvmGenericType gameClass, JvmGenericType itemDefClass) {
 		type.members += game.toMethod("updateSprites", Void.TYPE.typeRef, [
 			parameters += game.toParameter("dt", float.typeRef)
 			parameters += game.toParameter("player", Sprite.typeRef)
 			body = [
 				val current = it
-				screen.sprites.filter[it.hasLayer].forEach[
+				screen.sprites.filter[it.isEnemy||it.isItem].forEach[
 					val spriteFQN = '''«it.fullyQualifiedName.skipLast(1).toString».«it.name.toFirstUpper»'''
 					var array = game.toField(it.name.toFirstLower, Array.typeRef(spriteFQN.typeRef))
 					current.append("for(")
@@ -1310,7 +1393,8 @@ class GameDSLJvmModelInferrer extends AbstractModelInferrer {
 					current.append("	sprite.update(dt, player);\n")
 					current.append(
 					'''
-					}''')
+					}
+					''')
 				]
 				
 			]
@@ -1319,7 +1403,7 @@ class GameDSLJvmModelInferrer extends AbstractModelInferrer {
 			parameters += game.toParameter("batch", Batch.typeRef)
 			body = [
 				val current = it
-				screen.sprites.filter[it.hasLayer].forEach[
+				screen.sprites.filter[it.isEnemy||it.isItem].forEach[
 					val spriteFQN = '''«it.fullyQualifiedName.skipLast(1).toString».«it.name.toFirstUpper»'''
 					var array = game.toField(it.name.toFirstLower, Array.typeRef(spriteFQN.typeRef))
 					current.append("for(")
@@ -1329,9 +1413,43 @@ class GameDSLJvmModelInferrer extends AbstractModelInferrer {
 					current.append("	sprite.draw(batch);\n")
 					current.append(
 					'''
-					}''')
+					}
+					''')
 				]
-				
+			]
+		])
+		type.members += game.toMethod("spawnItem", Void.TYPE.typeRef, [
+			parameters += game.toParameter("itemDef", itemDefClass.typeRef)
+			body = [
+				append(
+				'''
+				itemsToSpawn.add(itemDef);
+				''')
+			]
+		])
+		type.members += game.toMethod("handleSpawningItems", Void.TYPE.typeRef, [
+			body = [
+				append(
+				'''
+				if(!itemsToSpawn.isEmpty()){
+					''')
+				append(itemDefClass)
+				append('''	idef = itemsToSpawn.poll();
+				''')
+				val current = it
+				screen.sprites.filter[it.isItem].forEach[
+					val spriteFQN = '''«it.fullyQualifiedName.skipLast(1).toString».«it.name.toFirstUpper»'''
+					current.append(
+					'''
+					    if(idef.type == «spriteFQN».class){
+					        «it.name.toFirstLower».add(new «spriteFQN»(screen, this, idef.position.x, idef.position.y));
+					    }
+					''')
+				]
+				append(
+				'''
+				}
+				''')
 			]
 		])
 	}
