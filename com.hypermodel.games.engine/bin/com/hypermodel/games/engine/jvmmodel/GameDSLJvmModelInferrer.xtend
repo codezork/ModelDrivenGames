@@ -794,6 +794,32 @@ class GameDSLJvmModelInferrer extends AbstractModelInferrer {
 						'''
 				        define«sprite.name.toFirstUpper»(new Vector2(xPosition, yPosition));
 				        ''')
+				        if(sprite.initialState.animation !== null) {
+				        	if(sprite.initialState.animation.hasFrames) {
+					        	append(
+					        	'''
+					        	setBounds(xPosition, yPosition, «sprite.initialState.animation.region.width» / ''')
+					        	append(gameClass)
+					        	append('''.PPM, «sprite.initialState.animation.region.height» / «gameClass.simpleName».PPM);
+					        	''')
+					        }
+				        	if(sprite.initialState.animation.hasStands) {
+					        	append(
+					        	'''
+					        	setBounds(xPosition, yPosition, «sprite.initialState.animation.stands.get(0).region.width» / ''')
+					        	append(gameClass)
+					        	append('''.PPM, «sprite.initialState.animation.stands.get(0).region.height» / «gameClass.simpleName».PPM);
+					        	''')
+					        }
+				        }
+				        if(sprite.initialState.stand !== null) {
+				        	append(
+				        	'''
+				        	setBounds(xPosition, yPosition, «sprite.initialState.stand.region.width» / ''')
+				        	append(gameClass)
+				        	append('''.PPM, «sprite.initialState.stand.region.height» / «gameClass.simpleName».PPM);
+				        	''')
+				        }
 						append("setRegion(getFrame(0.0f));\n");
 						if(sprite.hasActivationRule) {
 							append("body.setActive(false);\n")
@@ -919,9 +945,27 @@ class GameDSLJvmModelInferrer extends AbstractModelInferrer {
 			body = [
 				append(
 				'''
-				setPosition(body.getPosition().x - getWidth() / 2, body.getPosition().y - getHeight() / 2);
+		        currentState = getState();
+		        switch (currentState) {
+		        ''')
+		        val current = it
+				sprite.states.forEach[
+					current.append(
+					'''
+					case «it.name.toUpperCase»:
+						positionOffsetX = «IF it.animation!==null»«IF it.animation.hasFrames»«it.animation.region.offsetX»f«ELSEIF it.animation.hasStands»«it.animation.stands.get(0).region.offsetX»f«ENDIF»«ELSEIF it.stand!==null»«it.stand.region.offsetX»f«ENDIF»;
+						positionOffsetY = «IF it.animation!==null»«IF it.animation.hasFrames»«it.animation.region.offsetY»f«ELSEIF it.animation.hasStands»«it.animation.stands.get(0).region.offsetY»f«ENDIF»«ELSEIF it.stand!==null»«it.stand.region.offsetY»f«ENDIF»;
+						break;
+					''')
+				]		        	
+				append(
+				'''
+				}
 				''')
-				val current = it
+				append(
+				'''
+				setPosition(body.getPosition().x - getWidth() / 2 + positionOffsetX / «gameClass.simpleName».PPM, body.getPosition().y - getHeight() / 2 + positionOffsetY / «gameClass.simpleName».PPM);
+				''')
 				sprite.properties.filter[it.onUpdateTrue].forEach[
 					current.append(
 					'''
@@ -974,8 +1018,6 @@ class GameDSLJvmModelInferrer extends AbstractModelInferrer {
 						«IF it.animation!==null && it.ifFinished»if(«it.animation.name».isAnimationFinished(stateTimer)) {
 							set«setFalse.name.toFirstUpper»(false);
 						}«ENDIF»
-						positionOffsetX = «IF it.animation!==null»«IF it.animation.hasFrames»«it.animation.region.offsetX»f«ELSEIF it.animation.hasStands»«it.animation.stands.get(0).region.offsetX»f«ENDIF»«ELSEIF it.stand!==null»«it.stand.region.offsetX»f«ENDIF»;
-						positionOffsetY = «IF it.animation!==null»«IF it.animation.hasFrames»«it.animation.region.offsetY»f«ELSEIF it.animation.hasStands»«it.animation.stands.get(0).region.offsetY»f«ENDIF»«ELSEIF it.stand!==null»«it.stand.region.offsetY»f«ENDIF»;
 						break;
 					''')
 				]		        	
@@ -1023,11 +1065,6 @@ class GameDSLJvmModelInferrer extends AbstractModelInferrer {
 				'''
 				Vector2 position = body.getPosition();
 				world.destroyBody(body);
-				position.add(positionOffsetX / ''')
-				append(gameClass)
-				append(
-				'''
-				.PPM, positionOffsetY / «gameClass.simpleName».PPM); 
 				define«sprite.name.toFirstUpper»(position);
 				''')
 			]
@@ -1065,7 +1102,6 @@ class GameDSLJvmModelInferrer extends AbstractModelInferrer {
 				append('''
 				fdef.filter.maskBits = «mask as int»;
 				fdef.shape = shape;
-				shape.setPosition(new Vector2(-positionOffsetX / «gameClass.simpleName».PPM, -positionOffsetY / «gameClass.simpleName».PPM));
 				body.createFixture(fdef).setUserData(this);
 				''')
 				if(sprite.hasSensor) {
@@ -1080,7 +1116,7 @@ class GameDSLJvmModelInferrer extends AbstractModelInferrer {
 					if(sprite.vectors2d.length==2) {
 						append(
 						'''
-						head.set(new Vector2(«sprite.vectors2d.get(0).x»f/«gameClass.simpleName».PPM, «sprite.vectors2d.get(0).y»f/«gameClass.simpleName».PPM), new Vector2(«sprite.vectors2d.get(1).x»f/«gameClass.simpleName».PPM, «sprite.vectors2d.get(1).y»f/«gameClass.simpleName».PPM));
+						head.set(new Vector2((«sprite.vectors2d.get(0).x»f+positionOffsetX)/«gameClass.simpleName».PPM, («sprite.vectors2d.get(0).y»f+positionOffsetY)/«gameClass.simpleName».PPM), new Vector2((«sprite.vectors2d.get(1).x»f+positionOffsetX)/«gameClass.simpleName».PPM, («sprite.vectors2d.get(1).y»f+positionOffsetY)/«gameClass.simpleName».PPM));
 						''')
 					} else {
 						append(
@@ -1090,7 +1126,7 @@ class GameDSLJvmModelInferrer extends AbstractModelInferrer {
 						for(var idx=0;idx<sprite.vectors2d.length;idx++) {
 							append(
 							'''
-							vertice[«idx»] = new Vector2(«sprite.vectors2d.get(idx).x»f, «sprite.vectors2d.get(idx).y»f).scl(1 / «gameClass.simpleName».PPM);
+							vertice[«idx»] = new Vector2(«sprite.vectors2d.get(idx).x»f+positionOffsetX, «sprite.vectors2d.get(idx).y»f+positionOffsetY).scl(1 / «gameClass.simpleName».PPM);
 							''')
 						}
 						append(
@@ -1106,26 +1142,6 @@ class GameDSLJvmModelInferrer extends AbstractModelInferrer {
 					body.createFixture(fdef).setUserData(this);
 					''')
 				}
-		        if(sprite.initialState.animation !== null) {
-		        	if(sprite.initialState.animation.hasFrames) {
-			        	append(
-			        	'''
-			        	setBounds(position.x, position.y, «sprite.initialState.animation.region.width» / «gameClass.simpleName».PPM, «sprite.initialState.animation.region.height» / «gameClass.simpleName».PPM);
-			        	''')
-			        }
-		        	if(sprite.initialState.animation.hasStands) {
-			        	append(
-			        	'''
-			        	setBounds(position.x, position.y, «sprite.initialState.animation.stands.get(0).region.width» / «gameClass.simpleName».PPM, «sprite.initialState.animation.stands.get(0).region.height» / «gameClass.simpleName».PPM);
-			        	''')
-			        }
-		        }
-		        if(sprite.initialState.stand !== null) {
-		        	append(
-		        	'''
-		        	setBounds(position.x, position.y, «sprite.initialState.stand.region.width» / «gameClass.simpleName».PPM, «sprite.initialState.stand.region.height» / «gameClass.simpleName».PPM);
-		        	''')
-		        }
 			]
 		])
 		sprite.events.forEach[
