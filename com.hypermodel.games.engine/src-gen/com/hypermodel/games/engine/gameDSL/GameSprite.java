@@ -17,10 +17,11 @@ import org.eclipse.emf.ecore.EObject;
  * </p>
  * <ul>
  *   <li>{@link com.hypermodel.games.engine.gameDSL.GameSprite#getName <em>Name</em>}</li>
+ *   <li>{@link com.hypermodel.games.engine.gameDSL.GameSprite#getId <em>Id</em>}</li>
+ *   <li>{@link com.hypermodel.games.engine.gameDSL.GameSprite#getRadius <em>Radius</em>}</li>
  *   <li>{@link com.hypermodel.games.engine.gameDSL.GameSprite#isIsEnemy <em>Is Enemy</em>}</li>
  *   <li>{@link com.hypermodel.games.engine.gameDSL.GameSprite#getLayer <em>Layer</em>}</li>
  *   <li>{@link com.hypermodel.games.engine.gameDSL.GameSprite#isIsDestructable <em>Is Destructable</em>}</li>
- *   <li>{@link com.hypermodel.games.engine.gameDSL.GameSprite#getDestroyProperty <em>Destroy Property</em>}</li>
  *   <li>{@link com.hypermodel.games.engine.gameDSL.GameSprite#isHasVelocity <em>Has Velocity</em>}</li>
  *   <li>{@link com.hypermodel.games.engine.gameDSL.GameSprite#getVelocity <em>Velocity</em>}</li>
  *   <li>{@link com.hypermodel.games.engine.gameDSL.GameSprite#isHasActivationRule <em>Has Activation Rule</em>}</li>
@@ -28,8 +29,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link com.hypermodel.games.engine.gameDSL.GameSprite#isIsItem <em>Is Item</em>}</li>
  *   <li>{@link com.hypermodel.games.engine.gameDSL.GameSprite#isIsPlayer <em>Is Player</em>}</li>
  *   <li>{@link com.hypermodel.games.engine.gameDSL.GameSprite#getStartPosition <em>Start Position</em>}</li>
- *   <li>{@link com.hypermodel.games.engine.gameDSL.GameSprite#getId <em>Id</em>}</li>
- *   <li>{@link com.hypermodel.games.engine.gameDSL.GameSprite#getRadius <em>Radius</em>}</li>
+ *   <li>{@link com.hypermodel.games.engine.gameDSL.GameSprite#getInputs <em>Inputs</em>}</li>
  *   <li>{@link com.hypermodel.games.engine.gameDSL.GameSprite#isHasSensor <em>Has Sensor</em>}</li>
  *   <li>{@link com.hypermodel.games.engine.gameDSL.GameSprite#getVectors2d <em>Vectors2d</em>}</li>
  *   <li>{@link com.hypermodel.games.engine.gameDSL.GameSprite#getSensorID <em>Sensor ID</em>}</li>
@@ -39,7 +39,8 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link com.hypermodel.games.engine.gameDSL.GameSprite#getInitialState <em>Initial State</em>}</li>
  *   <li>{@link com.hypermodel.games.engine.gameDSL.GameSprite#getGameOverState <em>Game Over State</em>}</li>
  *   <li>{@link com.hypermodel.games.engine.gameDSL.GameSprite#getEvents <em>Events</em>}</li>
- *   <li>{@link com.hypermodel.games.engine.gameDSL.GameSprite#getInputs <em>Inputs</em>}</li>
+ *   <li>{@link com.hypermodel.games.engine.gameDSL.GameSprite#isHasRestitution <em>Has Restitution</em>}</li>
+ *   <li>{@link com.hypermodel.games.engine.gameDSL.GameSprite#getRestitution <em>Restitution</em>}</li>
  * </ul>
  *
  * @see com.hypermodel.games.engine.gameDSL.GameDSLPackage#getGameSprite()
@@ -73,6 +74,58 @@ public interface GameSprite extends EObject
    * @generated
    */
   void setName(String value);
+
+  /**
+   * Returns the value of the '<em><b>Id</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Id</em>' attribute isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Id</em>' attribute.
+   * @see #setId(int)
+   * @see com.hypermodel.games.engine.gameDSL.GameDSLPackage#getGameSprite_Id()
+   * @model
+   * @generated
+   */
+  int getId();
+
+  /**
+   * Sets the value of the '{@link com.hypermodel.games.engine.gameDSL.GameSprite#getId <em>Id</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Id</em>' attribute.
+   * @see #getId()
+   * @generated
+   */
+  void setId(int value);
+
+  /**
+   * Returns the value of the '<em><b>Radius</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Radius</em>' attribute isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Radius</em>' attribute.
+   * @see #setRadius(int)
+   * @see com.hypermodel.games.engine.gameDSL.GameDSLPackage#getGameSprite_Radius()
+   * @model
+   * @generated
+   */
+  int getRadius();
+
+  /**
+   * Sets the value of the '{@link com.hypermodel.games.engine.gameDSL.GameSprite#getRadius <em>Radius</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Radius</em>' attribute.
+   * @see #getRadius()
+   * @generated
+   */
+  void setRadius(int value);
 
   /**
    * Returns the value of the '<em><b>Is Enemy</b></em>' attribute.
@@ -151,32 +204,6 @@ public interface GameSprite extends EObject
    * @generated
    */
   void setIsDestructable(boolean value);
-
-  /**
-   * Returns the value of the '<em><b>Destroy Property</b></em>' reference.
-   * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Destroy Property</em>' reference isn't clear,
-   * there really should be more of a description here...
-   * </p>
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Destroy Property</em>' reference.
-   * @see #setDestroyProperty(GameBodyProperty)
-   * @see com.hypermodel.games.engine.gameDSL.GameDSLPackage#getGameSprite_DestroyProperty()
-   * @model
-   * @generated
-   */
-  GameBodyProperty getDestroyProperty();
-
-  /**
-   * Sets the value of the '{@link com.hypermodel.games.engine.gameDSL.GameSprite#getDestroyProperty <em>Destroy Property</em>}' reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Destroy Property</em>' reference.
-   * @see #getDestroyProperty()
-   * @generated
-   */
-  void setDestroyProperty(GameBodyProperty value);
 
   /**
    * Returns the value of the '<em><b>Has Velocity</b></em>' attribute.
@@ -361,56 +388,20 @@ public interface GameSprite extends EObject
   void setStartPosition(GameVector2d value);
 
   /**
-   * Returns the value of the '<em><b>Id</b></em>' attribute.
+   * Returns the value of the '<em><b>Inputs</b></em>' containment reference list.
+   * The list contents are of type {@link com.hypermodel.games.engine.gameDSL.GameInput}.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Id</em>' attribute isn't clear,
+   * If the meaning of the '<em>Inputs</em>' containment reference list isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Id</em>' attribute.
-   * @see #setId(int)
-   * @see com.hypermodel.games.engine.gameDSL.GameDSLPackage#getGameSprite_Id()
-   * @model
+   * @return the value of the '<em>Inputs</em>' containment reference list.
+   * @see com.hypermodel.games.engine.gameDSL.GameDSLPackage#getGameSprite_Inputs()
+   * @model containment="true"
    * @generated
    */
-  int getId();
-
-  /**
-   * Sets the value of the '{@link com.hypermodel.games.engine.gameDSL.GameSprite#getId <em>Id</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Id</em>' attribute.
-   * @see #getId()
-   * @generated
-   */
-  void setId(int value);
-
-  /**
-   * Returns the value of the '<em><b>Radius</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Radius</em>' attribute isn't clear,
-   * there really should be more of a description here...
-   * </p>
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Radius</em>' attribute.
-   * @see #setRadius(int)
-   * @see com.hypermodel.games.engine.gameDSL.GameDSLPackage#getGameSprite_Radius()
-   * @model
-   * @generated
-   */
-  int getRadius();
-
-  /**
-   * Sets the value of the '{@link com.hypermodel.games.engine.gameDSL.GameSprite#getRadius <em>Radius</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Radius</em>' attribute.
-   * @see #getRadius()
-   * @generated
-   */
-  void setRadius(int value);
+  EList<GameInput> getInputs();
 
   /**
    * Returns the value of the '<em><b>Has Sensor</b></em>' attribute.
@@ -597,19 +588,55 @@ public interface GameSprite extends EObject
   EList<GameEvent> getEvents();
 
   /**
-   * Returns the value of the '<em><b>Inputs</b></em>' containment reference list.
-   * The list contents are of type {@link com.hypermodel.games.engine.gameDSL.GameInput}.
+   * Returns the value of the '<em><b>Has Restitution</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Inputs</em>' containment reference list isn't clear,
+   * If the meaning of the '<em>Has Restitution</em>' attribute isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Inputs</em>' containment reference list.
-   * @see com.hypermodel.games.engine.gameDSL.GameDSLPackage#getGameSprite_Inputs()
-   * @model containment="true"
+   * @return the value of the '<em>Has Restitution</em>' attribute.
+   * @see #setHasRestitution(boolean)
+   * @see com.hypermodel.games.engine.gameDSL.GameDSLPackage#getGameSprite_HasRestitution()
+   * @model
    * @generated
    */
-  EList<GameInput> getInputs();
+  boolean isHasRestitution();
+
+  /**
+   * Sets the value of the '{@link com.hypermodel.games.engine.gameDSL.GameSprite#isHasRestitution <em>Has Restitution</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Has Restitution</em>' attribute.
+   * @see #isHasRestitution()
+   * @generated
+   */
+  void setHasRestitution(boolean value);
+
+  /**
+   * Returns the value of the '<em><b>Restitution</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Restitution</em>' attribute isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Restitution</em>' attribute.
+   * @see #setRestitution(String)
+   * @see com.hypermodel.games.engine.gameDSL.GameDSLPackage#getGameSprite_Restitution()
+   * @model
+   * @generated
+   */
+  String getRestitution();
+
+  /**
+   * Sets the value of the '{@link com.hypermodel.games.engine.gameDSL.GameSprite#getRestitution <em>Restitution</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Restitution</em>' attribute.
+   * @see #getRestitution()
+   * @generated
+   */
+  void setRestitution(String value);
 
 } // GameSprite

@@ -534,7 +534,7 @@ class GameDSLJvmModelInferrer extends AbstractModelInferrer {
 			    player.update(delta);
 			    creator.updateSprites(delta, player);
 			    hud.update(delta);
-			    gamecam.position.x = player.getPositionWithOffset(null).x;
+			    gamecam.position.x = player.getPosition().x;
 			    gamecam.update();
 			    renderer.setView(gamecam);
 			    ''')
@@ -863,6 +863,11 @@ class GameDSLJvmModelInferrer extends AbstractModelInferrer {
 			type.members += fsprite.toField('''«it.name»''', Boolean.typeRef)  [initializer=[append('''false''')]]
 		]
 		type.members += sprite.toGetter("currentState", typeRef(stateType))
+		if(sprite.isDestructable) {
+			type.members += sprite.toField("destroyed", boolean.typeRef)
+			type.members += sprite.toField("setToDestroy", boolean.typeRef)
+			type.members += sprite.toSetter("setToDestroy", boolean.typeRef)
+		}		
 	}
 
 	def void toOperations(JvmGenericType type, GameSprite sprite, JvmGenericType gameClass) {
@@ -931,7 +936,7 @@ class GameDSLJvmModelInferrer extends AbstractModelInferrer {
 				body = [
 					append(
 					'''
-					if(!«sprite.destroyProperty.name» || stateTimer < 1) {
+					if(!destroyed || stateTimer < 1) {
 						super.draw(batch);
 					}''')
 				]
@@ -962,10 +967,28 @@ class GameDSLJvmModelInferrer extends AbstractModelInferrer {
 				'''
 				}
 				''')
+				if(sprite.isIsDestructable) {
+				append(
+				'''
+				if(setToDestroy && !destroyed) {
+					world.destroyBody(body);
+					destroyed = true;
+					stateTimer = 0;
+					setToDestroy = false;
+				}
+				''')
+				}
 				append(
 				'''
 				setPosition(body.getPosition().x - getWidth() / 2 + positionOffsetX / «gameClass.simpleName».PPM, body.getPosition().y - getHeight() / 2 + positionOffsetY / «gameClass.simpleName».PPM);
-				''')
+				'''
+				)
+				if(sprite.hasVelocity) {
+					append(
+					'''
+					body.setLinearVelocity(velocity);
+					''')
+				}
 				sprite.properties.filter[it.onUpdateTrue].forEach[
 					current.append(
 					'''
@@ -1043,6 +1066,14 @@ class GameDSLJvmModelInferrer extends AbstractModelInferrer {
 				append(
 				'''
 				return State.«sprite.initialState.name.toUpperCase»;
+				''')
+			]
+		])
+		type.members += sprite.toMethod("getPosition", Vector2.typeRef, [
+			body = [
+				append(
+				'''
+				return getPositionWithOffset(null);
 				''')
 			]
 		])
@@ -1139,6 +1170,15 @@ class GameDSLJvmModelInferrer extends AbstractModelInferrer {
 					fdef.filter.categoryBits = «(2**sprite.sensorID) as int»;
 					fdef.shape = head;
 					fdef.isSensor = true;
+					''')
+					if(sprite.hasRestitution) {
+						append(
+						'''
+						fdef.restitution = «sprite.restitution»f;
+						''')
+					}
+					append(
+					'''
 					body.createFixture(fdef).setUserData(this);
 					''')
 				}
@@ -1244,6 +1284,14 @@ class GameDSLJvmModelInferrer extends AbstractModelInferrer {
 		type.members += tile.toMethod("getProperties", MapProperties.typeRef, [
 			body = [
 				append('''return object.getProperties();''')
+			]
+		])
+		type.members += tile.toMethod("getPosition", Vector2.typeRef, [
+			body = [
+				append(
+				'''
+				return getPositionWithOffset(null);
+				''')
 			]
 		])
 		type.members += tile.toMethod("getPositionWithOffset", Vector2.typeRef, [

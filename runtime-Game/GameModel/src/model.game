@@ -19,7 +19,7 @@ package com.hypermodel.games {
 	}
 	game MarioBros screenWidth 400 screenHeight 208 title "MarioBros" pixelPerMeter 100 
 	timeStep 0.0167 velocityIterations 6 positionIterations 2 worldWidth 240 worldHeight 13
-	tileWidth 16 tileHeight 16 debug
+	tileWidth 16 tileHeight 16
 	layers {
 		layer background index 0 type tile
 		layer graphic index 1 type tile
@@ -45,6 +45,9 @@ package com.hypermodel.games {
 		region bigMarioRunLeft name "big_mario" width 16 height 32 positionOffsetY 8.0 flipX
 		region goomba name "goomba" width 16 height 16
 		region mushroom name "mushroom" width 16 height 16
+		region turtleLeft name "turtle"  width 16 height 24 positionOffsetY 8.0 
+		region turtleRight name "turtle"  width 16 height 24 positionOffsetY 8.0 flipX 
+		region turtleStand name "turtle"  width 16 height 24 positionOffsetY 8.0 
 	}
 	screens {
 		screen PlayScreen 
@@ -52,21 +55,27 @@ package com.hypermodel.games {
 		map "level1.tmx"
 		scene Hud
 		tiles {
-			tile Ground collisionId 0 objectLayer ground
-			tile Pipe collisionId 5 objectLayer pipes
-			tile Brick collisionId 2 objectLayer bricks tileLayer graphic
-			tile Coin collisionId 3 objectLayer coins tileLayer graphic
+			tile Ground id 0 objectLayer ground
+			tile Pipe id 5 objectLayer pipes
+			tile Brick id 2 objectLayer bricks tileLayer graphic
+			tile Coin id 3 objectLayer coins tileLayer graphic
 		}
 		sprites {
-			sprite Mario isPlayer startPosition vector(32.0,25.0) 
-			collisionId 1 radius 6 
+			sprite Mario id 1 radius 6 
+			isPlayer startPosition vector(32.0,15.0) 
+			inputs {
+				input justPressed up jump 
+				input pressed left accelerateLeft
+				input pressed right accelerateRight 
+			}
 			sensor {
 				vector(-3.0,8.0)
 				vector(3.0,8.0)  
-			} sensorID 9
+			} sensorId 9
 			actors {
 				sprite Mushroom 
-				when fixture collidesWith fixture of sprite Goomba do atBeginOfContact hit 
+				when fixture collidesWith fixture of sprite Goomba do atBeginOfContact hitGoomba
+				when fixture collidesWith fixture of sprite Turtle do atBeginOfContact hitTurtle 
 				when sensor collidesWith fixture of tile Brick do atBeginOfContact brickHit 
 				when sensor collidesWith fixture of tile Coin do atBeginOfContact coinHit
 				tile Ground
@@ -118,7 +127,7 @@ package com.hypermodel.games {
 				} stand jumpBigRight whichFrame 5 from bigMarioRunRight
 				state growing if isTrue doGrowing() { 
 					return grows
-				} animation marioGrowing duration 0.2 stands {
+				} animation marioGrowing duration 0.3 stands {
 					stand grow1 whichFrame 15 from bigMarioRunLeft
 					stand grow2 whichFrame 0 from bigMarioRunLeft 
 					stand grow3 whichFrame 15 from bigMarioRunLeft
@@ -138,8 +147,23 @@ package com.hypermodel.games {
 						setBounds(getX(), getY(), getWidth(), getHeight() * 2)
 					}					
 				}
-				event hit(Goomba goomba) {
+				event hitGoomba(Goomba goomba) {
 					if(isBig) {
+						big = false
+						timeToDefineSmall = true 
+						setBounds(getX(), getY(), getWidth(), getHeight() / 2)
+					} else {
+						Gdx.app.log("MARIO", "-*- DIED -*-")
+					}
+				}
+				event hitTurtle(Turtle turtle) {
+			        if(turtle.currentState.equals(Turtle.State.STANDINGTURTLE)) {
+            			if(turtle.position.x > position.x) {
+            				turtle.kick(-2.0f)
+            			} else {
+            				turtle.kick(2.0f)
+            			}
+            		} else if(isBig) {
 						big = false
 						timeToDefineSmall = true 
 						setBounds(getX(), getY(), getWidth(), getHeight() / 2)
@@ -155,10 +179,10 @@ package com.hypermodel.games {
 					}
 				}
 				event coinHit(Coin coin) {
-					if(coin.getProperties().containsKey("mushroom")) {
+					if(coin.cell.^tile.^id != 28 && coin.getProperties().containsKey("mushroom")) {
 						creator.spawnItem(new ItemDef(coin.getPositionWithOffset(new Vector2(0.0f, 16.0f)),Mushroom)); 
 					}
-					coin.cell.setTile(coin.getMap().getTileSets().getTileSet("tileset_gutter").getTile(28));
+					coin.cell.^tile = coin.^map.tileSets.getTileSet("tileset_gutter").getTile(28);
             		Hud.addMario(100);
 				}
 				event jump() {  
@@ -168,99 +192,76 @@ package com.hypermodel.games {
 					}
 				}
 				event accelerateRight() {
-					if(!currentState.equals(State.DEAD) && body.getLinearVelocity().x <= 1) {
+					if(!currentState.equals(State.DEAD) && body.getLinearVelocity().x <= 1.0) {
 						body.applyLinearImpulse(new Vector2(0.1f, 0), body.getWorldCenter(), true)
 					}
 				}  
 				event accelerateLeft() {
-					if(!currentState.equals(State.DEAD) && body.getLinearVelocity().x >= -1) {
+					if(!currentState.equals(State.DEAD) && body.getLinearVelocity().x >= -1.0) {
 						body.applyLinearImpulse(new Vector2(-0.1f, 0), body.getWorldCenter(), true)
 					}
 				}
 			}
-			inputs {
-				input justPressed up jump 
-				input pressed left accelerateLeft
-				input pressed right accelerateRight 
-			}
 			
-			
-			sprite Goomba isEnemy layer goombas destructable byProperty destroyed 
+			sprite Goomba id 6 radius 6 isEnemy 
+			layer goombas destructible
+			velocity vector(-1.0,-2.0)
 			activate if isTrue playerNear(Sprite ^player) {
 				return !destroyed && body.position.x < ^player.getX() + 2.24
 			}
-			velocity vector(-1.0,-2.0)
-			collisionId 6 radius 6 
 			sensor {
-				vector(-5.0,9.0)
-				vector(5.0,9.0)
-				vector(-3.0,7.0)
-				vector(3.0,7.0)
-			} sensorID 7 
+				vector(-5.0,8.0)
+				vector(5.0,8.0)
+				vector(-3.0,3.0)
+				vector(3.0,3.0)
+			} sensorId 7 
+			restitution 0.5
 			actors {
 				when sensor collidesWith fixture of sprite Mario do atBeginOfContact hitOnHead
 				when fixture collidesWith fixture of sprite Goomba do atBeginOfContact hitByGoomba
-				when fixture collidesWith fixture of tile Pipe do atBeginOfContact reverseVelocityX 
+				when fixture collidesWith fixture of sprite Turtle do atBeginOfContact hitByTurtle
+				when fixture collidesWith fixture of tile Pipe do atBeginOfContact collidePipe 
 				tile Brick
 				tile Coin
-				tile Ground 
-			}
-			properties { 
-				property setToDestroyed onUpdateIfTrue {
-					if(!destroyed) {  
-						world.destroyBody(body)
-	            		destroyed = true
-	            		stateTimer = 0 
-	            	}
-				}
-				property destroyed onUpdateIfFalse {
-		            body.setLinearVelocity(^velocity);
-		            setPosition(body.getPosition().x - getWidth() / 2, body.getPosition().y - getHeight() / 2);
-				}
+				when fixture collidesWith fixture of tile Ground do atBeginOfContact collideGround 
 			}
 			states {
 				state runningGoomba if isTrue notDestroyed () {
 					return !destroyed 
 				} animation walkAnimation duration 0.4 frames 2 startFrame 0 from goomba
 				state destroyingGoomba if isTrue toBeDestroyed () {
-					return setToDestroyed
+					return setToDestroy 
 				} stand isdestroyed whichFrame 2 from goomba
 			}
 			initialState runningGoomba
 			events {
-				event reverseVelocityX(Pipe pipe) {
+				event collidePipe(Pipe pipe) {
 					^velocity.x = -^velocity.x
 				}
 				event hitOnHead(Mario mario) {
-					setToDestroyed = true
+					setToDestroy = true 
 				}
 				event hitByGoomba(Goomba goomba) { 
 					^velocity.x = -^velocity.x
 				}
+				event hitByTurtle(Turtle turtle) { 
+					^velocity.x = -^velocity.x
+				}
+				event collideGround(Ground ground) {
+					^velocity.x = -^velocity.x
+				}
 			}
 
-			sprite Mushroom isItem destructable byProperty destroyed
-			velocity vector(0.7,0.0)
-			collisionId 8 radius 6 
+
+			sprite Mushroom id 8 radius 6 isItem 
+			destructible
+			velocity vector(0.7, 0.2) 
 			actors {
 				when fixture collidesWith fixture of sprite Mario do atBeginOfContact grow
 				tile Brick
 				tile Coin
 				tile Ground
 				when fixture collidesWith fixture of tile Pipe do atBeginOfContact reverseVelocityX
-			}
-			properties {
-				property setToDestroyed onUpdateIfTrue { 
-					world.destroyBody(body)
-            		destroyed = true;
-            		stateTimer = 0
-            		setSetToDestroyed(false)
-				}
-				property destroyed onUpdateIfFalse {
-		            setPosition(body.getPosition().x - getWidth() / 2, body.getPosition().y - getHeight() / 2);
-		            ^velocity.y = body.getLinearVelocity().y;
-		            body.setLinearVelocity(^velocity);
-				}
 			}
 			states {
 				state standingMushroom if isTrue notDestroyed () {
@@ -270,11 +271,82 @@ package com.hypermodel.games {
 			initialState standingMushroom 
 			events {
 				event grow(Mario mario) {
-					setSetToDestroyed(true)
+					setToDestroy = true
 					mario.grow()
 				}
 				event reverseVelocityX(Pipe pipe) {
 					^velocity.x = -^velocity.x
+				}
+			}
+			
+			
+			sprite Turtle id 11 radius 6 isEnemy 
+			layer turtles 
+			activate if isTrue playerNear(Sprite ^player) {
+				return body.position.x < ^player.getX() + 2.24
+			}
+			velocity vector(-1.0,-2.0)
+			sensor {
+				vector(-5.0,8.0)
+				vector(5.0,8.0)
+				vector(-3.0,3.0)
+				vector(3.0,3.0)
+			} sensorId 12
+			restitution 1.8
+			actors {
+				when sensor collidesWith fixture of sprite Mario do atBeginOfContact hitOnHead
+				when fixture collidesWith fixture of sprite Turtle do atBeginOfContact hitByTurtle
+				when fixture collidesWith fixture of tile Pipe do atBeginOfContact collidePipe 
+				tile Brick
+				tile Coin
+				sprite Goomba
+				when fixture collidesWith fixture of tile Ground do atBeginOfContact collideGround  
+			}
+			states {
+				state walkingTurtleLeft if isTrue isWalkingLeft () {
+					return body.linearVelocity.x < 0 && !currentState.equals(State.STANDINGTURTLE) 
+				} animation walkAnimationLeft duration 0.2 frames 4 startFrame 0 from turtleLeft
+				state walkingTurtleRight if isTrue isWalkingRight () {
+					return body.linearVelocity.x > 0 && !currentState.equals(State.STANDINGTURTLE) 
+				} animation walkAnimationRight duration 0.2 frames 4 startFrame 0 from turtleRight
+				state standingTurtle if isTrue isStanding () {
+					if(currentState.equals(State.STANDINGTURTLE) && stateTimer > 5) {
+						currentState = State.WALKINGTURTLERIGHT
+						^velocity.x = 1
+					}
+					return currentState.equals(State.STANDINGTURTLE) 
+				} stand shell1 whichFrame 4 from turtleStand
+				state movingTurtle if isTrue isMoving () {
+					return currentState.equals(State.MOVINGTURTLE)
+				} stand shell2 whichFrame 4 from turtleStand
+			}
+			initialState walkingTurtleRight
+			events {
+				event collidePipe(Pipe pipe) {
+					^velocity.x = -^velocity.x
+				}
+				event collideGround(Ground ground) {
+					^velocity.x = -^velocity.x
+				}
+				event hitOnHead(Mario mario) {
+			        if(currentState.equals(State.STANDINGTURTLE)) {
+			            if(mario.getPosition().x > getPosition().x)
+			                ^velocity.x = -2
+			            else
+			                ^velocity.x = 2
+			            currentState = State.MOVINGTURTLE
+			        }
+			        else {
+			            currentState = State.STANDINGTURTLE
+			            ^velocity.x = 0;
+			        }
+				}
+				event hitByTurtle(Turtle turtle) { 
+					^velocity.x = -^velocity.x
+				}
+				event kick(float direction) {
+			        ^velocity.x = direction;
+			        currentState = State.MOVINGTURTLE
 				}
 			}
 		}

@@ -825,27 +825,23 @@ public abstract class AbstractGameDSLSemanticSequencer extends XbaseWithAnnotati
 	 * Constraint:
 	 *     (
 	 *         name=ValidID 
+	 *         id=INT 
+	 *         radius=INT 
 	 *         (
-	 *             (actors+=GameActor | properties+=GameBodyProperty | events+=GameEvent | inputs+=GameInput)? 
-	 *             (states+=GameSpriteState* initialState=[GameSpriteState|ID] gameOverState=[GameSpriteState|ID]?)? 
 	 *             (
-	 *                 (
-	 *                     (
-	 *                         isEnemy?='isEnemy' 
-	 *                         (
-	 *                             layer=[GameLayer|ID]? 
-	 *                             (isDestructable?='destructable' destroyProperty=[GameBodyProperty|ID])? 
-	 *                             (hasVelocity?='velocity' velocity=GameVector2d)? 
-	 *                             (hasActivationRule?='activate' rule=GameRule)?
-	 *                         )+
-	 *                     ) | 
-	 *                     (isItem?='isItem' ((isDestructable?='destructable' destroyProperty=[GameBodyProperty|ID]) | (hasVelocity?='velocity' velocity=GameVector2d))*) | 
-	 *                     (isPlayer?='isPlayer' startPosition=GameVector2d)
-	 *                 )? 
-	 *                 id=INT 
-	 *                 radius=INT 
-	 *                 (hasSensor?='sensor' vectors2d+=GameVector2d* sensorID=INT)?
-	 *             )?
+	 *                 isDestructable?='destructible'? 
+	 *                 (isEnemy?='isEnemy' layer=[GameLayer|ID]?)? 
+	 *                 (hasVelocity?='velocity' velocity=GameVector2d)? 
+	 *                 (hasActivationRule?='activate' rule=GameRule)?
+	 *             )+ | 
+	 *             ((isItem?='isItem' isDestructable?='destructible'?) | (hasVelocity?='velocity' velocity=GameVector2d))+ | 
+	 *             (inputs+=GameInput? (isPlayer?='isPlayer' startPosition=GameVector2d?)?)+
+	 *         ) 
+	 *         (
+	 *             (actors+=GameActor | properties+=GameBodyProperty | events+=GameEvent)? 
+	 *             (hasRestitution?='restitution' restitution=Number)? 
+	 *             (hasSensor?='sensor' vectors2d+=GameVector2d* sensorID=INT)? 
+	 *             (states+=GameSpriteState* initialState=[GameSpriteState|ID] gameOverState=[GameSpriteState|ID]?)?
 	 *         )+
 	 *     )
 	 */

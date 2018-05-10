@@ -3,6 +3,11 @@
  */
 package com.hypermodel.games.engine.validation
 
+import com.google.inject.Inject
+import com.hypermodel.games.engine.gameDSL.GameDSLPackage
+import com.hypermodel.games.engine.gameDSL.GameRoot
+import org.eclipse.xtext.naming.IQualifiedNameProvider
+import org.eclipse.xtext.validation.Check
 
 /**
  * This class contains custom validation rules. 
@@ -10,16 +15,25 @@ package com.hypermodel.games.engine.validation
  * See https://www.eclipse.org/Xtext/documentation/303_runtime_concepts.html#validation
  */
 class GameDSLValidator extends AbstractGameDSLValidator {
+	public static final String CODE__DUPLICATE_REGION_NAME = "104";
+
+	@Inject extension IQualifiedNameProvider
 	
-//	public static val INVALID_NAME = 'invalidName'
-//
-//	@Check
-//	def checkGreetingStartsWithCapital(Greeting greeting) {
-//		if (!Character.isUpperCase(greeting.name.charAt(0))) {
-//			warning('Name should start with a capital', 
-//					GameDSLPackage.Literals.GREETING__NAME,
-//					INVALID_NAME)
-//		}
-//	}
-	
+	@Check
+	def checkDuplicateTextureRegion(GameRoot game) {
+		var names = <String>newHashSet
+		var counter = -1;
+		for (region : game.regions) {
+			counter += 1
+			var regionName = region.fullyQualifiedName.toString
+			if (names.contains(regionName)) {
+				error(String.format("Region name %s is used more than once which is disallowed!",
+						regionName),
+						GameDSLPackage.Literals.GAME_ROOT__REGIONS,
+						counter, CODE__DUPLICATE_REGION_NAME,
+						null)
+			}
+			names.add(regionName);
+		}
+	}
 }

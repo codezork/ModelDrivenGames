@@ -39,10 +39,11 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * </p>
  * <ul>
  *   <li>{@link com.hypermodel.games.engine.gameDSL.impl.GameSpriteImpl#getName <em>Name</em>}</li>
+ *   <li>{@link com.hypermodel.games.engine.gameDSL.impl.GameSpriteImpl#getId <em>Id</em>}</li>
+ *   <li>{@link com.hypermodel.games.engine.gameDSL.impl.GameSpriteImpl#getRadius <em>Radius</em>}</li>
  *   <li>{@link com.hypermodel.games.engine.gameDSL.impl.GameSpriteImpl#isIsEnemy <em>Is Enemy</em>}</li>
  *   <li>{@link com.hypermodel.games.engine.gameDSL.impl.GameSpriteImpl#getLayer <em>Layer</em>}</li>
  *   <li>{@link com.hypermodel.games.engine.gameDSL.impl.GameSpriteImpl#isIsDestructable <em>Is Destructable</em>}</li>
- *   <li>{@link com.hypermodel.games.engine.gameDSL.impl.GameSpriteImpl#getDestroyProperty <em>Destroy Property</em>}</li>
  *   <li>{@link com.hypermodel.games.engine.gameDSL.impl.GameSpriteImpl#isHasVelocity <em>Has Velocity</em>}</li>
  *   <li>{@link com.hypermodel.games.engine.gameDSL.impl.GameSpriteImpl#getVelocity <em>Velocity</em>}</li>
  *   <li>{@link com.hypermodel.games.engine.gameDSL.impl.GameSpriteImpl#isHasActivationRule <em>Has Activation Rule</em>}</li>
@@ -50,8 +51,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link com.hypermodel.games.engine.gameDSL.impl.GameSpriteImpl#isIsItem <em>Is Item</em>}</li>
  *   <li>{@link com.hypermodel.games.engine.gameDSL.impl.GameSpriteImpl#isIsPlayer <em>Is Player</em>}</li>
  *   <li>{@link com.hypermodel.games.engine.gameDSL.impl.GameSpriteImpl#getStartPosition <em>Start Position</em>}</li>
- *   <li>{@link com.hypermodel.games.engine.gameDSL.impl.GameSpriteImpl#getId <em>Id</em>}</li>
- *   <li>{@link com.hypermodel.games.engine.gameDSL.impl.GameSpriteImpl#getRadius <em>Radius</em>}</li>
+ *   <li>{@link com.hypermodel.games.engine.gameDSL.impl.GameSpriteImpl#getInputs <em>Inputs</em>}</li>
  *   <li>{@link com.hypermodel.games.engine.gameDSL.impl.GameSpriteImpl#isHasSensor <em>Has Sensor</em>}</li>
  *   <li>{@link com.hypermodel.games.engine.gameDSL.impl.GameSpriteImpl#getVectors2d <em>Vectors2d</em>}</li>
  *   <li>{@link com.hypermodel.games.engine.gameDSL.impl.GameSpriteImpl#getSensorID <em>Sensor ID</em>}</li>
@@ -61,7 +61,8 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link com.hypermodel.games.engine.gameDSL.impl.GameSpriteImpl#getInitialState <em>Initial State</em>}</li>
  *   <li>{@link com.hypermodel.games.engine.gameDSL.impl.GameSpriteImpl#getGameOverState <em>Game Over State</em>}</li>
  *   <li>{@link com.hypermodel.games.engine.gameDSL.impl.GameSpriteImpl#getEvents <em>Events</em>}</li>
- *   <li>{@link com.hypermodel.games.engine.gameDSL.impl.GameSpriteImpl#getInputs <em>Inputs</em>}</li>
+ *   <li>{@link com.hypermodel.games.engine.gameDSL.impl.GameSpriteImpl#isHasRestitution <em>Has Restitution</em>}</li>
+ *   <li>{@link com.hypermodel.games.engine.gameDSL.impl.GameSpriteImpl#getRestitution <em>Restitution</em>}</li>
  * </ul>
  *
  * @generated
@@ -87,6 +88,46 @@ public class GameSpriteImpl extends MinimalEObjectImpl.Container implements Game
    * @ordered
    */
   protected String name = NAME_EDEFAULT;
+
+  /**
+   * The default value of the '{@link #getId() <em>Id</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getId()
+   * @generated
+   * @ordered
+   */
+  protected static final int ID_EDEFAULT = 0;
+
+  /**
+   * The cached value of the '{@link #getId() <em>Id</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getId()
+   * @generated
+   * @ordered
+   */
+  protected int id = ID_EDEFAULT;
+
+  /**
+   * The default value of the '{@link #getRadius() <em>Radius</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getRadius()
+   * @generated
+   * @ordered
+   */
+  protected static final int RADIUS_EDEFAULT = 0;
+
+  /**
+   * The cached value of the '{@link #getRadius() <em>Radius</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getRadius()
+   * @generated
+   * @ordered
+   */
+  protected int radius = RADIUS_EDEFAULT;
 
   /**
    * The default value of the '{@link #isIsEnemy() <em>Is Enemy</em>}' attribute.
@@ -137,16 +178,6 @@ public class GameSpriteImpl extends MinimalEObjectImpl.Container implements Game
    * @ordered
    */
   protected boolean isDestructable = IS_DESTRUCTABLE_EDEFAULT;
-
-  /**
-   * The cached value of the '{@link #getDestroyProperty() <em>Destroy Property</em>}' reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getDestroyProperty()
-   * @generated
-   * @ordered
-   */
-  protected GameBodyProperty destroyProperty;
 
   /**
    * The default value of the '{@link #isHasVelocity() <em>Has Velocity</em>}' attribute.
@@ -259,44 +290,14 @@ public class GameSpriteImpl extends MinimalEObjectImpl.Container implements Game
   protected GameVector2d startPosition;
 
   /**
-   * The default value of the '{@link #getId() <em>Id</em>}' attribute.
+   * The cached value of the '{@link #getInputs() <em>Inputs</em>}' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getId()
+   * @see #getInputs()
    * @generated
    * @ordered
    */
-  protected static final int ID_EDEFAULT = 0;
-
-  /**
-   * The cached value of the '{@link #getId() <em>Id</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getId()
-   * @generated
-   * @ordered
-   */
-  protected int id = ID_EDEFAULT;
-
-  /**
-   * The default value of the '{@link #getRadius() <em>Radius</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getRadius()
-   * @generated
-   * @ordered
-   */
-  protected static final int RADIUS_EDEFAULT = 0;
-
-  /**
-   * The cached value of the '{@link #getRadius() <em>Radius</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getRadius()
-   * @generated
-   * @ordered
-   */
-  protected int radius = RADIUS_EDEFAULT;
+  protected EList<GameInput> inputs;
 
   /**
    * The default value of the '{@link #isHasSensor() <em>Has Sensor</em>}' attribute.
@@ -409,14 +410,44 @@ public class GameSpriteImpl extends MinimalEObjectImpl.Container implements Game
   protected EList<GameEvent> events;
 
   /**
-   * The cached value of the '{@link #getInputs() <em>Inputs</em>}' containment reference list.
+   * The default value of the '{@link #isHasRestitution() <em>Has Restitution</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getInputs()
+   * @see #isHasRestitution()
    * @generated
    * @ordered
    */
-  protected EList<GameInput> inputs;
+  protected static final boolean HAS_RESTITUTION_EDEFAULT = false;
+
+  /**
+   * The cached value of the '{@link #isHasRestitution() <em>Has Restitution</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #isHasRestitution()
+   * @generated
+   * @ordered
+   */
+  protected boolean hasRestitution = HAS_RESTITUTION_EDEFAULT;
+
+  /**
+   * The default value of the '{@link #getRestitution() <em>Restitution</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getRestitution()
+   * @generated
+   * @ordered
+   */
+  protected static final String RESTITUTION_EDEFAULT = null;
+
+  /**
+   * The cached value of the '{@link #getRestitution() <em>Restitution</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getRestitution()
+   * @generated
+   * @ordered
+   */
+  protected String restitution = RESTITUTION_EDEFAULT;
 
   /**
    * <!-- begin-user-doc -->
@@ -460,6 +491,52 @@ public class GameSpriteImpl extends MinimalEObjectImpl.Container implements Game
     name = newName;
     if (eNotificationRequired())
       eNotify(new ENotificationImpl(this, Notification.SET, GameDSLPackage.GAME_SPRITE__NAME, oldName, name));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public int getId()
+  {
+    return id;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setId(int newId)
+  {
+    int oldId = id;
+    id = newId;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, GameDSLPackage.GAME_SPRITE__ID, oldId, id));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public int getRadius()
+  {
+    return radius;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setRadius(int newRadius)
+  {
+    int oldRadius = radius;
+    radius = newRadius;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, GameDSLPackage.GAME_SPRITE__RADIUS, oldRadius, radius));
   }
 
   /**
@@ -549,49 +626,6 @@ public class GameSpriteImpl extends MinimalEObjectImpl.Container implements Game
     isDestructable = newIsDestructable;
     if (eNotificationRequired())
       eNotify(new ENotificationImpl(this, Notification.SET, GameDSLPackage.GAME_SPRITE__IS_DESTRUCTABLE, oldIsDestructable, isDestructable));
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public GameBodyProperty getDestroyProperty()
-  {
-    if (destroyProperty != null && destroyProperty.eIsProxy())
-    {
-      InternalEObject oldDestroyProperty = (InternalEObject)destroyProperty;
-      destroyProperty = (GameBodyProperty)eResolveProxy(oldDestroyProperty);
-      if (destroyProperty != oldDestroyProperty)
-      {
-        if (eNotificationRequired())
-          eNotify(new ENotificationImpl(this, Notification.RESOLVE, GameDSLPackage.GAME_SPRITE__DESTROY_PROPERTY, oldDestroyProperty, destroyProperty));
-      }
-    }
-    return destroyProperty;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public GameBodyProperty basicGetDestroyProperty()
-  {
-    return destroyProperty;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void setDestroyProperty(GameBodyProperty newDestroyProperty)
-  {
-    GameBodyProperty oldDestroyProperty = destroyProperty;
-    destroyProperty = newDestroyProperty;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, GameDSLPackage.GAME_SPRITE__DESTROY_PROPERTY, oldDestroyProperty, destroyProperty));
   }
 
   /**
@@ -835,45 +869,13 @@ public class GameSpriteImpl extends MinimalEObjectImpl.Container implements Game
    * <!-- end-user-doc -->
    * @generated
    */
-  public int getId()
+  public EList<GameInput> getInputs()
   {
-    return id;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void setId(int newId)
-  {
-    int oldId = id;
-    id = newId;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, GameDSLPackage.GAME_SPRITE__ID, oldId, id));
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public int getRadius()
-  {
-    return radius;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void setRadius(int newRadius)
-  {
-    int oldRadius = radius;
-    radius = newRadius;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, GameDSLPackage.GAME_SPRITE__RADIUS, oldRadius, radius));
+    if (inputs == null)
+    {
+      inputs = new EObjectContainmentEList<GameInput>(GameInput.class, this, GameDSLPackage.GAME_SPRITE__INPUTS);
+    }
+    return inputs;
   }
 
   /**
@@ -1083,13 +1085,45 @@ public class GameSpriteImpl extends MinimalEObjectImpl.Container implements Game
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<GameInput> getInputs()
+  public boolean isHasRestitution()
   {
-    if (inputs == null)
-    {
-      inputs = new EObjectContainmentEList<GameInput>(GameInput.class, this, GameDSLPackage.GAME_SPRITE__INPUTS);
-    }
-    return inputs;
+    return hasRestitution;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setHasRestitution(boolean newHasRestitution)
+  {
+    boolean oldHasRestitution = hasRestitution;
+    hasRestitution = newHasRestitution;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, GameDSLPackage.GAME_SPRITE__HAS_RESTITUTION, oldHasRestitution, hasRestitution));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public String getRestitution()
+  {
+    return restitution;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setRestitution(String newRestitution)
+  {
+    String oldRestitution = restitution;
+    restitution = newRestitution;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, GameDSLPackage.GAME_SPRITE__RESTITUTION, oldRestitution, restitution));
   }
 
   /**
@@ -1108,6 +1142,8 @@ public class GameSpriteImpl extends MinimalEObjectImpl.Container implements Game
         return basicSetRule(null, msgs);
       case GameDSLPackage.GAME_SPRITE__START_POSITION:
         return basicSetStartPosition(null, msgs);
+      case GameDSLPackage.GAME_SPRITE__INPUTS:
+        return ((InternalEList<?>)getInputs()).basicRemove(otherEnd, msgs);
       case GameDSLPackage.GAME_SPRITE__VECTORS2D:
         return ((InternalEList<?>)getVectors2d()).basicRemove(otherEnd, msgs);
       case GameDSLPackage.GAME_SPRITE__ACTORS:
@@ -1118,8 +1154,6 @@ public class GameSpriteImpl extends MinimalEObjectImpl.Container implements Game
         return ((InternalEList<?>)getStates()).basicRemove(otherEnd, msgs);
       case GameDSLPackage.GAME_SPRITE__EVENTS:
         return ((InternalEList<?>)getEvents()).basicRemove(otherEnd, msgs);
-      case GameDSLPackage.GAME_SPRITE__INPUTS:
-        return ((InternalEList<?>)getInputs()).basicRemove(otherEnd, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -1136,6 +1170,10 @@ public class GameSpriteImpl extends MinimalEObjectImpl.Container implements Game
     {
       case GameDSLPackage.GAME_SPRITE__NAME:
         return getName();
+      case GameDSLPackage.GAME_SPRITE__ID:
+        return getId();
+      case GameDSLPackage.GAME_SPRITE__RADIUS:
+        return getRadius();
       case GameDSLPackage.GAME_SPRITE__IS_ENEMY:
         return isIsEnemy();
       case GameDSLPackage.GAME_SPRITE__LAYER:
@@ -1143,9 +1181,6 @@ public class GameSpriteImpl extends MinimalEObjectImpl.Container implements Game
         return basicGetLayer();
       case GameDSLPackage.GAME_SPRITE__IS_DESTRUCTABLE:
         return isIsDestructable();
-      case GameDSLPackage.GAME_SPRITE__DESTROY_PROPERTY:
-        if (resolve) return getDestroyProperty();
-        return basicGetDestroyProperty();
       case GameDSLPackage.GAME_SPRITE__HAS_VELOCITY:
         return isHasVelocity();
       case GameDSLPackage.GAME_SPRITE__VELOCITY:
@@ -1160,10 +1195,8 @@ public class GameSpriteImpl extends MinimalEObjectImpl.Container implements Game
         return isIsPlayer();
       case GameDSLPackage.GAME_SPRITE__START_POSITION:
         return getStartPosition();
-      case GameDSLPackage.GAME_SPRITE__ID:
-        return getId();
-      case GameDSLPackage.GAME_SPRITE__RADIUS:
-        return getRadius();
+      case GameDSLPackage.GAME_SPRITE__INPUTS:
+        return getInputs();
       case GameDSLPackage.GAME_SPRITE__HAS_SENSOR:
         return isHasSensor();
       case GameDSLPackage.GAME_SPRITE__VECTORS2D:
@@ -1184,8 +1217,10 @@ public class GameSpriteImpl extends MinimalEObjectImpl.Container implements Game
         return basicGetGameOverState();
       case GameDSLPackage.GAME_SPRITE__EVENTS:
         return getEvents();
-      case GameDSLPackage.GAME_SPRITE__INPUTS:
-        return getInputs();
+      case GameDSLPackage.GAME_SPRITE__HAS_RESTITUTION:
+        return isHasRestitution();
+      case GameDSLPackage.GAME_SPRITE__RESTITUTION:
+        return getRestitution();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -1204,6 +1239,12 @@ public class GameSpriteImpl extends MinimalEObjectImpl.Container implements Game
       case GameDSLPackage.GAME_SPRITE__NAME:
         setName((String)newValue);
         return;
+      case GameDSLPackage.GAME_SPRITE__ID:
+        setId((Integer)newValue);
+        return;
+      case GameDSLPackage.GAME_SPRITE__RADIUS:
+        setRadius((Integer)newValue);
+        return;
       case GameDSLPackage.GAME_SPRITE__IS_ENEMY:
         setIsEnemy((Boolean)newValue);
         return;
@@ -1212,9 +1253,6 @@ public class GameSpriteImpl extends MinimalEObjectImpl.Container implements Game
         return;
       case GameDSLPackage.GAME_SPRITE__IS_DESTRUCTABLE:
         setIsDestructable((Boolean)newValue);
-        return;
-      case GameDSLPackage.GAME_SPRITE__DESTROY_PROPERTY:
-        setDestroyProperty((GameBodyProperty)newValue);
         return;
       case GameDSLPackage.GAME_SPRITE__HAS_VELOCITY:
         setHasVelocity((Boolean)newValue);
@@ -1237,11 +1275,9 @@ public class GameSpriteImpl extends MinimalEObjectImpl.Container implements Game
       case GameDSLPackage.GAME_SPRITE__START_POSITION:
         setStartPosition((GameVector2d)newValue);
         return;
-      case GameDSLPackage.GAME_SPRITE__ID:
-        setId((Integer)newValue);
-        return;
-      case GameDSLPackage.GAME_SPRITE__RADIUS:
-        setRadius((Integer)newValue);
+      case GameDSLPackage.GAME_SPRITE__INPUTS:
+        getInputs().clear();
+        getInputs().addAll((Collection<? extends GameInput>)newValue);
         return;
       case GameDSLPackage.GAME_SPRITE__HAS_SENSOR:
         setHasSensor((Boolean)newValue);
@@ -1275,9 +1311,11 @@ public class GameSpriteImpl extends MinimalEObjectImpl.Container implements Game
         getEvents().clear();
         getEvents().addAll((Collection<? extends GameEvent>)newValue);
         return;
-      case GameDSLPackage.GAME_SPRITE__INPUTS:
-        getInputs().clear();
-        getInputs().addAll((Collection<? extends GameInput>)newValue);
+      case GameDSLPackage.GAME_SPRITE__HAS_RESTITUTION:
+        setHasRestitution((Boolean)newValue);
+        return;
+      case GameDSLPackage.GAME_SPRITE__RESTITUTION:
+        setRestitution((String)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -1296,6 +1334,12 @@ public class GameSpriteImpl extends MinimalEObjectImpl.Container implements Game
       case GameDSLPackage.GAME_SPRITE__NAME:
         setName(NAME_EDEFAULT);
         return;
+      case GameDSLPackage.GAME_SPRITE__ID:
+        setId(ID_EDEFAULT);
+        return;
+      case GameDSLPackage.GAME_SPRITE__RADIUS:
+        setRadius(RADIUS_EDEFAULT);
+        return;
       case GameDSLPackage.GAME_SPRITE__IS_ENEMY:
         setIsEnemy(IS_ENEMY_EDEFAULT);
         return;
@@ -1304,9 +1348,6 @@ public class GameSpriteImpl extends MinimalEObjectImpl.Container implements Game
         return;
       case GameDSLPackage.GAME_SPRITE__IS_DESTRUCTABLE:
         setIsDestructable(IS_DESTRUCTABLE_EDEFAULT);
-        return;
-      case GameDSLPackage.GAME_SPRITE__DESTROY_PROPERTY:
-        setDestroyProperty((GameBodyProperty)null);
         return;
       case GameDSLPackage.GAME_SPRITE__HAS_VELOCITY:
         setHasVelocity(HAS_VELOCITY_EDEFAULT);
@@ -1329,11 +1370,8 @@ public class GameSpriteImpl extends MinimalEObjectImpl.Container implements Game
       case GameDSLPackage.GAME_SPRITE__START_POSITION:
         setStartPosition((GameVector2d)null);
         return;
-      case GameDSLPackage.GAME_SPRITE__ID:
-        setId(ID_EDEFAULT);
-        return;
-      case GameDSLPackage.GAME_SPRITE__RADIUS:
-        setRadius(RADIUS_EDEFAULT);
+      case GameDSLPackage.GAME_SPRITE__INPUTS:
+        getInputs().clear();
         return;
       case GameDSLPackage.GAME_SPRITE__HAS_SENSOR:
         setHasSensor(HAS_SENSOR_EDEFAULT);
@@ -1362,8 +1400,11 @@ public class GameSpriteImpl extends MinimalEObjectImpl.Container implements Game
       case GameDSLPackage.GAME_SPRITE__EVENTS:
         getEvents().clear();
         return;
-      case GameDSLPackage.GAME_SPRITE__INPUTS:
-        getInputs().clear();
+      case GameDSLPackage.GAME_SPRITE__HAS_RESTITUTION:
+        setHasRestitution(HAS_RESTITUTION_EDEFAULT);
+        return;
+      case GameDSLPackage.GAME_SPRITE__RESTITUTION:
+        setRestitution(RESTITUTION_EDEFAULT);
         return;
     }
     super.eUnset(featureID);
@@ -1381,14 +1422,16 @@ public class GameSpriteImpl extends MinimalEObjectImpl.Container implements Game
     {
       case GameDSLPackage.GAME_SPRITE__NAME:
         return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+      case GameDSLPackage.GAME_SPRITE__ID:
+        return id != ID_EDEFAULT;
+      case GameDSLPackage.GAME_SPRITE__RADIUS:
+        return radius != RADIUS_EDEFAULT;
       case GameDSLPackage.GAME_SPRITE__IS_ENEMY:
         return isEnemy != IS_ENEMY_EDEFAULT;
       case GameDSLPackage.GAME_SPRITE__LAYER:
         return layer != null;
       case GameDSLPackage.GAME_SPRITE__IS_DESTRUCTABLE:
         return isDestructable != IS_DESTRUCTABLE_EDEFAULT;
-      case GameDSLPackage.GAME_SPRITE__DESTROY_PROPERTY:
-        return destroyProperty != null;
       case GameDSLPackage.GAME_SPRITE__HAS_VELOCITY:
         return hasVelocity != HAS_VELOCITY_EDEFAULT;
       case GameDSLPackage.GAME_SPRITE__VELOCITY:
@@ -1403,10 +1446,8 @@ public class GameSpriteImpl extends MinimalEObjectImpl.Container implements Game
         return isPlayer != IS_PLAYER_EDEFAULT;
       case GameDSLPackage.GAME_SPRITE__START_POSITION:
         return startPosition != null;
-      case GameDSLPackage.GAME_SPRITE__ID:
-        return id != ID_EDEFAULT;
-      case GameDSLPackage.GAME_SPRITE__RADIUS:
-        return radius != RADIUS_EDEFAULT;
+      case GameDSLPackage.GAME_SPRITE__INPUTS:
+        return inputs != null && !inputs.isEmpty();
       case GameDSLPackage.GAME_SPRITE__HAS_SENSOR:
         return hasSensor != HAS_SENSOR_EDEFAULT;
       case GameDSLPackage.GAME_SPRITE__VECTORS2D:
@@ -1425,8 +1466,10 @@ public class GameSpriteImpl extends MinimalEObjectImpl.Container implements Game
         return gameOverState != null;
       case GameDSLPackage.GAME_SPRITE__EVENTS:
         return events != null && !events.isEmpty();
-      case GameDSLPackage.GAME_SPRITE__INPUTS:
-        return inputs != null && !inputs.isEmpty();
+      case GameDSLPackage.GAME_SPRITE__HAS_RESTITUTION:
+        return hasRestitution != HAS_RESTITUTION_EDEFAULT;
+      case GameDSLPackage.GAME_SPRITE__RESTITUTION:
+        return RESTITUTION_EDEFAULT == null ? restitution != null : !RESTITUTION_EDEFAULT.equals(restitution);
     }
     return super.eIsSet(featureID);
   }
@@ -1444,6 +1487,10 @@ public class GameSpriteImpl extends MinimalEObjectImpl.Container implements Game
     StringBuffer result = new StringBuffer(super.toString());
     result.append(" (name: ");
     result.append(name);
+    result.append(", id: ");
+    result.append(id);
+    result.append(", radius: ");
+    result.append(radius);
     result.append(", isEnemy: ");
     result.append(isEnemy);
     result.append(", isDestructable: ");
@@ -1456,14 +1503,14 @@ public class GameSpriteImpl extends MinimalEObjectImpl.Container implements Game
     result.append(isItem);
     result.append(", isPlayer: ");
     result.append(isPlayer);
-    result.append(", id: ");
-    result.append(id);
-    result.append(", radius: ");
-    result.append(radius);
     result.append(", hasSensor: ");
     result.append(hasSensor);
     result.append(", sensorID: ");
     result.append(sensorID);
+    result.append(", hasRestitution: ");
+    result.append(hasRestitution);
+    result.append(", restitution: ");
+    result.append(restitution);
     result.append(')');
     return result.toString();
   }

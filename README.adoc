@@ -55,4 +55,8 @@ The software is published under the *Apache 2.0 license*.
 Although the author takes all possible care to ensure the correctness of published information, no warranty can be accepted regarding the correctness, accuracy, uptodateness, reliability and completeness of the content of this information. The author expressly reserves the right to change, to delete or temporarily not to publish the contents wholly or partly at any time and without giving notice. Liability claims against the author because of tangible or intangible damage arising from accessing, using or not using the published information, through misuse of the connection or as a result of technical breakdowns are excluded.
 
 == Known issues
-- The game is not completed yet, but you can see the world and mario running around.
+- The game is not completed yet, but you can see the world, mario running around and interacting with enemies.
+- The xtext build process is disturbed by some extra builders, so the generator switches off automatic building after xtext generation.
+- Xtext validator is not working for some reason.
+- If starting the DesktopLauncher, the first try will fail. You must modify the debug configuration afterwards and set the working directory to the android's project directory/assets. See https://stackoverflow.com/questions/28433012/how-do-i-link-assets-from-android-to-desktop-in-libgdx/28437417
+

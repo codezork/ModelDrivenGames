@@ -112,10 +112,11 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="GameSprite">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="radius" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="isEnemy" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="layer" eType="#//GameLayer"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="isDestructable" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="destroyProperty" eType="#//GameBodyProperty"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="hasVelocity" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="velocity" eType="#//GameVector2d"
         containment="true"/>
@@ -126,8 +127,8 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="isPlayer" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="startPosition" eType="#//GameVector2d"
         containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="radius" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="inputs" upperBound="-1"
+        eType="#//GameInput" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="hasSensor" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="vectors2d" upperBound="-1"
         eType="#//GameVector2d" containment="true"/>
@@ -142,8 +143,8 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="gameOverState" eType="#//GameSpriteState"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="events" upperBound="-1"
         eType="#//GameEvent" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="inputs" upperBound="-1"
-        eType="#//GameInput" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="hasRestitution" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="restitution" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="GameInput">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="keyType" eType="#//GameKeyInputType"/>

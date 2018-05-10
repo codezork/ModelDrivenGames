@@ -37,6 +37,8 @@ Workflow {
 				generateStub = true
 			}
 			validator = {
+				generateStub = true
+				generateXtendStub = true
 				composedCheck = "org.eclipse.xtext.validation.NamesAreUniqueValidator"
 			}
 			formatter = {

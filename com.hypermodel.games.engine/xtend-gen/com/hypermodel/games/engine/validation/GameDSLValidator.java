@@ -3,7 +3,17 @@
  */
 package com.hypermodel.games.engine.validation;
 
+import com.google.inject.Inject;
+import com.hypermodel.games.engine.gameDSL.GameDSLPackage;
+import com.hypermodel.games.engine.gameDSL.GameRoot;
+import com.hypermodel.games.engine.gameDSL.GameTextureRegion;
 import com.hypermodel.games.engine.validation.AbstractGameDSLValidator;
+import java.util.HashSet;
+import org.eclipse.emf.common.util.EList;
+import org.eclipse.xtext.naming.IQualifiedNameProvider;
+import org.eclipse.xtext.validation.Check;
+import org.eclipse.xtext.xbase.lib.CollectionLiterals;
+import org.eclipse.xtext.xbase.lib.Extension;
 
 /**
  * This class contains custom validation rules.
@@ -12,4 +22,31 @@ import com.hypermodel.games.engine.validation.AbstractGameDSLValidator;
  */
 @SuppressWarnings("all")
 public class GameDSLValidator extends AbstractGameDSLValidator {
+  public final static String CODE__DUPLICATE_REGION_NAME = "104";
+  
+  @Inject
+  @Extension
+  private IQualifiedNameProvider _iQualifiedNameProvider;
+  
+  @Check
+  public void checkDuplicateTextureRegion(final GameRoot game) {
+    HashSet<String> names = CollectionLiterals.<String>newHashSet();
+    int counter = (-1);
+    EList<GameTextureRegion> _regions = game.getRegions();
+    for (final GameTextureRegion region : _regions) {
+      {
+        int _counter = counter;
+        counter = (_counter + 1);
+        String regionName = this._iQualifiedNameProvider.getFullyQualifiedName(region).toString();
+        boolean _contains = names.contains(regionName);
+        if (_contains) {
+          this.error(
+            String.format("Region name %s is used more than once which is disallowed!", regionName), 
+            GameDSLPackage.Literals.GAME_ROOT__REGIONS, counter, GameDSLValidator.CODE__DUPLICATE_REGION_NAME, 
+            null);
+        }
+        names.add(regionName);
+      }
+    }
+  }
 }

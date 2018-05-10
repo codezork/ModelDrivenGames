@@ -87,33 +87,35 @@ GameDisplay:
 	(hasSetter?='setValue')?;
 	
 GameTile:
-	{GameTile} 'tile' name=ValidID 'collisionId' id=INT
+	{GameTile} 'tile' name=ValidID 'id' id=INT
 	(hasObjectLayer?='objectLayer' objectLayer=[GameLayer])?   
 	(hasTileLayer?='tileLayer' tileLayer=[GameLayer])?;
 	
 GameSprite:
-	{GameSprite} 'sprite' name=ValidID 
+	{GameSprite} 'sprite' name=ValidID 'id' id=INT 'radius' radius=INT 
 	(
-	(isEnemy?='isEnemy' 
-		(('layer' layer=[GameLayer])? & 
-		(isDestructable?='destructable' 'byProperty' destroyProperty=[GameBodyProperty])? & 
-		(hasVelocity?='velocity' velocity=GameVector2d)? &
-		(hasActivationRule?='activate' 'if' rule=GameRule)?)
-	|
-	(isItem?='isItem' 
-		((isDestructable?='destructable' 'byProperty' destroyProperty=[GameBodyProperty])? & 
-		(hasVelocity?='velocity' velocity=GameVector2d)?)
-	|
-	(isPlayer?='isPlayer' 'startPosition' startPosition=GameVector2d))?)
-	'collisionId' id=INT 'radius' radius=INT
-	(hasSensor?='sensor' '{' vectors2d+=GameVector2d* '}' 'sensorID' sensorID=INT)? &
+		(isEnemy?='isEnemy' 
+			('layer' layer=[GameLayer])? & 
+			(isDestructable?='destructible')? & 
+			(hasVelocity?='velocity' velocity=GameVector2d)? &
+			(hasActivationRule?='activate' 'if' rule=GameRule)?)
+		|
+		(isItem?='isItem' 
+			(isDestructable?='destructible')? & 
+			(hasVelocity?='velocity' velocity=GameVector2d)?)
+		|
+		(isPlayer?='isPlayer' 
+			('startPosition' startPosition=GameVector2d)? &
+			('inputs' '{' inputs+=GameInput* '}')?)
+	)
+	((hasSensor?='sensor' '{' vectors2d+=GameVector2d* '}' 'sensorId' sensorID=INT)? &
 	('actors' '{' actors+=GameActor* '}')? &
 	('properties' '{' properties+=GameBodyProperty* '}')? & 
 	('states' '{' states+=GameSpriteState* '}' 
 	'initialState' initialState=[GameSpriteState]
 	('gameOverState' gameOverState=[GameSpriteState])?)? &
 	('events' '{' events+=GameEvent* '}')? &
-	('inputs' '{' inputs+=GameInput* '}')?);
+	(hasRestitution?='restitution' restitution = Number)?);
 
 GameInput:
 	{GameInput} 'input' keyType=GameKeyInputType key=GameKeyInputKey
