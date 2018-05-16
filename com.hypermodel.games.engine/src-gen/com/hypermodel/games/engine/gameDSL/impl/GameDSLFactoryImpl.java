@@ -76,8 +76,9 @@ public class GameDSLFactoryImpl extends EFactoryImpl implements GameDSLFactory
       case GameDSLPackage.GAME_LAYER: return createGameLayer();
       case GameDSLPackage.GAME_SCREEN: return createGameScreen();
       case GameDSLPackage.GAME_SCENE: return createGameScene();
-      case GameDSLPackage.GAME_SCORE: return createGameScore();
+      case GameDSLPackage.GAME_LEVEL: return createGameLevel();
       case GameDSLPackage.GAME_DISPLAY: return createGameDisplay();
+      case GameDSLPackage.GAME_MESSAGE: return createGameMessage();
       case GameDSLPackage.GAME_TILE: return createGameTile();
       case GameDSLPackage.GAME_SPRITE: return createGameSprite();
       case GameDSLPackage.GAME_INPUT: return createGameInput();
@@ -264,10 +265,10 @@ public class GameDSLFactoryImpl extends EFactoryImpl implements GameDSLFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public GameScore createGameScore()
+  public GameLevel createGameLevel()
   {
-    GameScoreImpl gameScore = new GameScoreImpl();
-    return gameScore;
+    GameLevelImpl gameLevel = new GameLevelImpl();
+    return gameLevel;
   }
 
   /**
@@ -279,6 +280,17 @@ public class GameDSLFactoryImpl extends EFactoryImpl implements GameDSLFactory
   {
     GameDisplayImpl gameDisplay = new GameDisplayImpl();
     return gameDisplay;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public GameMessage createGameMessage()
+  {
+    GameMessageImpl gameMessage = new GameMessageImpl();
+    return gameMessage;
   }
 
   /**

@@ -18,8 +18,9 @@ import org.eclipse.emf.ecore.EObject;
  * <ul>
  *   <li>{@link com.hypermodel.games.engine.gameDSL.GameScreen#getName <em>Name</em>}</li>
  *   <li>{@link com.hypermodel.games.engine.gameDSL.GameScreen#getAtlasName <em>Atlas Name</em>}</li>
- *   <li>{@link com.hypermodel.games.engine.gameDSL.GameScreen#getMap <em>Map</em>}</li>
- *   <li>{@link com.hypermodel.games.engine.gameDSL.GameScreen#getScene <em>Scene</em>}</li>
+ *   <li>{@link com.hypermodel.games.engine.gameDSL.GameScreen#getScenes <em>Scenes</em>}</li>
+ *   <li>{@link com.hypermodel.games.engine.gameDSL.GameScreen#getGameOverScene <em>Game Over Scene</em>}</li>
+ *   <li>{@link com.hypermodel.games.engine.gameDSL.GameScreen#getLevels <em>Levels</em>}</li>
  *   <li>{@link com.hypermodel.games.engine.gameDSL.GameScreen#getTiles <em>Tiles</em>}</li>
  *   <li>{@link com.hypermodel.games.engine.gameDSL.GameScreen#getSprites <em>Sprites</em>}</li>
  * </ul>
@@ -83,56 +84,62 @@ public interface GameScreen extends EObject
   void setAtlasName(String value);
 
   /**
-   * Returns the value of the '<em><b>Map</b></em>' attribute.
+   * Returns the value of the '<em><b>Scenes</b></em>' containment reference list.
+   * The list contents are of type {@link com.hypermodel.games.engine.gameDSL.GameScene}.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Map</em>' attribute isn't clear,
+   * If the meaning of the '<em>Scenes</em>' containment reference list isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Map</em>' attribute.
-   * @see #setMap(String)
-   * @see com.hypermodel.games.engine.gameDSL.GameDSLPackage#getGameScreen_Map()
-   * @model
+   * @return the value of the '<em>Scenes</em>' containment reference list.
+   * @see com.hypermodel.games.engine.gameDSL.GameDSLPackage#getGameScreen_Scenes()
+   * @model containment="true"
    * @generated
    */
-  String getMap();
+  EList<GameScene> getScenes();
 
   /**
-   * Sets the value of the '{@link com.hypermodel.games.engine.gameDSL.GameScreen#getMap <em>Map</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Map</em>' attribute.
-   * @see #getMap()
-   * @generated
-   */
-  void setMap(String value);
-
-  /**
-   * Returns the value of the '<em><b>Scene</b></em>' reference.
+   * Returns the value of the '<em><b>Game Over Scene</b></em>' reference.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Scene</em>' reference isn't clear,
+   * If the meaning of the '<em>Game Over Scene</em>' reference isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Scene</em>' reference.
-   * @see #setScene(GameScene)
-   * @see com.hypermodel.games.engine.gameDSL.GameDSLPackage#getGameScreen_Scene()
+   * @return the value of the '<em>Game Over Scene</em>' reference.
+   * @see #setGameOverScene(GameScene)
+   * @see com.hypermodel.games.engine.gameDSL.GameDSLPackage#getGameScreen_GameOverScene()
    * @model
    * @generated
    */
-  GameScene getScene();
+  GameScene getGameOverScene();
 
   /**
-   * Sets the value of the '{@link com.hypermodel.games.engine.gameDSL.GameScreen#getScene <em>Scene</em>}' reference.
+   * Sets the value of the '{@link com.hypermodel.games.engine.gameDSL.GameScreen#getGameOverScene <em>Game Over Scene</em>}' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Scene</em>' reference.
-   * @see #getScene()
+   * @param value the new value of the '<em>Game Over Scene</em>' reference.
+   * @see #getGameOverScene()
    * @generated
    */
-  void setScene(GameScene value);
+  void setGameOverScene(GameScene value);
+
+  /**
+   * Returns the value of the '<em><b>Levels</b></em>' containment reference list.
+   * The list contents are of type {@link com.hypermodel.games.engine.gameDSL.GameLevel}.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Levels</em>' containment reference list isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Levels</em>' containment reference list.
+   * @see com.hypermodel.games.engine.gameDSL.GameDSLPackage#getGameScreen_Levels()
+   * @model containment="true"
+   * @generated
+   */
+  EList<GameLevel> getLevels();
 
   /**
    * Returns the value of the '<em><b>Tiles</b></em>' containment reference list.

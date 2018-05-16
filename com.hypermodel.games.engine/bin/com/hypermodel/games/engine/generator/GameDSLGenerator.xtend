@@ -436,9 +436,13 @@ class GameDSLGenerator extends ExtendedJvmModelGenerator {
 	
 	def ByteArrayInputStream buildLocalProps() {
 		// get the android sdk directory from prefs
-		var dir = Platform.getPreferencesService().getString("com.android.ide.eclipse.adt", "com.android.ide.eclipse.adt.sdk", null, null);
+		var dir = Platform.getPreferencesService().getString("com.android.ide.eclipse.adt",
+			"com.android.ide.eclipse.adt.sdk", null, null);
+		if (dir === null) {
+			return new ByteArrayInputStream(newByteArrayOfSize(0))
+		}
 		dir = dir.replace("\\", "/")
-		return new ByteArrayInputStream(("sdk.dir="+dir).getBytes("UTF-8"))
+		return new ByteArrayInputStream(("sdk.dir=" + dir).getBytes("UTF-8"))
 	}
 
 	def ByteArrayInputStream buildGradleProps() {

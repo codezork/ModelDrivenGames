@@ -22,14 +22,14 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link com.hypermodel.games.engine.gameDSL.GameSprite#isIsEnemy <em>Is Enemy</em>}</li>
  *   <li>{@link com.hypermodel.games.engine.gameDSL.GameSprite#getLayer <em>Layer</em>}</li>
  *   <li>{@link com.hypermodel.games.engine.gameDSL.GameSprite#isIsDestructable <em>Is Destructable</em>}</li>
- *   <li>{@link com.hypermodel.games.engine.gameDSL.GameSprite#isHasVelocity <em>Has Velocity</em>}</li>
- *   <li>{@link com.hypermodel.games.engine.gameDSL.GameSprite#getVelocity <em>Velocity</em>}</li>
  *   <li>{@link com.hypermodel.games.engine.gameDSL.GameSprite#isHasActivationRule <em>Has Activation Rule</em>}</li>
  *   <li>{@link com.hypermodel.games.engine.gameDSL.GameSprite#getRule <em>Rule</em>}</li>
  *   <li>{@link com.hypermodel.games.engine.gameDSL.GameSprite#isIsItem <em>Is Item</em>}</li>
  *   <li>{@link com.hypermodel.games.engine.gameDSL.GameSprite#isIsPlayer <em>Is Player</em>}</li>
  *   <li>{@link com.hypermodel.games.engine.gameDSL.GameSprite#getStartPosition <em>Start Position</em>}</li>
  *   <li>{@link com.hypermodel.games.engine.gameDSL.GameSprite#getInputs <em>Inputs</em>}</li>
+ *   <li>{@link com.hypermodel.games.engine.gameDSL.GameSprite#isHasVelocity <em>Has Velocity</em>}</li>
+ *   <li>{@link com.hypermodel.games.engine.gameDSL.GameSprite#getVelocity <em>Velocity</em>}</li>
  *   <li>{@link com.hypermodel.games.engine.gameDSL.GameSprite#isHasSensor <em>Has Sensor</em>}</li>
  *   <li>{@link com.hypermodel.games.engine.gameDSL.GameSprite#getVectors2d <em>Vectors2d</em>}</li>
  *   <li>{@link com.hypermodel.games.engine.gameDSL.GameSprite#getSensorID <em>Sensor ID</em>}</li>
@@ -37,6 +37,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link com.hypermodel.games.engine.gameDSL.GameSprite#getProperties <em>Properties</em>}</li>
  *   <li>{@link com.hypermodel.games.engine.gameDSL.GameSprite#getStates <em>States</em>}</li>
  *   <li>{@link com.hypermodel.games.engine.gameDSL.GameSprite#getInitialState <em>Initial State</em>}</li>
+ *   <li>{@link com.hypermodel.games.engine.gameDSL.GameSprite#isHasGameOverState <em>Has Game Over State</em>}</li>
  *   <li>{@link com.hypermodel.games.engine.gameDSL.GameSprite#getGameOverState <em>Game Over State</em>}</li>
  *   <li>{@link com.hypermodel.games.engine.gameDSL.GameSprite#getEvents <em>Events</em>}</li>
  *   <li>{@link com.hypermodel.games.engine.gameDSL.GameSprite#isHasRestitution <em>Has Restitution</em>}</li>
@@ -206,58 +207,6 @@ public interface GameSprite extends EObject
   void setIsDestructable(boolean value);
 
   /**
-   * Returns the value of the '<em><b>Has Velocity</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Has Velocity</em>' attribute isn't clear,
-   * there really should be more of a description here...
-   * </p>
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Has Velocity</em>' attribute.
-   * @see #setHasVelocity(boolean)
-   * @see com.hypermodel.games.engine.gameDSL.GameDSLPackage#getGameSprite_HasVelocity()
-   * @model
-   * @generated
-   */
-  boolean isHasVelocity();
-
-  /**
-   * Sets the value of the '{@link com.hypermodel.games.engine.gameDSL.GameSprite#isHasVelocity <em>Has Velocity</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Has Velocity</em>' attribute.
-   * @see #isHasVelocity()
-   * @generated
-   */
-  void setHasVelocity(boolean value);
-
-  /**
-   * Returns the value of the '<em><b>Velocity</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Velocity</em>' containment reference isn't clear,
-   * there really should be more of a description here...
-   * </p>
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Velocity</em>' containment reference.
-   * @see #setVelocity(GameVector2d)
-   * @see com.hypermodel.games.engine.gameDSL.GameDSLPackage#getGameSprite_Velocity()
-   * @model containment="true"
-   * @generated
-   */
-  GameVector2d getVelocity();
-
-  /**
-   * Sets the value of the '{@link com.hypermodel.games.engine.gameDSL.GameSprite#getVelocity <em>Velocity</em>}' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Velocity</em>' containment reference.
-   * @see #getVelocity()
-   * @generated
-   */
-  void setVelocity(GameVector2d value);
-
-  /**
    * Returns the value of the '<em><b>Has Activation Rule</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <p>
@@ -404,6 +353,58 @@ public interface GameSprite extends EObject
   EList<GameInput> getInputs();
 
   /**
+   * Returns the value of the '<em><b>Has Velocity</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Has Velocity</em>' attribute isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Has Velocity</em>' attribute.
+   * @see #setHasVelocity(boolean)
+   * @see com.hypermodel.games.engine.gameDSL.GameDSLPackage#getGameSprite_HasVelocity()
+   * @model
+   * @generated
+   */
+  boolean isHasVelocity();
+
+  /**
+   * Sets the value of the '{@link com.hypermodel.games.engine.gameDSL.GameSprite#isHasVelocity <em>Has Velocity</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Has Velocity</em>' attribute.
+   * @see #isHasVelocity()
+   * @generated
+   */
+  void setHasVelocity(boolean value);
+
+  /**
+   * Returns the value of the '<em><b>Velocity</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Velocity</em>' containment reference isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Velocity</em>' containment reference.
+   * @see #setVelocity(GameVector2d)
+   * @see com.hypermodel.games.engine.gameDSL.GameDSLPackage#getGameSprite_Velocity()
+   * @model containment="true"
+   * @generated
+   */
+  GameVector2d getVelocity();
+
+  /**
+   * Sets the value of the '{@link com.hypermodel.games.engine.gameDSL.GameSprite#getVelocity <em>Velocity</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Velocity</em>' containment reference.
+   * @see #getVelocity()
+   * @generated
+   */
+  void setVelocity(GameVector2d value);
+
+  /**
    * Returns the value of the '<em><b>Has Sensor</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <p>
@@ -544,6 +545,32 @@ public interface GameSprite extends EObject
    * @generated
    */
   void setInitialState(GameSpriteState value);
+
+  /**
+   * Returns the value of the '<em><b>Has Game Over State</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Has Game Over State</em>' attribute isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Has Game Over State</em>' attribute.
+   * @see #setHasGameOverState(boolean)
+   * @see com.hypermodel.games.engine.gameDSL.GameDSLPackage#getGameSprite_HasGameOverState()
+   * @model
+   * @generated
+   */
+  boolean isHasGameOverState();
+
+  /**
+   * Sets the value of the '{@link com.hypermodel.games.engine.gameDSL.GameSprite#isHasGameOverState <em>Has Game Over State</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Has Game Over State</em>' attribute.
+   * @see #isHasGameOverState()
+   * @generated
+   */
+  void setHasGameOverState(boolean value);
 
   /**
    * Returns the value of the '<em><b>Game Over State</b></em>' reference.

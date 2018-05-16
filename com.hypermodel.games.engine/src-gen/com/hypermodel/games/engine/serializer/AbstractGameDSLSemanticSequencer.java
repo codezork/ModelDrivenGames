@@ -11,6 +11,8 @@ import com.hypermodel.games.engine.gameDSL.GameDisplay;
 import com.hypermodel.games.engine.gameDSL.GameEvent;
 import com.hypermodel.games.engine.gameDSL.GameInput;
 import com.hypermodel.games.engine.gameDSL.GameLayer;
+import com.hypermodel.games.engine.gameDSL.GameLevel;
+import com.hypermodel.games.engine.gameDSL.GameMessage;
 import com.hypermodel.games.engine.gameDSL.GameModel;
 import com.hypermodel.games.engine.gameDSL.GamePackage;
 import com.hypermodel.games.engine.gameDSL.GamePlatformConfig;
@@ -20,7 +22,6 @@ import com.hypermodel.games.engine.gameDSL.GamePlatformConfigIOSMOE;
 import com.hypermodel.games.engine.gameDSL.GameRoot;
 import com.hypermodel.games.engine.gameDSL.GameRule;
 import com.hypermodel.games.engine.gameDSL.GameScene;
-import com.hypermodel.games.engine.gameDSL.GameScore;
 import com.hypermodel.games.engine.gameDSL.GameScreen;
 import com.hypermodel.games.engine.gameDSL.GameSprite;
 import com.hypermodel.games.engine.gameDSL.GameSpriteAnimation;
@@ -121,6 +122,12 @@ public abstract class AbstractGameDSLSemanticSequencer extends XbaseWithAnnotati
 			case GameDSLPackage.GAME_LAYER:
 				sequence_GameLayer(context, (GameLayer) semanticObject); 
 				return; 
+			case GameDSLPackage.GAME_LEVEL:
+				sequence_GameLevel(context, (GameLevel) semanticObject); 
+				return; 
+			case GameDSLPackage.GAME_MESSAGE:
+				sequence_GameMessage(context, (GameMessage) semanticObject); 
+				return; 
 			case GameDSLPackage.GAME_MODEL:
 				sequence_GameModel(context, (GameModel) semanticObject); 
 				return; 
@@ -147,9 +154,6 @@ public abstract class AbstractGameDSLSemanticSequencer extends XbaseWithAnnotati
 				return; 
 			case GameDSLPackage.GAME_SCENE:
 				sequence_GameScene(context, (GameScene) semanticObject); 
-				return; 
-			case GameDSLPackage.GAME_SCORE:
-				sequence_GameScore(context, (GameScore) semanticObject); 
 				return; 
 			case GameDSLPackage.GAME_SCREEN:
 				sequence_GameScreen(context, (GameScreen) semanticObject); 
@@ -518,7 +522,7 @@ public abstract class AbstractGameDSLSemanticSequencer extends XbaseWithAnnotati
 	 *         type=GameDisplayValueType 
 	 *         format=STRING 
 	 *         (hasInitial?='initialValue' (initialNumberValue=SignedNumber | initialIntValue=INT | initialStringValue=STRING))? 
-	 *         (hasDelta?='deltaValue' deltaValue=SignedNumber timePeriod=UnsignedNumber)? 
+	 *         (hasDelta?='deltaTime' deltaValue=SignedNumber timePeriod=UnsignedNumber)? 
 	 *         hasAdder?='addValue'? 
 	 *         hasSetter?='setValue'?
 	 *     )
@@ -584,6 +588,51 @@ public abstract class AbstractGameDSLSemanticSequencer extends XbaseWithAnnotati
 		feeder.accept(grammarAccess.getGameLayerAccess().getNameValidIDParserRuleCall_2_0(), semanticObject.getName());
 		feeder.accept(grammarAccess.getGameLayerAccess().getIndexINTTerminalRuleCall_4_0(), semanticObject.getIndex());
 		feeder.accept(grammarAccess.getGameLayerAccess().getTypeGameLayerTypeEnumRuleCall_6_0(), semanticObject.getType());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     GameLevel returns GameLevel
+	 *
+	 * Constraint:
+	 *     (name=ValidID fileName=STRING)
+	 */
+	protected void sequence_GameLevel(ISerializationContext context, GameLevel semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, GameDSLPackage.Literals.GAME_LEVEL__NAME) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, GameDSLPackage.Literals.GAME_LEVEL__NAME));
+			if (transientValues.isValueTransient(semanticObject, GameDSLPackage.Literals.GAME_LEVEL__FILE_NAME) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, GameDSLPackage.Literals.GAME_LEVEL__FILE_NAME));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getGameLevelAccess().getNameValidIDParserRuleCall_2_0(), semanticObject.getName());
+		feeder.accept(grammarAccess.getGameLevelAccess().getFileNameSTRINGTerminalRuleCall_4_0(), semanticObject.getFileName());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     GameMessage returns GameMessage
+	 *
+	 * Constraint:
+	 *     (name=ValidID message=STRING row=INT)
+	 */
+	protected void sequence_GameMessage(ISerializationContext context, GameMessage semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, GameDSLPackage.Literals.GAME_MESSAGE__NAME) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, GameDSLPackage.Literals.GAME_MESSAGE__NAME));
+			if (transientValues.isValueTransient(semanticObject, GameDSLPackage.Literals.GAME_MESSAGE__MESSAGE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, GameDSLPackage.Literals.GAME_MESSAGE__MESSAGE));
+			if (transientValues.isValueTransient(semanticObject, GameDSLPackage.Literals.GAME_MESSAGE__ROW) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, GameDSLPackage.Literals.GAME_MESSAGE__ROW));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getGameMessageAccess().getNameValidIDParserRuleCall_2_0(), semanticObject.getName());
+		feeder.accept(grammarAccess.getGameMessageAccess().getMessageSTRINGTerminalRuleCall_4_0(), semanticObject.getMessage());
+		feeder.accept(grammarAccess.getGameMessageAccess().getRowINTTerminalRuleCall_6_0(), semanticObject.getRow());
 		feeder.finish();
 	}
 	
@@ -698,7 +747,7 @@ public abstract class AbstractGameDSLSemanticSequencer extends XbaseWithAnnotati
 	 *         tileWidth=INT 
 	 *         tileHeight=INT 
 	 *         debug?='debug'? 
-	 *         (layers+=GameLayer | scenes+=GameScene | screens+=GameScreen | regions+=GameTextureRegion)*
+	 *         (layers+=GameLayer | screens+=GameScreen | regions+=GameTextureRegion)*
 	 *     )
 	 */
 	protected void sequence_GameRoot(ISerializationContext context, GameRoot semanticObject) {
@@ -723,21 +772,9 @@ public abstract class AbstractGameDSLSemanticSequencer extends XbaseWithAnnotati
 	 *     GameScene returns GameScene
 	 *
 	 * Constraint:
-	 *     (name=ValidID (hasScore?='isScore' score=GameScore)?)
+	 *     (name=ValidID topPadding=INT displays+=GameDisplay* messages+=GameMessage*)
 	 */
 	protected void sequence_GameScene(ISerializationContext context, GameScene semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * Contexts:
-	 *     GameScore returns GameScore
-	 *
-	 * Constraint:
-	 *     (topPadding=INT displays+=GameDisplay*)
-	 */
-	protected void sequence_GameScore(ISerializationContext context, GameScore semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	
@@ -750,8 +787,9 @@ public abstract class AbstractGameDSLSemanticSequencer extends XbaseWithAnnotati
 	 *     (
 	 *         name=ValidID 
 	 *         atlasName=STRING 
-	 *         map=STRING 
-	 *         scene=[GameScene|ID] 
+	 *         scenes+=GameScene* 
+	 *         gameOverScene=[GameScene|ID] 
+	 *         levels+=GameLevel* 
 	 *         tiles+=GameTile* 
 	 *         sprites+=GameSprite*
 	 *     )
@@ -824,25 +862,16 @@ public abstract class AbstractGameDSLSemanticSequencer extends XbaseWithAnnotati
 	 *
 	 * Constraint:
 	 *     (
+	 *         <unknown> 
 	 *         name=ValidID 
 	 *         id=INT 
 	 *         radius=INT 
 	 *         (
-	 *             (
-	 *                 isDestructable?='destructible'? 
-	 *                 (isEnemy?='isEnemy' layer=[GameLayer|ID]?)? 
-	 *                 (hasVelocity?='velocity' velocity=GameVector2d)? 
-	 *                 (hasActivationRule?='activate' rule=GameRule)?
-	 *             )+ | 
-	 *             ((isItem?='isItem' isDestructable?='destructible'?) | (hasVelocity?='velocity' velocity=GameVector2d))+ | 
+	 *             (isDestructable?='destructible'? (isEnemy?='isEnemy' layer=[GameLayer|ID]?)? (hasActivationRule?='activate' rule=GameRule)?)+ | 
+	 *             (isItem?='isItem' isDestructable?='destructible'?) | 
 	 *             (inputs+=GameInput? (isPlayer?='isPlayer' startPosition=GameVector2d?)?)+
 	 *         ) 
-	 *         (
-	 *             (actors+=GameActor | properties+=GameBodyProperty | events+=GameEvent)? 
-	 *             (hasRestitution?='restitution' restitution=Number)? 
-	 *             (hasSensor?='sensor' vectors2d+=GameVector2d* sensorID=INT)? 
-	 *             (states+=GameSpriteState* initialState=[GameSpriteState|ID] gameOverState=[GameSpriteState|ID]?)?
-	 *         )+
+	 *         (hasVelocity?='velocity' velocity=GameVector2d)?
 	 *     )
 	 */
 	protected void sequence_GameSprite(ISerializationContext context, GameSprite semanticObject) {

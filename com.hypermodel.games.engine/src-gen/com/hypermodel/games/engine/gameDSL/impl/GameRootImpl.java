@@ -6,7 +6,6 @@ package com.hypermodel.games.engine.gameDSL.impl;
 import com.hypermodel.games.engine.gameDSL.GameDSLPackage;
 import com.hypermodel.games.engine.gameDSL.GameLayer;
 import com.hypermodel.games.engine.gameDSL.GameRoot;
-import com.hypermodel.games.engine.gameDSL.GameScene;
 import com.hypermodel.games.engine.gameDSL.GameScreen;
 import com.hypermodel.games.engine.gameDSL.GameTextureRegion;
 
@@ -48,7 +47,6 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link com.hypermodel.games.engine.gameDSL.impl.GameRootImpl#getTileHeight <em>Tile Height</em>}</li>
  *   <li>{@link com.hypermodel.games.engine.gameDSL.impl.GameRootImpl#isDebug <em>Debug</em>}</li>
  *   <li>{@link com.hypermodel.games.engine.gameDSL.impl.GameRootImpl#getLayers <em>Layers</em>}</li>
- *   <li>{@link com.hypermodel.games.engine.gameDSL.impl.GameRootImpl#getScenes <em>Scenes</em>}</li>
  *   <li>{@link com.hypermodel.games.engine.gameDSL.impl.GameRootImpl#getScreens <em>Screens</em>}</li>
  *   <li>{@link com.hypermodel.games.engine.gameDSL.impl.GameRootImpl#getRegions <em>Regions</em>}</li>
  * </ul>
@@ -326,16 +324,6 @@ public class GameRootImpl extends MinimalEObjectImpl.Container implements GameRo
    * @ordered
    */
   protected EList<GameLayer> layers;
-
-  /**
-   * The cached value of the '{@link #getScenes() <em>Scenes</em>}' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getScenes()
-   * @generated
-   * @ordered
-   */
-  protected EList<GameScene> scenes;
 
   /**
    * The cached value of the '{@link #getScreens() <em>Screens</em>}' containment reference list.
@@ -696,20 +684,6 @@ public class GameRootImpl extends MinimalEObjectImpl.Container implements GameRo
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<GameScene> getScenes()
-  {
-    if (scenes == null)
-    {
-      scenes = new EObjectContainmentEList<GameScene>(GameScene.class, this, GameDSLPackage.GAME_ROOT__SCENES);
-    }
-    return scenes;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   public EList<GameScreen> getScreens()
   {
     if (screens == null)
@@ -745,8 +719,6 @@ public class GameRootImpl extends MinimalEObjectImpl.Container implements GameRo
     {
       case GameDSLPackage.GAME_ROOT__LAYERS:
         return ((InternalEList<?>)getLayers()).basicRemove(otherEnd, msgs);
-      case GameDSLPackage.GAME_ROOT__SCENES:
-        return ((InternalEList<?>)getScenes()).basicRemove(otherEnd, msgs);
       case GameDSLPackage.GAME_ROOT__SCREENS:
         return ((InternalEList<?>)getScreens()).basicRemove(otherEnd, msgs);
       case GameDSLPackage.GAME_ROOT__REGIONS:
@@ -793,8 +765,6 @@ public class GameRootImpl extends MinimalEObjectImpl.Container implements GameRo
         return isDebug();
       case GameDSLPackage.GAME_ROOT__LAYERS:
         return getLayers();
-      case GameDSLPackage.GAME_ROOT__SCENES:
-        return getScenes();
       case GameDSLPackage.GAME_ROOT__SCREENS:
         return getScreens();
       case GameDSLPackage.GAME_ROOT__REGIONS:
@@ -856,10 +826,6 @@ public class GameRootImpl extends MinimalEObjectImpl.Container implements GameRo
       case GameDSLPackage.GAME_ROOT__LAYERS:
         getLayers().clear();
         getLayers().addAll((Collection<? extends GameLayer>)newValue);
-        return;
-      case GameDSLPackage.GAME_ROOT__SCENES:
-        getScenes().clear();
-        getScenes().addAll((Collection<? extends GameScene>)newValue);
         return;
       case GameDSLPackage.GAME_ROOT__SCREENS:
         getScreens().clear();
@@ -925,9 +891,6 @@ public class GameRootImpl extends MinimalEObjectImpl.Container implements GameRo
       case GameDSLPackage.GAME_ROOT__LAYERS:
         getLayers().clear();
         return;
-      case GameDSLPackage.GAME_ROOT__SCENES:
-        getScenes().clear();
-        return;
       case GameDSLPackage.GAME_ROOT__SCREENS:
         getScreens().clear();
         return;
@@ -976,8 +939,6 @@ public class GameRootImpl extends MinimalEObjectImpl.Container implements GameRo
         return debug != DEBUG_EDEFAULT;
       case GameDSLPackage.GAME_ROOT__LAYERS:
         return layers != null && !layers.isEmpty();
-      case GameDSLPackage.GAME_ROOT__SCENES:
-        return scenes != null && !scenes.isEmpty();
       case GameDSLPackage.GAME_ROOT__SCREENS:
         return screens != null && !screens.isEmpty();
       case GameDSLPackage.GAME_ROOT__REGIONS:

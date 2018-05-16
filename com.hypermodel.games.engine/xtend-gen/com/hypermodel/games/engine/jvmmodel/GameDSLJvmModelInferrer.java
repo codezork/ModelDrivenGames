@@ -62,6 +62,7 @@ import com.hypermodel.games.engine.gameDSL.GameDisplay;
 import com.hypermodel.games.engine.gameDSL.GameDisplayValueType;
 import com.hypermodel.games.engine.gameDSL.GameEvent;
 import com.hypermodel.games.engine.gameDSL.GameInput;
+import com.hypermodel.games.engine.gameDSL.GameMessage;
 import com.hypermodel.games.engine.gameDSL.GamePackage;
 import com.hypermodel.games.engine.gameDSL.GameRoot;
 import com.hypermodel.games.engine.gameDSL.GameScene;
@@ -148,14 +149,10 @@ public class GameDSLJvmModelInferrer extends AbstractModelInferrer {
         this.createLauncher(acceptor, gamePkg, game, it);
       };
       IterableExtensions.<GameProperties.ProjectType>filter(((Iterable<GameProperties.ProjectType>)Conversions.doWrapArray(GameProperties.ProjectType.values())), _function_2).forEach(_function_3);
-      final Consumer<GameScene> _function_4 = (GameScene it) -> {
-        this.createScene(acceptor, gamePkg, rootClass, it);
-      };
-      game.getScenes().forEach(_function_4);
-      final Consumer<GameScreen> _function_5 = (GameScreen it) -> {
+      final Consumer<GameScreen> _function_4 = (GameScreen it) -> {
         this.createScreen(acceptor, gamePkg, rootClass, it, game);
       };
-      game.getScreens().forEach(_function_5);
+      game.getScreens().forEach(_function_4);
     };
     gamePkg.getGames().forEach(_function);
   }
@@ -651,7 +648,7 @@ public class GameDSLJvmModelInferrer extends AbstractModelInferrer {
       this._jvmTypesBuilder.<JvmTypeReference>operator_add(_superTypes, _typeRef);
       it.setPackageName(this._iQualifiedNameProvider.getFullyQualifiedName(screen).skipLast(1).toString());
       this._jvmTypesBuilder.setDocumentation(it, this.genInfo);
-      this.toFields(it, gamePkg, root, screen, gameClass, creatorClass, contactClass, playerClass);
+      this.toScreenFields(it, gamePkg, root, screen, gameClass, creatorClass, contactClass, playerClass);
       EList<JvmMember> _members = it.getMembers();
       final Procedure1<JvmConstructor> _function_2 = (JvmConstructor it_1) -> {
         EList<JvmFormalParameter> _parameters = it_1.getParameters();
@@ -688,83 +685,32 @@ public class GameDSLJvmModelInferrer extends AbstractModelInferrer {
           _builder_1.newLineIfNotEmpty();
           _builder_1.append("mapLoader = new TmxMapLoader();");
           _builder_1.newLine();
-          _builder_1.append("map = mapLoader.load(\"");
-          String _map = screen.getMap();
-          _builder_1.append(_map);
-          _builder_1.append("\");");
-          _builder_1.newLineIfNotEmpty();
-          _builder_1.append("renderer = new OrthogonalTiledMapRenderer(map, 1 / ");
-          String _simpleName_4 = gameClass.getSimpleName();
-          _builder_1.append(_simpleName_4);
-          _builder_1.append(".PPM);");
-          _builder_1.newLineIfNotEmpty();
-          _builder_1.append("gamecam.position.set(gamePort.getWorldWidth() / 2, gamePort.getWorldHeight() / 2, 0);");
+          _builder_1.append("init();");
           _builder_1.newLine();
-          _builder_1.append("world = new World(new ");
           it_2.append(_builder_1);
-          it_2.append(Vector2.class);
-          StringConcatenation _builder_2 = new StringConcatenation();
-          _builder_2.append("(0, -10), true);");
-          _builder_2.newLine();
-          {
-            boolean _isDebug = root.isDebug();
-            if (_isDebug) {
-              _builder_2.append("b2dr = new Box2DDebugRenderer();");
-            }
-          }
-          _builder_2.newLineIfNotEmpty();
-          {
-            GameScene _scene = screen.getScene();
-            boolean _tripleNotEquals = (_scene != null);
-            if (_tripleNotEquals) {
-              String _firstLower = StringExtensions.toFirstLower(screen.getScene().getName());
-              _builder_2.append(_firstLower);
-              _builder_2.append(" = new ");
-              String _firstUpper = StringExtensions.toFirstUpper(screen.getScene().getName());
-              _builder_2.append(_firstUpper);
-              _builder_2.append("(game.batch);");
-            }
-          }
-          _builder_2.newLineIfNotEmpty();
-          _builder_2.append("creator = new ");
-          QualifiedName _fullyQualifiedName_2 = this._iQualifiedNameProvider.getFullyQualifiedName(creatorClass);
-          _builder_2.append(_fullyQualifiedName_2);
-          _builder_2.append("(this);");
-          _builder_2.newLineIfNotEmpty();
-          {
-            if ((playerClass != null)) {
-              _builder_2.append("player = new ");
-              QualifiedName _fullyQualifiedName_3 = this._iQualifiedNameProvider.getFullyQualifiedName(playerClass);
-              _builder_2.append(_fullyQualifiedName_3);
-              _builder_2.append("(this, creator);");
-            }
-          }
-          _builder_2.newLineIfNotEmpty();
-          _builder_2.append("world.setContactListener(new ");
-          QualifiedName _fullyQualifiedName_4 = this._iQualifiedNameProvider.getFullyQualifiedName(contactClass);
-          _builder_2.append(_fullyQualifiedName_4);
-          _builder_2.append("());");
-          _builder_2.newLineIfNotEmpty();
-          it_2.append(_builder_2);
         };
         this._jvmTypesBuilder.setBody(it_1, _function_3);
       };
       JvmConstructor _constructor = this._jvmTypesBuilder.toConstructor(screen, _function_2);
       this._jvmTypesBuilder.<JvmConstructor>operator_add(_members, _constructor);
-      this.toOperations(it, screen, playerSprite, root);
+      this.toScreenOperations(it, gamePkg, screen, playerSprite, root, gameClass, creatorClass, playerClass, contactClass);
     };
     acceptor.<JvmGenericType>accept(screenClass, _function_1);
-    final Consumer<GameSprite> _function_2 = (GameSprite it) -> {
+    final Consumer<GameScene> _function_2 = (GameScene it) -> {
+      this.createScene(acceptor, gamePkg, root, gameClass, screenClass, it);
+    };
+    screen.getScenes().forEach(_function_2);
+    final Consumer<GameSprite> _function_3 = (GameSprite it) -> {
       this.createSprite(acceptor, gamePkg, root, gameClass, screenClass, creatorClass, it);
     };
-    screen.getSprites().forEach(_function_2);
-    final Consumer<GameTile> _function_3 = (GameTile it) -> {
+    screen.getSprites().forEach(_function_3);
+    final Consumer<GameTile> _function_4 = (GameTile it) -> {
       this.createTile(acceptor, gamePkg, root, gameClass, screenClass, creatorClass, it);
     };
-    screen.getTiles().forEach(_function_3);
+    screen.getTiles().forEach(_function_4);
   }
   
-  public void toFields(final JvmGenericType type, final GamePackage gamePkg, final GameRoot game, final GameScreen screen, final JvmGenericType gameClass, final JvmGenericType creatorClass, final JvmGenericType contactClass, final JvmGenericType playerClass) {
+  public void toScreenFields(final JvmGenericType type, final GamePackage gamePkg, final GameRoot game, final GameScreen screen, final JvmGenericType gameClass, final JvmGenericType creatorClass, final JvmGenericType contactClass, final JvmGenericType playerClass) {
     JvmField field = null;
     EList<JvmMember> _members = type.getMembers();
     JvmField _field = this._jvmTypesBuilder.toField(screen, "game", this._typeReferenceBuilder.typeRef(gameClass));
@@ -785,39 +731,43 @@ public class GameDSLJvmModelInferrer extends AbstractModelInferrer {
     JvmField _field_5 = this._jvmTypesBuilder.toField(screen, "map", this._typeReferenceBuilder.typeRef(TiledMap.class));
     this._jvmTypesBuilder.<JvmField>operator_add(_members_5, _field_5);
     EList<JvmMember> _members_6 = type.getMembers();
-    JvmField _field_6 = this._jvmTypesBuilder.toField(screen, "renderer", this._typeReferenceBuilder.typeRef(OrthogonalTiledMapRenderer.class));
+    JvmField _field_6 = this._jvmTypesBuilder.toField(screen, "currentLevel", this._typeReferenceBuilder.typeRef(String.class));
     this._jvmTypesBuilder.<JvmField>operator_add(_members_6, _field_6);
     EList<JvmMember> _members_7 = type.getMembers();
-    JvmField _field_7 = this._jvmTypesBuilder.toField(screen, "world", this._typeReferenceBuilder.typeRef(World.class));
+    JvmField _field_7 = this._jvmTypesBuilder.toField(screen, "renderer", this._typeReferenceBuilder.typeRef(OrthogonalTiledMapRenderer.class));
     this._jvmTypesBuilder.<JvmField>operator_add(_members_7, _field_7);
+    EList<JvmMember> _members_8 = type.getMembers();
+    JvmField _field_8 = this._jvmTypesBuilder.toField(screen, "world", this._typeReferenceBuilder.typeRef(World.class));
+    this._jvmTypesBuilder.<JvmField>operator_add(_members_8, _field_8);
     boolean _isDebug = game.isDebug();
     if (_isDebug) {
-      EList<JvmMember> _members_8 = type.getMembers();
-      JvmField _field_8 = this._jvmTypesBuilder.toField(screen, "b2dr", this._typeReferenceBuilder.typeRef(Box2DDebugRenderer.class));
-      this._jvmTypesBuilder.<JvmField>operator_add(_members_8, _field_8);
+      EList<JvmMember> _members_9 = type.getMembers();
+      JvmField _field_9 = this._jvmTypesBuilder.toField(screen, "b2dr", this._typeReferenceBuilder.typeRef(Box2DDebugRenderer.class));
+      this._jvmTypesBuilder.<JvmField>operator_add(_members_9, _field_9);
     }
-    EList<JvmMember> _members_9 = type.getMembers();
-    JvmField _field_9 = this._jvmTypesBuilder.toField(screen, "music", this._typeReferenceBuilder.typeRef(Music.class));
-    this._jvmTypesBuilder.<JvmField>operator_add(_members_9, _field_9);
     EList<JvmMember> _members_10 = type.getMembers();
-    JvmField _field_10 = this._jvmTypesBuilder.toField(screen, "creator", this._typeReferenceBuilder.typeRef(creatorClass));
+    JvmField _field_10 = this._jvmTypesBuilder.toField(screen, "music", this._typeReferenceBuilder.typeRef(Music.class));
     this._jvmTypesBuilder.<JvmField>operator_add(_members_10, _field_10);
+    EList<JvmMember> _members_11 = type.getMembers();
+    JvmField _field_11 = this._jvmTypesBuilder.toField(screen, "creator", this._typeReferenceBuilder.typeRef(creatorClass));
+    this._jvmTypesBuilder.<JvmField>operator_add(_members_11, _field_11);
+    EList<JvmMember> _members_12 = type.getMembers();
+    JvmField _field_12 = this._jvmTypesBuilder.toField(screen, "isGameOver", this._typeReferenceBuilder.typeRef(boolean.class));
+    this._jvmTypesBuilder.<JvmField>operator_add(_members_12, _field_12);
     if ((playerClass != null)) {
-      EList<JvmMember> _members_11 = type.getMembers();
-      JvmField _field_11 = this._jvmTypesBuilder.toField(screen, "player", this._typeReferenceBuilder.typeRef(playerClass));
-      this._jvmTypesBuilder.<JvmField>operator_add(_members_11, _field_11);
+      EList<JvmMember> _members_13 = type.getMembers();
+      JvmField _field_13 = this._jvmTypesBuilder.toField(screen, "player", this._typeReferenceBuilder.typeRef(playerClass));
+      this._jvmTypesBuilder.<JvmField>operator_add(_members_13, _field_13);
     }
-    GameScene _scene = screen.getScene();
-    boolean _tripleNotEquals = (_scene != null);
-    if (_tripleNotEquals) {
-      field = this._jvmTypesBuilder.toField(screen, StringExtensions.toFirstLower(screen.getScene().getName()), this._typeReferenceBuilder.typeRef(this._jvmTypesBuilder.toClass(gamePkg, this._iQualifiedNameProvider.getFullyQualifiedName(screen.getScene()))));
-      field.setVisibility(JvmVisibility.PUBLIC);
-      EList<JvmMember> _members_12 = type.getMembers();
-      this._jvmTypesBuilder.<JvmField>operator_add(_members_12, field);
-    }
+    final Consumer<GameScene> _function = (GameScene it) -> {
+      EList<JvmMember> _members_14 = type.getMembers();
+      JvmField _field_14 = this._jvmTypesBuilder.toField(screen, StringExtensions.toFirstLower(it.getName()), this._typeReferenceBuilder.typeRef(this._iQualifiedNameProvider.getFullyQualifiedName(it).toString()));
+      this._jvmTypesBuilder.<JvmField>operator_add(_members_14, _field_14);
+    };
+    screen.getScenes().forEach(_function);
   }
   
-  public void toOperations(final JvmGenericType type, final GameScreen screen, final GameSprite playerSprite, final GameRoot game) {
+  public void toScreenOperations(final JvmGenericType type, final GamePackage gamePkg, final GameScreen screen, final GameSprite playerSprite, final GameRoot game, final JvmGenericType gameClass, final JvmGenericType creatorClass, final JvmGenericType playerClass, final JvmGenericType contactClass) {
     EList<JvmMember> _members = type.getMembers();
     JvmOperation _getter = this._jvmTypesBuilder.toGetter(screen, "atlas", this._typeReferenceBuilder.typeRef(TextureAtlas.class));
     this._jvmTypesBuilder.<JvmOperation>operator_add(_members, _getter);
@@ -829,6 +779,26 @@ public class GameDSLJvmModelInferrer extends AbstractModelInferrer {
     this._jvmTypesBuilder.<JvmOperation>operator_add(_members_2, _getter_2);
     EList<JvmMember> _members_3 = type.getMembers();
     final Procedure1<JvmOperation> _function = (JvmOperation it) -> {
+      EList<JvmFormalParameter> _parameters = it.getParameters();
+      JvmFormalParameter _parameter = this._jvmTypesBuilder.toParameter(screen, "level", this._typeReferenceBuilder.typeRef(String.class));
+      this._jvmTypesBuilder.<JvmFormalParameter>operator_add(_parameters, _parameter);
+      final Procedure1<ITreeAppendable> _function_1 = (ITreeAppendable it_1) -> {
+        StringConcatenation _builder = new StringConcatenation();
+        _builder.append("map = mapLoader.load(level);");
+        _builder.newLine();
+        _builder.append("renderer = new OrthogonalTiledMapRenderer(map, 1 / ");
+        String _simpleName = gameClass.getSimpleName();
+        _builder.append(_simpleName);
+        _builder.append(".PPM);");
+        _builder.newLineIfNotEmpty();
+        it_1.append(_builder);
+      };
+      this._jvmTypesBuilder.setBody(it, _function_1);
+    };
+    JvmOperation _method = this._jvmTypesBuilder.toMethod(screen, "loadLevel", this._typeReferenceBuilder.typeRef(Void.TYPE), _function);
+    this._jvmTypesBuilder.<JvmOperation>operator_add(_members_3, _method);
+    EList<JvmMember> _members_4 = type.getMembers();
+    final Procedure1<JvmOperation> _function_1 = (JvmOperation it) -> {
       EList<JvmAnnotationReference> _annotations = it.getAnnotations();
       JvmAnnotationReference _annotationRef = this._annotationTypesBuilder.annotationRef(Override.class);
       this._jvmTypesBuilder.<JvmAnnotationReference>operator_add(_annotations, _annotationRef);
@@ -838,27 +808,14 @@ public class GameDSLJvmModelInferrer extends AbstractModelInferrer {
       EList<JvmFormalParameter> _parameters_1 = it.getParameters();
       JvmFormalParameter _parameter_1 = this._jvmTypesBuilder.toParameter(screen, "height", this._typeReferenceBuilder.typeRef(int.class));
       this._jvmTypesBuilder.<JvmFormalParameter>operator_add(_parameters_1, _parameter_1);
-      final Procedure1<ITreeAppendable> _function_1 = (ITreeAppendable it_1) -> {
+      final Procedure1<ITreeAppendable> _function_2 = (ITreeAppendable it_1) -> {
         StringConcatenation _builder = new StringConcatenation();
         _builder.append("gamePort.update(width, height);");
         it_1.append(_builder);
       };
-      this._jvmTypesBuilder.setBody(it, _function_1);
-    };
-    JvmOperation _method = this._jvmTypesBuilder.toMethod(screen, "resize", this._typeReferenceBuilder.typeRef(Void.TYPE), _function);
-    this._jvmTypesBuilder.<JvmOperation>operator_add(_members_3, _method);
-    EList<JvmMember> _members_4 = type.getMembers();
-    final Procedure1<JvmOperation> _function_1 = (JvmOperation it) -> {
-      EList<JvmAnnotationReference> _annotations = it.getAnnotations();
-      JvmAnnotationReference _annotationRef = this._annotationTypesBuilder.annotationRef(Override.class);
-      this._jvmTypesBuilder.<JvmAnnotationReference>operator_add(_annotations, _annotationRef);
-      final Procedure1<ITreeAppendable> _function_2 = (ITreeAppendable it_1) -> {
-        StringConcatenation _builder = new StringConcatenation();
-        it_1.append(_builder);
-      };
       this._jvmTypesBuilder.setBody(it, _function_2);
     };
-    JvmOperation _method_1 = this._jvmTypesBuilder.toMethod(screen, "pause", this._typeReferenceBuilder.typeRef(Void.TYPE), _function_1);
+    JvmOperation _method_1 = this._jvmTypesBuilder.toMethod(screen, "resize", this._typeReferenceBuilder.typeRef(Void.TYPE), _function_1);
     this._jvmTypesBuilder.<JvmOperation>operator_add(_members_4, _method_1);
     EList<JvmMember> _members_5 = type.getMembers();
     final Procedure1<JvmOperation> _function_2 = (JvmOperation it) -> {
@@ -871,7 +828,7 @@ public class GameDSLJvmModelInferrer extends AbstractModelInferrer {
       };
       this._jvmTypesBuilder.setBody(it, _function_3);
     };
-    JvmOperation _method_2 = this._jvmTypesBuilder.toMethod(screen, "resume", this._typeReferenceBuilder.typeRef(Void.TYPE), _function_2);
+    JvmOperation _method_2 = this._jvmTypesBuilder.toMethod(screen, "pause", this._typeReferenceBuilder.typeRef(Void.TYPE), _function_2);
     this._jvmTypesBuilder.<JvmOperation>operator_add(_members_5, _method_2);
     EList<JvmMember> _members_6 = type.getMembers();
     final Procedure1<JvmOperation> _function_3 = (JvmOperation it) -> {
@@ -879,6 +836,19 @@ public class GameDSLJvmModelInferrer extends AbstractModelInferrer {
       JvmAnnotationReference _annotationRef = this._annotationTypesBuilder.annotationRef(Override.class);
       this._jvmTypesBuilder.<JvmAnnotationReference>operator_add(_annotations, _annotationRef);
       final Procedure1<ITreeAppendable> _function_4 = (ITreeAppendable it_1) -> {
+        StringConcatenation _builder = new StringConcatenation();
+        it_1.append(_builder);
+      };
+      this._jvmTypesBuilder.setBody(it, _function_4);
+    };
+    JvmOperation _method_3 = this._jvmTypesBuilder.toMethod(screen, "resume", this._typeReferenceBuilder.typeRef(Void.TYPE), _function_3);
+    this._jvmTypesBuilder.<JvmOperation>operator_add(_members_6, _method_3);
+    EList<JvmMember> _members_7 = type.getMembers();
+    final Procedure1<JvmOperation> _function_4 = (JvmOperation it) -> {
+      EList<JvmAnnotationReference> _annotations = it.getAnnotations();
+      JvmAnnotationReference _annotationRef = this._annotationTypesBuilder.annotationRef(Override.class);
+      this._jvmTypesBuilder.<JvmAnnotationReference>operator_add(_annotations, _annotationRef);
+      final Procedure1<ITreeAppendable> _function_5 = (ITreeAppendable it_1) -> {
         StringConcatenation _builder = new StringConcatenation();
         _builder.append("map.dispose();");
         _builder.newLine();
@@ -893,49 +863,175 @@ public class GameDSLJvmModelInferrer extends AbstractModelInferrer {
           }
         }
         _builder.newLineIfNotEmpty();
-        {
-          GameScene _scene = screen.getScene();
-          boolean _tripleNotEquals = (_scene != null);
-          if (_tripleNotEquals) {
-            String _firstLower = StringExtensions.toFirstLower(screen.getScene().getName());
-            _builder.append(_firstLower);
-            _builder.append(".dispose();");
-          }
-        }
-        _builder.newLineIfNotEmpty();
         it_1.append(_builder);
-      };
-      this._jvmTypesBuilder.setBody(it, _function_4);
-    };
-    JvmOperation _method_3 = this._jvmTypesBuilder.toMethod(screen, "dispose", this._typeReferenceBuilder.typeRef(Void.TYPE), _function_3);
-    this._jvmTypesBuilder.<JvmOperation>operator_add(_members_6, _method_3);
-    EList<JvmMember> _members_7 = type.getMembers();
-    final Procedure1<JvmOperation> _function_4 = (JvmOperation it) -> {
-      EList<JvmAnnotationReference> _annotations = it.getAnnotations();
-      JvmAnnotationReference _annotationRef = this._annotationTypesBuilder.annotationRef(Override.class);
-      this._jvmTypesBuilder.<JvmAnnotationReference>operator_add(_annotations, _annotationRef);
-      final Procedure1<ITreeAppendable> _function_5 = (ITreeAppendable it_1) -> {
-        StringConcatenation _builder = new StringConcatenation();
-        it_1.append(_builder);
+        final ITreeAppendable current = it_1;
+        final Consumer<GameScene> _function_6 = (GameScene it_2) -> {
+          StringConcatenation _builder_1 = new StringConcatenation();
+          String _firstLower = StringExtensions.toFirstLower(it_2.getName());
+          _builder_1.append(_firstLower);
+          _builder_1.append(".dispose();");
+          _builder_1.newLineIfNotEmpty();
+          current.append(_builder_1);
+        };
+        screen.getScenes().forEach(_function_6);
       };
       this._jvmTypesBuilder.setBody(it, _function_5);
     };
-    JvmOperation _method_4 = this._jvmTypesBuilder.toMethod(screen, "show", this._typeReferenceBuilder.typeRef(Void.TYPE), _function_4);
+    JvmOperation _method_4 = this._jvmTypesBuilder.toMethod(screen, "dispose", this._typeReferenceBuilder.typeRef(Void.TYPE), _function_4);
     this._jvmTypesBuilder.<JvmOperation>operator_add(_members_7, _method_4);
     EList<JvmMember> _members_8 = type.getMembers();
     final Procedure1<JvmOperation> _function_5 = (JvmOperation it) -> {
       EList<JvmAnnotationReference> _annotations = it.getAnnotations();
       JvmAnnotationReference _annotationRef = this._annotationTypesBuilder.annotationRef(Override.class);
       this._jvmTypesBuilder.<JvmAnnotationReference>operator_add(_annotations, _annotationRef);
+      final Procedure1<ITreeAppendable> _function_6 = (ITreeAppendable it_1) -> {
+        StringConcatenation _builder = new StringConcatenation();
+        it_1.append(_builder);
+      };
+      this._jvmTypesBuilder.setBody(it, _function_6);
+    };
+    JvmOperation _method_5 = this._jvmTypesBuilder.toMethod(screen, "show", this._typeReferenceBuilder.typeRef(Void.TYPE), _function_5);
+    this._jvmTypesBuilder.<JvmOperation>operator_add(_members_8, _method_5);
+    EList<JvmMember> _members_9 = type.getMembers();
+    final Procedure1<JvmOperation> _function_6 = (JvmOperation it) -> {
+      EList<JvmAnnotationReference> _annotations = it.getAnnotations();
+      JvmAnnotationReference _annotationRef = this._annotationTypesBuilder.annotationRef(Override.class);
+      this._jvmTypesBuilder.<JvmAnnotationReference>operator_add(_annotations, _annotationRef);
       EList<JvmFormalParameter> _parameters = it.getParameters();
       JvmFormalParameter _parameter = this._jvmTypesBuilder.toParameter(screen, "delta", this._typeReferenceBuilder.typeRef(float.class));
       this._jvmTypesBuilder.<JvmFormalParameter>operator_add(_parameters, _parameter);
-      final Procedure1<ITreeAppendable> _function_6 = (ITreeAppendable it_1) -> {
+      final Procedure1<ITreeAppendable> _function_7 = (ITreeAppendable it_1) -> {
+        it_1.append(Gdx.class);
+        StringConcatenation _builder = new StringConcatenation();
+        _builder.append(".gl.glClearColor(0, 0, 0, 1);");
+        _builder.newLine();
+        _builder.append("Gdx.gl.glClear(");
+        it_1.append(_builder);
+        it_1.append(GL20.class);
+        StringConcatenation _builder_1 = new StringConcatenation();
+        _builder_1.append(".GL_COLOR_BUFFER_BIT);");
+        _builder_1.newLine();
+        it_1.append(_builder_1);
+        StringConcatenation _builder_2 = new StringConcatenation();
+        _builder_2.append("if(!isGameOver) {");
+        _builder_2.newLine();
+        _builder_2.append("\t");
+        _builder_2.append("input();");
+        _builder_2.newLine();
+        _builder_2.append("\t");
+        _builder_2.append("creator.handleSpawningItems();");
+        _builder_2.newLine();
+        _builder_2.append("\t");
+        _builder_2.append("world.step(");
+        float _timeStep = game.getTimeStep();
+        _builder_2.append(_timeStep, "\t");
+        _builder_2.append("f, ");
+        int _velocityIterations = game.getVelocityIterations();
+        _builder_2.append(_velocityIterations, "\t");
+        _builder_2.append(", ");
+        int _positionIterations = game.getPositionIterations();
+        _builder_2.append(_positionIterations, "\t");
+        _builder_2.append(");");
+        _builder_2.newLineIfNotEmpty();
+        _builder_2.append("\t");
+        _builder_2.append("player.update(delta);");
+        _builder_2.newLine();
+        _builder_2.append("\t");
+        _builder_2.append("creator.updateSprites(delta, player);");
+        _builder_2.newLine();
+        _builder_2.append("\t");
+        _builder_2.append("hud.update(delta);");
+        _builder_2.newLine();
+        _builder_2.append("\t");
+        _builder_2.append("gamecam.position.x = player.getPosition().x;");
+        _builder_2.newLine();
+        _builder_2.append("\t");
+        _builder_2.append("gamecam.update();");
+        _builder_2.newLine();
+        _builder_2.append("\t");
+        _builder_2.append("renderer.setView(gamecam);");
+        _builder_2.newLine();
+        _builder_2.append("\t");
+        _builder_2.append("renderer.render();");
+        _builder_2.newLine();
+        _builder_2.append("\t");
+        _builder_2.append("game.batch.setProjectionMatrix(gamecam.combined);");
+        _builder_2.newLine();
+        _builder_2.append("\t");
+        _builder_2.append("game.batch.begin();");
+        _builder_2.newLine();
+        _builder_2.append("\t");
+        _builder_2.append("player.draw(game.batch);");
+        _builder_2.newLine();
+        _builder_2.append("\t");
+        _builder_2.append("creator.drawSprites(game.batch);");
+        _builder_2.newLine();
+        _builder_2.append("\t");
+        _builder_2.append("game.batch.end();");
+        _builder_2.newLine();
+        _builder_2.append("\t");
+        {
+          boolean _isDebug = game.isDebug();
+          if (_isDebug) {
+            _builder_2.append("b2dr.render(world, gamecam.combined);");
+          }
+        }
+        _builder_2.newLineIfNotEmpty();
+        _builder_2.append("\t");
+        _builder_2.append("game.batch.setProjectionMatrix(hud.stage.getCamera().combined);");
+        _builder_2.newLine();
+        _builder_2.append("\t");
+        _builder_2.append("hud.stage.draw();");
+        _builder_2.newLine();
+        _builder_2.append("} else {");
+        _builder_2.newLine();
+        _builder_2.append("\t");
+        _builder_2.append("inputGameOver();");
+        _builder_2.newLine();
+        _builder_2.append("\t");
+        _builder_2.append("gameOver.stage.draw();");
+        _builder_2.newLine();
+        _builder_2.append("}");
+        _builder_2.newLine();
+        it_1.append(_builder_2);
+      };
+      this._jvmTypesBuilder.setBody(it, _function_7);
+    };
+    JvmOperation _method_6 = this._jvmTypesBuilder.toMethod(screen, "render", this._typeReferenceBuilder.typeRef(Void.TYPE), _function_6);
+    this._jvmTypesBuilder.<JvmOperation>operator_add(_members_9, _method_6);
+    EList<JvmMember> _members_10 = type.getMembers();
+    final Procedure1<JvmOperation> _function_7 = (JvmOperation it) -> {
+      EList<JvmAnnotationReference> _annotations = it.getAnnotations();
+      JvmAnnotationReference _annotationRef = this._annotationTypesBuilder.annotationRef(Override.class);
+      this._jvmTypesBuilder.<JvmAnnotationReference>operator_add(_annotations, _annotationRef);
+      final Procedure1<ITreeAppendable> _function_8 = (ITreeAppendable it_1) -> {
+        StringConcatenation _builder = new StringConcatenation();
+        it_1.append(_builder);
+      };
+      this._jvmTypesBuilder.setBody(it, _function_8);
+    };
+    JvmOperation _method_7 = this._jvmTypesBuilder.toMethod(screen, "hide", this._typeReferenceBuilder.typeRef(Void.TYPE), _function_7);
+    this._jvmTypesBuilder.<JvmOperation>operator_add(_members_10, _method_7);
+    EList<JvmMember> _members_11 = type.getMembers();
+    final Procedure1<JvmOperation> _function_8 = (JvmOperation it) -> {
+      final Procedure1<ITreeAppendable> _function_9 = (ITreeAppendable it_1) -> {
+        StringConcatenation _builder = new StringConcatenation();
+        _builder.append("isGameOver = true;");
+        _builder.newLine();
+        it_1.append(_builder);
+      };
+      this._jvmTypesBuilder.setBody(it, _function_9);
+    };
+    JvmOperation _method_8 = this._jvmTypesBuilder.toMethod(screen, "gameOver", this._typeReferenceBuilder.typeRef(Void.TYPE), _function_8);
+    this._jvmTypesBuilder.<JvmOperation>operator_add(_members_11, _method_8);
+    EList<JvmMember> _members_12 = type.getMembers();
+    final Procedure1<JvmOperation> _function_9 = (JvmOperation it) -> {
+      final Procedure1<ITreeAppendable> _function_10 = (ITreeAppendable it_1) -> {
         boolean _isEmpty = playerSprite.getInputs().isEmpty();
         boolean _not = (!_isEmpty);
         if (_not) {
           final ITreeAppendable current = it_1;
-          final Consumer<GameInput> _function_7 = (GameInput it_2) -> {
+          final Consumer<GameInput> _function_11 = (GameInput it_2) -> {
             StringConcatenation _builder = new StringConcatenation();
             _builder.append("if(");
             current.append(_builder);
@@ -955,10 +1051,10 @@ public class GameDSLJvmModelInferrer extends AbstractModelInferrer {
             _builder_2.newLineIfNotEmpty();
             current.append(_builder_2);
             StringConcatenation _builder_3 = new StringConcatenation();
-            _builder_3.append("\t");
+            _builder_3.append("\t\t");
             _builder_3.append("player.");
             String _name = it_2.getTrigger().getName();
-            _builder_3.append(_name, "\t");
+            _builder_3.append(_name, "\t\t");
             _builder_3.append("();");
             _builder_3.newLineIfNotEmpty();
             current.append(_builder_3);
@@ -967,97 +1063,132 @@ public class GameDSLJvmModelInferrer extends AbstractModelInferrer {
             _builder_4.newLine();
             current.append(_builder_4);
           };
-          playerSprite.getInputs().forEach(_function_7);
+          playerSprite.getInputs().forEach(_function_11);
         }
+      };
+      this._jvmTypesBuilder.setBody(it, _function_10);
+    };
+    JvmOperation _method_9 = this._jvmTypesBuilder.toMethod(screen, "input", this._typeReferenceBuilder.typeRef(Void.TYPE), _function_9);
+    this._jvmTypesBuilder.<JvmOperation>operator_add(_members_12, _method_9);
+    EList<JvmMember> _members_13 = type.getMembers();
+    final Procedure1<JvmOperation> _function_10 = (JvmOperation it) -> {
+      final Procedure1<ITreeAppendable> _function_11 = (ITreeAppendable it_1) -> {
         StringConcatenation _builder = new StringConcatenation();
-        _builder.append("creator.handleSpawningItems();");
+        _builder.append("if(Gdx.input.justTouched()) {");
         _builder.newLine();
-        _builder.append("world.step(");
-        float _timeStep = game.getTimeStep();
-        _builder.append(_timeStep);
-        _builder.append("f, ");
-        int _velocityIterations = game.getVelocityIterations();
-        _builder.append(_velocityIterations);
-        _builder.append(", ");
-        int _positionIterations = game.getPositionIterations();
-        _builder.append(_positionIterations);
-        _builder.append(");");
-        _builder.newLineIfNotEmpty();
-        _builder.append("player.update(delta);");
+        _builder.append("\t");
+        _builder.append("init();");
         _builder.newLine();
-        _builder.append("creator.updateSprites(delta, player);");
-        _builder.newLine();
-        _builder.append("hud.update(delta);");
-        _builder.newLine();
-        _builder.append("gamecam.position.x = player.getPosition().x;");
-        _builder.newLine();
-        _builder.append("gamecam.update();");
-        _builder.newLine();
-        _builder.append("renderer.setView(gamecam);");
+        _builder.append("}");
         _builder.newLine();
         it_1.append(_builder);
-        it_1.append(Gdx.class);
-        StringConcatenation _builder_1 = new StringConcatenation();
-        _builder_1.append(".gl.glClearColor(0, 0, 0, 1);");
-        _builder_1.newLine();
-        _builder_1.append("Gdx.gl.glClear(");
-        it_1.append(_builder_1);
-        it_1.append(GL20.class);
-        StringConcatenation _builder_2 = new StringConcatenation();
-        _builder_2.append(".GL_COLOR_BUFFER_BIT);");
-        _builder_2.newLine();
-        _builder_2.append("renderer.render();");
-        _builder_2.newLine();
-        _builder_2.append("game.batch.setProjectionMatrix(gamecam.combined);");
-        _builder_2.newLine();
-        _builder_2.append("game.batch.begin();");
-        _builder_2.newLine();
-        _builder_2.append("player.draw(game.batch);");
-        _builder_2.newLine();
-        _builder_2.append("creator.drawSprites(game.batch);");
-        _builder_2.newLine();
-        _builder_2.append("game.batch.end();");
-        _builder_2.newLine();
-        {
-          boolean _isDebug = game.isDebug();
-          if (_isDebug) {
-            _builder_2.append("b2dr.render(world, gamecam.combined);");
+      };
+      this._jvmTypesBuilder.setBody(it, _function_11);
+    };
+    JvmOperation _method_10 = this._jvmTypesBuilder.toMethod(screen, "inputGameOver", this._typeReferenceBuilder.typeRef(Void.TYPE), _function_10);
+    this._jvmTypesBuilder.<JvmOperation>operator_add(_members_13, _method_10);
+    EList<JvmMember> _members_14 = type.getMembers();
+    final Procedure1<JvmOperation> _function_11 = (JvmOperation it) -> {
+      final Procedure1<ITreeAppendable> _function_12 = (ITreeAppendable it_1) -> {
+        if ((playerClass != null)) {
+          StringConcatenation _builder = new StringConcatenation();
+          _builder.append("isGameOver = false;");
+          _builder.newLine();
+          _builder.append("currentLevel = \"");
+          String _fileName = screen.getLevels().get(0).getFileName();
+          _builder.append(_fileName);
+          _builder.append("\";");
+          _builder.newLineIfNotEmpty();
+          _builder.append("loadLevel(currentLevel);");
+          _builder.newLine();
+          _builder.append("gamecam.position.set(gamePort.getWorldWidth() / 2, gamePort.getWorldHeight() / 2, 0);");
+          _builder.newLine();
+          _builder.append("if(world != null)");
+          _builder.newLine();
+          _builder.append("{");
+          _builder.newLine();
+          _builder.append("\t");
+          _builder.append("world.dispose();");
+          _builder.newLine();
+          _builder.append("}");
+          _builder.newLine();
+          _builder.append("world = new World(new ");
+          it_1.append(_builder);
+          it_1.append(Vector2.class);
+          StringConcatenation _builder_1 = new StringConcatenation();
+          _builder_1.append("(0, -10), true);");
+          _builder_1.newLine();
+          {
+            boolean _isDebug = game.isDebug();
+            if (_isDebug) {
+              _builder_1.append("if(b2dr != null) {");
+              _builder_1.newLine();
+              _builder_1.append("\t");
+              _builder_1.append("b2dr.dispose();\t");
+              _builder_1.newLine();
+              _builder_1.append("}");
+              _builder_1.newLine();
+              _builder_1.append("b2dr = new Box2DDebugRenderer();");
+              _builder_1.newLine();
+            }
           }
+          _builder_1.append("creator = new ");
+          QualifiedName _fullyQualifiedName = this._iQualifiedNameProvider.getFullyQualifiedName(creatorClass);
+          _builder_1.append(_fullyQualifiedName);
+          _builder_1.append("(this);");
+          _builder_1.newLineIfNotEmpty();
+          _builder_1.append("world.setContactListener(new ");
+          QualifiedName _fullyQualifiedName_1 = this._iQualifiedNameProvider.getFullyQualifiedName(contactClass);
+          _builder_1.append(_fullyQualifiedName_1);
+          _builder_1.append("());");
+          _builder_1.newLineIfNotEmpty();
+          _builder_1.append("player = new ");
+          QualifiedName _fullyQualifiedName_2 = this._iQualifiedNameProvider.getFullyQualifiedName(playerClass);
+          _builder_1.append(_fullyQualifiedName_2);
+          _builder_1.append("(this, creator);");
+          _builder_1.newLineIfNotEmpty();
+          it_1.append(_builder_1);
         }
-        _builder_2.newLineIfNotEmpty();
-        _builder_2.append("game.batch.setProjectionMatrix(hud.stage.getCamera().combined);");
-        _builder_2.newLine();
-        _builder_2.append("hud.stage.draw();");
-        _builder_2.newLine();
-        it_1.append(_builder_2);
+        final ITreeAppendable current = it_1;
+        final Consumer<GameScene> _function_13 = (GameScene it_2) -> {
+          StringConcatenation _builder_2 = new StringConcatenation();
+          _builder_2.append("if(");
+          String _firstLower = StringExtensions.toFirstLower(it_2.getName());
+          _builder_2.append(_firstLower);
+          _builder_2.append(" != null) {");
+          _builder_2.newLineIfNotEmpty();
+          _builder_2.append("\t");
+          String _firstLower_1 = StringExtensions.toFirstLower(it_2.getName());
+          _builder_2.append(_firstLower_1, "\t");
+          _builder_2.append(".dispose();");
+          _builder_2.newLineIfNotEmpty();
+          _builder_2.append("}");
+          _builder_2.newLine();
+          String _firstLower_2 = StringExtensions.toFirstLower(it_2.getName());
+          _builder_2.append(_firstLower_2);
+          _builder_2.append(" = new ");
+          String _firstUpper = StringExtensions.toFirstUpper(it_2.getName());
+          _builder_2.append(_firstUpper);
+          _builder_2.append("(game.batch);");
+          _builder_2.newLineIfNotEmpty();
+          current.append(_builder_2);
+        };
+        screen.getScenes().forEach(_function_13);
       };
-      this._jvmTypesBuilder.setBody(it, _function_6);
+      this._jvmTypesBuilder.setBody(it, _function_12);
     };
-    JvmOperation _method_5 = this._jvmTypesBuilder.toMethod(screen, "render", this._typeReferenceBuilder.typeRef(Void.TYPE), _function_5);
-    this._jvmTypesBuilder.<JvmOperation>operator_add(_members_8, _method_5);
-    EList<JvmMember> _members_9 = type.getMembers();
-    final Procedure1<JvmOperation> _function_6 = (JvmOperation it) -> {
-      EList<JvmAnnotationReference> _annotations = it.getAnnotations();
-      JvmAnnotationReference _annotationRef = this._annotationTypesBuilder.annotationRef(Override.class);
-      this._jvmTypesBuilder.<JvmAnnotationReference>operator_add(_annotations, _annotationRef);
-      final Procedure1<ITreeAppendable> _function_7 = (ITreeAppendable it_1) -> {
-        StringConcatenation _builder = new StringConcatenation();
-        it_1.append(_builder);
-      };
-      this._jvmTypesBuilder.setBody(it, _function_7);
-    };
-    JvmOperation _method_6 = this._jvmTypesBuilder.toMethod(screen, "hide", this._typeReferenceBuilder.typeRef(Void.TYPE), _function_6);
-    this._jvmTypesBuilder.<JvmOperation>operator_add(_members_9, _method_6);
+    JvmOperation _method_11 = this._jvmTypesBuilder.toMethod(screen, "init", this._typeReferenceBuilder.typeRef(Void.TYPE), _function_11);
+    this._jvmTypesBuilder.<JvmOperation>operator_add(_members_14, _method_11);
   }
   
-  public void createScene(final IJvmDeclaredTypeAcceptor acceptor, final GamePackage gamePkg, final JvmGenericType gameClass, final GameScene scene) {
+  public void createScene(final IJvmDeclaredTypeAcceptor acceptor, final GamePackage gamePkg, final GameRoot game, final JvmGenericType gameClass, final JvmGenericType screenClass, final GameScene scene) {
     final Procedure1<JvmGenericType> _function = (JvmGenericType it) -> {
       EList<JvmTypeReference> _superTypes = it.getSuperTypes();
       JvmTypeReference _typeRef = this._typeReferenceBuilder.typeRef(Disposable.class);
       this._jvmTypesBuilder.<JvmTypeReference>operator_add(_superTypes, _typeRef);
       it.setPackageName(this._iQualifiedNameProvider.getFullyQualifiedName(scene).skipLast(1).toString());
       this._jvmTypesBuilder.setDocumentation(it, this.genInfo);
-      this.toFields(it, scene, gameClass);
+      this.toSceneFields(it, scene, gameClass);
       EList<JvmMember> _members = it.getMembers();
       final Procedure1<JvmConstructor> _function_1 = (JvmConstructor it_1) -> {
         EList<JvmFormalParameter> _parameters = it_1.getParameters();
@@ -1092,9 +1223,22 @@ public class GameDSLJvmModelInferrer extends AbstractModelInferrer {
           _builder_1.newLine();
           it_2.append(_builder_1);
           final ITreeAppendable current = it_2;
-          boolean _isHasScore = scene.isHasScore();
-          if (_isHasScore) {
-            final Consumer<GameDisplay> _function_3 = (GameDisplay it_3) -> {
+          final Function1<GameDisplay, Boolean> _function_3 = (GameDisplay it_3) -> {
+            return Boolean.valueOf(it_3.isHasAdder());
+          };
+          final Consumer<GameDisplay> _function_4 = (GameDisplay it_3) -> {
+            StringConcatenation _builder_2 = new StringConcatenation();
+            String _name = it_3.getName();
+            _builder_2.append(_name);
+            _builder_2.append(" = 0;");
+            _builder_2.newLineIfNotEmpty();
+            current.append(_builder_2);
+          };
+          IterableExtensions.<GameDisplay>filter(scene.getDisplays(), _function_3).forEach(_function_4);
+          boolean _isEmpty = scene.getDisplays().isEmpty();
+          boolean _not = (!_isEmpty);
+          if (_not) {
+            final Consumer<GameDisplay> _function_5 = (GameDisplay it_3) -> {
               StringConcatenation _builder_2 = new StringConcatenation();
               String _name = it_3.getName();
               _builder_2.append(_name);
@@ -1112,15 +1256,15 @@ public class GameDSLJvmModelInferrer extends AbstractModelInferrer {
               String _name_1 = it_3.getName();
               _builder_3.append(_name_1);
               _builder_3.append("TitleLabel).expandX().padTop(");
-              int _topPadding = scene.getScore().getTopPadding();
+              int _topPadding = scene.getTopPadding();
               _builder_3.append(_topPadding);
               _builder_3.append(");");
               _builder_3.newLineIfNotEmpty();
               current.append(_builder_3);
             };
-            scene.getScore().getDisplays().forEach(_function_3);
+            scene.getDisplays().forEach(_function_5);
             it_2.append("table.row();\n");
-            final Consumer<GameDisplay> _function_4 = (GameDisplay it_3) -> {
+            final Consumer<GameDisplay> _function_6 = (GameDisplay it_3) -> {
               StringConcatenation _builder_2 = new StringConcatenation();
               String _name = it_3.getName();
               _builder_2.append(_name);
@@ -1139,20 +1283,54 @@ public class GameDSLJvmModelInferrer extends AbstractModelInferrer {
               _builder_2.newLineIfNotEmpty();
               current.append(_builder_2);
             };
-            scene.getScore().getDisplays().forEach(_function_4);
+            scene.getDisplays().forEach(_function_6);
+          }
+          int row = 0;
+          EList<GameMessage> _messages = scene.getMessages();
+          for (final GameMessage message : _messages) {
+            {
+              while ((row < message.getRow())) {
+                {
+                  it_2.append("table.row();\n");
+                  row = (row + 1);
+                }
+              }
+              StringConcatenation _builder_2 = new StringConcatenation();
+              String _name = message.getName();
+              _builder_2.append(_name);
+              _builder_2.append("MessageLabel = new Label(\"");
+              String _message = message.getMessage();
+              _builder_2.append(_message);
+              _builder_2.append("\", new Label.LabelStyle(new ");
+              it_2.append(_builder_2);
+              it_2.append(BitmapFont.class);
+              it_2.append("(), ");
+              it_2.append(Color.class);
+              it_2.append(".WHITE));\n");
+              StringConcatenation _builder_3 = new StringConcatenation();
+              _builder_3.append("table.add(");
+              String _name_1 = message.getName();
+              _builder_3.append(_name_1);
+              _builder_3.append("MessageLabel).expandX().padTop(");
+              int _topPadding = scene.getTopPadding();
+              _builder_3.append(_topPadding);
+              _builder_3.append(");");
+              _builder_3.newLineIfNotEmpty();
+              it_2.append(_builder_3);
+            }
           }
         };
         this._jvmTypesBuilder.setBody(it_1, _function_2);
       };
       JvmConstructor _constructor = this._jvmTypesBuilder.toConstructor(scene, _function_1);
       this._jvmTypesBuilder.<JvmConstructor>operator_add(_members, _constructor);
-      this.toOperations(it, scene);
+      this.toSceneOperations(it, scene);
     };
     acceptor.<JvmGenericType>accept(
       this._jvmTypesBuilder.toClass(gamePkg, this._iQualifiedNameProvider.getFullyQualifiedName(scene)), _function);
   }
   
-  public void toFields(final JvmGenericType type, final GameScene scene, final JvmGenericType gameClass) {
+  public void toSceneFields(final JvmGenericType type, final GameScene scene, final JvmGenericType gameClass) {
     JvmField field = this._jvmTypesBuilder.toField(scene, "stage", this._typeReferenceBuilder.typeRef(Stage.class));
     field.setVisibility(JvmVisibility.PUBLIC);
     EList<JvmMember> _members = type.getMembers();
@@ -1160,109 +1338,116 @@ public class GameDSLJvmModelInferrer extends AbstractModelInferrer {
     EList<JvmMember> _members_1 = type.getMembers();
     JvmField _field = this._jvmTypesBuilder.toField(scene, "viewport", this._typeReferenceBuilder.typeRef(Viewport.class));
     this._jvmTypesBuilder.<JvmField>operator_add(_members_1, _field);
-    boolean _isHasScore = scene.isHasScore();
-    if (_isHasScore) {
-      final Consumer<GameDisplay> _function = (GameDisplay it) -> {
-        EList<JvmMember> _members_2 = type.getMembers();
-        StringConcatenation _builder = new StringConcatenation();
-        String _name = it.getName();
-        _builder.append(_name);
-        _builder.append("TimeCount");
-        final Procedure1<JvmField> _function_1 = (JvmField it_1) -> {
-          final Procedure1<ITreeAppendable> _function_2 = (ITreeAppendable it_2) -> {
-            it_2.append("0");
-          };
-          this._jvmTypesBuilder.setInitializer(it_1, _function_2);
+    final Consumer<GameDisplay> _function = (GameDisplay it) -> {
+      EList<JvmMember> _members_2 = type.getMembers();
+      StringConcatenation _builder = new StringConcatenation();
+      String _name = it.getName();
+      _builder.append(_name);
+      _builder.append("TimeCount");
+      final Procedure1<JvmField> _function_1 = (JvmField it_1) -> {
+        final Procedure1<ITreeAppendable> _function_2 = (ITreeAppendable it_2) -> {
+          it_2.append("0");
         };
-        JvmField _field_1 = this._jvmTypesBuilder.toField(scene, _builder.toString(), this._typeReferenceBuilder.typeRef(float.class), _function_1);
-        this._jvmTypesBuilder.<JvmField>operator_add(_members_2, _field_1);
-        StringConcatenation _builder_1 = new StringConcatenation();
-        String _name_1 = it.getName();
-        _builder_1.append(_name_1);
-        JvmField displayField = this._jvmTypesBuilder.toField(scene, _builder_1.toString(), this._typeReferenceBuilder.typeRef(it.getType().getName()));
-        final GameDisplay current = it;
-        final Procedure1<ITreeAppendable> _function_2 = (ITreeAppendable it_1) -> {
-          StringConcatenation _builder_2 = new StringConcatenation();
-          {
-            boolean _isHasInitial = current.isHasInitial();
-            if (_isHasInitial) {
-              {
-                GameDisplayValueType _type = current.getType();
-                boolean _equals = Objects.equal(_type, GameDisplayValueType.STRING);
-                if (_equals) {
-                  _builder_2.append("\"");
-                  String _initialStringValue = current.getInitialStringValue();
-                  _builder_2.append(_initialStringValue);
-                  _builder_2.append("\"");
+        this._jvmTypesBuilder.setInitializer(it_1, _function_2);
+      };
+      JvmField _field_1 = this._jvmTypesBuilder.toField(scene, _builder.toString(), this._typeReferenceBuilder.typeRef(float.class), _function_1);
+      this._jvmTypesBuilder.<JvmField>operator_add(_members_2, _field_1);
+      StringConcatenation _builder_1 = new StringConcatenation();
+      String _name_1 = it.getName();
+      _builder_1.append(_name_1);
+      JvmField displayField = this._jvmTypesBuilder.toField(scene, _builder_1.toString(), this._typeReferenceBuilder.typeRef(it.getType().getName()));
+      final GameDisplay current = it;
+      final Procedure1<ITreeAppendable> _function_2 = (ITreeAppendable it_1) -> {
+        StringConcatenation _builder_2 = new StringConcatenation();
+        {
+          boolean _isHasInitial = current.isHasInitial();
+          if (_isHasInitial) {
+            {
+              GameDisplayValueType _type = current.getType();
+              boolean _equals = Objects.equal(_type, GameDisplayValueType.STRING);
+              if (_equals) {
+                _builder_2.append("\"");
+                String _initialStringValue = current.getInitialStringValue();
+                _builder_2.append(_initialStringValue);
+                _builder_2.append("\"");
+              } else {
+                GameDisplayValueType _type_1 = current.getType();
+                boolean _equals_1 = Objects.equal(_type_1, GameDisplayValueType.FLOAT);
+                if (_equals_1) {
+                  float _initialNumberValue = current.getInitialNumberValue();
+                  _builder_2.append(_initialNumberValue);
                 } else {
-                  GameDisplayValueType _type_1 = current.getType();
-                  boolean _equals_1 = Objects.equal(_type_1, GameDisplayValueType.FLOAT);
-                  if (_equals_1) {
-                    float _initialNumberValue = current.getInitialNumberValue();
-                    _builder_2.append(_initialNumberValue);
-                  } else {
-                    GameDisplayValueType _type_2 = current.getType();
-                    boolean _equals_2 = Objects.equal(_type_2, GameDisplayValueType.INT);
-                    if (_equals_2) {
-                      int _initialIntValue = current.getInitialIntValue();
-                      _builder_2.append(_initialIntValue);
-                    }
+                  GameDisplayValueType _type_2 = current.getType();
+                  boolean _equals_2 = Objects.equal(_type_2, GameDisplayValueType.INT);
+                  if (_equals_2) {
+                    int _initialIntValue = current.getInitialIntValue();
+                    _builder_2.append(_initialIntValue);
                   }
                 }
               }
-            } else {
-              {
-                GameDisplayValueType _type_3 = current.getType();
-                boolean _equals_3 = Objects.equal(_type_3, GameDisplayValueType.STRING);
-                if (_equals_3) {
-                  _builder_2.append("\"\"");
+            }
+          } else {
+            {
+              GameDisplayValueType _type_3 = current.getType();
+              boolean _equals_3 = Objects.equal(_type_3, GameDisplayValueType.STRING);
+              if (_equals_3) {
+                _builder_2.append("\"\"");
+              } else {
+                GameDisplayValueType _type_4 = current.getType();
+                boolean _equals_4 = Objects.equal(_type_4, GameDisplayValueType.FLOAT);
+                if (_equals_4) {
+                  _builder_2.append("0.0");
                 } else {
-                  GameDisplayValueType _type_4 = current.getType();
-                  boolean _equals_4 = Objects.equal(_type_4, GameDisplayValueType.FLOAT);
-                  if (_equals_4) {
-                    _builder_2.append("0.0");
-                  } else {
-                    GameDisplayValueType _type_5 = current.getType();
-                    boolean _equals_5 = Objects.equal(_type_5, GameDisplayValueType.INT);
-                    if (_equals_5) {
-                      _builder_2.append("0");
-                    }
+                  GameDisplayValueType _type_5 = current.getType();
+                  boolean _equals_5 = Objects.equal(_type_5, GameDisplayValueType.INT);
+                  if (_equals_5) {
+                    _builder_2.append("0");
                   }
                 }
               }
             }
           }
-          it_1.append(_builder_2);
-        };
-        this._jvmTypesBuilder.setInitializer(displayField, _function_2);
-        if ((it.isHasAdder() || it.isHasSetter())) {
-          displayField.setStatic(true);
         }
-        EList<JvmMember> _members_3 = type.getMembers();
-        this._jvmTypesBuilder.<JvmField>operator_add(_members_3, displayField);
-        EList<JvmMember> _members_4 = type.getMembers();
-        StringConcatenation _builder_2 = new StringConcatenation();
-        String _name_2 = it.getName();
-        _builder_2.append(_name_2);
-        _builder_2.append("TitleLabel");
-        JvmField _field_2 = this._jvmTypesBuilder.toField(scene, _builder_2.toString(), this._typeReferenceBuilder.typeRef(Label.class));
-        this._jvmTypesBuilder.<JvmField>operator_add(_members_4, _field_2);
-        StringConcatenation _builder_3 = new StringConcatenation();
-        String _name_3 = it.getName();
-        _builder_3.append(_name_3);
-        _builder_3.append("ValueLabel");
-        JvmField valueField = this._jvmTypesBuilder.toField(scene, _builder_3.toString(), this._typeReferenceBuilder.typeRef(Label.class));
-        if ((it.isHasAdder() || it.isHasSetter())) {
-          valueField.setStatic(true);
-        }
-        EList<JvmMember> _members_5 = type.getMembers();
-        this._jvmTypesBuilder.<JvmField>operator_add(_members_5, valueField);
+        it_1.append(_builder_2);
       };
-      scene.getScore().getDisplays().forEach(_function);
-    }
+      this._jvmTypesBuilder.setInitializer(displayField, _function_2);
+      if ((it.isHasAdder() || it.isHasSetter())) {
+        displayField.setStatic(true);
+      }
+      EList<JvmMember> _members_3 = type.getMembers();
+      this._jvmTypesBuilder.<JvmField>operator_add(_members_3, displayField);
+      EList<JvmMember> _members_4 = type.getMembers();
+      StringConcatenation _builder_2 = new StringConcatenation();
+      String _name_2 = it.getName();
+      _builder_2.append(_name_2);
+      _builder_2.append("TitleLabel");
+      JvmField _field_2 = this._jvmTypesBuilder.toField(scene, _builder_2.toString(), this._typeReferenceBuilder.typeRef(Label.class));
+      this._jvmTypesBuilder.<JvmField>operator_add(_members_4, _field_2);
+      StringConcatenation _builder_3 = new StringConcatenation();
+      String _name_3 = it.getName();
+      _builder_3.append(_name_3);
+      _builder_3.append("ValueLabel");
+      JvmField valueField = this._jvmTypesBuilder.toField(scene, _builder_3.toString(), this._typeReferenceBuilder.typeRef(Label.class));
+      if ((it.isHasAdder() || it.isHasSetter())) {
+        valueField.setStatic(true);
+      }
+      EList<JvmMember> _members_5 = type.getMembers();
+      this._jvmTypesBuilder.<JvmField>operator_add(_members_5, valueField);
+    };
+    scene.getDisplays().forEach(_function);
+    final Consumer<GameMessage> _function_1 = (GameMessage it) -> {
+      EList<JvmMember> _members_2 = type.getMembers();
+      StringConcatenation _builder = new StringConcatenation();
+      String _name = it.getName();
+      _builder.append(_name);
+      _builder.append("MessageLabel");
+      JvmField _field_1 = this._jvmTypesBuilder.toField(scene, _builder.toString(), this._typeReferenceBuilder.typeRef(Label.class));
+      this._jvmTypesBuilder.<JvmField>operator_add(_members_2, _field_1);
+    };
+    scene.getMessages().forEach(_function_1);
   }
   
-  public void toOperations(final JvmGenericType type, final GameScene scene) {
+  public void toSceneOperations(final JvmGenericType type, final GameScene scene) {
     EList<JvmMember> _members = type.getMembers();
     final Procedure1<JvmOperation> _function = (JvmOperation it) -> {
       EList<JvmFormalParameter> _parameters = it.getParameters();
@@ -1270,55 +1455,52 @@ public class GameDSLJvmModelInferrer extends AbstractModelInferrer {
       this._jvmTypesBuilder.<JvmFormalParameter>operator_add(_parameters, _parameter);
       final Procedure1<ITreeAppendable> _function_1 = (ITreeAppendable it_1) -> {
         final ITreeAppendable current = it_1;
-        boolean _isHasScore = scene.isHasScore();
-        if (_isHasScore) {
-          final Function1<GameDisplay, Boolean> _function_2 = (GameDisplay it_2) -> {
-            return Boolean.valueOf(it_2.isHasDelta());
-          };
-          final Consumer<GameDisplay> _function_3 = (GameDisplay it_2) -> {
-            StringConcatenation _builder = new StringConcatenation();
-            String _name = it_2.getName();
-            _builder.append(_name);
-            _builder.append("TimeCount += dt;");
-            _builder.newLineIfNotEmpty();
-            _builder.append("if (");
-            String _name_1 = it_2.getName();
-            _builder.append(_name_1);
-            _builder.append("TimeCount >= ");
-            float _timePeriod = it_2.getTimePeriod();
-            _builder.append(_timePeriod);
-            _builder.append(") {");
-            _builder.newLineIfNotEmpty();
-            _builder.append("\t");
-            String _name_2 = it_2.getName();
-            _builder.append(_name_2, "\t");
-            _builder.append(" += ");
-            float _deltaValue = it_2.getDeltaValue();
-            _builder.append(_deltaValue, "\t");
-            _builder.append(";");
-            _builder.newLineIfNotEmpty();
-            _builder.append("\t");
-            String _name_3 = it_2.getName();
-            _builder.append(_name_3, "\t");
-            _builder.append("ValueLabel.setText(String.format(\"");
-            String _format = it_2.getFormat();
-            _builder.append(_format, "\t");
-            _builder.append("\", ");
-            String _name_4 = it_2.getName();
-            _builder.append(_name_4, "\t");
-            _builder.append("));");
-            _builder.newLineIfNotEmpty();
-            _builder.append("\t");
-            String _name_5 = it_2.getName();
-            _builder.append(_name_5, "\t");
-            _builder.append("TimeCount = 0;");
-            _builder.newLineIfNotEmpty();
-            _builder.append("}");
-            _builder.newLine();
-            current.append(_builder);
-          };
-          IterableExtensions.<GameDisplay>filter(scene.getScore().getDisplays(), _function_2).forEach(_function_3);
-        }
+        final Function1<GameDisplay, Boolean> _function_2 = (GameDisplay it_2) -> {
+          return Boolean.valueOf(it_2.isHasDelta());
+        };
+        final Consumer<GameDisplay> _function_3 = (GameDisplay it_2) -> {
+          StringConcatenation _builder = new StringConcatenation();
+          String _name = it_2.getName();
+          _builder.append(_name);
+          _builder.append("TimeCount += dt;");
+          _builder.newLineIfNotEmpty();
+          _builder.append("if (");
+          String _name_1 = it_2.getName();
+          _builder.append(_name_1);
+          _builder.append("TimeCount >= ");
+          float _timePeriod = it_2.getTimePeriod();
+          _builder.append(_timePeriod);
+          _builder.append(") {");
+          _builder.newLineIfNotEmpty();
+          _builder.append("\t");
+          String _name_2 = it_2.getName();
+          _builder.append(_name_2, "\t");
+          _builder.append(" += ");
+          float _deltaValue = it_2.getDeltaValue();
+          _builder.append(_deltaValue, "\t");
+          _builder.append(";");
+          _builder.newLineIfNotEmpty();
+          _builder.append("\t");
+          String _name_3 = it_2.getName();
+          _builder.append(_name_3, "\t");
+          _builder.append("ValueLabel.setText(String.format(\"");
+          String _format = it_2.getFormat();
+          _builder.append(_format, "\t");
+          _builder.append("\", ");
+          String _name_4 = it_2.getName();
+          _builder.append(_name_4, "\t");
+          _builder.append("));");
+          _builder.newLineIfNotEmpty();
+          _builder.append("\t");
+          String _name_5 = it_2.getName();
+          _builder.append(_name_5, "\t");
+          _builder.append("TimeCount = 0;");
+          _builder.newLineIfNotEmpty();
+          _builder.append("}");
+          _builder.newLine();
+          current.append(_builder);
+        };
+        IterableExtensions.<GameDisplay>filter(scene.getDisplays(), _function_2).forEach(_function_3);
       };
       this._jvmTypesBuilder.setBody(it, _function_1);
     };
@@ -1339,87 +1521,84 @@ public class GameDSLJvmModelInferrer extends AbstractModelInferrer {
     };
     JvmOperation _method_1 = this._jvmTypesBuilder.toMethod(scene, "dispose", this._typeReferenceBuilder.typeRef(Void.TYPE), _function_1);
     this._jvmTypesBuilder.<JvmOperation>operator_add(_members_1, _method_1);
-    boolean _isHasScore = scene.isHasScore();
-    if (_isHasScore) {
-      final Function1<GameDisplay, Boolean> _function_2 = (GameDisplay it) -> {
-        return Boolean.valueOf(it.isHasAdder());
-      };
-      final Consumer<GameDisplay> _function_3 = (GameDisplay it) -> {
-        final GameDisplay current = it;
-        StringConcatenation _builder = new StringConcatenation();
-        _builder.append("add");
-        String _firstUpper = StringExtensions.toFirstUpper(it.getName());
-        _builder.append(_firstUpper);
-        final Procedure1<JvmOperation> _function_4 = (JvmOperation it_1) -> {
-          EList<JvmFormalParameter> _parameters = it_1.getParameters();
-          JvmFormalParameter _parameter = this._jvmTypesBuilder.toParameter(scene, "value", this._typeReferenceBuilder.typeRef(current.getType().getName()));
-          this._jvmTypesBuilder.<JvmFormalParameter>operator_add(_parameters, _parameter);
-          final Procedure1<ITreeAppendable> _function_5 = (ITreeAppendable it_2) -> {
-            StringConcatenation _builder_1 = new StringConcatenation();
-            String _name = current.getName();
-            _builder_1.append(_name);
-            _builder_1.append(" += value;");
-            _builder_1.newLineIfNotEmpty();
-            String _name_1 = current.getName();
-            _builder_1.append(_name_1);
-            _builder_1.append("ValueLabel.setText(String.format(\"");
-            String _format = current.getFormat();
-            _builder_1.append(_format);
-            _builder_1.append("\", ");
-            String _name_2 = current.getName();
-            _builder_1.append(_name_2);
-            _builder_1.append("));");
-            _builder_1.newLineIfNotEmpty();
-            it_2.append(_builder_1);
-          };
-          this._jvmTypesBuilder.setBody(it_1, _function_5);
+    final Function1<GameDisplay, Boolean> _function_2 = (GameDisplay it) -> {
+      return Boolean.valueOf(it.isHasAdder());
+    };
+    final Consumer<GameDisplay> _function_3 = (GameDisplay it) -> {
+      final GameDisplay current = it;
+      StringConcatenation _builder = new StringConcatenation();
+      _builder.append("add");
+      String _firstUpper = StringExtensions.toFirstUpper(it.getName());
+      _builder.append(_firstUpper);
+      final Procedure1<JvmOperation> _function_4 = (JvmOperation it_1) -> {
+        EList<JvmFormalParameter> _parameters = it_1.getParameters();
+        JvmFormalParameter _parameter = this._jvmTypesBuilder.toParameter(scene, "value", this._typeReferenceBuilder.typeRef(current.getType().getName()));
+        this._jvmTypesBuilder.<JvmFormalParameter>operator_add(_parameters, _parameter);
+        final Procedure1<ITreeAppendable> _function_5 = (ITreeAppendable it_2) -> {
+          StringConcatenation _builder_1 = new StringConcatenation();
+          String _name = current.getName();
+          _builder_1.append(_name);
+          _builder_1.append(" += value;");
+          _builder_1.newLineIfNotEmpty();
+          String _name_1 = current.getName();
+          _builder_1.append(_name_1);
+          _builder_1.append("ValueLabel.setText(String.format(\"");
+          String _format = current.getFormat();
+          _builder_1.append(_format);
+          _builder_1.append("\", ");
+          String _name_2 = current.getName();
+          _builder_1.append(_name_2);
+          _builder_1.append("));");
+          _builder_1.newLineIfNotEmpty();
+          it_2.append(_builder_1);
         };
-        JvmOperation operation = this._jvmTypesBuilder.toMethod(scene, _builder.toString(), this._typeReferenceBuilder.typeRef(Void.TYPE), _function_4);
-        operation.setStatic(true);
-        EList<JvmMember> _members_2 = type.getMembers();
-        this._jvmTypesBuilder.<JvmOperation>operator_add(_members_2, operation);
+        this._jvmTypesBuilder.setBody(it_1, _function_5);
       };
-      IterableExtensions.<GameDisplay>filter(scene.getScore().getDisplays(), _function_2).forEach(_function_3);
-      final Function1<GameDisplay, Boolean> _function_4 = (GameDisplay it) -> {
-        return Boolean.valueOf(it.isHasSetter());
-      };
-      final Consumer<GameDisplay> _function_5 = (GameDisplay it) -> {
-        final GameDisplay current = it;
-        StringConcatenation _builder = new StringConcatenation();
-        _builder.append("set");
-        String _firstUpper = StringExtensions.toFirstUpper(it.getName());
-        _builder.append(_firstUpper);
-        final Procedure1<JvmOperation> _function_6 = (JvmOperation it_1) -> {
-          EList<JvmFormalParameter> _parameters = it_1.getParameters();
-          JvmFormalParameter _parameter = this._jvmTypesBuilder.toParameter(scene, "value", this._typeReferenceBuilder.typeRef(current.getType().getName()));
-          this._jvmTypesBuilder.<JvmFormalParameter>operator_add(_parameters, _parameter);
-          final Procedure1<ITreeAppendable> _function_7 = (ITreeAppendable it_2) -> {
-            StringConcatenation _builder_1 = new StringConcatenation();
-            String _name = current.getName();
-            _builder_1.append(_name);
-            _builder_1.append(" = value;");
-            _builder_1.newLineIfNotEmpty();
-            String _name_1 = current.getName();
-            _builder_1.append(_name_1);
-            _builder_1.append("ValueLabel.setText(String.format(\"");
-            String _format = current.getFormat();
-            _builder_1.append(_format);
-            _builder_1.append("\", ");
-            String _name_2 = current.getName();
-            _builder_1.append(_name_2);
-            _builder_1.append("));");
-            _builder_1.newLineIfNotEmpty();
-            it_2.append(_builder_1);
-          };
-          this._jvmTypesBuilder.setBody(it_1, _function_7);
+      JvmOperation operation = this._jvmTypesBuilder.toMethod(scene, _builder.toString(), this._typeReferenceBuilder.typeRef(Void.TYPE), _function_4);
+      operation.setStatic(true);
+      EList<JvmMember> _members_2 = type.getMembers();
+      this._jvmTypesBuilder.<JvmOperation>operator_add(_members_2, operation);
+    };
+    IterableExtensions.<GameDisplay>filter(scene.getDisplays(), _function_2).forEach(_function_3);
+    final Function1<GameDisplay, Boolean> _function_4 = (GameDisplay it) -> {
+      return Boolean.valueOf(it.isHasSetter());
+    };
+    final Consumer<GameDisplay> _function_5 = (GameDisplay it) -> {
+      final GameDisplay current = it;
+      StringConcatenation _builder = new StringConcatenation();
+      _builder.append("set");
+      String _firstUpper = StringExtensions.toFirstUpper(it.getName());
+      _builder.append(_firstUpper);
+      final Procedure1<JvmOperation> _function_6 = (JvmOperation it_1) -> {
+        EList<JvmFormalParameter> _parameters = it_1.getParameters();
+        JvmFormalParameter _parameter = this._jvmTypesBuilder.toParameter(scene, "value", this._typeReferenceBuilder.typeRef(current.getType().getName()));
+        this._jvmTypesBuilder.<JvmFormalParameter>operator_add(_parameters, _parameter);
+        final Procedure1<ITreeAppendable> _function_7 = (ITreeAppendable it_2) -> {
+          StringConcatenation _builder_1 = new StringConcatenation();
+          String _name = current.getName();
+          _builder_1.append(_name);
+          _builder_1.append(" = value;");
+          _builder_1.newLineIfNotEmpty();
+          String _name_1 = current.getName();
+          _builder_1.append(_name_1);
+          _builder_1.append("ValueLabel.setText(String.format(\"");
+          String _format = current.getFormat();
+          _builder_1.append(_format);
+          _builder_1.append("\", ");
+          String _name_2 = current.getName();
+          _builder_1.append(_name_2);
+          _builder_1.append("));");
+          _builder_1.newLineIfNotEmpty();
+          it_2.append(_builder_1);
         };
-        JvmOperation operation = this._jvmTypesBuilder.toMethod(scene, _builder.toString(), this._typeReferenceBuilder.typeRef(Void.TYPE), _function_6);
-        operation.setStatic(true);
-        EList<JvmMember> _members_2 = type.getMembers();
-        this._jvmTypesBuilder.<JvmOperation>operator_add(_members_2, operation);
+        this._jvmTypesBuilder.setBody(it_1, _function_7);
       };
-      IterableExtensions.<GameDisplay>filter(scene.getScore().getDisplays(), _function_4).forEach(_function_5);
-    }
+      JvmOperation operation = this._jvmTypesBuilder.toMethod(scene, _builder.toString(), this._typeReferenceBuilder.typeRef(Void.TYPE), _function_6);
+      operation.setStatic(true);
+      EList<JvmMember> _members_2 = type.getMembers();
+      this._jvmTypesBuilder.<JvmOperation>operator_add(_members_2, operation);
+    };
+    IterableExtensions.<GameDisplay>filter(scene.getDisplays(), _function_4).forEach(_function_5);
   }
   
   public void createSprite(final IJvmDeclaredTypeAcceptor acceptor, final GamePackage gamePkg, final GameRoot game, final JvmGenericType gameClass, final JvmGenericType screenClass, final JvmGenericType creatorClass, final GameSprite sprite) {
@@ -2249,6 +2428,21 @@ public class GameDSLJvmModelInferrer extends AbstractModelInferrer {
           _builder_10.newLine();
           it_1.append(_builder_10);
         }
+        boolean _isHasGameOverState = sprite.isHasGameOverState();
+        if (_isHasGameOverState) {
+          StringConcatenation _builder_11 = new StringConcatenation();
+          _builder_11.append("if(currentState.equals(State.");
+          String _upperCase = sprite.getGameOverState().getName().toUpperCase();
+          _builder_11.append(_upperCase);
+          _builder_11.append(") && stateTimer > 3) {");
+          _builder_11.newLineIfNotEmpty();
+          _builder_11.append("\t");
+          _builder_11.append("screen.gameOver();");
+          _builder_11.newLine();
+          _builder_11.append("}");
+          _builder_11.newLine();
+          it_1.append(_builder_11);
+        }
       };
       this._jvmTypesBuilder.setBody(it, _function_10);
     };
@@ -2414,12 +2608,40 @@ public class GameDSLJvmModelInferrer extends AbstractModelInferrer {
     JvmOperation _method_7 = this._jvmTypesBuilder.toMethod(sprite, "getPositionWithOffset", this._typeReferenceBuilder.typeRef(Vector2.class), _function_13);
     this._jvmTypesBuilder.<JvmOperation>operator_add(_members_7, _method_7);
     EList<JvmMember> _members_8 = type.getMembers();
+    final Procedure1<JvmOperation> _function_14 = (JvmOperation it) -> {
+      final Procedure1<ITreeAppendable> _function_15 = (ITreeAppendable it_1) -> {
+        it_1.append(Filter.class);
+        StringConcatenation _builder_3 = new StringConcatenation();
+        _builder_3.append(" ");
+        _builder_3.append("filter = new Filter();");
+        _builder_3.newLine();
+        _builder_3.append("filter.maskBits = 0;");
+        _builder_3.newLine();
+        _builder_3.append("for (");
+        it_1.append(_builder_3);
+        it_1.append(Fixture.class);
+        StringConcatenation _builder_4 = new StringConcatenation();
+        _builder_4.append(" ");
+        _builder_4.append("fixture : body.getFixtureList()) {");
+        _builder_4.newLine();
+        _builder_4.append("\t");
+        _builder_4.append("fixture.setFilterData(filter);");
+        _builder_4.newLine();
+        _builder_4.append("}");
+        _builder_4.newLine();
+        it_1.append(_builder_4);
+      };
+      this._jvmTypesBuilder.setBody(it, _function_15);
+    };
+    JvmOperation _method_8 = this._jvmTypesBuilder.toMethod(sprite, "removeMaskBits", this._typeReferenceBuilder.typeRef(Void.TYPE), _function_14);
+    this._jvmTypesBuilder.<JvmOperation>operator_add(_members_8, _method_8);
+    EList<JvmMember> _members_9 = type.getMembers();
     StringConcatenation _builder_3 = new StringConcatenation();
     _builder_3.append("redefine");
     String _firstUpper_2 = StringExtensions.toFirstUpper(sprite.getName());
     _builder_3.append(_firstUpper_2);
-    final Procedure1<JvmOperation> _function_14 = (JvmOperation it) -> {
-      final Procedure1<ITreeAppendable> _function_15 = (ITreeAppendable it_1) -> {
+    final Procedure1<JvmOperation> _function_15 = (JvmOperation it) -> {
+      final Procedure1<ITreeAppendable> _function_16 = (ITreeAppendable it_1) -> {
         StringConcatenation _builder_4 = new StringConcatenation();
         _builder_4.append("Vector2 position = body.getPosition();");
         _builder_4.newLine();
@@ -2432,20 +2654,20 @@ public class GameDSLJvmModelInferrer extends AbstractModelInferrer {
         _builder_4.newLineIfNotEmpty();
         it_1.append(_builder_4);
       };
-      this._jvmTypesBuilder.setBody(it, _function_15);
+      this._jvmTypesBuilder.setBody(it, _function_16);
     };
-    JvmOperation _method_8 = this._jvmTypesBuilder.toMethod(sprite, _builder_3.toString(), this._typeReferenceBuilder.typeRef(Void.TYPE), _function_14);
-    this._jvmTypesBuilder.<JvmOperation>operator_add(_members_8, _method_8);
-    EList<JvmMember> _members_9 = type.getMembers();
+    JvmOperation _method_9 = this._jvmTypesBuilder.toMethod(sprite, _builder_3.toString(), this._typeReferenceBuilder.typeRef(Void.TYPE), _function_15);
+    this._jvmTypesBuilder.<JvmOperation>operator_add(_members_9, _method_9);
+    EList<JvmMember> _members_10 = type.getMembers();
     StringConcatenation _builder_4 = new StringConcatenation();
     _builder_4.append("define");
     String _firstUpper_3 = StringExtensions.toFirstUpper(sprite.getName());
     _builder_4.append(_firstUpper_3);
-    final Procedure1<JvmOperation> _function_15 = (JvmOperation it) -> {
+    final Procedure1<JvmOperation> _function_16 = (JvmOperation it) -> {
       EList<JvmFormalParameter> _parameters = it.getParameters();
       JvmFormalParameter _parameter = this._jvmTypesBuilder.toParameter(sprite, "position", this._typeReferenceBuilder.typeRef(Vector2.class));
       this._jvmTypesBuilder.<JvmFormalParameter>operator_add(_parameters, _parameter);
-      final Procedure1<ITreeAppendable> _function_16 = (ITreeAppendable it_1) -> {
+      final Procedure1<ITreeAppendable> _function_17 = (ITreeAppendable it_1) -> {
         it_1.append(BodyDef.class);
         StringConcatenation _builder_5 = new StringConcatenation();
         _builder_5.append(" ");
@@ -2635,17 +2857,17 @@ public class GameDSLJvmModelInferrer extends AbstractModelInferrer {
           it_1.append(_builder_15);
         }
       };
-      this._jvmTypesBuilder.setBody(it, _function_16);
+      this._jvmTypesBuilder.setBody(it, _function_17);
     };
-    JvmOperation _method_9 = this._jvmTypesBuilder.toMethod(sprite, _builder_4.toString(), this._typeReferenceBuilder.typeRef(Void.TYPE), _function_15);
-    this._jvmTypesBuilder.<JvmOperation>operator_add(_members_9, _method_9);
-    final Consumer<GameEvent> _function_16 = (GameEvent it) -> {
+    JvmOperation _method_10 = this._jvmTypesBuilder.toMethod(sprite, _builder_4.toString(), this._typeReferenceBuilder.typeRef(Void.TYPE), _function_16);
+    this._jvmTypesBuilder.<JvmOperation>operator_add(_members_10, _method_10);
+    final Consumer<GameEvent> _function_17 = (GameEvent it) -> {
       final GameEvent event = it;
-      EList<JvmMember> _members_10 = type.getMembers();
+      EList<JvmMember> _members_11 = type.getMembers();
       StringConcatenation _builder_5 = new StringConcatenation();
       String _name = it.getName();
       _builder_5.append(_name);
-      final Procedure1<JvmOperation> _function_17 = (JvmOperation it_1) -> {
+      final Procedure1<JvmOperation> _function_18 = (JvmOperation it_1) -> {
         this._jvmTypesBuilder.setDocumentation(it_1, this._jvmTypesBuilder.getDocumentation(it_1));
         EList<JvmFormalParameter> _params = event.getParams();
         for (final JvmFormalParameter p : _params) {
@@ -2655,10 +2877,10 @@ public class GameDSLJvmModelInferrer extends AbstractModelInferrer {
         }
         this._jvmTypesBuilder.setBody(it_1, event.getBody());
       };
-      JvmOperation _method_10 = this._jvmTypesBuilder.toMethod(sprite, _builder_5.toString(), this._typeReferenceBuilder.typeRef(Void.TYPE), _function_17);
-      this._jvmTypesBuilder.<JvmOperation>operator_add(_members_10, _method_10);
+      JvmOperation _method_11 = this._jvmTypesBuilder.toMethod(sprite, _builder_5.toString(), this._typeReferenceBuilder.typeRef(Void.TYPE), _function_18);
+      this._jvmTypesBuilder.<JvmOperation>operator_add(_members_11, _method_11);
     };
-    sprite.getEvents().forEach(_function_16);
+    sprite.getEvents().forEach(_function_17);
   }
   
   public void createTile(final IJvmDeclaredTypeAcceptor acceptor, final GamePackage gamePkg, final GameRoot root, final JvmGenericType gameClass, final JvmGenericType screenClass, final JvmGenericType creatorClass, final GameTile tile) {

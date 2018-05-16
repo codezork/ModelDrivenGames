@@ -114,13 +114,13 @@ public interface GameDSLFactory extends EFactory
   GameScene createGameScene();
 
   /**
-   * Returns a new object of class '<em>Game Score</em>'.
+   * Returns a new object of class '<em>Game Level</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Game Score</em>'.
+   * @return a new object of class '<em>Game Level</em>'.
    * @generated
    */
-  GameScore createGameScore();
+  GameLevel createGameLevel();
 
   /**
    * Returns a new object of class '<em>Game Display</em>'.
@@ -130,6 +130,15 @@ public interface GameDSLFactory extends EFactory
    * @generated
    */
   GameDisplay createGameDisplay();
+
+  /**
+   * Returns a new object of class '<em>Game Message</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Game Message</em>'.
+   * @generated
+   */
+  GameMessage createGameMessage();
 
   /**
    * Returns a new object of class '<em>Game Tile</em>'.

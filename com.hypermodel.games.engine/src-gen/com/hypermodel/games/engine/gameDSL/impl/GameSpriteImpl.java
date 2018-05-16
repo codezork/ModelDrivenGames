@@ -44,14 +44,14 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link com.hypermodel.games.engine.gameDSL.impl.GameSpriteImpl#isIsEnemy <em>Is Enemy</em>}</li>
  *   <li>{@link com.hypermodel.games.engine.gameDSL.impl.GameSpriteImpl#getLayer <em>Layer</em>}</li>
  *   <li>{@link com.hypermodel.games.engine.gameDSL.impl.GameSpriteImpl#isIsDestructable <em>Is Destructable</em>}</li>
- *   <li>{@link com.hypermodel.games.engine.gameDSL.impl.GameSpriteImpl#isHasVelocity <em>Has Velocity</em>}</li>
- *   <li>{@link com.hypermodel.games.engine.gameDSL.impl.GameSpriteImpl#getVelocity <em>Velocity</em>}</li>
  *   <li>{@link com.hypermodel.games.engine.gameDSL.impl.GameSpriteImpl#isHasActivationRule <em>Has Activation Rule</em>}</li>
  *   <li>{@link com.hypermodel.games.engine.gameDSL.impl.GameSpriteImpl#getRule <em>Rule</em>}</li>
  *   <li>{@link com.hypermodel.games.engine.gameDSL.impl.GameSpriteImpl#isIsItem <em>Is Item</em>}</li>
  *   <li>{@link com.hypermodel.games.engine.gameDSL.impl.GameSpriteImpl#isIsPlayer <em>Is Player</em>}</li>
  *   <li>{@link com.hypermodel.games.engine.gameDSL.impl.GameSpriteImpl#getStartPosition <em>Start Position</em>}</li>
  *   <li>{@link com.hypermodel.games.engine.gameDSL.impl.GameSpriteImpl#getInputs <em>Inputs</em>}</li>
+ *   <li>{@link com.hypermodel.games.engine.gameDSL.impl.GameSpriteImpl#isHasVelocity <em>Has Velocity</em>}</li>
+ *   <li>{@link com.hypermodel.games.engine.gameDSL.impl.GameSpriteImpl#getVelocity <em>Velocity</em>}</li>
  *   <li>{@link com.hypermodel.games.engine.gameDSL.impl.GameSpriteImpl#isHasSensor <em>Has Sensor</em>}</li>
  *   <li>{@link com.hypermodel.games.engine.gameDSL.impl.GameSpriteImpl#getVectors2d <em>Vectors2d</em>}</li>
  *   <li>{@link com.hypermodel.games.engine.gameDSL.impl.GameSpriteImpl#getSensorID <em>Sensor ID</em>}</li>
@@ -59,6 +59,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link com.hypermodel.games.engine.gameDSL.impl.GameSpriteImpl#getProperties <em>Properties</em>}</li>
  *   <li>{@link com.hypermodel.games.engine.gameDSL.impl.GameSpriteImpl#getStates <em>States</em>}</li>
  *   <li>{@link com.hypermodel.games.engine.gameDSL.impl.GameSpriteImpl#getInitialState <em>Initial State</em>}</li>
+ *   <li>{@link com.hypermodel.games.engine.gameDSL.impl.GameSpriteImpl#isHasGameOverState <em>Has Game Over State</em>}</li>
  *   <li>{@link com.hypermodel.games.engine.gameDSL.impl.GameSpriteImpl#getGameOverState <em>Game Over State</em>}</li>
  *   <li>{@link com.hypermodel.games.engine.gameDSL.impl.GameSpriteImpl#getEvents <em>Events</em>}</li>
  *   <li>{@link com.hypermodel.games.engine.gameDSL.impl.GameSpriteImpl#isHasRestitution <em>Has Restitution</em>}</li>
@@ -180,36 +181,6 @@ public class GameSpriteImpl extends MinimalEObjectImpl.Container implements Game
   protected boolean isDestructable = IS_DESTRUCTABLE_EDEFAULT;
 
   /**
-   * The default value of the '{@link #isHasVelocity() <em>Has Velocity</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #isHasVelocity()
-   * @generated
-   * @ordered
-   */
-  protected static final boolean HAS_VELOCITY_EDEFAULT = false;
-
-  /**
-   * The cached value of the '{@link #isHasVelocity() <em>Has Velocity</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #isHasVelocity()
-   * @generated
-   * @ordered
-   */
-  protected boolean hasVelocity = HAS_VELOCITY_EDEFAULT;
-
-  /**
-   * The cached value of the '{@link #getVelocity() <em>Velocity</em>}' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getVelocity()
-   * @generated
-   * @ordered
-   */
-  protected GameVector2d velocity;
-
-  /**
    * The default value of the '{@link #isHasActivationRule() <em>Has Activation Rule</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -300,6 +271,36 @@ public class GameSpriteImpl extends MinimalEObjectImpl.Container implements Game
   protected EList<GameInput> inputs;
 
   /**
+   * The default value of the '{@link #isHasVelocity() <em>Has Velocity</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #isHasVelocity()
+   * @generated
+   * @ordered
+   */
+  protected static final boolean HAS_VELOCITY_EDEFAULT = false;
+
+  /**
+   * The cached value of the '{@link #isHasVelocity() <em>Has Velocity</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #isHasVelocity()
+   * @generated
+   * @ordered
+   */
+  protected boolean hasVelocity = HAS_VELOCITY_EDEFAULT;
+
+  /**
+   * The cached value of the '{@link #getVelocity() <em>Velocity</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getVelocity()
+   * @generated
+   * @ordered
+   */
+  protected GameVector2d velocity;
+
+  /**
    * The default value of the '{@link #isHasSensor() <em>Has Sensor</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -388,6 +389,26 @@ public class GameSpriteImpl extends MinimalEObjectImpl.Container implements Game
    * @ordered
    */
   protected GameSpriteState initialState;
+
+  /**
+   * The default value of the '{@link #isHasGameOverState() <em>Has Game Over State</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #isHasGameOverState()
+   * @generated
+   * @ordered
+   */
+  protected static final boolean HAS_GAME_OVER_STATE_EDEFAULT = false;
+
+  /**
+   * The cached value of the '{@link #isHasGameOverState() <em>Has Game Over State</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #isHasGameOverState()
+   * @generated
+   * @ordered
+   */
+  protected boolean hasGameOverState = HAS_GAME_OVER_STATE_EDEFAULT;
 
   /**
    * The cached value of the '{@link #getGameOverState() <em>Game Over State</em>}' reference.
@@ -633,77 +654,6 @@ public class GameSpriteImpl extends MinimalEObjectImpl.Container implements Game
    * <!-- end-user-doc -->
    * @generated
    */
-  public boolean isHasVelocity()
-  {
-    return hasVelocity;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void setHasVelocity(boolean newHasVelocity)
-  {
-    boolean oldHasVelocity = hasVelocity;
-    hasVelocity = newHasVelocity;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, GameDSLPackage.GAME_SPRITE__HAS_VELOCITY, oldHasVelocity, hasVelocity));
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public GameVector2d getVelocity()
-  {
-    return velocity;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public NotificationChain basicSetVelocity(GameVector2d newVelocity, NotificationChain msgs)
-  {
-    GameVector2d oldVelocity = velocity;
-    velocity = newVelocity;
-    if (eNotificationRequired())
-    {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, GameDSLPackage.GAME_SPRITE__VELOCITY, oldVelocity, newVelocity);
-      if (msgs == null) msgs = notification; else msgs.add(notification);
-    }
-    return msgs;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void setVelocity(GameVector2d newVelocity)
-  {
-    if (newVelocity != velocity)
-    {
-      NotificationChain msgs = null;
-      if (velocity != null)
-        msgs = ((InternalEObject)velocity).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - GameDSLPackage.GAME_SPRITE__VELOCITY, null, msgs);
-      if (newVelocity != null)
-        msgs = ((InternalEObject)newVelocity).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - GameDSLPackage.GAME_SPRITE__VELOCITY, null, msgs);
-      msgs = basicSetVelocity(newVelocity, msgs);
-      if (msgs != null) msgs.dispatch();
-    }
-    else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, GameDSLPackage.GAME_SPRITE__VELOCITY, newVelocity, newVelocity));
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   public boolean isHasActivationRule()
   {
     return hasActivationRule;
@@ -883,6 +833,77 @@ public class GameSpriteImpl extends MinimalEObjectImpl.Container implements Game
    * <!-- end-user-doc -->
    * @generated
    */
+  public boolean isHasVelocity()
+  {
+    return hasVelocity;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setHasVelocity(boolean newHasVelocity)
+  {
+    boolean oldHasVelocity = hasVelocity;
+    hasVelocity = newHasVelocity;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, GameDSLPackage.GAME_SPRITE__HAS_VELOCITY, oldHasVelocity, hasVelocity));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public GameVector2d getVelocity()
+  {
+    return velocity;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetVelocity(GameVector2d newVelocity, NotificationChain msgs)
+  {
+    GameVector2d oldVelocity = velocity;
+    velocity = newVelocity;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, GameDSLPackage.GAME_SPRITE__VELOCITY, oldVelocity, newVelocity);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setVelocity(GameVector2d newVelocity)
+  {
+    if (newVelocity != velocity)
+    {
+      NotificationChain msgs = null;
+      if (velocity != null)
+        msgs = ((InternalEObject)velocity).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - GameDSLPackage.GAME_SPRITE__VELOCITY, null, msgs);
+      if (newVelocity != null)
+        msgs = ((InternalEObject)newVelocity).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - GameDSLPackage.GAME_SPRITE__VELOCITY, null, msgs);
+      msgs = basicSetVelocity(newVelocity, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, GameDSLPackage.GAME_SPRITE__VELOCITY, newVelocity, newVelocity));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public boolean isHasSensor()
   {
     return hasSensor;
@@ -1028,6 +1049,29 @@ public class GameSpriteImpl extends MinimalEObjectImpl.Container implements Game
    * <!-- end-user-doc -->
    * @generated
    */
+  public boolean isHasGameOverState()
+  {
+    return hasGameOverState;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setHasGameOverState(boolean newHasGameOverState)
+  {
+    boolean oldHasGameOverState = hasGameOverState;
+    hasGameOverState = newHasGameOverState;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, GameDSLPackage.GAME_SPRITE__HAS_GAME_OVER_STATE, oldHasGameOverState, hasGameOverState));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public GameSpriteState getGameOverState()
   {
     if (gameOverState != null && gameOverState.eIsProxy())
@@ -1136,14 +1180,14 @@ public class GameSpriteImpl extends MinimalEObjectImpl.Container implements Game
   {
     switch (featureID)
     {
-      case GameDSLPackage.GAME_SPRITE__VELOCITY:
-        return basicSetVelocity(null, msgs);
       case GameDSLPackage.GAME_SPRITE__RULE:
         return basicSetRule(null, msgs);
       case GameDSLPackage.GAME_SPRITE__START_POSITION:
         return basicSetStartPosition(null, msgs);
       case GameDSLPackage.GAME_SPRITE__INPUTS:
         return ((InternalEList<?>)getInputs()).basicRemove(otherEnd, msgs);
+      case GameDSLPackage.GAME_SPRITE__VELOCITY:
+        return basicSetVelocity(null, msgs);
       case GameDSLPackage.GAME_SPRITE__VECTORS2D:
         return ((InternalEList<?>)getVectors2d()).basicRemove(otherEnd, msgs);
       case GameDSLPackage.GAME_SPRITE__ACTORS:
@@ -1181,10 +1225,6 @@ public class GameSpriteImpl extends MinimalEObjectImpl.Container implements Game
         return basicGetLayer();
       case GameDSLPackage.GAME_SPRITE__IS_DESTRUCTABLE:
         return isIsDestructable();
-      case GameDSLPackage.GAME_SPRITE__HAS_VELOCITY:
-        return isHasVelocity();
-      case GameDSLPackage.GAME_SPRITE__VELOCITY:
-        return getVelocity();
       case GameDSLPackage.GAME_SPRITE__HAS_ACTIVATION_RULE:
         return isHasActivationRule();
       case GameDSLPackage.GAME_SPRITE__RULE:
@@ -1197,6 +1237,10 @@ public class GameSpriteImpl extends MinimalEObjectImpl.Container implements Game
         return getStartPosition();
       case GameDSLPackage.GAME_SPRITE__INPUTS:
         return getInputs();
+      case GameDSLPackage.GAME_SPRITE__HAS_VELOCITY:
+        return isHasVelocity();
+      case GameDSLPackage.GAME_SPRITE__VELOCITY:
+        return getVelocity();
       case GameDSLPackage.GAME_SPRITE__HAS_SENSOR:
         return isHasSensor();
       case GameDSLPackage.GAME_SPRITE__VECTORS2D:
@@ -1212,6 +1256,8 @@ public class GameSpriteImpl extends MinimalEObjectImpl.Container implements Game
       case GameDSLPackage.GAME_SPRITE__INITIAL_STATE:
         if (resolve) return getInitialState();
         return basicGetInitialState();
+      case GameDSLPackage.GAME_SPRITE__HAS_GAME_OVER_STATE:
+        return isHasGameOverState();
       case GameDSLPackage.GAME_SPRITE__GAME_OVER_STATE:
         if (resolve) return getGameOverState();
         return basicGetGameOverState();
@@ -1254,12 +1300,6 @@ public class GameSpriteImpl extends MinimalEObjectImpl.Container implements Game
       case GameDSLPackage.GAME_SPRITE__IS_DESTRUCTABLE:
         setIsDestructable((Boolean)newValue);
         return;
-      case GameDSLPackage.GAME_SPRITE__HAS_VELOCITY:
-        setHasVelocity((Boolean)newValue);
-        return;
-      case GameDSLPackage.GAME_SPRITE__VELOCITY:
-        setVelocity((GameVector2d)newValue);
-        return;
       case GameDSLPackage.GAME_SPRITE__HAS_ACTIVATION_RULE:
         setHasActivationRule((Boolean)newValue);
         return;
@@ -1278,6 +1318,12 @@ public class GameSpriteImpl extends MinimalEObjectImpl.Container implements Game
       case GameDSLPackage.GAME_SPRITE__INPUTS:
         getInputs().clear();
         getInputs().addAll((Collection<? extends GameInput>)newValue);
+        return;
+      case GameDSLPackage.GAME_SPRITE__HAS_VELOCITY:
+        setHasVelocity((Boolean)newValue);
+        return;
+      case GameDSLPackage.GAME_SPRITE__VELOCITY:
+        setVelocity((GameVector2d)newValue);
         return;
       case GameDSLPackage.GAME_SPRITE__HAS_SENSOR:
         setHasSensor((Boolean)newValue);
@@ -1303,6 +1349,9 @@ public class GameSpriteImpl extends MinimalEObjectImpl.Container implements Game
         return;
       case GameDSLPackage.GAME_SPRITE__INITIAL_STATE:
         setInitialState((GameSpriteState)newValue);
+        return;
+      case GameDSLPackage.GAME_SPRITE__HAS_GAME_OVER_STATE:
+        setHasGameOverState((Boolean)newValue);
         return;
       case GameDSLPackage.GAME_SPRITE__GAME_OVER_STATE:
         setGameOverState((GameSpriteState)newValue);
@@ -1349,12 +1398,6 @@ public class GameSpriteImpl extends MinimalEObjectImpl.Container implements Game
       case GameDSLPackage.GAME_SPRITE__IS_DESTRUCTABLE:
         setIsDestructable(IS_DESTRUCTABLE_EDEFAULT);
         return;
-      case GameDSLPackage.GAME_SPRITE__HAS_VELOCITY:
-        setHasVelocity(HAS_VELOCITY_EDEFAULT);
-        return;
-      case GameDSLPackage.GAME_SPRITE__VELOCITY:
-        setVelocity((GameVector2d)null);
-        return;
       case GameDSLPackage.GAME_SPRITE__HAS_ACTIVATION_RULE:
         setHasActivationRule(HAS_ACTIVATION_RULE_EDEFAULT);
         return;
@@ -1372,6 +1415,12 @@ public class GameSpriteImpl extends MinimalEObjectImpl.Container implements Game
         return;
       case GameDSLPackage.GAME_SPRITE__INPUTS:
         getInputs().clear();
+        return;
+      case GameDSLPackage.GAME_SPRITE__HAS_VELOCITY:
+        setHasVelocity(HAS_VELOCITY_EDEFAULT);
+        return;
+      case GameDSLPackage.GAME_SPRITE__VELOCITY:
+        setVelocity((GameVector2d)null);
         return;
       case GameDSLPackage.GAME_SPRITE__HAS_SENSOR:
         setHasSensor(HAS_SENSOR_EDEFAULT);
@@ -1393,6 +1442,9 @@ public class GameSpriteImpl extends MinimalEObjectImpl.Container implements Game
         return;
       case GameDSLPackage.GAME_SPRITE__INITIAL_STATE:
         setInitialState((GameSpriteState)null);
+        return;
+      case GameDSLPackage.GAME_SPRITE__HAS_GAME_OVER_STATE:
+        setHasGameOverState(HAS_GAME_OVER_STATE_EDEFAULT);
         return;
       case GameDSLPackage.GAME_SPRITE__GAME_OVER_STATE:
         setGameOverState((GameSpriteState)null);
@@ -1432,10 +1484,6 @@ public class GameSpriteImpl extends MinimalEObjectImpl.Container implements Game
         return layer != null;
       case GameDSLPackage.GAME_SPRITE__IS_DESTRUCTABLE:
         return isDestructable != IS_DESTRUCTABLE_EDEFAULT;
-      case GameDSLPackage.GAME_SPRITE__HAS_VELOCITY:
-        return hasVelocity != HAS_VELOCITY_EDEFAULT;
-      case GameDSLPackage.GAME_SPRITE__VELOCITY:
-        return velocity != null;
       case GameDSLPackage.GAME_SPRITE__HAS_ACTIVATION_RULE:
         return hasActivationRule != HAS_ACTIVATION_RULE_EDEFAULT;
       case GameDSLPackage.GAME_SPRITE__RULE:
@@ -1448,6 +1496,10 @@ public class GameSpriteImpl extends MinimalEObjectImpl.Container implements Game
         return startPosition != null;
       case GameDSLPackage.GAME_SPRITE__INPUTS:
         return inputs != null && !inputs.isEmpty();
+      case GameDSLPackage.GAME_SPRITE__HAS_VELOCITY:
+        return hasVelocity != HAS_VELOCITY_EDEFAULT;
+      case GameDSLPackage.GAME_SPRITE__VELOCITY:
+        return velocity != null;
       case GameDSLPackage.GAME_SPRITE__HAS_SENSOR:
         return hasSensor != HAS_SENSOR_EDEFAULT;
       case GameDSLPackage.GAME_SPRITE__VECTORS2D:
@@ -1462,6 +1514,8 @@ public class GameSpriteImpl extends MinimalEObjectImpl.Container implements Game
         return states != null && !states.isEmpty();
       case GameDSLPackage.GAME_SPRITE__INITIAL_STATE:
         return initialState != null;
+      case GameDSLPackage.GAME_SPRITE__HAS_GAME_OVER_STATE:
+        return hasGameOverState != HAS_GAME_OVER_STATE_EDEFAULT;
       case GameDSLPackage.GAME_SPRITE__GAME_OVER_STATE:
         return gameOverState != null;
       case GameDSLPackage.GAME_SPRITE__EVENTS:
@@ -1495,18 +1549,20 @@ public class GameSpriteImpl extends MinimalEObjectImpl.Container implements Game
     result.append(isEnemy);
     result.append(", isDestructable: ");
     result.append(isDestructable);
-    result.append(", hasVelocity: ");
-    result.append(hasVelocity);
     result.append(", hasActivationRule: ");
     result.append(hasActivationRule);
     result.append(", isItem: ");
     result.append(isItem);
     result.append(", isPlayer: ");
     result.append(isPlayer);
+    result.append(", hasVelocity: ");
+    result.append(hasVelocity);
     result.append(", hasSensor: ");
     result.append(hasSensor);
     result.append(", sensorID: ");
     result.append(sensorID);
+    result.append(", hasGameOverState: ");
+    result.append(hasGameOverState);
     result.append(", hasRestitution: ");
     result.append(hasRestitution);
     result.append(", restitution: ");

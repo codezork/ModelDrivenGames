@@ -35,7 +35,7 @@ public class GameQualifiedNameProvider extends XbaseQualifiedNameProvider {
 		}
 
 		if (obj instanceof GameScene) {
-			GamePackage pkg = (GamePackage) obj.eContainer().eContainer();
+			GamePackage pkg = (GamePackage) obj.eContainer().eContainer().eContainer();
 			String fqn = pkg.getName() + ".scenes." + ((GameScene) obj).getName();
 			return QualifiedName.create(fqn.split("\\."));
 		}

@@ -4,17 +4,25 @@
 package com.hypermodel.games.engine.gameDSL.impl;
 
 import com.hypermodel.games.engine.gameDSL.GameDSLPackage;
+import com.hypermodel.games.engine.gameDSL.GameDisplay;
+import com.hypermodel.games.engine.gameDSL.GameMessage;
 import com.hypermodel.games.engine.gameDSL.GameScene;
-import com.hypermodel.games.engine.gameDSL.GameScore;
+
+import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
+
+import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
+
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -25,8 +33,9 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  * </p>
  * <ul>
  *   <li>{@link com.hypermodel.games.engine.gameDSL.impl.GameSceneImpl#getName <em>Name</em>}</li>
- *   <li>{@link com.hypermodel.games.engine.gameDSL.impl.GameSceneImpl#isHasScore <em>Has Score</em>}</li>
- *   <li>{@link com.hypermodel.games.engine.gameDSL.impl.GameSceneImpl#getScore <em>Score</em>}</li>
+ *   <li>{@link com.hypermodel.games.engine.gameDSL.impl.GameSceneImpl#getTopPadding <em>Top Padding</em>}</li>
+ *   <li>{@link com.hypermodel.games.engine.gameDSL.impl.GameSceneImpl#getDisplays <em>Displays</em>}</li>
+ *   <li>{@link com.hypermodel.games.engine.gameDSL.impl.GameSceneImpl#getMessages <em>Messages</em>}</li>
  * </ul>
  *
  * @generated
@@ -54,34 +63,44 @@ public class GameSceneImpl extends MinimalEObjectImpl.Container implements GameS
   protected String name = NAME_EDEFAULT;
 
   /**
-   * The default value of the '{@link #isHasScore() <em>Has Score</em>}' attribute.
+   * The default value of the '{@link #getTopPadding() <em>Top Padding</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #isHasScore()
+   * @see #getTopPadding()
    * @generated
    * @ordered
    */
-  protected static final boolean HAS_SCORE_EDEFAULT = false;
+  protected static final int TOP_PADDING_EDEFAULT = 0;
 
   /**
-   * The cached value of the '{@link #isHasScore() <em>Has Score</em>}' attribute.
+   * The cached value of the '{@link #getTopPadding() <em>Top Padding</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #isHasScore()
+   * @see #getTopPadding()
    * @generated
    * @ordered
    */
-  protected boolean hasScore = HAS_SCORE_EDEFAULT;
+  protected int topPadding = TOP_PADDING_EDEFAULT;
 
   /**
-   * The cached value of the '{@link #getScore() <em>Score</em>}' containment reference.
+   * The cached value of the '{@link #getDisplays() <em>Displays</em>}' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getScore()
+   * @see #getDisplays()
    * @generated
    * @ordered
    */
-  protected GameScore score;
+  protected EList<GameDisplay> displays;
+
+  /**
+   * The cached value of the '{@link #getMessages() <em>Messages</em>}' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getMessages()
+   * @generated
+   * @ordered
+   */
+  protected EList<GameMessage> messages;
 
   /**
    * <!-- begin-user-doc -->
@@ -132,9 +151,9 @@ public class GameSceneImpl extends MinimalEObjectImpl.Container implements GameS
    * <!-- end-user-doc -->
    * @generated
    */
-  public boolean isHasScore()
+  public int getTopPadding()
   {
-    return hasScore;
+    return topPadding;
   }
 
   /**
@@ -142,12 +161,12 @@ public class GameSceneImpl extends MinimalEObjectImpl.Container implements GameS
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setHasScore(boolean newHasScore)
+  public void setTopPadding(int newTopPadding)
   {
-    boolean oldHasScore = hasScore;
-    hasScore = newHasScore;
+    int oldTopPadding = topPadding;
+    topPadding = newTopPadding;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, GameDSLPackage.GAME_SCENE__HAS_SCORE, oldHasScore, hasScore));
+      eNotify(new ENotificationImpl(this, Notification.SET, GameDSLPackage.GAME_SCENE__TOP_PADDING, oldTopPadding, topPadding));
   }
 
   /**
@@ -155,26 +174,13 @@ public class GameSceneImpl extends MinimalEObjectImpl.Container implements GameS
    * <!-- end-user-doc -->
    * @generated
    */
-  public GameScore getScore()
+  public EList<GameDisplay> getDisplays()
   {
-    return score;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public NotificationChain basicSetScore(GameScore newScore, NotificationChain msgs)
-  {
-    GameScore oldScore = score;
-    score = newScore;
-    if (eNotificationRequired())
+    if (displays == null)
     {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, GameDSLPackage.GAME_SCENE__SCORE, oldScore, newScore);
-      if (msgs == null) msgs = notification; else msgs.add(notification);
+      displays = new EObjectContainmentEList<GameDisplay>(GameDisplay.class, this, GameDSLPackage.GAME_SCENE__DISPLAYS);
     }
-    return msgs;
+    return displays;
   }
 
   /**
@@ -182,20 +188,13 @@ public class GameSceneImpl extends MinimalEObjectImpl.Container implements GameS
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setScore(GameScore newScore)
+  public EList<GameMessage> getMessages()
   {
-    if (newScore != score)
+    if (messages == null)
     {
-      NotificationChain msgs = null;
-      if (score != null)
-        msgs = ((InternalEObject)score).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - GameDSLPackage.GAME_SCENE__SCORE, null, msgs);
-      if (newScore != null)
-        msgs = ((InternalEObject)newScore).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - GameDSLPackage.GAME_SCENE__SCORE, null, msgs);
-      msgs = basicSetScore(newScore, msgs);
-      if (msgs != null) msgs.dispatch();
+      messages = new EObjectContainmentEList<GameMessage>(GameMessage.class, this, GameDSLPackage.GAME_SCENE__MESSAGES);
     }
-    else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, GameDSLPackage.GAME_SCENE__SCORE, newScore, newScore));
+    return messages;
   }
 
   /**
@@ -208,8 +207,10 @@ public class GameSceneImpl extends MinimalEObjectImpl.Container implements GameS
   {
     switch (featureID)
     {
-      case GameDSLPackage.GAME_SCENE__SCORE:
-        return basicSetScore(null, msgs);
+      case GameDSLPackage.GAME_SCENE__DISPLAYS:
+        return ((InternalEList<?>)getDisplays()).basicRemove(otherEnd, msgs);
+      case GameDSLPackage.GAME_SCENE__MESSAGES:
+        return ((InternalEList<?>)getMessages()).basicRemove(otherEnd, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -226,10 +227,12 @@ public class GameSceneImpl extends MinimalEObjectImpl.Container implements GameS
     {
       case GameDSLPackage.GAME_SCENE__NAME:
         return getName();
-      case GameDSLPackage.GAME_SCENE__HAS_SCORE:
-        return isHasScore();
-      case GameDSLPackage.GAME_SCENE__SCORE:
-        return getScore();
+      case GameDSLPackage.GAME_SCENE__TOP_PADDING:
+        return getTopPadding();
+      case GameDSLPackage.GAME_SCENE__DISPLAYS:
+        return getDisplays();
+      case GameDSLPackage.GAME_SCENE__MESSAGES:
+        return getMessages();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -239,6 +242,7 @@ public class GameSceneImpl extends MinimalEObjectImpl.Container implements GameS
    * <!-- end-user-doc -->
    * @generated
    */
+  @SuppressWarnings("unchecked")
   @Override
   public void eSet(int featureID, Object newValue)
   {
@@ -247,11 +251,16 @@ public class GameSceneImpl extends MinimalEObjectImpl.Container implements GameS
       case GameDSLPackage.GAME_SCENE__NAME:
         setName((String)newValue);
         return;
-      case GameDSLPackage.GAME_SCENE__HAS_SCORE:
-        setHasScore((Boolean)newValue);
+      case GameDSLPackage.GAME_SCENE__TOP_PADDING:
+        setTopPadding((Integer)newValue);
         return;
-      case GameDSLPackage.GAME_SCENE__SCORE:
-        setScore((GameScore)newValue);
+      case GameDSLPackage.GAME_SCENE__DISPLAYS:
+        getDisplays().clear();
+        getDisplays().addAll((Collection<? extends GameDisplay>)newValue);
+        return;
+      case GameDSLPackage.GAME_SCENE__MESSAGES:
+        getMessages().clear();
+        getMessages().addAll((Collection<? extends GameMessage>)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -270,11 +279,14 @@ public class GameSceneImpl extends MinimalEObjectImpl.Container implements GameS
       case GameDSLPackage.GAME_SCENE__NAME:
         setName(NAME_EDEFAULT);
         return;
-      case GameDSLPackage.GAME_SCENE__HAS_SCORE:
-        setHasScore(HAS_SCORE_EDEFAULT);
+      case GameDSLPackage.GAME_SCENE__TOP_PADDING:
+        setTopPadding(TOP_PADDING_EDEFAULT);
         return;
-      case GameDSLPackage.GAME_SCENE__SCORE:
-        setScore((GameScore)null);
+      case GameDSLPackage.GAME_SCENE__DISPLAYS:
+        getDisplays().clear();
+        return;
+      case GameDSLPackage.GAME_SCENE__MESSAGES:
+        getMessages().clear();
         return;
     }
     super.eUnset(featureID);
@@ -292,10 +304,12 @@ public class GameSceneImpl extends MinimalEObjectImpl.Container implements GameS
     {
       case GameDSLPackage.GAME_SCENE__NAME:
         return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
-      case GameDSLPackage.GAME_SCENE__HAS_SCORE:
-        return hasScore != HAS_SCORE_EDEFAULT;
-      case GameDSLPackage.GAME_SCENE__SCORE:
-        return score != null;
+      case GameDSLPackage.GAME_SCENE__TOP_PADDING:
+        return topPadding != TOP_PADDING_EDEFAULT;
+      case GameDSLPackage.GAME_SCENE__DISPLAYS:
+        return displays != null && !displays.isEmpty();
+      case GameDSLPackage.GAME_SCENE__MESSAGES:
+        return messages != null && !messages.isEmpty();
     }
     return super.eIsSet(featureID);
   }
@@ -313,8 +327,8 @@ public class GameSceneImpl extends MinimalEObjectImpl.Container implements GameS
     StringBuffer result = new StringBuffer(super.toString());
     result.append(" (name: ");
     result.append(name);
-    result.append(", hasScore: ");
-    result.append(hasScore);
+    result.append(", topPadding: ");
+    result.append(topPadding);
     result.append(')');
     return result.toString();
   }

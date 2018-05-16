@@ -30,7 +30,6 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link com.hypermodel.games.engine.gameDSL.GameRoot#getTileHeight <em>Tile Height</em>}</li>
  *   <li>{@link com.hypermodel.games.engine.gameDSL.GameRoot#isDebug <em>Debug</em>}</li>
  *   <li>{@link com.hypermodel.games.engine.gameDSL.GameRoot#getLayers <em>Layers</em>}</li>
- *   <li>{@link com.hypermodel.games.engine.gameDSL.GameRoot#getScenes <em>Scenes</em>}</li>
  *   <li>{@link com.hypermodel.games.engine.gameDSL.GameRoot#getScreens <em>Screens</em>}</li>
  *   <li>{@link com.hypermodel.games.engine.gameDSL.GameRoot#getRegions <em>Regions</em>}</li>
  * </ul>
@@ -394,22 +393,6 @@ public interface GameRoot extends EObject
    * @generated
    */
   EList<GameLayer> getLayers();
-
-  /**
-   * Returns the value of the '<em><b>Scenes</b></em>' containment reference list.
-   * The list contents are of type {@link com.hypermodel.games.engine.gameDSL.GameScene}.
-   * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Scenes</em>' containment reference list isn't clear,
-   * there really should be more of a description here...
-   * </p>
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Scenes</em>' containment reference list.
-   * @see com.hypermodel.games.engine.gameDSL.GameDSLPackage#getGameRoot_Scenes()
-   * @model containment="true"
-   * @generated
-   */
-  EList<GameScene> getScenes();
 
   /**
    * Returns the value of the '<em><b>Screens</b></em>' containment reference list.

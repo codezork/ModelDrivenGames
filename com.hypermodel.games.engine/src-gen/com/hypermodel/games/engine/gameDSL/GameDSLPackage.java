@@ -471,22 +471,13 @@ public interface GameDSLPackage extends EPackage
   int GAME_ROOT__LAYERS = 13;
 
   /**
-   * The feature id for the '<em><b>Scenes</b></em>' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int GAME_ROOT__SCENES = 14;
-
-  /**
    * The feature id for the '<em><b>Screens</b></em>' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int GAME_ROOT__SCREENS = 15;
+  int GAME_ROOT__SCREENS = 14;
 
   /**
    * The feature id for the '<em><b>Regions</b></em>' containment reference list.
@@ -495,7 +486,7 @@ public interface GameDSLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int GAME_ROOT__REGIONS = 16;
+  int GAME_ROOT__REGIONS = 15;
 
   /**
    * The number of structural features of the '<em>Game Root</em>' class.
@@ -504,7 +495,7 @@ public interface GameDSLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int GAME_ROOT_FEATURE_COUNT = 17;
+  int GAME_ROOT_FEATURE_COUNT = 16;
 
   /**
    * The meta object id for the '{@link com.hypermodel.games.engine.gameDSL.impl.GameLayerImpl <em>Game Layer</em>}' class.
@@ -581,22 +572,31 @@ public interface GameDSLPackage extends EPackage
   int GAME_SCREEN__ATLAS_NAME = 1;
 
   /**
-   * The feature id for the '<em><b>Map</b></em>' attribute.
+   * The feature id for the '<em><b>Scenes</b></em>' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int GAME_SCREEN__MAP = 2;
+  int GAME_SCREEN__SCENES = 2;
 
   /**
-   * The feature id for the '<em><b>Scene</b></em>' reference.
+   * The feature id for the '<em><b>Game Over Scene</b></em>' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int GAME_SCREEN__SCENE = 3;
+  int GAME_SCREEN__GAME_OVER_SCENE = 3;
+
+  /**
+   * The feature id for the '<em><b>Levels</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int GAME_SCREEN__LEVELS = 4;
 
   /**
    * The feature id for the '<em><b>Tiles</b></em>' containment reference list.
@@ -605,7 +605,7 @@ public interface GameDSLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int GAME_SCREEN__TILES = 4;
+  int GAME_SCREEN__TILES = 5;
 
   /**
    * The feature id for the '<em><b>Sprites</b></em>' containment reference list.
@@ -614,7 +614,7 @@ public interface GameDSLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int GAME_SCREEN__SPRITES = 5;
+  int GAME_SCREEN__SPRITES = 6;
 
   /**
    * The number of structural features of the '<em>Game Screen</em>' class.
@@ -623,7 +623,7 @@ public interface GameDSLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int GAME_SCREEN_FEATURE_COUNT = 6;
+  int GAME_SCREEN_FEATURE_COUNT = 7;
 
   /**
    * The meta object id for the '{@link com.hypermodel.games.engine.gameDSL.impl.GameSceneImpl <em>Game Scene</em>}' class.
@@ -645,50 +645,13 @@ public interface GameDSLPackage extends EPackage
   int GAME_SCENE__NAME = 0;
 
   /**
-   * The feature id for the '<em><b>Has Score</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int GAME_SCENE__HAS_SCORE = 1;
-
-  /**
-   * The feature id for the '<em><b>Score</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int GAME_SCENE__SCORE = 2;
-
-  /**
-   * The number of structural features of the '<em>Game Scene</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int GAME_SCENE_FEATURE_COUNT = 3;
-
-  /**
-   * The meta object id for the '{@link com.hypermodel.games.engine.gameDSL.impl.GameScoreImpl <em>Game Score</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see com.hypermodel.games.engine.gameDSL.impl.GameScoreImpl
-   * @see com.hypermodel.games.engine.gameDSL.impl.GameDSLPackageImpl#getGameScore()
-   * @generated
-   */
-  int GAME_SCORE = 10;
-
-  /**
    * The feature id for the '<em><b>Top Padding</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int GAME_SCORE__TOP_PADDING = 0;
+  int GAME_SCENE__TOP_PADDING = 1;
 
   /**
    * The feature id for the '<em><b>Displays</b></em>' containment reference list.
@@ -697,16 +660,62 @@ public interface GameDSLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int GAME_SCORE__DISPLAYS = 1;
+  int GAME_SCENE__DISPLAYS = 2;
 
   /**
-   * The number of structural features of the '<em>Game Score</em>' class.
+   * The feature id for the '<em><b>Messages</b></em>' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int GAME_SCORE_FEATURE_COUNT = 2;
+  int GAME_SCENE__MESSAGES = 3;
+
+  /**
+   * The number of structural features of the '<em>Game Scene</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int GAME_SCENE_FEATURE_COUNT = 4;
+
+  /**
+   * The meta object id for the '{@link com.hypermodel.games.engine.gameDSL.impl.GameLevelImpl <em>Game Level</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see com.hypermodel.games.engine.gameDSL.impl.GameLevelImpl
+   * @see com.hypermodel.games.engine.gameDSL.impl.GameDSLPackageImpl#getGameLevel()
+   * @generated
+   */
+  int GAME_LEVEL = 10;
+
+  /**
+   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int GAME_LEVEL__NAME = 0;
+
+  /**
+   * The feature id for the '<em><b>File Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int GAME_LEVEL__FILE_NAME = 1;
+
+  /**
+   * The number of structural features of the '<em>Game Level</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int GAME_LEVEL_FEATURE_COUNT = 2;
 
   /**
    * The meta object id for the '{@link com.hypermodel.games.engine.gameDSL.impl.GameDisplayImpl <em>Game Display</em>}' class.
@@ -836,6 +845,52 @@ public interface GameDSLPackage extends EPackage
   int GAME_DISPLAY_FEATURE_COUNT = 12;
 
   /**
+   * The meta object id for the '{@link com.hypermodel.games.engine.gameDSL.impl.GameMessageImpl <em>Game Message</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see com.hypermodel.games.engine.gameDSL.impl.GameMessageImpl
+   * @see com.hypermodel.games.engine.gameDSL.impl.GameDSLPackageImpl#getGameMessage()
+   * @generated
+   */
+  int GAME_MESSAGE = 12;
+
+  /**
+   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int GAME_MESSAGE__NAME = 0;
+
+  /**
+   * The feature id for the '<em><b>Message</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int GAME_MESSAGE__MESSAGE = 1;
+
+  /**
+   * The feature id for the '<em><b>Row</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int GAME_MESSAGE__ROW = 2;
+
+  /**
+   * The number of structural features of the '<em>Game Message</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int GAME_MESSAGE_FEATURE_COUNT = 3;
+
+  /**
    * The meta object id for the '{@link com.hypermodel.games.engine.gameDSL.impl.GameTileImpl <em>Game Tile</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -843,7 +898,7 @@ public interface GameDSLPackage extends EPackage
    * @see com.hypermodel.games.engine.gameDSL.impl.GameDSLPackageImpl#getGameTile()
    * @generated
    */
-  int GAME_TILE = 12;
+  int GAME_TILE = 13;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -916,7 +971,7 @@ public interface GameDSLPackage extends EPackage
    * @see com.hypermodel.games.engine.gameDSL.impl.GameDSLPackageImpl#getGameSprite()
    * @generated
    */
-  int GAME_SPRITE = 13;
+  int GAME_SPRITE = 14;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -973,31 +1028,13 @@ public interface GameDSLPackage extends EPackage
   int GAME_SPRITE__IS_DESTRUCTABLE = 5;
 
   /**
-   * The feature id for the '<em><b>Has Velocity</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int GAME_SPRITE__HAS_VELOCITY = 6;
-
-  /**
-   * The feature id for the '<em><b>Velocity</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int GAME_SPRITE__VELOCITY = 7;
-
-  /**
    * The feature id for the '<em><b>Has Activation Rule</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int GAME_SPRITE__HAS_ACTIVATION_RULE = 8;
+  int GAME_SPRITE__HAS_ACTIVATION_RULE = 6;
 
   /**
    * The feature id for the '<em><b>Rule</b></em>' containment reference.
@@ -1006,7 +1043,7 @@ public interface GameDSLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int GAME_SPRITE__RULE = 9;
+  int GAME_SPRITE__RULE = 7;
 
   /**
    * The feature id for the '<em><b>Is Item</b></em>' attribute.
@@ -1015,7 +1052,7 @@ public interface GameDSLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int GAME_SPRITE__IS_ITEM = 10;
+  int GAME_SPRITE__IS_ITEM = 8;
 
   /**
    * The feature id for the '<em><b>Is Player</b></em>' attribute.
@@ -1024,7 +1061,7 @@ public interface GameDSLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int GAME_SPRITE__IS_PLAYER = 11;
+  int GAME_SPRITE__IS_PLAYER = 9;
 
   /**
    * The feature id for the '<em><b>Start Position</b></em>' containment reference.
@@ -1033,7 +1070,7 @@ public interface GameDSLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int GAME_SPRITE__START_POSITION = 12;
+  int GAME_SPRITE__START_POSITION = 10;
 
   /**
    * The feature id for the '<em><b>Inputs</b></em>' containment reference list.
@@ -1042,7 +1079,25 @@ public interface GameDSLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int GAME_SPRITE__INPUTS = 13;
+  int GAME_SPRITE__INPUTS = 11;
+
+  /**
+   * The feature id for the '<em><b>Has Velocity</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int GAME_SPRITE__HAS_VELOCITY = 12;
+
+  /**
+   * The feature id for the '<em><b>Velocity</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int GAME_SPRITE__VELOCITY = 13;
 
   /**
    * The feature id for the '<em><b>Has Sensor</b></em>' attribute.
@@ -1108,13 +1163,22 @@ public interface GameDSLPackage extends EPackage
   int GAME_SPRITE__INITIAL_STATE = 20;
 
   /**
+   * The feature id for the '<em><b>Has Game Over State</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int GAME_SPRITE__HAS_GAME_OVER_STATE = 21;
+
+  /**
    * The feature id for the '<em><b>Game Over State</b></em>' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int GAME_SPRITE__GAME_OVER_STATE = 21;
+  int GAME_SPRITE__GAME_OVER_STATE = 22;
 
   /**
    * The feature id for the '<em><b>Events</b></em>' containment reference list.
@@ -1123,7 +1187,7 @@ public interface GameDSLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int GAME_SPRITE__EVENTS = 22;
+  int GAME_SPRITE__EVENTS = 23;
 
   /**
    * The feature id for the '<em><b>Has Restitution</b></em>' attribute.
@@ -1132,7 +1196,7 @@ public interface GameDSLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int GAME_SPRITE__HAS_RESTITUTION = 23;
+  int GAME_SPRITE__HAS_RESTITUTION = 24;
 
   /**
    * The feature id for the '<em><b>Restitution</b></em>' attribute.
@@ -1141,7 +1205,7 @@ public interface GameDSLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int GAME_SPRITE__RESTITUTION = 24;
+  int GAME_SPRITE__RESTITUTION = 25;
 
   /**
    * The number of structural features of the '<em>Game Sprite</em>' class.
@@ -1150,7 +1214,7 @@ public interface GameDSLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int GAME_SPRITE_FEATURE_COUNT = 25;
+  int GAME_SPRITE_FEATURE_COUNT = 26;
 
   /**
    * The meta object id for the '{@link com.hypermodel.games.engine.gameDSL.impl.GameInputImpl <em>Game Input</em>}' class.
@@ -1160,7 +1224,7 @@ public interface GameDSLPackage extends EPackage
    * @see com.hypermodel.games.engine.gameDSL.impl.GameDSLPackageImpl#getGameInput()
    * @generated
    */
-  int GAME_INPUT = 14;
+  int GAME_INPUT = 15;
 
   /**
    * The feature id for the '<em><b>Key Type</b></em>' attribute.
@@ -1206,7 +1270,7 @@ public interface GameDSLPackage extends EPackage
    * @see com.hypermodel.games.engine.gameDSL.impl.GameDSLPackageImpl#getGameActor()
    * @generated
    */
-  int GAME_ACTOR = 15;
+  int GAME_ACTOR = 16;
 
   /**
    * The feature id for the '<em><b>Has Collision Condition</b></em>' attribute.
@@ -1297,7 +1361,7 @@ public interface GameDSLPackage extends EPackage
    * @see com.hypermodel.games.engine.gameDSL.impl.GameDSLPackageImpl#getGameVector2d()
    * @generated
    */
-  int GAME_VECTOR2D = 16;
+  int GAME_VECTOR2D = 17;
 
   /**
    * The feature id for the '<em><b>X</b></em>' attribute.
@@ -1334,7 +1398,7 @@ public interface GameDSLPackage extends EPackage
    * @see com.hypermodel.games.engine.gameDSL.impl.GameDSLPackageImpl#getGameSpriteState()
    * @generated
    */
-  int GAME_SPRITE_STATE = 17;
+  int GAME_SPRITE_STATE = 18;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -1407,7 +1471,7 @@ public interface GameDSLPackage extends EPackage
    * @see com.hypermodel.games.engine.gameDSL.impl.GameDSLPackageImpl#getGameBodyProperty()
    * @generated
    */
-  int GAME_BODY_PROPERTY = 18;
+  int GAME_BODY_PROPERTY = 19;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -1462,7 +1526,7 @@ public interface GameDSLPackage extends EPackage
    * @see com.hypermodel.games.engine.gameDSL.impl.GameDSLPackageImpl#getGameRule()
    * @generated
    */
-  int GAME_RULE = 19;
+  int GAME_RULE = 20;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -1508,7 +1572,7 @@ public interface GameDSLPackage extends EPackage
    * @see com.hypermodel.games.engine.gameDSL.impl.GameDSLPackageImpl#getGameSpriteAnimation()
    * @generated
    */
-  int GAME_SPRITE_ANIMATION = 20;
+  int GAME_SPRITE_ANIMATION = 21;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -1599,7 +1663,7 @@ public interface GameDSLPackage extends EPackage
    * @see com.hypermodel.games.engine.gameDSL.impl.GameDSLPackageImpl#getGameSpriteStand()
    * @generated
    */
-  int GAME_SPRITE_STAND = 21;
+  int GAME_SPRITE_STAND = 22;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -1645,7 +1709,7 @@ public interface GameDSLPackage extends EPackage
    * @see com.hypermodel.games.engine.gameDSL.impl.GameDSLPackageImpl#getGameTextureRegion()
    * @generated
    */
-  int GAME_TEXTURE_REGION = 22;
+  int GAME_TEXTURE_REGION = 23;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -1736,7 +1800,7 @@ public interface GameDSLPackage extends EPackage
    * @see com.hypermodel.games.engine.gameDSL.impl.GameDSLPackageImpl#getGameEvent()
    * @generated
    */
-  int GAME_EVENT = 23;
+  int GAME_EVENT = 24;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -1782,7 +1846,7 @@ public interface GameDSLPackage extends EPackage
    * @see com.hypermodel.games.engine.gameDSL.impl.GameDSLPackageImpl#getGameLayerType()
    * @generated
    */
-  int GAME_LAYER_TYPE = 24;
+  int GAME_LAYER_TYPE = 25;
 
   /**
    * The meta object id for the '{@link com.hypermodel.games.engine.gameDSL.GameDisplayValueType <em>Game Display Value Type</em>}' enum.
@@ -1792,7 +1856,7 @@ public interface GameDSLPackage extends EPackage
    * @see com.hypermodel.games.engine.gameDSL.impl.GameDSLPackageImpl#getGameDisplayValueType()
    * @generated
    */
-  int GAME_DISPLAY_VALUE_TYPE = 25;
+  int GAME_DISPLAY_VALUE_TYPE = 26;
 
   /**
    * The meta object id for the '{@link com.hypermodel.games.engine.gameDSL.GameScreenOrientation <em>Game Screen Orientation</em>}' enum.
@@ -1802,7 +1866,7 @@ public interface GameDSLPackage extends EPackage
    * @see com.hypermodel.games.engine.gameDSL.impl.GameDSLPackageImpl#getGameScreenOrientation()
    * @generated
    */
-  int GAME_SCREEN_ORIENTATION = 26;
+  int GAME_SCREEN_ORIENTATION = 27;
 
   /**
    * The meta object id for the '{@link com.hypermodel.games.engine.gameDSL.GameContactType <em>Game Contact Type</em>}' enum.
@@ -1812,7 +1876,7 @@ public interface GameDSLPackage extends EPackage
    * @see com.hypermodel.games.engine.gameDSL.impl.GameDSLPackageImpl#getGameContactType()
    * @generated
    */
-  int GAME_CONTACT_TYPE = 27;
+  int GAME_CONTACT_TYPE = 28;
 
   /**
    * The meta object id for the '{@link com.hypermodel.games.engine.gameDSL.GameKeyInputType <em>Game Key Input Type</em>}' enum.
@@ -1822,7 +1886,7 @@ public interface GameDSLPackage extends EPackage
    * @see com.hypermodel.games.engine.gameDSL.impl.GameDSLPackageImpl#getGameKeyInputType()
    * @generated
    */
-  int GAME_KEY_INPUT_TYPE = 28;
+  int GAME_KEY_INPUT_TYPE = 29;
 
   /**
    * The meta object id for the '{@link com.hypermodel.games.engine.gameDSL.GameKeyInputKey <em>Game Key Input Key</em>}' enum.
@@ -1832,7 +1896,7 @@ public interface GameDSLPackage extends EPackage
    * @see com.hypermodel.games.engine.gameDSL.impl.GameDSLPackageImpl#getGameKeyInputKey()
    * @generated
    */
-  int GAME_KEY_INPUT_KEY = 29;
+  int GAME_KEY_INPUT_KEY = 30;
 
 
   /**
@@ -2258,17 +2322,6 @@ public interface GameDSLPackage extends EPackage
   EReference getGameRoot_Layers();
 
   /**
-   * Returns the meta object for the containment reference list '{@link com.hypermodel.games.engine.gameDSL.GameRoot#getScenes <em>Scenes</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference list '<em>Scenes</em>'.
-   * @see com.hypermodel.games.engine.gameDSL.GameRoot#getScenes()
-   * @see #getGameRoot()
-   * @generated
-   */
-  EReference getGameRoot_Scenes();
-
-  /**
    * Returns the meta object for the containment reference list '{@link com.hypermodel.games.engine.gameDSL.GameRoot#getScreens <em>Screens</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -2366,26 +2419,37 @@ public interface GameDSLPackage extends EPackage
   EAttribute getGameScreen_AtlasName();
 
   /**
-   * Returns the meta object for the attribute '{@link com.hypermodel.games.engine.gameDSL.GameScreen#getMap <em>Map</em>}'.
+   * Returns the meta object for the containment reference list '{@link com.hypermodel.games.engine.gameDSL.GameScreen#getScenes <em>Scenes</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Map</em>'.
-   * @see com.hypermodel.games.engine.gameDSL.GameScreen#getMap()
+   * @return the meta object for the containment reference list '<em>Scenes</em>'.
+   * @see com.hypermodel.games.engine.gameDSL.GameScreen#getScenes()
    * @see #getGameScreen()
    * @generated
    */
-  EAttribute getGameScreen_Map();
+  EReference getGameScreen_Scenes();
 
   /**
-   * Returns the meta object for the reference '{@link com.hypermodel.games.engine.gameDSL.GameScreen#getScene <em>Scene</em>}'.
+   * Returns the meta object for the reference '{@link com.hypermodel.games.engine.gameDSL.GameScreen#getGameOverScene <em>Game Over Scene</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the reference '<em>Scene</em>'.
-   * @see com.hypermodel.games.engine.gameDSL.GameScreen#getScene()
+   * @return the meta object for the reference '<em>Game Over Scene</em>'.
+   * @see com.hypermodel.games.engine.gameDSL.GameScreen#getGameOverScene()
    * @see #getGameScreen()
    * @generated
    */
-  EReference getGameScreen_Scene();
+  EReference getGameScreen_GameOverScene();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link com.hypermodel.games.engine.gameDSL.GameScreen#getLevels <em>Levels</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Levels</em>'.
+   * @see com.hypermodel.games.engine.gameDSL.GameScreen#getLevels()
+   * @see #getGameScreen()
+   * @generated
+   */
+  EReference getGameScreen_Levels();
 
   /**
    * Returns the meta object for the containment reference list '{@link com.hypermodel.games.engine.gameDSL.GameScreen#getTiles <em>Tiles</em>}'.
@@ -2431,58 +2495,69 @@ public interface GameDSLPackage extends EPackage
   EAttribute getGameScene_Name();
 
   /**
-   * Returns the meta object for the attribute '{@link com.hypermodel.games.engine.gameDSL.GameScene#isHasScore <em>Has Score</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Has Score</em>'.
-   * @see com.hypermodel.games.engine.gameDSL.GameScene#isHasScore()
-   * @see #getGameScene()
-   * @generated
-   */
-  EAttribute getGameScene_HasScore();
-
-  /**
-   * Returns the meta object for the containment reference '{@link com.hypermodel.games.engine.gameDSL.GameScene#getScore <em>Score</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Score</em>'.
-   * @see com.hypermodel.games.engine.gameDSL.GameScene#getScore()
-   * @see #getGameScene()
-   * @generated
-   */
-  EReference getGameScene_Score();
-
-  /**
-   * Returns the meta object for class '{@link com.hypermodel.games.engine.gameDSL.GameScore <em>Game Score</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Game Score</em>'.
-   * @see com.hypermodel.games.engine.gameDSL.GameScore
-   * @generated
-   */
-  EClass getGameScore();
-
-  /**
-   * Returns the meta object for the attribute '{@link com.hypermodel.games.engine.gameDSL.GameScore#getTopPadding <em>Top Padding</em>}'.
+   * Returns the meta object for the attribute '{@link com.hypermodel.games.engine.gameDSL.GameScene#getTopPadding <em>Top Padding</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the attribute '<em>Top Padding</em>'.
-   * @see com.hypermodel.games.engine.gameDSL.GameScore#getTopPadding()
-   * @see #getGameScore()
+   * @see com.hypermodel.games.engine.gameDSL.GameScene#getTopPadding()
+   * @see #getGameScene()
    * @generated
    */
-  EAttribute getGameScore_TopPadding();
+  EAttribute getGameScene_TopPadding();
 
   /**
-   * Returns the meta object for the containment reference list '{@link com.hypermodel.games.engine.gameDSL.GameScore#getDisplays <em>Displays</em>}'.
+   * Returns the meta object for the containment reference list '{@link com.hypermodel.games.engine.gameDSL.GameScene#getDisplays <em>Displays</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference list '<em>Displays</em>'.
-   * @see com.hypermodel.games.engine.gameDSL.GameScore#getDisplays()
-   * @see #getGameScore()
+   * @see com.hypermodel.games.engine.gameDSL.GameScene#getDisplays()
+   * @see #getGameScene()
    * @generated
    */
-  EReference getGameScore_Displays();
+  EReference getGameScene_Displays();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link com.hypermodel.games.engine.gameDSL.GameScene#getMessages <em>Messages</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Messages</em>'.
+   * @see com.hypermodel.games.engine.gameDSL.GameScene#getMessages()
+   * @see #getGameScene()
+   * @generated
+   */
+  EReference getGameScene_Messages();
+
+  /**
+   * Returns the meta object for class '{@link com.hypermodel.games.engine.gameDSL.GameLevel <em>Game Level</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Game Level</em>'.
+   * @see com.hypermodel.games.engine.gameDSL.GameLevel
+   * @generated
+   */
+  EClass getGameLevel();
+
+  /**
+   * Returns the meta object for the attribute '{@link com.hypermodel.games.engine.gameDSL.GameLevel#getName <em>Name</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Name</em>'.
+   * @see com.hypermodel.games.engine.gameDSL.GameLevel#getName()
+   * @see #getGameLevel()
+   * @generated
+   */
+  EAttribute getGameLevel_Name();
+
+  /**
+   * Returns the meta object for the attribute '{@link com.hypermodel.games.engine.gameDSL.GameLevel#getFileName <em>File Name</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>File Name</em>'.
+   * @see com.hypermodel.games.engine.gameDSL.GameLevel#getFileName()
+   * @see #getGameLevel()
+   * @generated
+   */
+  EAttribute getGameLevel_FileName();
 
   /**
    * Returns the meta object for class '{@link com.hypermodel.games.engine.gameDSL.GameDisplay <em>Game Display</em>}'.
@@ -2625,6 +2700,49 @@ public interface GameDSLPackage extends EPackage
    * @generated
    */
   EAttribute getGameDisplay_HasSetter();
+
+  /**
+   * Returns the meta object for class '{@link com.hypermodel.games.engine.gameDSL.GameMessage <em>Game Message</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Game Message</em>'.
+   * @see com.hypermodel.games.engine.gameDSL.GameMessage
+   * @generated
+   */
+  EClass getGameMessage();
+
+  /**
+   * Returns the meta object for the attribute '{@link com.hypermodel.games.engine.gameDSL.GameMessage#getName <em>Name</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Name</em>'.
+   * @see com.hypermodel.games.engine.gameDSL.GameMessage#getName()
+   * @see #getGameMessage()
+   * @generated
+   */
+  EAttribute getGameMessage_Name();
+
+  /**
+   * Returns the meta object for the attribute '{@link com.hypermodel.games.engine.gameDSL.GameMessage#getMessage <em>Message</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Message</em>'.
+   * @see com.hypermodel.games.engine.gameDSL.GameMessage#getMessage()
+   * @see #getGameMessage()
+   * @generated
+   */
+  EAttribute getGameMessage_Message();
+
+  /**
+   * Returns the meta object for the attribute '{@link com.hypermodel.games.engine.gameDSL.GameMessage#getRow <em>Row</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Row</em>'.
+   * @see com.hypermodel.games.engine.gameDSL.GameMessage#getRow()
+   * @see #getGameMessage()
+   * @generated
+   */
+  EAttribute getGameMessage_Row();
 
   /**
    * Returns the meta object for class '{@link com.hypermodel.games.engine.gameDSL.GameTile <em>Game Tile</em>}'.
@@ -2779,28 +2897,6 @@ public interface GameDSLPackage extends EPackage
   EAttribute getGameSprite_IsDestructable();
 
   /**
-   * Returns the meta object for the attribute '{@link com.hypermodel.games.engine.gameDSL.GameSprite#isHasVelocity <em>Has Velocity</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Has Velocity</em>'.
-   * @see com.hypermodel.games.engine.gameDSL.GameSprite#isHasVelocity()
-   * @see #getGameSprite()
-   * @generated
-   */
-  EAttribute getGameSprite_HasVelocity();
-
-  /**
-   * Returns the meta object for the containment reference '{@link com.hypermodel.games.engine.gameDSL.GameSprite#getVelocity <em>Velocity</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Velocity</em>'.
-   * @see com.hypermodel.games.engine.gameDSL.GameSprite#getVelocity()
-   * @see #getGameSprite()
-   * @generated
-   */
-  EReference getGameSprite_Velocity();
-
-  /**
    * Returns the meta object for the attribute '{@link com.hypermodel.games.engine.gameDSL.GameSprite#isHasActivationRule <em>Has Activation Rule</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -2865,6 +2961,28 @@ public interface GameDSLPackage extends EPackage
    * @generated
    */
   EReference getGameSprite_Inputs();
+
+  /**
+   * Returns the meta object for the attribute '{@link com.hypermodel.games.engine.gameDSL.GameSprite#isHasVelocity <em>Has Velocity</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Has Velocity</em>'.
+   * @see com.hypermodel.games.engine.gameDSL.GameSprite#isHasVelocity()
+   * @see #getGameSprite()
+   * @generated
+   */
+  EAttribute getGameSprite_HasVelocity();
+
+  /**
+   * Returns the meta object for the containment reference '{@link com.hypermodel.games.engine.gameDSL.GameSprite#getVelocity <em>Velocity</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Velocity</em>'.
+   * @see com.hypermodel.games.engine.gameDSL.GameSprite#getVelocity()
+   * @see #getGameSprite()
+   * @generated
+   */
+  EReference getGameSprite_Velocity();
 
   /**
    * Returns the meta object for the attribute '{@link com.hypermodel.games.engine.gameDSL.GameSprite#isHasSensor <em>Has Sensor</em>}'.
@@ -2942,6 +3060,17 @@ public interface GameDSLPackage extends EPackage
    * @generated
    */
   EReference getGameSprite_InitialState();
+
+  /**
+   * Returns the meta object for the attribute '{@link com.hypermodel.games.engine.gameDSL.GameSprite#isHasGameOverState <em>Has Game Over State</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Has Game Over State</em>'.
+   * @see com.hypermodel.games.engine.gameDSL.GameSprite#isHasGameOverState()
+   * @see #getGameSprite()
+   * @generated
+   */
+  EAttribute getGameSprite_HasGameOverState();
 
   /**
    * Returns the meta object for the reference '{@link com.hypermodel.games.engine.gameDSL.GameSprite#getGameOverState <em>Game Over State</em>}'.
@@ -4025,14 +4154,6 @@ public interface GameDSLPackage extends EPackage
     EReference GAME_ROOT__LAYERS = eINSTANCE.getGameRoot_Layers();
 
     /**
-     * The meta object literal for the '<em><b>Scenes</b></em>' containment reference list feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference GAME_ROOT__SCENES = eINSTANCE.getGameRoot_Scenes();
-
-    /**
      * The meta object literal for the '<em><b>Screens</b></em>' containment reference list feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -4109,20 +4230,28 @@ public interface GameDSLPackage extends EPackage
     EAttribute GAME_SCREEN__ATLAS_NAME = eINSTANCE.getGameScreen_AtlasName();
 
     /**
-     * The meta object literal for the '<em><b>Map</b></em>' attribute feature.
+     * The meta object literal for the '<em><b>Scenes</b></em>' containment reference list feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute GAME_SCREEN__MAP = eINSTANCE.getGameScreen_Map();
+    EReference GAME_SCREEN__SCENES = eINSTANCE.getGameScreen_Scenes();
 
     /**
-     * The meta object literal for the '<em><b>Scene</b></em>' reference feature.
+     * The meta object literal for the '<em><b>Game Over Scene</b></em>' reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference GAME_SCREEN__SCENE = eINSTANCE.getGameScreen_Scene();
+    EReference GAME_SCREEN__GAME_OVER_SCENE = eINSTANCE.getGameScreen_GameOverScene();
+
+    /**
+     * The meta object literal for the '<em><b>Levels</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference GAME_SCREEN__LEVELS = eINSTANCE.getGameScreen_Levels();
 
     /**
      * The meta object literal for the '<em><b>Tiles</b></em>' containment reference list feature.
@@ -4159,38 +4288,12 @@ public interface GameDSLPackage extends EPackage
     EAttribute GAME_SCENE__NAME = eINSTANCE.getGameScene_Name();
 
     /**
-     * The meta object literal for the '<em><b>Has Score</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute GAME_SCENE__HAS_SCORE = eINSTANCE.getGameScene_HasScore();
-
-    /**
-     * The meta object literal for the '<em><b>Score</b></em>' containment reference feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference GAME_SCENE__SCORE = eINSTANCE.getGameScene_Score();
-
-    /**
-     * The meta object literal for the '{@link com.hypermodel.games.engine.gameDSL.impl.GameScoreImpl <em>Game Score</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see com.hypermodel.games.engine.gameDSL.impl.GameScoreImpl
-     * @see com.hypermodel.games.engine.gameDSL.impl.GameDSLPackageImpl#getGameScore()
-     * @generated
-     */
-    EClass GAME_SCORE = eINSTANCE.getGameScore();
-
-    /**
      * The meta object literal for the '<em><b>Top Padding</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute GAME_SCORE__TOP_PADDING = eINSTANCE.getGameScore_TopPadding();
+    EAttribute GAME_SCENE__TOP_PADDING = eINSTANCE.getGameScene_TopPadding();
 
     /**
      * The meta object literal for the '<em><b>Displays</b></em>' containment reference list feature.
@@ -4198,7 +4301,41 @@ public interface GameDSLPackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference GAME_SCORE__DISPLAYS = eINSTANCE.getGameScore_Displays();
+    EReference GAME_SCENE__DISPLAYS = eINSTANCE.getGameScene_Displays();
+
+    /**
+     * The meta object literal for the '<em><b>Messages</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference GAME_SCENE__MESSAGES = eINSTANCE.getGameScene_Messages();
+
+    /**
+     * The meta object literal for the '{@link com.hypermodel.games.engine.gameDSL.impl.GameLevelImpl <em>Game Level</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see com.hypermodel.games.engine.gameDSL.impl.GameLevelImpl
+     * @see com.hypermodel.games.engine.gameDSL.impl.GameDSLPackageImpl#getGameLevel()
+     * @generated
+     */
+    EClass GAME_LEVEL = eINSTANCE.getGameLevel();
+
+    /**
+     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute GAME_LEVEL__NAME = eINSTANCE.getGameLevel_Name();
+
+    /**
+     * The meta object literal for the '<em><b>File Name</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute GAME_LEVEL__FILE_NAME = eINSTANCE.getGameLevel_FileName();
 
     /**
      * The meta object literal for the '{@link com.hypermodel.games.engine.gameDSL.impl.GameDisplayImpl <em>Game Display</em>}' class.
@@ -4305,6 +4442,40 @@ public interface GameDSLPackage extends EPackage
      * @generated
      */
     EAttribute GAME_DISPLAY__HAS_SETTER = eINSTANCE.getGameDisplay_HasSetter();
+
+    /**
+     * The meta object literal for the '{@link com.hypermodel.games.engine.gameDSL.impl.GameMessageImpl <em>Game Message</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see com.hypermodel.games.engine.gameDSL.impl.GameMessageImpl
+     * @see com.hypermodel.games.engine.gameDSL.impl.GameDSLPackageImpl#getGameMessage()
+     * @generated
+     */
+    EClass GAME_MESSAGE = eINSTANCE.getGameMessage();
+
+    /**
+     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute GAME_MESSAGE__NAME = eINSTANCE.getGameMessage_Name();
+
+    /**
+     * The meta object literal for the '<em><b>Message</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute GAME_MESSAGE__MESSAGE = eINSTANCE.getGameMessage_Message();
+
+    /**
+     * The meta object literal for the '<em><b>Row</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute GAME_MESSAGE__ROW = eINSTANCE.getGameMessage_Row();
 
     /**
      * The meta object literal for the '{@link com.hypermodel.games.engine.gameDSL.impl.GameTileImpl <em>Game Tile</em>}' class.
@@ -4423,22 +4594,6 @@ public interface GameDSLPackage extends EPackage
     EAttribute GAME_SPRITE__IS_DESTRUCTABLE = eINSTANCE.getGameSprite_IsDestructable();
 
     /**
-     * The meta object literal for the '<em><b>Has Velocity</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute GAME_SPRITE__HAS_VELOCITY = eINSTANCE.getGameSprite_HasVelocity();
-
-    /**
-     * The meta object literal for the '<em><b>Velocity</b></em>' containment reference feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference GAME_SPRITE__VELOCITY = eINSTANCE.getGameSprite_Velocity();
-
-    /**
      * The meta object literal for the '<em><b>Has Activation Rule</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -4485,6 +4640,22 @@ public interface GameDSLPackage extends EPackage
      * @generated
      */
     EReference GAME_SPRITE__INPUTS = eINSTANCE.getGameSprite_Inputs();
+
+    /**
+     * The meta object literal for the '<em><b>Has Velocity</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute GAME_SPRITE__HAS_VELOCITY = eINSTANCE.getGameSprite_HasVelocity();
+
+    /**
+     * The meta object literal for the '<em><b>Velocity</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference GAME_SPRITE__VELOCITY = eINSTANCE.getGameSprite_Velocity();
 
     /**
      * The meta object literal for the '<em><b>Has Sensor</b></em>' attribute feature.
@@ -4541,6 +4712,14 @@ public interface GameDSLPackage extends EPackage
      * @generated
      */
     EReference GAME_SPRITE__INITIAL_STATE = eINSTANCE.getGameSprite_InitialState();
+
+    /**
+     * The meta object literal for the '<em><b>Has Game Over State</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute GAME_SPRITE__HAS_GAME_OVER_STATE = eINSTANCE.getGameSprite_HasGameOverState();
 
     /**
      * The meta object literal for the '<em><b>Game Over State</b></em>' reference feature.

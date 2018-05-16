@@ -647,7 +647,12 @@ public class GameDSLGenerator extends ExtendedJvmModelGenerator {
   
   public ByteArrayInputStream buildLocalProps() {
     try {
-      String dir = Platform.getPreferencesService().getString("com.android.ide.eclipse.adt", "com.android.ide.eclipse.adt.sdk", null, null);
+      String dir = Platform.getPreferencesService().getString("com.android.ide.eclipse.adt", 
+        "com.android.ide.eclipse.adt.sdk", null, null);
+      if ((dir == null)) {
+        byte[] _newByteArrayOfSize = new byte[0];
+        return new ByteArrayInputStream(_newByteArrayOfSize);
+      }
       dir = dir.replace("\\", "/");
       byte[] _bytes = ("sdk.dir=" + dir).getBytes("UTF-8");
       return new ByteArrayInputStream(_bytes);

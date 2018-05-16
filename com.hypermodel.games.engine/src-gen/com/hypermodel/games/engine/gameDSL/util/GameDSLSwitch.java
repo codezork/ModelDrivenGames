@@ -143,10 +143,10 @@ public class GameDSLSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case GameDSLPackage.GAME_SCORE:
+      case GameDSLPackage.GAME_LEVEL:
       {
-        GameScore gameScore = (GameScore)theEObject;
-        T result = caseGameScore(gameScore);
+        GameLevel gameLevel = (GameLevel)theEObject;
+        T result = caseGameLevel(gameLevel);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -154,6 +154,13 @@ public class GameDSLSwitch<T> extends Switch<T>
       {
         GameDisplay gameDisplay = (GameDisplay)theEObject;
         T result = caseGameDisplay(gameDisplay);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case GameDSLPackage.GAME_MESSAGE:
+      {
+        GameMessage gameMessage = (GameMessage)theEObject;
+        T result = caseGameMessage(gameMessage);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -406,17 +413,17 @@ public class GameDSLSwitch<T> extends Switch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Game Score</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>Game Level</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Game Score</em>'.
+   * @return the result of interpreting the object as an instance of '<em>Game Level</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseGameScore(GameScore object)
+  public T caseGameLevel(GameLevel object)
   {
     return null;
   }
@@ -433,6 +440,22 @@ public class GameDSLSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseGameDisplay(GameDisplay object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Game Message</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Game Message</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseGameMessage(GameMessage object)
   {
     return null;
   }

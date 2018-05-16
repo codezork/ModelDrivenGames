@@ -53,7 +53,6 @@ GameRoot:
 	'tileWidth' tileWidth=INT 'tileHeight' tileHeight=INT
 	(debug?='debug')?
 	('layers' '{' layers+=GameLayer* '}' & 
-	'scenes' '{' scenes+=GameScene* '}'&
 	'screens' '{' screens+=GameScreen* '}'&
 	'regions' '{' regions+=GameTextureRegion* '}');
 	
@@ -64,27 +63,32 @@ GameLayer:
 GameScreen:
 	{GameScreen} 'screen' name=ValidID 
 	'atlas' atlasName = STRING
-	'map' map = STRING
-	'scene' scene = [GameScene]
+	'scenes' '{' scenes+=GameScene* '}'
+	'gameOverScene' gameOverScene = [GameScene]
+	'levels' '{' levels+=GameLevel* '}'
 	'tiles' '{' tiles+=GameTile* '}'
 	'sprites' '{' sprites+=GameSprite* '}';
 	
 GameScene:
-	{GameScene} 'scene' name=ValidID 
-	(hasScore?='isScore' score = GameScore)?;
-		
-GameScore:
-	{GameScore} 'topPadding' topPadding=INT 
-	'{' displays+=GameDisplay* '}';
-	
+	{GameScene} 'scene' name=ValidID
+	'topPadding' topPadding=INT
+	('displays' '{' displays+=GameDisplay* '}')?
+	('messages' '{' messages+=GameMessage* '}')?;
+
+GameLevel:
+	{GameLevel} 'level' name=ValidID 'file' fileName=STRING;
+			
 GameDisplay:
 	{GameDisplay} 'display' name=ValidID 
 	'valueType' type=GameDisplayValueType 
 	'format' format=STRING 
 	(hasInitial?='initialValue' (initialNumberValue=SignedNumber|initialIntValue=INT|initialStringValue=STRING))?
-	(hasDelta?='deltaValue' deltaValue=SignedNumber 'eachTimePeriod' timePeriod=UnsignedNumber)?
+	(hasDelta?='deltaTime' deltaValue=SignedNumber 'eachTimePeriod' timePeriod=UnsignedNumber)?
 	(hasAdder?='addValue')?
 	(hasSetter?='setValue')?;
+	
+GameMessage:
+	{GameMessage} 'message' name=ValidID 'text' message=STRING 'row' row=INT;
 	
 GameTile:
 	{GameTile} 'tile' name=ValidID 'id' id=INT
@@ -97,23 +101,22 @@ GameSprite:
 		(isEnemy?='isEnemy' 
 			('layer' layer=[GameLayer])? & 
 			(isDestructable?='destructible')? & 
-			(hasVelocity?='velocity' velocity=GameVector2d)? &
 			(hasActivationRule?='activate' 'if' rule=GameRule)?)
 		|
 		(isItem?='isItem' 
-			(isDestructable?='destructible')? & 
-			(hasVelocity?='velocity' velocity=GameVector2d)?)
+			(isDestructable?='destructible')?)
 		|
 		(isPlayer?='isPlayer' 
 			('startPosition' startPosition=GameVector2d)? &
 			('inputs' '{' inputs+=GameInput* '}')?)
 	)
+	(hasVelocity?='velocity' velocity=GameVector2d)?
 	((hasSensor?='sensor' '{' vectors2d+=GameVector2d* '}' 'sensorId' sensorID=INT)? &
 	('actors' '{' actors+=GameActor* '}')? &
 	('properties' '{' properties+=GameBodyProperty* '}')? & 
 	('states' '{' states+=GameSpriteState* '}' 
 	'initialState' initialState=[GameSpriteState]
-	('gameOverState' gameOverState=[GameSpriteState])?)? &
+	(hasGameOverState?='gameOverState' gameOverState=[GameSpriteState])?)? &
 	('events' '{' events+=GameEvent* '}')? &
 	(hasRestitution?='restitution' restitution = Number)?);
 

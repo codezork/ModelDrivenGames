@@ -16,6 +16,8 @@ import com.hypermodel.games.engine.gameDSL.GameKeyInputKey;
 import com.hypermodel.games.engine.gameDSL.GameKeyInputType;
 import com.hypermodel.games.engine.gameDSL.GameLayer;
 import com.hypermodel.games.engine.gameDSL.GameLayerType;
+import com.hypermodel.games.engine.gameDSL.GameLevel;
+import com.hypermodel.games.engine.gameDSL.GameMessage;
 import com.hypermodel.games.engine.gameDSL.GameModel;
 import com.hypermodel.games.engine.gameDSL.GamePackage;
 import com.hypermodel.games.engine.gameDSL.GamePlatformConfig;
@@ -25,7 +27,6 @@ import com.hypermodel.games.engine.gameDSL.GamePlatformConfigIOSMOE;
 import com.hypermodel.games.engine.gameDSL.GameRoot;
 import com.hypermodel.games.engine.gameDSL.GameRule;
 import com.hypermodel.games.engine.gameDSL.GameScene;
-import com.hypermodel.games.engine.gameDSL.GameScore;
 import com.hypermodel.games.engine.gameDSL.GameScreen;
 import com.hypermodel.games.engine.gameDSL.GameScreenOrientation;
 import com.hypermodel.games.engine.gameDSL.GameSprite;
@@ -133,7 +134,7 @@ public class GameDSLPackageImpl extends EPackageImpl implements GameDSLPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass gameScoreEClass = null;
+  private EClass gameLevelEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -141,6 +142,13 @@ public class GameDSLPackageImpl extends EPackageImpl implements GameDSLPackage
    * @generated
    */
   private EClass gameDisplayEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass gameMessageEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -731,7 +739,7 @@ public class GameDSLPackageImpl extends EPackageImpl implements GameDSLPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getGameRoot_Scenes()
+  public EReference getGameRoot_Screens()
   {
     return (EReference)gameRootEClass.getEStructuralFeatures().get(14);
   }
@@ -741,19 +749,9 @@ public class GameDSLPackageImpl extends EPackageImpl implements GameDSLPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getGameRoot_Screens()
-  {
-    return (EReference)gameRootEClass.getEStructuralFeatures().get(15);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   public EReference getGameRoot_Regions()
   {
-    return (EReference)gameRootEClass.getEStructuralFeatures().get(16);
+    return (EReference)gameRootEClass.getEStructuralFeatures().get(15);
   }
 
   /**
@@ -831,9 +829,9 @@ public class GameDSLPackageImpl extends EPackageImpl implements GameDSLPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getGameScreen_Map()
+  public EReference getGameScreen_Scenes()
   {
-    return (EAttribute)gameScreenEClass.getEStructuralFeatures().get(2);
+    return (EReference)gameScreenEClass.getEStructuralFeatures().get(2);
   }
 
   /**
@@ -841,7 +839,7 @@ public class GameDSLPackageImpl extends EPackageImpl implements GameDSLPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getGameScreen_Scene()
+  public EReference getGameScreen_GameOverScene()
   {
     return (EReference)gameScreenEClass.getEStructuralFeatures().get(3);
   }
@@ -851,7 +849,7 @@ public class GameDSLPackageImpl extends EPackageImpl implements GameDSLPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getGameScreen_Tiles()
+  public EReference getGameScreen_Levels()
   {
     return (EReference)gameScreenEClass.getEStructuralFeatures().get(4);
   }
@@ -861,9 +859,19 @@ public class GameDSLPackageImpl extends EPackageImpl implements GameDSLPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getGameScreen_Sprites()
+  public EReference getGameScreen_Tiles()
   {
     return (EReference)gameScreenEClass.getEStructuralFeatures().get(5);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getGameScreen_Sprites()
+  {
+    return (EReference)gameScreenEClass.getEStructuralFeatures().get(6);
   }
 
   /**
@@ -891,7 +899,7 @@ public class GameDSLPackageImpl extends EPackageImpl implements GameDSLPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getGameScene_HasScore()
+  public EAttribute getGameScene_TopPadding()
   {
     return (EAttribute)gameSceneEClass.getEStructuralFeatures().get(1);
   }
@@ -901,7 +909,7 @@ public class GameDSLPackageImpl extends EPackageImpl implements GameDSLPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getGameScene_Score()
+  public EReference getGameScene_Displays()
   {
     return (EReference)gameSceneEClass.getEStructuralFeatures().get(2);
   }
@@ -911,9 +919,9 @@ public class GameDSLPackageImpl extends EPackageImpl implements GameDSLPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getGameScore()
+  public EReference getGameScene_Messages()
   {
-    return gameScoreEClass;
+    return (EReference)gameSceneEClass.getEStructuralFeatures().get(3);
   }
 
   /**
@@ -921,9 +929,9 @@ public class GameDSLPackageImpl extends EPackageImpl implements GameDSLPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getGameScore_TopPadding()
+  public EClass getGameLevel()
   {
-    return (EAttribute)gameScoreEClass.getEStructuralFeatures().get(0);
+    return gameLevelEClass;
   }
 
   /**
@@ -931,9 +939,19 @@ public class GameDSLPackageImpl extends EPackageImpl implements GameDSLPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getGameScore_Displays()
+  public EAttribute getGameLevel_Name()
   {
-    return (EReference)gameScoreEClass.getEStructuralFeatures().get(1);
+    return (EAttribute)gameLevelEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getGameLevel_FileName()
+  {
+    return (EAttribute)gameLevelEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -1064,6 +1082,46 @@ public class GameDSLPackageImpl extends EPackageImpl implements GameDSLPackage
   public EAttribute getGameDisplay_HasSetter()
   {
     return (EAttribute)gameDisplayEClass.getEStructuralFeatures().get(11);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getGameMessage()
+  {
+    return gameMessageEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getGameMessage_Name()
+  {
+    return (EAttribute)gameMessageEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getGameMessage_Message()
+  {
+    return (EAttribute)gameMessageEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getGameMessage_Row()
+  {
+    return (EAttribute)gameMessageEClass.getEStructuralFeatures().get(2);
   }
 
   /**
@@ -1211,7 +1269,7 @@ public class GameDSLPackageImpl extends EPackageImpl implements GameDSLPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getGameSprite_HasVelocity()
+  public EAttribute getGameSprite_HasActivationRule()
   {
     return (EAttribute)gameSpriteEClass.getEStructuralFeatures().get(6);
   }
@@ -1221,7 +1279,7 @@ public class GameDSLPackageImpl extends EPackageImpl implements GameDSLPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getGameSprite_Velocity()
+  public EReference getGameSprite_Rule()
   {
     return (EReference)gameSpriteEClass.getEStructuralFeatures().get(7);
   }
@@ -1231,7 +1289,7 @@ public class GameDSLPackageImpl extends EPackageImpl implements GameDSLPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getGameSprite_HasActivationRule()
+  public EAttribute getGameSprite_IsItem()
   {
     return (EAttribute)gameSpriteEClass.getEStructuralFeatures().get(8);
   }
@@ -1241,29 +1299,9 @@ public class GameDSLPackageImpl extends EPackageImpl implements GameDSLPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getGameSprite_Rule()
-  {
-    return (EReference)gameSpriteEClass.getEStructuralFeatures().get(9);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EAttribute getGameSprite_IsItem()
-  {
-    return (EAttribute)gameSpriteEClass.getEStructuralFeatures().get(10);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   public EAttribute getGameSprite_IsPlayer()
   {
-    return (EAttribute)gameSpriteEClass.getEStructuralFeatures().get(11);
+    return (EAttribute)gameSpriteEClass.getEStructuralFeatures().get(9);
   }
 
   /**
@@ -1273,7 +1311,7 @@ public class GameDSLPackageImpl extends EPackageImpl implements GameDSLPackage
    */
   public EReference getGameSprite_StartPosition()
   {
-    return (EReference)gameSpriteEClass.getEStructuralFeatures().get(12);
+    return (EReference)gameSpriteEClass.getEStructuralFeatures().get(10);
   }
 
   /**
@@ -1282,6 +1320,26 @@ public class GameDSLPackageImpl extends EPackageImpl implements GameDSLPackage
    * @generated
    */
   public EReference getGameSprite_Inputs()
+  {
+    return (EReference)gameSpriteEClass.getEStructuralFeatures().get(11);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getGameSprite_HasVelocity()
+  {
+    return (EAttribute)gameSpriteEClass.getEStructuralFeatures().get(12);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getGameSprite_Velocity()
   {
     return (EReference)gameSpriteEClass.getEStructuralFeatures().get(13);
   }
@@ -1361,9 +1419,9 @@ public class GameDSLPackageImpl extends EPackageImpl implements GameDSLPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getGameSprite_GameOverState()
+  public EAttribute getGameSprite_HasGameOverState()
   {
-    return (EReference)gameSpriteEClass.getEStructuralFeatures().get(21);
+    return (EAttribute)gameSpriteEClass.getEStructuralFeatures().get(21);
   }
 
   /**
@@ -1371,7 +1429,7 @@ public class GameDSLPackageImpl extends EPackageImpl implements GameDSLPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getGameSprite_Events()
+  public EReference getGameSprite_GameOverState()
   {
     return (EReference)gameSpriteEClass.getEStructuralFeatures().get(22);
   }
@@ -1381,9 +1439,19 @@ public class GameDSLPackageImpl extends EPackageImpl implements GameDSLPackage
    * <!-- end-user-doc -->
    * @generated
    */
+  public EReference getGameSprite_Events()
+  {
+    return (EReference)gameSpriteEClass.getEStructuralFeatures().get(23);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EAttribute getGameSprite_HasRestitution()
   {
-    return (EAttribute)gameSpriteEClass.getEStructuralFeatures().get(23);
+    return (EAttribute)gameSpriteEClass.getEStructuralFeatures().get(24);
   }
 
   /**
@@ -1393,7 +1461,7 @@ public class GameDSLPackageImpl extends EPackageImpl implements GameDSLPackage
    */
   public EAttribute getGameSprite_Restitution()
   {
-    return (EAttribute)gameSpriteEClass.getEStructuralFeatures().get(24);
+    return (EAttribute)gameSpriteEClass.getEStructuralFeatures().get(25);
   }
 
   /**
@@ -2111,7 +2179,6 @@ public class GameDSLPackageImpl extends EPackageImpl implements GameDSLPackage
     createEAttribute(gameRootEClass, GAME_ROOT__TILE_HEIGHT);
     createEAttribute(gameRootEClass, GAME_ROOT__DEBUG);
     createEReference(gameRootEClass, GAME_ROOT__LAYERS);
-    createEReference(gameRootEClass, GAME_ROOT__SCENES);
     createEReference(gameRootEClass, GAME_ROOT__SCREENS);
     createEReference(gameRootEClass, GAME_ROOT__REGIONS);
 
@@ -2123,19 +2190,21 @@ public class GameDSLPackageImpl extends EPackageImpl implements GameDSLPackage
     gameScreenEClass = createEClass(GAME_SCREEN);
     createEAttribute(gameScreenEClass, GAME_SCREEN__NAME);
     createEAttribute(gameScreenEClass, GAME_SCREEN__ATLAS_NAME);
-    createEAttribute(gameScreenEClass, GAME_SCREEN__MAP);
-    createEReference(gameScreenEClass, GAME_SCREEN__SCENE);
+    createEReference(gameScreenEClass, GAME_SCREEN__SCENES);
+    createEReference(gameScreenEClass, GAME_SCREEN__GAME_OVER_SCENE);
+    createEReference(gameScreenEClass, GAME_SCREEN__LEVELS);
     createEReference(gameScreenEClass, GAME_SCREEN__TILES);
     createEReference(gameScreenEClass, GAME_SCREEN__SPRITES);
 
     gameSceneEClass = createEClass(GAME_SCENE);
     createEAttribute(gameSceneEClass, GAME_SCENE__NAME);
-    createEAttribute(gameSceneEClass, GAME_SCENE__HAS_SCORE);
-    createEReference(gameSceneEClass, GAME_SCENE__SCORE);
+    createEAttribute(gameSceneEClass, GAME_SCENE__TOP_PADDING);
+    createEReference(gameSceneEClass, GAME_SCENE__DISPLAYS);
+    createEReference(gameSceneEClass, GAME_SCENE__MESSAGES);
 
-    gameScoreEClass = createEClass(GAME_SCORE);
-    createEAttribute(gameScoreEClass, GAME_SCORE__TOP_PADDING);
-    createEReference(gameScoreEClass, GAME_SCORE__DISPLAYS);
+    gameLevelEClass = createEClass(GAME_LEVEL);
+    createEAttribute(gameLevelEClass, GAME_LEVEL__NAME);
+    createEAttribute(gameLevelEClass, GAME_LEVEL__FILE_NAME);
 
     gameDisplayEClass = createEClass(GAME_DISPLAY);
     createEAttribute(gameDisplayEClass, GAME_DISPLAY__NAME);
@@ -2150,6 +2219,11 @@ public class GameDSLPackageImpl extends EPackageImpl implements GameDSLPackage
     createEAttribute(gameDisplayEClass, GAME_DISPLAY__TIME_PERIOD);
     createEAttribute(gameDisplayEClass, GAME_DISPLAY__HAS_ADDER);
     createEAttribute(gameDisplayEClass, GAME_DISPLAY__HAS_SETTER);
+
+    gameMessageEClass = createEClass(GAME_MESSAGE);
+    createEAttribute(gameMessageEClass, GAME_MESSAGE__NAME);
+    createEAttribute(gameMessageEClass, GAME_MESSAGE__MESSAGE);
+    createEAttribute(gameMessageEClass, GAME_MESSAGE__ROW);
 
     gameTileEClass = createEClass(GAME_TILE);
     createEAttribute(gameTileEClass, GAME_TILE__NAME);
@@ -2166,14 +2240,14 @@ public class GameDSLPackageImpl extends EPackageImpl implements GameDSLPackage
     createEAttribute(gameSpriteEClass, GAME_SPRITE__IS_ENEMY);
     createEReference(gameSpriteEClass, GAME_SPRITE__LAYER);
     createEAttribute(gameSpriteEClass, GAME_SPRITE__IS_DESTRUCTABLE);
-    createEAttribute(gameSpriteEClass, GAME_SPRITE__HAS_VELOCITY);
-    createEReference(gameSpriteEClass, GAME_SPRITE__VELOCITY);
     createEAttribute(gameSpriteEClass, GAME_SPRITE__HAS_ACTIVATION_RULE);
     createEReference(gameSpriteEClass, GAME_SPRITE__RULE);
     createEAttribute(gameSpriteEClass, GAME_SPRITE__IS_ITEM);
     createEAttribute(gameSpriteEClass, GAME_SPRITE__IS_PLAYER);
     createEReference(gameSpriteEClass, GAME_SPRITE__START_POSITION);
     createEReference(gameSpriteEClass, GAME_SPRITE__INPUTS);
+    createEAttribute(gameSpriteEClass, GAME_SPRITE__HAS_VELOCITY);
+    createEReference(gameSpriteEClass, GAME_SPRITE__VELOCITY);
     createEAttribute(gameSpriteEClass, GAME_SPRITE__HAS_SENSOR);
     createEReference(gameSpriteEClass, GAME_SPRITE__VECTORS2D);
     createEAttribute(gameSpriteEClass, GAME_SPRITE__SENSOR_ID);
@@ -2181,6 +2255,7 @@ public class GameDSLPackageImpl extends EPackageImpl implements GameDSLPackage
     createEReference(gameSpriteEClass, GAME_SPRITE__PROPERTIES);
     createEReference(gameSpriteEClass, GAME_SPRITE__STATES);
     createEReference(gameSpriteEClass, GAME_SPRITE__INITIAL_STATE);
+    createEAttribute(gameSpriteEClass, GAME_SPRITE__HAS_GAME_OVER_STATE);
     createEReference(gameSpriteEClass, GAME_SPRITE__GAME_OVER_STATE);
     createEReference(gameSpriteEClass, GAME_SPRITE__EVENTS);
     createEAttribute(gameSpriteEClass, GAME_SPRITE__HAS_RESTITUTION);
@@ -2344,7 +2419,6 @@ public class GameDSLPackageImpl extends EPackageImpl implements GameDSLPackage
     initEAttribute(getGameRoot_TileHeight(), ecorePackage.getEInt(), "tileHeight", null, 0, 1, GameRoot.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getGameRoot_Debug(), ecorePackage.getEBoolean(), "debug", null, 0, 1, GameRoot.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getGameRoot_Layers(), this.getGameLayer(), null, "layers", null, 0, -1, GameRoot.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getGameRoot_Scenes(), this.getGameScene(), null, "scenes", null, 0, -1, GameRoot.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getGameRoot_Screens(), this.getGameScreen(), null, "screens", null, 0, -1, GameRoot.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getGameRoot_Regions(), this.getGameTextureRegion(), null, "regions", null, 0, -1, GameRoot.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
@@ -2356,19 +2430,21 @@ public class GameDSLPackageImpl extends EPackageImpl implements GameDSLPackage
     initEClass(gameScreenEClass, GameScreen.class, "GameScreen", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getGameScreen_Name(), ecorePackage.getEString(), "name", null, 0, 1, GameScreen.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getGameScreen_AtlasName(), ecorePackage.getEString(), "atlasName", null, 0, 1, GameScreen.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getGameScreen_Map(), ecorePackage.getEString(), "map", null, 0, 1, GameScreen.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getGameScreen_Scene(), this.getGameScene(), null, "scene", null, 0, 1, GameScreen.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getGameScreen_Scenes(), this.getGameScene(), null, "scenes", null, 0, -1, GameScreen.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getGameScreen_GameOverScene(), this.getGameScene(), null, "gameOverScene", null, 0, 1, GameScreen.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getGameScreen_Levels(), this.getGameLevel(), null, "levels", null, 0, -1, GameScreen.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getGameScreen_Tiles(), this.getGameTile(), null, "tiles", null, 0, -1, GameScreen.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getGameScreen_Sprites(), this.getGameSprite(), null, "sprites", null, 0, -1, GameScreen.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(gameSceneEClass, GameScene.class, "GameScene", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getGameScene_Name(), ecorePackage.getEString(), "name", null, 0, 1, GameScene.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getGameScene_HasScore(), ecorePackage.getEBoolean(), "hasScore", null, 0, 1, GameScene.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getGameScene_Score(), this.getGameScore(), null, "score", null, 0, 1, GameScene.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getGameScene_TopPadding(), ecorePackage.getEInt(), "topPadding", null, 0, 1, GameScene.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getGameScene_Displays(), this.getGameDisplay(), null, "displays", null, 0, -1, GameScene.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getGameScene_Messages(), this.getGameMessage(), null, "messages", null, 0, -1, GameScene.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-    initEClass(gameScoreEClass, GameScore.class, "GameScore", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getGameScore_TopPadding(), ecorePackage.getEInt(), "topPadding", null, 0, 1, GameScore.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getGameScore_Displays(), this.getGameDisplay(), null, "displays", null, 0, -1, GameScore.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEClass(gameLevelEClass, GameLevel.class, "GameLevel", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getGameLevel_Name(), ecorePackage.getEString(), "name", null, 0, 1, GameLevel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getGameLevel_FileName(), ecorePackage.getEString(), "fileName", null, 0, 1, GameLevel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(gameDisplayEClass, GameDisplay.class, "GameDisplay", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getGameDisplay_Name(), ecorePackage.getEString(), "name", null, 0, 1, GameDisplay.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -2383,6 +2459,11 @@ public class GameDSLPackageImpl extends EPackageImpl implements GameDSLPackage
     initEAttribute(getGameDisplay_TimePeriod(), ecorePackage.getEFloat(), "timePeriod", null, 0, 1, GameDisplay.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getGameDisplay_HasAdder(), ecorePackage.getEBoolean(), "hasAdder", null, 0, 1, GameDisplay.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getGameDisplay_HasSetter(), ecorePackage.getEBoolean(), "hasSetter", null, 0, 1, GameDisplay.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(gameMessageEClass, GameMessage.class, "GameMessage", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getGameMessage_Name(), ecorePackage.getEString(), "name", null, 0, 1, GameMessage.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getGameMessage_Message(), ecorePackage.getEString(), "message", null, 0, 1, GameMessage.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getGameMessage_Row(), ecorePackage.getEInt(), "row", null, 0, 1, GameMessage.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(gameTileEClass, GameTile.class, "GameTile", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getGameTile_Name(), ecorePackage.getEString(), "name", null, 0, 1, GameTile.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -2399,14 +2480,14 @@ public class GameDSLPackageImpl extends EPackageImpl implements GameDSLPackage
     initEAttribute(getGameSprite_IsEnemy(), ecorePackage.getEBoolean(), "isEnemy", null, 0, 1, GameSprite.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getGameSprite_Layer(), this.getGameLayer(), null, "layer", null, 0, 1, GameSprite.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getGameSprite_IsDestructable(), ecorePackage.getEBoolean(), "isDestructable", null, 0, 1, GameSprite.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getGameSprite_HasVelocity(), ecorePackage.getEBoolean(), "hasVelocity", null, 0, 1, GameSprite.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getGameSprite_Velocity(), this.getGameVector2d(), null, "velocity", null, 0, 1, GameSprite.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getGameSprite_HasActivationRule(), ecorePackage.getEBoolean(), "hasActivationRule", null, 0, 1, GameSprite.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getGameSprite_Rule(), this.getGameRule(), null, "rule", null, 0, 1, GameSprite.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getGameSprite_IsItem(), ecorePackage.getEBoolean(), "isItem", null, 0, 1, GameSprite.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getGameSprite_IsPlayer(), ecorePackage.getEBoolean(), "isPlayer", null, 0, 1, GameSprite.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getGameSprite_StartPosition(), this.getGameVector2d(), null, "startPosition", null, 0, 1, GameSprite.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getGameSprite_Inputs(), this.getGameInput(), null, "inputs", null, 0, -1, GameSprite.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getGameSprite_HasVelocity(), ecorePackage.getEBoolean(), "hasVelocity", null, 0, 1, GameSprite.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getGameSprite_Velocity(), this.getGameVector2d(), null, "velocity", null, 0, 1, GameSprite.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getGameSprite_HasSensor(), ecorePackage.getEBoolean(), "hasSensor", null, 0, 1, GameSprite.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getGameSprite_Vectors2d(), this.getGameVector2d(), null, "vectors2d", null, 0, -1, GameSprite.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getGameSprite_SensorID(), ecorePackage.getEInt(), "sensorID", null, 0, 1, GameSprite.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -2414,6 +2495,7 @@ public class GameDSLPackageImpl extends EPackageImpl implements GameDSLPackage
     initEReference(getGameSprite_Properties(), this.getGameBodyProperty(), null, "properties", null, 0, -1, GameSprite.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getGameSprite_States(), this.getGameSpriteState(), null, "states", null, 0, -1, GameSprite.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getGameSprite_InitialState(), this.getGameSpriteState(), null, "initialState", null, 0, 1, GameSprite.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getGameSprite_HasGameOverState(), ecorePackage.getEBoolean(), "hasGameOverState", null, 0, 1, GameSprite.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getGameSprite_GameOverState(), this.getGameSpriteState(), null, "gameOverState", null, 0, 1, GameSprite.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getGameSprite_Events(), this.getGameEvent(), null, "events", null, 0, -1, GameSprite.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getGameSprite_HasRestitution(), ecorePackage.getEBoolean(), "hasRestitution", null, 0, 1, GameSprite.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

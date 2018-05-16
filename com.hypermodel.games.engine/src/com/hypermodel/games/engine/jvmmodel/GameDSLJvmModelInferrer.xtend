@@ -3,6 +3,8 @@ package com.hypermodel.games.engine.jvmmodel
 import android.os.Bundle
 import com.badlogic.gdx.ApplicationListener
 import com.badlogic.gdx.Game
+import com.badlogic.gdx.Gdx
+import com.badlogic.gdx.Input
 import com.badlogic.gdx.Screen
 import com.badlogic.gdx.audio.Music
 import com.badlogic.gdx.backends.android.AndroidApplication
@@ -10,14 +12,17 @@ import com.badlogic.gdx.backends.gwt.GwtApplication
 import com.badlogic.gdx.backends.gwt.GwtApplicationConfiguration
 import com.badlogic.gdx.backends.iosrobovm.IOSApplication
 import com.badlogic.gdx.graphics.Color
+import com.badlogic.gdx.graphics.GL20
 import com.badlogic.gdx.graphics.OrthographicCamera
 import com.badlogic.gdx.graphics.g2d.Animation
+import com.badlogic.gdx.graphics.g2d.Batch
 import com.badlogic.gdx.graphics.g2d.BitmapFont
 import com.badlogic.gdx.graphics.g2d.Sprite
 import com.badlogic.gdx.graphics.g2d.SpriteBatch
 import com.badlogic.gdx.graphics.g2d.TextureAtlas
 import com.badlogic.gdx.graphics.g2d.TextureRegion
 import com.badlogic.gdx.maps.MapObject
+import com.badlogic.gdx.maps.MapProperties
 import com.badlogic.gdx.maps.objects.RectangleMapObject
 import com.badlogic.gdx.maps.tiled.TiledMap
 import com.badlogic.gdx.maps.tiled.TiledMapTile
@@ -60,26 +65,22 @@ import com.hypermodel.games.engine.gameDSL.GameSprite
 import com.hypermodel.games.engine.gameDSL.GameTile
 import com.hypermodel.games.engine.generator.GameProperties
 import com.hypermodel.games.engine.generator.GameProperties.ProjectType
+import java.util.HashMap
+import java.util.concurrent.LinkedBlockingQueue
+import java.util.stream.Collectors
 import javax.inject.Inject
 import org.eclipse.xtext.common.types.JvmDeclaredType
 import org.eclipse.xtext.common.types.JvmField
 import org.eclipse.xtext.common.types.JvmGenericType
 import org.eclipse.xtext.common.types.JvmVisibility
+import org.eclipse.xtext.common.types.TypesFactory
+import org.eclipse.xtext.common.types.access.IJvmTypeProvider
 import org.eclipse.xtext.naming.IQualifiedNameProvider
 import org.eclipse.xtext.xbase.compiler.output.ITreeAppendable
 import org.eclipse.xtext.xbase.jvmmodel.AbstractModelInferrer
 import org.eclipse.xtext.xbase.jvmmodel.IJvmDeclaredTypeAcceptor
 import org.eclipse.xtext.xbase.jvmmodel.JvmTypesBuilder
 import org.moe.natj.general.Pointer
-import com.badlogic.gdx.Gdx
-import com.badlogic.gdx.Input
-import com.badlogic.gdx.graphics.GL20
-import com.badlogic.gdx.graphics.g2d.Batch
-import org.eclipse.xtext.common.types.TypesFactory
-import org.eclipse.xtext.common.types.access.IJvmTypeProvider
-import java.util.stream.Collectors
-import java.util.concurrent.LinkedBlockingQueue
-import com.badlogic.gdx.maps.MapProperties
 
 class GameDSLJvmModelInferrer extends AbstractModelInferrer {
 	@Inject extension JvmTypesBuilder
@@ -105,8 +106,6 @@ class GameDSLJvmModelInferrer extends AbstractModelInferrer {
 			)
 			// launchers
 			ProjectType.values.filter[it != ProjectType.core].forEach[acceptor.createLauncher(gamePkg, game, it)]
-			// scenes
-			game.scenes.forEach[acceptor.createScene(gamePkg, rootClass, it)]
 			// screens
 			game.screens.forEach[acceptor.createScreen(gamePkg, rootClass, it, game)]
 		]
@@ -392,7 +391,7 @@ class GameDSLJvmModelInferrer extends AbstractModelInferrer {
 				superTypes += Screen.typeRef
 				packageName = screen.fullyQualifiedName.skipLast(1).toString
 				documentation = genInfo
-				it.toFields(gamePkg, root, screen, gameClass, creatorClass, contactClass, playerClass)
+				it.toScreenFields(gamePkg, root, screen, gameClass, creatorClass, contactClass, playerClass)
 				members += screen.toConstructor [
 					parameters += gamePkg.toParameter("game", gameClass.typeRef)
 					body = [
@@ -407,59 +406,59 @@ class GameDSLJvmModelInferrer extends AbstractModelInferrer {
 						'''
 						(«gameClass.simpleName».V_WIDTH / «gameClass.simpleName».PPM, «gameClass.simpleName».V_HEIGHT / «gameClass.simpleName».PPM, gamecam);
 						mapLoader = new TmxMapLoader();
-						map = mapLoader.load("«screen.map»");
-						renderer = new OrthogonalTiledMapRenderer(map, 1 / «gameClass.simpleName».PPM);
-						gamecam.position.set(gamePort.getWorldWidth() / 2, gamePort.getWorldHeight() / 2, 0);
-						world = new World(new ''')
-						append(Vector2)
-						append(
-						'''
-						(0, -10), true);
-						«IF root.debug»b2dr = new Box2DDebugRenderer();«ENDIF»
-						«IF screen.scene !== null»«screen.scene.name.toFirstLower» = new «screen.scene.name.toFirstUpper»(game.batch);«ENDIF»
-						creator = new «creatorClass.fullyQualifiedName»(this);
-						«IF playerClass !== null»player = new «playerClass.fullyQualifiedName»(this, creator);«ENDIF»
-						world.setContactListener(new «contactClass.fullyQualifiedName»());
+						init();
 						''')
-						
 					]
 				]
-				it.toOperations(screen, playerSprite, root)
+				it.toScreenOperations(gamePkg, screen, playerSprite, root, gameClass, creatorClass, playerClass, contactClass)
 			]
 		)
+			// scenes
+		screen.scenes.forEach[acceptor.createScene(gamePkg, root, gameClass, screenClass, it)]
 		// sprites
 		screen.sprites.forEach[acceptor.createSprite(gamePkg, root, gameClass, screenClass, creatorClass, it)]
 		// tiles
 		screen.tiles.forEach[acceptor.createTile(gamePkg, root, gameClass, screenClass, creatorClass, it)]
 	}
 
-	def void toFields(JvmGenericType type, GamePackage gamePkg, GameRoot game, GameScreen screen, JvmGenericType gameClass, JvmGenericType creatorClass, JvmGenericType contactClass, JvmGenericType playerClass) {
+	def void toScreenFields(JvmGenericType type, GamePackage gamePkg, GameRoot game, GameScreen screen, JvmGenericType gameClass, JvmGenericType creatorClass, JvmGenericType contactClass, JvmGenericType playerClass) {
 		var JvmField field = null
 		type.members += screen.toField("game", gameClass.typeRef)
 		type.members += screen.toField("atlas", TextureAtlas.typeRef)
-		type.members += screen.toField("gamecam", OrthographicCamera.typeRef);
-		type.members += screen.toField("gamePort", Viewport.typeRef);
-		type.members += screen.toField("mapLoader", TmxMapLoader.typeRef);
-		type.members += screen.toField("map", TiledMap.typeRef);
-		type.members += screen.toField("renderer", OrthogonalTiledMapRenderer.typeRef);
-		type.members += screen.toField("world", World.typeRef);
-		if(game.debug) type.members += screen.toField("b2dr", Box2DDebugRenderer.typeRef);
-		type.members += screen.toField("music", Music.typeRef);
-		type.members += screen.toField("creator", creatorClass.typeRef);
+		type.members += screen.toField("gamecam", OrthographicCamera.typeRef)
+		type.members += screen.toField("gamePort", Viewport.typeRef)
+		type.members += screen.toField("mapLoader", TmxMapLoader.typeRef)
+		type.members += screen.toField("map", TiledMap.typeRef)
+		type.members += screen.toField("currentLevel", String.typeRef)
+		type.members += screen.toField("renderer", OrthogonalTiledMapRenderer.typeRef)
+		type.members += screen.toField("world", World.typeRef)
+		if(game.debug) type.members += screen.toField("b2dr", Box2DDebugRenderer.typeRef)
+		type.members += screen.toField("music", Music.typeRef)
+		type.members += screen.toField("creator", creatorClass.typeRef)
+		type.members += screen.toField("isGameOver", boolean.typeRef)
+		
 		if(playerClass !== null) {
-			type.members += screen.toField("player", playerClass.typeRef);
+			type.members += screen.toField("player", playerClass.typeRef)
 		}
-		if(screen.scene !== null) {
-			field = screen.toField(screen.scene.name.toFirstLower, gamePkg.toClass(screen.scene.fullyQualifiedName).typeRef)
-			field.visibility = JvmVisibility.PUBLIC 
-			type.members += field
-		}
+		screen.scenes.forEach[
+			type.members += screen.toField(it.name.toFirstLower, it.fullyQualifiedName.toString.typeRef)
+		]
 	}
 
-	def void toOperations(JvmGenericType type, GameScreen screen, GameSprite playerSprite, GameRoot game) {
+	def void toScreenOperations(JvmGenericType type, GamePackage gamePkg, GameScreen screen, GameSprite playerSprite, GameRoot game, JvmGenericType gameClass, JvmGenericType creatorClass, JvmGenericType playerClass, JvmGenericType contactClass) {
 		type.members += screen.toGetter("atlas", TextureAtlas.typeRef)
 		type.members += screen.toGetter("map", TiledMap.typeRef)
 		type.members += screen.toGetter("world", World.typeRef)
+		type.members += screen.toMethod("loadLevel", Void.TYPE.typeRef, [
+			parameters += screen.toParameter("level", String.typeRef)
+			body = [
+				append(
+				'''
+				map = mapLoader.load(level);
+				renderer = new OrthogonalTiledMapRenderer(map, 1 / «gameClass.simpleName».PPM);
+				''')
+			]
+		])
 		type.members += screen.toMethod("resize", Void.TYPE.typeRef, [
 			annotations += Override.annotationRef
 			parameters += screen.toParameter("width", int.typeRef)
@@ -495,8 +494,14 @@ class GameDSLJvmModelInferrer extends AbstractModelInferrer {
 				renderer.dispose();
 				world.dispose();
 				«IF game.debug»b2dr.dispose();«ENDIF»
-				«IF screen.scene !== null»«screen.scene.name.toFirstLower».dispose();«ENDIF»
 				''')
+				val current = it
+				screen.scenes.forEach[
+					current.append(
+					'''
+					«it.name.toFirstLower».dispose();
+					''')
+				]
 			]
 		])
 		type.members += screen.toMethod("show", Void.TYPE.typeRef, [
@@ -511,51 +516,39 @@ class GameDSLJvmModelInferrer extends AbstractModelInferrer {
 			annotations += Override.annotationRef
 			parameters += screen.toParameter("delta", float.typeRef)
 			body = [
-				if(!playerSprite.inputs.empty) {
-			        val current = it
-			        playerSprite.inputs.forEach[
-			        	current.append('''if(''')
-				        current.append(Gdx)
-				        current.append('''.input.isKey«it.keyType.getName().toFirstUpper»(''')
-				        current.append(Input)
-				        current.append('''.Keys.«it.key.getName().toUpperCase»)) {
-			        	''')
-			        	current.append('''	player.«it.trigger.name»();
-			        	''')
-			        	current.append(
-			        	'''}
-			        	''')
-			        ]
-			    }
-			    append(
-			    '''
-			    creator.handleSpawningItems();
-			    world.step(«game.timeStep»f, «game.velocityIterations», «game.positionIterations»);
-			    player.update(delta);
-			    creator.updateSprites(delta, player);
-			    hud.update(delta);
-			    gamecam.position.x = player.getPosition().x;
-			    gamecam.update();
-			    renderer.setView(gamecam);
-			    ''')
 				append(Gdx)
 				append(
 				'''
 				.gl.glClearColor(0, 0, 0, 1);
 				Gdx.gl.glClear(''')
 				append(GL20)
-				append(
-				'''
-				.GL_COLOR_BUFFER_BIT);
-				renderer.render();
-				game.batch.setProjectionMatrix(gamecam.combined);
-				game.batch.begin();
-				player.draw(game.batch);
-				creator.drawSprites(game.batch);
-				game.batch.end();
-				«IF game.debug»b2dr.render(world, gamecam.combined);«ENDIF»
-				game.batch.setProjectionMatrix(hud.stage.getCamera().combined);
-				hud.stage.draw();
+				append('''.GL_COLOR_BUFFER_BIT);
+				''')
+			    append(
+			    '''
+				if(!isGameOver) {
+					input();
+					creator.handleSpawningItems();
+					world.step(«game.timeStep»f, «game.velocityIterations», «game.positionIterations»);
+					player.update(delta);
+					creator.updateSprites(delta, player);
+					hud.update(delta);
+					gamecam.position.x = player.getPosition().x;
+					gamecam.update();
+					renderer.setView(gamecam);
+					renderer.render();
+					game.batch.setProjectionMatrix(gamecam.combined);
+					game.batch.begin();
+					player.draw(game.batch);
+					creator.drawSprites(game.batch);
+					game.batch.end();
+					«IF game.debug»b2dr.render(world, gamecam.combined);«ENDIF»
+					game.batch.setProjectionMatrix(hud.stage.getCamera().combined);
+					hud.stage.draw();
+				} else {
+					inputGameOver();
+					gameOver.stage.draw();
+				}
 			    ''')
 			]
 		])
@@ -567,17 +560,96 @@ class GameDSLJvmModelInferrer extends AbstractModelInferrer {
 				''')
 			]
 		])
+		type.members += screen.toMethod("gameOver", Void.TYPE.typeRef, [
+			body = [
+				append(
+				'''
+				isGameOver = true;
+				''')
+			]
+		])
+		type.members += screen.toMethod("input", Void.TYPE.typeRef, [
+			body = [
+				if(!playerSprite.inputs.empty) {
+			        val current = it
+			        playerSprite.inputs.forEach[
+			        	current.append('''if(''')
+				        current.append(Gdx)
+				        current.append('''.input.isKey«it.keyType.getName().toFirstUpper»(''')
+				        current.append(Input)
+				        current.append('''.Keys.«it.key.getName().toUpperCase»)) {
+			        	''')
+			        	current.append('''		player.«it.trigger.name»();
+			        	''')
+			        	current.append(
+			        	'''}
+			        	''')
+			        ]
+			    }
+			]
+		])
+		type.members += screen.toMethod("inputGameOver", Void.TYPE.typeRef, [
+			body = [
+				append(
+				'''
+		        if(Gdx.input.justTouched()) {
+		        	init();
+		        }
+				''')
+			]
+		])
+		type.members += screen.toMethod("init", Void.TYPE.typeRef, [
+			body = [
+				if(playerClass !== null) {
+					append(
+					'''
+					isGameOver = false;
+					currentLevel = "«screen.levels.get(0).fileName»";
+					loadLevel(currentLevel);
+					gamecam.position.set(gamePort.getWorldWidth() / 2, gamePort.getWorldHeight() / 2, 0);
+					if(world != null)
+					{
+						world.dispose();
+					}
+					world = new World(new ''')
+					append(Vector2)
+					append(
+					'''
+					(0, -10), true);
+					«IF game.debug»
+					if(b2dr != null) {
+						b2dr.dispose();	
+					}
+					b2dr = new Box2DDebugRenderer();
+					«ENDIF»
+					creator = new «creatorClass.fullyQualifiedName»(this);
+					world.setContactListener(new «contactClass.fullyQualifiedName»());
+					player = new «playerClass.fullyQualifiedName»(this, creator);
+					''')
+				}
+				val current = it
+				screen.scenes.forEach[
+					current.append(
+					'''
+					if(«it.name.toFirstLower» != null) {
+						«it.name.toFirstLower».dispose();
+					}
+					«it.name.toFirstLower» = new «it.name.toFirstUpper»(game.batch);
+					''')
+				]						
+			]
+		])
 	}
-
+	
 	// scenes
-	def void createScene(IJvmDeclaredTypeAcceptor acceptor, GamePackage gamePkg, JvmGenericType gameClass, GameScene scene) {
+	def void createScene(IJvmDeclaredTypeAcceptor acceptor, GamePackage gamePkg, GameRoot game, JvmGenericType gameClass, JvmGenericType screenClass, GameScene scene) {
 		acceptor.accept(
 			gamePkg.toClass(scene.fullyQualifiedName),
 			[
 				superTypes += Disposable.typeRef
 				packageName = scene.fullyQualifiedName.skipLast(1).toString
 				documentation = genInfo
-				it.toFields(scene, gameClass)
+				it.toSceneFields(scene, gameClass)
 				members += scene.toConstructor [
 					parameters += gamePkg.toParameter("spriteBatch", SpriteBatch.typeRef)
 					body = [
@@ -600,8 +672,14 @@ class GameDSLJvmModelInferrer extends AbstractModelInferrer {
 						stage.addActor(table);
 						''')
 						val current = it
-						if(scene.hasScore) {
-							scene.score.displays.forEach[
+						scene.displays.filter[it.hasAdder].forEach[
+							current.append(
+							'''
+							«it.name» = 0;
+							''')
+						]
+						if(!scene.displays.empty) {
+							scene.displays.forEach[
 								current.append(
 								'''
 								«it.name»TitleLabel = new Label("«it.name.toUpperCase»", new Label.LabelStyle(new ''')
@@ -611,11 +689,11 @@ class GameDSLJvmModelInferrer extends AbstractModelInferrer {
 								current.append(".WHITE));\n")
 								current.append(
 								'''
-								table.add(«it.name»TitleLabel).expandX().padTop(«scene.score.topPadding»);
+								table.add(«it.name»TitleLabel).expandX().padTop(«scene.topPadding»);
 								''')
 							]
 							it.append("table.row();\n")
-							scene.score.displays.forEach[
+							scene.displays.forEach[
 								current.append(
 								'''
 								«it.name»ValueLabel = new Label(String.format("«it.format»", «it.name»), new Label.LabelStyle(new BitmapFont(), Color.WHITE));
@@ -623,56 +701,73 @@ class GameDSLJvmModelInferrer extends AbstractModelInferrer {
 								''')
 							]
 						}
+						var row = 0
+						for(message:scene.messages) {
+							while(row < message.row) {
+								append("table.row();\n")
+								row = row + 1
+							}
+							append(
+							'''
+							«message.name»MessageLabel = new Label("«message.message»", new Label.LabelStyle(new ''')
+							append(BitmapFont)
+							append("(), ")
+							append(Color)
+							append(".WHITE));\n")
+							append(
+							'''
+							table.add(«message.name»MessageLabel).expandX().padTop(«scene.topPadding»);
+							''')
+						}
 					]
 				]
-				it.toOperations(scene)
+				it.toSceneOperations(scene)
 			]
 		)
 	}
 
-	def void toFields(JvmGenericType type, GameScene scene, JvmGenericType gameClass) {
+	def void toSceneFields(JvmGenericType type, GameScene scene, JvmGenericType gameClass) {
 		var field = scene.toField("stage", Stage.typeRef)
 		field.visibility = JvmVisibility.PUBLIC
 		type.members += field
 		type.members += scene.toField("viewport", Viewport.typeRef)
-		if(scene.hasScore) {
-			scene.score.displays.forEach[
-				type.members += scene.toField('''«it.name»TimeCount''', float.typeRef) [initializer = [append("0")]]
-				var displayField = scene.toField('''«it.name»''', it.type.getName.typeRef)
-				val current = it			
-				displayField.initializer = [append('''«IF current.hasInitial»«IF current.type == GameDisplayValueType.STRING»"«current.initialStringValue»"«ELSEIF current.type == GameDisplayValueType.FLOAT»«current.initialNumberValue»«ELSEIF current.type == GameDisplayValueType.INT»«current.initialIntValue»«ENDIF»«ELSE»«IF current.type == GameDisplayValueType.STRING»""«ELSEIF current.type == GameDisplayValueType.FLOAT»0.0«ELSEIF current.type == GameDisplayValueType.INT»0«ENDIF»«ENDIF»''')]
-				if(it.hasAdder||it.hasSetter) {
-					displayField.static = true
-				}
-				type.members += displayField
-				type.members += scene.toField('''«it.name»TitleLabel''', Label.typeRef)
-				var valueField = scene.toField('''«it.name»ValueLabel''', Label.typeRef)
-				if(it.hasAdder||it.hasSetter) {
-					valueField.static = true
-				}
-				type.members += valueField 
-			]
-		}
+		scene.displays.forEach[
+			type.members += scene.toField('''«it.name»TimeCount''', float.typeRef) [initializer = [append("0")]]
+			var displayField = scene.toField('''«it.name»''', it.type.getName.typeRef)
+			val current = it			
+			displayField.initializer = [append('''«IF current.hasInitial»«IF current.type == GameDisplayValueType.STRING»"«current.initialStringValue»"«ELSEIF current.type == GameDisplayValueType.FLOAT»«current.initialNumberValue»«ELSEIF current.type == GameDisplayValueType.INT»«current.initialIntValue»«ENDIF»«ELSE»«IF current.type == GameDisplayValueType.STRING»""«ELSEIF current.type == GameDisplayValueType.FLOAT»0.0«ELSEIF current.type == GameDisplayValueType.INT»0«ENDIF»«ENDIF»''')]
+			if(it.hasAdder||it.hasSetter) {
+				displayField.static = true
+			}
+			type.members += displayField
+			type.members += scene.toField('''«it.name»TitleLabel''', Label.typeRef)
+			var valueField = scene.toField('''«it.name»ValueLabel''', Label.typeRef)
+			if(it.hasAdder||it.hasSetter) {
+				valueField.static = true
+			}
+			type.members += valueField 
+		]
+		scene.messages.forEach[
+			type.members += scene.toField('''«it.name»MessageLabel''', Label.typeRef)
+		]
 	}
 
-	def void toOperations(JvmGenericType type, GameScene scene) {
+	def void toSceneOperations(JvmGenericType type, GameScene scene) {
 		type.members += scene.toMethod("update", Void.TYPE.typeRef, [
 			parameters += scene.toParameter("dt", float.typeRef)
 			body = [
 				val current = it
-				if(scene.hasScore) {
-					scene.score.displays.filter[it.hasDelta].forEach[
-						current.append(
-						'''
-						«it.name»TimeCount += dt;
-						if («it.name»TimeCount >= «it.timePeriod») {
-							«it.name» += «it.deltaValue»;
-							«it.name»ValueLabel.setText(String.format("«it.format»", «it.name»));
-							«it.name»TimeCount = 0;
-						}
-						''')
-					]
-				}
+				scene.displays.filter[it.hasDelta].forEach[
+					current.append(
+					'''
+					«it.name»TimeCount += dt;
+					if («it.name»TimeCount >= «it.timePeriod») {
+						«it.name» += «it.deltaValue»;
+						«it.name»ValueLabel.setText(String.format("«it.format»", «it.name»));
+						«it.name»TimeCount = 0;
+					}
+					''')
+				]
 			]
 		])
 		type.members += scene.toMethod("dispose", Void.TYPE.typeRef, [
@@ -684,38 +779,36 @@ class GameDSLJvmModelInferrer extends AbstractModelInferrer {
 				''')
 			]
 		])
-		if(scene.hasScore) {
-			scene.score.displays.filter[it.hasAdder].forEach[
-				val current = it
-				var operation = scene.toMethod('''add«it.name.toFirstUpper»''', Void.TYPE.typeRef, [
-					parameters += scene.toParameter("value", current.type.getName.typeRef)
-					body = [
-						append(
-						'''
-						«current.name» += value;
-						«current.name»ValueLabel.setText(String.format("«current.format»", «current.name»));
-						''')
-					]
-				])
-				operation.static = true
-				type.members += operation 
-			]
-			scene.score.displays.filter[it.hasSetter].forEach[
-				val current = it
-				var operation = scene.toMethod('''set«it.name.toFirstUpper»''', Void.TYPE.typeRef, [
-					parameters += scene.toParameter("value", current.type.getName.typeRef)
-					body = [
-						append(
-						'''
-						«current.name» = value;
-						«current.name»ValueLabel.setText(String.format("«current.format»", «current.name»));
-						''')
-					]
-				])
-				operation.static = true
-				type.members += operation 
-			]
-		}
+		scene.displays.filter[it.hasAdder].forEach[
+			val current = it
+			var operation = scene.toMethod('''add«it.name.toFirstUpper»''', Void.TYPE.typeRef, [
+				parameters += scene.toParameter("value", current.type.getName.typeRef)
+				body = [
+					append(
+					'''
+					«current.name» += value;
+					«current.name»ValueLabel.setText(String.format("«current.format»", «current.name»));
+					''')
+				]
+			])
+			operation.static = true
+			type.members += operation 
+		]
+		scene.displays.filter[it.hasSetter].forEach[
+			val current = it
+			var operation = scene.toMethod('''set«it.name.toFirstUpper»''', Void.TYPE.typeRef, [
+				parameters += scene.toParameter("value", current.type.getName.typeRef)
+				body = [
+					append(
+					'''
+					«current.name» = value;
+					«current.name»ValueLabel.setText(String.format("«current.format»", «current.name»));
+					''')
+				]
+			])
+			operation.static = true
+			type.members += operation 
+		]
 	}
 
 	// sprites
@@ -1021,6 +1114,14 @@ class GameDSLJvmModelInferrer extends AbstractModelInferrer {
 					}
 					''')
 				}
+				if(sprite.hasGameOverState) {
+					append(
+					'''
+					if(currentState.equals(State.«sprite.gameOverState.name.toUpperCase») && stateTimer > 3) {
+						screen.gameOver();
+					}
+					''')
+				}
 			]
 		])
 		type.members += sprite.toMethod("getFrame", TextureRegion.typeRef, [
@@ -1086,6 +1187,23 @@ class GameDSLJvmModelInferrer extends AbstractModelInferrer {
 					return new Vector2(body.getPosition().x + vector.x/«gameClass.simpleName».PPM, body.getPosition().y + vector.y/«gameClass.simpleName».PPM);
 				} else {
 					return body.getPosition();
+				}
+				''')
+			]
+		])
+		type.members += sprite.toMethod("removeMaskBits", Void.TYPE.typeRef, [
+			body = [
+				append(Filter)
+				append(
+				''' 
+				 filter = new Filter();
+				filter.maskBits = 0;
+				for (''')
+				append(Fixture)
+				append(
+				'''
+				 fixture : body.getFixtureList()) {
+					fixture.setFilterData(filter);
 				}
 				''')
 			]

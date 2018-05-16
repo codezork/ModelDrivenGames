@@ -126,14 +126,19 @@ public class GameDSLAdapterFactory extends AdapterFactoryImpl
         return createGameSceneAdapter();
       }
       @Override
-      public Adapter caseGameScore(GameScore object)
+      public Adapter caseGameLevel(GameLevel object)
       {
-        return createGameScoreAdapter();
+        return createGameLevelAdapter();
       }
       @Override
       public Adapter caseGameDisplay(GameDisplay object)
       {
         return createGameDisplayAdapter();
+      }
+      @Override
+      public Adapter caseGameMessage(GameMessage object)
+      {
+        return createGameMessageAdapter();
       }
       @Override
       public Adapter caseGameTile(GameTile object)
@@ -368,16 +373,16 @@ public class GameDSLAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link com.hypermodel.games.engine.gameDSL.GameScore <em>Game Score</em>}'.
+   * Creates a new adapter for an object of class '{@link com.hypermodel.games.engine.gameDSL.GameLevel <em>Game Level</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see com.hypermodel.games.engine.gameDSL.GameScore
+   * @see com.hypermodel.games.engine.gameDSL.GameLevel
    * @generated
    */
-  public Adapter createGameScoreAdapter()
+  public Adapter createGameLevelAdapter()
   {
     return null;
   }
@@ -393,6 +398,21 @@ public class GameDSLAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createGameDisplayAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link com.hypermodel.games.engine.gameDSL.GameMessage <em>Game Message</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see com.hypermodel.games.engine.gameDSL.GameMessage
+   * @generated
+   */
+  public Adapter createGameMessageAdapter()
   {
     return null;
   }

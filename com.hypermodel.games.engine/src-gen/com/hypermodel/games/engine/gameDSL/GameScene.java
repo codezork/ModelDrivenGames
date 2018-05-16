@@ -3,6 +3,8 @@
  */
 package com.hypermodel.games.engine.gameDSL;
 
+import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.ecore.EObject;
 
 /**
@@ -15,8 +17,9 @@ import org.eclipse.emf.ecore.EObject;
  * </p>
  * <ul>
  *   <li>{@link com.hypermodel.games.engine.gameDSL.GameScene#getName <em>Name</em>}</li>
- *   <li>{@link com.hypermodel.games.engine.gameDSL.GameScene#isHasScore <em>Has Score</em>}</li>
- *   <li>{@link com.hypermodel.games.engine.gameDSL.GameScene#getScore <em>Score</em>}</li>
+ *   <li>{@link com.hypermodel.games.engine.gameDSL.GameScene#getTopPadding <em>Top Padding</em>}</li>
+ *   <li>{@link com.hypermodel.games.engine.gameDSL.GameScene#getDisplays <em>Displays</em>}</li>
+ *   <li>{@link com.hypermodel.games.engine.gameDSL.GameScene#getMessages <em>Messages</em>}</li>
  * </ul>
  *
  * @see com.hypermodel.games.engine.gameDSL.GameDSLPackage#getGameScene()
@@ -52,55 +55,61 @@ public interface GameScene extends EObject
   void setName(String value);
 
   /**
-   * Returns the value of the '<em><b>Has Score</b></em>' attribute.
+   * Returns the value of the '<em><b>Top Padding</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Has Score</em>' attribute isn't clear,
+   * If the meaning of the '<em>Top Padding</em>' attribute isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Has Score</em>' attribute.
-   * @see #setHasScore(boolean)
-   * @see com.hypermodel.games.engine.gameDSL.GameDSLPackage#getGameScene_HasScore()
+   * @return the value of the '<em>Top Padding</em>' attribute.
+   * @see #setTopPadding(int)
+   * @see com.hypermodel.games.engine.gameDSL.GameDSLPackage#getGameScene_TopPadding()
    * @model
    * @generated
    */
-  boolean isHasScore();
+  int getTopPadding();
 
   /**
-   * Sets the value of the '{@link com.hypermodel.games.engine.gameDSL.GameScene#isHasScore <em>Has Score</em>}' attribute.
+   * Sets the value of the '{@link com.hypermodel.games.engine.gameDSL.GameScene#getTopPadding <em>Top Padding</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Has Score</em>' attribute.
-   * @see #isHasScore()
+   * @param value the new value of the '<em>Top Padding</em>' attribute.
+   * @see #getTopPadding()
    * @generated
    */
-  void setHasScore(boolean value);
+  void setTopPadding(int value);
 
   /**
-   * Returns the value of the '<em><b>Score</b></em>' containment reference.
+   * Returns the value of the '<em><b>Displays</b></em>' containment reference list.
+   * The list contents are of type {@link com.hypermodel.games.engine.gameDSL.GameDisplay}.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Score</em>' containment reference isn't clear,
+   * If the meaning of the '<em>Displays</em>' containment reference list isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Score</em>' containment reference.
-   * @see #setScore(GameScore)
-   * @see com.hypermodel.games.engine.gameDSL.GameDSLPackage#getGameScene_Score()
+   * @return the value of the '<em>Displays</em>' containment reference list.
+   * @see com.hypermodel.games.engine.gameDSL.GameDSLPackage#getGameScene_Displays()
    * @model containment="true"
    * @generated
    */
-  GameScore getScore();
+  EList<GameDisplay> getDisplays();
 
   /**
-   * Sets the value of the '{@link com.hypermodel.games.engine.gameDSL.GameScene#getScore <em>Score</em>}' containment reference.
+   * Returns the value of the '<em><b>Messages</b></em>' containment reference list.
+   * The list contents are of type {@link com.hypermodel.games.engine.gameDSL.GameMessage}.
    * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Messages</em>' containment reference list isn't clear,
+   * there really should be more of a description here...
+   * </p>
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Score</em>' containment reference.
-   * @see #getScore()
+   * @return the value of the '<em>Messages</em>' containment reference list.
+   * @see com.hypermodel.games.engine.gameDSL.GameDSLPackage#getGameScene_Messages()
+   * @model containment="true"
    * @generated
    */
-  void setScore(GameScore value);
+  EList<GameMessage> getMessages();
 
 } // GameScene
