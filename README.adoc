@@ -1,5 +1,5 @@
 = ModelDrivenGames
-Xtext and LibGDX by hypermodel
+Xtext and LibGDX
 
 LibGDX is a cross-platform game development framework. It is a well known framework by game developers: https://libgdx.badlogicgames.com/.
 
